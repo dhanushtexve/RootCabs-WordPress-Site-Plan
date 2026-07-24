@@ -1,0 +1,51 @@
+{
+  "status": "success",
+  "results": [
+    {
+      "status": "success",
+      "filename": "hero-sedan-highway-cityscape.jpg",
+      "url": "https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qasiaaiyq/hero-sedan-highway-cityscape.png",
+      "path": "https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qasiaaiyq/hero-sedan-highway-cityscape.png",
+      "absolute_path": "https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qasiaaiyq/hero-sedan-highway-cityscape.png"
+    },
+    {
+      "status": "success",
+      "filename": "airport-taxi-terminal-service.jpg",
+      "url": "https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qbnqcaiza/airport-taxi-terminal-service.png",
+      "path": "https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qbnqcaiza/airport-taxi-terminal-service.png",
+      "absolute_path": "https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qbnqcaiza/airport-taxi-terminal-service.png"
+    },
+    {
+      "status": "success",
+      "filename": "city-chennai-marina-beach-taxi.jpg",
+      "url": "https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qb4acaizq/city-chennai-marina-beach-taxi.png",
+      "path": "https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qb4acaizq/city-chennai-marina-beach-taxi.png",
+      "absolute_path": "https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qb4acaizq/city-chennai-marina-beach-taxi.png"
+    },
+    {
+      "status": "success",
+      "filename": "city-vellore-golden-temple-cab.jpg",
+      "url": "https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qciycai2a/city-vellore-golden-temple-cab.png",
+      "path": "https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qciycai2a/city-vellore-golden-temple-cab.png",
+      "absolute_path": "https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qciycai2a/city-vellore-golden-temple-cab.png"
+    },
+    {
+      "status": "success",
+      "filename": "corporate-travel-business-sedan.jpg",
+      "url": "https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qcvqcaiyq/corporate-travel-business-sedan.png",
+      "path": "https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qcvqcaiyq/corporate-travel-business-sedan.png",
+      "absolute_path": "https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qcvqcaiyq/corporate-travel-business-sedan.png"
+    },
+    {
+      "status": "success",
+      "filename": "driver-partner-happy-professional.jpg",
+      "url": "https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qdcicaiya/driver-partner-happy-professional.png",
+      "path": "https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qdcicaiya/driver-partner-happy-professional.png",
+      "absolute_path": "https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qdcicaiya/driver-partner-happy-professional.png"
+    }
+  ],
+  "success_count": 6,
+  "failed_count": 0,
+  "running_count": 0,
+  "message": "Generated 6/6 images total"
+}

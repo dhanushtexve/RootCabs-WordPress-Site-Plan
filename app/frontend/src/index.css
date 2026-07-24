@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 230 40% 20%;
+    --card: 220 20% 95%;
+    --card-foreground: 230 40% 20%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 40% 20%;
+    --primary: 233 55% 37%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 230 30% 90%;
+    --secondary-foreground: 233 55% 37%;
+    --muted: 220 20% 93%;
+    --muted-foreground: 230 15% 45%;
+    --accent: 50 100% 50%;
+    --accent-foreground: 233 55% 25%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 230 20% 88%;
+    --input: 230 20% 88%;
+    --ring: 233 55% 37%;
+    --radius: 0.5rem;
+    --sidebar-background: 233 55% 20%;
+    --sidebar-foreground: 220 20% 95%;
+    --sidebar-primary: 50 100% 50%;
+    --sidebar-primary-foreground: 233 55% 25%;
+    --sidebar-accent: 233 55% 28%;
+    --sidebar-accent-foreground: 220 20% 95%;
+    --sidebar-border: 233 55% 30%;
+    --sidebar-ring: 50 100% 50%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    font-feature-settings: "kern" 1;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold tracking-tight;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl leading-tight;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl leading-snug;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl leading-snug;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
