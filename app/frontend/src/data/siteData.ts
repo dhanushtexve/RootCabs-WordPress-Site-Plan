@@ -119,8 +119,8 @@ export const cities: City[] = [
     slug: "chennai",
     name: "Chennai",
     state: "Tamil Nadu",
-    tagline: "Premium Cab Service in Chennai - Available 24/7",
-    description: "Root Cabs provides reliable, affordable taxi services across Chennai. From Marina Beach to the IT corridor, airport transfers to local rides, we've got Chennai covered with 500+ verified drivers.",
+    tagline: "Reliable Cab Services in Chennai for Every Ride",
+    description: "Travel across Chennai with convenient local rides, airport transfers, and long-distance cab services. Root Cabs stays available 24/7, helping you reach your destination comfortably with clear fares and easy booking.",
     services: ["local-taxi", "airport-taxi", "outstation", "acting-driver", "parcel-delivery", "auto"],
     popularRoutes: [
       { to: "Bangalore", distance: "350 km", fare: "₹4,200" },
@@ -129,12 +129,36 @@ export const cities: City[] = [
       { to: "Tirupati", distance: "135 km", fare: "₹1,620" },
       { to: "Mahabalipuram", distance: "60 km", fare: "₹720" },
     ],
-    landmarks: ["Chennai Airport", "Central Railway Station", "Marina Beach", "Express Avenue", "Apollo Hospital"],
+    landmarks: ["Chennai Airport", "Chennai Central Railway Station", "Marina Beach", "T. Nagar", "Koyambedu"],
     faq: [
-      { q: "How do I book a cab in Chennai?", a: "Download the Root Cabs app or call +91 8608606474. You can also book through our website's Book Ride page." },
-      { q: "What is the minimum fare in Chennai?", a: "Local rides start at ₹99 for the first 4 km. After that, it's ₹14/km for sedans." },
-      { q: "Is Root Cabs available at Chennai Airport?", a: "Yes! We provide 24/7 airport pickup and drop services with flight tracking and free 45-minute waiting." },
-      { q: "Do you offer corporate packages in Chennai?", a: "Yes, we offer customized corporate travel solutions with monthly billing, dedicated account managers, and priority booking." },
+      {
+        q: "Which is the best cab service in Chennai?",
+        a: "The best cab service in Chennai should provide clear fares, verified drivers, dependable pickups, and responsive support. Root Cabs offers these benefits for local, airport, and outstation rides.",
+      },
+      {
+        q: "What is the cheapest way to book an outstation cab from Chennai?",
+        a: "The cheapest way is to compare round-trip fares and choose a vehicle that fits your group size. Root Cabs lets you review the available options and select an outstation cab from Chennai that suits your budget.",
+      },
+      {
+        q: "What is the best cab service in Chennai for outstation trips?",
+        a: "The best cab service in Chennai for outstation trips should offer clear round-trip fares, suitable vehicle choices, verified drivers, and dependable support. Root Cabs provides these options for comfortable journeys from Chennai.",
+      },
+      {
+        q: "How much does Root Cabs charge per km in Chennai?",
+        a: "Root Cabs fares in Chennai start from a base fare of Rs 90 for the first 3 km. Both the base fare and the per-kilometre rate vary depending on the vehicle type selected.",
+      },
+      {
+        q: "Does the outstation fare include tolls and taxes?",
+        a: "Outstation fares include applicable taxes, but toll charges are not included. Any tolls incurred during the trip must be paid separately.",
+      },
+      {
+        q: "What is Root Cabs' cancellation and refund policy?",
+        a: "You can cancel a Root Cabs booking within 8 minutes of confirmation. Refund requests are reviewed through support tickets, and eligible cases are usually resolved within 24-48 hours.",
+      },
+      {
+        q: "What payment modes does Root Cabs accept?",
+        a: "Root Cabs accepts UPI and cash payments. The fare is paid directly to the driver after completing the ride.",
+      },
     ],
   },
   {

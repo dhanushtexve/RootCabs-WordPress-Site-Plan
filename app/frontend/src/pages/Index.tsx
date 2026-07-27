@@ -272,30 +272,31 @@ export default function Index() {
           />
           <div className="absolute inset-0 bg-[#273588]/80" />
           <div className="absolute inset-0 opacity-10 [background-image:linear-gradient(90deg,_rgba(255,255,255,.35)_1px,_transparent_1px),linear-gradient(180deg,_rgba(255,255,255,.35)_1px,_transparent_1px)] [background-size:56px_56px]" />
-          <div className="relative z-10 grid items-center gap-8 md:grid-cols-[1fr_auto]">
-            <div className="text-center md:pl-4">
+          <div className="relative z-10 grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_230px] lg:grid-cols-[minmax(0,1fr)_250px]">
+            <div className="text-center md:pl-4 md:text-left lg:pl-8">
               <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                 Book Faster
               </span>
               <h2 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-4xl">Download the Root Cabs App</h2>
-              <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-white/80 md:text-base">
-                Book rides instantly, track your driver in real-time, and enjoy exclusive app-only offers.
+              <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
+                Book rides faster and keep all your travel needs within easy reach
               </p>
-              <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-white/85">
-                <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Live Tracking</span>
-                <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Saved Locations</span>
-                <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Exclusive Offers</span>
+              <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-white/85 md:justify-start">
+                <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> No surge charges</span>
+                <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Live ride tracking</span>
+                <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> No last-minute cancellations</span>
+                <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Available 24/7</span>
               </div>
-              <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <div className="mt-6 flex flex-wrap justify-center gap-3 md:justify-start">
                 <Button size="sm" className="h-10 bg-[#FFD700] px-5 font-bold text-[#2E3A8C] shadow-lg hover:bg-[#E6C200]">
-                  <Download className="mr-2 h-4 w-4" /> Google Play
+                  <Download className="mr-2 h-4 w-4" /> Google play
                 </Button>
                 <Button size="sm" variant="outline" className="h-10 border-white/30 px-5 font-semibold text-white hover:bg-white/10 !bg-transparent">
                   <Download className="mr-2 h-4 w-4" /> App Store
                 </Button>
               </div>
             </div>
-            <div className="relative mx-auto w-full max-w-[250px] md:mr-4">
+            <div className="relative mx-auto w-full max-w-[230px] md:mr-0 lg:max-w-[250px]">
               <div className="rounded-xl bg-white p-3 text-center shadow-2xl">
                 <p className="mb-2 text-[10px] font-extrabold uppercase tracking-wider text-slate-500">Scan to Download</p>
                 <img
