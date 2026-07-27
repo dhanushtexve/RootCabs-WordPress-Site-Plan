@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Car, Plane, Navigation, User, Package, Bike, MapPin, Star, Shield, Clock, Phone, CheckCircle, Download, ArrowRight, Users, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import FareCalculator from "@/components/FareCalculator";
 import { services, cities, testimonials, companyInfo } from "@/data/siteData";
 
@@ -13,6 +14,25 @@ const iconMap: Record<string, React.ReactNode> = {
   Package: <Package className="w-6 h-6" />,
   Bike: <Bike className="w-6 h-6" />,
 };
+
+const homepageFaqs = [
+  {
+    q: "How do I call a taxi in Vellore?",
+    a: "You can call Root Cabs at +91 8608606474 to book a taxi in Vellore.",
+  },
+  {
+    q: "How can I book a taxi service in Vellore with Root Cabs?",
+    a: "Enter your pickup point and destination in the Root Cabs app, choose the required service, and confirm your ride. You can also contact the Root Cabs support team to book a cab over the phone.",
+  },
+  {
+    q: "Does Root Cabs offer one-way taxi booking across Tamil Nadu?",
+    a: "Yes. Root Cabs offers one-way taxi booking for intercity travel across Tamil Nadu, so you can pay only for the journey you need.",
+  },
+  {
+    q: "Does Root Cabs provide airport transfers from Vellore and Chennai?",
+    a: "Yes. Root Cabs provides airport pickups and drops from Vellore and Chennai with verified drivers, clear fares, and booking support.",
+  },
+];
 
 export default function Index() {
   return (
@@ -139,6 +159,52 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Featured Service Blocks */}
+      <section className="max-w-screen-xl mx-auto px-4 py-16 md:py-20 space-y-8">
+        <div className="grid items-center gap-8 rounded-xl border border-border bg-[#F4F6FF] p-6 md:grid-cols-[1fr_0.95fr] md:p-10">
+          <div>
+            <div className="inline-flex rounded-full bg-[#E9EDFF] px-4 py-1.5 text-xs font-bold uppercase text-[#1E2A6E]">
+              Acting Driver
+            </div>
+            <h2 className="mt-5 max-w-xl font-heading text-3xl font-bold leading-tight text-[#1E2A6E] md:text-4xl">
+              Need someone to take the wheel of your car?
+            </h2>
+            <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground md:text-base">
+              Hire a professional driver through Root Cabs for hospital visits, family functions, late-night returns,
+              business travel, and long-distance journeys.
+            </p>
+            <div className="mt-6 space-y-3 text-sm text-[#24305E]">
+              {[
+                "Verified and experienced acting drivers",
+                "Available for local and outstation travel",
+                "Flexible hourly and full-day options",
+                "Suitable for regular and premium cars",
+              ].map((item) => (
+                <div key={item} className="flex items-start gap-3">
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8">
+              <Link to="/book-ride">
+                <Button size="lg" className="bg-[#1E2A6E] px-7 font-bold text-white hover:bg-[#2E3A8C]">
+                  Hire an Acting Driver <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+          <div className="overflow-hidden rounded-xl bg-[#E9EDFF] min-h-[260px] md:min-h-[300px]">
+            <img
+              src="/assets/acting-driver-vellore.png"
+              alt="Acting driver service"
+              className="h-full min-h-[260px] w-full object-cover md:min-h-[300px]"
+            />
+          </div>
+        </div>
+
+      </section>
+
       {/* Why Choose Us */}
       <section className="max-w-screen-xl mx-auto px-4 py-16 md:py-20">
         <div className="text-center mb-12">
@@ -198,25 +264,68 @@ export default function Index() {
 
       {/* App Download CTA */}
       <section className="max-w-screen-xl mx-auto px-4 py-16 md:py-20">
-        <div className="bg-gradient-to-r from-[#2E3A8C] to-[#1E2A6E] rounded-2xl p-8 md:p-12 text-white text-center relative overflow-hidden">
+        <div className="relative overflow-hidden rounded-2xl bg-[#273588] px-6 py-8 text-white shadow-xl md:px-10 lg:px-12">
           <img
             src="https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qbnqcaiza/airport-taxi-terminal-service.png"
             alt="Airport taxi service"
-            className="absolute inset-0 w-full h-full object-cover opacity-10"
+            className="absolute inset-0 h-full w-full object-cover opacity-15"
           />
-          <div className="relative z-10">
-          <Download className="w-12 h-12 mx-auto mb-4 text-[#FFD700]" />
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Download the Root Cabs App</h2>
-          <p className="text-lg text-white/80 mb-8 max-w-xl mx-auto">Book rides instantly, track your driver in real-time, and enjoy exclusive app-only offers.</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button size="lg" className="bg-[#FFD700] hover:bg-[#E6C200] text-[#2E3A8C] font-bold cursor-pointer shadow-lg">
-              <Download className="w-4 h-4 mr-2" /> Google Play
-            </Button>
-            <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 font-semibold cursor-pointer !bg-transparent">
-              <Download className="w-4 h-4 mr-2" /> App Store (Coming Soon)
-            </Button>
+          <div className="absolute inset-0 bg-[#273588]/80" />
+          <div className="absolute inset-0 opacity-10 [background-image:linear-gradient(90deg,_rgba(255,255,255,.35)_1px,_transparent_1px),linear-gradient(180deg,_rgba(255,255,255,.35)_1px,_transparent_1px)] [background-size:56px_56px]" />
+          <div className="relative z-10 grid items-center gap-8 md:grid-cols-[1fr_auto]">
+            <div className="text-center md:pl-4">
+              <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
+                Book Faster
+              </span>
+              <h2 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-4xl">Download the Root Cabs App</h2>
+              <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-white/80 md:text-base">
+                Book rides instantly, track your driver in real-time, and enjoy exclusive app-only offers.
+              </p>
+              <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-white/85">
+                <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Live Tracking</span>
+                <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Saved Locations</span>
+                <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Exclusive Offers</span>
+              </div>
+              <div className="mt-6 flex flex-wrap justify-center gap-3">
+                <Button size="sm" className="h-10 bg-[#FFD700] px-5 font-bold text-[#2E3A8C] shadow-lg hover:bg-[#E6C200]">
+                  <Download className="mr-2 h-4 w-4" /> Google Play
+                </Button>
+                <Button size="sm" variant="outline" className="h-10 border-white/30 px-5 font-semibold text-white hover:bg-white/10 !bg-transparent">
+                  <Download className="mr-2 h-4 w-4" /> App Store
+                </Button>
+              </div>
+            </div>
+            <div className="relative mx-auto w-full max-w-[250px] md:mr-4">
+              <div className="rounded-xl bg-white p-3 text-center shadow-2xl">
+                <p className="mb-2 text-[10px] font-extrabold uppercase tracking-wider text-slate-500">Scan to Download</p>
+                <img
+                  src="/assets/root-cabs-qr-cropped.png"
+                  alt="Root Cabs app QR code"
+                  className="aspect-square w-full rounded-md object-contain"
+                />
+                <p className="mt-2 text-[10px] font-semibold text-slate-400">rootcabs.com/app</p>
+              </div>
+            </div>
           </div>
-          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="bg-muted/50 px-4 py-16 md:py-20">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-10">Frequently asked questions</h2>
+          <Accordion type="single" collapsible className="space-y-3">
+            {homepageFaqs.map((faq, index) => (
+              <AccordionItem key={faq.q} value={`homepage-faq-${index}`} className="border-0">
+                <AccordionTrigger className="rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline">
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="rounded-b-lg bg-white px-5 pb-5 text-sm leading-6 text-muted-foreground shadow-sm">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
 
