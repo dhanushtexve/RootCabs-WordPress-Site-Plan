@@ -6,7 +6,6 @@ export interface FareEstimateRequest {
   pickupLong?: number;
   dropLat?: number;
   dropLong?: number;
-  zone?: string;
 }
 
 export interface FareEstimateData {
@@ -40,7 +39,9 @@ interface FareEstimateResponse {
   message?: string;
 }
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "https://kz3l7kxz-3000.inc1.devtunnels.ms";
+const API_BASE_URL = import.meta.env.DEV
+  ? ""
+  : import.meta.env.VITE_API_BASE_URL || "https://kz3l7kxz-3000.inc1.devtunnels.ms";
 
 export async function getFareEstimate(request: FareEstimateRequest): Promise<FareEstimateData> {
   const params = new URLSearchParams({
@@ -53,7 +54,6 @@ export async function getFareEstimate(request: FareEstimateRequest): Promise<Far
   if (request.pickupLong !== undefined) params.set("pickupLong", String(request.pickupLong));
   if (request.dropLat !== undefined) params.set("dropLat", String(request.dropLat));
   if (request.dropLong !== undefined) params.set("dropLong", String(request.dropLong));
-  if (request.zone) params.set("zone", request.zone);
 
   const response = await fetch(`${API_BASE_URL}/api/customer/dev/fare-estimate?${params.toString()}`);
 

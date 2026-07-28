@@ -1,4 +1,4 @@
-import { defineConfig, type Plugin, type ResolvedConfig } from 'vite';
+import { defineConfig, loadEnv, type Plugin, type ResolvedConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import fs from 'node:fs';
 import path from 'path';
@@ -39,8 +39,10 @@ function ensureBuildOutDir(): Plugin {
 }
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command }) => {
+export default defineConfig(({ command, mode }) => {
+  const env = loadEnv(mode, process.cwd(), '');
   const blogPrerenderRoutes = command === 'build' ? getBlogRoutes() : [];
+  const apiProxyTarget = env.VITE_API_BASE_URL || `http://localhost:${env.BACKEND_PORT || '8000'}`;
 
   return {
     plugins: [
@@ -71,10 +73,10 @@ export default defineConfig(({ command }) => {
     },
     server: {
       host: '0.0.0.0', // Listen on all network interfaces.
-      port: parseInt(process.env.VITE_PORT || '3000'),
+      port: parseInt(env.VITE_PORT || '3000'),
       proxy: {
         '/api': {
-          target: `http://localhost:${process.env.BACKEND_PORT || '8000'}`,
+          target: apiProxyTarget,
           changeOrigin: true,
         },
       },

@@ -36,7 +36,6 @@ export default function FareCalculator({ defaultFrom = "", defaultTo = "", compa
         cabType: vehicle,
         pickupLocation: from,
         dropLocation: to,
-        zone: from,
       });
       setResult(estimate);
     } catch (err) {
@@ -131,14 +130,6 @@ export default function FareCalculator({ defaultFrom = "", defaultTo = "", compa
               <div className="text-center">
                 <p className="text-xs text-muted-foreground">Duration</p>
                 <p className="font-semibold">{result.duration}</p>
-              </div>
-              <div className="text-center">
-                <p className="text-xs text-muted-foreground">Base Fare</p>
-                <p className="font-semibold">₹{result.baseFare.toLocaleString()}</p>
-              </div>
-              <div className="text-center">
-                <p className="text-xs text-muted-foreground">Per Km</p>
-                <p className="font-semibold">₹{result.perKmRate.toLocaleString()}</p>
               </div>
               <div className="text-center">
                 <p className="text-xs text-muted-foreground">Estimated Fare</p>
