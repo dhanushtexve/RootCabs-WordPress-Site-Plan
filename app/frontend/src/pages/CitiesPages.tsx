@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { MapPin, ArrowRight, Car, Plane, Navigation, User, Package, Bike, Star, CheckCircle, Phone, ChevronRight, Download, Clock3 } from "lucide-react";
+import { MapPin, ArrowRight, Car, Plane, Navigation, User, Package, Bike, Star, CheckCircle, Phone, ChevronRight, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -30,64 +30,64 @@ const chennaiServices = [
     description: "Travel comfortably across Chennai for work, shopping, hospital visits, appointments, and everyday journeys. Choose convenient cab booking in Chennai for quick city travel without the hassle of searching for transport.",
     fare: "Starting at Rs 90/3km",
     href: "/chennai/local-taxi",
-    iconWrapClass: "bg-[#FFF4CC] text-[#C58B00]",
-    icon: <Car className="h-5 w-5" />,
+    iconWrapClass: "bg-white",
+    icon: <img src="/assets/chennai-service-local.png" alt="Local Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Outstation Taxi",
     description: "Plan round trips from Chennai to nearby towns, tourist destinations, and major cities. Our flexible outstation cabs in Chennai are suitable for family holidays, business journeys, and weekend travel.",
     fare: "Starting at Rs 300/20Km",
     href: "/chennai/outstation",
-    iconWrapClass: "bg-[#DBFCE7] text-[#15803D]",
-    icon: <Navigation className="h-5 w-5" />,
+    iconWrapClass: "bg-white",
+    icon: <img src="/assets/chennai-service-outstation.png" alt="Outstation Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Acting Driver",
     description: "Hire an experienced acting driver in Chennai to drive your own car safely. It is ideal for late-night returns, hospital visits, events, business travel, and long-distance journeys.",
     fare: "Starting at Rs 500/100 Km",
     href: "/chennai/acting-driver",
-    iconWrapClass: "bg-[#E9E7FF] text-[#5B3DF5]",
-    icon: <User className="h-5 w-5" />,
+    iconWrapClass: "bg-white",
+    icon: <img src="/assets/chennai-service-acting-driver.png" alt="Acting Driver service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "One-Way Taxi",
     description: "Choose a one-way taxi from Chennai for convenient intercity travel. Pay only for the journey you take without unnecessary return charges, making it suitable for airport transfers and long-distance drops.",
     fare: "Starting at Rs 300/Km",
     href: "/book-ride",
-    iconWrapClass: "bg-[#E0F2FE] text-[#0284C7]",
-    icon: <ArrowRight className="h-5 w-5" />,
+    iconWrapClass: "bg-white",
+    icon: <img src="/assets/chennai-service-one-way.png" alt="One-Way Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Auto Rickshaw",
     description: "Travel easily through Chennai's busy streets, shopping areas, railway stations, and nearby neighbourhoods. Book an auto for everyday errands, short trips, and quick local travel across the city.",
     fare: "Starting at Rs 40/1Km",
     href: "/chennai/auto",
-    iconWrapClass: "bg-[#DCFCE7] text-[#16A34A]",
-    icon: <Bike className="h-5 w-5" />,
+    iconWrapClass: "bg-white",
+    icon: <img src="/assets/chennai-service-auto.png" alt="Auto Rickshaw service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Bike Taxi",
     description: "Move through Chennai traffic quickly with an affordable bike taxi ride. It is a convenient choice for office commutes, college travel, everyday errands, and short-distance journeys.",
     fare: "Starting at Rs 25/2km",
     href: "/book-ride",
-    iconWrapClass: "bg-[#FFEDD5] text-[#EA580C]",
-    icon: <Bike className="h-5 w-5" />,
+    iconWrapClass: "bg-white",
+    icon: <img src="/assets/chennai-service-bike-taxi.png" alt="Bike Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Hourly Package",
     description: "Keep a cab for a selected number of hours and travel across Chennai with multiple stops. Complete meetings, shopping, appointments, and city visits without making separate bookings for every trip.",
     fare: "Starting at Rs 100/3km",
     href: "/book-ride",
-    iconWrapClass: "bg-[#FDE2E8] text-[#E11D48]",
-    icon: <Clock3 className="h-5 w-5" />,
+    iconWrapClass: "bg-white",
+    icon: <img src="/assets/chennai-service-hourly-package.png" alt="Hourly Package service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Parcel Delivery",
     description: "Send documents, packages, and everyday essentials safely across Chennai. Convenient doorstep pickup and delivery make it easier to send important items without travelling across the city yourself.",
     fare: "Starting at Rs 50/1km",
     href: "/chennai/parcel-delivery",
-    iconWrapClass: "bg-[#FEF3C7] text-[#D97706]",
-    icon: <Package className="h-5 w-5" />,
+    iconWrapClass: "bg-white",
+    icon: <img src="/assets/chennai-service-parcel.png" alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
   },
 ] as const;
 
@@ -267,7 +267,7 @@ function CityFaqSection({ city }: { city: (typeof cities)[number] }) {
   return (
     <section className="bg-muted/50 rounded-2xl px-4 py-14 md:px-6 md:py-16">
       <div className="mx-auto max-w-4xl">
-        <h2 className="font-heading text-center text-3xl font-bold text-[#1E2A6E] md:text-4xl">Frequently asked questions</h2>
+        <h2 className="font-heading text-center text-3xl font-bold text-[#1E2A6E] md:text-4xl">Frequently Asked Questions</h2>
         <Accordion type="single" collapsible className="mt-10 space-y-3">
         {city.faq.map((item, i) => (
           <AccordionItem key={i} value={`faq-${i}`} className="rounded-xl border border-[#E2E8F3] bg-white px-5 shadow-sm">

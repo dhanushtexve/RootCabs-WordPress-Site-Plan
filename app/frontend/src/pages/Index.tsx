@@ -4,33 +4,182 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import FareCalculator from "@/components/FareCalculator";
-import { services, cities, testimonials, companyInfo } from "@/data/siteData";
+import { cities, companyInfo } from "@/data/siteData";
 
-const iconMap: Record<string, React.ReactNode> = {
-  Car: <Car className="w-6 h-6" />,
-  Plane: <Plane className="w-6 h-6" />,
-  MapPin: <Navigation className="w-6 h-6" />,
-  User: <User className="w-6 h-6" />,
-  Package: <Package className="w-6 h-6" />,
-  Bike: <Bike className="w-6 h-6" />,
-};
+const homepageServices = [
+  {
+    name: "Local Taxi",
+    description: "Easy local cab booking for daily travel within your city.",
+    fare: "Starting at 90/3km",
+    href: "/services/local-taxi",
+    icon: <Car className="w-6 h-6" />,
+  },
+  {
+    name: "Outstation Taxi",
+    description: "Comfortable round trips for long-distance travel with verified drivers and transparent fares.",
+    fare: "Starting at 300/20Km",
+    href: "/services/outstation",
+    icon: <Navigation className="w-6 h-6" />,
+  },
+  {
+    name: "Acting Driver",
+    description: "Book a professional driver to drive your own car for local or outstation journeys.",
+    fare: "Starting at 500/ 100Km",
+    href: "/services/acting-driver",
+    icon: <User className="w-6 h-6" />,
+  },
+  {
+    name: "One-Way Taxi",
+    description: "A simple online cab service for one-way travel without return charges.",
+    fare: "Starting at 300/20Km",
+    href: "/book-ride",
+    icon: <ArrowRight className="w-6 h-6" />,
+  },
+  {
+    name: "Auto Rickshaw",
+    description: "Quick and affordable rides for short-distance travel around the city.",
+    fare: "Starting at 40/1Km",
+    href: "/services/auto",
+    icon: <Bike className="w-6 h-6" />,
+  },
+  {
+    name: "Bike Taxi",
+    description: "A faster and budget-friendly option for nearby trips.",
+    fare: "Starting at 25/2km",
+    href: "/book-ride",
+    icon: <Bike className="w-6 h-6" />,
+  },
+  {
+    name: "Hourly Package",
+    description: "Keep a cab for multiple stops with flexible hourly travel plans.",
+    fare: "Starting at 100/3km",
+    href: "/book-ride",
+    icon: <Clock className="w-6 h-6" />,
+  },
+  {
+    name: "Parcel Delivery",
+    description: "Send documents and everyday essentials with reliable pickup and live tracking.",
+    fare: "Starting at 50/1km",
+    href: "/services/parcel-delivery",
+    icon: <Package className="w-6 h-6" />,
+  },
+];
+
+const bookingSteps = [
+  {
+    title: "Add Your Trip Details",
+    description: "Select your service and enter your pickup and drop locations.",
+  },
+  {
+    title: "Choose Your Vehicle",
+    description: "View available ride options and check the estimated fare.",
+  },
+  {
+    title: "Confirm Your Ride",
+    description: "Book now or schedule your trip for a later date and time.",
+  },
+  {
+    title: "Track and Travel",
+    description: "Get driver details and follow the ride from arrival to drop.",
+  },
+];
+
+const whyChooseItems = [
+  {
+    icon: <Shield className="w-6 h-6" />,
+    title: "Verified Drivers",
+    desc: "Travel with drivers who are verified through document checks and approval processes.",
+  },
+  {
+    icon: <Clock className="w-6 h-6" />,
+    title: "24/7 Ride Availability",
+    desc: "Book your ride at any time for early mornings, late nights or planned travel.",
+  },
+  {
+    icon: <CheckCircle className="w-6 h-6" />,
+    title: "Transparent Fares",
+    desc: "Check the estimated fare, including cab price per km, before booking with no unexpected charges.",
+  },
+  {
+    icon: <Star className="w-6 h-6" />,
+    title: "First Ride Offer",
+    desc: "Get Rs 50 off your first ride and enjoy more value from your very first booking.",
+  },
+  {
+    icon: <MapPin className="w-6 h-6" />,
+    title: "Live Ride Tracking",
+    desc: "Track your driver's arrival and follow the trip in real time from pickup to drop.",
+  },
+  {
+    icon: <Shield className="w-6 h-6" />,
+    title: "SOS Support",
+    desc: "Access the SOS feature during your ride and quickly alert your saved emergency contacts.",
+  },
+  {
+    icon: <Clock className="w-6 h-6" />,
+    title: "Easy Ride Scheduling",
+    desc: "Pre-book a taxi for a future date and time so your ride is ready when you need it.",
+  },
+  {
+    icon: <Phone className="w-6 h-6" />,
+    title: "Dedicated Customer Support",
+    desc: "Get reliable assistance for booking queries, trip updates and travel-related concerns.",
+  },
+];
+
+const riderExperiences = [
+  {
+    name: "Rajesh Kumar",
+    city: "Chennai",
+    text: "I needed an early-morning airport ride and the driver arrived right on time. The car was clean and the fare shown during booking matched what I paid.",
+  },
+  {
+    name: "Priya Venkatesh",
+    city: "Vellore",
+    text: "The online car booking process was simple and the driver details were shared quickly. I could also track the ride until the cab reached our pickup point.",
+  },
+  {
+    name: "Mohammed Irfan",
+    city: "Coimbatore",
+    text: "We booked a cab for a family trip and had a comfortable journey throughout. The driver was polite and handled the highway route confidently.",
+  },
+  {
+    name: "Lakshmi Narayanan",
+    city: "Madurai",
+    text: "I searched for cab services near me and found Root Cabs easy to use. The driver arrived on time, and the pricing was clear from the start.",
+  },
+  {
+    name: "Anitha Selvam",
+    city: "Trichy",
+    text: "I booked a cab for an early office meeting. The driver arrived on time, and I reached without any rush.",
+  },
+  {
+    name: "Karthik Sundaram",
+    city: "Salem",
+    text: "The entire booking experience was smooth from pickup to drop. The vehicle was well maintained, and the driver made the long-distance journey comfortable.",
+  },
+];
 
 const homepageFaqs = [
   {
-    q: "How do I call a taxi in Vellore?",
-    a: "You can call Root Cabs at +91 8608606474 to book a taxi in Vellore.",
+    q: "How can I book a taxi online with Root Cabs?",
+    a: "You can book a taxi online through the Root Cabs app by entering your pickup and drop locations, choosing a vehicle and confirming the ride.",
   },
   {
-    q: "How can I book a taxi service in Vellore with Root Cabs?",
-    a: "Enter your pickup point and destination in the Root Cabs app, choose the required service, and confirm your ride. You can also contact the Root Cabs support team to book a cab over the phone.",
+    q: "What types of cab services does Root Cabs offer?",
+    a: "Root Cabs offers local rides, airport transfers, one-way taxis, outstation trips, hourly packages, autos, bike taxis and acting driver services.",
   },
   {
-    q: "Does Root Cabs offer one-way taxi booking across Tamil Nadu?",
-    a: "Yes. Root Cabs offers one-way taxi booking for intercity travel across Tamil Nadu, so you can pay only for the journey you need.",
+    q: "Can I schedule a cab for a future date?",
+    a: "Yes. You can pre-book a taxi for a future date and time, making it easier to plan airport transfers, office trips and outstation journeys.",
   },
   {
-    q: "Does Root Cabs provide airport transfers from Vellore and Chennai?",
-    a: "Yes. Root Cabs provides airport pickups and drops from Vellore and Chennai with verified drivers, clear fares, and booking support.",
+    q: "How is the cab fare calculated?",
+    a: "The fare is estimated based on the trip distance, vehicle type and service selected. You can view the estimated fare before confirming the booking.",
+  },
+  {
+    q: "Are Root Cabs drivers verified?",
+    a: "Yes. Drivers are verified through document checks and an approval process before they are allowed to accept rides.",
   },
 ];
 
@@ -52,13 +201,13 @@ export default function Index() {
             <div>
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 text-sm mb-6">
                 <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
-                <span>Rated {companyInfo.rating}/5 by {companyInfo.rides} riders</span>
+                <span>Top-Rated by Riders Across Tamil Nadu</span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight mb-6 text-balance">
-                Your Trusted Ride Partner Across <span className="text-[#FFD700]">Tamil Nadu</span>
+                Tamil Nadu's Trusted Cab Service for Every Journey
               </h1>
               <p className="text-lg text-gray-300 mb-8 max-w-lg leading-relaxed">
-                Book safe, affordable taxi rides in 10+ cities. Airport transfers, outstation trips, local rides & more — available 24/7 with transparent pricing.
+                Book local rides, airport transfers and outstation trips through a reliable online taxi booking service across 10+ cities. Travel with verified drivers, transparent fares and dependable support.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link to="/book-ride">
@@ -314,7 +463,7 @@ export default function Index() {
       {/* FAQ */}
       <section className="bg-muted/50 px-4 py-16 md:py-20">
         <div className="max-w-3xl mx-auto">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-10">Frequently asked questions</h2>
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-center mb-10">Frequently Asked Questions</h2>
           <Accordion type="single" collapsible className="space-y-3">
             {homepageFaqs.map((faq, index) => (
               <AccordionItem key={faq.q} value={`homepage-faq-${index}`} className="border-0">
