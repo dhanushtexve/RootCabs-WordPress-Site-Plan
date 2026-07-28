@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { companyInfo, driverBenefits, businessSolutions, blogPosts, cities } from "@/data/siteData";
+import { getPolicyDocument } from "@/data/policyData";
 
 const benefitIcons: Record<string, React.ReactNode> = {
   Percent: <Percent className="w-6 h-6" />,
@@ -386,34 +387,78 @@ export function SupportPage() {
 // ============================================================
 // PRIVACY POLICY PAGE
 // ============================================================
-export function PrivacyPolicyPage() {
+function PolicyDocumentPage({ policyKey }: { policyKey: string }) {
+  const policy = getPolicyDocument(policyKey) ?? getPolicyDocument("privacy-policy");
+
+  if (!policy) {
+    return null;
+  }
+
   return (
     <div>
       <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12">
         <div className="max-w-screen-xl mx-auto px-4">
-          <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Privacy Policy</h1>
-          <p className="text-gray-300">Last updated: July 2026</p>
+          <p className="text-sm font-semibold text-[#FFD700] mb-3">{policy.eyebrow}</p>
+          <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">{policy.title}</h1>
+          <p className="text-gray-300 max-w-3xl">{policy.subtitle}</p>
+          <div className="mt-5 flex flex-wrap gap-3 text-sm text-gray-200">
+            <span>{policy.effective}</span>
+            <span className="hidden sm:inline">|</span>
+            <span>{policy.jurisdiction}</span>
+          </div>
         </div>
       </section>
 
-      <div className="max-w-screen-xl mx-auto px-4 py-12">
-        <div className="max-w-3xl mx-auto prose prose-sm">
-          <h2 className="font-heading text-xl font-bold mt-8 mb-3">1. Information We Collect</h2>
-          <p className="text-muted-foreground mb-4">We collect personal information including name, phone number, email, pickup/drop locations, and payment details to provide our taxi booking services.</p>
+      <div className="max-w-screen-xl mx-auto px-4 py-10 lg:py-12">
+        <div className="grid gap-8 lg:grid-cols-[260px_minmax(0,1fr)]">
+          <aside className="lg:sticky lg:top-32 lg:self-start">
+            <nav className="rounded-lg border border-border bg-white p-3 shadow-sm">
+              {policy.nav.map((item) => (
+                <Link
+                  key={item.slug}
+                  to={`/${item.slug}`}
+                  className={`block rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                    item.slug === policy.key
+                      ? "bg-primary text-primary-foreground"
+                      : "text-foreground hover:bg-primary/5 hover:text-primary"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </aside>
 
-          <h2 className="font-heading text-xl font-bold mt-8 mb-3">2. How We Use Your Information</h2>
-          <p className="text-muted-foreground mb-4">Your information is used to process bookings, assign drivers, calculate fares, provide customer support, and improve our services.</p>
+          <article className="min-w-0 rounded-lg border border-border bg-white p-5 shadow-sm md:p-8">
+            <div className="rc-policy-content">
+              {policy.intro.map((html, index) => (
+                <div key={`intro-${index}`} dangerouslySetInnerHTML={{ __html: html }} />
+              ))}
 
-          <h2 className="font-heading text-xl font-bold mt-8 mb-3">3. Data Security</h2>
-          <p className="text-muted-foreground mb-4">We implement industry-standard security measures to protect your personal data. All payment transactions are encrypted and processed through secure gateways.</p>
+              {policy.sections.map((section) => (
+                <section key={section.id} id={section.id}>
+                  <h2>{section.title}</h2>
+                  <div dangerouslySetInnerHTML={{ __html: section.content }} />
+                </section>
+              ))}
 
-          <h2 className="font-heading text-xl font-bold mt-8 mb-3">4. Data Sharing</h2>
-          <p className="text-muted-foreground mb-4">We share necessary information with assigned drivers (name, pickup location) to fulfill your booking. We do not sell your personal data to third parties.</p>
-
-          <h2 className="font-heading text-xl font-bold mt-8 mb-3">5. Contact Us</h2>
-          <p className="text-muted-foreground mb-4">For privacy-related queries, contact us at {companyInfo.email} or call {companyInfo.phone}.</p>
+              <div className="rc-policy-footer">{policy.footer}</div>
+            </div>
+          </article>
         </div>
       </div>
     </div>
   );
+}
+
+export function PrivacyPolicyPage() {
+  return <PolicyDocumentPage policyKey="privacy-policy" />;
+}
+
+export function TermsOfUsePage() {
+  return <PolicyDocumentPage policyKey="terms-of-use" />;
+}
+
+export function WalletPolicyPage() {
+  return <PolicyDocumentPage policyKey="wallet-policy" />;
 }

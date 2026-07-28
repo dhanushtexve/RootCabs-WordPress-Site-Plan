@@ -6,7 +6,16 @@ import BookRide from "@/pages/BookRide";
 import { ServicesHub, ServicePage } from "@/pages/ServicesPages";
 import { CitiesHub, CityPage, CityServicePage } from "@/pages/CitiesPages";
 import { RoutePage, LandmarkPage } from "@/pages/RoutesAndLandmarks";
-import { DriversPage, BusinessPage, BlogPage, AboutPage, SupportPage, PrivacyPolicyPage } from "@/pages/InfoPages";
+import {
+  DriversPage,
+  BusinessPage,
+  BlogPage,
+  AboutPage,
+  SupportPage,
+  PrivacyPolicyPage,
+  TermsOfUsePage,
+  WalletPolicyPage,
+} from "@/pages/InfoPages";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -42,6 +51,8 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/support" element={<SupportPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/terms-of-use" element={<TermsOfUsePage />} />
+          <Route path="/wallet-policy" element={<WalletPolicyPage />} />
 
           {/* Dynamic Routes */}
           <Route path="/routes/:routeSlug" element={<RoutePage />} />

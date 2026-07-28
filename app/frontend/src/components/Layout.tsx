@@ -61,13 +61,13 @@ function Navbar() {
 
       {/* Main navbar */}
       <nav className="bg-white sticky top-0 z-50 shadow-md border-b border-border">
-        <div className="max-w-screen-xl mx-auto px-4 flex items-center justify-between h-18">
+        <div className="max-w-screen-xl mx-auto px-4 flex items-center justify-between h-24">
           {/* Logo */}
           <Link to="/" className="flex items-center cursor-pointer">
             <img
               src="/assets/rootcabs-logo.jpg"
               alt="Root Cabs"
-              className="h-14 w-auto max-w-[160px] object-contain sm:h-16"
+              className="h-20 w-auto max-w-[230px] object-contain sm:h-[88px]"
             />
           </Link>
 
@@ -232,6 +232,8 @@ function Footer() {
             <li><Link to="/about" className="hover:text-yellow-300 transition-colors cursor-pointer">About Us</Link></li>
             <li><Link to="/support" className="hover:text-yellow-300 transition-colors cursor-pointer">Support & FAQ</Link></li>
             <li><Link to="/privacy-policy" className="hover:text-yellow-300 transition-colors cursor-pointer">Privacy Policy</Link></li>
+            <li><Link to="/terms-of-use" className="hover:text-yellow-300 transition-colors cursor-pointer">Terms of Service</Link></li>
+            <li><Link to="/wallet-policy" className="hover:text-yellow-300 transition-colors cursor-pointer">Wallet Policy</Link></li>
           </ul>
         </div>
       </div>
@@ -254,8 +256,8 @@ function Footer() {
           <p>© 2026 Root Cabs. All rights reserved. A unit of {companyInfo.operatedBy}</p>
           <div className="flex gap-4 mt-2 md:mt-0">
             <Link to="/privacy-policy" className="hover:text-yellow-300 cursor-pointer">Privacy</Link>
-            <Link to="/support" className="hover:text-yellow-300 cursor-pointer">Terms</Link>
-            <Link to="/support" className="hover:text-yellow-300 cursor-pointer">Refund Policy</Link>
+            <Link to="/terms-of-use" className="hover:text-yellow-300 cursor-pointer">Terms</Link>
+            <Link to="/wallet-policy" className="hover:text-yellow-300 cursor-pointer">Wallet Policy</Link>
           </div>
         </div>
       </div>

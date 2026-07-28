@@ -68,3 +68,53 @@
     text-wrap: balance;
   }
 }
+
+@layer components {
+  .rc-policy-content {
+    @apply text-base leading-7 text-slate-700;
+  }
+
+  .rc-policy-content section {
+    @apply mt-9 border-t border-slate-200 pt-8 first:border-t-0 first:pt-0;
+  }
+
+  .rc-policy-content h2 {
+    @apply mb-4 text-xl leading-snug text-[#1E2A6E] md:text-2xl;
+  }
+
+  .rc-policy-content h3 {
+    @apply mb-2 mt-5 text-base leading-snug text-slate-900 md:text-lg;
+  }
+
+  .rc-policy-content p {
+    @apply mb-4;
+  }
+
+  .rc-policy-content ul {
+    @apply mb-4 ml-5 list-disc space-y-2;
+  }
+
+  .rc-policy-content .term {
+    @apply rounded-md bg-slate-50 px-4 py-3;
+  }
+
+  .rc-policy-table-wrap {
+    @apply mb-5 overflow-x-auto rounded-lg border border-slate-200;
+  }
+
+  .rc-policy-table {
+    @apply min-w-full border-collapse text-left text-sm;
+  }
+
+  .rc-policy-table th {
+    @apply bg-slate-100 px-4 py-3 font-semibold text-slate-900;
+  }
+
+  .rc-policy-table td {
+    @apply border-t border-slate-200 px-4 py-3 align-top;
+  }
+
+  .rc-policy-footer {
+    @apply mt-10 border-t border-slate-200 pt-5 text-sm text-slate-500;
+  }
+}

@@ -53,7 +53,7 @@ export default defineConfig(({ command, mode }) => {
       atoms(),
       ensureBuildOutDir(),
       Sitemap({
-        hostname: 'https://atoms.template.com',
+        hostname: 'https://rootcabs.com',
         lastmod: getSitemapLastmod(),
         readable: true,
         generateRobotsTxt: true,
