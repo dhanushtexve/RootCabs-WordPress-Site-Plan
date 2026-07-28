@@ -61,13 +61,13 @@ function Navbar() {
 
       {/* Main navbar */}
       <nav className="bg-white sticky top-0 z-50 shadow-md border-b border-border">
-        <div className="max-w-screen-xl mx-auto px-4 flex items-center justify-between h-16">
+        <div className="max-w-screen-xl mx-auto px-4 flex items-center justify-between h-18">
           {/* Logo */}
           <Link to="/" className="flex items-center cursor-pointer">
             <img
               src="/assets/rootcabs-logo.jpg"
               alt="Root Cabs"
-              className="h-12 w-auto max-w-[140px] object-contain sm:h-14"
+              className="h-14 w-auto max-w-[160px] object-contain sm:h-16"
             />
           </Link>
 

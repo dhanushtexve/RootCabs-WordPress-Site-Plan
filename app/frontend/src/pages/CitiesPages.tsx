@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { MapPin, ArrowRight, Car, Plane, Navigation, User, Package, Bike, Star, CheckCircle, Phone, ChevronRight, Download } from "lucide-react";
+import { MapPin, ArrowRight, Car, Plane, Navigation, User, Package, Bike, Star, CheckCircle, Phone, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -236,12 +236,32 @@ function AppDownloadCard() {
               <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Quick rebooking</span>
             </div>
             <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <Button size="sm" className="h-10 bg-[#FFD700] px-5 font-bold text-[#2E3A8C] shadow-lg hover:bg-[#E6C200]">
-                <Download className="mr-2 h-4 w-4" /> Google play
-              </Button>
-              <Button size="sm" variant="outline" className="h-10 border-white/30 px-5 font-semibold text-white hover:bg-white/10 !bg-transparent">
-                <Download className="mr-2 h-4 w-4" /> App Store
-              </Button>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                aria-label="Google play"
+              >
+                <img
+                  src="/assets/play-store.png"
+                  alt="Google play"
+                  className="h-10 w-auto object-contain"
+                />
+              </a>
+              <a
+                href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                aria-label="App Store"
+              >
+                <img
+                  src="/assets/app-store-logo.png"
+                  alt="App Store"
+                  className="h-10 w-auto object-contain"
+                />
+              </a>
             </div>
           </div>
           <div className="relative mx-auto w-full max-w-[250px] md:mr-4">

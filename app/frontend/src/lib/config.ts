@@ -13,8 +13,12 @@ const defaultConfig = {
 
 // Function to load runtime configuration
 export async function loadRuntimeConfig(): Promise<void> {
+  if (import.meta.env.DEV) {
+    configLoading = false;
+    return;
+  }
+
   try {
-    console.log('🔧 DEBUG: Starting to load runtime config...');
     // Try to load configuration from a config endpoint
     const response = await fetch('/api/config');
     if (response.ok) {
@@ -22,25 +26,12 @@ export async function loadRuntimeConfig(): Promise<void> {
       // Only parse as JSON if the response is actually JSON
       if (contentType && contentType.includes('application/json')) {
         runtimeConfig = await response.json();
-        console.log('Runtime config loaded successfully');
-      } else {
-        console.log(
-          'Config endpoint returned non-JSON response, skipping runtime config'
-        );
       }
-    } else {
-      console.log(
-        '🔧 DEBUG: Config fetch failed with status:',
-        response.status
-      );
     }
-  } catch (error) {
-    console.log('Failed to load runtime config, using defaults:', error);
+  } catch {
+    // Runtime config is optional; fall back to env/default config.
   } finally {
     configLoading = false;
-    console.log(
-      '🔧 DEBUG: Config loading finished, configLoading set to false'
-    );
   }
 }
 
@@ -48,13 +39,11 @@ export async function loadRuntimeConfig(): Promise<void> {
 export function getConfig() {
   // If config is still loading, return default config to avoid using stale Vite env vars
   if (configLoading) {
-    console.log('Config still loading, using default config');
     return defaultConfig;
   }
 
   // First try runtime config (for Lambda)
   if (runtimeConfig) {
-    console.log('Using runtime config');
     return runtimeConfig;
   }
 
@@ -63,12 +52,10 @@ export function getConfig() {
     const viteConfig = {
       API_BASE_URL: import.meta.env.VITE_API_BASE_URL,
     };
-    console.log('Using Vite environment config');
     return viteConfig;
   }
 
   // Finally fall back to default
-  console.log('Using default config');
   return defaultConfig;
 }
 

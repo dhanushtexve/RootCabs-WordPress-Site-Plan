@@ -1,10 +1,11 @@
+﻿import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Car, Plane, Navigation, User, Package, Bike, MapPin, Star, Shield, Clock, Phone, CheckCircle, Download, ArrowRight, Users, Award } from "lucide-react";
+import { Car, MapPin, Star, Shield, Clock, Phone, CheckCircle, ArrowRight, Users, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import FareCalculator from "@/components/FareCalculator";
-import { cities, companyInfo } from "@/data/siteData";
+import { companyInfo } from "@/data/siteData";
 
 const homepageServices = [
   {
@@ -12,56 +13,56 @@ const homepageServices = [
     description: "Easy local cab booking for daily travel within your city.",
     fare: "Starting at 90/3km",
     href: "/services/local-taxi",
-    icon: <Car className="w-6 h-6" />,
+    icon: <img src="/assets/chennai-service-local.png" alt="Local Taxi service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Outstation Taxi",
     description: "Comfortable round trips for long-distance travel with verified drivers and transparent fares.",
     fare: "Starting at 300/20Km",
     href: "/services/outstation",
-    icon: <Navigation className="w-6 h-6" />,
+    icon: <img src="/assets/chennai-service-outstation.png" alt="Outstation Taxi service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Acting Driver",
     description: "Book a professional driver to drive your own car for local or outstation journeys.",
     fare: "Starting at 500/ 100Km",
     href: "/services/acting-driver",
-    icon: <User className="w-6 h-6" />,
+    icon: <img src="/assets/chennai-service-acting-driver.png" alt="Acting Driver service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "One-Way Taxi",
     description: "A simple online cab service for one-way travel without return charges.",
     fare: "Starting at 300/20Km",
     href: "/book-ride",
-    icon: <ArrowRight className="w-6 h-6" />,
+    icon: <img src="/assets/chennai-service-one-way.png" alt="One-Way Taxi service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Auto Rickshaw",
     description: "Quick and affordable rides for short-distance travel around the city.",
     fare: "Starting at 40/1Km",
     href: "/services/auto",
-    icon: <Bike className="w-6 h-6" />,
+    icon: <img src="/assets/chennai-service-auto.png" alt="Auto Rickshaw service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Bike Taxi",
     description: "A faster and budget-friendly option for nearby trips.",
     fare: "Starting at 25/2km",
     href: "/book-ride",
-    icon: <Bike className="w-6 h-6" />,
+    icon: <img src="/assets/chennai-service-bike-taxi.png" alt="Bike Taxi service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Hourly Package",
     description: "Keep a cab for multiple stops with flexible hourly travel plans.",
     fare: "Starting at 100/3km",
     href: "/book-ride",
-    icon: <Clock className="w-6 h-6" />,
+    icon: <img src="/assets/chennai-service-hourly-package.png" alt="Hourly Package service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Parcel Delivery",
     description: "Send documents and everyday essentials with reliable pickup and live tracking.",
     fare: "Starting at 50/1km",
     href: "/services/parcel-delivery",
-    icon: <Package className="w-6 h-6" />,
+    icon: <img src="/assets/chennai-service-parcel.png" alt="Parcel Delivery service" className="h-12 w-12 object-contain" />,
   },
 ];
 
@@ -103,12 +104,12 @@ const whyChooseItems = [
   {
     icon: <Star className="w-6 h-6" />,
     title: "First Ride Offer",
-    desc: "Get Rs 50 off your first ride and enjoy more value from your very first booking.",
+    desc: "Get ₹50 off your first ride and enjoy more value from your very first booking.",
   },
   {
     icon: <MapPin className="w-6 h-6" />,
     title: "Live Ride Tracking",
-    desc: "Track your driver's arrival and follow the trip in real time from pickup to drop.",
+    desc: "Track your driver’s arrival and follow the trip in real time from pickup to drop.",
   },
   {
     icon: <Shield className="w-6 h-6" />,
@@ -131,33 +132,52 @@ const riderExperiences = [
   {
     name: "Rajesh Kumar",
     city: "Chennai",
+    rating: 5,
     text: "I needed an early-morning airport ride and the driver arrived right on time. The car was clean and the fare shown during booking matched what I paid.",
   },
   {
     name: "Priya Venkatesh",
     city: "Vellore",
+    rating: 5,
     text: "The online car booking process was simple and the driver details were shared quickly. I could also track the ride until the cab reached our pickup point.",
   },
   {
     name: "Mohammed Irfan",
     city: "Coimbatore",
+    rating: 4,
     text: "We booked a cab for a family trip and had a comfortable journey throughout. The driver was polite and handled the highway route confidently.",
   },
   {
     name: "Lakshmi Narayanan",
     city: "Madurai",
+    rating: 5,
     text: "I searched for cab services near me and found Root Cabs easy to use. The driver arrived on time, and the pricing was clear from the start.",
   },
   {
     name: "Anitha Selvam",
     city: "Trichy",
+    rating: 4,
     text: "I booked a cab for an early office meeting. The driver arrived on time, and I reached without any rush.",
   },
   {
     name: "Karthik Sundaram",
     city: "Salem",
+    rating: 5,
     text: "The entire booking experience was smooth from pickup to drop. The vehicle was well maintained, and the driver made the long-distance journey comfortable.",
   },
+];
+
+const homepageCities = [
+  { name: "Chennai", services: "6 services", href: "/chennai" },
+  { name: "Vellore", services: "6 services", href: "/vellore" },
+  { name: "Coimbatore", services: "5 services", href: "/coimbatore" },
+  { name: "Madurai", services: "5 services", href: "/madurai" },
+  { name: "Trichy", services: "5 services", href: "/trichy" },
+  { name: "Salem", services: "4 services", href: "/salem" },
+  { name: "Tirupur", services: "4 services", href: "/tirupur" },
+  { name: "Kanchipuram", services: "3 services", href: "/kanchipuram" },
+  { name: "Tiruvannamalai", services: "3 services", href: "/tiruvannamalai" },
+  { name: "Ranipet", services: "3 services", href: "/ranipet" },
 ];
 
 const homepageFaqs = [
@@ -184,49 +204,38 @@ const homepageFaqs = [
 ];
 
 export default function Index() {
+  const [showAllServices, setShowAllServices] = useState(false);
+  const visibleServices = showAllServices ? homepageServices : homepageServices.slice(0, 6);
+
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#1E2A6E] via-[#2E3A8C] to-[#1E2A6E] text-white overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qasiaaiyq/hero-sedan-highway-cityscape.png"
-            alt="Premium taxi sedan on highway with city skyline"
-            className="w-full h-full object-cover opacity-20"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1E2A6E] via-[#1E2A6E]/80 to-transparent" />
-        </div>
-        <div className="max-w-screen-xl mx-auto px-4 py-16 md:py-24 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 text-sm mb-6">
-                <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+      <section className="relative overflow-hidden bg-[#273588] text-white">
+        <div className="absolute inset-0 opacity-10 [background-image:linear-gradient(90deg,_rgba(255,255,255,.4)_1px,_transparent_1px),linear-gradient(180deg,_rgba(255,255,255,.4)_1px,_transparent_1px)] [background-size:64px_64px]" />
+        <div className="max-w-screen-xl mx-auto px-4 py-14 md:py-20 relative z-10">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.8fr)] lg:items-center">
+            <div className="max-w-3xl">
+              <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold text-white shadow-sm ring-1 ring-white/10 backdrop-blur-sm">
+                <Star className="h-3.5 w-3.5 fill-[#FFD700] text-[#FFD700]" />
                 <span>Top-Rated by Riders Across Tamil Nadu</span>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold leading-tight mb-6 text-balance">
+              <h1 className="font-heading text-4xl font-extrabold leading-[1.08] tracking-normal text-white md:text-5xl lg:text-6xl">
                 Tamil Nadu's Trusted Cab Service for Every Journey
               </h1>
-              <p className="text-lg text-gray-300 mb-8 max-w-lg leading-relaxed">
+              <p className="mt-5 max-w-2xl text-base leading-7 text-white/82 md:text-lg">
                 Book local rides, airport transfers and outstation trips through a reliable online taxi booking service across 10+ cities. Travel with verified drivers, transparent fares and dependable support.
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="mt-8 flex flex-wrap gap-4">
                 <Link to="/book-ride">
-                  <Button size="lg" className="bg-[#FFD700] hover:bg-[#E6C200] text-[#2E3A8C] font-bold text-base px-8 cursor-pointer shadow-lg">
+                  <Button size="lg" className="h-12 rounded-lg bg-[#FFD700] px-7 text-base font-bold text-[#1E2A6E] shadow-lg hover:bg-[#E6C200]">
                     Book a Ride <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </Link>
                 <a href={`tel:${companyInfo.phone}`}>
-                  <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 font-semibold text-base px-8 cursor-pointer !bg-transparent">
+                  <Button size="lg" variant="outline" className="h-12 rounded-lg border-white/30 px-7 text-base font-semibold text-white hover:bg-white/10 !bg-transparent">
                     <Phone className="w-4 h-4 mr-2" /> Call Now
                   </Button>
                 </a>
-              </div>
-
-              {/* Trust badges */}
-              <div className="flex flex-wrap gap-6 mt-10 text-sm text-gray-300">
-                <div className="flex items-center gap-2"><Shield className="w-4 h-4 text-green-400" /> Verified Drivers</div>
-                <div className="flex items-center gap-2"><Clock className="w-4 h-4 text-[#FFD700]" /> 24/7 Available</div>
-                <div className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-yellow-400" /> No Surge Pricing</div>
               </div>
             </div>
 
@@ -238,10 +247,10 @@ export default function Index() {
                 { label: "Driver Partners", value: companyInfo.drivers, icon: <Users className="w-5 h-5" /> },
                 { label: "Customer Rating", value: companyInfo.rating + "/5", icon: <Award className="w-5 h-5" /> },
               ].map((stat) => (
-                <div key={stat.label} className="bg-white/5 backdrop-blur-sm border border-[#FFD700]/20 rounded-xl p-5 text-center">
-                  <div className="flex justify-center mb-2 text-[#FFD700]">{stat.icon}</div>
-                  <p className="font-heading font-bold text-2xl md:text-3xl text-white">{stat.value}</p>
-                  <p className="text-sm text-gray-400 mt-1">{stat.label}</p>
+                <div key={stat.label} className="rounded-xl border border-white/10 bg-white/10 p-5 text-center shadow-sm backdrop-blur-sm transition-all hover:border-[#FFD700]/60 hover:bg-white/15">
+                  <div className="mx-auto mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-[#FFD700]/12 text-[#FFD700]">{stat.icon}</div>
+                  <p className="font-heading text-2xl font-extrabold text-[#FFD700] md:text-3xl">{stat.value}</p>
+                  <p className="mt-1 text-xs font-medium text-white/70 md:text-sm">{stat.label}</p>
                 </div>
               ))}
             </div>
@@ -254,51 +263,101 @@ export default function Index() {
         <FareCalculator />
       </section>
 
-      {/* Services */}
-      <section className="max-w-screen-xl mx-auto px-4 py-16 md:py-20">
-        <div className="text-center mb-12">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">From quick local rides to long-distance outstation trips, we've got every travel need covered.</p>
+      {/* How Root Cabs Works */}
+      <section className="max-w-screen-xl mx-auto px-4 py-14 md:py-18">
+        <div className="mb-9 text-center">
+          <span className="inline-flex rounded-full bg-[#FFD700] px-4 py-1.5 text-sm font-extrabold uppercase tracking-wide text-[#1E2A6E] shadow-sm">
+            HOW ROOT CABS WORKS
+          </span>
+          <h2 className="mt-4 font-heading text-3xl font-bold text-[#1E2A6E] md:text-4xl">Booking Your Ride Is Quick and Simple</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-base">
+            Use the Root Cabs online cab booking app to plan your trip in just a few steps.
+          </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service) => (
-            <Link key={service.slug} to={`/services/${service.slug}`} className="group cursor-pointer">
-              <Card className="h-full border-border hover:border-primary/30 hover:shadow-md transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    {iconMap[service.icon]}
-                  </div>
-                  <h3 className="font-heading font-semibold text-lg mb-2">{service.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-3">{service.shortDesc}</p>
-                  <p className="text-sm font-semibold text-primary">Starting at {service.startingPrice}</p>
-                </CardContent>
-              </Card>
-            </Link>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {bookingSteps.map((step, index) => (
+            <div key={step.title} className="group rounded-2xl border border-[#E2E8F3] bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-[#1E2A6E] hover:shadow-lg">
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-[#1E2A6E] font-heading text-xl font-extrabold text-[#FFD700] transition-colors group-hover:bg-[#FFD700] group-hover:text-[#1E2A6E]">
+                {index + 1}
+              </div>
+              <h3 className="font-heading text-lg font-bold text-[#111827]">{step.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-[#4B587C]">{step.description}</p>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* Cities */}
-      <section className="bg-muted/50 py-16 md:py-20">
+      {/* Services */}
+      <section className="bg-[#F5F7FB] pb-6 pt-12 md:pb-8 md:pt-14">
         <div className="max-w-screen-xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Cities We Serve</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">Expanding across Tamil Nadu with reliable cab services in every major city.</p>
+          <div className="mb-8 text-center">
+            <span className="inline-flex rounded-full bg-[#FFD700] px-4 py-1.5 text-sm font-extrabold uppercase tracking-wide text-[#1E2A6E] shadow-sm">
+              Our Services
+            </span>
+            <h2 className="mt-4 font-heading text-3xl font-bold text-[#1E2A6E] md:text-4xl">Explore Every Way to Travel with Root Cabs</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-base">
+              From everyday city rides to long-distance travel, we've got you covered.
+            </p>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-            {cities.map((city) => (
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {visibleServices.map((service) => (
               <Link
-                key={city.slug}
-                to={`/${city.slug}`}
-                className="bg-white rounded-xl p-4 text-center border border-border hover:border-primary/30 hover:shadow-md transition-all duration-300 group cursor-pointer"
+                key={service.name}
+                to={service.href}
+                className="group relative min-h-[210px] overflow-visible rounded-2xl border border-[#E2E8F3] bg-white p-5 pr-20 shadow-sm transition-all hover:-translate-y-1 hover:border-[#1E2A6E] hover:shadow-lg"
               >
-                <MapPin className="w-6 h-6 text-primary mx-auto mb-2 group-hover:scale-110 transition-transform" />
-                <h3 className="font-heading font-semibold text-sm">{city.name}</h3>
-                <p className="text-xs text-muted-foreground mt-1">{city.services.length} services</p>
+                <div className="absolute right-4 top-5 flex h-14 w-14 items-center justify-center rounded-xl bg-[#EEF3FF] p-2 shadow-sm transition-all duration-300 group-hover:-right-5 group-hover:-top-4 group-hover:h-16 group-hover:w-16 group-hover:bg-[#E9EDFF] group-hover:shadow-md">
+                  {service.icon}
+                </div>
+                <h3 className="font-heading text-lg font-bold text-[#111827]">{service.name}</h3>
+                <p className="mt-1 text-sm font-semibold text-primary">{service.fare}</p>
+                <p className="mt-3 text-sm leading-6 text-[#4B587C]">{service.description}</p>
+                <ArrowRight className="absolute bottom-5 right-5 h-4 w-4 text-[#6B769A] transition-transform group-hover:translate-x-1 group-hover:text-primary" />
               </Link>
             ))}
           </div>
-          <div className="text-center mt-8">
+          <div className="mt-4 text-center">
+            <Button
+              variant="outline"
+              className="rounded-full px-8 font-semibold text-[#1E2A6E]"
+              onClick={() => setShowAllServices((current) => !current)}
+            >
+              {showAllServices ? "Show Less" : "See More"}
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Cities */}
+      <section className="bg-white pb-12 pt-2 md:pb-14 md:pt-3">
+        <div className="max-w-screen-xl mx-auto px-4">
+          <div className="mb-8 text-center">
+            <span className="inline-flex rounded-full bg-[#EEF3FF] px-4 py-1.5 text-xs font-extrabold uppercase tracking-wide text-[#1E2A6E]">
+              Cities We Serve
+            </span>
+            <h2 className="mt-4 font-heading text-3xl font-bold text-[#1E2A6E] md:text-4xl">Expanding across Tamil Nadu</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[#6B769A] md:text-base">
+              Expanding across Tamil Nadu, offering affordable cab service in every major city.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+            {homepageCities.map((city) => (
+              <Link
+                key={city.name}
+                to={city.href}
+                className="group rounded-xl border border-[#E2E8F3] bg-white p-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:shadow-md"
+              >
+                <img
+                  src="/assets/location-icon.png"
+                  alt=""
+                  className="mx-auto mb-3 h-7 w-7 object-contain transition-transform group-hover:scale-110"
+                />
+                <h3 className="font-heading text-sm font-bold text-[#1E2A6E]">{city.name}</h3>
+                <p className="mt-2 text-xs font-medium text-[#6B769A]">{city.services}</p>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-6">
             <Link to="/cities">
               <Button variant="outline" className="cursor-pointer">
                 View All Cities <ArrowRight className="w-4 h-4 ml-2" />
@@ -309,7 +368,7 @@ export default function Index() {
       </section>
 
       {/* Featured Service Blocks */}
-      <section className="max-w-screen-xl mx-auto px-4 py-16 md:py-20 space-y-8">
+      <section className="max-w-screen-xl mx-auto px-4 pb-6 pt-4 md:pb-8 md:pt-6 space-y-8">
         <div className="grid items-center gap-8 rounded-xl border border-border bg-[#F4F6FF] p-6 md:grid-cols-[1fr_0.95fr] md:p-10">
           <div>
             <div className="inline-flex rounded-full bg-[#E9EDFF] px-4 py-1.5 text-xs font-bold uppercase text-[#1E2A6E]">
@@ -336,7 +395,7 @@ export default function Index() {
               ))}
             </div>
             <div className="mt-8">
-              <Link to="/book-ride">
+              <Link to="/services/acting-driver">
                 <Button size="lg" className="bg-[#1E2A6E] px-7 font-bold text-white hover:bg-[#2E3A8C]">
                   Hire an Acting Driver <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
@@ -352,15 +411,68 @@ export default function Index() {
           </div>
         </div>
 
+        <div className="grid items-center gap-8 rounded-xl border border-border bg-[#F4F6FF] p-6 md:grid-cols-[0.95fr_1fr] md:p-10">
+          <div className="overflow-hidden rounded-xl bg-[#E9EDFF] min-h-[260px] md:min-h-[300px]">
+            <img
+              src="/assets/chennai-airport.png"
+              alt="Airport transfers"
+              className="h-full min-h-[260px] w-full object-cover md:min-h-[300px]"
+            />
+          </div>
+          <div>
+            <div className="inline-flex rounded-full bg-[#E9EDFF] px-4 py-1.5 text-xs font-bold uppercase text-[#1E2A6E]">
+              AIRPORT TRANSFERS
+            </div>
+            <h2 className="mt-5 max-w-xl font-heading text-3xl font-bold leading-tight text-[#1E2A6E] md:text-4xl">
+              Airport Rides Without the Last-Minute Stress
+            </h2>
+            <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground md:text-base">
+              Pre-book reliable airport pickups and drops with verified drivers and clear fares.
+            </p>
+            <div className="mt-6 grid gap-3 text-sm text-[#24305E] sm:grid-cols-2">
+              {[
+                "On-time airport pickup",
+                "Doorstep drop service",
+                "Advance ride scheduling",
+                "Live driver tracking",
+                "Verified drivers",
+                "24/7 booking support",
+              ].map((item) => (
+                <div key={item} className="flex items-start gap-3">
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8">
+              <Link to="/services/airport-taxi">
+                <Button size="lg" className="bg-[#1E2A6E] px-7 font-bold text-white hover:bg-[#2E3A8C]">
+                  Book Airport Ride <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+
       </section>
 
       {/* Why Choose Us */}
-      <section className="max-w-screen-xl mx-auto px-4 py-16 md:py-20">
-        <div className="text-center mb-12">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">Why Choose Root Cabs?</h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">We're not just another taxi app. Here's what makes us different.</p>
+      <section className="max-w-screen-xl mx-auto px-4 pb-12 pt-4 md:pb-14 md:pt-6">
+        <div className="mb-8 text-center">
+          <h2 className="font-heading text-3xl font-bold text-[#1E2A6E] md:text-4xl">Why Choose Root Cabs?</h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-base">Built to make every ride feel safer, easier and more reliable</p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {whyChooseItems.map((item) => (
+            <div key={item.title} className="group rounded-2xl border border-[#E2E8F3] bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-[#1E2A6E] hover:shadow-lg">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#EEF3FF] text-[#1E2A6E] transition-colors group-hover:bg-[#1E2A6E] group-hover:text-[#FFD700]">
+                {item.icon}
+              </div>
+              <h3 className="font-heading text-lg font-bold text-[#111827]">{item.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-[#4B587C]">{item.desc}</p>
+            </div>
+          ))}
+          {/*
           {[
             { icon: <Shield className="w-6 h-6" />, title: "Verified Drivers", desc: "Every driver is background-verified with valid documents and training" },
             { icon: <Clock className="w-6 h-6" />, title: "24/7 Availability", desc: "Book anytime, anywhere. Early morning flights or late night returns" },
@@ -375,33 +487,37 @@ export default function Index() {
               <p className="text-sm text-muted-foreground">{item.desc}</p>
             </div>
           ))}
+          */}
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="bg-muted/50 py-16 md:py-20">
+      {/* Rider Experiences */}
+      <section className="bg-muted/50 pb-12 pt-6 md:pb-14 md:pt-8">
         <div className="max-w-screen-xl mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-4">What Our Riders Say</h2>
-            <p className="text-muted-foreground">Trusted by thousands across Tamil Nadu</p>
+          <div className="text-center mb-8">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold mb-3">Rider Experiences Across Tamil Nadu</h2>
+            <p className="text-muted-foreground">Feedback from customers who rely on Root Cabs for everyday and long-distance travel.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {testimonials.map((t, i) => (
-              <Card key={i} className="border-border">
+            {riderExperiences.map((experience) => (
+              <Card key={`${experience.name}-${experience.city}`} className="border-border">
                 <CardContent className="p-6">
-                  <div className="flex gap-1 mb-3">
-                    {Array.from({ length: t.rating }).map((_, j) => (
-                      <Star key={j} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                  <div className="mb-3 flex gap-1">
+                    {Array.from({ length: 5 }).map((_, index) => (
+                      <Star
+                        key={`${experience.name}-star-${index}`}
+                        className={`h-4 w-4 ${index < experience.rating ? "fill-[#FFD700] text-[#FFD700]" : "text-[#D8DDEA]"}`}
+                      />
                     ))}
                   </div>
-                  <p className="text-sm text-foreground mb-4 leading-relaxed">"{t.text}"</p>
+                  <p className="text-sm text-foreground mb-5 leading-7">“{experience.text}”</p>
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary text-sm font-bold">
-                      {t.name.charAt(0)}
+                      {experience.name.charAt(0)}
                     </div>
                     <div>
-                      <p className="text-sm font-medium">{t.name}</p>
-                      <p className="text-xs text-muted-foreground">{t.city}</p>
+                      <p className="text-sm font-medium">{experience.name}</p>
+                      <p className="text-xs text-muted-foreground">{experience.city}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -412,7 +528,7 @@ export default function Index() {
       </section>
 
       {/* App Download CTA */}
-      <section className="max-w-screen-xl mx-auto px-4 py-16 md:py-20">
+      <section className="max-w-screen-xl mx-auto px-4 py-12 md:py-14">
         <div className="relative overflow-hidden rounded-2xl bg-[#273588] px-6 py-8 text-white shadow-xl md:px-10 lg:px-12">
           <img
             src="https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qbnqcaiza/airport-taxi-terminal-service.png"
@@ -422,30 +538,50 @@ export default function Index() {
           <div className="absolute inset-0 bg-[#273588]/80" />
           <div className="absolute inset-0 opacity-10 [background-image:linear-gradient(90deg,_rgba(255,255,255,.35)_1px,_transparent_1px),linear-gradient(180deg,_rgba(255,255,255,.35)_1px,_transparent_1px)] [background-size:56px_56px]" />
           <div className="relative z-10 grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_230px] lg:grid-cols-[minmax(0,1fr)_250px]">
-            <div className="text-center md:pl-4 md:text-left lg:pl-8">
+            <div className="text-center md:pl-4 lg:pl-8">
               <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                 Book Faster
               </span>
               <h2 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-4xl">Download the Root Cabs App</h2>
-              <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
+              <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-white/80 md:text-base">
                 Book rides faster and keep all your travel needs within easy reach
               </p>
-              <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-white/85 md:justify-start">
+              <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-white/85">
                 <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> No surge charges</span>
                 <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Live ride tracking</span>
                 <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> No last-minute cancellations</span>
                 <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Available 24/7</span>
               </div>
-              <div className="mt-6 flex flex-wrap justify-center gap-3 md:justify-start">
-                <Button size="sm" className="h-10 bg-[#FFD700] px-5 font-bold text-[#2E3A8C] shadow-lg hover:bg-[#E6C200]">
-                  <Download className="mr-2 h-4 w-4" /> Google play
-                </Button>
-                <Button size="sm" variant="outline" className="h-10 border-white/30 px-5 font-semibold text-white hover:bg-white/10 !bg-transparent">
-                  <Download className="mr-2 h-4 w-4" /> App Store
-                </Button>
+              <div className="mt-6 flex flex-wrap justify-center gap-3">
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                  aria-label="Google play"
+                >
+                  <img
+                    src="/assets/play-store.png"
+                    alt="Google play"
+                    className="h-10 w-auto object-contain"
+                  />
+                </a>
+                <a
+                  href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                  aria-label="App Store"
+                >
+                  <img
+                    src="/assets/app-store-logo.png"
+                    alt="App Store"
+                    className="h-10 w-auto object-contain"
+                  />
+                </a>
               </div>
             </div>
-            <div className="relative mx-auto w-full max-w-[230px] md:mr-0 lg:max-w-[250px]">
+            <div className="relative mx-auto w-full max-w-[230px] md:mr-24 lg:mr-40 lg:max-w-[250px]">
               <div className="rounded-xl bg-white p-3 text-center shadow-2xl">
                 <p className="mb-2 text-[10px] font-extrabold uppercase tracking-wider text-slate-500">Scan to Download</p>
                 <img
@@ -457,6 +593,21 @@ export default function Index() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Driver CTA */}
+      <section className="max-w-screen-xl mx-auto px-4 py-2 text-center">
+        <div className="rounded-xl border border-border bg-white px-5 py-8 shadow-sm">
+          <h2 className="font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Drive and Earn with Root Cabs</h2>
+          <p className="mx-auto mt-3 mb-5 max-w-2xl text-sm leading-6 text-muted-foreground">
+            Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+          </p>
+          <Link to="/drivers">
+            <Button className="cursor-pointer bg-primary hover:bg-primary/90">
+              Join as Root Partner <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </Link>
         </div>
       </section>
 
@@ -479,7 +630,8 @@ export default function Index() {
         </div>
       </section>
 
-      {/* Driver CTA */}
+      {/*
+      Driver CTA
       <section className="bg-[#1E2A6E] text-white py-16 relative overflow-hidden">
         <img
           src="https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qdcicaiya/driver-partner-happy-professional.png"
@@ -496,6 +648,7 @@ export default function Index() {
           </Link>
         </div>
       </section>
+      */}
     </div>
   );
 }
