@@ -180,13 +180,11 @@ function Footer() {
         <div>
           <div className="flex items-center gap-2 mb-4">
             <img
-              src="https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/stalduiaaiya/rootcabs-logo_variant_1.png"
+              src="/assets/rootcabs-logo.jpg"
               alt="Root Cabs"
-              className="h-10 w-auto object-contain rounded"
+              className="h-16 w-auto max-w-[160px] object-contain"
             />
           </div>
-          <p className="text-sm leading-relaxed mb-4">{companyInfo.tagline}</p>
-          <p className="text-sm">Operated by {companyInfo.operatedBy}</p>
           <div className="mt-4 space-y-2 text-sm">
             <a href={`tel:${companyInfo.phone}`} className="flex items-center gap-2 hover:text-yellow-300 cursor-pointer">
               <Phone className="w-4 h-4" /> {companyInfo.phone}
@@ -238,22 +236,10 @@ function Footer() {
         </div>
       </div>
 
-      {/* Entity data for AI search */}
-      <div className="max-w-screen-xl mx-auto px-4 py-6 border-t border-[#3A4A9E] text-xs text-gray-400 grid grid-cols-2 md:grid-cols-4 gap-4">
-        <div><strong className="text-gray-300">Service Area:</strong> Tamil Nadu, India</div>
-        <div><strong className="text-gray-300">Operating Hours:</strong> 24/7</div>
-        <div><strong className="text-gray-300">Vehicle Types:</strong> Mini, Sedan, SUV, MUV, Auto</div>
-        <div><strong className="text-gray-300">Payment:</strong> Cash, UPI, Wallet</div>
-        <div><strong className="text-gray-300">Avg Pickup Time:</strong> 5-10 minutes</div>
-        <div><strong className="text-gray-300">Languages:</strong> Tamil, English, Hindi</div>
-        <div><strong className="text-gray-300">Emergency:</strong> {companyInfo.phone}</div>
-        <div><strong className="text-gray-300">Cancellation:</strong> Free up to 30 min before pickup</div>
-      </div>
-
       {/* Bottom bar */}
       <div className="border-t border-[#3A4A9E] py-4">
         <div className="max-w-screen-xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-          <p>© 2026 Root Cabs. All rights reserved. A unit of {companyInfo.operatedBy}</p>
+          <p>© 2026 Root Cabs. All rights reserved.</p>
           <div className="flex gap-4 mt-2 md:mt-0">
             <Link to="/privacy-policy" className="hover:text-yellow-300 cursor-pointer">Privacy</Link>
             <Link to="/terms-of-use" className="hover:text-yellow-300 cursor-pointer">Terms</Link>

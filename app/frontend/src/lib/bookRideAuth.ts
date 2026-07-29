@@ -8,12 +8,68 @@ type OtpVerifyRequest = {
   deviceToken: string;
 };
 
+export type RentalBookingRequest = {
+  serviceType?: "RENTAL";
+  packageType?: "Outstation" | "Local";
+  booking?: "DROP ONLY" | "ROUND TRIP";
+  bookingType?: "DROP ONLY" | "ROUND TRIP";
+  tripType?: string;
+  fromDate?: string;
+  toDate?: string;
+  zone?: string;
+  acType?: "AC" | "NON AC";
+  driverStartAddress?: string;
+  driverStartLat?: number;
+  driverStartLong?: number;
+  driverEndAddress?: string;
+  driverEndLat?: number;
+  driverEndLong?: number;
+  pickupLocation: string;
+  dropLocation: string;
+  pickupLat: number;
+  pickupLong: number;
+  dropLat: number;
+  dropLong: number;
+  carType: "Mini" | "Sedan" | "SUV" | "MUV";
+  source: "RootCabs Website";
+};
+
 type SessionResponse = {
   sessionId?: string;
   token?: string;
   data?: {
     sessionId?: string;
     token?: string;
+  };
+};
+
+export type AddressSuggestion = {
+  name: string;
+  address: string;
+  city?: string;
+  latitude?: number;
+  longitude?: number;
+};
+
+type AddressSearchResponse = {
+  success?: boolean;
+  code?: number;
+  message?: string;
+  data?: AddressSuggestion[];
+};
+
+type ApiStatusResponse = {
+  success?: boolean;
+  message?: string;
+  id?: string | number;
+  bookingId?: string | number;
+  data?: {
+    id?: string | number;
+    bookingId?: string | number;
+    result?: {
+      id?: string | number;
+      bookingId?: string | number;
+    };
   };
 };
 
@@ -141,4 +197,36 @@ export async function verifyBookingOtp(otp: string, deviceToken: string) {
     },
     { includeSessionToken: true },
   );
+}
+
+export async function searchAddressDetailed(address: string) {
+  const payload = await requestJson<AddressSearchResponse>(
+    `/website/search-address-detailed?address=${encodeURIComponent(address)}`,
+    {
+      method: "GET",
+    },
+  );
+
+  if (payload.success === false) {
+    throw new Error(payload.message || "Unable to search address.");
+  }
+
+  return payload.data || [];
+}
+
+export async function addRentalBooking(payload: RentalBookingRequest) {
+  const response = await requestJson<ApiStatusResponse>(
+    "/add-rental-booking",
+    {
+      method: "POST",
+      body: JSON.stringify(payload),
+    },
+    { includeSessionToken: true },
+  );
+
+  if (response.success === false) {
+    throw new Error(response.message || "Unable to confirm booking. Please try again.");
+  }
+
+  return response;
 }

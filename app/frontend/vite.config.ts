@@ -186,6 +186,7 @@ export default defineConfig(({ command, mode }) => {
     server: {
       host: '0.0.0.0', // Listen on all network interfaces.
       port: parseInt(env.VITE_PORT || '3000'),
+      hmr: false,
       proxy: {
         '/api/customer/dev/website': {
           target: bookingApiProxyTarget,
@@ -208,6 +209,16 @@ export default defineConfig(({ command, mode }) => {
           },
         },
         '/api/customer/dev/otp-verify': {
+          target: bookingApiProxyTarget,
+          changeOrigin: true,
+          headers: {
+            'ngrok-skip-browser-warning': 'true',
+          },
+          configure(proxy) {
+            proxy.on('proxyReq', removeBrowserOriginHeaders);
+          },
+        },
+        '/api/customer/dev/add-rental-booking': {
           target: bookingApiProxyTarget,
           changeOrigin: true,
           headers: {

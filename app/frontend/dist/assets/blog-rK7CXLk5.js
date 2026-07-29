@@ -1,4 +1,4 @@
-import{r as It,p as df,A as pf,i as mf,j as Wa,L as Di,u as gf,N as Xa,f as Ja,h as Cs,e as ls}from"./router-vendor-B2E-5pCE.js";import{j as z}from"./ui-vendor-BMfwoeBe.js";var pn={};/**
+import{r as It,p as df,A as pf,i as mf,j as Wa,L as Di,u as gf,N as Xa,f as Ja,h as Cs,e as ls}from"./router-vendor-B2E-5pCE.js";import{j as z}from"./ui-vendor-BHUVwTrm.js";var pn={};/**
  * @license React
  * react-dom-server-legacy.browser.production.min.js
  *
