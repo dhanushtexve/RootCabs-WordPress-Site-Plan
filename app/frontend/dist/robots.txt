@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://rootcabs.com/sitemap.xml

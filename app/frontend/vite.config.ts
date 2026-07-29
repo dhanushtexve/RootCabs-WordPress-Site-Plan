@@ -5,9 +5,9 @@ import path from 'path';
 import { viteSourceLocator } from '@metagptx/vite-plugin-source-locator';
 import { atoms } from '@metagptx/web-sdk/plugins';
 import { vitePrerenderPlugin } from 'vite-prerender-plugin';
-import Sitemap from 'vite-plugin-sitemap';
 import { getBlogRoutes } from './prerender/blog-routes.js';
 import { getSitemapLastmod } from './prerender/blog-sitemap.js';
+import { cities, landmarks, routes, services } from './src/data/siteData';
 
 function escapeHtmlAttr(str: string): string {
   return str
@@ -38,11 +38,121 @@ function ensureBuildOutDir(): Plugin {
   };
 }
 
+type SitemapRoute = {
+  path: string;
+  changefreq: 'daily' | 'weekly' | 'monthly' | 'yearly';
+  priority: string;
+};
+
+function escapeXml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+function normalizeSitemapPath(routePath: string): string {
+  if (routePath === '/') return '/';
+  return `/${routePath.replace(/^\/+|\/+$/g, '')}`;
+}
+
+function createRoute(pathname: string, changefreq: SitemapRoute['changefreq'], priority: string): SitemapRoute {
+  return {
+    path: normalizeSitemapPath(pathname),
+    changefreq,
+    priority,
+  };
+}
+
+function generateSitemapPlugin(siteUrl: string, blogRoutes: string[]): Plugin {
+  let outDir = path.resolve(__dirname, 'dist');
+
+  return {
+    name: 'generate-root-cabs-sitemap',
+    configResolved(config: ResolvedConfig) {
+      outDir = path.resolve(config.root, config.build.outDir);
+    },
+    writeBundle() {
+      const lastmodMap = getSitemapLastmod() as Record<string, Date | string>;
+      const buildLastmod = new Date().toISOString();
+      const serviceSlugs = new Set(services.map((service) => service.slug));
+      const allRoutes: SitemapRoute[] = [
+        createRoute('/', 'daily', '1.0'),
+        createRoute('/book-ride', 'daily', '0.9'),
+        createRoute('/services', 'weekly', '0.9'),
+        createRoute('/cities', 'weekly', '0.9'),
+        createRoute('/drivers', 'weekly', '0.8'),
+        createRoute('/business', 'weekly', '0.8'),
+        createRoute('/blog', 'weekly', '0.8'),
+        createRoute('/about', 'monthly', '0.7'),
+        createRoute('/support', 'monthly', '0.7'),
+        createRoute('/privacy-policy', 'yearly', '0.4'),
+        createRoute('/terms-of-use', 'yearly', '0.4'),
+        createRoute('/wallet-policy', 'yearly', '0.4'),
+        ...services.map((service) => createRoute(`/services/${service.slug}`, 'weekly', '0.8')),
+        ...cities.map((city) => createRoute(`/${city.slug}`, 'weekly', city.slug === 'chennai' ? '0.9' : '0.8')),
+        ...cities.flatMap((city) =>
+          city.services
+            .filter((serviceSlug) => serviceSlugs.has(serviceSlug))
+            .map((serviceSlug) => createRoute(`/${city.slug}/${serviceSlug}`, 'weekly', '0.7')),
+        ),
+        ...routes.map((route) => createRoute(`/routes/${route.slug}`, 'weekly', '0.7')),
+        ...landmarks.map((landmark) => createRoute(`/landmarks/${landmark.slug}`, 'weekly', '0.7')),
+        ...blogRoutes.map((routePath) => createRoute(routePath, 'weekly', routePath === '/blog/' ? '0.8' : '0.7')),
+      ];
+
+      const uniqueRoutes = Array.from(
+        new Map(allRoutes.map((route) => [route.path, route])).values(),
+      ).sort((a, b) => a.path.localeCompare(b.path));
+
+      const sitemap = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+        ...uniqueRoutes.map((route) => {
+          const lastmodSource =
+            lastmodMap[route.path] ||
+            lastmodMap[`${route.path}/`] ||
+            lastmodMap[route.path.replace(/\/$/, '')] ||
+            buildLastmod;
+          const lastmod =
+            lastmodSource instanceof Date ? lastmodSource.toISOString() : new Date(lastmodSource).toISOString();
+          const loc = `${siteUrl}${route.path === '/' ? '/' : route.path}`;
+
+          return [
+            '  <url>',
+            `    <loc>${escapeXml(loc)}</loc>`,
+            `    <lastmod>${lastmod}</lastmod>`,
+            `    <changefreq>${route.changefreq}</changefreq>`,
+            `    <priority>${route.priority}</priority>`,
+            '  </url>',
+          ].join('\n');
+        }),
+        '</urlset>',
+        '',
+      ].join('\n');
+
+      const robots = [
+        'User-agent: *',
+        'Allow: /',
+        `Sitemap: ${siteUrl}/sitemap.xml`,
+        '',
+      ].join('\n');
+
+      fs.mkdirSync(outDir, { recursive: true });
+      fs.writeFileSync(path.join(outDir, 'sitemap.xml'), sitemap, 'utf8');
+      fs.writeFileSync(path.join(outDir, 'robots.txt'), robots, 'utf8');
+    },
+  };
+}
+
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   const blogPrerenderRoutes = command === 'build' ? getBlogRoutes() : [];
   const apiProxyTarget = env.VITE_API_BASE_URL || `http://localhost:${env.BACKEND_PORT || '8000'}`;
+  const siteUrl = (env.VITE_SITE_URL || 'https://rootcabs.com').replace(/\/+$/, '');
 
   return {
     plugins: [
@@ -52,12 +162,7 @@ export default defineConfig(({ command, mode }) => {
       react(),
       atoms(),
       ensureBuildOutDir(),
-      Sitemap({
-        hostname: 'https://rootcabs.com',
-        lastmod: getSitemapLastmod(),
-        readable: true,
-        generateRobotsTxt: true,
-      }),
+      generateSitemapPlugin(siteUrl, blogPrerenderRoutes),
       ...(blogPrerenderRoutes.length > 0
         ? vitePrerenderPlugin({
             renderTarget: '#root',
