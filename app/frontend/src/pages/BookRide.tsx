@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card, CardContent } from "@/components/ui/card";
 import { cities, fareRates, companyInfo } from "@/data/siteData";
+import { sendBookingOtp, verifyBookingOtp } from "@/lib/bookRideAuth";
 
 const allLocations = [
   ...cities.map((c) => c.name),
@@ -20,6 +21,9 @@ const vehicles = [
   { id: "muv", name: "MUV", desc: "Innova Crysta", capacity: "7 passengers", rate: fareRates.muv },
 ];
 
+const BOOKING_DEVICE_TOKEN =
+  "c1yrHoBlQ5efQzPoYU5nxB:APA91bFSTZsZvob2VIuJxarLTgq2CKe7EJbnE7esi2yEsSIuk11KPS9j4wLU2xWqYxKHArM3SyCgNjuyqm8-lHgp-WJbV2fWqkRQ-v9-AyVUjgf0K_Uo0Zo";
+
 export default function BookRide() {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
@@ -27,11 +31,81 @@ export default function BookRide() {
   const [vehicle, setVehicle] = useState("sedan");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
+  const [name, setName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [otp, setOtp] = useState("");
+  const [otpSent, setOtpSent] = useState(false);
+  const [phoneVerified, setPhoneVerified] = useState(false);
+  const [otpStatus, setOtpStatus] = useState("");
+  const [otpError, setOtpError] = useState("");
+  const [isSendingOtp, setIsSendingOtp] = useState(false);
+  const [isVerifyingOtp, setIsVerifyingOtp] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
+  const handlePhoneNumberChange = (value: string) => {
+    const digitsOnly = value.replace(/\D/g, "").slice(0, 10);
+    setPhoneNumber(digitsOnly);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!phoneVerified) {
+      setOtpError("Please verify your phone number before confirming the booking.");
+      return;
+    }
     setSubmitted(true);
+  };
+
+  const handleSendOtp = async () => {
+    setOtpError("");
+    setOtpStatus("");
+
+    if (phoneNumber.trim().length !== 10) {
+      setOtpError("Enter a valid 10-digit phone number to receive OTP.");
+      return;
+    }
+
+    setIsSendingOtp(true);
+
+    try {
+      await sendBookingOtp(phoneNumber.trim());
+      setOtpSent(true);
+      setOtpStatus("OTP sent successfully. Enter the OTP to verify.");
+    } catch (error) {
+      setOtpError(error instanceof Error ? error.message : "Unable to send OTP. Please try again.");
+    } finally {
+      setIsSendingOtp(false);
+    }
+  };
+
+  const handleVerifyOtp = async () => {
+    setOtpError("");
+    setOtpStatus("");
+
+    if (!otp.trim()) {
+      setOtpError("Enter the OTP to verify your phone number.");
+      return;
+    }
+
+    setIsVerifyingOtp(true);
+
+    try {
+      await verifyBookingOtp(otp.trim(), BOOKING_DEVICE_TOKEN);
+      setPhoneVerified(true);
+      setOtpStatus("Phone number verified successfully.");
+    } catch (error) {
+      setOtpError(error instanceof Error ? error.message : "Unable to verify OTP. Please try again.");
+    } finally {
+      setIsVerifyingOtp(false);
+    }
+  };
+
+  const handleChangeNumber = () => {
+    setOtp("");
+    setOtpSent(false);
+    setPhoneVerified(false);
+    setOtpStatus("");
+    setOtpError("");
   };
 
   if (submitted) {
@@ -174,11 +248,68 @@ export default function BookRide() {
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <Label className="text-sm font-medium mb-1.5 block">Your Name</Label>
-                  <Input placeholder="Enter your name" />
+                  <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter your name" />
                 </div>
                 <div>
-                  <Label className="text-sm font-medium mb-1.5 block">Phone Number</Label>
-                  <Input placeholder="+91 XXXXX XXXXX" type="tel" />
+                  <div className="mb-1.5 flex items-center justify-between gap-3">
+                    <Label className="text-sm font-medium block">Phone Number</Label>
+                    {phoneVerified && <span className="text-xs font-semibold text-green-700">Verified</span>}
+                  </div>
+
+                  {!otpSent ? (
+                    <div className="flex gap-2">
+                      <div className="flex flex-1 items-center rounded-md border border-input bg-background px-3">
+                        <span className="shrink-0 text-sm font-medium text-muted-foreground">+91</span>
+                        <Input
+                          value={phoneNumber}
+                          onChange={(e) => handlePhoneNumberChange(e.target.value)}
+                          placeholder="Enter 10-digit number"
+                          type="tel"
+                          inputMode="numeric"
+                          maxLength={10}
+                          className="border-0 px-2 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                        />
+                      </div>
+                      <Button
+                        type="button"
+                        onClick={handleSendOtp}
+                        disabled={isSendingOtp || phoneNumber.length !== 10}
+                        className="shrink-0 bg-primary hover:bg-primary/90"
+                      >
+                        {isSendingOtp ? "Sending..." : "Send OTP"}
+                      </Button>
+                    </div>
+                  ) : (
+                    <div className="space-y-2">
+                      <div className="flex gap-2">
+                        <Input
+                          value={otp}
+                          onChange={(e) => setOtp(e.target.value)}
+                          placeholder="Enter OTP"
+                          inputMode="numeric"
+                          disabled={phoneVerified}
+                        />
+                        <Button
+                          type="button"
+                          onClick={handleVerifyOtp}
+                          disabled={isVerifyingOtp || phoneVerified}
+                          className="shrink-0 bg-primary hover:bg-primary/90"
+                        >
+                          {phoneVerified ? "Verified" : isVerifyingOtp ? "Verifying..." : "Verify"}
+                        </Button>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={handleChangeNumber}
+                        className="text-xs font-medium text-primary hover:underline"
+                      >
+                        Change phone number
+                      </button>
+                    </div>
+                  )}
+
+                  {otpStatus && <p className="mt-2 text-xs font-medium text-green-700">{otpStatus}</p>}
+                  {otpError && <p className="mt-2 text-xs font-medium text-red-700">{otpError}</p>}
                 </div>
               </div>
 
@@ -186,7 +317,7 @@ export default function BookRide() {
                 type="submit"
                 size="lg"
                 className="w-full bg-[#FFD700] hover:bg-[#E6C200] text-[#2E3A8C] font-bold text-base cursor-pointer shadow-sm"
-                disabled={!from || !to}
+                disabled={!from || !to || !name || !phoneVerified}
               >
                 Confirm Booking <ArrowRight className="w-4 h-4 ml-2" />
               </Button>

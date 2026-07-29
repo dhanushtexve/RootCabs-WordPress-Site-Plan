@@ -147,11 +147,18 @@ function generateSitemapPlugin(siteUrl: string, blogRoutes: string[]): Plugin {
   };
 }
 
+function removeBrowserOriginHeaders(proxyReq: { removeHeader: (header: string) => void }) {
+  proxyReq.removeHeader('origin');
+  proxyReq.removeHeader('referer');
+}
+
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   const blogPrerenderRoutes = command === 'build' ? getBlogRoutes() : [];
   const apiProxyTarget = env.VITE_API_BASE_URL || `http://localhost:${env.BACKEND_PORT || '8000'}`;
+  const bookingApiProxyTarget =
+    env.VITE_BOOKING_API_BASE_URL || 'https://perihelial-ariella-unserious.ngrok-free.dev';
   const siteUrl = (env.VITE_SITE_URL || 'https://rootcabs.com').replace(/\/+$/, '');
 
   return {
@@ -180,6 +187,36 @@ export default defineConfig(({ command, mode }) => {
       host: '0.0.0.0', // Listen on all network interfaces.
       port: parseInt(env.VITE_PORT || '3000'),
       proxy: {
+        '/api/customer/dev/website': {
+          target: bookingApiProxyTarget,
+          changeOrigin: true,
+          headers: {
+            'ngrok-skip-browser-warning': 'true',
+          },
+          configure(proxy) {
+            proxy.on('proxyReq', removeBrowserOriginHeaders);
+          },
+        },
+        '/api/customer/dev/verify': {
+          target: bookingApiProxyTarget,
+          changeOrigin: true,
+          headers: {
+            'ngrok-skip-browser-warning': 'true',
+          },
+          configure(proxy) {
+            proxy.on('proxyReq', removeBrowserOriginHeaders);
+          },
+        },
+        '/api/customer/dev/otp-verify': {
+          target: bookingApiProxyTarget,
+          changeOrigin: true,
+          headers: {
+            'ngrok-skip-browser-warning': 'true',
+          },
+          configure(proxy) {
+            proxy.on('proxyReq', removeBrowserOriginHeaders);
+          },
+        },
         '/api': {
           target: apiProxyTarget,
           changeOrigin: true,
