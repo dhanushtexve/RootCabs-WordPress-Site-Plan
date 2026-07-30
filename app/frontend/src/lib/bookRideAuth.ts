@@ -11,6 +11,7 @@ type OtpVerifyRequest = {
 export type RentalBookingRequest = {
   serviceType?: "RENTAL";
   packageType?: "Outstation" | "Local";
+  packageId?: number;
   booking?: "DROP ONLY" | "ROUND TRIP";
   bookingType?: "DROP ONLY" | "ROUND TRIP";
   tripType?: string;
@@ -18,18 +19,19 @@ export type RentalBookingRequest = {
   toDate?: string;
   zone?: string;
   acType?: "AC" | "NON AC";
+  period?: number;
   driverStartAddress?: string;
   driverStartLat?: number;
   driverStartLong?: number;
   driverEndAddress?: string;
   driverEndLat?: number;
   driverEndLong?: number;
-  pickupLocation: string;
-  dropLocation: string;
-  pickupLat: number;
-  pickupLong: number;
-  dropLat: number;
-  dropLong: number;
+  pickupLocation?: string;
+  dropLocation?: string;
+  pickupLat?: number;
+  pickupLong?: number;
+  dropLat?: number;
+  dropLong?: number;
   carType: "Mini" | "Sedan" | "SUV" | "MUV";
   source: "RootCabs Website";
 };
@@ -71,6 +73,12 @@ type ApiStatusResponse = {
       bookingId?: string | number;
     };
   };
+};
+
+type ZonePackagesResponse = {
+  success?: boolean;
+  message?: string;
+  data?: unknown;
 };
 
 const BOOKING_API_BASE_URL = import.meta.env.DEV
@@ -212,6 +220,27 @@ export async function searchAddressDetailed(address: string) {
   }
 
   return payload.data || [];
+}
+
+export async function getZonePackages(serviceType: "RENTAL", zone: string) {
+  const params = new URLSearchParams({
+    serviceType,
+    zone,
+    source: "ROOTCABS WEBSITE",
+  });
+  const response = await requestJson<ZonePackagesResponse>(
+    `/zone-packages?${params.toString()}`,
+    {
+      method: "GET",
+    },
+    { includeSessionToken: true },
+  );
+
+  if (response.success === false) {
+    throw new Error(response.message || "Unable to load zone packages.");
+  }
+
+  return response;
 }
 
 export async function addRentalBooking(payload: RentalBookingRequest) {

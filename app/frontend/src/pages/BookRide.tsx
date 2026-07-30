@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { MapPin, ArrowRight, Car, Phone, Shield, Clock, CheckCircle, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,9 +7,11 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { fareRates, companyInfo } from "@/data/siteData";
 import {
   addRentalBooking,
+  getZonePackages,
   type AddressSuggestion,
   type RentalBookingRequest,
   searchAddressDetailed,
@@ -42,6 +44,43 @@ const bookingZones = [
   "Kanchipuram",
   "Tiruvannamalai",
   "Ranipet",
+];
+
+const localPackageHours = [2, 4, 6, 8];
+
+const bookRideFaqs = [
+  {
+    q: "How can I book my ride with Root Cabs?",
+    a: "You can book your ride online through the Root Cabs app by selecting your pickup location, destination and preferred vehicle. Review the fare details and confirm your booking.",
+  },
+  {
+    q: "Can I book a ride for later with Root Cabs?",
+    a: "Yes. Root Cabs allows you to schedule your trip in advance by selecting your preferred pickup date and time during the online ride booking process.",
+  },
+  {
+    q: "What ride options are available with Root Cabs?",
+    a: "Root Cabs offers Auto, Cab and Bike Taxi services for city travel. You can also book local taxis, one-way drop taxis, round trips, hourly rentals and parcel delivery.",
+  },
+  {
+    q: "Can I book a transfer from the airport through Root Cabs?",
+    a: "Yes. You can book a transfer from the airport or arrange an airport drop through the Root Cabs app. Add the correct terminal, pickup details and travel time while confirming your ride.",
+  },
+  {
+    q: "Will the driver ask for an amount above the app fare?",
+    a: "No. With Root Cabs, there is no bargaining with drivers. The fare shown in the app is the final ride fare, excluding applicable tolls, parking fees and other charges shown separately.",
+  },
+  {
+    q: "Can I cancel my ride after booking?",
+    a: "Yes. You can cancel your Root Cabs ride through the app before the trip begins. Cancellation charges may apply based on the booking stage.",
+  },
+  {
+    q: "Can I book a ride for someone else?",
+    a: "Yes. You can book a Root Cabs ride for a family member or friend by entering their pickup and drop details along with the correct contact number.",
+  },
+  {
+    q: "What should I do if I need help with my booking?",
+    a: "Call the Root Cabs support team at +91 86080 66474 for help with pickup details, ride changes, cancellations or other booking-related questions.",
+  },
 ];
 
 const BOOKING_DEVICE_TOKEN =
@@ -82,6 +121,53 @@ function getBookingIdFromResponse(response: unknown) {
   return bookingId === undefined || bookingId === null ? "" : String(bookingId);
 }
 
+type ZonePackageItem = {
+  id?: number | string;
+  type?: string;
+  period?: number | string;
+};
+
+function extractZonePackageItems(payload: unknown): ZonePackageItem[] {
+  if (!payload || typeof payload !== "object") return [];
+
+  const candidates: unknown[] = [];
+  const root = payload as Record<string, unknown>;
+
+  if (Array.isArray(root.data)) candidates.push(...root.data);
+  if (Array.isArray(root.result)) candidates.push(...root.result);
+  if (root.data && typeof root.data === "object") {
+    const data = root.data as Record<string, unknown>;
+    if (Array.isArray(data.result)) candidates.push(...data.result);
+    if (Array.isArray(data.rows)) candidates.push(...data.rows);
+    if (Array.isArray(data.packages)) candidates.push(...data.packages);
+  }
+
+  return candidates.filter((item): item is ZonePackageItem => Boolean(item && typeof item === "object"));
+}
+
+function findLocalPackageId(zonePackagesResponse: unknown, selectedPeriod: number) {
+  const matchedPackage = extractZonePackageItems(zonePackagesResponse).find((item) => {
+    const packageType = typeof item.type === "string" ? item.type.trim().toLowerCase() : "";
+    const packagePeriod =
+      typeof item.period === "number"
+        ? item.period
+        : typeof item.period === "string"
+          ? Number(item.period)
+          : NaN;
+
+    return packageType === "local" && packagePeriod === selectedPeriod;
+  });
+
+  const packageId =
+    typeof matchedPackage?.id === "number"
+      ? matchedPackage.id
+      : typeof matchedPackage?.id === "string"
+        ? Number(matchedPackage.id)
+        : NaN;
+
+  return Number.isFinite(packageId) ? packageId : null;
+}
+
 export default function BookRide() {
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
@@ -94,6 +180,7 @@ export default function BookRide() {
   const [tripType, setTripType] = useState("one-way");
   const [vehicle, setVehicle] = useState("sedan");
   const [acType, setAcType] = useState<"AC" | "NON AC">("AC");
+  const [localPeriod, setLocalPeriod] = useState("2");
   const [zone, setZone] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
@@ -135,9 +222,10 @@ export default function BookRide() {
   );
   const isConfirmBookingReady = Boolean(
     hasSelectedPickup &&
-      hasSelectedDrop &&
+      (tripType === "local" || hasSelectedDrop) &&
       date &&
       time &&
+      (tripType !== "local" || localPeriod) &&
       (tripType !== "round-trip" ||
         (returnDate &&
           returnTime &&
@@ -299,8 +387,12 @@ export default function BookRide() {
     setBookingError("");
     setOtpError("");
 
-    if (!hasSelectedPickup || !hasSelectedDrop) {
-      setOtpError("Please select pickup and drop locations from the suggestions.");
+    if (!hasSelectedPickup || (tripType !== "local" && !hasSelectedDrop)) {
+      setOtpError(
+        tripType === "local"
+          ? "Please select pickup location from the suggestions."
+          : "Please select pickup and drop locations from the suggestions.",
+      );
       return;
     }
     if (!date || !time || !name.trim()) {
@@ -328,19 +420,29 @@ export default function BookRide() {
       return;
     }
 
+    const bookingZone = getBookingZonePayload(zone);
+
     const baseBookingPayload = {
       fromDate: buildFromDate(date, time),
       pickupLocation: selectedPickup!.address,
-      dropLocation: selectedDrop!.address,
       pickupLat: selectedPickup!.latitude!,
       pickupLong: selectedPickup!.longitude!,
-      dropLat: selectedDrop!.latitude!,
-      dropLong: selectedDrop!.longitude!,
-      zone: getBookingZonePayload(zone),
-      acType,
+      zone: bookingZone,
       carType: carTypeMap[vehicle],
       source: "RootCabs Website",
     } satisfies Omit<RentalBookingRequest, "packageType" | "booking" | "tripType">;
+
+    const dropBookingPayload =
+      tripType === "local"
+        ? {}
+        : ({
+            dropLocation: selectedDrop!.address,
+            dropLat: selectedDrop!.latitude!,
+            dropLong: selectedDrop!.longitude!,
+            acType,
+          } satisfies Pick<RentalBookingRequest, "dropLocation" | "dropLat" | "dropLong" | "acType">);
+
+    let localPackageId: number | null = null;
 
     const bookingPayload =
       tripType === "one-way"
@@ -349,6 +451,7 @@ export default function BookRide() {
             packageType: "Outstation",
             bookingType: "DROP ONLY",
             ...baseBookingPayload,
+            ...dropBookingPayload,
           }
         : tripType === "round-trip"
           ? {
@@ -363,22 +466,39 @@ export default function BookRide() {
             driverEndLat: roundTripCabEnd!.latitude!,
             driverEndLong: roundTripCabEnd!.longitude!,
             ...baseBookingPayload,
+            ...dropBookingPayload,
           }
         : tripType === "local"
           ? {
               serviceType: "RENTAL",
               packageType: "Local",
+              period: Number(localPeriod),
+              packageId: localPackageId ?? undefined,
               ...baseBookingPayload,
             }
         : {
             tripType,
             ...baseBookingPayload,
+            ...dropBookingPayload,
           } satisfies RentalBookingRequest;
 
     console.info("Root Cabs booking payload", bookingPayload);
 
     setIsSubmittingBooking(true);
     try {
+      if (tripType === "one-way" || tripType === "round-trip" || tripType === "local") {
+        const zonePackagesResponse = await getZonePackages("RENTAL", bookingZone);
+
+        if (tripType === "local") {
+          localPackageId = findLocalPackageId(zonePackagesResponse, Number(localPeriod));
+
+          if (!localPackageId) {
+            throw new Error("Selected local package is not available for the chosen zone.");
+          }
+
+          bookingPayload.packageId = localPackageId;
+        }
+      }
       const response = await addRentalBooking(bookingPayload);
       setBookingId(getBookingIdFromResponse(response));
       setSubmitted(true);
@@ -447,7 +567,12 @@ export default function BookRide() {
             <div className="space-y-3 text-sm">
             {bookingId && <div className="flex justify-between gap-4"><span className="text-muted-foreground">Booking ID:</span><span className="text-right font-semibold text-primary">{bookingId}</span></div>}
             <div className="flex justify-between gap-4"><span className="text-muted-foreground">From:</span><span className="text-right font-medium">{selectedPickup?.address || from}</span></div>
-            <div className="flex justify-between gap-4"><span className="text-muted-foreground">To:</span><span className="text-right font-medium">{selectedDrop?.address || to}</span></div>
+            {tripType !== "local" && (
+              <div className="flex justify-between gap-4">
+                <span className="text-muted-foreground">To:</span>
+                <span className="text-right font-medium">{selectedDrop?.address || to}</span>
+              </div>
+            )}
             <div className="flex justify-between"><span className="text-muted-foreground">Vehicle:</span><span className="font-medium capitalize">{vehicle}</span></div>
             <div className="flex justify-between"><span className="text-muted-foreground">Trip:</span><span className="font-medium capitalize">{tripType}</span></div>
             {date && <div className="flex justify-between"><span className="text-muted-foreground">Date:</span><span className="font-medium">{date}</span></div>}
@@ -509,8 +634,44 @@ export default function BookRide() {
                 </RadioGroup>
               </div>
 
+              {tripType === "local" && (
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <Label className="text-sm font-medium mb-1.5 block">Package</Label>
+                    <Select value={localPeriod} onValueChange={setLocalPeriod}>
+                      <SelectTrigger className="cursor-pointer">
+                        <SelectValue placeholder="Select package" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {localPackageHours.map((hours) => (
+                          <SelectItem key={hours} value={String(hours)} className="cursor-pointer">
+                            {hours} hr
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div>
+                    <Label className="text-sm font-medium mb-1.5 block">Zone</Label>
+                    <Select value={zone} onValueChange={setZone}>
+                      <SelectTrigger className="cursor-pointer">
+                        <SelectValue placeholder="Select service zone" />
+                      </SelectTrigger>
+                      <SelectContent className="max-h-60 overflow-y-auto">
+                        {bookingZones.map((city) => (
+                          <SelectItem key={city} value={city} className="cursor-pointer">
+                            {city}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+              )}
+
               {/* From / To */}
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className={`grid gap-4 ${tripType === "local" ? "md:grid-cols-1" : "md:grid-cols-2"}`}>
                 <div>
                   <Label className="text-sm font-medium mb-1.5 block">Pickup Location</Label>
                   <div className="relative">
@@ -556,53 +717,56 @@ export default function BookRide() {
                     </p>
                   )}
                 </div>
-                <div>
-                  <Label className="text-sm font-medium mb-1.5 block">Drop Location</Label>
-                  <div className="relative">
-                    <Input
-                      value={to}
-                      onChange={(event) => {
-                        setTo(event.target.value);
-                        setSelectedDrop(null);
-                      }}
-                      onBlur={() => window.setTimeout(() => setToSuggestions([]), 150)}
-                      placeholder="Enter drop location"
-                    />
-                    {(isSearchingTo || toSuggestions.length > 0) && (
-                      <div className="absolute left-0 right-0 top-full z-30 mt-2 max-h-64 overflow-auto rounded-lg border border-border bg-white shadow-lg">
-                        {isSearchingTo && (
-                          <div className="px-4 py-3 text-sm text-muted-foreground">Searching locations...</div>
-                        )}
-                        {!isSearchingTo &&
-                          toSuggestions.map((suggestion) => (
-                            <button
-                              key={`${suggestion.latitude}-${suggestion.longitude}-${suggestion.address}`}
-                              type="button"
-                              onMouseDown={() => {
-                                setTo(suggestion.address || suggestion.name);
-                                setSelectedDrop(suggestion);
-                                setToSuggestions([]);
-                              }}
-                              className="flex w-full gap-3 px-4 py-3 text-left text-sm transition-colors hover:bg-primary/5"
-                            >
-                              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                              <span>
-                                <span className="block font-semibold text-foreground">{suggestion.name}</span>
-                                <span className="block text-xs leading-5 text-muted-foreground">{suggestion.address}</span>
-                              </span>
-                            </button>
-                          ))}
-                      </div>
+                {tripType !== "local" && (
+                  <div>
+                    <Label className="text-sm font-medium mb-1.5 block">Drop Location</Label>
+                    <div className="relative">
+                      <Input
+                        value={to}
+                        onChange={(event) => {
+                          setTo(event.target.value);
+                          setSelectedDrop(null);
+                        }}
+                        onBlur={() => window.setTimeout(() => setToSuggestions([]), 150)}
+                        placeholder="Enter drop location"
+                      />
+                      {(isSearchingTo || toSuggestions.length > 0) && (
+                        <div className="absolute left-0 right-0 top-full z-30 mt-2 max-h-64 overflow-auto rounded-lg border border-border bg-white shadow-lg">
+                          {isSearchingTo && (
+                            <div className="px-4 py-3 text-sm text-muted-foreground">Searching locations...</div>
+                          )}
+                          {!isSearchingTo &&
+                            toSuggestions.map((suggestion) => (
+                              <button
+                                key={`${suggestion.latitude}-${suggestion.longitude}-${suggestion.address}`}
+                                type="button"
+                                onMouseDown={() => {
+                                  setTo(suggestion.address || suggestion.name);
+                                  setSelectedDrop(suggestion);
+                                  setToSuggestions([]);
+                                }}
+                                className="flex w-full gap-3 px-4 py-3 text-left text-sm transition-colors hover:bg-primary/5"
+                              >
+                                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                                <span>
+                                  <span className="block font-semibold text-foreground">{suggestion.name}</span>
+                                  <span className="block text-xs leading-5 text-muted-foreground">{suggestion.address}</span>
+                                </span>
+                              </button>
+                            ))}
+                        </div>
+                      )}
+                    </div>
+                    {to.trim().length > 0 && !hasSelectedDrop && (
+                      <p className="mt-2 text-xs font-medium text-red-700">
+                        Select a drop location from the suggestions.
+                      </p>
                     )}
                   </div>
-                  {to.trim().length > 0 && !hasSelectedDrop && (
-                    <p className="mt-2 text-xs font-medium text-red-700">
-                      Select a drop location from the suggestions.
-                    </p>
-                  )}
-                </div>
+                )}
               </div>
 
+              {tripType !== "local" && (
               <div className="grid md:grid-cols-2 gap-4">
                 {/* AC Type */}
                 <div>
@@ -640,6 +804,7 @@ export default function BookRide() {
                   </Select>
                 </div>
               </div>
+              )}
 
               {/* Date & Time */}
               <div className="grid md:grid-cols-2 gap-4">
@@ -811,7 +976,7 @@ export default function BookRide() {
                         <div>
                           <p className="font-semibold">{v.name}</p>
                           <p className="text-xs text-muted-foreground">{v.desc}</p>
-                          <p className="text-xs text-muted-foreground">{v.capacity} • ₹{v.rate.perKm}/km</p>
+                          <p className="text-xs text-muted-foreground">{v.capacity} â€¢ â‚¹{v.rate.perKm}/km</p>
                         </div>
                       </div>
                     </div>
@@ -890,31 +1055,64 @@ export default function BookRide() {
                 {isSubmittingBooking ? "Confirming..." : "Confirm Booking"} <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
               {bookingError && <p className="-mt-3 text-sm font-medium text-red-700">{bookingError}</p>}
+
+              <Card className="border-border">
+                <CardContent className="p-6">
+                  <h3 className="font-heading font-semibold mb-2">Why Book Your Ride with Root Cabs?</h3>
+                  <p className="text-sm leading-6 text-muted-foreground mb-4">
+                    From quick city rides to airport travel, Root Cabs makes it easy to book your ride with clear fares and dependable service.
+                  </p>
+                  <ul className="grid gap-x-8 gap-y-3 text-sm text-foreground sm:grid-cols-2">
+                    <li>SOS feature for emergency assistance</li>
+                    <li>No bargaining with drivers</li>
+                    <li>The fare shown in the app is the final fare</li>
+                    <li>Refer a customer and earn ₹100</li>
+                    <li>No last-minute ride cancellations</li>
+                  </ul>
+                </CardContent>
+              </Card>
             </form>
           </div>
 
           {/* Sidebar */}
           <div className="space-y-6">
-            <Card className="border-border">
-              <CardContent className="p-6">
-                <h3 className="font-heading font-semibold mb-4">Why Book with Root Cabs?</h3>
-                <ul className="space-y-3 text-sm">
-                  <li className="flex items-start gap-2"><Shield className="w-4 h-4 text-primary mt-0.5 shrink-0" /> Verified & trained drivers with background checks</li>
-                  <li className="flex items-start gap-2"><Clock className="w-4 h-4 text-primary mt-0.5 shrink-0" /> Free cancellation up to 30 minutes before pickup</li>
-                  <li className="flex items-start gap-2"><Star className="w-4 h-4 text-primary mt-0.5 shrink-0" /> ₹50 cashback on your first ride</li>
-                  <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-primary mt-0.5 shrink-0" /> No surge pricing - transparent fares always</li>
-                  <li className="flex items-start gap-2"><MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" /> Live GPS tracking shared with family</li>
-                </ul>
-              </CardContent>
-            </Card>
+            <div className="relative h-52 overflow-hidden rounded-xl border border-border bg-[#1E2A6E] shadow-sm md:h-56">
+              <img
+                src="/assets/bookride.png"
+                alt="Root Cabs cab, auto and bike ride options"
+                className="absolute inset-0 h-full w-full object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#1E2A6E]/95 via-[#1E2A6E]/60 to-[#1E2A6E]/20" />
+              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#111A4D]/90 to-transparent" />
+              <div className="relative z-10 flex h-full flex-col justify-end p-5 text-white">
+                <p className="text-[10px] font-extrabold uppercase tracking-wide text-[#FFD700]">Root Cabs</p>
+                <h2 className="mt-1 font-heading text-2xl font-extrabold leading-tight">Ride safe,<br />every time.</h2>
+              </div>
+            </div>
 
-            <Card className="border-border bg-primary/5">
+            <Card className="border-border bg-white">
               <CardContent className="p-6">
-                <h3 className="font-heading font-semibold mb-2">Need Immediate Help?</h3>
-                <p className="text-sm text-muted-foreground mb-4">Call us directly for instant booking assistance.</p>
+                <h3 className="font-heading text-2xl font-semibold mb-3">Need Help Booking Your Ride?</h3>
+                <p className="text-sm leading-6 text-muted-foreground mb-4">
+                  Whether you need help choosing a vehicle, updating your trip details or completing your online ride booking, our support team is just a call away.
+                </p>
+                <ul className="space-y-3 text-sm text-muted-foreground mb-5">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                    Assistance with pickup and drop details
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                    Support for modifying or cancelling a booking
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                    Available 24/7, including weekends and holidays
+                  </li>
+                </ul>
                 <a href={`tel:${companyInfo.phone}`}>
                   <Button className="w-full bg-primary hover:bg-primary/90 cursor-pointer">
-                    <Phone className="w-4 h-4 mr-2" /> {companyInfo.phone}
+                    <Phone className="w-4 h-4 mr-2" /> Call +91 8608606474
                   </Button>
                 </a>
               </CardContent>
@@ -923,20 +1121,141 @@ export default function BookRide() {
             <Card className="border-border">
               <CardContent className="p-6">
                 <h3 className="font-heading font-semibold mb-3">Fare Rates</h3>
+                <p className="text-sm leading-6 text-muted-foreground mb-4">
+                  Check the starting per-kilometre fares for each vehicle type before you book your ride online.
+                </p>
                 <div className="space-y-2 text-sm">
-                  {vehicles.map((v) => (
-                    <div key={v.id} className="flex justify-between items-center py-1 border-b border-border last:border-0">
-                      <span>{v.name}</span>
-                      <span className="font-semibold text-primary">₹{v.rate.perKm}/km</span>
-                    </div>
-                  ))}
+                  <div className="flex justify-between items-center py-1 border-b border-border">
+                    <span>Mini</span>
+                    <span className="font-semibold text-primary">₹24/km</span>
+                  </div>
+                  <div className="flex justify-between items-center py-1 border-b border-border">
+                    <span>Sedan</span>
+                    <span className="font-semibold text-primary">₹24/km</span>
+                  </div>
+                  <div className="flex justify-between items-center py-1 border-b border-border">
+                    <span>SUV</span>
+                    <span className="font-semibold text-primary">₹24/km</span>
+                  </div>
+                  <div className="flex justify-between items-center py-1 border-b border-border">
+                    <span>MUV</span>
+                    <span className="font-semibold text-primary">₹29/km</span>
+                  </div>
                 </div>
-                <p className="text-xs text-muted-foreground mt-3">* Base fare + per km charges. Toll extra.</p>
+                <p className="text-xs text-muted-foreground mt-3">
+                  Base fare, toll charges and other applicable fees may be added separately.
+                </p>
               </CardContent>
             </Card>
           </div>
         </div>
+
+        <Card className="mt-8 border-border">
+          <CardContent className="grid gap-4 p-6 md:grid-cols-[240px_minmax(0,1fr)] md:items-start">
+            <h4 className="font-heading text-lg font-semibold">Terms & Conditions</h4>
+            <p className="text-sm leading-7 text-muted-foreground">
+              The fares shown are indicative starting rates and may vary based on the selected vehicle, pickup location, drop location, travel distance and current road conditions. The final fare will be displayed in the app before your booking is confirmed. Toll charges, parking fees, waiting charges and other applicable expenses are not included in the per-kilometre rate and will be charged separately.
+            </p>
+          </CardContent>
+        </Card>
       </div>
+
+      <section className="max-w-screen-xl mx-auto px-4 pb-12 md:pb-14">
+        <div className="relative overflow-hidden rounded-2xl bg-[#273588] px-6 py-8 text-white shadow-xl md:px-10 lg:px-12">
+          <img
+            src="/assets/bookride.png"
+            alt="Root Cabs ride booking app"
+            className="absolute inset-0 h-full w-full object-cover opacity-10"
+          />
+          <div className="absolute inset-0 bg-[#273588]/85" />
+          <div className="absolute inset-0 opacity-10 [background-image:linear-gradient(90deg,_rgba(255,255,255,.35)_1px,_transparent_1px),linear-gradient(180deg,_rgba(255,255,255,.35)_1px,_transparent_1px)] [background-size:56px_56px]" />
+          <div className="relative z-10 grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_230px] lg:grid-cols-[minmax(0,1fr)_250px]">
+            <div className="text-center md:text-left">
+              <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
+                GET THE APP
+              </span>
+              <h2 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-4xl">Book Every Ride in One App</h2>
+              <p className="mt-3 max-w-3xl text-sm leading-6 text-white/80 md:text-base">
+                Whether you need a quick city trip, a bike ride or want to book airport transportation, Root Cabs app helps you choose your ride, check the fare and confirm your booking in just a few taps.
+              </p>
+              <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-white/85 md:justify-start">
+                <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Bike, Auto and Cab booking</span>
+                <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Upfront fare details</span>
+                <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Saved locations and trip history</span>
+                <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Quick ride confirmation</span>
+              </div>
+              <div className="mt-6 flex flex-wrap justify-center gap-3 md:justify-start">
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                  aria-label="Google Play"
+                >
+                  <img src="/assets/play-store.png" alt="Google Play" className="h-10 w-auto object-contain" />
+                </a>
+                <a
+                  href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                  aria-label="App Store"
+                >
+                  <img src="/assets/app-store-logo.png" alt="App Store" className="h-10 w-auto object-contain" />
+                </a>
+              </div>
+            </div>
+            <div className="relative mx-auto w-full max-w-[230px] lg:max-w-[250px]">
+              <div className="rounded-xl bg-white p-3 text-center shadow-2xl">
+                <p className="mb-2 text-[10px] font-extrabold uppercase tracking-wider text-slate-500">Scan to Download</p>
+                <img
+                  src="/assets/root-cabs-qr-cropped.png"
+                  alt="Root Cabs app QR code"
+                  className="aspect-square w-full rounded-md object-contain"
+                />
+                <p className="mt-2 text-[10px] font-medium text-slate-400">rootcabs.com/app</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="max-w-screen-xl mx-auto px-4 pb-12 md:pb-14">
+        <Card className="border-border">
+          <CardContent className="p-8 text-center md:p-10">
+            <h2 className="font-heading text-2xl font-bold md:text-3xl">Drive and Earn with Root Cabs</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-muted-foreground md:text-base">
+              Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+            </p>
+            <a href="/drivers" className="mt-6 inline-block">
+              <Button className="bg-primary hover:bg-primary/90 cursor-pointer">
+                Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </a>
+          </CardContent>
+        </Card>
+      </section>
+
+      <section className="bg-[#F3F5F9] px-4 pb-12 pt-8 md:pb-16 md:pt-10">
+        <div className="mx-auto max-w-3xl">
+          <h2 className="font-heading text-center text-3xl font-bold text-[#1E2A6E] md:text-4xl">
+            Frequently Asked Questions
+          </h2>
+          <Accordion type="single" collapsible className="mt-10 space-y-3">
+            {bookRideFaqs.map((faq, index) => (
+              <AccordionItem key={faq.q} value={`book-ride-faq-${index}`} className="border-0">
+                <AccordionTrigger className="rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline">
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="rounded-b-lg bg-white px-5 pb-5 text-sm leading-6 text-muted-foreground shadow-sm">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
     </div>
   );
 }
+

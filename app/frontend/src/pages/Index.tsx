@@ -215,11 +215,11 @@ export default function Index() {
         <div className="max-w-screen-xl mx-auto px-4 py-14 md:py-20 relative z-10">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.8fr)] lg:items-center">
             <div className="max-w-3xl">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold text-white shadow-sm ring-1 ring-white/10 backdrop-blur-sm">
-                <Star className="h-3.5 w-3.5 fill-[#FFD700] text-[#FFD700]" />
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-[11px] font-semibold text-white shadow-sm ring-1 ring-white/10 backdrop-blur-sm">
+                <Star className="h-3 w-3 fill-[#FFD700] text-[#FFD700]" />
                 <span>Top-Rated by Riders Across Tamil Nadu</span>
               </div>
-              <h1 className="font-heading text-4xl font-extrabold leading-[1.08] tracking-normal text-white md:text-5xl lg:text-6xl">
+              <h1 className="font-heading text-3xl font-extrabold leading-[1.1] tracking-normal text-white md:text-4xl lg:text-5xl">
                 Tamil Nadu's Trusted Cab Service for Every Journey
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-7 text-white/82 md:text-lg">

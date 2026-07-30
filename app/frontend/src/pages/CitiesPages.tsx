@@ -28,7 +28,7 @@ const chennaiServices = [
   {
     title: "Local Taxi",
     description: "Travel comfortably across Chennai for work, shopping, hospital visits, appointments, and everyday journeys. Choose convenient cab booking in Chennai for quick city travel without the hassle of searching for transport.",
-    fare: "Starting at Rs 90/3km",
+    fare: "Starting at ₹90/3km",
     href: "/chennai/local-taxi",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-local.png" alt="Local Taxi service icon" className="h-8 w-8 object-contain" />,
@@ -36,7 +36,7 @@ const chennaiServices = [
   {
     title: "Outstation Taxi",
     description: "Plan round trips from Chennai to nearby towns, tourist destinations, and major cities. Our flexible outstation cabs in Chennai are suitable for family holidays, business journeys, and weekend travel.",
-    fare: "Starting at Rs 300/20Km",
+    fare: "Starting at ₹300/20Km",
     href: "/chennai/outstation",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-outstation.png" alt="Outstation Taxi service icon" className="h-8 w-8 object-contain" />,
@@ -44,7 +44,7 @@ const chennaiServices = [
   {
     title: "Acting Driver",
     description: "Hire an experienced acting driver in Chennai to drive your own car safely. It is ideal for late-night returns, hospital visits, events, business travel, and long-distance journeys.",
-    fare: "Starting at Rs 500/100 Km",
+    fare: "Starting at ₹500/100 Km",
     href: "/chennai/acting-driver",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-acting-driver.png" alt="Acting Driver service icon" className="h-8 w-8 object-contain" />,
@@ -52,7 +52,7 @@ const chennaiServices = [
   {
     title: "One-Way Taxi",
     description: "Choose a one-way taxi from Chennai for convenient intercity travel. Pay only for the journey you take without unnecessary return charges, making it suitable for airport transfers and long-distance drops.",
-    fare: "Starting at Rs 300/Km",
+    fare: "Starting at ₹300/Km",
     href: "/book-ride",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-one-way.png" alt="One-Way Taxi service icon" className="h-8 w-8 object-contain" />,
@@ -60,7 +60,7 @@ const chennaiServices = [
   {
     title: "Auto Rickshaw",
     description: "Travel easily through Chennai's busy streets, shopping areas, railway stations, and nearby neighbourhoods. Book an auto for everyday errands, short trips, and quick local travel across the city.",
-    fare: "Starting at Rs 40/1Km",
+    fare: "Starting at ₹40/1Km",
     href: "/chennai/auto",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-auto.png" alt="Auto Rickshaw service icon" className="h-8 w-8 object-contain" />,
@@ -68,7 +68,7 @@ const chennaiServices = [
   {
     title: "Bike Taxi",
     description: "Move through Chennai traffic quickly with an affordable bike taxi ride. It is a convenient choice for office commutes, college travel, everyday errands, and short-distance journeys.",
-    fare: "Starting at Rs 25/2km",
+    fare: "Starting at ₹25/2km",
     href: "/book-ride",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-bike-taxi.png" alt="Bike Taxi service icon" className="h-8 w-8 object-contain" />,
@@ -76,7 +76,7 @@ const chennaiServices = [
   {
     title: "Hourly Package",
     description: "Keep a cab for a selected number of hours and travel across Chennai with multiple stops. Complete meetings, shopping, appointments, and city visits without making separate bookings for every trip.",
-    fare: "Starting at Rs 100/3km",
+    fare: "Starting at ₹100/3km",
     href: "/book-ride",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-hourly-package.png" alt="Hourly Package service icon" className="h-8 w-8 object-contain" />,
@@ -84,7 +84,7 @@ const chennaiServices = [
   {
     title: "Parcel Delivery",
     description: "Send documents, packages, and everyday essentials safely across Chennai. Convenient doorstep pickup and delivery make it easier to send important items without travelling across the city yourself.",
-    fare: "Starting at Rs 50/1km",
+    fare: "Starting at ₹50/1km",
     href: "/chennai/parcel-delivery",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-parcel.png" alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
@@ -96,45 +96,45 @@ const chennaiRoutes = [
     title: "Chennai → Bangalore",
     meta: "Km- 697 Approx. hrs - 23",
     fares: [
-      { label: "MINI", value: "Rs 8,430" },
-      { label: "SEDAN", value: "Rs 8,530" },
-      { label: "SUV", value: "Rs 11,440" },
+      { label: "MINI", value: "₹8,430" },
+      { label: "SEDAN", value: "₹8,530" },
+      { label: "SUV", value: "₹11,440" },
     ],
   },
   {
     title: "Chennai → Pondicherry",
     meta: "Km- 331 Approx Hrs- 10",
     fares: [
-      { label: "MINI", value: "Rs 4,040" },
-      { label: "SEDAN", value: "Rs 4,140" },
-      { label: "SUV", value: "Rs 5,587" },
+      { label: "MINI", value: "₹4,040" },
+      { label: "SEDAN", value: "₹4,140" },
+      { label: "SUV", value: "₹5,587" },
     ],
   },
   {
     title: "Chennai → Vellore",
     meta: "Km- 274 Approx. hrs- 9",
     fares: [
-      { label: "MINI", value: "Rs 3,350" },
-      { label: "SEDAN", value: "Rs 3,450" },
-      { label: "SUV", value: "Rs 4,667" },
+      { label: "MINI", value: "₹3,350" },
+      { label: "SEDAN", value: "₹3,450" },
+      { label: "SUV", value: "₹4,667" },
     ],
   },
   {
     title: "Chennai → Tirupati",
     meta: "Km- 269 Approx- 9",
     fares: [
-      { label: "MINI", value: "Rs 3,285" },
-      { label: "SEDAN", value: "Rs 3,385" },
-      { label: "SUV", value: "Rs 4,580" },
+      { label: "MINI", value: "₹3,285" },
+      { label: "SEDAN", value: "₹3,385" },
+      { label: "SUV", value: "₹4,580" },
     ],
   },
   {
     title: "Chennai → Mahabalipuram",
     meta: "Km- 115 Approx hrs- 5",
     fares: [
-      { label: "MINI", value: "Rs 1,441" },
-      { label: "SEDAN", value: "Rs 1,541" },
-      { label: "SUV", value: "Rs 2,121" },
+      { label: "MINI", value: "₹1,441" },
+      { label: "SEDAN", value: "₹1,541" },
+      { label: "SUV", value: "₹2,121" },
     ],
   },
 ] as const;
@@ -722,7 +722,7 @@ export function CityPage() {
                 Drive and Earn with Root Cabs
               </h3>
               <p className="mb-4 text-sm text-muted-foreground">
-                Earn up to Rs 40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+                Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
               </p>
               <Link to="/services/acting-driver">
                 <Button className="cursor-pointer bg-primary hover:bg-primary/90">
@@ -741,7 +741,7 @@ export function CityPage() {
               {`Drive with Root Cabs in ${city.name}`}
             </h3>
             <p className="mb-4 text-sm text-muted-foreground">
-              Earn up to Rs 40,000/month with flexible hours and low commission.
+              Earn up to ₹40,000/month with flexible hours and low commission.
             </p>
             <Link to="/drivers">
               <Button className="cursor-pointer bg-primary hover:bg-primary/90">

@@ -145,7 +145,7 @@ export const cities: City[] = [
       },
       {
         q: "How much does Root Cabs charge per km in Chennai?",
-        a: "Root Cabs fares in Chennai start from a base fare of Rs 90 for the first 3 km. Both the base fare and the per-kilometre rate vary depending on the vehicle type selected.",
+        a: "Root Cabs fares in Chennai start from a base fare of ₹90 for the first 3 km. Both the base fare and the per-kilometre rate vary depending on the vehicle type selected.",
       },
       {
         q: "Does the outstation fare include tolls and taxes?",
