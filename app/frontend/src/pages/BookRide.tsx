@@ -50,10 +50,16 @@ const bookingZones = [
 
 const localPackageHours = [2, 4, 6, 8];
 const parcelOrderTypes = ["Food", "Medicine", "Cloths", "Documents", "Groceries", "Electronics", "Other"];
-const actingDriverPackages = [
-  { value: "10", label: "10 h", period: 10 },
-  { value: "24", label: "1 day", period: 24 },
-  { value: "48", label: "2 day", period: 48 },
+const actingDriverLocalPackages = [
+  { value: "3", label: "3 hrs - 40 km", period: 3 },
+  { value: "5", label: "5 hrs - 80 km", period: 5 },
+  { value: "8", label: "8 hrs - 120 km", period: 8 },
+] as const;
+
+const actingDriverOutstationPackages = [
+  { value: "10", label: "10 hrs - 30 km", period: 10 },
+  { value: "24", label: "1 day - 600 km", period: 24 },
+  { value: "48", label: "2 day - 1200 km", period: 48 },
   { value: "custom", label: "Custom" },
 ] as const;
 
@@ -158,7 +164,7 @@ function extractZonePackageItems(payload: unknown): ZonePackageItem[] {
   return candidates.filter((item): item is ZonePackageItem => Boolean(item && typeof item === "object"));
 }
 
-function findLocalPackageId(zonePackagesResponse: unknown, selectedPeriod: number) {
+function findZonePackageId(zonePackagesResponse: unknown, selectedType: string, selectedPeriod: number) {
   const matchedPackage = extractZonePackageItems(zonePackagesResponse).find((item) => {
     const packageType = typeof item.type === "string" ? item.type.trim().toLowerCase() : "";
     const packagePeriod =
@@ -168,7 +174,7 @@ function findLocalPackageId(zonePackagesResponse: unknown, selectedPeriod: numbe
           ? Number(item.period)
           : NaN;
 
-    return packageType === "local" && packagePeriod === selectedPeriod;
+    return packageType === selectedType.trim().toLowerCase() && packagePeriod === selectedPeriod;
   });
 
   const packageId =
@@ -208,7 +214,7 @@ export default function BookRide() {
   const [parcelOrderTypeOther, setParcelOrderTypeOther] = useState("");
   const [deliveryInstruction, setDeliveryInstruction] = useState("");
   const [actingDriverPackageType, setActingDriverPackageType] = useState<"Local" | "Outstation">("Outstation");
-  const [actingDriverPackage, setActingDriverPackage] = useState<(typeof actingDriverPackages)[number]["value"]>("10");
+  const [actingDriverPackage, setActingDriverPackage] = useState<string>("10");
   const [actingDriverPickupDateTime, setActingDriverPickupDateTime] = useState("");
   const [actingDriverReturnDateTime, setActingDriverReturnDateTime] = useState("");
   const [localPeriod, setLocalPeriod] = useState("2");
@@ -217,6 +223,8 @@ export default function BookRide() {
   const [time, setTime] = useState("");
   const [returnDate, setReturnDate] = useState("");
   const [returnTime, setReturnTime] = useState("");
+  const [sameSenderAsPickup, setSameSenderAsPickup] = useState(true);
+  const [sameReceiverAsDrop, setSameReceiverAsDrop] = useState(true);
   const [sameCabStartAsPickup, setSameCabStartAsPickup] = useState(true);
   const [sameCabEndAsDrop, setSameCabEndAsDrop] = useState(true);
   const [cabStart, setCabStart] = useState("");
@@ -240,6 +248,8 @@ export default function BookRide() {
   const [bookingError, setBookingError] = useState("");
   const [bookingId, setBookingId] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const actingDriverPackageOptions =
+    actingDriverPackageType === "Local" ? actingDriverLocalPackages : actingDriverOutstationPackages;
 
   const hasSelectedPickup = Boolean(
     selectedPickup?.address &&
@@ -348,7 +358,25 @@ export default function BookRide() {
   }, [to]);
 
   useEffect(() => {
-    if (tripType !== "parcel") return;
+    if (tripType !== "parcel" || !sameSenderAsPickup) return;
+
+    setSenderAddress(selectedPickup?.address || "");
+    setSelectedSenderAddress(selectedPickup);
+    setSenderAddressSuggestions([]);
+    setIsSearchingSenderAddress(false);
+  }, [sameSenderAsPickup, selectedPickup, tripType]);
+
+  useEffect(() => {
+    if (tripType !== "parcel" || !sameReceiverAsDrop) return;
+
+    setReceiverAddress(selectedDrop?.address || "");
+    setSelectedReceiverAddress(selectedDrop);
+    setReceiverAddressSuggestions([]);
+    setIsSearchingReceiverAddress(false);
+  }, [sameReceiverAsDrop, selectedDrop, tripType]);
+
+  useEffect(() => {
+    if (tripType !== "parcel" || sameSenderAsPickup) return;
 
     const query = senderAddress.trim();
 
@@ -376,10 +404,10 @@ export default function BookRide() {
       isCurrent = false;
       window.clearTimeout(timeoutId);
     };
-  }, [senderAddress, tripType]);
+  }, [sameSenderAsPickup, senderAddress, tripType]);
 
   useEffect(() => {
-    if (tripType !== "parcel") return;
+    if (tripType !== "parcel" || sameReceiverAsDrop) return;
 
     const query = receiverAddress.trim();
 
@@ -407,7 +435,7 @@ export default function BookRide() {
       isCurrent = false;
       window.clearTimeout(timeoutId);
     };
-  }, [receiverAddress, tripType]);
+  }, [receiverAddress, sameReceiverAsDrop, tripType]);
 
   useEffect(() => {
     if (sameCabStartAsPickup) {
@@ -489,6 +517,14 @@ export default function BookRide() {
     };
   }, [cabEnd, sameCabEndAsDrop]);
 
+  useEffect(() => {
+    const currentOptions = actingDriverPackageType === "Local" ? actingDriverLocalPackages : actingDriverOutstationPackages;
+
+    if (!currentOptions.some((item) => item.value === actingDriverPackage)) {
+      setActingDriverPackage(currentOptions[0]?.value || "");
+    }
+  }, [actingDriverPackage, actingDriverPackageType]);
+
   const handlePhoneNumberChange = (value: string) => {
     const digitsOnly = value.replace(/\D/g, "").slice(0, 10);
     setPhoneNumber(digitsOnly);
@@ -558,7 +594,7 @@ export default function BookRide() {
 
     const bookingZone = getBookingZonePayload(zone);
 
-    const actingDriverSelectedPackage = actingDriverPackages.find((item) => item.value === actingDriverPackage);
+    const actingDriverSelectedPackage = actingDriverPackageOptions.find((item) => item.value === actingDriverPackage);
     const baseBookingPayload = {
       fromDate:
         tripType === "acting-driver"
@@ -583,6 +619,7 @@ export default function BookRide() {
           } satisfies Partial<Pick<RentalBookingRequest, "dropLocation" | "dropLat" | "dropLong" | "acType">>);
 
     let localPackageId: number | null = null;
+    let actingDriverPackageId: number | null = null;
 
     const bookingPayload =
       tripType === "one-way"
@@ -620,7 +657,9 @@ export default function BookRide() {
             ? {
                 serviceType: "DRIVER",
                 packageType: actingDriverPackageType,
+                bookingType: actingDriverPackageType === "Local" ? "DROP ONLY" : "ROUND TRIP",
                 ...(actingDriverSelectedPackage?.period ? { period: actingDriverSelectedPackage.period } : {}),
+                packageId: actingDriverPackageId ?? undefined,
                 ...(actingDriverPackage === "custom" ? { toDate: buildFromDateTimeInput(actingDriverReturnDateTime) } : {}),
                 tripType,
                 ...baseBookingPayload,
@@ -664,6 +703,23 @@ export default function BookRide() {
           }
 
           bookingPayload.packageId = localPackageId;
+        }
+      }
+      if (tripType === "acting-driver") {
+        const zonePackagesResponse = await getZonePackages("DRIVER", bookingZone);
+
+        if (actingDriverSelectedPackage?.period) {
+          actingDriverPackageId = findZonePackageId(
+            zonePackagesResponse,
+            actingDriverPackageType,
+            actingDriverSelectedPackage.period,
+          );
+
+          if (!actingDriverPackageId) {
+            throw new Error("Selected acting driver package is not available for the chosen zone.");
+          }
+
+          bookingPayload.packageId = actingDriverPackageId;
         }
       }
       const response =
@@ -965,12 +1021,12 @@ export default function BookRide() {
 
                     <div>
                       <Label className="text-sm font-medium mb-1.5 block">Choose Package</Label>
-                      <Select value={actingDriverPackage} onValueChange={(value) => setActingDriverPackage(value as (typeof actingDriverPackages)[number]["value"])}>
+                      <Select value={actingDriverPackage} onValueChange={setActingDriverPackage}>
                         <SelectTrigger className="cursor-pointer">
                           <SelectValue placeholder="Select package" />
                         </SelectTrigger>
                         <SelectContent>
-                          {actingDriverPackages.map((item) => (
+                          {actingDriverPackageOptions.map((item) => (
                             <SelectItem key={item.value} value={item.value} className="cursor-pointer">
                               {item.label}
                             </SelectItem>
@@ -1378,7 +1434,16 @@ export default function BookRide() {
                       </div>
 
                       <div>
-                        <Label className="text-sm font-medium mb-1.5 block">Sender Address</Label>
+                        <div className="mb-1.5 flex flex-wrap items-center justify-between gap-3">
+                          <Label className="text-sm font-medium block">Sender Address</Label>
+                          <label className="flex cursor-pointer items-center gap-2 text-xs font-medium text-muted-foreground">
+                            <Checkbox
+                              checked={sameSenderAsPickup}
+                              onCheckedChange={(checked) => setSameSenderAsPickup(Boolean(checked))}
+                            />
+                            Same as pickup location
+                          </label>
+                        </div>
                         <div className="relative">
                           <Input
                             value={senderAddress}
@@ -1387,9 +1452,11 @@ export default function BookRide() {
                               setSelectedSenderAddress(null);
                             }}
                             onBlur={() => window.setTimeout(() => setSenderAddressSuggestions([]), 150)}
-                            placeholder="Enter sender address"
+                            placeholder={sameSenderAsPickup ? "Auto-filled from pickup location" : "Enter sender address"}
+                            readOnly={sameSenderAsPickup}
+                            className={sameSenderAsPickup ? "bg-muted/40" : ""}
                           />
-                          {(isSearchingSenderAddress || senderAddressSuggestions.length > 0) && (
+                          {!sameSenderAsPickup && (isSearchingSenderAddress || senderAddressSuggestions.length > 0) && (
                             <div className="absolute left-0 right-0 top-full z-30 mt-2 max-h-64 overflow-auto rounded-lg border border-border bg-white shadow-lg">
                               {isSearchingSenderAddress && (
                                 <div className="px-4 py-3 text-sm text-muted-foreground">Searching locations...</div>
@@ -1397,7 +1464,7 @@ export default function BookRide() {
                               {!isSearchingSenderAddress &&
                                 senderAddressSuggestions.map((suggestion) => (
                                   <button
-                                    key={`${suggestion.latitude}-${suggestion.longitude}-${suggestion.address}-sender`}
+                                    key={`${suggestion.latitude}-${suggestion.longitude}-${suggestion.address}`}
                                     type="button"
                                     onMouseDown={() => {
                                       setSenderAddress(suggestion.address || suggestion.name);
@@ -1418,7 +1485,7 @@ export default function BookRide() {
                         </div>
                         {senderAddress.trim().length > 0 && !hasSelectedSenderAddress && (
                           <p className="mt-2 text-xs font-medium text-red-700">
-                            Select a sender address from the suggestions.
+                            Select sender address from the suggestions.
                           </p>
                         )}
                       </div>
@@ -1451,7 +1518,16 @@ export default function BookRide() {
                       </div>
 
                       <div>
-                        <Label className="text-sm font-medium mb-1.5 block">Receiver Address</Label>
+                        <div className="mb-1.5 flex flex-wrap items-center justify-between gap-3">
+                          <Label className="text-sm font-medium block">Receiver Address</Label>
+                          <label className="flex cursor-pointer items-center gap-2 text-xs font-medium text-muted-foreground">
+                            <Checkbox
+                              checked={sameReceiverAsDrop}
+                              onCheckedChange={(checked) => setSameReceiverAsDrop(Boolean(checked))}
+                            />
+                            Same as drop location
+                          </label>
+                        </div>
                         <div className="relative">
                           <Input
                             value={receiverAddress}
@@ -1460,9 +1536,11 @@ export default function BookRide() {
                               setSelectedReceiverAddress(null);
                             }}
                             onBlur={() => window.setTimeout(() => setReceiverAddressSuggestions([]), 150)}
-                            placeholder="Enter receiver address"
+                            placeholder={sameReceiverAsDrop ? "Auto-filled from drop location" : "Enter receiver address"}
+                            readOnly={sameReceiverAsDrop}
+                            className={sameReceiverAsDrop ? "bg-muted/40" : ""}
                           />
-                          {(isSearchingReceiverAddress || receiverAddressSuggestions.length > 0) && (
+                          {!sameReceiverAsDrop && (isSearchingReceiverAddress || receiverAddressSuggestions.length > 0) && (
                             <div className="absolute left-0 right-0 top-full z-30 mt-2 max-h-64 overflow-auto rounded-lg border border-border bg-white shadow-lg">
                               {isSearchingReceiverAddress && (
                                 <div className="px-4 py-3 text-sm text-muted-foreground">Searching locations...</div>
@@ -1470,7 +1548,7 @@ export default function BookRide() {
                               {!isSearchingReceiverAddress &&
                                 receiverAddressSuggestions.map((suggestion) => (
                                   <button
-                                    key={`${suggestion.latitude}-${suggestion.longitude}-${suggestion.address}-receiver`}
+                                    key={`${suggestion.latitude}-${suggestion.longitude}-${suggestion.address}`}
                                     type="button"
                                     onMouseDown={() => {
                                       setReceiverAddress(suggestion.address || suggestion.name);
@@ -1491,7 +1569,7 @@ export default function BookRide() {
                         </div>
                         {receiverAddress.trim().length > 0 && !hasSelectedReceiverAddress && (
                           <p className="mt-2 text-xs font-medium text-red-700">
-                            Select a receiver address from the suggestions.
+                            Select receiver address from the suggestions.
                           </p>
                         )}
                       </div>

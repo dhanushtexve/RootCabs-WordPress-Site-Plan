@@ -94,7 +94,9 @@ function Navbar() {
 
                 {/* Dropdown */}
                 {item.children && activeDropdown === item.label && (
-                  <div className="absolute top-full left-0 mt-1 bg-white rounded-lg shadow-lg border border-border py-2 min-w-[200px] z-50">
+                  <div className="absolute top-full left-0 z-50 pt-2">
+                    <div className="absolute inset-x-0 -top-2 h-2" />
+                    <div className="max-h-[310px] min-w-[200px] overflow-y-auto rounded-lg border border-border bg-white py-2 shadow-lg">
                     {item.children.map((child) => (
                       <Link
                         key={child.path}
@@ -106,6 +108,7 @@ function Navbar() {
                         {child.label}
                       </Link>
                     ))}
+                    </div>
                   </div>
                 )}
               </div>
@@ -185,6 +188,9 @@ function Footer() {
               className="h-16 w-auto max-w-[160px] object-contain"
             />
           </div>
+          <p className="mb-4 text-sm font-semibold text-white">
+            Rootcabs - (Unit Of Texve Innovations)
+          </p>
           <div className="mt-4 space-y-2 text-sm">
             <a href={`tel:${companyInfo.phone}`} className="flex items-center gap-2 hover:text-yellow-300 cursor-pointer">
               <Phone className="w-4 h-4" /> {companyInfo.phone}

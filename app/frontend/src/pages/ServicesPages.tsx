@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { Car, Plane, Navigation, User, Package, Bike, CheckCircle, ArrowRight, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { services, cities, companyInfo } from "@/data/siteData";
 import FareCalculator from "@/components/FareCalculator";
 
@@ -25,6 +26,28 @@ export function ServicesHub() {
     { value: "8+", label: "Services" },
     { value: "10+", label: "Cities" },
     { value: "4.7", label: "Average rating" },
+  ];
+  const serviceFaqs = [
+    {
+      q: "What services can I book through Root Cabs?",
+      a: "Root Cabs offers local taxis, outstation taxis, one-way rides, Auto, Bike Taxi, hourly packages, acting drivers and parcel delivery.",
+    },
+    {
+      q: "Can I book a Root Cabs ride for someone else?",
+      a: "Yes. You can book a ride for a family member or friend by entering their pickup location, destination and correct contact number.",
+    },
+    {
+      q: "Which service is suitable for long-distance travel?",
+      a: "An outstation taxi service is ideal for round trips, while a one-way taxi is better when you only need a drop at your destination.",
+    },
+    {
+      q: "Can I book a car with a driver for several hours?",
+      a: "Yes. You can choose an hourly package service for meetings, shopping, events or trips with multiple stops.",
+    },
+    {
+      q: "Are Root Cabs drivers verified?",
+      a: "Yes. Root Cabs works with verified drivers to provide safer and more reliable travel across its available services.",
+    },
   ];
   const serviceCards = [
     {
@@ -247,6 +270,40 @@ export function ServicesHub() {
               </div>
             </div>
           </div>
+        </section>
+
+        {/* Drive and Earn CTA */}
+        <section className="mt-8 rounded-2xl border border-[#D7DDED] bg-white px-6 py-8 text-center shadow-sm">
+          <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+            Drive and Earn with Root Cabs
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-base">
+            Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+          </p>
+          <Button asChild className="mt-6 bg-[#1E2A6E] text-white hover:bg-[#17225E]">
+            <Link to="/drivers">
+              Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
+        </section>
+
+        {/* FAQ */}
+        <section className="mt-14 rounded-2xl bg-[#F4F6FA] px-4 py-10 md:px-8 md:py-12">
+          <h2 className="font-heading text-center text-3xl font-bold text-[#1E2A6E] md:text-4xl">
+            Frequently Asked Questions
+          </h2>
+          <Accordion type="single" collapsible className="mx-auto mt-8 max-w-3xl space-y-3">
+            {serviceFaqs.map((faq, index) => (
+              <AccordionItem key={faq.q} value={`services-faq-${index}`} className="border-0">
+                <AccordionTrigger className="rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline">
+                  {faq.q}
+                </AccordionTrigger>
+                <AccordionContent className="rounded-b-lg bg-white px-5 pb-5 text-sm leading-6 text-[#4B587C] shadow-sm">
+                  {faq.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </section>
       </div>
     </div>

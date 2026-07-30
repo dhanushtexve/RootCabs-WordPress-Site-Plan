@@ -238,6 +238,16 @@ export default defineConfig(({ command, mode }) => {
             proxy.on('proxyReq', removeBrowserOriginHeaders);
           },
         },
+        '/api/customer/dev/add-booking': {
+          target: bookingApiProxyTarget,
+          changeOrigin: true,
+          headers: {
+            'ngrok-skip-browser-warning': 'true',
+          },
+          configure(proxy) {
+            proxy.on('proxyReq', removeBrowserOriginHeaders);
+          },
+        },
         '/api': {
           target: apiProxyTarget,
           changeOrigin: true,

@@ -232,7 +232,7 @@ export async function searchAddressDetailed(address: string) {
   return payload.data || [];
 }
 
-export async function getZonePackages(serviceType: "RENTAL", zone: string) {
+export async function getZonePackages(serviceType: "RENTAL" | "DRIVER", zone: string) {
   const params = new URLSearchParams({
     serviceType,
     zone,
