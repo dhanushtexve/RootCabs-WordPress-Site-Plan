@@ -7,9 +7,11 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card, CardContent } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { fareRates, companyInfo } from "@/data/siteData";
 import {
+  addBooking,
   addRentalBooking,
   getZonePackages,
   type AddressSuggestion,
@@ -47,6 +49,13 @@ const bookingZones = [
 ];
 
 const localPackageHours = [2, 4, 6, 8];
+const parcelOrderTypes = ["Food", "Medicine", "Cloths", "Documents", "Groceries", "Electronics", "Other"];
+const actingDriverPackages = [
+  { value: "10", label: "10 h", period: 10 },
+  { value: "24", label: "1 day", period: 24 },
+  { value: "48", label: "2 day", period: 48 },
+  { value: "custom", label: "Custom" },
+] as const;
 
 const bookRideFaqs = [
   {
@@ -89,6 +98,10 @@ const BOOKING_DEVICE_TOKEN =
 function buildFromDate(date: string, time: string) {
   const localDateTime = new Date(`${date}T${time}:00`);
   return localDateTime.toISOString();
+}
+
+function buildFromDateTimeInput(dateTime: string) {
+  return new Date(dateTime).toISOString();
 }
 
 function getBookingZonePayload(zone: string) {
@@ -177,9 +190,27 @@ export default function BookRide() {
   const [toSuggestions, setToSuggestions] = useState<AddressSuggestion[]>([]);
   const [isSearchingFrom, setIsSearchingFrom] = useState(false);
   const [isSearchingTo, setIsSearchingTo] = useState(false);
+  const [senderAddress, setSenderAddress] = useState("");
+  const [receiverAddress, setReceiverAddress] = useState("");
+  const [selectedSenderAddress, setSelectedSenderAddress] = useState<AddressSuggestion | null>(null);
+  const [selectedReceiverAddress, setSelectedReceiverAddress] = useState<AddressSuggestion | null>(null);
+  const [senderAddressSuggestions, setSenderAddressSuggestions] = useState<AddressSuggestion[]>([]);
+  const [receiverAddressSuggestions, setReceiverAddressSuggestions] = useState<AddressSuggestion[]>([]);
+  const [isSearchingSenderAddress, setIsSearchingSenderAddress] = useState(false);
+  const [isSearchingReceiverAddress, setIsSearchingReceiverAddress] = useState(false);
   const [tripType, setTripType] = useState("one-way");
   const [vehicle, setVehicle] = useState("sedan");
   const [acType, setAcType] = useState<"AC" | "NON AC">("AC");
+  const [parcelVehicleType, setParcelVehicleType] = useState<"Bike" | "Auto">("Bike");
+  const [receiverName, setReceiverName] = useState("");
+  const [receiverPhoneNumber, setReceiverPhoneNumber] = useState("");
+  const [parcelOrderType, setParcelOrderType] = useState("");
+  const [parcelOrderTypeOther, setParcelOrderTypeOther] = useState("");
+  const [deliveryInstruction, setDeliveryInstruction] = useState("");
+  const [actingDriverPackageType, setActingDriverPackageType] = useState<"Local" | "Outstation">("Outstation");
+  const [actingDriverPackage, setActingDriverPackage] = useState<(typeof actingDriverPackages)[number]["value"]>("10");
+  const [actingDriverPickupDateTime, setActingDriverPickupDateTime] = useState("");
+  const [actingDriverReturnDateTime, setActingDriverReturnDateTime] = useState("");
   const [localPeriod, setLocalPeriod] = useState("2");
   const [zone, setZone] = useState("");
   const [date, setDate] = useState("");
@@ -220,12 +251,31 @@ export default function BookRide() {
       typeof selectedDrop.latitude === "number" &&
       typeof selectedDrop.longitude === "number",
   );
+  const hasSelectedSenderAddress = Boolean(
+    selectedSenderAddress?.address &&
+      typeof selectedSenderAddress.latitude === "number" &&
+      typeof selectedSenderAddress.longitude === "number",
+  );
+  const hasSelectedReceiverAddress = Boolean(
+    selectedReceiverAddress?.address &&
+      typeof selectedReceiverAddress.latitude === "number" &&
+      typeof selectedReceiverAddress.longitude === "number",
+  );
   const isConfirmBookingReady = Boolean(
     hasSelectedPickup &&
       (tripType === "local" || hasSelectedDrop) &&
-      date &&
-      time &&
+      (tripType === "acting-driver" ? actingDriverPickupDateTime : date && time) &&
+      (tripType !== "acting-driver" || actingDriverPackage !== "custom" || actingDriverReturnDateTime) &&
       (tripType !== "local" || localPeriod) &&
+      (tripType !== "parcel" ||
+        (parcelVehicleType &&
+          receiverName.trim() &&
+          receiverPhoneNumber.length === 10 &&
+          hasSelectedSenderAddress &&
+          hasSelectedReceiverAddress &&
+          parcelOrderType &&
+          (parcelOrderType !== "Other" || parcelOrderTypeOther.trim()) &&
+          deliveryInstruction.trim())) &&
       (tripType !== "round-trip" ||
         (returnDate &&
           returnTime &&
@@ -235,7 +285,7 @@ export default function BookRide() {
       name.trim() &&
       phoneNumber.length === 10 &&
       phoneVerified &&
-      carTypeMap[vehicle] &&
+      (tripType === "parcel" || carTypeMap[vehicle]) &&
       !isSubmittingBooking,
   );
 
@@ -296,6 +346,68 @@ export default function BookRide() {
       window.clearTimeout(timeoutId);
     };
   }, [to]);
+
+  useEffect(() => {
+    if (tripType !== "parcel") return;
+
+    const query = senderAddress.trim();
+
+    if (query.length < 3) {
+      setSenderAddressSuggestions([]);
+      setIsSearchingSenderAddress(false);
+      return;
+    }
+
+    let isCurrent = true;
+    setIsSearchingSenderAddress(true);
+
+    const timeoutId = window.setTimeout(async () => {
+      try {
+        const suggestions = await searchAddressDetailed(query);
+        if (isCurrent) setSenderAddressSuggestions(suggestions);
+      } catch {
+        if (isCurrent) setSenderAddressSuggestions([]);
+      } finally {
+        if (isCurrent) setIsSearchingSenderAddress(false);
+      }
+    }, 350);
+
+    return () => {
+      isCurrent = false;
+      window.clearTimeout(timeoutId);
+    };
+  }, [senderAddress, tripType]);
+
+  useEffect(() => {
+    if (tripType !== "parcel") return;
+
+    const query = receiverAddress.trim();
+
+    if (query.length < 3) {
+      setReceiverAddressSuggestions([]);
+      setIsSearchingReceiverAddress(false);
+      return;
+    }
+
+    let isCurrent = true;
+    setIsSearchingReceiverAddress(true);
+
+    const timeoutId = window.setTimeout(async () => {
+      try {
+        const suggestions = await searchAddressDetailed(query);
+        if (isCurrent) setReceiverAddressSuggestions(suggestions);
+      } catch {
+        if (isCurrent) setReceiverAddressSuggestions([]);
+      } finally {
+        if (isCurrent) setIsSearchingReceiverAddress(false);
+      }
+    }, 350);
+
+    return () => {
+      isCurrent = false;
+      window.clearTimeout(timeoutId);
+    };
+  }, [receiverAddress, tripType]);
 
   useEffect(() => {
     if (sameCabStartAsPickup) {
@@ -382,6 +494,11 @@ export default function BookRide() {
     setPhoneNumber(digitsOnly);
   };
 
+  const handleReceiverPhoneNumberChange = (value: string) => {
+    const digitsOnly = value.replace(/\D/g, "").slice(0, 10);
+    setReceiverPhoneNumber(digitsOnly);
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setBookingError("");
@@ -395,8 +512,27 @@ export default function BookRide() {
       );
       return;
     }
-    if (!date || !time || !name.trim()) {
+    if (tripType === "parcel" && (!hasSelectedSenderAddress || !hasSelectedReceiverAddress)) {
+      setOtpError("Please select sender and receiver addresses from the suggestions.");
+      return;
+    }
+    if ((tripType === "acting-driver" ? !actingDriverPickupDateTime : !date || !time) || !name.trim()) {
       setBookingError("Please fill all booking details before confirming.");
+      return;
+    }
+    if (
+      tripType === "parcel" &&
+      (!receiverName.trim() ||
+        receiverPhoneNumber.length !== 10 ||
+        !parcelOrderType ||
+        (parcelOrderType === "Other" && !parcelOrderTypeOther.trim()) ||
+        !deliveryInstruction.trim())
+    ) {
+      setBookingError("Please fill all parcel details before confirming.");
+      return;
+    }
+    if (tripType === "acting-driver" && actingDriverPackage === "custom" && !actingDriverReturnDateTime) {
+      setBookingError("Please select return date and time before confirming.");
       return;
     }
     if (!zone) {
@@ -422,13 +558,17 @@ export default function BookRide() {
 
     const bookingZone = getBookingZonePayload(zone);
 
+    const actingDriverSelectedPackage = actingDriverPackages.find((item) => item.value === actingDriverPackage);
     const baseBookingPayload = {
-      fromDate: buildFromDate(date, time),
+      fromDate:
+        tripType === "acting-driver"
+          ? buildFromDateTimeInput(actingDriverPickupDateTime)
+          : buildFromDate(date, time),
       pickupLocation: selectedPickup!.address,
       pickupLat: selectedPickup!.latitude!,
       pickupLong: selectedPickup!.longitude!,
       zone: bookingZone,
-      carType: carTypeMap[vehicle],
+      ...(tripType === "parcel" ? {} : { carType: carTypeMap[vehicle] }),
       source: "RootCabs Website",
     } satisfies Omit<RentalBookingRequest, "packageType" | "booking" | "tripType">;
 
@@ -439,8 +579,8 @@ export default function BookRide() {
             dropLocation: selectedDrop!.address,
             dropLat: selectedDrop!.latitude!,
             dropLong: selectedDrop!.longitude!,
-            acType,
-          } satisfies Pick<RentalBookingRequest, "dropLocation" | "dropLat" | "dropLong" | "acType">);
+            ...(tripType === "acting-driver" || tripType === "parcel" ? {} : { acType }),
+          } satisfies Partial<Pick<RentalBookingRequest, "dropLocation" | "dropLat" | "dropLong" | "acType">>);
 
     let localPackageId: number | null = null;
 
@@ -476,6 +616,33 @@ export default function BookRide() {
               packageId: localPackageId ?? undefined,
               ...baseBookingPayload,
             }
+          : tripType === "acting-driver"
+            ? {
+                serviceType: "DRIVER",
+                packageType: actingDriverPackageType,
+                ...(actingDriverSelectedPackage?.period ? { period: actingDriverSelectedPackage.period } : {}),
+                ...(actingDriverPackage === "custom" ? { toDate: buildFromDateTimeInput(actingDriverReturnDateTime) } : {}),
+                tripType,
+                ...baseBookingPayload,
+                ...dropBookingPayload,
+              }
+            : tripType === "parcel"
+              ? {
+                  serviceType: "PARCEL",
+                  parcelVehicleType,
+                  senderName: name.trim(),
+                  senderPhone: `+91${phoneNumber}`,
+                  senderAddress: selectedSenderAddress!.address,
+                  receiverName: receiverName.trim(),
+                  receiverPhone: `+91${receiverPhoneNumber}`,
+                  receiverAddress: selectedReceiverAddress!.address,
+                  orderType: parcelOrderType,
+                  ...(parcelOrderType === "Other" ? { orderTypeOther: parcelOrderTypeOther.trim() } : {}),
+                  deliveryDetails: deliveryInstruction.trim(),
+                  tripType,
+                  ...baseBookingPayload,
+                  ...dropBookingPayload,
+                }
         : {
             tripType,
             ...baseBookingPayload,
@@ -499,7 +666,10 @@ export default function BookRide() {
           bookingPayload.packageId = localPackageId;
         }
       }
-      const response = await addRentalBooking(bookingPayload);
+      const response =
+        tripType === "acting-driver"
+          ? await addBooking(bookingPayload)
+          : await addRentalBooking(bookingPayload);
       setBookingId(getBookingIdFromResponse(response));
       setSubmitted(true);
     } catch (error) {
@@ -575,7 +745,12 @@ export default function BookRide() {
             )}
             <div className="flex justify-between"><span className="text-muted-foreground">Vehicle:</span><span className="font-medium capitalize">{vehicle}</span></div>
             <div className="flex justify-between"><span className="text-muted-foreground">Trip:</span><span className="font-medium capitalize">{tripType}</span></div>
-            {date && <div className="flex justify-between"><span className="text-muted-foreground">Date:</span><span className="font-medium">{date}</span></div>}
+            {(tripType === "acting-driver" ? actingDriverPickupDateTime : date) && (
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Date:</span>
+                <span className="font-medium">{tripType === "acting-driver" ? actingDriverPickupDateTime : date}</span>
+              </div>
+            )}
           </div>
         </div>
         <div className="flex flex-wrap justify-center gap-4">
@@ -768,24 +943,79 @@ export default function BookRide() {
 
               {tripType !== "local" && (
               <div className="grid md:grid-cols-2 gap-4">
-                {/* AC Type */}
-                <div>
-                  <Label className="text-sm font-medium mb-3 block">AC Type</Label>
-                  <RadioGroup
-                    value={acType}
-                    onValueChange={(value) => setAcType(value as "AC" | "NON AC")}
-                    className="flex gap-4"
-                  >
-                    <div className="flex items-center gap-2">
-                      <RadioGroupItem value="AC" id="ac" className="cursor-pointer" />
-                      <Label htmlFor="ac" className="cursor-pointer">AC</Label>
+                {tripType === "acting-driver" ? (
+                  <>
+                    <div>
+                      <Label className="text-sm font-medium mb-3 block">Acting Driver Type</Label>
+                      <RadioGroup
+                        value={actingDriverPackageType}
+                        onValueChange={(value) => setActingDriverPackageType(value as "Local" | "Outstation")}
+                        className="flex gap-4"
+                      >
+                        <div className="flex items-center gap-2">
+                          <RadioGroupItem value="Local" id="acting-local" className="cursor-pointer" />
+                          <Label htmlFor="acting-local" className="cursor-pointer">Local</Label>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <RadioGroupItem value="Outstation" id="acting-outstation" className="cursor-pointer" />
+                          <Label htmlFor="acting-outstation" className="cursor-pointer">Outstation</Label>
+                        </div>
+                      </RadioGroup>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <RadioGroupItem value="NON AC" id="non-ac" className="cursor-pointer" />
-                      <Label htmlFor="non-ac" className="cursor-pointer">NON AC</Label>
+
+                    <div>
+                      <Label className="text-sm font-medium mb-1.5 block">Choose Package</Label>
+                      <Select value={actingDriverPackage} onValueChange={(value) => setActingDriverPackage(value as (typeof actingDriverPackages)[number]["value"])}>
+                        <SelectTrigger className="cursor-pointer">
+                          <SelectValue placeholder="Select package" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {actingDriverPackages.map((item) => (
+                            <SelectItem key={item.value} value={item.value} className="cursor-pointer">
+                              {item.label}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
                     </div>
-                  </RadioGroup>
-                </div>
+                  </>
+                ) : tripType === "parcel" ? (
+                  <div>
+                    <Label className="text-sm font-medium mb-3 block">Parcel Vehicle</Label>
+                    <RadioGroup
+                      value={parcelVehicleType}
+                      onValueChange={(value) => setParcelVehicleType(value as "Bike" | "Auto")}
+                      className="flex gap-4"
+                    >
+                      <div className="flex items-center gap-2">
+                        <RadioGroupItem value="Bike" id="parcel-bike" className="cursor-pointer" />
+                        <Label htmlFor="parcel-bike" className="cursor-pointer">Bike</Label>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <RadioGroupItem value="Auto" id="parcel-auto" className="cursor-pointer" />
+                        <Label htmlFor="parcel-auto" className="cursor-pointer">Auto</Label>
+                      </div>
+                    </RadioGroup>
+                  </div>
+                ) : (
+                  <div>
+                    <Label className="text-sm font-medium mb-3 block">AC Type</Label>
+                    <RadioGroup
+                      value={acType}
+                      onValueChange={(value) => setAcType(value as "AC" | "NON AC")}
+                      className="flex gap-4"
+                    >
+                      <div className="flex items-center gap-2">
+                        <RadioGroupItem value="AC" id="ac" className="cursor-pointer" />
+                        <Label htmlFor="ac" className="cursor-pointer">AC</Label>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <RadioGroupItem value="NON AC" id="non-ac" className="cursor-pointer" />
+                        <Label htmlFor="non-ac" className="cursor-pointer">NON AC</Label>
+                      </div>
+                    </RadioGroup>
+                  </div>
+                )}
 
                 {/* Zone */}
                 <div>
@@ -807,16 +1037,41 @@ export default function BookRide() {
               )}
 
               {/* Date & Time */}
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <Label className="text-sm font-medium mb-1.5 block">Pickup Date</Label>
-                  <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="cursor-pointer" />
+              {tripType === "acting-driver" ? (
+                <div className={`grid gap-4 ${actingDriverPackage === "custom" ? "md:grid-cols-2" : "md:grid-cols-1"}`}>
+                  <div>
+                    <Label className="text-sm font-medium mb-1.5 block">Pickup Date & Time</Label>
+                    <Input
+                      type="datetime-local"
+                      value={actingDriverPickupDateTime}
+                      onChange={(e) => setActingDriverPickupDateTime(e.target.value)}
+                      className="cursor-pointer"
+                    />
+                  </div>
+                  {actingDriverPackage === "custom" && (
+                    <div>
+                      <Label className="text-sm font-medium mb-1.5 block">Return Date & Time</Label>
+                      <Input
+                        type="datetime-local"
+                        value={actingDriverReturnDateTime}
+                        onChange={(e) => setActingDriverReturnDateTime(e.target.value)}
+                        className="cursor-pointer"
+                      />
+                    </div>
+                  )}
                 </div>
-                <div>
-                  <Label className="text-sm font-medium mb-1.5 block">Pickup Time</Label>
-                  <Input type="time" value={time} onChange={(e) => setTime(e.target.value)} className="cursor-pointer" />
+              ) : (
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <Label className="text-sm font-medium mb-1.5 block">Pickup Date</Label>
+                    <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="cursor-pointer" />
+                  </div>
+                  <div>
+                    <Label className="text-sm font-medium mb-1.5 block">Pickup Time</Label>
+                    <Input type="time" value={time} onChange={(e) => setTime(e.target.value)} className="cursor-pointer" />
+                  </div>
                 </div>
-              </div>
+              )}
 
               {tripType === "round-trip" && (
                 <div className="space-y-4 rounded-xl border border-border bg-white p-4">
@@ -958,93 +1213,329 @@ export default function BookRide() {
               )}
 
               {/* Vehicle Selection */}
-              <div>
-                <Label className="text-sm font-medium mb-3 block">Select Vehicle</Label>
-                <div className="grid sm:grid-cols-2 gap-3">
-                  {vehicles.map((v) => (
-                    <div
-                      key={v.id}
-                      onClick={() => setVehicle(v.id)}
-                      className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${
-                        vehicle === v.id
-                          ? "border-primary bg-primary/5"
-                          : "border-border hover:border-primary/30"
-                      }`}
-                    >
-                      <div className="flex items-center gap-3">
-                        <Car className={`w-8 h-8 ${vehicle === v.id ? "text-primary" : "text-muted-foreground"}`} />
-                        <div>
-                          <p className="font-semibold">{v.name}</p>
-                          <p className="text-xs text-muted-foreground">{v.desc}</p>
-                          <p className="text-xs text-muted-foreground">{v.capacity} â€¢ â‚¹{v.rate.perKm}/km</p>
+              {tripType !== "parcel" && (
+                <div>
+                  <Label className="text-sm font-medium mb-3 block">Select Vehicle</Label>
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {vehicles.map((v) => (
+                      <div
+                        key={v.id}
+                        onClick={() => setVehicle(v.id)}
+                        className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${
+                          vehicle === v.id
+                            ? "border-primary bg-primary/5"
+                            : "border-border hover:border-primary/30"
+                        }`}
+                      >
+                        <div className="flex items-center gap-3">
+                          <Car className={`w-8 h-8 ${vehicle === v.id ? "text-primary" : "text-muted-foreground"}`} />
+                          <div>
+                            <p className="font-semibold">{v.name}</p>
+                            <p className="text-xs text-muted-foreground">{v.desc}</p>
+                            <p className="text-xs text-muted-foreground">{v.capacity} • ₹{v.rate.perKm}/km</p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Contact */}
-              <div className="grid md:grid-cols-2 gap-4">
-                <div>
-                  <Label className="text-sm font-medium mb-1.5 block">Your Name</Label>
-                  <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter your name" />
-                </div>
-                <div>
-                  <div className="mb-1.5 flex items-center justify-between gap-3">
-                    <Label className="text-sm font-medium block">Phone Number</Label>
-                    {phoneVerified && <span className="text-xs font-semibold text-green-700">Verified</span>}
+              {tripType !== "parcel" && (
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div>
+                    <Label className="text-sm font-medium mb-1.5 block">Your Name</Label>
+                    <Input
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="Enter your name"
+                    />
                   </div>
-
-                  {!otpSent ? (
-                    <div className="flex gap-2">
-                      <div className="flex flex-1 items-center rounded-md border border-input bg-background px-3">
-                        <span className="shrink-0 text-sm font-medium text-muted-foreground">+91</span>
-                        <Input
-                          value={phoneNumber}
-                          onChange={(e) => handlePhoneNumberChange(e.target.value)}
-                          placeholder="Enter 10-digit number"
-                          type="tel"
-                          inputMode="numeric"
-                          maxLength={10}
-                          className="border-0 px-2 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
-                        />
-                      </div>
-                      <Button
-                        type="button"
-                        onClick={handleSendOtp}
-                        disabled={isSendingOtp || phoneNumber.length !== 10}
-                        className="shrink-0 bg-primary hover:bg-primary/90"
-                      >
-                        {isSendingOtp ? "Sending..." : "Send OTP"}
-                      </Button>
+                  <div>
+                    <div className="mb-1.5 flex items-center justify-between gap-3">
+                      <Label className="text-sm font-medium block">Phone Number</Label>
+                      {phoneVerified && <span className="text-xs font-semibold text-green-700">Verified</span>}
                     </div>
-                  ) : (
-                    <div className="space-y-2">
+
+                    {!otpSent ? (
                       <div className="flex gap-2">
-                        <Input
-                          value={otp}
-                          onChange={(e) => setOtp(e.target.value)}
-                          placeholder="Enter OTP"
-                          inputMode="numeric"
-                          disabled={phoneVerified}
-                        />
+                        <div className="flex flex-1 items-center rounded-md border border-input bg-background px-3">
+                          <span className="shrink-0 text-sm font-medium text-muted-foreground">+91</span>
+                          <Input
+                            value={phoneNumber}
+                            onChange={(e) => handlePhoneNumberChange(e.target.value)}
+                            placeholder="Enter 10-digit number"
+                            type="tel"
+                            inputMode="numeric"
+                            maxLength={10}
+                            className="border-0 px-2 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                          />
+                        </div>
                         <Button
                           type="button"
-                          onClick={handleVerifyOtp}
-                          disabled={isVerifyingOtp || phoneVerified}
+                          onClick={handleSendOtp}
+                          disabled={isSendingOtp || phoneNumber.length !== 10}
                           className="shrink-0 bg-primary hover:bg-primary/90"
                         >
-                          {phoneVerified ? "Verified" : isVerifyingOtp ? "Verifying..." : "Verify"}
+                          {isSendingOtp ? "Sending..." : "Send OTP"}
                         </Button>
                       </div>
-                    </div>
-                  )}
+                    ) : (
+                      <div className="space-y-2">
+                        <div className="flex gap-2">
+                          <Input
+                            value={otp}
+                            onChange={(e) => setOtp(e.target.value)}
+                            placeholder="Enter OTP"
+                            inputMode="numeric"
+                            disabled={phoneVerified}
+                          />
+                          <Button
+                            type="button"
+                            onClick={handleVerifyOtp}
+                            disabled={isVerifyingOtp || phoneVerified}
+                            className="shrink-0 bg-primary hover:bg-primary/90"
+                          >
+                            {phoneVerified ? "Verified" : isVerifyingOtp ? "Verifying..." : "Verify"}
+                          </Button>
+                        </div>
+                      </div>
+                    )}
 
-                  {otpStatus && <p className="mt-2 text-xs font-medium text-green-700">{otpStatus}</p>}
-                  {otpError && <p className="mt-2 text-xs font-medium text-red-700">{otpError}</p>}
+                    {otpStatus && <p className="mt-2 text-xs font-medium text-green-700">{otpStatus}</p>}
+                    {otpError && <p className="mt-2 text-xs font-medium text-red-700">{otpError}</p>}
+                  </div>
                 </div>
-              </div>
+              )}
+
+              {tripType === "parcel" && (
+                <div className="space-y-4 rounded-xl border border-border bg-white p-4">
+                  <div className="grid gap-6 md:grid-cols-2">
+                    <div className="space-y-4">
+                      <div>
+                        <Label className="text-sm font-medium mb-1.5 block">Sender Name</Label>
+                        <Input
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
+                          placeholder="Enter sender name"
+                        />
+                      </div>
+
+                      <div>
+                        <div className="mb-1.5 flex items-center justify-between gap-3">
+                          <Label className="text-sm font-medium block">Sender Phone Number</Label>
+                          {phoneVerified && <span className="text-xs font-semibold text-green-700">Verified</span>}
+                        </div>
+
+                        {!otpSent ? (
+                          <div className="flex gap-2">
+                            <div className="flex flex-1 items-center rounded-md border border-input bg-background px-3">
+                              <span className="shrink-0 text-sm font-medium text-muted-foreground">+91</span>
+                              <Input
+                                value={phoneNumber}
+                                onChange={(e) => handlePhoneNumberChange(e.target.value)}
+                                placeholder="Enter 10-digit number"
+                                type="tel"
+                                inputMode="numeric"
+                                maxLength={10}
+                                className="border-0 px-2 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                              />
+                            </div>
+                            <Button
+                              type="button"
+                              onClick={handleSendOtp}
+                              disabled={isSendingOtp || phoneNumber.length !== 10}
+                              className="shrink-0 bg-primary hover:bg-primary/90"
+                            >
+                              {isSendingOtp ? "Sending..." : "Send OTP"}
+                            </Button>
+                          </div>
+                        ) : (
+                          <div className="space-y-2">
+                            <div className="flex gap-2">
+                              <Input
+                                value={otp}
+                                onChange={(e) => setOtp(e.target.value)}
+                                placeholder="Enter OTP"
+                                inputMode="numeric"
+                                disabled={phoneVerified}
+                              />
+                              <Button
+                                type="button"
+                                onClick={handleVerifyOtp}
+                                disabled={isVerifyingOtp || phoneVerified}
+                                className="shrink-0 bg-primary hover:bg-primary/90"
+                              >
+                                {phoneVerified ? "Verified" : isVerifyingOtp ? "Verifying..." : "Verify"}
+                              </Button>
+                            </div>
+                          </div>
+                        )}
+
+                        {otpStatus && <p className="mt-2 text-xs font-medium text-green-700">{otpStatus}</p>}
+                        {otpError && <p className="mt-2 text-xs font-medium text-red-700">{otpError}</p>}
+                      </div>
+
+                      <div>
+                        <Label className="text-sm font-medium mb-1.5 block">Sender Address</Label>
+                        <div className="relative">
+                          <Input
+                            value={senderAddress}
+                            onChange={(event) => {
+                              setSenderAddress(event.target.value);
+                              setSelectedSenderAddress(null);
+                            }}
+                            onBlur={() => window.setTimeout(() => setSenderAddressSuggestions([]), 150)}
+                            placeholder="Enter sender address"
+                          />
+                          {(isSearchingSenderAddress || senderAddressSuggestions.length > 0) && (
+                            <div className="absolute left-0 right-0 top-full z-30 mt-2 max-h-64 overflow-auto rounded-lg border border-border bg-white shadow-lg">
+                              {isSearchingSenderAddress && (
+                                <div className="px-4 py-3 text-sm text-muted-foreground">Searching locations...</div>
+                              )}
+                              {!isSearchingSenderAddress &&
+                                senderAddressSuggestions.map((suggestion) => (
+                                  <button
+                                    key={`${suggestion.latitude}-${suggestion.longitude}-${suggestion.address}-sender`}
+                                    type="button"
+                                    onMouseDown={() => {
+                                      setSenderAddress(suggestion.address || suggestion.name);
+                                      setSelectedSenderAddress(suggestion);
+                                      setSenderAddressSuggestions([]);
+                                    }}
+                                    className="flex w-full gap-3 px-4 py-3 text-left text-sm transition-colors hover:bg-primary/5"
+                                  >
+                                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                                    <span>
+                                      <span className="block font-semibold text-foreground">{suggestion.name}</span>
+                                      <span className="block text-xs leading-5 text-muted-foreground">{suggestion.address}</span>
+                                    </span>
+                                  </button>
+                                ))}
+                            </div>
+                          )}
+                        </div>
+                        {senderAddress.trim().length > 0 && !hasSelectedSenderAddress && (
+                          <p className="mt-2 text-xs font-medium text-red-700">
+                            Select a sender address from the suggestions.
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div>
+                        <Label className="text-sm font-medium mb-1.5 block">Receiver Name</Label>
+                        <Input
+                          value={receiverName}
+                          onChange={(e) => setReceiverName(e.target.value)}
+                          placeholder="Enter receiver name"
+                        />
+                      </div>
+
+                      <div>
+                        <Label className="text-sm font-medium mb-1.5 block">Receiver Phone Number</Label>
+                        <div className="flex items-center rounded-md border border-input bg-background px-3">
+                          <span className="shrink-0 text-sm font-medium text-muted-foreground">+91</span>
+                          <Input
+                            value={receiverPhoneNumber}
+                            onChange={(e) => handleReceiverPhoneNumberChange(e.target.value)}
+                            placeholder="Enter 10-digit number"
+                            type="tel"
+                            inputMode="numeric"
+                            maxLength={10}
+                            className="border-0 px-2 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <Label className="text-sm font-medium mb-1.5 block">Receiver Address</Label>
+                        <div className="relative">
+                          <Input
+                            value={receiverAddress}
+                            onChange={(event) => {
+                              setReceiverAddress(event.target.value);
+                              setSelectedReceiverAddress(null);
+                            }}
+                            onBlur={() => window.setTimeout(() => setReceiverAddressSuggestions([]), 150)}
+                            placeholder="Enter receiver address"
+                          />
+                          {(isSearchingReceiverAddress || receiverAddressSuggestions.length > 0) && (
+                            <div className="absolute left-0 right-0 top-full z-30 mt-2 max-h-64 overflow-auto rounded-lg border border-border bg-white shadow-lg">
+                              {isSearchingReceiverAddress && (
+                                <div className="px-4 py-3 text-sm text-muted-foreground">Searching locations...</div>
+                              )}
+                              {!isSearchingReceiverAddress &&
+                                receiverAddressSuggestions.map((suggestion) => (
+                                  <button
+                                    key={`${suggestion.latitude}-${suggestion.longitude}-${suggestion.address}-receiver`}
+                                    type="button"
+                                    onMouseDown={() => {
+                                      setReceiverAddress(suggestion.address || suggestion.name);
+                                      setSelectedReceiverAddress(suggestion);
+                                      setReceiverAddressSuggestions([]);
+                                    }}
+                                    className="flex w-full gap-3 px-4 py-3 text-left text-sm transition-colors hover:bg-primary/5"
+                                  >
+                                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                                    <span>
+                                      <span className="block font-semibold text-foreground">{suggestion.name}</span>
+                                      <span className="block text-xs leading-5 text-muted-foreground">{suggestion.address}</span>
+                                    </span>
+                                  </button>
+                                ))}
+                            </div>
+                          )}
+                        </div>
+                        {receiverAddress.trim().length > 0 && !hasSelectedReceiverAddress && (
+                          <p className="mt-2 text-xs font-medium text-red-700">
+                            Select a receiver address from the suggestions.
+                          </p>
+                        )}
+                      </div>
+
+                      <div>
+                        <Label className="text-sm font-medium mb-1.5 block">Order Type</Label>
+                        <Select value={parcelOrderType} onValueChange={setParcelOrderType}>
+                          <SelectTrigger className="cursor-pointer">
+                            <SelectValue placeholder="Select order type" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {parcelOrderTypes.map((type) => (
+                              <SelectItem key={type} value={type} className="cursor-pointer">
+                                {type}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      {parcelOrderType === "Other" && (
+                        <div>
+                          <Label className="text-sm font-medium mb-1.5 block">Other Order Type</Label>
+                          <Input
+                            value={parcelOrderTypeOther}
+                            onChange={(e) => setParcelOrderTypeOther(e.target.value)}
+                            placeholder="Enter order type"
+                          />
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <div>
+                    <Label className="text-sm font-medium mb-1.5 block">Delivery Instruction</Label>
+                    <Textarea
+                      value={deliveryInstruction}
+                      onChange={(e) => setDeliveryInstruction(e.target.value)}
+                      placeholder="Enter delivery instruction"
+                      className="min-h-28"
+                    />
+                  </div>
+                </div>
+              )}
 
               <Button
                 type="submit"

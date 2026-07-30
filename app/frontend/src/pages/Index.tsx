@@ -168,16 +168,16 @@ const riderExperiences = [
 ];
 
 const homepageCities = [
-  { name: "Chennai", services: "6 services", href: "/chennai" },
-  { name: "Vellore", services: "6 services", href: "/vellore" },
-  { name: "Coimbatore", services: "5 services", href: "/coimbatore" },
-  { name: "Madurai", services: "5 services", href: "/madurai" },
-  { name: "Trichy", services: "5 services", href: "/trichy" },
-  { name: "Salem", services: "4 services", href: "/salem" },
-  { name: "Tirupur", services: "4 services", href: "/tirupur" },
-  { name: "Kanchipuram", services: "3 services", href: "/kanchipuram" },
-  { name: "Tiruvannamalai", services: "3 services", href: "/tiruvannamalai" },
-  { name: "Ranipet", services: "3 services", href: "/ranipet" },
+  { name: "Chennai", services: "6 services", href: "/taxi-in-chennai" },
+  { name: "Vellore", services: "6 services", href: "/taxi-in-vellore" },
+  { name: "Coimbatore", services: "5 services", href: "/taxi-in-coimbatore" },
+  { name: "Madurai", services: "5 services", href: "/taxi-in-madurai" },
+  { name: "Trichy", services: "5 services", href: "/taxi-in-trichy" },
+  { name: "Salem", services: "4 services", href: "/taxi-in-salem" },
+  { name: "Tirupur", services: "4 services", href: "/taxi-in-tiruppur" },
+  { name: "Kanchipuram", services: "3 services", href: "/taxi-in-kanchipuram" },
+  { name: "Tiruvannamalai", services: "3 services", href: "/taxi-in-tiruvannamalai" },
+  { name: "Ranipet", services: "3 services", href: "/taxi-in-ranipet" },
 ];
 
 const homepageFaqs = [

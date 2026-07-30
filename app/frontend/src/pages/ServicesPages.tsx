@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Car, Plane, Navigation, User, Package, Bike, CheckCircle, ArrowRight, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -14,49 +15,135 @@ const iconMap: Record<string, React.ReactNode> = {
   Bike: <Bike className="w-8 h-8" />,
 };
 
-const iconMapSmall: Record<string, React.ReactNode> = {
-  Car: <Car className="w-6 h-6" />,
-  Plane: <Plane className="w-6 h-6" />,
-  MapPin: <Navigation className="w-6 h-6" />,
-  User: <User className="w-6 h-6" />,
-  Package: <Package className="w-6 h-6" />,
-  Bike: <Bike className="w-6 h-6" />,
-};
-
 // ============================================================
 // SERVICES HUB
 // ============================================================
 export function ServicesHub() {
+  const [showAllServices, setShowAllServices] = useState(false);
+  const serviceStats = [
+    { value: "400+", label: "Verified Drivers" },
+    { value: "8+", label: "Services" },
+    { value: "10+", label: "Cities" },
+    { value: "4.7", label: "Average rating" },
+  ];
+  const serviceCards = [
+    {
+      name: "Local Taxi",
+      description: "A reliable local taxi service for daily travel within the city.",
+      features: ["Quick ride confirmation", "Verified drivers", "Comfortable vehicles"],
+      price: "From ₹ 90/2 Km",
+      iconSrc: "/assets/service-icons/local.png",
+      href: "/services/local-taxi",
+    },
+    {
+      name: "Outstation Taxi",
+      description: "Comfortable round-trip travel for business, family visits and holidays.",
+      features: ["Multiple vehicle options", "Experienced drivers", "Suitable for long journeys"],
+      price: "From ₹ 300/20 Km",
+      iconSrc: "/assets/service-icons/outstation.png",
+      href: "/services/outstation",
+    },
+    {
+      name: "Acting Driver",
+      description: "Book a professional car rental with driver service for your own vehicle.",
+      features: ["Trained and verified drivers", "Local and outstation trips", "Available for events and parties"],
+      price: "From ₹ 500/100 Km",
+      iconSrc: "/assets/service-icons/acting-driver.png",
+      href: "/services/acting-driver",
+    },
+    {
+      name: "One-Way Taxi",
+      description: "Travel to your destination without paying return charges.",
+      features: ["Pay only for one way", "Comfortable long-distance travel", "Clear fare details"],
+      price: "From ₹ 300/20 Km",
+      iconSrc: "/assets/service-icons/one-way.png",
+      href: "/book-ride",
+    },
+    {
+      name: "Auto Rickshaw",
+      description: "Convenient auto rides for short trips and everyday commuting.",
+      features: ["Easy booking", "App fare is the final fare", "No bargaining with drivers"],
+      price: "From ₹ 100/ 2 Km",
+      iconSrc: "/assets/service-icons/auto.png",
+      href: "/services/auto",
+    },
+    {
+      name: "Bike Taxi",
+      description: "A quick and practical option for solo city travel.",
+      features: ["Ideal for short distances", "Easy pickup", "Affordable daily rides"],
+      price: "From ₹ 25/2km",
+      iconSrc: "/assets/service-icons/bike-taxi.png",
+      href: "/book-ride",
+    },
+    {
+      name: "Hourly Package",
+      description: "Keep a cab and driver with you for multiple stops within a selected time.",
+      features: ["Flexible travel hours", "Multiple stops allowed", "Suitable for errands and meetings"],
+      price: "From ₹ 100/3 Km",
+      iconSrc: "/assets/service-icons/hourly-package.png",
+      href: "/book-ride",
+    },
+    {
+      name: "Parcel Delivery",
+      description: "Send documents and small packages safely across the city.",
+      features: ["Doorstep pickup", "Live delivery updates", "Quick and secure service"],
+      price: "From ₹ 50/1km",
+      iconSrc: "/assets/service-icons/parcel.png",
+      href: "/services/parcel-delivery",
+    },
+  ];
+  const visibleServiceCards = showAllServices ? serviceCards : serviceCards.slice(0, 6);
+
   return (
     <div>
-      <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12">
+      <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12 md:py-14">
+        <div className="max-w-screen-xl mx-auto px-4">
+          <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Our Services</h1>
+          <p className="max-w-2xl text-sm leading-6 text-gray-300 md:text-base">
+            Explore our reliable Taxi Services in Tamil Nadu for local travel, outstation trips and everyday commuting.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-300">
+            {serviceStats.map((stat) => (
+              <div key={stat.label} className="flex items-center gap-1.5">
+                <span className="font-heading font-extrabold text-[#FFD700]">{stat.value}</span>
+                <span>{stat.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/*
+      <section className="hidden bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12">
         <div className="max-w-screen-xl mx-auto px-4">
           <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Our Services</h1>
           <p className="text-gray-300 max-w-lg">Comprehensive transportation solutions for every need — from quick local rides to intercity travel and parcel delivery.</p>
         </div>
       </section>
+      */}
 
       <div className="max-w-screen-xl mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service) => (
-            <Link key={service.slug} to={`/services/${service.slug}`} className="group cursor-pointer">
-              <Card className="h-full border-border hover:border-primary/30 hover:shadow-md transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-4 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    {iconMapSmall[service.icon]}
+          {visibleServiceCards.map((service) => (
+            <Link key={service.name} to={service.href} className="group relative block h-full cursor-pointer overflow-visible">
+              <Card className="h-full min-h-[285px] overflow-visible rounded-2xl border-[#E2E8F3] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:shadow-lg">
+                <CardContent className="relative flex h-full flex-col p-5 pr-20">
+                  <div className="absolute right-4 top-5 flex h-14 w-14 items-center justify-center rounded-xl bg-[#EEF3FF] p-2 shadow-sm transition-all duration-300 group-hover:-right-5 group-hover:-top-4 group-hover:h-16 group-hover:w-16 group-hover:bg-[#E9EDFF] group-hover:shadow-md">
+                    <img src={service.iconSrc} alt="" className="h-full w-full object-contain" loading="lazy" />
                   </div>
-                  <h3 className="font-heading font-semibold text-xl mb-2">{service.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{service.shortDesc}</p>
-                  <ul className="space-y-1.5 mb-4">
-                    {service.features.slice(0, 3).map((f) => (
-                      <li key={f} className="flex items-center gap-2 text-sm">
-                        <CheckCircle className="w-3.5 h-3.5 text-green-600 shrink-0" /> {f}
+                  <h3 className="font-heading mb-2 text-xl font-bold text-[#07143F]">{service.name}</h3>
+                  <p className="mb-5 text-sm leading-6 text-[#4F5B7A]">{service.description}</p>
+                  <ul className="mb-5 space-y-2">
+                    {service.features.map((feature) => (
+                      <li key={feature} className="flex items-center gap-2 text-sm text-[#07143F]">
+                        <CheckCircle className="h-4 w-4 shrink-0 text-green-600" />
+                        <span>{feature}</span>
                       </li>
                     ))}
                   </ul>
-                  <div className="flex items-center justify-between">
-                    <span className="font-semibold text-primary">From {service.startingPrice}</span>
-                    <ArrowRight className="w-4 h-4 text-primary group-hover:translate-x-1 transition-transform" />
+                  <div className="mt-auto flex items-center justify-between pt-2">
+                    <span className="font-heading text-base font-bold text-[#1E2A6E]">{service.price}</span>
+                    <ArrowRight className="h-4 w-4 text-[#1E2A6E] transition-transform group-hover:translate-x-1" />
                   </div>
                 </CardContent>
               </Card>
@@ -64,20 +151,101 @@ export function ServicesHub() {
           ))}
         </div>
 
-        {/* Available Cities */}
-        <section className="mt-16">
-          <h2 className="font-heading text-2xl font-bold mb-6">Available in {cities.length} Cities</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+        {serviceCards.length > 6 && (
+          <div className="mt-8 flex justify-center">
+            <Button
+              type="button"
+              variant="outline"
+              className="min-w-[132px] rounded-full border-[#D7DDED] bg-white font-semibold text-[#1E2A6E] hover:border-[#1E2A6E] hover:bg-[#EEF2FF]"
+              onClick={() => setShowAllServices((current) => !current)}
+            >
+              {showAllServices ? "Show Less" : "See More"}
+            </Button>
+          </div>
+        )}
+
+        {/* Cities We Serve */}
+        <section className="mt-14">
+          <div className="mb-7 text-center">
+            <h2 className="font-heading text-3xl font-bold text-[#1E2A6E] md:text-4xl">Cities We Serve</h2>
+            <p className="mx-auto mt-3 max-w-3xl text-sm leading-6 text-[#4B587C] md:text-base">
+              Our affordable taxi service is available across major cities in Tamil Nadu for local, one-way and outstation travel.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
             {cities.map((city) => (
               <Link
                 key={city.slug}
                 to={`/${city.slug}`}
-                className="flex items-center gap-2 p-3 rounded-lg border border-border hover:border-primary/30 hover:bg-primary/5 transition-all cursor-pointer"
+                className="flex items-center gap-2 rounded-lg border border-[#E2E8F3] bg-white p-3 shadow-sm transition-all hover:-translate-y-0.5 hover:border-[#1E2A6E] hover:shadow-md"
               >
-                <MapPin className="w-4 h-4 text-primary shrink-0" />
-                <span className="text-sm font-medium">{city.name}</span>
+                <MapPin className="h-4 w-4 shrink-0 text-primary" />
+                <span className="text-sm font-semibold text-[#07143F]">{city.name}</span>
               </Link>
             ))}
+          </div>
+        </section>
+
+        {/* App Download CTA */}
+        <section className="mt-14">
+          <div className="relative overflow-hidden rounded-2xl bg-[#273588] px-6 py-8 text-white shadow-xl md:px-10 lg:px-12">
+            <img
+              src="https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qbnqcaiza/airport-taxi-terminal-service.png"
+              alt="Airport taxi service"
+              className="absolute inset-0 h-full w-full object-cover opacity-15"
+            />
+            <div className="absolute inset-0 bg-[#273588]/80" />
+            <div className="absolute inset-0 opacity-10 [background-image:linear-gradient(90deg,_rgba(255,255,255,.35)_1px,_transparent_1px),linear-gradient(180deg,_rgba(255,255,255,.35)_1px,_transparent_1px)] [background-size:56px_56px]" />
+            <div className="relative z-10 grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_230px] lg:grid-cols-[minmax(0,1fr)_250px]">
+              <div className="text-center md:pl-4 lg:pl-8">
+                <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
+                  GET THE APP
+                </span>
+                <h2 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-4xl">
+                  Travel Made Simple with the Root Cabs App
+                </h2>
+                <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-white/80 md:text-base">
+                  Book local, one-way and outstation rides, choose your preferred vehicle and manage every trip from one place.
+                </p>
+                <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-white/85">
+                  <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> 100% verified drivers</span>
+                  <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> 24/7 customer support</span>
+                  <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Reliable late-night travel</span>
+                  <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> On-time rides</span>
+                </div>
+                <div className="mt-6 flex flex-wrap justify-center gap-3">
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                    aria-label="Google Play"
+                  >
+                    <img src="/assets/play-store.png" alt="Google Play" className="h-10 w-auto object-contain" />
+                  </a>
+                  <a
+                    href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                    aria-label="App Store"
+                  >
+                    <img src="/assets/app-store-logo.png" alt="App Store" className="h-10 w-auto object-contain" />
+                  </a>
+                </div>
+              </div>
+              <div className="relative mx-auto w-full max-w-[230px] md:mr-10 lg:mr-16 lg:max-w-[250px]">
+                <div className="rounded-xl bg-white p-3 text-center shadow-2xl">
+                  <p className="mb-2 text-[10px] font-extrabold uppercase tracking-wider text-slate-500">Scan to Download</p>
+                  <img
+                    src="/assets/root-cabs-qr-cropped.png"
+                    alt="Root Cabs app QR code"
+                    className="aspect-square w-full rounded-md object-contain"
+                  />
+                  <p className="mt-2 text-[10px] font-semibold text-slate-400">rootcabs.com/app</p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
       </div>

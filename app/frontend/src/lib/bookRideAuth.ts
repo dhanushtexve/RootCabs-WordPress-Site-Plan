@@ -9,7 +9,7 @@ type OtpVerifyRequest = {
 };
 
 export type RentalBookingRequest = {
-  serviceType?: "RENTAL";
+  serviceType?: "RENTAL" | "DRIVER" | "PARCEL";
   packageType?: "Outstation" | "Local";
   packageId?: number;
   booking?: "DROP ONLY" | "ROUND TRIP";
@@ -19,6 +19,16 @@ export type RentalBookingRequest = {
   toDate?: string;
   zone?: string;
   acType?: "AC" | "NON AC";
+  parcelVehicleType?: "Bike" | "Auto";
+  senderName?: string;
+  senderPhone?: string;
+  senderAddress?: string;
+  receiverName?: string;
+  receiverPhone?: string;
+  receiverAddress?: string;
+  orderType?: string;
+  orderTypeOther?: string;
+  deliveryDetails?: string;
   period?: number;
   driverStartAddress?: string;
   driverStartLat?: number;
@@ -32,7 +42,7 @@ export type RentalBookingRequest = {
   pickupLong?: number;
   dropLat?: number;
   dropLong?: number;
-  carType: "Mini" | "Sedan" | "SUV" | "MUV";
+  carType?: "Mini" | "Sedan" | "SUV" | "MUV";
   source: "RootCabs Website";
 };
 
@@ -246,6 +256,23 @@ export async function getZonePackages(serviceType: "RENTAL", zone: string) {
 export async function addRentalBooking(payload: RentalBookingRequest) {
   const response = await requestJson<ApiStatusResponse>(
     "/add-rental-booking",
+    {
+      method: "POST",
+      body: JSON.stringify(payload),
+    },
+    { includeSessionToken: true },
+  );
+
+  if (response.success === false) {
+    throw new Error(response.message || "Unable to confirm booking. Please try again.");
+  }
+
+  return response;
+}
+
+export async function addBooking(payload: RentalBookingRequest) {
+  const response = await requestJson<ApiStatusResponse>(
+    "/add-booking",
     {
       method: "POST",
       body: JSON.stringify(payload),

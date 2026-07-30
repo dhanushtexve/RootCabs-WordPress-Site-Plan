@@ -116,7 +116,7 @@ export const services: Service[] = [
 // ============================================================
 export const cities: City[] = [
   {
-    slug: "chennai",
+    slug: "taxi-in-chennai",
     name: "Chennai",
     state: "Tamil Nadu",
     tagline: "Reliable Cab Services in Chennai for Every Ride",
@@ -162,7 +162,7 @@ export const cities: City[] = [
     ],
   },
   {
-    slug: "vellore",
+    slug: "taxi-in-vellore",
     name: "Vellore",
     state: "Tamil Nadu",
     tagline: "Trusted Cab Service in Vellore - VIT, CMC & Beyond",
@@ -184,7 +184,7 @@ export const cities: City[] = [
     ],
   },
   {
-    slug: "coimbatore",
+    slug: "taxi-in-coimbatore",
     name: "Coimbatore",
     state: "Tamil Nadu",
     tagline: "Reliable Taxi Service in Coimbatore - Airport & City Rides",
@@ -205,7 +205,7 @@ export const cities: City[] = [
     ],
   },
   {
-    slug: "madurai",
+    slug: "taxi-in-madurai",
     name: "Madurai",
     state: "Tamil Nadu",
     tagline: "Affordable Cab Service in Madurai - Temple City Rides",
@@ -225,7 +225,7 @@ export const cities: City[] = [
     ],
   },
   {
-    slug: "trichy",
+    slug: "taxi-in-trichy",
     name: "Trichy",
     state: "Tamil Nadu",
     tagline: "Best Taxi Service in Trichy - Airport & Temple Rides",
@@ -245,7 +245,7 @@ export const cities: City[] = [
     ],
   },
   {
-    slug: "salem",
+    slug: "taxi-in-salem",
     name: "Salem",
     state: "Tamil Nadu",
     tagline: "Trusted Cab Service in Salem - Steel City Rides",
@@ -264,7 +264,7 @@ export const cities: City[] = [
     ],
   },
   {
-    slug: "tiruppur",
+    slug: "taxi-in-tiruppur",
     name: "Tiruppur",
     state: "Tamil Nadu",
     tagline: "Reliable Taxi in Tiruppur - Knit City Cab Service",
@@ -282,7 +282,7 @@ export const cities: City[] = [
     ],
   },
   {
-    slug: "kanchipuram",
+    slug: "taxi-in-kanchipuram",
     name: "Kanchipuram",
     state: "Tamil Nadu",
     tagline: "Taxi Service in Kanchipuram - Temple City Rides",
@@ -300,7 +300,7 @@ export const cities: City[] = [
     ],
   },
   {
-    slug: "tiruvannamalai",
+    slug: "taxi-in-tiruvannamalai",
     name: "Tiruvannamalai",
     state: "Tamil Nadu",
     tagline: "Cab Service in Tiruvannamalai - Spiritual City Rides",
@@ -318,7 +318,7 @@ export const cities: City[] = [
     ],
   },
   {
-    slug: "ranipet",
+    slug: "taxi-in-ranipet",
     name: "Ranipet",
     state: "Tamil Nadu",
     tagline: "Affordable Taxi Service in Ranipet & Walajapet",

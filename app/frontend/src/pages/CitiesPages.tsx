@@ -29,15 +29,15 @@ const chennaiServices = [
     title: "Local Taxi",
     description: "Travel comfortably across Chennai for work, shopping, hospital visits, appointments, and everyday journeys. Choose convenient cab booking in Chennai for quick city travel without the hassle of searching for transport.",
     fare: "Starting at ₹90/3km",
-    href: "/chennai/local-taxi",
+    href: "/taxi-in-chennai/local-taxi",
     iconWrapClass: "bg-white",
-    icon: <img src="/assets/chennai-service-local.png" alt="Local Taxi service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src="/assets/che+nnai-service-local.png" alt="Local Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Outstation Taxi",
     description: "Plan round trips from Chennai to nearby towns, tourist destinations, and major cities. Our flexible outstation cabs in Chennai are suitable for family holidays, business journeys, and weekend travel.",
     fare: "Starting at ₹300/20Km",
-    href: "/chennai/outstation",
+    href: "/taxi-in-chennai/outstation",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-outstation.png" alt="Outstation Taxi service icon" className="h-8 w-8 object-contain" />,
   },
@@ -45,7 +45,7 @@ const chennaiServices = [
     title: "Acting Driver",
     description: "Hire an experienced acting driver in Chennai to drive your own car safely. It is ideal for late-night returns, hospital visits, events, business travel, and long-distance journeys.",
     fare: "Starting at ₹500/100 Km",
-    href: "/chennai/acting-driver",
+    href: "/taxi-in-chennai/acting-driver",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-acting-driver.png" alt="Acting Driver service icon" className="h-8 w-8 object-contain" />,
   },
@@ -61,7 +61,7 @@ const chennaiServices = [
     title: "Auto Rickshaw",
     description: "Travel easily through Chennai's busy streets, shopping areas, railway stations, and nearby neighbourhoods. Book an auto for everyday errands, short trips, and quick local travel across the city.",
     fare: "Starting at ₹40/1Km",
-    href: "/chennai/auto",
+    href: "/taxi-in-chennai/auto",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-auto.png" alt="Auto Rickshaw service icon" className="h-8 w-8 object-contain" />,
   },
@@ -85,7 +85,7 @@ const chennaiServices = [
     title: "Parcel Delivery",
     description: "Send documents, packages, and everyday essentials safely across Chennai. Convenient doorstep pickup and delivery make it easier to send important items without travelling across the city yourself.",
     fare: "Starting at ₹50/1km",
-    href: "/chennai/parcel-delivery",
+    href: "/taxi-in-chennai/parcel-delivery",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-parcel.png" alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
   },
@@ -543,7 +543,7 @@ export function CityPage() {
   }
 
   const cityTestimonials = testimonials.filter((t) => t.city === city.name);
-  const isChennai = city.slug === "chennai";
+  const isChennai = city.name === "Chennai";
 
   return (
     <div>
@@ -614,7 +614,7 @@ export function CityPage() {
               {city.popularRoutes.map((route) => (
                 <Link
                   key={route.to}
-                  to={`/routes/${city.slug}-to-${route.to.toLowerCase().replace(/\s+/g, "-")}`}
+                  to={`/routes/${city.name.toLowerCase().replace(/\s+/g, "-")}-to-${route.to.toLowerCase().replace(/\s+/g, "-")}`}
                   className="flex items-center justify-between p-4 rounded-xl border border-border hover:border-primary/30 hover:bg-primary/5 transition-all cursor-pointer"
                 >
                   <div>
@@ -637,7 +637,7 @@ export function CityPage() {
             <h2 className="font-heading text-2xl font-bold mb-6">Popular Pickup Points in {city.name}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
               {city.landmarks.map((landmark) => {
-                const image = city.slug === "chennai" ? chennaiPickupImages[landmark] : undefined;
+                const image = city.name === "Chennai" ? chennaiPickupImages[landmark] : undefined;
 
                 return (
                   <div key={landmark} className="overflow-hidden rounded-xl border border-border bg-white shadow-sm">
@@ -659,7 +659,7 @@ export function CityPage() {
           </section>
         )}
 
-        {city.slug === "chennai" && (
+        {city.name === "Chennai" && (
           <>
             <ChennaiContentSection />
             <ChennaiActingDriverSection />
@@ -690,7 +690,7 @@ export function CityPage() {
           </section>
         ) : null}
 
-        {city.slug !== "chennai" && <CityFaqSection city={city} />}
+        {city.name !== "Chennai" && <CityFaqSection city={city} />}
 
         {/* Why Root Cabs */}
         {isChennai ? (
@@ -714,7 +714,7 @@ export function CityPage() {
           </section>
         )}
 
-        {city.slug === "chennai" && (
+        {city.name === "Chennai" && (
           <>
             <AppDownloadCard />
             <section className="py-2 text-center">
