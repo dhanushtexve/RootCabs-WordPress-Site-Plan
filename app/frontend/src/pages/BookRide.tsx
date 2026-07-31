@@ -64,6 +64,10 @@ const actingDriverOutstationPackages = [
   { value: "custom", label: "Custom" },
 ] as const;
 
+type ActingDriverPackageOption =
+  | (typeof actingDriverLocalPackages)[number]
+  | (typeof actingDriverOutstationPackages)[number];
+
 const bookRideFaqs = [
   {
     q: "How can I book my ride with Root Cabs?",
@@ -218,6 +222,12 @@ function findCustomZonePackageId(zonePackagesResponse: unknown) {
         : NaN;
 
   return Number.isFinite(packageId) ? packageId : null;
+}
+
+function hasPackagePeriod(
+  option: ActingDriverPackageOption | undefined,
+): option is ActingDriverPackageOption & { period: number } {
+  return typeof option?.period === "number";
 }
 
 export default function BookRide() {
@@ -660,93 +670,89 @@ export default function BookRide() {
 
     let localPackageId: number | null = null;
     let actingDriverPackageId: number | null = null;
+    let bookingPayload: RentalBookingRequest;
 
-    const bookingPayload =
-      tripType === "one-way"
-        ? {
-            serviceType: "RENTAL",
-            packageType: "Outstation",
-            bookingType: "DROP ONLY",
-            ...baseBookingPayload,
-            ...dropBookingPayload,
-          }
-        : tripType === "round-trip"
-          ? {
-            serviceType: "RENTAL",
-            packageType: "Outstation",
-            bookingType: "ROUND TRIP",
-            toDate: buildFromDate(returnDate, returnTime),
-            driverStartAddress: roundTripCabStart!.address,
-            driverStartLat: roundTripCabStart!.latitude!,
-            driverStartLong: roundTripCabStart!.longitude!,
-            driverEndAddress: roundTripCabEnd!.address,
-            driverEndLat: roundTripCabEnd!.latitude!,
-            driverEndLong: roundTripCabEnd!.longitude!,
-            ...baseBookingPayload,
-            ...dropBookingPayload,
-          }
-        : tripType === "local"
-          ? {
-              serviceType: "RENTAL",
-              packageType: "Local",
-              period: Number(localPeriod),
-              packageId: localPackageId ?? undefined,
-              ...baseBookingPayload,
-            }
-          : tripType === "acting-driver"
-            ? {
-                serviceType: "DRIVER",
-                packageType: actingDriverPackageType,
-                bookingType: actingDriverPackageType === "Local" ? "DROP ONLY" : "ROUND TRIP",
-                ...(actingDriverSelectedPackage?.period ? { period: actingDriverSelectedPackage.period } : {}),
-                packageId: actingDriverPackageId ?? undefined,
-                ...(actingDriverPackage === "custom" ? { toDate: buildFromDateTimeInput(actingDriverReturnDateTime) } : {}),
-                tripType,
-                ...baseBookingPayload,
-                ...dropBookingPayload,
-              }
-            : tripType === "parcel"
-                ? {
-                    serviceType: "PARCEL",
-                    parcelVehicleType: getParcelVehicleTypePayload(parcelVehicleType),
-                    deliveryType: "DOOR_DELIVERY",
-                    parcelDirection: "RECEIVER",
-                    senderName: name.trim(),
-                    senderPhone: `+91${phoneNumber}`,
-                    senderAddress: selectedSenderAddress!.address,
-                    receiverName: receiverName.trim(),
-                    receiverPhone: `+91${receiverPhoneNumber}`,
-                    receiverAddress: selectedReceiverAddress!.address,
-                    pickupAddress: {
-                      name: selectedSenderAddress!.name,
-                      address: selectedSenderAddress!.address,
-                      city: selectedSenderAddress!.city,
-                      latitude: selectedSenderAddress!.latitude,
-                      longitude: selectedSenderAddress!.longitude,
-                    },
-                    pickupLat: selectedSenderAddress!.latitude!,
-                    pickupLong: selectedSenderAddress!.longitude!,
-                    dropAddress: {
-                      name: selectedReceiverAddress!.name,
-                      address: selectedReceiverAddress!.address,
-                      city: selectedReceiverAddress!.city,
-                      latitude: selectedReceiverAddress!.latitude,
-                      longitude: selectedReceiverAddress!.longitude,
-                    },
-                    dropLat: selectedReceiverAddress!.latitude!,
-                    dropLong: selectedReceiverAddress!.longitude!,
-                    orderType: parcelOrderType,
-                    ...(parcelOrderType === "Others" ? { orderTypeOther: parcelOrderTypeOther.trim() } : {}),
-                    deliveryDetails: deliveryInstruction.trim(),
-                  tripType,
-                  fromDate: buildFromDate(date, time),
-                  source: "RootCabs Website",
-                }
-          : {
-              tripType,
-              ...baseBookingPayload,
-            ...dropBookingPayload,
-          } satisfies RentalBookingRequest;
+    if (tripType === "one-way") {
+      bookingPayload = {
+        serviceType: "RENTAL",
+        packageType: "Outstation",
+        bookingType: "DROP ONLY",
+        ...baseBookingPayload,
+        ...dropBookingPayload,
+      };
+    } else if (tripType === "round-trip") {
+      bookingPayload = {
+        serviceType: "RENTAL",
+        packageType: "Outstation",
+        bookingType: "ROUND TRIP",
+        toDate: buildFromDate(returnDate, returnTime),
+        driverStartAddress: roundTripCabStart!.address,
+        driverStartLat: roundTripCabStart!.latitude!,
+        driverStartLong: roundTripCabStart!.longitude!,
+        driverEndAddress: roundTripCabEnd!.address,
+        driverEndLat: roundTripCabEnd!.latitude!,
+        driverEndLong: roundTripCabEnd!.longitude!,
+        ...baseBookingPayload,
+        ...dropBookingPayload,
+      };
+    } else if (tripType === "local") {
+      bookingPayload = {
+        serviceType: "RENTAL",
+        packageType: "Local",
+        period: Number(localPeriod),
+        ...baseBookingPayload,
+      };
+    } else if (tripType === "acting-driver") {
+      bookingPayload = {
+        serviceType: "DRIVER",
+        packageType: actingDriverPackageType,
+        bookingType: actingDriverPackageType === "Local" ? "DROP ONLY" : "ROUND TRIP",
+        ...(hasPackagePeriod(actingDriverSelectedPackage) ? { period: actingDriverSelectedPackage.period } : {}),
+        ...(actingDriverPackage === "custom"
+          ? { toDate: buildFromDateTimeInput(actingDriverReturnDateTime) }
+          : {}),
+        tripType,
+        ...baseBookingPayload,
+        ...dropBookingPayload,
+      };
+    } else {
+      bookingPayload = {
+        serviceType: "PARCEL",
+        parcelVehicleType: getParcelVehicleTypePayload(parcelVehicleType),
+        deliveryType: "DOOR_DELIVERY",
+        parcelDirection: "RECEIVER",
+        senderName: name.trim(),
+        senderPhone: `+91${phoneNumber}`,
+        senderAddress: selectedSenderAddress!.address,
+        receiverName: receiverName.trim(),
+        receiverPhone: `+91${receiverPhoneNumber}`,
+        receiverAddress: selectedReceiverAddress!.address,
+        pickupAddress: {
+          name: selectedSenderAddress!.name,
+          address: selectedSenderAddress!.address,
+          city: selectedSenderAddress!.city,
+          latitude: selectedSenderAddress!.latitude,
+          longitude: selectedSenderAddress!.longitude,
+        },
+        pickupLat: selectedSenderAddress!.latitude!,
+        pickupLong: selectedSenderAddress!.longitude!,
+        dropAddress: {
+          name: selectedReceiverAddress!.name,
+          address: selectedReceiverAddress!.address,
+          city: selectedReceiverAddress!.city,
+          latitude: selectedReceiverAddress!.latitude,
+          longitude: selectedReceiverAddress!.longitude,
+        },
+        dropLat: selectedReceiverAddress!.latitude!,
+        dropLong: selectedReceiverAddress!.longitude!,
+        orderType: parcelOrderType,
+        ...(parcelOrderType === "Others" ? { orderTypeOther: parcelOrderTypeOther.trim() } : {}),
+        deliveryDetails: deliveryInstruction.trim(),
+        tripType,
+        fromDate: buildFromDate(date, time),
+        source: "RootCabs Website",
+      };
+    }
 
     console.info("Root Cabs booking payload", bookingPayload);
 
@@ -756,7 +762,7 @@ export default function BookRide() {
           const zonePackagesResponse = await getZonePackages("RENTAL", bookingZone);
 
         if (tripType === "local") {
-          localPackageId = findLocalPackageId(zonePackagesResponse, Number(localPeriod));
+          localPackageId = findZonePackageId(zonePackagesResponse, "local", Number(localPeriod));
 
           if (!localPackageId) {
             throw new Error("Selected local package is not available for the chosen zone.");
@@ -774,7 +780,7 @@ export default function BookRide() {
             if (!actingDriverPackageId) {
               throw new Error("Custom acting driver package is not available for the chosen zone.");
             }
-          } else if (actingDriverSelectedPackage?.period) {
+          } else if (hasPackagePeriod(actingDriverSelectedPackage)) {
             actingDriverPackageId = findZonePackageId(
               zonePackagesResponse,
               actingDriverPackageType,

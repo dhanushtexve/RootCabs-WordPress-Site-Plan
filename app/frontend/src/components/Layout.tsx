@@ -183,7 +183,7 @@ function Footer() {
         <div>
           <div className="flex items-center gap-2 mb-4">
             <img
-              src="/assets/rootcabs-logo.jpg"
+              src="/assets/rootcabs-logo.png"
               alt="Root Cabs"
               className="h-16 w-auto max-w-[160px] object-contain"
             />

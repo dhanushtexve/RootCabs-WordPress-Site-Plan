@@ -24,6 +24,34 @@ const chennaiPickupImages: Record<string, string> = {
   "Koyambedu": "/assets/chennai-koyambedu.webp",
 };
 
+const chennaiPickupSpotContent: Record<string, { title: string; description: string }> = {
+  "Chennai Airport": {
+    title: "Chennai Airport",
+    description:
+      "Book a Root Cabs pickup from the domestic or international terminal without the usual rush. Your driver can meet you at the designated pickup point and take you to your home, hotel, office, or any destination across Chennai.",
+  },
+  "Chennai Central Railway Station": {
+    title: "Chennai Central Railway Station",
+    description:
+      "Choose Root Cabs for a smooth pickup near the main entrance after your train arrives. You can avoid waiting for local transport and continue your journey comfortably with your luggage.",
+  },
+  "Marina Beach": {
+    title: "Marina Beach",
+    description:
+      "Arrange a Root Cabs pickup from a nearby access point after your visit to Marina Beach. Whether you are returning from a morning walk, family outing, or evening by the coast, your ride can be planned in advance.",
+  },
+  "T. Nagar": {
+    title: "T. Nagar",
+    description:
+      "Use Root Cabs for an easy pickup from T. Nagar after shopping, dining, office work, or appointments. The area can get busy, especially during weekends and peak hours. A planned pickup helps you continue your journey without waiting for roadside transport.",
+  },
+  Koyambedu: {
+    title: "Koyambedu",
+    description:
+      "Continue your journey with Root Cabs after arriving at Koyambedu by booking a pickup near the bus terminus. Travel comfortably to your home, hotel, railway station, airport, or any other location across Chennai.",
+  },
+};
+
 const chennaiServices = [
   {
     title: "Local Taxi",
@@ -661,10 +689,16 @@ export function CityPage() {
         {/* Landmarks */}
         {city.landmarks.length > 0 && (
           <section>
-            <h2 className="font-heading text-2xl font-bold mb-6">Popular Pickup Points in {city.name}</h2>
+            <h2 className="font-heading text-2xl font-bold mb-2">Popular Pickup Spots in {city.name}</h2>
+            {city.name === "Chennai" && (
+              <p className="mb-6 max-w-4xl text-sm leading-6 text-muted-foreground md:text-base">
+                Root Cabs makes it easy to arrange a ride from the city’s busiest travel hubs, landmarks, and neighbourhoods with a convenient taxi service in Chennai.
+              </p>
+            )}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
               {city.landmarks.map((landmark) => {
                 const image = city.name === "Chennai" ? chennaiPickupImages[landmark] : undefined;
+                const content = city.name === "Chennai" ? chennaiPickupSpotContent[landmark] : undefined;
 
                 return (
                   <div key={landmark} className="overflow-hidden rounded-xl border border-border bg-white shadow-sm">
@@ -672,12 +706,19 @@ export function CityPage() {
                       <img
                         src={image}
                         alt={landmark}
-                        className="h-32 w-full object-cover"
+                        className="h-40 w-full object-cover"
                       />
                     )}
-                    <div className="flex items-center gap-2 p-3 text-sm">
-                      <MapPin className="w-4 h-4 text-primary shrink-0" />
-                      <span>{landmark}</span>
+                    <div className="p-4">
+                      <div className="flex items-start gap-2 text-sm font-semibold text-[#1E2A6E]">
+                        <MapPin className="mt-0.5 w-4 h-4 shrink-0 text-primary" />
+                        <span>{content?.title ?? landmark}</span>
+                      </div>
+                      {content?.description && (
+                        <p className="mt-2 text-xs leading-6 text-muted-foreground">
+                          {content.description}
+                        </p>
+                      )}
                     </div>
                   </div>
                 );
