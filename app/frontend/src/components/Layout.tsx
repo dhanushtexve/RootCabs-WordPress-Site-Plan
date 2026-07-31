@@ -65,9 +65,9 @@ function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center cursor-pointer">
             <img
-              src="/assets/rootcabs-logo.jpg"
+              src="/assets/root-cabs-logo.webp"
               alt="Root Cabs"
-              className="h-20 w-auto max-w-[230px] object-contain sm:h-[88px]"
+              className="h-11 w-auto max-w-[145px] object-contain sm:h-12 sm:max-w-[160px]"
             />
           </Link>
 
@@ -183,9 +183,9 @@ function Footer() {
         <div>
           <div className="flex items-center gap-2 mb-4">
             <img
-              src="/assets/rootcabs-logo.png"
+              src="/assets/root-cabs-logo.webp"
               alt="Root Cabs"
-              className="h-16 w-auto max-w-[160px] object-contain"
+              className="h-12 w-auto max-w-[130px] object-contain"
             />
           </div>
           <p className="mb-4 text-sm font-semibold text-white">
