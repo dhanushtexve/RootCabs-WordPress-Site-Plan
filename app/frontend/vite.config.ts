@@ -198,6 +198,16 @@ export default defineConfig(({ command, mode }) => {
             proxy.on('proxyReq', removeBrowserOriginHeaders);
           },
         },
+        '/api/customer/dev/rootcabs/website': {
+          target: bookingApiProxyTarget,
+          changeOrigin: true,
+          headers: {
+            'ngrok-skip-browser-warning': 'true',
+          },
+          configure(proxy) {
+            proxy.on('proxyReq', removeBrowserOriginHeaders);
+          },
+        },
         '/api/customer/dev/verify': {
           target: bookingApiProxyTarget,
           changeOrigin: true,
@@ -239,6 +249,16 @@ export default defineConfig(({ command, mode }) => {
           },
         },
         '/api/customer/dev/add-booking': {
+          target: bookingApiProxyTarget,
+          changeOrigin: true,
+          headers: {
+            'ngrok-skip-browser-warning': 'true',
+          },
+          configure(proxy) {
+            proxy.on('proxyReq', removeBrowserOriginHeaders);
+          },
+        },
+        '/api/customer/dev/add-support-parcel-booking': {
           target: bookingApiProxyTarget,
           changeOrigin: true,
           headers: {

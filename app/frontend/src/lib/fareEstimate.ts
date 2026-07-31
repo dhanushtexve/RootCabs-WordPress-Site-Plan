@@ -1,11 +1,9 @@
 export interface FareEstimateRequest {
   cabType: "Mini" | "Sedan" | "SUV" | "MUV";
-  pickupLocation: string;
-  dropLocation: string;
-  pickupLat?: number;
-  pickupLong?: number;
-  dropLat?: number;
-  dropLong?: number;
+  pickupLat: number;
+  pickupLong: number;
+  dropLat: number;
+  dropLong: number;
 }
 
 export interface FareEstimateData {
@@ -18,6 +16,9 @@ export interface FareEstimateData {
   baseFare: number;
   perKmRate: number;
   estimatedFare: number;
+  estimatedDistance?: number;
+  estimatedTime?: string;
+  totalAmount?: number;
   pickup?: {
     latitude: number;
     longitude: number;
@@ -39,23 +40,20 @@ interface FareEstimateResponse {
   message?: string;
 }
 
-const API_BASE_URL = import.meta.env.DEV
-  ? ""
-  : import.meta.env.VITE_API_BASE_URL || "https://kz3l7kxz-3000.inc1.devtunnels.ms";
-
 export async function getFareEstimate(request: FareEstimateRequest): Promise<FareEstimateData> {
-  const params = new URLSearchParams({
-    cabType: request.cabType,
-    pickupLocation: request.pickupLocation,
-    dropLocation: request.dropLocation,
+  const response = await fetch(`/api/customer/dev/rootcabs/website/fare-calculator`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      pickupLat: request.pickupLat,
+      pickupLong: request.pickupLong,
+      dropLat: request.dropLat,
+      dropLong: request.dropLong,
+      carType: request.cabType,
+    }),
   });
-
-  if (request.pickupLat !== undefined) params.set("pickupLat", String(request.pickupLat));
-  if (request.pickupLong !== undefined) params.set("pickupLong", String(request.pickupLong));
-  if (request.dropLat !== undefined) params.set("dropLat", String(request.dropLat));
-  if (request.dropLong !== undefined) params.set("dropLong", String(request.dropLong));
-
-  const response = await fetch(`${API_BASE_URL}/api/customer/dev/fare-estimate?${params.toString()}`);
 
   if (!response.ok) {
     throw new Error("Unable to fetch fare estimate. Please try again.");

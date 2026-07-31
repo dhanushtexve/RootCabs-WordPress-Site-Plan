@@ -17,9 +17,12 @@ export type RentalBookingRequest = {
   tripType?: string;
   fromDate?: string;
   toDate?: string;
+  time?: string;
   zone?: string;
   acType?: "AC" | "NON AC";
-  parcelVehicleType?: "Bike" | "Auto";
+  parcelVehicleType?: "BIKE" | "AUTO";
+  deliveryType?: "DOOR_DELIVERY";
+  parcelDirection?: "SENDER" | "RECEIVER";
   senderName?: string;
   senderPhone?: string;
   senderAddress?: string;
@@ -37,7 +40,25 @@ export type RentalBookingRequest = {
   driverEndLat?: number;
   driverEndLong?: number;
   pickupLocation?: string;
+  pickupAddress?:
+    | string
+    | {
+        name?: string;
+        address?: string;
+        city?: string;
+        latitude?: number;
+        longitude?: number;
+      };
   dropLocation?: string;
+  dropAddress?:
+    | string
+    | {
+        name?: string;
+        address?: string;
+        city?: string;
+        latitude?: number;
+        longitude?: number;
+      };
   pickupLat?: number;
   pickupLong?: number;
   dropLat?: number;
@@ -232,7 +253,7 @@ export async function searchAddressDetailed(address: string) {
   return payload.data || [];
 }
 
-export async function getZonePackages(serviceType: "RENTAL" | "DRIVER", zone: string) {
+export async function getZonePackages(serviceType: "RENTAL" | "DRIVER" | "PARCEL", zone: string) {
   const params = new URLSearchParams({
     serviceType,
     zone,
@@ -273,6 +294,23 @@ export async function addRentalBooking(payload: RentalBookingRequest) {
 export async function addBooking(payload: RentalBookingRequest) {
   const response = await requestJson<ApiStatusResponse>(
     "/add-booking",
+    {
+      method: "POST",
+      body: JSON.stringify(payload),
+    },
+    { includeSessionToken: true },
+  );
+
+  if (response.success === false) {
+    throw new Error(response.message || "Unable to confirm booking. Please try again.");
+  }
+
+  return response;
+}
+
+export async function addSupportParcelBooking(payload: RentalBookingRequest) {
+  const response = await requestJson<ApiStatusResponse>(
+    "/add-support-parcel-booking",
     {
       method: "POST",
       body: JSON.stringify(payload),

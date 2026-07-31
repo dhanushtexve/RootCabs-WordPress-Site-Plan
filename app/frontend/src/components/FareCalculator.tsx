@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cities } from "@/data/siteData";
 import { FareEstimateData, FareEstimateRequest, getFareEstimate } from "@/lib/fareEstimate";
+import { searchAddressDetailed } from "@/lib/bookRideAuth";
 
 const allLocations = [
   ...cities.map((c) => c.name),
@@ -32,10 +33,23 @@ export default function FareCalculator({ defaultFrom = "", defaultTo = "", compa
     setResult(null);
 
     try {
+      const [fromMatches, toMatches] = await Promise.all([
+        searchAddressDetailed(from),
+        searchAddressDetailed(to),
+      ]);
+      const pickup = fromMatches.find((item) => typeof item.latitude === "number" && typeof item.longitude === "number");
+      const drop = toMatches.find((item) => typeof item.latitude === "number" && typeof item.longitude === "number");
+
+      if (!pickup || !drop) {
+        throw new Error("Unable to resolve coordinates for the selected locations.");
+      }
+
       const estimate = await getFareEstimate({
         cabType: vehicle,
-        pickupLocation: from,
-        dropLocation: to,
+        pickupLat: pickup.latitude as number,
+        pickupLong: pickup.longitude as number,
+        dropLat: drop.latitude as number,
+        dropLong: drop.longitude as number,
       });
       setResult(estimate);
     } catch (err) {
@@ -122,19 +136,19 @@ export default function FareCalculator({ defaultFrom = "", defaultTo = "", compa
               <ArrowRight className="w-4 h-4" />
               <span>{result.to}</span>
             </div>
-            <div className="flex flex-wrap items-center gap-6 ml-auto">
-              <div className="text-center">
-                <p className="text-xs text-muted-foreground">Distance</p>
-                <p className="font-semibold">{result.distanceKm} km</p>
-              </div>
-              <div className="text-center">
-                <p className="text-xs text-muted-foreground">Duration</p>
-                <p className="font-semibold">{result.duration}</p>
-              </div>
-              <div className="text-center">
-                <p className="text-xs text-muted-foreground">Estimated Fare</p>
-                <p className="font-heading font-bold text-2xl text-primary">₹{result.estimatedFare.toLocaleString()}</p>
-              </div>
+          </div>
+          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
+            <div className="rounded-lg bg-white p-3 text-center">
+              <p className="text-xs text-muted-foreground">Distance</p>
+              <p className="font-semibold">{(result.estimatedDistance ?? result.distanceKm).toLocaleString()} km</p>
+            </div>
+            <div className="rounded-lg bg-white p-3 text-center">
+              <p className="text-xs text-muted-foreground">Duration</p>
+              <p className="font-semibold">{result.estimatedTime ?? result.duration}</p>
+            </div>
+            <div className="rounded-lg bg-white p-3 text-center">
+              <p className="text-xs text-muted-foreground">Estimated Fare</p>
+              <p className="font-heading font-bold text-2xl text-primary">₹{(result.totalAmount ?? result.estimatedFare).toLocaleString()}</p>
             </div>
           </div>
           <p className="text-xs text-muted-foreground mt-2">* Estimated fare. Actual fare may vary based on route, traffic, and tolls.</p>

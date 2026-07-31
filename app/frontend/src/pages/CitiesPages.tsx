@@ -17,11 +17,11 @@ const serviceIconMap: Record<string, React.ReactNode> = {
 };
 
 const chennaiPickupImages: Record<string, string> = {
-  "Chennai Airport": "/assets/chennai-airport.png",
-  "Chennai Central Railway Station": "/assets/chennai-central.png",
-  "Marina Beach": "/assets/chennai-marina.png",
-  "T. Nagar": "/assets/chennai-t-nagar.png",
-  "Koyambedu": "/assets/chennai-koyambedu.png",
+  "Chennai Airport": "/assets/chennai-airport.webp",
+  "Chennai Central Railway Station": "/assets/chennai-central.webp",
+  "Marina Beach": "/assets/chennai-marina.webp",
+  "T. Nagar": "/assets/chennai-t-nagar.webp",
+  "Koyambedu": "/assets/chennai-koyambedu.webp",
 };
 
 const chennaiServices = [
@@ -31,7 +31,7 @@ const chennaiServices = [
     fare: "Starting at ₹90/3km",
     href: "/taxi-in-chennai/local-taxi",
     iconWrapClass: "bg-white",
-    icon: <img src="/assets/che+nnai-service-local.png" alt="Local Taxi service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src="/assets/chennai-service-local.webp" alt="Local Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Outstation Taxi",
@@ -39,7 +39,7 @@ const chennaiServices = [
     fare: "Starting at ₹300/20Km",
     href: "/taxi-in-chennai/outstation",
     iconWrapClass: "bg-white",
-    icon: <img src="/assets/chennai-service-outstation.png" alt="Outstation Taxi service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src="/assets/chennai-service-outstation.webp" alt="Outstation Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Acting Driver",
@@ -47,7 +47,7 @@ const chennaiServices = [
     fare: "Starting at ₹500/100 Km",
     href: "/taxi-in-chennai/acting-driver",
     iconWrapClass: "bg-white",
-    icon: <img src="/assets/chennai-service-acting-driver.png" alt="Acting Driver service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src="/assets/chennai-service-acting-driver.webp" alt="Acting Driver service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "One-Way Taxi",
@@ -55,7 +55,7 @@ const chennaiServices = [
     fare: "Starting at ₹300/Km",
     href: "/book-ride",
     iconWrapClass: "bg-white",
-    icon: <img src="/assets/chennai-service-one-way.png" alt="One-Way Taxi service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src="/assets/chennai-service-one-way.webp" alt="One-Way Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Auto Rickshaw",
@@ -63,7 +63,7 @@ const chennaiServices = [
     fare: "Starting at ₹40/1Km",
     href: "/taxi-in-chennai/auto",
     iconWrapClass: "bg-white",
-    icon: <img src="/assets/chennai-service-auto.png" alt="Auto Rickshaw service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src="/assets/chennai-service-auto.webp" alt="Auto Rickshaw service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Bike Taxi",
@@ -71,7 +71,7 @@ const chennaiServices = [
     fare: "Starting at ₹25/2km",
     href: "/book-ride",
     iconWrapClass: "bg-white",
-    icon: <img src="/assets/chennai-service-bike-taxi.png" alt="Bike Taxi service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src="/assets/chennai-service-bike-taxi.webp" alt="Bike Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Hourly Package",
@@ -79,7 +79,7 @@ const chennaiServices = [
     fare: "Starting at ₹100/3km",
     href: "/book-ride",
     iconWrapClass: "bg-white",
-    icon: <img src="/assets/chennai-service-hourly-package.png" alt="Hourly Package service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src="/assets/chennai-service-hourly-package.webp" alt="Hourly Package service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Parcel Delivery",
@@ -87,7 +87,7 @@ const chennaiServices = [
     fare: "Starting at ₹50/1km",
     href: "/taxi-in-chennai/parcel-delivery",
     iconWrapClass: "bg-white",
-    icon: <img src="/assets/chennai-service-parcel.png" alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src="/assets/chennai-service-parcel.webp" alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
   },
 ] as const;
 
@@ -387,24 +387,51 @@ function ChennaiRoutesSection() {
       <p className="mb-6 max-w-3xl text-sm text-muted-foreground md:text-base">
         Compare fares by vehicle type and choose from our available outstation cabs in Chennai.
       </p>
-      <div className="rounded-xl border border-[#E2E8F3] bg-[#F8FAFF] p-2 shadow-sm md:p-3">
-        <div className="max-h-[27rem] space-y-2 overflow-y-auto pr-1 sm:max-h-[28rem] lg:max-h-[29rem]">
-          {chennaiRoutes.map((route) => (
-            <div key={route.title} className="rounded-lg border border-[#E2E8F3] bg-white p-3 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md">
-              <div className="flex flex-wrap items-end justify-between gap-1">
-                <h3 className="font-heading text-base font-bold text-[#1E2A6E]">{route.title}</h3>
-                <p className="text-[11px] text-muted-foreground">{route.meta}</p>
+
+      <div className="grid gap-4 lg:grid-cols-[minmax(0,0.82fr)_minmax(320px,0.38fr)] lg:items-start">
+        <div className="rounded-xl border border-[#E2E8F3] bg-[#F8FAFF] p-2 shadow-sm md:p-2.5">
+          <div className="max-h-[28rem] space-y-2 overflow-y-auto pr-1 sm:max-h-[30rem] lg:max-h-[36rem]">
+            {chennaiRoutes.map((route) => (
+              <div
+                key={route.title}
+                className="rounded-lg border border-[#E2E8F3] bg-white p-2.5 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md"
+              >
+                <div className="flex flex-wrap items-end justify-between gap-1">
+                  <h3 className="font-heading text-sm font-bold text-[#1E2A6E]">{route.title}</h3>
+                  <p className="text-[10px] text-muted-foreground">{route.meta}</p>
+                </div>
+                <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-3">
+                  {route.fares.map((fare) => (
+                    <div key={fare.label} className="rounded-md border border-[#E6ECF7] bg-[#F7F9FE] px-2.5 py-1.5 text-center">
+                      <p className="text-[10px] font-extrabold uppercase tracking-wide text-[#1E2A6E]">{fare.label}</p>
+                      <p className="mt-0.5 text-xs font-bold text-[#1E2A6E]">{fare.value}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-3">
-                {route.fares.map((fare) => (
-                  <div key={fare.label} className="rounded-md border border-[#E6ECF7] bg-[#F7F9FE] px-3 py-2 text-center">
-                    <p className="text-xs font-extrabold uppercase tracking-wide text-[#1E2A6E]">{fare.label}</p>
-                    <p className="mt-0.5 text-sm font-bold text-[#1E2A6E]">{fare.value}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
+            ))}
+          </div>
+        </div>
+
+        <div className="rounded-xl border border-[#E2E8F3] bg-white p-3 shadow-sm lg:sticky lg:top-6">
+          <div className="overflow-hidden rounded-lg bg-[#F7FAFF]">
+            <img
+              src="/assets/chennai-route-car.webp"
+              alt="Root Cabs verified drivers for Chennai outstation routes"
+              className="h-64 w-full object-contain object-center sm:h-72 lg:h-80"
+            />
+          </div>
+          <div className="mt-2">
+            <p className="text-[10px] font-extrabold uppercase tracking-wide text-[#1E2A6E]">Professional Drivers</p>
+            <h3 className="mt-1 font-heading text-sm font-bold text-[#1E2A6E]">
+              Every ride, a verified captain
+            </h3>
+            <p className="mt-2 text-xs leading-5 text-muted-foreground">
+              Root Cabs drivers are verified and trained to handle city traffic, airport transfers, and longer journeys
+              with care. Their focus on timely pickup, courteous service, and smooth driving helps make every trip more
+              comfortable.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -514,13 +541,13 @@ function ChennaiActingDriverSection() {
           </Link>
         </div>
       </div>
-      <div className="overflow-hidden rounded-xl bg-[#E9EDFF] min-h-[260px] md:min-h-[300px]">
-        <img
-          src="/assets/acting-driver-chennai.png"
-          alt="Acting driver service in Chennai"
-          className="h-full min-h-[260px] w-full object-cover md:min-h-[300px]"
-        />
-      </div>
+        <div className="overflow-hidden rounded-xl bg-[#E9EDFF] min-h-[260px] md:min-h-[300px]">
+          <img
+            src="/assets/acting-driver-chennai.webp"
+            alt="Acting driver service in Chennai"
+            className="h-full min-h-[260px] w-full object-cover md:min-h-[300px]"
+          />
+        </div>
     </section>
   );
 }
@@ -575,6 +602,9 @@ export function CityPage() {
       </section>
 
       <div className="max-w-screen-xl mx-auto px-4 py-10 space-y-12">
+        {/* Fare Calculator */}
+        <FareCalculator defaultFrom={city.name} />
+
         {/* Services */}
         {isChennai ? (
           <ChennaiServicesSection />
@@ -627,9 +657,6 @@ export function CityPage() {
             </div>
           </section>
         )}
-
-        {/* Fare Calculator */}
-        <FareCalculator defaultFrom={city.name} />
 
         {/* Landmarks */}
         {city.landmarks.length > 0 && (

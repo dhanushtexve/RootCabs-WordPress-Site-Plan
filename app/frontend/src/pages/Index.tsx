@@ -13,56 +13,56 @@ const homepageServices = [
     description: "Easy local cab booking for daily travel within your city.",
     fare: "Starting at 90/3km",
     href: "/services/local-taxi",
-    icon: <img src="/assets/chennai-service-local.png" alt="Local Taxi service" className="h-12 w-12 object-contain" />,
+    icon: <img src="/assets/chennai-service-local.webp" alt="Local Taxi service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Outstation Taxi",
     description: "Comfortable round trips for long-distance travel with verified drivers and transparent fares.",
     fare: "Starting at 300/20Km",
     href: "/services/outstation",
-    icon: <img src="/assets/chennai-service-outstation.png" alt="Outstation Taxi service" className="h-12 w-12 object-contain" />,
+    icon: <img src="/assets/chennai-service-outstation.webp" alt="Outstation Taxi service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Acting Driver",
     description: "Book a professional driver to drive your own car for local or outstation journeys.",
     fare: "Starting at 500/ 100Km",
     href: "/services/acting-driver",
-    icon: <img src="/assets/chennai-service-acting-driver.png" alt="Acting Driver service" className="h-12 w-12 object-contain" />,
+    icon: <img src="/assets/chennai-service-acting-driver.webp" alt="Acting Driver service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "One-Way Taxi",
     description: "A simple online cab service for one-way travel without return charges.",
     fare: "Starting at 300/20Km",
     href: "/book-ride",
-    icon: <img src="/assets/chennai-service-one-way.png" alt="One-Way Taxi service" className="h-12 w-12 object-contain" />,
+    icon: <img src="/assets/chennai-service-one-way.webp" alt="One-Way Taxi service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Auto Rickshaw",
     description: "Quick and affordable rides for short-distance travel around the city.",
     fare: "Starting at 40/1Km",
     href: "/services/auto",
-    icon: <img src="/assets/chennai-service-auto.png" alt="Auto Rickshaw service" className="h-12 w-12 object-contain" />,
+    icon: <img src="/assets/chennai-service-auto.webp" alt="Auto Rickshaw service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Bike Taxi",
     description: "A faster and budget-friendly option for nearby trips.",
     fare: "Starting at 25/2km",
     href: "/book-ride",
-    icon: <img src="/assets/chennai-service-bike-taxi.png" alt="Bike Taxi service" className="h-12 w-12 object-contain" />,
+    icon: <img src="/assets/chennai-service-bike-taxi.webp" alt="Bike Taxi service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Hourly Package",
     description: "Keep a cab for multiple stops with flexible hourly travel plans.",
     fare: "Starting at 100/3km",
     href: "/book-ride",
-    icon: <img src="/assets/chennai-service-hourly-package.png" alt="Hourly Package service" className="h-12 w-12 object-contain" />,
+    icon: <img src="/assets/chennai-service-hourly-package.webp" alt="Hourly Package service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Parcel Delivery",
     description: "Send documents and everyday essentials with reliable pickup and live tracking.",
     fare: "Starting at 50/1km",
     href: "/services/parcel-delivery",
-    icon: <img src="/assets/chennai-service-parcel.png" alt="Parcel Delivery service" className="h-12 w-12 object-contain" />,
+    icon: <img src="/assets/chennai-service-parcel.webp" alt="Parcel Delivery service" className="h-12 w-12 object-contain" />,
   },
 ];
 
@@ -403,21 +403,21 @@ export default function Index() {
             </div>
           </div>
           <div className="overflow-hidden rounded-xl bg-[#E9EDFF] min-h-[260px] md:min-h-[300px]">
-            <img
-              src="/assets/acting-driver-vellore.png"
-              alt="Acting driver service"
-              className="h-full min-h-[260px] w-full object-cover md:min-h-[300px]"
-            />
+              <img
+              src="/assets/acting-driver-vellore.webp"
+                alt="Acting driver service"
+                className="h-full min-h-[260px] w-full object-cover md:min-h-[300px]"
+              />
           </div>
         </div>
 
         <div className="grid items-center gap-8 rounded-xl border border-border bg-[#F4F6FF] p-6 md:grid-cols-[0.95fr_1fr] md:p-10">
           <div className="overflow-hidden rounded-xl bg-[#E9EDFF] min-h-[260px] md:min-h-[300px]">
-            <img
-              src="/assets/chennai-airport.png"
-              alt="Airport transfers"
-              className="h-full min-h-[260px] w-full object-cover md:min-h-[300px]"
-            />
+              <img
+                src="/assets/chennai-airport.webp"
+                alt="Airport transfers"
+                className="h-full min-h-[260px] w-full object-cover md:min-h-[300px]"
+              />
           </div>
           <div>
             <div className="inline-flex rounded-full bg-[#E9EDFF] px-4 py-1.5 text-xs font-bold uppercase text-[#1E2A6E]">

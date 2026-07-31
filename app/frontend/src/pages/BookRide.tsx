@@ -12,6 +12,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { fareRates, companyInfo } from "@/data/siteData";
 import {
   addBooking,
+  addSupportParcelBooking,
   addRentalBooking,
   getZonePackages,
   type AddressSuggestion,
@@ -49,7 +50,7 @@ const bookingZones = [
 ];
 
 const localPackageHours = [2, 4, 6, 8];
-const parcelOrderTypes = ["Food", "Medicine", "Cloths", "Documents", "Groceries", "Electronics", "Other"];
+const parcelOrderTypes = ["Electronics", "Food", "Medicines", "Documents", "Groceries", "Clothes", "Others"];
 const actingDriverLocalPackages = [
   { value: "3", label: "3 hrs - 40 km", period: 3 },
   { value: "5", label: "5 hrs - 80 km", period: 5 },
@@ -110,8 +111,16 @@ function buildFromDateTimeInput(dateTime: string) {
   return new Date(dateTime).toISOString();
 }
 
+function getCurrentDeviceTime() {
+  return new Date().toISOString();
+}
+
 function getBookingZonePayload(zone: string) {
   return zone === "Chennai" ? "Chennai" : "Vellore";
+}
+
+function getParcelVehicleTypePayload(vehicleType: "Bike" | "Auto") {
+  return vehicleType === "Bike" ? "BIKE" : "AUTO";
 }
 
 function getBookingIdFromResponse(response: unknown) {
@@ -144,6 +153,7 @@ type ZonePackageItem = {
   id?: number | string;
   type?: string;
   period?: number | string;
+  extraCabType?: number | string;
 };
 
 function extractZonePackageItems(payload: unknown): ZonePackageItem[] {
@@ -175,6 +185,29 @@ function findZonePackageId(zonePackagesResponse: unknown, selectedType: string, 
           : NaN;
 
     return packageType === selectedType.trim().toLowerCase() && packagePeriod === selectedPeriod;
+  });
+
+  const packageId =
+    typeof matchedPackage?.id === "number"
+      ? matchedPackage.id
+      : typeof matchedPackage?.id === "string"
+        ? Number(matchedPackage.id)
+        : NaN;
+
+  return Number.isFinite(packageId) ? packageId : null;
+}
+
+function findCustomZonePackageId(zonePackagesResponse: unknown) {
+  const matchedPackage = extractZonePackageItems(zonePackagesResponse).find((item) => {
+    const packageType = typeof item.type === "string" ? item.type.trim().toLowerCase() : "";
+    const extraCabType =
+      typeof item.extraCabType === "number"
+        ? item.extraCabType
+        : typeof item.extraCabType === "string"
+          ? Number(item.extraCabType)
+          : NaN;
+
+    return packageType === "outstation" && extraCabType === 0;
   });
 
   const packageId =
@@ -284,7 +317,7 @@ export default function BookRide() {
           hasSelectedSenderAddress &&
           hasSelectedReceiverAddress &&
           parcelOrderType &&
-          (parcelOrderType !== "Other" || parcelOrderTypeOther.trim()) &&
+          (parcelOrderType !== "Others" || parcelOrderTypeOther.trim()) &&
           deliveryInstruction.trim())) &&
       (tripType !== "round-trip" ||
         (returnDate &&
@@ -438,6 +471,12 @@ export default function BookRide() {
   }, [receiverAddress, sameReceiverAsDrop, tripType]);
 
   useEffect(() => {
+    if (tripType === "parcel") {
+      setZone("Chennai");
+    }
+  }, [tripType]);
+
+  useEffect(() => {
     if (sameCabStartAsPickup) {
       setCabStart(selectedPickup?.address || "");
       setSelectedCabStart(null);
@@ -561,7 +600,7 @@ export default function BookRide() {
       (!receiverName.trim() ||
         receiverPhoneNumber.length !== 10 ||
         !parcelOrderType ||
-        (parcelOrderType === "Other" && !parcelOrderTypeOther.trim()) ||
+        (parcelOrderType === "Others" && !parcelOrderTypeOther.trim()) ||
         !deliveryInstruction.trim())
     ) {
       setBookingError("Please fill all parcel details before confirming.");
@@ -596,6 +635,7 @@ export default function BookRide() {
 
     const actingDriverSelectedPackage = actingDriverPackageOptions.find((item) => item.value === actingDriverPackage);
     const baseBookingPayload = {
+      time: getCurrentDeviceTime(),
       fromDate:
         tripType === "acting-driver"
           ? buildFromDateTimeInput(actingDriverPickupDateTime)
@@ -666,34 +706,54 @@ export default function BookRide() {
                 ...dropBookingPayload,
               }
             : tripType === "parcel"
-              ? {
-                  serviceType: "PARCEL",
-                  parcelVehicleType,
-                  senderName: name.trim(),
-                  senderPhone: `+91${phoneNumber}`,
-                  senderAddress: selectedSenderAddress!.address,
-                  receiverName: receiverName.trim(),
-                  receiverPhone: `+91${receiverPhoneNumber}`,
-                  receiverAddress: selectedReceiverAddress!.address,
-                  orderType: parcelOrderType,
-                  ...(parcelOrderType === "Other" ? { orderTypeOther: parcelOrderTypeOther.trim() } : {}),
-                  deliveryDetails: deliveryInstruction.trim(),
+                ? {
+                    serviceType: "PARCEL",
+                    parcelVehicleType: getParcelVehicleTypePayload(parcelVehicleType),
+                    deliveryType: "DOOR_DELIVERY",
+                    parcelDirection: "RECEIVER",
+                    senderName: name.trim(),
+                    senderPhone: `+91${phoneNumber}`,
+                    senderAddress: selectedSenderAddress!.address,
+                    receiverName: receiverName.trim(),
+                    receiverPhone: `+91${receiverPhoneNumber}`,
+                    receiverAddress: selectedReceiverAddress!.address,
+                    pickupAddress: {
+                      name: selectedSenderAddress!.name,
+                      address: selectedSenderAddress!.address,
+                      city: selectedSenderAddress!.city,
+                      latitude: selectedSenderAddress!.latitude,
+                      longitude: selectedSenderAddress!.longitude,
+                    },
+                    pickupLat: selectedSenderAddress!.latitude!,
+                    pickupLong: selectedSenderAddress!.longitude!,
+                    dropAddress: {
+                      name: selectedReceiverAddress!.name,
+                      address: selectedReceiverAddress!.address,
+                      city: selectedReceiverAddress!.city,
+                      latitude: selectedReceiverAddress!.latitude,
+                      longitude: selectedReceiverAddress!.longitude,
+                    },
+                    dropLat: selectedReceiverAddress!.latitude!,
+                    dropLong: selectedReceiverAddress!.longitude!,
+                    orderType: parcelOrderType,
+                    ...(parcelOrderType === "Others" ? { orderTypeOther: parcelOrderTypeOther.trim() } : {}),
+                    deliveryDetails: deliveryInstruction.trim(),
                   tripType,
-                  ...baseBookingPayload,
-                  ...dropBookingPayload,
+                  fromDate: buildFromDate(date, time),
+                  source: "RootCabs Website",
                 }
-        : {
-            tripType,
-            ...baseBookingPayload,
+          : {
+              tripType,
+              ...baseBookingPayload,
             ...dropBookingPayload,
           } satisfies RentalBookingRequest;
 
     console.info("Root Cabs booking payload", bookingPayload);
 
     setIsSubmittingBooking(true);
-    try {
-      if (tripType === "one-way" || tripType === "round-trip" || tripType === "local") {
-        const zonePackagesResponse = await getZonePackages("RENTAL", bookingZone);
+      try {
+        if (tripType === "one-way" || tripType === "round-trip" || tripType === "local") {
+          const zonePackagesResponse = await getZonePackages("RENTAL", bookingZone);
 
         if (tripType === "local") {
           localPackageId = findLocalPackageId(zonePackagesResponse, Number(localPeriod));
@@ -705,26 +765,34 @@ export default function BookRide() {
           bookingPayload.packageId = localPackageId;
         }
       }
-      if (tripType === "acting-driver") {
-        const zonePackagesResponse = await getZonePackages("DRIVER", bookingZone);
+        if (tripType === "acting-driver") {
+          const zonePackagesResponse = await getZonePackages("DRIVER", bookingZone);
 
-        if (actingDriverSelectedPackage?.period) {
-          actingDriverPackageId = findZonePackageId(
-            zonePackagesResponse,
-            actingDriverPackageType,
-            actingDriverSelectedPackage.period,
-          );
+          if (actingDriverPackage === "custom") {
+            actingDriverPackageId = findCustomZonePackageId(zonePackagesResponse);
 
-          if (!actingDriverPackageId) {
-            throw new Error("Selected acting driver package is not available for the chosen zone.");
+            if (!actingDriverPackageId) {
+              throw new Error("Custom acting driver package is not available for the chosen zone.");
+            }
+          } else if (actingDriverSelectedPackage?.period) {
+            actingDriverPackageId = findZonePackageId(
+              zonePackagesResponse,
+              actingDriverPackageType,
+              actingDriverSelectedPackage.period,
+            );
+
+            if (!actingDriverPackageId) {
+              throw new Error("Selected acting driver package is not available for the chosen zone.");
+            }
           }
 
-          bookingPayload.packageId = actingDriverPackageId;
+          bookingPayload.packageId = actingDriverPackageId ?? undefined;
         }
-      }
-      const response =
-        tripType === "acting-driver"
-          ? await addBooking(bookingPayload)
+        const response =
+          tripType === "acting-driver"
+            ? await addBooking(bookingPayload)
+          : tripType === "parcel"
+            ? await addSupportParcelBooking(bookingPayload)
           : await addRentalBooking(bookingPayload);
       setBookingId(getBookingIdFromResponse(response));
       setSubmitted(true);
@@ -885,17 +953,17 @@ export default function BookRide() {
 
                   <div>
                     <Label className="text-sm font-medium mb-1.5 block">Zone</Label>
-                    <Select value={zone} onValueChange={setZone}>
-                      <SelectTrigger className="cursor-pointer">
-                        <SelectValue placeholder="Select service zone" />
-                      </SelectTrigger>
-                      <SelectContent className="max-h-60 overflow-y-auto">
-                        {bookingZones.map((city) => (
-                          <SelectItem key={city} value={city} className="cursor-pointer">
-                            {city}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
+                      <Select value={zone} onValueChange={setZone} disabled={tripType === "parcel"}>
+                        <SelectTrigger className="cursor-pointer">
+                          <SelectValue placeholder="Select service zone" />
+                        </SelectTrigger>
+                        <SelectContent className="max-h-60 overflow-y-auto">
+                          {(tripType === "parcel" ? ["Chennai"] : bookingZones).map((city) => (
+                            <SelectItem key={city} value={city} className="cursor-pointer">
+                              {city}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
                     </Select>
                   </div>
                 </div>
@@ -1076,12 +1144,12 @@ export default function BookRide() {
                 {/* Zone */}
                 <div>
                   <Label className="text-sm font-medium mb-1.5 block">Zone</Label>
-                  <Select value={zone} onValueChange={setZone}>
+                  <Select value={zone} onValueChange={setZone} disabled={tripType === "parcel"}>
                     <SelectTrigger className="cursor-pointer">
                       <SelectValue placeholder="Select service zone" />
                     </SelectTrigger>
                     <SelectContent className="max-h-60 overflow-y-auto">
-                      {bookingZones.map((city) => (
+                      {(tripType === "parcel" ? ["Chennai"] : bookingZones).map((city) => (
                         <SelectItem key={city} value={city} className="cursor-pointer">
                           {city}
                         </SelectItem>
@@ -1590,7 +1658,7 @@ export default function BookRide() {
                         </Select>
                       </div>
 
-                      {parcelOrderType === "Other" && (
+                      {parcelOrderType === "Others" && (
                         <div>
                           <Label className="text-sm font-medium mb-1.5 block">Other Order Type</Label>
                           <Input
@@ -1645,19 +1713,19 @@ export default function BookRide() {
 
           {/* Sidebar */}
           <div className="space-y-6">
-            <div className="relative h-52 overflow-hidden rounded-xl border border-border bg-[#1E2A6E] shadow-sm md:h-56">
-              <img
-                src="/assets/bookride.png"
-                alt="Root Cabs cab, auto and bike ride options"
-                className="absolute inset-0 h-full w-full object-cover object-center"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#1E2A6E]/95 via-[#1E2A6E]/60 to-[#1E2A6E]/20" />
-              <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#111A4D]/90 to-transparent" />
-              <div className="relative z-10 flex h-full flex-col justify-end p-5 text-white">
-                <p className="text-[10px] font-extrabold uppercase tracking-wide text-[#FFD700]">Root Cabs</p>
-                <h2 className="mt-1 font-heading text-2xl font-extrabold leading-tight">Ride safe,<br />every time.</h2>
+              <div className="relative h-52 overflow-hidden rounded-xl border border-[#d6e2ff] bg-[#f3f7ff] shadow-sm md:h-56">
+                <img
+                  src="/assets/bookride.png"
+                  alt="Root Cabs cab, auto and bike ride options"
+                  className="absolute inset-0 h-full w-full object-cover object-center brightness-[0.92] saturate-[1.08] contrast-[1.02]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-[#273588]/60 via-[#273588]/28 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1d286f]/35 via-transparent to-transparent" />
+                <div className="relative z-10 flex h-full flex-col justify-end p-5 text-white">
+                  <p className="text-[10px] font-extrabold uppercase tracking-wide text-[#FFD700] drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]">Root Cabs</p>
+                  <h2 className="mt-1 font-heading text-2xl font-extrabold leading-tight text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.45)]">Ride safe,<br />every time.</h2>
+                </div>
               </div>
-            </div>
 
             <Card className="border-border bg-white">
               <CardContent className="p-6">
