@@ -903,7 +903,9 @@ export default function BookRide() {
       <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12">
         <div className="max-w-screen-xl mx-auto px-4">
           <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Book Your Ride</h1>
-          <p className="text-gray-300 max-w-lg">Plan your journey with ease and book your ride online for a safe, comfortable and reliable travel experience.</p>
+          <p className="text-gray-300 max-w-none md:whitespace-nowrap">
+            Plan your journey with ease and book your ride online for a safe, comfortable and reliable travel experience.
+          </p>
         </div>
       </section>
 
@@ -1706,11 +1708,26 @@ export default function BookRide() {
                     From quick city rides to airport travel, Root Cabs makes it easy to book your ride with clear fares and dependable service.
                   </p>
                   <ul className="grid gap-x-8 gap-y-3 text-sm text-foreground sm:grid-cols-2">
-                    <li>SOS feature for emergency assistance</li>
-                    <li>No bargaining with drivers</li>
-                    <li>The fare shown in the app is the final fare</li>
-                    <li>Refer a customer and earn ₹100</li>
-                    <li>No last-minute ride cancellations</li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#1E2A6E]" />
+                      <span>SOS feature for emergency assistance</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#1E2A6E]" />
+                      <span>No bargaining with drivers</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#1E2A6E]" />
+                      <span>The fare shown in the app is the final fare</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#1E2A6E]" />
+                      <span>Refer a customer and earn ₹100</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#1E2A6E]" />
+                      <span>No last-minute ride cancellations</span>
+                    </li>
                   </ul>
                 </CardContent>
               </Card>
@@ -1793,10 +1810,12 @@ export default function BookRide() {
           </div>
         </div>
 
-        <Card className="mt-8 border-border">
-          <CardContent className="grid gap-4 p-6 md:grid-cols-[240px_minmax(0,1fr)] md:items-start">
-            <h4 className="font-heading text-lg font-semibold">Terms & Conditions</h4>
-            <p className="text-sm leading-7 text-muted-foreground">
+        <Card className="mt-8 w-full border-border">
+          <CardContent className="px-6 py-8 text-center md:px-10 lg:px-14">
+            <h4 className="font-heading text-lg font-semibold tracking-wide text-foreground">
+              Terms & Conditions
+            </h4>
+            <p className="mx-auto mt-3 max-w-5xl text-sm leading-7 text-muted-foreground">
               The fares shown are indicative starting rates and may vary based on the selected vehicle, pickup location, drop location, travel distance and current road conditions. The final fare will be displayed in the app before your booking is confirmed. Toll charges, parking fees, waiting charges and other applicable expenses are not included in the per-kilometre rate and will be charged separately.
             </p>
           </CardContent>

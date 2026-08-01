@@ -370,7 +370,7 @@ function ChennaiServicesSection() {
   return (
     <section>
       <h2 className="font-heading text-2xl font-bold mb-3">Explore Our Services</h2>
-      <p className="mb-6 max-w-3xl text-sm text-muted-foreground md:text-base">
+      <p className="mb-6 max-w-none text-sm text-muted-foreground md:whitespace-nowrap md:text-base">
         Find the right service for city rides, long-distance travel, personal driving, and doorstep delivery across Chennai.
       </p>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -412,7 +412,7 @@ function ChennaiRoutesSection() {
   return (
     <section>
       <h2 className="font-heading text-2xl font-bold mb-3">Popular Outstation Routes from Chennai</h2>
-      <p className="mb-6 max-w-3xl text-sm text-muted-foreground md:text-base">
+      <p className="mb-6 max-w-none text-sm text-muted-foreground md:whitespace-nowrap md:text-base">
         Compare fares by vehicle type and choose from our available outstation cabs in Chennai.
       </p>
 
@@ -691,7 +691,7 @@ export function CityPage() {
           <section>
             <h2 className="font-heading text-2xl font-bold mb-2">Popular Pickup Spots in {city.name}</h2>
             {city.name === "Chennai" && (
-              <p className="mb-6 max-w-4xl text-sm leading-6 text-muted-foreground md:text-base">
+              <p className="mb-6 max-w-none text-sm leading-6 text-muted-foreground md:whitespace-nowrap md:text-base">
                 Root Cabs makes it easy to arrange a ride from the city’s busiest travel hubs, landmarks, and neighbourhoods with a convenient taxi service in Chennai.
               </p>
             )}
@@ -990,4 +990,5 @@ export function CityServicePage() {
     </div>
   );
 }
+
 

@@ -122,7 +122,7 @@ export function ServicesHub() {
       <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12 md:py-14">
         <div className="max-w-screen-xl mx-auto px-4">
           <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Our Services</h1>
-          <p className="max-w-2xl text-sm leading-6 text-gray-300 md:text-base">
+          <p className="max-w-none text-sm leading-6 text-gray-300 md:whitespace-nowrap md:text-base">
             Explore our reliable Taxi Services in Tamil Nadu for local travel, outstation trips and everyday commuting.
           </p>
           <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-300">

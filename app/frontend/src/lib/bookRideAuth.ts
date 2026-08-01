@@ -1,3 +1,6 @@
+import { estimateFareLocally, searchLocalAddresses } from "@/lib/bookingFallback";
+export type { AddressSuggestion } from "@/lib/bookingFallback";
+
 type VerifyRequest = {
   phoneNumber: string;
   user: "CUSTOMER";
@@ -76,14 +79,6 @@ type SessionResponse = {
   };
 };
 
-export type AddressSuggestion = {
-  name: string;
-  address: string;
-  city?: string;
-  latitude?: number;
-  longitude?: number;
-};
-
 type AddressSearchResponse = {
   success?: boolean;
   code?: number;
@@ -115,6 +110,7 @@ type ZonePackagesResponse = {
 const BOOKING_API_BASE_URL = import.meta.env.DEV
   ? "/api/customer/dev"
   : `${import.meta.env.VITE_BOOKING_API_BASE_URL || "https://perihelial-ariella-unserious.ngrok-free.dev"}/api/customer/dev`;
+const BOOKING_API_CONFIGURED = Boolean(import.meta.env.DEV || import.meta.env.VITE_BOOKING_API_BASE_URL);
 const BOOKING_SESSION_STORAGE_KEY = "rootcabs_booking_session_id";
 let bookingSessionId = "";
 
@@ -163,6 +159,10 @@ async function requestJson<T>(
   options: RequestInit = {},
   requestOptions: { includeSessionToken?: boolean } = {},
 ): Promise<T> {
+  if (!BOOKING_API_CONFIGURED && !import.meta.env.DEV) {
+    throw new Error("Booking API is not configured for live hosting yet.");
+  }
+
   const baseHeaders: Record<string, string> =
     options.body !== undefined
       ? {
@@ -238,7 +238,18 @@ export async function verifyBookingOtp(otp: string, deviceToken: string) {
   );
 }
 
-export async function searchAddressDetailed(address: string) {
+export async function searchAddressDetailed(
+  address: string,
+  options: { allowLocalFallback?: boolean } = {},
+) {
+  if (!BOOKING_API_CONFIGURED && !import.meta.env.DEV) {
+    if (options.allowLocalFallback === false) {
+      throw new Error("Address lookup is not configured for live hosting yet.");
+    }
+
+    return searchLocalAddresses(address);
+  }
+
   const payload = await requestJson<AddressSearchResponse>(
     `/website/search-address-detailed?address=${encodeURIComponent(address)}`,
     {
@@ -251,6 +262,16 @@ export async function searchAddressDetailed(address: string) {
   }
 
   return payload.data || [];
+}
+
+export function estimateFareFallback(request: {
+  cabType: "Mini" | "Sedan" | "SUV" | "MUV";
+  pickupLat: number;
+  pickupLong: number;
+  dropLat: number;
+  dropLong: number;
+}) {
+  return estimateFareLocally(request);
 }
 
 export async function getZonePackages(serviceType: "RENTAL" | "DRIVER" | "PARCEL", zone: string) {

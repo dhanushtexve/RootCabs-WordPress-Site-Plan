@@ -34,8 +34,8 @@ export default function FareCalculator({ defaultFrom = "", defaultTo = "", compa
 
     try {
       const [fromMatches, toMatches] = await Promise.all([
-        searchAddressDetailed(from),
-        searchAddressDetailed(to),
+        searchAddressDetailed(from, { allowLocalFallback: false }),
+        searchAddressDetailed(to, { allowLocalFallback: false }),
       ]);
       const pickup = fromMatches.find((item) => typeof item.latitude === "number" && typeof item.longitude === "number");
       const drop = toMatches.find((item) => typeof item.latitude === "number" && typeof item.longitude === "number");

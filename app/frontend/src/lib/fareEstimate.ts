@@ -56,13 +56,13 @@ export async function getFareEstimate(request: FareEstimateRequest): Promise<Far
   });
 
   if (!response.ok) {
-    throw new Error("Unable to fetch fare estimate. Please try again.");
+    throw new Error("Unable to fetch fare estimate from the live API.");
   }
 
   const payload = (await response.json()) as FareEstimateResponse;
 
   if (!payload.success || !payload.data) {
-    throw new Error(payload.message || "Unable to fetch fare estimate. Please try again.");
+    throw new Error(payload.message || "Unable to fetch fare estimate from the live API.");
   }
 
   return payload.data;
