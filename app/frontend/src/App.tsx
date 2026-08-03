@@ -7,11 +7,11 @@ import { ServicesHub, ServicePage } from "@/pages/ServicesPages";
 import { CitiesHub, CityPage, CityServicePage } from "@/pages/CitiesPages";
 import { RoutePage, LandmarkPage } from "@/pages/RoutesAndLandmarks";
 import { DriversPage } from "@/pages/DriversPage";
+import { SupportPage } from "@/pages/SupportPage";
 import {
   BusinessPage,
   BlogPage,
   AboutPage,
-  SupportPage,
   PrivacyPolicyPage,
   TermsOfUsePage,
   WalletPolicyPage,

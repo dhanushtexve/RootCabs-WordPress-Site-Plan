@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Phone, Mail, MapPin, Clock, Shield, Star, Users, Percent, Wallet, GraduationCap, Car, CheckCircle, Building, Hotel, Briefcase, Calendar, MessageSquare, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -171,7 +171,7 @@ export function BusinessPage() {
         <section className="rounded-2xl border border-border bg-muted/50 px-6 py-8 text-center md:px-8">
           <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Contact Us</h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-muted-foreground md:text-base">
-            Tell us about your company’s travel requirements, and our team will help you find a suitable business transport plan.
+            Tell us about your companyâ€™s travel requirements, and our team will help you find a suitable business transport plan.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <a href={`tel:${companyInfo.phone}`}>
@@ -255,7 +255,7 @@ export function BusinessPage() {
               Drive and Earn with Root Cabs
             </h2>
             <p className="mx-auto mt-3 mb-5 max-w-2xl text-sm leading-6 text-muted-foreground">
-              Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+              Earn up to â‚¹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
             </p>
             <Link to="/drivers">
               <Button className="cursor-pointer bg-primary hover:bg-primary/90">
@@ -620,7 +620,7 @@ export function AboutPage() {
                   <p className="font-heading text-2xl font-bold text-[#1E2A6E]">2026</p>
                   <p className="mt-1 font-heading text-lg font-bold text-[#1E2A6E]">Growing Across Tamil Nadu</p>
                   <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                    Within a year, Root Cabs expanded its presence to more than 10 cities and broadened its service portfolio to meet different mobility needs. New additions such as Bike Taxi and Parcel Delivery extended the platform beyond passenger travel and marked the next stage of Root Cabs’ growth.
+                    Within a year, Root Cabs expanded its presence to more than 10 cities and broadened its service portfolio to meet different mobility needs. New additions such as Bike Taxi and Parcel Delivery extended the platform beyond passenger travel and marked the next stage of Root Cabsâ€™ growth.
                   </p>
                 </div>
               </div>
@@ -692,17 +692,17 @@ export function AboutPage() {
             {[
               {
                 name: "Karthik Raman",
-                city: "Local Taxi · Vellore",
+                city: "Local Taxi Â· Vellore",
                 text: "Booking was simple, the driver arrived on time and the entire ride was comfortable. Root Cabs has become my preferred choice for local travel.",
               },
               {
                 name: "Deepa Suresh",
-                city: "Outstation Taxi · Coimbatore",
+                city: "Outstation Taxi Â· Coimbatore",
                 text: "The fare shown in the app was clear, and there was no bargaining with the driver. The outstation trip was smooth from start to finish.",
               },
               {
                 name: "Arun Vijay",
-                city: "Airport Taxi · Chennai",
+                city: "Airport Taxi Â· Chennai",
                 text: "The driver was polite, professional and familiar with the route. The ride was well managed and reached on time.",
               },
             ].map((review) => (
@@ -716,7 +716,7 @@ export function AboutPage() {
                       />
                     ))}
                   </div>
-                  <p className="text-sm leading-7 text-foreground">“{review.text}”</p>
+                  <p className="text-sm leading-7 text-foreground">â€œ{review.text}â€</p>
                   <div className="mt-5">
                     <p className="text-sm font-medium text-[#1E2A6E]">{review.name}</p>
                     <p className="text-xs text-muted-foreground">{review.city}</p>
@@ -797,7 +797,7 @@ export function AboutPage() {
               Drive and Earn with Root Cabs
             </h2>
             <p className="mx-auto mt-3 mb-5 max-w-2xl text-sm leading-6 text-muted-foreground">
-              Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+              Earn up to â‚¹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
             </p>
             <Link to="/drivers">
               <Button className="bg-[#1E2A6E] text-white hover:bg-[#2A3A8A] cursor-pointer px-6 py-3 font-semibold">
@@ -816,61 +816,201 @@ export function AboutPage() {
 // ============================================================
 export function SupportPage() {
   const faqs = [
-    { q: "How do I book a ride?", a: "You can book through our app (Google Play), website (rootcabs.com/book-ride), or by calling +91 8608606474. Select pickup, destination, and vehicle type to get started." },
-    { q: "What payment methods do you accept?", a: "We accept Cash, UPI (Google Pay, PhonePe, Paytm), and Root Wallet. Corporate accounts can use monthly billing." },
-    { q: "Is there a cancellation fee?", a: "Cancellations made 30+ minutes before pickup are free. Within 30 minutes, a nominal fee of ₹50 applies." },
-    { q: "How are fares calculated?", a: "Fares = Base fare + (Per km rate × Distance). Toll charges are extra. No surge pricing ever. Use our fare calculator for estimates." },
-    { q: "Are your drivers verified?", a: "Yes, all drivers undergo background verification, document checks, and driving skill assessment before onboarding." },
-    { q: "What safety features do you offer?", a: "Live GPS tracking, SOS emergency button, trip sharing with family, driver verification, and 24/7 support." },
-    { q: "Do you offer corporate accounts?", a: "Yes! Corporate accounts include centralized billing, employee ride management, priority booking, and dedicated account managers." },
-    { q: "How do I become a driver partner?", a: "Call us at +91 8608606474 or visit the Drivers section on our website. You'll need a valid license, vehicle documents, and Aadhaar/PAN." },
+    {
+      q: "Can I share my live trip location with a family member?",
+      a: "Yes. You can share your live trip details with a family member or friend from the Root Cabs app once the ride begins.",
+    },
+    {
+      q: "I left something in the cab. How can I get it back?",
+      a: "Contact Root Cabs support as soon as possible and share your booking details. Our team will help you connect with the driver and assist with recovering the item.",
+    },
+    {
+      q: "How do I become a Root Cabs driver partner?",
+      a: "Download the Root Partner app and complete the registration process with your personal, vehicle and licence details. Once the documents are verified, your account can be activated.",
+    },
+    {
+      q: "How do I file a complaint about a driver?",
+      a: "Contact the Root Cabs support team and share your booking ID along with the details of the issue. The team will review the complaint and take the necessary action.",
+    },
+    {
+      q: "I want a refund for a cancelled ride. How long does it take?",
+      a: "Once approved, refunds are usually processed within 24 to 48 hours. The time taken to reflect may vary depending on the payment method.",
+    },
+    {
+      q: "How do I check my daily payout status?",
+      a: "Driver partners can view daily earnings and payout details in the Root Partner app. Contact driver support if a completed payout is not reflected.",
+    },
+    {
+      q: "What should I do if my ride is delayed?",
+      a: "Check the driver’s location and trip status in the app. You can contact the driver directly or reach Root Cabs support if you need further assistance.",
+    },
+    {
+      q: "How can I update the phone number linked to my account?",
+      a: "Contact the Root Cabs support team with your registered details. The team will guide you through the verification and account update process.",
+    },
   ];
+
+  useEffect(() => {
+    const previousTitle = document.title;
+    const previousLang = document.documentElement.lang;
+    const head = document.head;
+
+    const seo = {
+      title: "Support & Help Centre | Root Cabs",
+      description:
+        "Need help with a booking, payment, ride update or service request? Find quick answers or contact the Root Cabs support team for assistance.",
+      keywords:
+        "Root Cabs support, help centre, customer support, booking help, ride updates, payment help, service request support, Tamil Nadu taxi support",
+      url: "https://rootcabs.com/support",
+      image: "https://rootcabs.com/assets/root-cabs-logo.webp",
+    };
+
+    const upsertMeta = (attribute: "name" | "property", key: string, content: string) => {
+      const selector = `meta[${attribute}="${key}"]`;
+      let tag = head.querySelector(selector) as HTMLMetaElement | null;
+      const existed = Boolean(tag);
+      const previousContent = tag?.getAttribute("content");
+
+      if (!tag) {
+        tag = document.createElement("meta");
+        tag.setAttribute(attribute, key);
+        head.appendChild(tag);
+      }
+
+      tag.setAttribute("content", content);
+
+      return () => {
+        if (!tag) return;
+        if (existed) {
+          if (previousContent !== null) tag.setAttribute("content", previousContent);
+        } else {
+          tag.remove();
+        }
+      };
+    };
+
+    const canonicalSelector = 'link[rel="canonical"]';
+    let canonicalTag = head.querySelector(canonicalSelector) as HTMLLinkElement | null;
+    const canonicalExisted = Boolean(canonicalTag);
+    const previousCanonicalHref = canonicalTag?.getAttribute("href");
+    if (!canonicalTag) {
+      canonicalTag = document.createElement("link");
+      canonicalTag.rel = "canonical";
+      head.appendChild(canonicalTag);
+    }
+    canonicalTag.href = seo.url;
+
+    const cleanupMeta = [
+      upsertMeta("name", "description", seo.description),
+      upsertMeta("name", "keywords", seo.keywords),
+      upsertMeta("property", "og:site_name", "Root Cabs"),
+      upsertMeta("property", "og:title", seo.title),
+      upsertMeta("property", "og:description", seo.description),
+      upsertMeta("property", "og:url", seo.url),
+      upsertMeta("property", "og:image", seo.image),
+      upsertMeta("property", "og:type", "website"),
+      upsertMeta("name", "twitter:card", "summary_large_image"),
+      upsertMeta("name", "twitter:title", seo.title),
+      upsertMeta("name", "twitter:description", seo.description),
+      upsertMeta("name", "twitter:image", seo.image),
+    ];
+
+    document.title = seo.title;
+    document.documentElement.lang = "en-IN";
+
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.q,
+        acceptedAnswer: { "@type": "Answer", text: faq.a },
+      })),
+      isPartOf: {
+        "@type": "WebSite",
+        name: "Root Cabs",
+        url: "https://rootcabs.com",
+      },
+    });
+    head.appendChild(schema);
+
+    return () => {
+      document.title = previousTitle;
+      document.documentElement.lang = previousLang;
+      cleanupMeta.forEach((dispose) => dispose());
+
+      if (canonicalExisted) {
+        if (previousCanonicalHref !== null) canonicalTag?.setAttribute("href", previousCanonicalHref);
+      } else {
+        canonicalTag?.remove();
+      }
+
+      schema.remove();
+    };
+  }, []);
 
   return (
     <div>
-      <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12">
+      <section className="bg-[#1E2A6E] text-white py-14 md:py-16">
         <div className="max-w-screen-xl mx-auto px-4">
-          <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Support & Help Center</h1>
-          <p className="text-gray-300">Get answers to common questions or reach out to our support team.</p>
+          <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Support & Help Centre</h1>
+          <p className="text-white/80 max-w-4xl text-sm md:text-base leading-relaxed">
+            Need help with a booking, payment, ride update or service request? Find quick answers here or contact the Root Cabs support team for assistance.
+          </p>
         </div>
       </section>
 
       <div className="max-w-screen-xl mx-auto px-4 py-12">
-        <div className="grid lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2">
-            {/* FAQ */}
-            <h2 className="font-heading text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+        <div className="grid lg:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.9fr)] gap-8 items-start">
+          <div>
+            <h2 className="font-heading text-2xl md:text-3xl font-bold mb-2">Frequently Asked Questions</h2>
+            <p className="text-sm text-muted-foreground mb-6">Find quick answers to the most common support questions below.</p>
             <Accordion type="single" collapsible className="w-full">
               {faqs.map((faq, i) => (
                 <AccordionItem key={i} value={`faq-${i}`}>
-                  <AccordionTrigger className="text-left text-sm font-medium cursor-pointer">{faq.q}</AccordionTrigger>
+                  <AccordionTrigger className="text-left text-sm md:text-base font-medium cursor-pointer">{faq.q}</AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">{faq.a}</AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>
           </div>
 
-          {/* Contact Sidebar */}
-          <div className="space-y-6">
-            <Card className="border-primary/20 bg-primary/5">
+          <div className="space-y-6 lg:sticky lg:top-6">
+            <Card className="border-primary/20 bg-primary/5 shadow-sm">
               <CardContent className="p-6">
-                <h3 className="font-heading font-semibold mb-4">Contact Us</h3>
+                <h3 className="font-heading font-semibold text-xl mb-4">Contact Us</h3>
                 <div className="space-y-4 text-sm">
-                  <a href={`tel:${companyInfo.phone}`} className="flex items-center gap-3 hover:text-primary cursor-pointer">
-                    <Phone className="w-5 h-5 text-primary" />
-                    <div><p className="font-medium">Phone (24/7)</p><p className="text-muted-foreground">{companyInfo.phone}</p></div>
-                  </a>
-                  <a href={`mailto:${companyInfo.email}`} className="flex items-center gap-3 hover:text-primary cursor-pointer">
-                    <Mail className="w-5 h-5 text-primary" />
-                    <div><p className="font-medium">Email</p><p className="text-muted-foreground">{companyInfo.email}</p></div>
+                  <div className="space-y-1">
+                    <p className="font-medium">Phone (24/7)</p>
+                    <a href="tel:+918608066474" className="block text-muted-foreground hover:text-primary cursor-pointer">For Customer: +91 86080 66474</a>
+                    <a href="tel:+918608602829" className="block text-muted-foreground hover:text-primary cursor-pointer">For Driver: +91 8608602829</a>
+                  </div>
+                  <a href={`mailto:${companyInfo.email}`} className="flex items-start gap-3 hover:text-primary cursor-pointer">
+                    <Mail className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-medium">Email</p>
+                      <p className="text-muted-foreground">{companyInfo.email}</p>
+                    </div>
                   </a>
                   <div className="flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                    <div><p className="font-medium">Office</p><p className="text-muted-foreground">{companyInfo.address}</p></div>
+                    <div>
+                      <p className="font-medium">Office</p>
+                      <p className="text-muted-foreground">Texve Innovations Pvt. Ltd.</p>
+                      <p className="text-muted-foreground">Vellore, Tamil Nadu 632001</p>
+                    </div>
                   </div>
                   <div className="flex items-start gap-3">
                     <Clock className="w-5 h-5 text-primary shrink-0 mt-0.5" />
-                    <div><p className="font-medium">Support Hours</p><p className="text-muted-foreground">24/7, 365 days</p></div>
+                    <div>
+                      <p className="font-medium">Support Hours</p>
+                      <p className="text-muted-foreground">24/7, 365 days</p>
+                    </div>
+                  </div>
+                  <div className="rounded-xl bg-white/70 border border-primary/10 px-4 py-3 text-xs text-muted-foreground">
+                    We reply to queries within 2 hours, any time of day.
                   </div>
                 </div>
               </CardContent>
@@ -890,27 +1030,9 @@ export function SupportPage() {
           </div>
         </div>
       </div>
-
-      {/* Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: faqs.map((faq) => ({
-              "@type": "Question",
-              name: faq.q,
-              acceptedAnswer: { "@type": "Answer", text: faq.a },
-            })),
-          }),
-        }}
-      />
     </div>
   );
 }
-
-// ============================================================
 // PRIVACY POLICY PAGE
 // ============================================================
 function PolicyDocumentPage({ policyKey }: { policyKey: string }) {
