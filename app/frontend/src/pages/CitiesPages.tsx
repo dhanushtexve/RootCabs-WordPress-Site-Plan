@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { MapPin, ArrowRight, Car, Plane, Navigation, User, Package, Bike, Star, CheckCircle, Phone, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -14,6 +14,31 @@ const serviceIconMap: Record<string, React.ReactNode> = {
   "acting-driver": <User className="w-5 h-5" />,
   "parcel-delivery": <Package className="w-5 h-5" />,
   "auto": <Bike className="w-5 h-5" />,
+};
+
+const serviceLabelMap: Record<string, string> = {
+  "local-taxi": "Local Taxi",
+  "airport-taxi": "Airport Taxi",
+  outstation: "Outstation",
+  "acting-driver": "Acting Driver",
+  "parcel-delivery": "Parcel",
+  auto: "Auto",
+  "one-way-taxi": "One-Way Taxi",
+  "hourly-package": "Hourly Package",
+  "bike-taxi": "Bike Taxi",
+};
+
+const cityCardSummaryMap: Record<string, string> = {
+  Chennai: "Move around Chennai easily for work, shopping, daily commutes and outstation journeys.",
+  Vellore: "Get dependable rides across Vellore for local trips, hospital visits and long-distance travel.",
+  Coimbatore: "Choose convenient transport across Coimbatore for city rides, business travel and outstation trips.",
+  Madurai: "Enjoy comfortable rides across Madurai for temple visits, family trips and everyday travel.",
+  Trichy: "Find suitable ride options across Trichy for local commutes, scheduled trips and longer journeys.",
+  Salem: "Book reliable transport across Salem for daily travel, multiple stops and outstation trips.",
+  Tiruppur: "Plan your rides across Tiruppur for work, shopping, local travel and long-distance journeys.",
+  Kanchipuram: "Explore Kanchipuram with dependable options for temple visits, city rides and intercity travel.",
+  Tiruvannamalai: "Reach local destinations and nearby towns comfortably with reliable ride options.",
+  Ranipet: "Choose convenient rides across Ranipet for local travel, industrial visits and nearby outstation journeys.",
 };
 
 const chennaiPickupImages: Record<string, string> = {
@@ -189,49 +214,204 @@ const chennaiReviews = [
 // CITIES HUB
 // ============================================================
 export function CitiesHub() {
+  const [expandedCities, setExpandedCities] = useState<string[]>([]);
+  const [showAllCities, setShowAllCities] = useState(false);
+
+  useEffect(() => {
+    const previousTitle = document.title;
+    const previousLang = document.documentElement.lang;
+    const head = document.head;
+
+    const seo = {
+      title: "Cities We Serve | Taxi Services in Tamil Nadu | Root Cabs",
+      description:
+        "Root Cabs brings dependable taxi services to 10+ cities across Tamil Nadu, making local, one-way and outstation travel easier to book.",
+      keywords:
+        "Taxi Services in Tamil Nadu, online taxi booking, affordable taxi service, outstation taxi service, one way taxi service, airport taxi service, local taxi service, car rental with driver, bike taxi service, auto booking service",
+      url: "https://rootcabs.com/cities",
+      image: "https://rootcabs.com/assets/root-cabs-logo.webp",
+    };
+
+    const upsertMeta = (attribute: "name" | "property", key: string, content: string) => {
+      const selector = `meta[${attribute}="${key}"]`;
+      let tag = head.querySelector(selector) as HTMLMetaElement | null;
+      const existed = Boolean(tag);
+      const previousContent = tag?.getAttribute("content");
+
+      if (!tag) {
+        tag = document.createElement("meta");
+        tag.setAttribute(attribute, key);
+        head.appendChild(tag);
+      }
+
+      tag.setAttribute("content", content);
+
+      return () => {
+        if (!tag) return;
+        if (existed) {
+          if (previousContent !== null) tag.setAttribute("content", previousContent);
+        } else {
+          tag.remove();
+        }
+      };
+    };
+
+    const canonicalSelector = 'link[rel="canonical"]';
+    let canonicalTag = head.querySelector(canonicalSelector) as HTMLLinkElement | null;
+    const canonicalExisted = Boolean(canonicalTag);
+    const previousCanonicalHref = canonicalTag?.getAttribute("href");
+    if (!canonicalTag) {
+      canonicalTag = document.createElement("link");
+      canonicalTag.rel = "canonical";
+      head.appendChild(canonicalTag);
+    }
+    canonicalTag.href = seo.url;
+
+    const cleanupMeta = [
+      upsertMeta("name", "description", seo.description),
+      upsertMeta("name", "keywords", seo.keywords),
+      upsertMeta("property", "og:site_name", "Root Cabs"),
+      upsertMeta("property", "og:title", seo.title),
+      upsertMeta("property", "og:description", seo.description),
+      upsertMeta("property", "og:url", seo.url),
+      upsertMeta("property", "og:image", seo.image),
+      upsertMeta("property", "og:type", "website"),
+      upsertMeta("name", "twitter:card", "summary_large_image"),
+      upsertMeta("name", "twitter:title", seo.title),
+      upsertMeta("name", "twitter:description", seo.description),
+      upsertMeta("name", "twitter:image", seo.image),
+    ];
+
+    document.title = seo.title;
+    document.documentElement.lang = "en-IN";
+
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: seo.title,
+      description: seo.description,
+      url: seo.url,
+      isPartOf: {
+        "@type": "WebSite",
+        name: "Root Cabs",
+        url: "https://rootcabs.com",
+      },
+      about: "Taxi Services in Tamil Nadu",
+      areaServed: cities.map((city) => ({
+        "@type": "City",
+        name: city.name,
+      })),
+      hasPart: cities.map((city, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: city.name,
+        url: `https://rootcabs.com/${city.slug}`,
+      })),
+    });
+    head.appendChild(schema);
+
+    return () => {
+      document.title = previousTitle;
+      document.documentElement.lang = previousLang;
+
+      cleanupMeta.forEach((dispose) => dispose());
+
+      if (canonicalExisted) {
+        if (previousCanonicalHref !== null) canonicalTag?.setAttribute("href", previousCanonicalHref);
+      } else {
+        canonicalTag?.remove();
+      }
+
+      schema.remove();
+    };
+  }, []);
+
   return (
     <div>
       <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12">
         <div className="max-w-screen-xl mx-auto px-4">
           <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Cities We Serve</h1>
-          <p className="text-gray-300 max-w-lg">Root Cabs operates in 10+ cities across Tamil Nadu. Select your city to explore available services, routes, and fares.</p>
+          <p className="text-gray-300 max-w-none md:whitespace-nowrap">
+            Root Cabs brings dependable taxi services to 10+ cities across Tamil Nadu, making local, one-way and outstation travel easier to book.
+          </p>
         </div>
       </section>
 
       <div className="max-w-screen-xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {cities.map((city) => (
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {(showAllCities ? cities : cities.slice(0, 9)).map((city) => (
             <Link key={city.slug} to={`/${city.slug}`} className="group cursor-pointer">
-              <Card className="h-full border-border hover:border-primary/30 hover:shadow-md transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors">
-                      <MapPin className="w-5 h-5" />
+              {(() => {
+                const isExpanded = expandedCities.includes(city.slug);
+                const visibleServices = isExpanded ? city.services : city.services.slice(0, 4);
+                const hiddenCount = city.services.length - visibleServices.length;
+
+                return (
+              <Card className="h-full border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-lg">
+                <CardContent className="p-5 md:p-6">
+                  <div className="flex items-start gap-3">
+                    <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-[#E9E6FF] text-[#6B63FF]">
+                      <MapPin className="h-4 w-4" />
                     </div>
-                    <div>
-                      <h3 className="font-heading font-semibold text-lg">{city.name}</h3>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="font-heading text-lg font-bold text-[#1E2A6E]">{city.name}</h3>
                       <p className="text-xs text-muted-foreground">{city.state}</p>
                     </div>
                   </div>
-                  <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{city.tagline}</p>
-                  <div className="flex flex-wrap gap-1.5 mb-3">
-                    {city.services.slice(0, 4).map((s) => (
-                      <span key={s} className="text-xs bg-muted px-2 py-0.5 rounded-full capitalize">
-                        {s.replace("-", " ")}
+                  <p className="mt-4 text-sm leading-6 text-muted-foreground">
+                    {cityCardSummaryMap[city.name] ?? city.tagline}
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {visibleServices.map((s) => (
+                      <span
+                        key={s}
+                        className="rounded-full bg-[#F4F5FA] px-3 py-1 text-xs font-semibold text-[#1E2A6E]"
+                      >
+                        {serviceLabelMap[s] ?? s.replace("-", " ")}
                       </span>
                     ))}
-                    {city.services.length > 4 && (
-                      <span className="text-xs bg-muted px-2 py-0.5 rounded-full">+{city.services.length - 4}</span>
+                    {hiddenCount > 0 && (
+                      <button
+                        type="button"
+                        className="rounded-full bg-[#F4F5FA] px-3 py-1 text-xs font-semibold text-[#1E2A6E] transition-colors hover:bg-[#E9E6FF]"
+                        onClick={(event) => {
+                          event.preventDefault();
+                          event.stopPropagation();
+                          setExpandedCities((current) =>
+                            current.includes(city.slug)
+                              ? current.filter((slug) => slug !== city.slug)
+                              : [...current, city.slug]
+                          );
+                        }}
+                      >
+                        {isExpanded ? "Show less" : `+${hiddenCount}`}
+                      </button>
                     )}
                   </div>
-                  <div className="flex items-center text-sm text-primary font-medium">
-                    Explore {city.name} <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  <div className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#1E2A6E] transition-transform group-hover:translate-x-0.5">
+                    Explore {city.name}
+                    <ArrowRight className="h-4 w-4" />
                   </div>
                 </CardContent>
               </Card>
+                );
+              })()}
             </Link>
           ))}
         </div>
+        {cities.length > 9 && (
+          <div className="mt-8 flex justify-center">
+            <button
+              type="button"
+              onClick={() => setShowAllCities((current) => !current)}
+              className="inline-flex items-center rounded-full border border-[#C9D2EA] bg-white px-6 py-3 text-sm font-semibold text-[#1E2A6E] shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md"
+            >
+              {showAllCities ? "Show Less" : "See More"}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

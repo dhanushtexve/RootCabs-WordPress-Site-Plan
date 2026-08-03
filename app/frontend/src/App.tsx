@@ -6,8 +6,8 @@ import BookRide from "@/pages/BookRide";
 import { ServicesHub, ServicePage } from "@/pages/ServicesPages";
 import { CitiesHub, CityPage, CityServicePage } from "@/pages/CitiesPages";
 import { RoutePage, LandmarkPage } from "@/pages/RoutesAndLandmarks";
+import { DriversPage } from "@/pages/DriversPage";
 import {
-  DriversPage,
   BusinessPage,
   BlogPage,
   AboutPage,
@@ -49,6 +49,7 @@ function App() {
           <Route path="/business" element={<BusinessPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/about-us" element={<AboutPage />} />
           <Route path="/support" element={<SupportPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="/terms-of-use" element={<TermsOfUsePage />} />

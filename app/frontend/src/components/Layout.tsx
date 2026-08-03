@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, Mail, ChevronDown, MapPin, Car, Plane, Navigation, User, Package, Bike } from "lucide-react";
+import { Menu, X, Phone, Mail, ChevronDown, MapPin, Car, Plane, Navigation, User, Package, Bike, Youtube, Facebook, Instagram, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cities, services, companyInfo } from "@/data/siteData";
 
@@ -198,6 +198,47 @@ function Footer() {
             <a href={`mailto:${companyInfo.email}`} className="flex items-center gap-2 hover:text-yellow-300 cursor-pointer">
               <Mail className="w-4 h-4" /> {companyInfo.email}
             </a>
+          </div>
+          <div className="mt-5">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-white/80">Follow Us</p>
+            <div className="flex items-center gap-3">
+              <a
+                href="https://www.youtube.com/@RootCabsOfficial"
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="Root Cabs on YouTube"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-yellow-300 hover:text-yellow-300"
+              >
+                <Youtube className="h-4.5 w-4.5" />
+              </a>
+              <a
+                href="https://www.facebook.com/p/Root-Cabs-61575197818182/"
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="Root Cabs on Facebook"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-yellow-300 hover:text-yellow-300"
+              >
+                <Facebook className="h-4.5 w-4.5" />
+              </a>
+              <a
+                href="https://www.instagram.com/rootcabs/"
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="Root Cabs on Instagram"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-yellow-300 hover:text-yellow-300"
+              >
+                <Instagram className="h-4.5 w-4.5" />
+              </a>
+              <a
+                href="https://x.com/RootCabs"
+                target="_blank"
+                rel="noreferrer noopener"
+                aria-label="Root Cabs on X"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 text-white transition-colors hover:border-yellow-300 hover:text-yellow-300"
+              >
+                <Twitter className="h-4.5 w-4.5" />
+              </a>
+            </div>
           </div>
         </div>
 
