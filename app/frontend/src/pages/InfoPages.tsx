@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Phone, Mail, MapPin, Clock, Shield, Star, Users, Percent, Wallet, GraduationCap, Car, CheckCircle, Building, Hotel, Briefcase, Calendar, MessageSquare, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { GoogleReviewBadge } from "@/components/GoogleReviewBadge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { companyInfo, businessSolutions, blogPosts, cities } from "@/data/siteData";
 import { getPolicyDocument } from "@/data/policyData";
@@ -661,16 +662,14 @@ export function AboutPage() {
               </div>
             </div>
           </div>
-        </section>
-
-        {/* Rider Experiences */}
+        </section>        {/* Rider Experiences */}
         <section className="rounded-2xl bg-muted/50 px-4 py-6 md:px-8 md:py-8">
           <div className="text-center">
             <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
               What Our Riders Say
             </h2>
             <p className="mx-auto mt-2 max-w-3xl text-sm leading-6 text-muted-foreground md:text-base">
-              Real experiences from customers who choose Root Cabs for everyday travel and longer journeys across Tamil Nadu.
+              4+ years of service, reflected in what riders across Tamil Nadu tell us.
             </p>
           </div>
 
@@ -692,31 +691,34 @@ export function AboutPage() {
             {[
               {
                 name: "Karthik Raman",
-                city: "Local Taxi Â· Vellore",
-                text: "Booking was simple, the driver arrived on time and the entire ride was comfortable. Root Cabs has become my preferred choice for local travel.",
+                city: "Local Taxi · Vellore",
+                text: "Been using Root Cabs since they launched in Vellore back in 2022. Still the most reliable option for VIT trips.",
               },
               {
                 name: "Deepa Suresh",
-                city: "Outstation Taxi Â· Coimbatore",
-                text: "The fare shown in the app was clear, and there was no bargaining with the driver. The outstation trip was smooth from start to finish.",
+                city: "Outstation Taxi · Coimbatore",
+                text: "Fixed fares every single time, even during festival season. That's rare for a cab service in a smaller city.",
               },
               {
                 name: "Arun Vijay",
-                city: "Airport Taxi Â· Chennai",
-                text: "The driver was polite, professional and familiar with the route. The ride was well managed and reached on time.",
+                city: "Airport Taxi · Chennai",
+                text: "Drivers are genuinely well-trained and polite. You can tell there's real vetting happening, not just an app.",
               },
             ].map((review) => (
               <Card key={review.name} className="border-border shadow-sm">
-                <CardContent className="p-6">
-                  <div className="mb-3 flex gap-1">
-                    {Array.from({ length: 5 }).map((_, index) => (
-                      <Star
-                        key={`${review.name}-star-${index}`}
-                        className="h-4 w-4 fill-[#FFD700] text-[#FFD700]"
-                      />
-                    ))}
+                <CardContent className="flex h-full flex-col p-6">
+                  <div className="mb-4 flex items-center justify-between gap-4">
+                    <div className="flex gap-1">
+                      {Array.from({ length: 5 }).map((_, index) => (
+                        <Star
+                          key={`${review.name}-star-${index}`}
+                          className="h-4 w-4 fill-[#FFD700] text-[#FFD700]"
+                        />
+                      ))}
+                    </div>
+                    <GoogleReviewBadge />
                   </div>
-                  <p className="text-sm leading-7 text-foreground">â€œ{review.text}â€</p>
+                  <p className="text-sm leading-7 text-foreground flex-1">{review.text}</p>
                   <div className="mt-5">
                     <p className="text-sm font-medium text-[#1E2A6E]">{review.name}</p>
                     <p className="text-xs text-muted-foreground">{review.city}</p>

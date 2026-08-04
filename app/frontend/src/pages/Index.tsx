@@ -13,42 +13,42 @@ const homepageServices = [
     description: "Easy local cab booking for daily travel within your city.",
     fare: "Starting at 90/3km",
     href: "/services/local-taxi",
-    icon: <img src="/assets/chennai-service-local.webp" alt="Local Taxi service" className="h-12 w-12 object-contain" />,
+    icon: <img src="/assets/home-service-local.webp" alt="Local Taxi service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Outstation Taxi",
     description: "Comfortable round trips for long-distance travel with verified drivers and transparent fares.",
     fare: "Starting at 300/20Km",
     href: "/services/outstation",
-    icon: <img src="/assets/chennai-service-outstation.webp" alt="Outstation Taxi service" className="h-12 w-12 object-contain" />,
+    icon: <img src="/assets/home-service-outstation.webp" alt="Outstation Taxi service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Acting Driver",
     description: "Book a professional driver to drive your own car for local or outstation journeys.",
     fare: "Starting at 500/ 100Km",
     href: "/services/acting-driver",
-    icon: <img src="/assets/chennai-service-acting-driver.webp" alt="Acting Driver service" className="h-12 w-12 object-contain" />,
+    icon: <img src="/assets/home-service-acting-driver.webp" alt="Acting Driver service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "One-Way Taxi",
     description: "A simple online cab service for one-way travel without return charges.",
     fare: "Starting at 300/20Km",
     href: "/book-ride",
-    icon: <img src="/assets/chennai-service-one-way.webp" alt="One-Way Taxi service" className="h-12 w-12 object-contain" />,
+    icon: <img src="/assets/home-service-one-way.webp" alt="One-Way Taxi service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Auto Rickshaw",
     description: "Quick and affordable rides for short-distance travel around the city.",
     fare: "Starting at 40/1Km",
     href: "/services/auto",
-    icon: <img src="/assets/chennai-service-auto.webp" alt="Auto Rickshaw service" className="h-12 w-12 object-contain" />,
+    icon: <img src="/assets/home-service-auto.webp" alt="Auto Rickshaw service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Bike Taxi",
     description: "A faster and budget-friendly option for nearby trips.",
     fare: "Starting at 25/2km",
     href: "/book-ride",
-    icon: <img src="/assets/chennai-service-bike-taxi.webp" alt="Bike Taxi service" className="h-12 w-12 object-contain" />,
+    icon: <img src="/assets/home-service-bike-taxi.webp" alt="Bike Taxi service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Hourly Package",
@@ -87,42 +87,50 @@ const bookingSteps = [
 
 const whyChooseItems = [
   {
-    icon: <Shield className="w-6 h-6" />,
+    iconSrc: "/assets/home-why-choose/verified-drivers.webp",
+    iconAlt: "Verified Drivers icon",
     title: "Verified Drivers",
     desc: "Travel with drivers who are verified through document checks and approval processes.",
   },
   {
-    icon: <Clock className="w-6 h-6" />,
+    iconSrc: "/assets/home-why-choose/easy-ride-scheduling.webp",
+    iconAlt: "Ride availability icon",
     title: "24/7 Ride Availability",
     desc: "Book your ride at any time for early mornings, late nights or planned travel.",
   },
   {
-    icon: <CheckCircle className="w-6 h-6" />,
+    iconSrc: "/assets/home-why-choose/transparent-fares.webp",
+    iconAlt: "Transparent Fares icon",
     title: "Transparent Fares",
     desc: "Check the estimated fare, including cab price per km, before booking with no unexpected charges.",
   },
   {
-    icon: <Star className="w-6 h-6" />,
+    iconSrc: "/assets/home-why-choose/first-ride-offer.webp",
+    iconAlt: "First Ride Offer icon",
     title: "First Ride Offer",
     desc: "Get ₹50 off your first ride and enjoy more value from your very first booking.",
   },
   {
-    icon: <MapPin className="w-6 h-6" />,
+    iconSrc: "/assets/home-why-choose/live-ride-tracking.webp",
+    iconAlt: "Live Ride Tracking icon",
     title: "Live Ride Tracking",
     desc: "Track your driver’s arrival and follow the trip in real time from pickup to drop.",
   },
   {
-    icon: <Shield className="w-6 h-6" />,
+    iconSrc: "/assets/home-why-choose/sos-support.webp",
+    iconAlt: "SOS Support icon",
     title: "SOS Support",
     desc: "Access the SOS feature during your ride and quickly alert your saved emergency contacts.",
   },
   {
-    icon: <Clock className="w-6 h-6" />,
+    iconSrc: "/assets/home-why-choose/easy-ride-scheduling.webp",
+    iconAlt: "Easy Ride Scheduling icon",
     title: "Easy Ride Scheduling",
     desc: "Pre-book a taxi for a future date and time so your ride is ready when you need it.",
   },
   {
-    icon: <Phone className="w-6 h-6" />,
+    iconSrc: "/assets/home-why-choose/customer-support.webp",
+    iconAlt: "Customer Support icon",
     title: "Dedicated Customer Support",
     desc: "Get reliable assistance for booking queries, trip updates and travel-related concerns.",
   },
@@ -332,11 +340,10 @@ export default function Index() {
       <section className="bg-white pb-12 pt-2 md:pb-14 md:pt-3">
         <div className="max-w-screen-xl mx-auto px-4">
           <div className="mb-8 text-center">
-            <span className="inline-flex rounded-full bg-[#EEF3FF] px-4 py-1.5 text-xs font-extrabold uppercase tracking-wide text-[#1E2A6E]">
+            <span className="inline-flex rounded-full bg-[#FFD700] px-4 py-1.5 text-sm font-extrabold uppercase tracking-wide text-[#1E2A6E] shadow-sm">
               Cities We Serve
             </span>
-            <h2 className="mt-4 font-heading text-3xl font-bold text-[#1E2A6E] md:text-4xl">Expanding across Tamil Nadu</h2>
-            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[#6B769A] md:text-base">
+            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-base">
               Expanding across Tamil Nadu, offering affordable cab service in every major city.
             </p>
           </div>
@@ -404,7 +411,7 @@ export default function Index() {
           </div>
           <div className="overflow-hidden rounded-xl bg-[#E9EDFF] min-h-[260px] md:min-h-[300px]">
               <img
-              src="/assets/acting-driver-vellore.webp"
+                src="/assets/home-acting-driver.png"
                 alt="Acting driver service"
                 className="h-full min-h-[260px] w-full object-cover md:min-h-[300px]"
               />
@@ -414,7 +421,7 @@ export default function Index() {
         <div className="grid items-center gap-8 rounded-xl border border-border bg-[#F4F6FF] p-6 md:grid-cols-[0.95fr_1fr] md:p-10">
           <div className="overflow-hidden rounded-xl bg-[#E9EDFF] min-h-[260px] md:min-h-[300px]">
               <img
-                src="/assets/chennai-airport.webp"
+                src="/assets/home-chennai-airport.png"
                 alt="Airport transfers"
                 className="h-full min-h-[260px] w-full object-cover md:min-h-[300px]"
               />
@@ -465,8 +472,8 @@ export default function Index() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
           {whyChooseItems.map((item) => (
             <div key={item.title} className="group rounded-2xl border border-[#E2E8F3] bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:border-[#1E2A6E] hover:shadow-lg">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#EEF3FF] text-[#1E2A6E] transition-colors group-hover:bg-[#1E2A6E] group-hover:text-[#FFD700]">
-                {item.icon}
+              <div className="mb-4 flex h-14 w-14 items-center justify-center overflow-hidden rounded-xl bg-[#EEF3FF] transition-colors group-hover:bg-[#E3EAFF]">
+                <img src={item.iconSrc} alt={item.iconAlt} className="h-9 w-9 object-contain" />
               </div>
               <h3 className="font-heading text-lg font-bold text-[#111827]">{item.title}</h3>
               <p className="mt-3 text-sm leading-6 text-[#4B587C]">{item.desc}</p>
@@ -510,7 +517,7 @@ export default function Index() {
                       />
                     ))}
                   </div>
-                  <p className="text-sm text-foreground mb-5 leading-7">“{experience.text}”</p>
+                  <p className="text-sm text-foreground mb-5 leading-7">{experience.text}</p>
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary text-sm font-bold">
                       {experience.name.charAt(0)}
@@ -531,8 +538,8 @@ export default function Index() {
       <section className="max-w-screen-xl mx-auto px-4 py-12 md:py-14">
         <div className="relative overflow-hidden rounded-2xl bg-[#273588] px-6 py-8 text-white shadow-xl md:px-10 lg:px-12">
           <img
-            src="https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qbnqcaiza/airport-taxi-terminal-service.png"
-            alt="Airport taxi service"
+            src="/assets/home-app-download-bg.webp"
+            alt="Root Cabs app download"
             className="absolute inset-0 h-full w-full object-cover opacity-15"
           />
           <div className="absolute inset-0 bg-[#273588]/80" />

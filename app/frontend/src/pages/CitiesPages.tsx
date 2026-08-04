@@ -4,6 +4,7 @@ import { MapPin, ArrowRight, Car, Plane, Navigation, User, Package, Bike, Star, 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { GoogleReviewBadge } from "@/components/GoogleReviewBadge";
 import { cities, services, companyInfo, testimonials } from "@/data/siteData";
 import FareCalculator from "@/components/FareCalculator";
 
@@ -422,8 +423,8 @@ function AppDownloadCard() {
     <section className="max-w-screen-xl mx-auto">
       <div className="relative overflow-hidden rounded-2xl bg-[#273588] px-6 py-8 text-white shadow-xl md:px-10 lg:px-12">
         <img
-          src="https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qbnqcaiza/airport-taxi-terminal-service.png"
-          alt="Airport taxi service"
+          src="/assets/chennai-app-download-bg.webp"
+          alt="Root Cabs app download"
           className="absolute inset-0 h-full w-full object-cover opacity-15"
         />
         <div className="absolute inset-0 bg-[#273588]/80" />
@@ -624,7 +625,7 @@ function ChennaiRoutesSection() {
         <div className="rounded-xl border border-[#E2E8F3] bg-white p-3 shadow-sm lg:sticky lg:top-6">
           <div className="overflow-hidden rounded-lg bg-[#F7FAFF]">
             <img
-              src="/assets/chennai-route-car.webp"
+              src="/assets/chennai-professional-drivers.webp"
               alt="Root Cabs verified drivers for Chennai outstation routes"
               className="h-64 w-full object-contain object-center sm:h-72 lg:h-80"
             />
@@ -654,12 +655,15 @@ function ChennaiReviewsSection() {
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         {chennaiReviews.map((review) => (
           <div key={review.name} className="rounded-2xl border border-[#E2E8F3] bg-white p-5 shadow-sm">
-            <div className="mb-3 flex gap-1 text-[#E0A800]">
-              {Array.from({ length: 5 }).map((_, index) => (
-                <Star key={index} className="h-4 w-4 fill-current" />
-              ))}
+            <div className="mb-3 flex items-center justify-between gap-4">
+              <div className="flex gap-1 text-[#E0A800]">
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <Star key={index} className="h-4 w-4 fill-current" />
+                ))}
+              </div>
+              <GoogleReviewBadge />
             </div>
-            <p className="text-sm leading-7 text-[#33406F]">"{review.text}"</p>
+            <p className="text-sm leading-7 text-[#33406F]">{review.text}</p>
             <div className="mt-5">
               <p className="font-heading text-sm font-bold text-[#1E2A6E]">{review.name}</p>
               <p className="text-xs text-muted-foreground">{review.meta}</p>
@@ -751,7 +755,7 @@ function ChennaiActingDriverSection() {
       </div>
         <div className="overflow-hidden rounded-xl bg-[#E9EDFF] min-h-[260px] md:min-h-[300px]">
           <img
-            src="/assets/acting-driver-chennai.webp"
+            src="/assets/chennai-acting-driver.png"
             alt="Acting driver service in Chennai"
             className="h-full min-h-[260px] w-full object-cover md:min-h-[300px]"
           />
