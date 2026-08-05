@@ -528,22 +528,18 @@ export function AboutPage() {
 
         {/* Company Story */}
         <section className="rounded-2xl border border-border bg-white px-6 py-6 shadow-sm md:px-8 md:py-8">
-          <div className="mx-auto max-w-5xl">
-            <div className="rounded-2xl bg-[#F7F9FC] p-6 text-center md:p-8 lg:text-left">
-              <span className="inline-flex rounded-full bg-[#1E2A6E]/8 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-[#1E2A6E]">
-                About Root Cabs
-              </span>
-
-              <div className="mt-5 rounded-xl border border-[#D9E0F0] bg-white px-5 py-4 shadow-sm">
+          <div className="max-w-7xl">
+            <div className="space-y-5 text-left">
+              <div>
                 <p className="font-heading text-lg font-bold text-[#1E2A6E] md:text-xl">The Root Cabs Team</p>
                 <p className="mt-1 text-sm font-medium text-muted-foreground md:text-base">Texve Innovations Pvt. Ltd.</p>
               </div>
 
-              <p className="mt-6 text-sm leading-7 text-muted-foreground md:text-base">
+              <p className="text-sm leading-7 text-muted-foreground md:text-base">
                 Root Cabs was established to strengthen access to organised mobility services across Tamil Nadu, including both major cities and emerging towns. Our approach combines customer convenience, service accountability and meaningful opportunities for driver partners, with a clear focus on delivering consistent value across every journey.
               </p>
 
-              <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
+              <div className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
                 <img
                   src="/assets/about-root-team-collage.webp"
                   alt="Root Cabs driver partner collage"
