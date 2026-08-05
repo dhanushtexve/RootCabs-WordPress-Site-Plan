@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { MapPin, ArrowRight, Car, Plane, Navigation, User, Package, Bike, Star, CheckCircle, Phone, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -82,7 +82,7 @@ const chennaiServices = [
   {
     title: "Local Taxi",
     description: "Travel comfortably across Chennai for work, shopping, hospital visits, appointments, and everyday journeys. Choose convenient cab booking in Chennai for quick city travel without the hassle of searching for transport.",
-    fare: "Starting at ₹90/3km",
+    fare: "Starting at â‚¹90/3km",
     href: "/taxi-in-chennai/local-taxi",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-local.webp" alt="Local Taxi service icon" className="h-8 w-8 object-contain" />,
@@ -90,7 +90,7 @@ const chennaiServices = [
   {
     title: "Outstation Taxi",
     description: "Plan round trips from Chennai to nearby towns, tourist destinations, and major cities. Our flexible outstation cabs in Chennai are suitable for family holidays, business journeys, and weekend travel.",
-    fare: "Starting at ₹300/20Km",
+    fare: "Starting at â‚¹300/20Km",
     href: "/taxi-in-chennai/outstation",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-outstation.webp" alt="Outstation Taxi service icon" className="h-8 w-8 object-contain" />,
@@ -98,7 +98,7 @@ const chennaiServices = [
   {
     title: "Acting Driver",
     description: "Hire an experienced acting driver in Chennai to drive your own car safely. It is ideal for late-night returns, hospital visits, events, business travel, and long-distance journeys.",
-    fare: "Starting at ₹500/100 Km",
+    fare: "Starting at â‚¹500/100 Km",
     href: "/taxi-in-chennai/acting-driver",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-acting-driver.webp" alt="Acting Driver service icon" className="h-8 w-8 object-contain" />,
@@ -106,7 +106,7 @@ const chennaiServices = [
   {
     title: "One-Way Taxi",
     description: "Choose a one-way taxi from Chennai for convenient intercity travel. Pay only for the journey you take without unnecessary return charges, making it suitable for airport transfers and long-distance drops.",
-    fare: "Starting at ₹300/Km",
+    fare: "Starting at â‚¹300/Km",
     href: "/book-ride",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-one-way.webp" alt="One-Way Taxi service icon" className="h-8 w-8 object-contain" />,
@@ -114,7 +114,7 @@ const chennaiServices = [
   {
     title: "Auto Rickshaw",
     description: "Travel easily through Chennai's busy streets, shopping areas, railway stations, and nearby neighbourhoods. Book an auto for everyday errands, short trips, and quick local travel across the city.",
-    fare: "Starting at ₹40/1Km",
+    fare: "Starting at â‚¹40/1Km",
     href: "/taxi-in-chennai/auto",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-auto.webp" alt="Auto Rickshaw service icon" className="h-8 w-8 object-contain" />,
@@ -122,7 +122,7 @@ const chennaiServices = [
   {
     title: "Bike Taxi",
     description: "Move through Chennai traffic quickly with an affordable bike taxi ride. It is a convenient choice for office commutes, college travel, everyday errands, and short-distance journeys.",
-    fare: "Starting at ₹25/2km",
+    fare: "Starting at â‚¹25/2km",
     href: "/book-ride",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-bike-taxi.webp" alt="Bike Taxi service icon" className="h-8 w-8 object-contain" />,
@@ -130,7 +130,7 @@ const chennaiServices = [
   {
     title: "Hourly Package",
     description: "Keep a cab for a selected number of hours and travel across Chennai with multiple stops. Complete meetings, shopping, appointments, and city visits without making separate bookings for every trip.",
-    fare: "Starting at ₹100/3km",
+    fare: "Starting at â‚¹100/3km",
     href: "/book-ride",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-hourly-package.webp" alt="Hourly Package service icon" className="h-8 w-8 object-contain" />,
@@ -138,7 +138,7 @@ const chennaiServices = [
   {
     title: "Parcel Delivery",
     description: "Send documents, packages, and everyday essentials safely across Chennai. Convenient doorstep pickup and delivery make it easier to send important items without travelling across the city yourself.",
-    fare: "Starting at ₹50/1km",
+    fare: "Starting at â‚¹50/1km",
     href: "/taxi-in-chennai/parcel-delivery",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-parcel.webp" alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
@@ -147,48 +147,48 @@ const chennaiServices = [
 
 const chennaiRoutes = [
   {
-    title: "Chennai → Bangalore",
+    title: "Chennai â†’ Bangalore",
     meta: "Km- 697 Approx. hrs - 23",
     fares: [
-      { label: "MINI", value: "₹8,430" },
-      { label: "SEDAN", value: "₹8,530" },
-      { label: "SUV", value: "₹11,440" },
+      { label: "MINI", value: "â‚¹8,430" },
+      { label: "SEDAN", value: "â‚¹8,530" },
+      { label: "SUV", value: "â‚¹11,440" },
     ],
   },
   {
-    title: "Chennai → Pondicherry",
+    title: "Chennai â†’ Pondicherry",
     meta: "Km- 331 Approx Hrs- 10",
     fares: [
-      { label: "MINI", value: "₹4,040" },
-      { label: "SEDAN", value: "₹4,140" },
-      { label: "SUV", value: "₹5,587" },
+      { label: "MINI", value: "â‚¹4,040" },
+      { label: "SEDAN", value: "â‚¹4,140" },
+      { label: "SUV", value: "â‚¹5,587" },
     ],
   },
   {
-    title: "Chennai → Vellore",
+    title: "Chennai â†’ Vellore",
     meta: "Km- 274 Approx. hrs- 9",
     fares: [
-      { label: "MINI", value: "₹3,350" },
-      { label: "SEDAN", value: "₹3,450" },
-      { label: "SUV", value: "₹4,667" },
+      { label: "MINI", value: "â‚¹3,350" },
+      { label: "SEDAN", value: "â‚¹3,450" },
+      { label: "SUV", value: "â‚¹4,667" },
     ],
   },
   {
-    title: "Chennai → Tirupati",
+    title: "Chennai â†’ Tirupati",
     meta: "Km- 269 Approx- 9",
     fares: [
-      { label: "MINI", value: "₹3,285" },
-      { label: "SEDAN", value: "₹3,385" },
-      { label: "SUV", value: "₹4,580" },
+      { label: "MINI", value: "â‚¹3,285" },
+      { label: "SEDAN", value: "â‚¹3,385" },
+      { label: "SUV", value: "â‚¹4,580" },
     ],
   },
   {
-    title: "Chennai → Mahabalipuram",
+    title: "Chennai â†’ Mahabalipuram",
     meta: "Km- 115 Approx hrs- 5",
     fares: [
-      { label: "MINI", value: "₹1,441" },
-      { label: "SEDAN", value: "₹1,541" },
-      { label: "SUV", value: "₹2,121" },
+      { label: "MINI", value: "â‚¹1,441" },
+      { label: "SEDAN", value: "â‚¹1,541" },
+      { label: "SUV", value: "â‚¹2,121" },
     ],
   },
 ] as const;
@@ -197,17 +197,17 @@ const chennaiReviews = [
   {
     text: "Booking process was simple, and the driver arrived on time for my early-morning airport trip. The ride was smooth, and the fare was clear from the start. A convenient choice for anyone looking for Chennai airport cab services.",
     name: "Rajesh Kumar",
-    meta: "Airport Taxi · Chennai",
+    meta: "Airport Taxi Â· Chennai",
   },
   {
     text: "I needed a cab from Chennai to Tirupati for a family trip. The car was clean, the driver was polite, and the journey was comfortable throughout. The service made our taxi booking in Chennai quick and stress-free.",
     name: "Priya Sundaram",
-    meta: "Outstation Taxi · Chennai to Tirupati",
+    meta: "Outstation Taxi Â· Chennai to Tirupati",
   },
   {
     text: "I used Root Cabs for same-day parcel delivery across the city. The pickup was on time, the package reached safely, and I received regular updates. The whole process was simple and convenient.",
     name: "Arun Vijay",
-    meta: "Parcel Delivery · Chennai",
+    meta: "Parcel Delivery Â· Chennai",
   },
 ] as const;
 
@@ -423,65 +423,89 @@ function AppDownloadCard() {
     <section className="max-w-screen-xl mx-auto">
       <div className="relative overflow-hidden rounded-2xl bg-[#273588] px-6 py-8 text-white shadow-xl md:px-10 lg:px-12">
         <img
-          src="/assets/chennai-app-download-bg.webp"
-          alt="Root Cabs app download"
-          className="absolute inset-0 h-full w-full object-cover opacity-15"
+          src="/assets/home-download-car-bg.webp"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.14] saturate-75"
         />
-        <div className="absolute inset-0 bg-[#273588]/80" />
+        <div className="absolute inset-0 bg-[#273588]/62" />
         <div className="absolute inset-0 opacity-10 [background-image:linear-gradient(90deg,_rgba(255,255,255,.35)_1px,_transparent_1px),linear-gradient(180deg,_rgba(255,255,255,.35)_1px,_transparent_1px)] [background-size:56px_56px]" />
-        <div className="relative z-10 grid items-center gap-8 md:grid-cols-[1fr_auto]">
-          <div className="text-center md:pl-4">
+        <div className="relative z-10 grid items-center gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.78fr)]">
+          <div className="text-center md:text-left md:pl-2 lg:pl-4">
             <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
               GET THE APP
             </span>
-            <h2 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-4xl">Your Chennai Rides, Just a Tap Away</h2>
-            <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-white/80 md:text-base">
+            <h2 className="mt-3 font-heading text-3xl font-bold leading-tight md:text-4xl">Your Chennai Rides, Just a Tap Away</h2>
+            <p className="mx-auto mt-2.5 max-w-xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
               Use the Root Cabs app to plan local, airport, and outstation trips with quick booking and easy access to your ride details.
             </p>
-            <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-white/85">
+            <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-semibold text-white/85 md:justify-start">
               <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> No surge charges</span>
               <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Live ride tracking</span>
               <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> No Last-minute Cancellation</span>
               <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Quick rebooking</span>
             </div>
-            <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <a
-                href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
-                aria-label="Google play"
-              >
-                <img
-                  src="/assets/play-store.png"
-                  alt="Google play"
-                  className="h-10 w-auto object-contain"
-                />
-              </a>
-              <a
-                href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
-                aria-label="App Store"
-              >
-                <img
-                  src="/assets/app-store-logo.png"
-                  alt="App Store"
-                  className="h-10 w-auto object-contain"
-                />
-              </a>
+            <div className="mt-5 grid max-w-[470px] grid-cols-1 justify-items-center gap-3 sm:grid-cols-2 md:justify-items-start">
+              <div className="flex w-[170px] flex-col items-center">
+                <a
+                  href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                  aria-label="App Store"
+                >
+                  <img
+                    src="/assets/app-store-badge.png"
+                    alt="App Store"
+                    className="h-10 w-auto object-contain"
+                  />
+                </a>
+                <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                  <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">Scan to Download</p>
+                  <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                    <img
+                      src="/assets/app-download-qr-app-store-cropped.png"
+                      alt="App Store QR code"
+                      className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                    />
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex w-[170px] flex-col items-center">
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                  aria-label="Google play"
+                >
+                  <img
+                    src="/assets/play-store.png"
+                    alt="Google play"
+                    className="h-10 w-auto object-contain"
+                  />
+                </a>
+                <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                  <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">Scan to Download</p>
+                  <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                    <img
+                      src="/assets/app-download-qr-google-play-cropped.png"
+                      alt="Google Play QR code"
+                      className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                    />
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="relative mx-auto w-full max-w-[250px] md:mr-4">
-            <div className="rounded-xl bg-white p-3 text-center shadow-2xl">
-              <p className="mb-2 text-[10px] font-extrabold uppercase tracking-wider text-slate-500">Scan to Download</p>
+          <div className="relative mx-auto w-full max-w-[380px]">
+            <div>
               <img
-                src="/assets/root-cabs-qr-cropped.png"
-                alt="Root Cabs app QR code"
-                className="aspect-square w-full rounded-md object-contain"
+                src="/assets/plan-trip-root-cabs.png"
+                alt="Plan every trip with Root Cabs"
+                className="h-[470px] w-full rounded-[20px] object-contain md:h-[430px] lg:h-[400px]"
               />
-              <p className="mt-2 text-[10px] font-semibold text-slate-400">rootcabs.com/app</p>
             </div>
           </div>
         </div>
@@ -876,7 +900,7 @@ export function CityPage() {
             <h2 className="font-heading text-2xl font-bold mb-2">Popular Pickup Spots in {city.name}</h2>
             {city.name === "Chennai" && (
               <p className="mb-6 max-w-none text-sm leading-6 text-muted-foreground md:whitespace-nowrap md:text-base">
-                Root Cabs makes it easy to arrange a ride from the city’s busiest travel hubs, landmarks, and neighbourhoods with a convenient taxi service in Chennai.
+                Root Cabs makes it easy to arrange a ride from the cityâ€™s busiest travel hubs, landmarks, and neighbourhoods with a convenient taxi service in Chennai.
               </p>
             )}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
@@ -969,20 +993,30 @@ export function CityPage() {
         {city.name === "Chennai" && (
           <>
             <AppDownloadCard />
-            <section className="py-2 text-center">
-              <h3 className="mb-2 font-heading text-xl font-bold">
-                Drive and Earn with Root Cabs
-              </h3>
-              <p className="mb-4 text-sm text-muted-foreground">
-                Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
-              </p>
-              <Link to="/services/acting-driver">
-                <Button className="cursor-pointer bg-primary hover:bg-primary/90">
-                  Join as Root Partner <ArrowRight className="ml-2 w-4 h-4" />
-                </Button>
-              </Link>
-            </section>
-            <CityFaqSection city={city} />
+            <section className="py-2">
+              <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(280px,1.05fr)] md:px-8">
+                <div className="text-center md:text-left">
+                  <h3 className="mb-2 font-heading text-xl font-bold">
+                    Drive and Earn with Root Cabs
+                  </h3>
+                  <p className="mb-4 text-sm text-muted-foreground">
+                    Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+                  </p>
+                  <Link to="/services/acting-driver">
+                    <Button className="cursor-pointer bg-primary hover:bg-primary/90">
+                      Join as Root Partner <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                  </Link>
+                </div>
+                <div className="overflow-hidden rounded-lg bg-muted">
+                  <img
+                    src="/assets/homepage-rootpartner-banner.webp"
+                    alt="Drive and earn with Root Cabs"
+                    className="h-56 w-full object-cover md:h-64"
+                  />
+                </div>
+              </div>
+            </section>            <CityFaqSection city={city} />
           </>
         )}
 
@@ -993,7 +1027,7 @@ export function CityPage() {
               {`Drive with Root Cabs in ${city.name}`}
             </h3>
             <p className="mb-4 text-sm text-muted-foreground">
-              Earn up to ₹40,000/month with flexible hours and low commission.
+              Earn up to â‚¹40,000/month with flexible hours and low commission.
             </p>
             <Link to="/drivers">
               <Button className="cursor-pointer bg-primary hover:bg-primary/90">

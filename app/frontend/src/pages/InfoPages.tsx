@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Phone, Mail, MapPin, Clock, Shield, Star, Users, Percent, Wallet, GraduationCap, Car, CheckCircle, Building, Hotel, Briefcase, Calendar, MessageSquare, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -172,7 +172,7 @@ export function BusinessPage() {
         <section className="rounded-2xl border border-border bg-muted/50 px-6 py-8 text-center md:px-8">
           <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Contact Us</h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-muted-foreground md:text-base">
-            Tell us about your companyâ€™s travel requirements, and our team will help you find a suitable business transport plan.
+            Tell us about your companyÃ¢â‚¬â„¢s travel requirements, and our team will help you find a suitable business transport plan.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <a href={`tel:${companyInfo.phone}`}>
@@ -190,59 +190,87 @@ export function BusinessPage() {
 
         {/* App CTA */}
         <section className="max-w-screen-xl mx-auto px-4 py-10 md:py-12">
-          <div className="relative overflow-hidden rounded-2xl bg-[#273588] px-6 py-7 text-white shadow-xl md:px-10 lg:px-12">
+          <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
             <img
-              src="https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qbnqcaiza/airport-taxi-terminal-service.png"
-              alt="Business travel service"
-              className="absolute inset-0 h-full w-full object-cover opacity-15"
+              src="/assets/home-download-car-bg.webp"
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.14] saturate-75"
             />
-            <div className="absolute inset-0 bg-[#273588]/80" />
-            <div className="absolute inset-0 opacity-10 [background-image:linear-gradient(90deg,_rgba(255,255,255,.35)_1px,_transparent_1px),linear-gradient(180deg,_rgba(255,255,255,.35)_1px,_transparent_1px)] [background-size:56px_56px]" />
-            <div className="relative z-10 grid items-center gap-6 md:grid-cols-[minmax(0,1fr)_230px] lg:grid-cols-[minmax(0,1fr)_250px]">
-              <div className="text-center md:pl-2 lg:pl-4">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.16),transparent_32%),radial-gradient(circle_at_82%_28%,rgba(255,255,255,0.1),transparent_28%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.08),transparent_32%)]" />
+            <div className="absolute inset-0 bg-[#273588]/62" />
+            <div className="relative z-10 grid items-center gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.78fr)]">
+              <div className="text-center md:pl-2 md:text-left lg:pl-4">
                 <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                   GET THE APP
                 </span>
-                <h2 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-4xl">Keep Every Business Trip Organised</h2>
-                <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-white/80 md:text-base">
+                <h2 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-4xl">
+                  Keep Every Business Trip Organised
+                </h2>
+                <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
                   Use the Root Cabs app to arrange employee rides, client travel and scheduled business trips without going through a lengthy booking process.
                 </p>
-                <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-white/85">
+                <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-white/85 md:justify-start">
                   <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Book rides for employees and guests</span>
                   <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Schedule upcoming trips in advance</span>
                   <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> View driver and vehicle details</span>
                   <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Get support when your plans change</span>
                 </div>
-                <div className="mt-6 flex flex-wrap justify-center gap-3">
-                  <a
-                    href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
-                    aria-label="Google play"
-                  >
-                    <img src="/assets/play-store.png" alt="Google play" className="h-10 w-auto object-contain" />
-                  </a>
-                  <a
-                    href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
-                    aria-label="App Store"
-                  >
-                    <img src="/assets/app-store-logo.png" alt="App Store" className="h-10 w-auto object-contain" />
-                  </a>
+
+                <div className="mt-5 grid max-w-[470px] grid-cols-1 justify-items-center gap-3 sm:grid-cols-2">
+                  <div className="flex w-[170px] flex-col items-center">
+                    <a
+                      href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                      aria-label="App Store"
+                    >
+                      <img src="/assets/app-store-badge.png" alt="App Store" className="h-10 w-auto object-contain" />
+                    </a>
+                    <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                      <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">Scan to Download</p>
+                      <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                        <img
+                          src="/assets/app-download-qr-app-store-cropped.png"
+                          alt="App Store QR code"
+                          className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                        />
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex w-[170px] flex-col items-center">
+                    <a
+                      href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                      aria-label="Google play"
+                    >
+                      <img src="/assets/play-store.png" alt="Google play" className="h-10 w-auto object-contain" />
+                    </a>
+                    <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                      <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">Scan to Download</p>
+                      <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                        <img
+                          src="/assets/app-download-qr-google-play-cropped.png"
+                          alt="Google Play QR code"
+                          className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                        />
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="relative mx-auto w-full max-w-[230px] md:mr-18 lg:mr-28 lg:max-w-[250px]">
-                <div className="rounded-xl bg-white p-3 text-center shadow-2xl">
-                  <p className="mb-2 text-[10px] font-extrabold uppercase tracking-wider text-slate-500">Scan to Download</p>
+
+              <div className="relative mx-auto w-full max-w-[380px]">
+                <div>
                   <img
-                    src="/assets/root-cabs-qr-cropped.png"
-                    alt="Root Cabs app QR code"
-                    className="aspect-square w-full rounded-md object-contain"
+                    src="/assets/plan-trip-root-cabs.png"
+                    alt="Plan every trip with Root Cabs"
+                    className="h-[470px] w-full rounded-[20px] object-contain md:h-[430px] lg:h-[400px]"
                   />
-                  <p className="mt-2 text-[10px] font-semibold text-slate-400">rootcabs.com/app</p>
                 </div>
               </div>
             </div>
@@ -250,74 +278,28 @@ export function BusinessPage() {
         </section>
 
         {/* Driver CTA */}
-        <section className="max-w-screen-xl mx-auto px-4 py-2 text-center">
-          <div className="rounded-xl border border-border bg-white px-5 py-7 shadow-sm">
-            <h2 className="font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">
-              Drive and Earn with Root Cabs
-            </h2>
-            <p className="mx-auto mt-3 mb-5 max-w-2xl text-sm leading-6 text-muted-foreground">
-              Earn up to â‚¹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
-            </p>
-            <Link to="/drivers">
-              <Button className="cursor-pointer bg-primary hover:bg-primary/90">
-                Join as Root Partner <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
-          </div>
-        </section>
-
-        {/* FAQ */}
-        <section className="bg-muted/50 px-4 py-14 md:py-18">
-          <div className="mx-auto max-w-3xl">
-            <h2 className="mb-10 text-center font-heading text-3xl font-bold text-[#1E2A6E] md:text-4xl">
-              Frequently Asked Questions
-            </h2>
-            <Accordion type="single" collapsible className="space-y-3">
-              <AccordionItem value="business-faq-1" className="border-0">
-                <AccordionTrigger className="rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline">
-                  Which cities are covered under Root Cabs business solutions?
-                </AccordionTrigger>
-                <AccordionContent className="rounded-b-lg bg-white px-5 pb-5 text-sm leading-6 text-muted-foreground shadow-sm">
-                  Root Cabs business solutions are available across the cities we currently serve in Tamil Nadu. Coverage may vary based on the type of service and travel requirement.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="business-faq-2" className="border-0">
-                <AccordionTrigger className="rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline">
-                  Is there a minimum company size required for a corporate account?
-                </AccordionTrigger>
-                <AccordionContent className="rounded-b-lg bg-white px-5 pb-5 text-sm leading-6 text-muted-foreground shadow-sm">
-                  No fixed company size is required. We work with startups, small businesses and larger organisations based on their travel needs.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="business-faq-3" className="border-0">
-                <AccordionTrigger className="rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline">
-                  How can I get pricing for my business?
-                </AccordionTrigger>
-                <AccordionContent className="rounded-b-lg bg-white px-5 pb-5 text-sm leading-6 text-muted-foreground shadow-sm">
-                  Share your expected ride volume, locations and service requirements with our team. We will provide a customised quote based on your business travel plan.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="business-faq-4" className="border-0">
-                <AccordionTrigger className="rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline">
-                  Can travel agents add Root Cabs bookings to their own platform?
-                </AccordionTrigger>
-                <AccordionContent className="rounded-b-lg bg-white px-5 pb-5 text-sm leading-6 text-muted-foreground shadow-sm">
-                  Yes. Travel agents can discuss booking integration and partnership options with the Root Cabs team. The setup will depend on the platform and booking volume.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="business-faq-5" className="border-0">
-                <AccordionTrigger className="rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline">
-                  Can businesses schedule rides in advance?
-                </AccordionTrigger>
-                <AccordionContent className="rounded-b-lg bg-white px-5 pb-5 text-sm leading-6 text-muted-foreground shadow-sm">
-                  Yes. Corporate clients, hotels and travel agents can arrange rides ahead of time for employees, guests or customers based on their planned travel schedule.
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+        <section className="max-w-screen-xl mx-auto px-4 py-2">
+          <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,1.15fr)_minmax(220px,0.85fr)] md:px-8">
+            <div className="text-center md:text-left">
+              <h2 className="font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">
+                Drive and Earn with Root Cabs
+              </h2>
+              <p className="mt-3 mb-5 max-w-2xl text-sm leading-6 text-muted-foreground">
+                Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+              </p>
+              <Link to="/drivers">
+                <Button className="cursor-pointer bg-primary hover:bg-primary/90">
+                  Join as Root Partner <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+            </div>
+            <div className="mx-auto w-full max-w-[420px] overflow-hidden rounded-lg bg-muted">
+              <img
+                src="/assets/homepage-rootpartner-banner.webp"
+                alt="Drive and earn with Root Cabs"
+                className="h-36 w-full object-cover md:h-44"
+              />
+            </div>
           </div>
         </section>
       </div>
@@ -512,22 +494,31 @@ export function AboutPage() {
             {[
               {
                 title: "Trust",
+                icon: "/assets/about-values/trust.webp",
                 desc: "We build confidence through clear communication, responsible service and consistent follow-through.",
               },
               {
                 title: "Convenience",
+                icon: "/assets/about-values/convenience.webp",
                 desc: "Our services are designed to make booking and managing travel easier across different trip needs.",
               },
               {
                 title: "Partnership",
+                icon: "/assets/about-values/partnership.webp",
                 desc: "We value the contribution of driver partners and work to maintain a fair and supportive relationship.",
               },
               {
                 title: "Commitment",
+                icon: "/assets/about-values/commitment.webp",
                 desc: "We remain focused on improving service standards and delivering a better experience with every ride.",
               },
             ].map((v) => (
               <div key={v.title} className="rounded-xl border border-border bg-white p-6 text-center shadow-sm">
+                <img
+                  src={v.icon}
+                  alt={v.title}
+                  className="mx-auto mb-4 h-14 w-14 object-contain"
+                />
                 <h3 className="font-heading text-lg font-bold text-[#1E2A6E]">{v.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-muted-foreground">{v.desc}</p>
               </div>
@@ -537,13 +528,28 @@ export function AboutPage() {
 
         {/* Company Story */}
         <section className="rounded-2xl border border-border bg-white px-6 py-6 shadow-sm md:px-8 md:py-8">
-          <div className="mx-auto max-w-4xl text-center">
-            <p className="text-sm leading-7 text-muted-foreground md:text-base">
-              Root Cabs was established to strengthen access to organised mobility services across Tamil Nadu, including both major cities and emerging towns. Our approach combines customer convenience, service accountability and meaningful opportunities for driver partners, with a clear focus on delivering consistent value across every journey.
-            </p>
-            <div className="mt-6">
-              <p className="font-heading text-lg font-bold text-[#1E2A6E] md:text-xl">The Root Cabs Team</p>
-              <p className="mt-1 text-sm font-medium text-muted-foreground md:text-base">Texve Innovations Pvt. Ltd.</p>
+          <div className="mx-auto max-w-5xl">
+            <div className="rounded-2xl bg-[#F7F9FC] p-6 text-center md:p-8 lg:text-left">
+              <span className="inline-flex rounded-full bg-[#1E2A6E]/8 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-[#1E2A6E]">
+                About Root Cabs
+              </span>
+
+              <div className="mt-5 rounded-xl border border-[#D9E0F0] bg-white px-5 py-4 shadow-sm">
+                <p className="font-heading text-lg font-bold text-[#1E2A6E] md:text-xl">The Root Cabs Team</p>
+                <p className="mt-1 text-sm font-medium text-muted-foreground md:text-base">Texve Innovations Pvt. Ltd.</p>
+              </div>
+
+              <p className="mt-6 text-sm leading-7 text-muted-foreground md:text-base">
+                Root Cabs was established to strengthen access to organised mobility services across Tamil Nadu, including both major cities and emerging towns. Our approach combines customer convenience, service accountability and meaningful opportunities for driver partners, with a clear focus on delivering consistent value across every journey.
+              </p>
+
+              <div className="mt-6 overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
+                <img
+                  src="/assets/about-root-team-collage.webp"
+                  alt="Root Cabs driver partner collage"
+                  className="h-full w-full object-cover"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -621,7 +627,7 @@ export function AboutPage() {
                   <p className="font-heading text-2xl font-bold text-[#1E2A6E]">2026</p>
                   <p className="mt-1 font-heading text-lg font-bold text-[#1E2A6E]">Growing Across Tamil Nadu</p>
                   <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                    Within a year, Root Cabs expanded its presence to more than 10 cities and broadened its service portfolio to meet different mobility needs. New additions such as Bike Taxi and Parcel Delivery extended the platform beyond passenger travel and marked the next stage of Root Cabsâ€™ growth.
+                    Within a year, Root Cabs expanded its presence to more than 10 cities and broadened its service portfolio to meet different mobility needs. New additions such as Bike Taxi and Parcel Delivery extended the platform beyond passenger travel and marked the next stage of Root CabsÃ¢â‚¬â„¢ growth.
                   </p>
                 </div>
               </div>
@@ -691,17 +697,17 @@ export function AboutPage() {
             {[
               {
                 name: "Karthik Raman",
-                city: "Local Taxi · Vellore",
+                city: "Local Taxi Â· Vellore",
                 text: "Been using Root Cabs since they launched in Vellore back in 2022. Still the most reliable option for VIT trips.",
               },
               {
                 name: "Deepa Suresh",
-                city: "Outstation Taxi · Coimbatore",
+                city: "Outstation Taxi Â· Coimbatore",
                 text: "Fixed fares every single time, even during festival season. That's rare for a cab service in a smaller city.",
               },
               {
                 name: "Arun Vijay",
-                city: "Airport Taxi · Chennai",
+                city: "Airport Taxi Â· Chennai",
                 text: "Drivers are genuinely well-trained and polite. You can tell there's real vetting happening, not just an app.",
               },
             ].map((review) => (
@@ -731,61 +737,87 @@ export function AboutPage() {
 
         {/* App CTA */}
         <section className="max-w-screen-xl mx-auto px-0 py-1 md:py-2">
-          <div className="relative overflow-hidden rounded-2xl bg-[#273588] px-6 py-7 text-white shadow-xl md:px-10 lg:px-12">
+          <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
             <img
-              src="https://mgx-backend-cdn.metadl.com/generate/images/877752/2026-07-16/ss3qbnqcaiza/airport-taxi-terminal-service.png"
-              alt="Root Cabs app"
-              className="absolute inset-0 h-full w-full object-cover opacity-15"
+              src="/assets/home-download-car-bg.webp"
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.14] saturate-75"
             />
-            <div className="absolute inset-0 bg-[#273588]/80" />
-            <div className="absolute inset-0 opacity-10 [background-image:linear-gradient(90deg,_rgba(255,255,255,.35)_1px,_transparent_1px),linear-gradient(180deg,_rgba(255,255,255,.35)_1px,_transparent_1px)] [background-size:56px_56px]" />
-            <div className="relative z-10 grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_230px] lg:grid-cols-[minmax(0,1fr)_250px]">
-              <div className="text-center md:pl-4 lg:pl-8">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.16),transparent_32%),radial-gradient(circle_at_82%_28%,rgba(255,255,255,0.1),transparent_28%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.08),transparent_32%)]" />
+            <div className="absolute inset-0 bg-[#273588]/62" />
+            <div className="relative z-10 grid items-center gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.78fr)]">
+              <div className="text-center md:pl-2 md:text-left lg:pl-4">
                 <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                   GET THE APP
                 </span>
                 <h2 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-4xl">
                   Plan Every Trip with Root Cabs
                 </h2>
-                <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-white/80 md:text-base">
+                <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
                   From choosing the right service to checking trip details, the Root Cabs app keeps every part of your journey organised in one place.
                 </p>
-                <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-white/85">
+                <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-white/85 md:justify-start">
                   <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> 100% verified drivers</span>
                   <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> No bargaining with drivers</span>
                   <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> No last-minute cancellations</span>
                   <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> 24/7 customer support</span>
                 </div>
-                <div className="mt-6 flex flex-wrap justify-center gap-3">
-                  <a
-                    href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
-                    aria-label="Google play"
-                  >
-                    <img src="/assets/play-store.png" alt="Google play" className="h-10 w-auto object-contain" />
-                  </a>
-                  <a
-                    href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
-                    aria-label="App Store"
-                  >
-                    <img src="/assets/app-store-logo.png" alt="App Store" className="h-10 w-auto object-contain" />
-                  </a>
+
+                <div className="mt-5 grid max-w-[470px] grid-cols-1 justify-items-center gap-3 sm:grid-cols-2">
+                  <div className="flex w-[170px] flex-col items-center">
+                    <a
+                      href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                      aria-label="App Store"
+                    >
+                      <img src="/assets/app-store-badge.png" alt="App Store" className="h-10 w-auto object-contain" />
+                    </a>
+                    <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                      <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">Scan to Download</p>
+                      <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                        <img
+                          src="/assets/app-download-qr-app-store-cropped.png"
+                          alt="App Store QR code"
+                          className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                        />
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex w-[170px] flex-col items-center">
+                    <a
+                      href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                      aria-label="Google play"
+                    >
+                      <img src="/assets/play-store.png" alt="Google play" className="h-10 w-auto object-contain" />
+                    </a>
+                    <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                      <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">Scan to Download</p>
+                      <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                        <img
+                          src="/assets/app-download-qr-google-play-cropped.png"
+                          alt="Google Play QR code"
+                          className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                        />
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="relative mx-auto w-full max-w-[230px] md:mr-18 lg:mr-28 lg:max-w-[250px]">
-                <div className="rounded-xl bg-white p-3 text-center shadow-2xl">
-                  <p className="mb-2 text-[10px] font-extrabold uppercase tracking-wider text-slate-500">Scan to Download</p>
+
+              <div className="relative mx-auto w-full max-w-[380px]">
+                <div>
                   <img
-                    src="/assets/root-cabs-qr-cropped.png"
-                    alt="Root Cabs app QR code"
-                    className="aspect-square w-full rounded-md object-contain"
+                    src="/assets/plan-trip-root-cabs.png"
+                    alt="Plan every trip with Root Cabs"
+                    className="h-[470px] w-full rounded-[20px] object-contain md:h-[430px] lg:h-[400px]"
                   />
-                  <p className="mt-2 text-[10px] font-semibold text-slate-400">rootcabs.com/app</p>
                 </div>
               </div>
             </div>
@@ -793,19 +825,28 @@ export function AboutPage() {
         </section>
 
         {/* Driver CTA */}
-        <section className="max-w-screen-xl mx-auto px-4 py-1 text-center">
-          <div className="rounded-xl border border-border bg-white px-5 py-6 shadow-sm">
-            <h2 className="font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">
-              Drive and Earn with Root Cabs
-            </h2>
-            <p className="mx-auto mt-3 mb-5 max-w-2xl text-sm leading-6 text-muted-foreground">
-              Earn up to â‚¹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
-            </p>
-            <Link to="/drivers">
-              <Button className="bg-[#1E2A6E] text-white hover:bg-[#2A3A8A] cursor-pointer px-6 py-3 font-semibold">
-                Join as Root Partner
-              </Button>
-            </Link>
+        <section className="max-w-screen-xl mx-auto px-4 py-2">
+          <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(280px,1.05fr)] md:px-8">
+            <div className="text-center md:text-left">
+              <h2 className="font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">
+                Drive and Earn with Root Cabs
+              </h2>
+              <p className="mt-3 mb-5 max-w-2xl text-sm leading-6 text-muted-foreground">
+                Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+              </p>
+              <Link to="/drivers">
+                <Button className="cursor-pointer bg-primary hover:bg-primary/90">
+                  Join as Root Partner <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+            </div>
+            <div className="overflow-hidden rounded-lg bg-muted">
+              <img
+                src="/assets/homepage-rootpartner-banner.webp"
+                alt="Drive and earn with Root Cabs"
+                className="h-56 w-full object-cover md:h-64"
+              />
+            </div>
           </div>
         </section>
       </div>
@@ -844,7 +885,7 @@ export function SupportPage() {
     },
     {
       q: "What should I do if my ride is delayed?",
-      a: "Check the driver’s location and trip status in the app. You can contact the driver directly or reach Root Cabs support if you need further assistance.",
+      a: "Check the driverâ€™s location and trip status in the app. You can contact the driver directly or reach Root Cabs support if you need further assistance.",
     },
     {
       q: "How can I update the phone number linked to my account?",

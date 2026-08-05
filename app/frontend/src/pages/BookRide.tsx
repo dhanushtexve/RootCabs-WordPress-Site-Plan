@@ -1364,7 +1364,7 @@ export default function BookRide() {
                           <div>
                             <p className="font-semibold">{v.name}</p>
                             <p className="text-xs text-muted-foreground">{v.desc}</p>
-                            <p className="text-xs text-muted-foreground">{v.capacity} • ₹{v.rate.perKm}/km</p>
+                            <p className="text-xs text-muted-foreground">{v.capacity} • ?{v.rate.perKm}/km</p>
                           </div>
                         </div>
                       </div>
@@ -1722,7 +1722,7 @@ export default function BookRide() {
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#1E2A6E]" />
-                      <span>Refer a customer and earn ₹100</span>
+                      <span>Refer a customer and earn ?100</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#1E2A6E]" />
@@ -1787,19 +1787,19 @@ export default function BookRide() {
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between items-center py-1 border-b border-border">
                     <span>Mini</span>
-                    <span className="font-semibold text-primary">₹24/km</span>
+                    <span className="font-semibold text-primary">?24/km</span>
                   </div>
                   <div className="flex justify-between items-center py-1 border-b border-border">
                     <span>Sedan</span>
-                    <span className="font-semibold text-primary">₹24/km</span>
+                    <span className="font-semibold text-primary">?24/km</span>
                   </div>
                   <div className="flex justify-between items-center py-1 border-b border-border">
                     <span>SUV</span>
-                    <span className="font-semibold text-primary">₹24/km</span>
+                    <span className="font-semibold text-primary">?24/km</span>
                   </div>
                   <div className="flex justify-between items-center py-1 border-b border-border">
                     <span>MUV</span>
-                    <span className="font-semibold text-primary">₹29/km</span>
+                    <span className="font-semibold text-primary">?29/km</span>
                   </div>
                 </div>
                 <p className="text-xs text-muted-foreground mt-3">
@@ -1823,59 +1823,104 @@ export default function BookRide() {
       </div>
 
       <section className="max-w-screen-xl mx-auto px-4 pb-12 md:pb-14">
-        <div className="relative overflow-hidden rounded-2xl bg-[#273588] px-6 py-8 text-white shadow-xl md:px-10 lg:px-12">
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
           <img
-            src="/assets/bookride.png"
-            alt="Root Cabs ride booking app"
-            className="absolute inset-0 h-full w-full object-cover opacity-10"
+            src="/assets/home-download-car-bg.webp"
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.14] saturate-75"
           />
-          <div className="absolute inset-0 bg-[#273588]/85" />
-          <div className="absolute inset-0 opacity-10 [background-image:linear-gradient(90deg,_rgba(255,255,255,.35)_1px,_transparent_1px),linear-gradient(180deg,_rgba(255,255,255,.35)_1px,_transparent_1px)] [background-size:56px_56px]" />
-          <div className="relative z-10 grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_230px] lg:grid-cols-[minmax(0,1fr)_250px]">
-            <div className="text-center md:text-left">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.16),transparent_32%),radial-gradient(circle_at_82%_28%,rgba(255,255,255,0.1),transparent_28%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.08),transparent_32%)]" />
+          <div className="absolute inset-0 bg-[#273588]/62" />
+          <div className="relative z-10 grid items-center gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.78fr)]">
+            <div className="text-center md:text-left md:pl-2 lg:pl-4">
               <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
-                GET THE APP
+                Book Faster
               </span>
-              <h2 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-4xl">Book Every Ride in One App</h2>
-              <p className="mt-3 max-w-3xl text-sm leading-6 text-white/80 md:text-base">
+              <h2 className="mt-3 font-heading text-3xl font-bold leading-tight md:text-4xl">Book Every Ride in One App</h2>
+              <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
                 Whether you need a quick city trip, a bike ride or want to book airport transportation, Root Cabs app helps you choose your ride, check the fare and confirm your booking in just a few taps.
               </p>
-              <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-white/85 md:justify-start">
-                <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Bike, Auto and Cab booking</span>
-                <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Upfront fare details</span>
-                <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Saved locations and trip history</span>
-                <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Quick ride confirmation</span>
+              <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-semibold text-white/85 md:justify-start">
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Bike, Auto and Cab booking
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Upfront fare details
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Saved locations and trip history
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Quick ride confirmation
+                </span>
               </div>
-              <div className="mt-6 flex flex-wrap justify-center gap-3 md:justify-start">
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
-                  aria-label="Google Play"
-                >
-                  <img src="/assets/play-store.png" alt="Google Play" className="h-10 w-auto object-contain" />
-                </a>
-                <a
-                  href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
-                  aria-label="App Store"
-                >
-                  <img src="/assets/app-store-logo.png" alt="App Store" className="h-10 w-auto object-contain" />
-                </a>
+
+              <div className="mt-5 grid max-w-[470px] grid-cols-1 justify-items-center gap-3 sm:grid-cols-2">
+                <div className="flex w-[170px] flex-col items-center">
+                  <a
+                    href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                    aria-label="App Store"
+                  >
+                    <img
+                      src="/assets/app-store-badge.png"
+                      alt="App Store"
+                      className="h-10 w-auto object-contain"
+                    />
+                  </a>
+                  <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                    <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">
+                      Scan to Download
+                    </p>
+                    <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                      <img
+                        src="/assets/app-download-qr-app-store-cropped.png"
+                        alt="App Store QR code"
+                        className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                      />
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex w-[170px] flex-col items-center">
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                    aria-label="Google play"
+                  >
+                    <img
+                      src="/assets/play-store.png"
+                      alt="Google play"
+                      className="h-10 w-auto object-contain"
+                    />
+                  </a>
+                  <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                    <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">
+                      Scan to Download
+                    </p>
+                    <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                      <img
+                        src="/assets/app-download-qr-google-play-cropped.png"
+                        alt="Google Play QR code"
+                        className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                      />
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="relative mx-auto w-full max-w-[230px] lg:max-w-[250px]">
-              <div className="rounded-xl bg-white p-3 text-center shadow-2xl">
-                <p className="mb-2 text-[10px] font-extrabold uppercase tracking-wider text-slate-500">Scan to Download</p>
+            <div className="relative mx-auto w-full max-w-[380px]">
+              <div>
                 <img
-                  src="/assets/root-cabs-qr-cropped.png"
-                  alt="Root Cabs app QR code"
-                  className="aspect-square w-full rounded-md object-contain"
+                  src="/assets/plan-trip-root-cabs.png"
+                  alt="Plan every trip with Root Cabs"
+                  className="h-[470px] w-full rounded-[20px] object-contain md:h-[430px] lg:h-[400px]"
                 />
-                <p className="mt-2 text-[10px] font-medium text-slate-400">rootcabs.com/app</p>
               </div>
             </div>
           </div>
@@ -1884,20 +1929,28 @@ export default function BookRide() {
 
       <section className="max-w-screen-xl mx-auto px-4 pb-12 md:pb-14">
         <Card className="border-border">
-          <CardContent className="p-8 text-center md:p-10">
-            <h2 className="font-heading text-2xl font-bold md:text-3xl">Drive and Earn with Root Cabs</h2>
-            <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-muted-foreground md:text-base">
-              Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
-            </p>
-            <a href="/drivers" className="mt-6 inline-block">
-              <Button className="bg-primary hover:bg-primary/90 cursor-pointer">
-                Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </a>
+          <CardContent className="grid items-center gap-6 p-6 md:grid-cols-[minmax(0,0.95fr)_minmax(280px,1.05fr)] md:p-8">
+            <div className="text-center md:text-left">
+              <h2 className="font-heading text-2xl font-bold md:text-3xl">Drive and Earn with Root Cabs</h2>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground md:text-base">
+                Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+              </p>
+              <a href="/drivers" className="mt-6 inline-block">
+                <Button className="bg-primary hover:bg-primary/90 cursor-pointer">
+                  Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </a>
+            </div>
+            <div className="overflow-hidden rounded-lg bg-muted">
+              <img
+                src="/assets/homepage-rootpartner-banner.webp"
+                alt="Drive and earn with Root Cabs"
+                className="h-56 w-full object-cover md:h-64"
+              />
+            </div>
           </CardContent>
         </Card>
       </section>
-
       <section className="bg-[#F3F5F9] px-4 pb-12 pt-8 md:pb-16 md:pt-10">
         <div className="mx-auto max-w-3xl">
           <h2 className="font-heading text-center text-3xl font-bold text-[#1E2A6E] md:text-4xl">

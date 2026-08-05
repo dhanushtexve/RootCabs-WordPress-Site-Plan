@@ -309,66 +309,91 @@ export function DriversPage() {
 
       <section className="bg-[#F5F7FB] py-10 md:py-12">
         <div className="max-w-screen-xl mx-auto px-4">
-          <div className="overflow-hidden rounded-3xl bg-gradient-to-br from-[#273588] to-[#1E2A6E] px-6 py-8 text-white shadow-xl md:px-8 md:py-10">
-            <div className="grid items-center gap-8 md:grid-cols-[minmax(0,1fr)_240px] md:gap-10 lg:grid-cols-[minmax(0,1fr)_260px]">
-            <div className="text-center md:pr-4 lg:pr-8">
-              <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
-                GET THE APP
-              </span>
-              <h2 className="mt-4 font-heading text-2xl font-extrabold leading-[1.15] tracking-normal md:text-3xl lg:text-4xl">
-                Drive Smarter with the Root Partner App
-              </h2>
-              <p className="mt-3 max-w-2xl text-base leading-7 text-white/82 md:text-lg">
-                Manage your work directly from the Root Partner app. Accept trip requests, monitor your earnings and stay updated on bonuses and payouts without switching between multiple platforms.
-              </p>
-              <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-3 text-sm font-medium text-white/90">
-                {[
-                  "View and accept ride requests",
-                  "Track daily and weekly earnings",
-                  "Check bonus progress",
-                  "Access trip and payout details",
-                ].map((item) => (
-                  <div key={item} className="flex items-center gap-2">
-                    <CheckCircle2 className="h-4 w-4 shrink-0 text-[#FFD43B]" />
-                    <span>{item}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-6 flex flex-wrap justify-center gap-3">
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
-                  aria-label="Google Play"
-                >
-                  <img src="/assets/play-store.png" alt="Google Play" className="h-10 w-auto object-contain" />
-                </a>
-                <a
-                  href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
-                  aria-label="App Store"
-                >
-                  <img src="/assets/app-store-logo.png" alt="App Store" className="h-10 w-auto object-contain" />
-                </a>
-              </div>
-            </div>
+          <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
+            <img
+              src="/assets/home-download-car-bg.webp"
+              alt=""
+              aria-hidden="true"
+              className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.14] saturate-75"
+            />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.16),transparent_32%),radial-gradient(circle_at_82%_28%,rgba(255,255,255,0.1),transparent_28%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.08),transparent_32%)]" />
+            <div className="absolute inset-0 bg-[#273588]/62" />
+            <div className="relative z-10 grid items-center gap-6 lg:grid-cols-[minmax(0,1.18fr)_minmax(250px,0.72fr)]">
+              <div className="pt-4 text-center md:pl-2 md:pt-6 md:text-left lg:pl-4 lg:pt-8">
+                <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
+                  GET THE APP
+                </span>
+                <h2 className="mt-5 max-w-[760px] font-heading text-3xl font-bold leading-[1.08] md:mt-6 md:text-4xl lg:text-[3rem]">
+                  Drive Smarter with the Root Partner App
+                </h2>
+                <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
+                  Manage your work directly from the Root Partner app. Accept trip requests, monitor your earnings and stay updated on bonuses and payouts without switching between multiple platforms.
+                </p>
+                <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-semibold text-white/85 md:justify-start">
+                  <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-[#FFD700]" /> View and accept ride requests</span>
+                  <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-[#FFD700]" /> Track daily and weekly earnings</span>
+                  <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-[#FFD700]" /> Check bonus progress</span>
+                  <span className="flex items-center gap-1.5"><CheckCircle2 className="h-3.5 w-3.5 text-[#FFD700]" /> Access trip and payout details</span>
+                </div>
 
-            <div className="relative mx-auto w-full max-w-[240px] md:justify-self-end">
-              <div className="rounded-2xl bg-white p-3 text-center shadow-2xl">
-                <p className="mb-2 text-[10px] font-extrabold uppercase tracking-wider text-slate-500">Scan to Download</p>
-                <img
-                  src="/assets/root-cabs-qr-cropped.png"
-                  alt="Root Partner app QR code"
-                  className="aspect-square w-full rounded-md object-contain"
-                />
-                <p className="mt-2 text-[10px] font-semibold text-slate-400">rootcabs.com/app</p>
+                <div className="mt-5 grid max-w-[470px] grid-cols-1 justify-items-center gap-3 sm:grid-cols-2">
+                  <div className="flex w-[170px] flex-col items-center">
+                    <a
+                      href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                      aria-label="App Store"
+                    >
+                      <img src="/assets/app-store-badge.png" alt="App Store" className="h-10 w-auto object-contain" />
+                    </a>
+                    <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                      <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">Scan to Download</p>
+                      <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                        <img
+                          src="/assets/app-download-qr-app-store-cropped.png"
+                          alt="App Store QR code"
+                          className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                        />
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="flex w-[170px] flex-col items-center">
+                    <a
+                      href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                      aria-label="Google play"
+                    >
+                      <img src="/assets/play-store.png" alt="Google play" className="h-10 w-auto object-contain" />
+                    </a>
+                    <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                      <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">Scan to Download</p>
+                      <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                        <img
+                          src="/assets/app-download-qr-google-play-cropped.png"
+                          alt="Google Play QR code"
+                          className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                        />
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative mx-auto w-full max-w-[380px]">
+                <div>
+                  <img
+                    src="/assets/plan-trip-root-cabs.png"
+                    alt="Plan every trip with Root Cabs"
+                    className="h-[470px] w-full rounded-[20px] object-contain md:h-[430px] lg:h-[400px]"
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
         </div>
       </section>
     </div>
