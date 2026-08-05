@@ -447,6 +447,27 @@ export function AboutPage() {
     };
   }, []);
 
+  const journeyHighlights = [
+    {
+      year: "2025",
+      title: "The Beginning",
+      image: "/assets/the-beginning.webp",
+      alt: "Root Cabs launch milestone",
+      description:
+        "Root Cabs launched in Vellore with Cab, Auto and Acting Driver services, bringing essential travel options together on one platform. The focus was to make daily transportation easier to access and more convenient to book.",
+      icon: <Car className="h-5 w-5" />,
+    },
+    {
+      year: "2026",
+      title: "Growing Across Tamil Nadu",
+      image: "/assets/growing-across-tamil-nadu.webp",
+      alt: "Root Cabs expanding across Tamil Nadu",
+      description:
+        "Within a year, Root Cabs expanded its presence to more than 10 cities and broadened its service portfolio to meet different mobility needs. New additions such as Bike Taxi and Parcel Delivery extended the platform beyond passenger travel and marked the next stage of Root Cabs growth.",
+      icon: <MapPin className="h-5 w-5" />,
+    },
+  ];
+
   return (
     <div>
       <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-14 md:py-16">
@@ -593,41 +614,59 @@ export function AboutPage() {
           <p className="mx-auto mt-2 max-w-3xl text-center text-sm leading-6 text-muted-foreground md:text-base">
             From one city to a growing presence across Tamil Nadu, Root Cabs continues to expand its services around changing customer needs.
           </p>
-          <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_260px_minmax(0,1fr)] lg:items-center">
-            <div className="rounded-2xl border border-border bg-white p-6 shadow-sm">
-              <div className="flex items-start gap-4">
-                <div className="mt-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                  <Car className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="font-heading text-2xl font-bold text-[#1E2A6E]">2025</p>
-                  <p className="mt-1 font-heading text-lg font-bold text-[#1E2A6E]">The Beginning</p>
-                  <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                    Root Cabs launched in Vellore with Cab, Auto and Acting Driver services, bringing essential travel options together on one platform. The focus was to make daily transportation easier to access and more convenient to book.
-                  </p>
+          <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_240px_minmax(0,1fr)] lg:items-center">
+            <article className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
+              <div className="relative flex aspect-[16/10] w-full items-center justify-center overflow-hidden bg-[#f4f1ff] p-2 md:p-3">
+                <img
+                  src={journeyHighlights[0].image}
+                  alt={journeyHighlights[0].alt}
+                  className="h-full w-full object-contain transition-transform duration-300 hover:scale-[1.02]"
+                />
+                <div className="absolute left-3 top-3 rounded-full bg-[#1E2A6E]/90 px-3 py-1 text-[11px] font-semibold tracking-wide text-white shadow-sm md:left-4 md:top-4 md:text-xs">
+                  {journeyHighlights[0].year}
                 </div>
               </div>
-            </div>
+              <div className="p-5 md:p-6">
+                <div className="flex items-start gap-3">
+                  <div className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary md:h-10 md:w-10">
+                    {journeyHighlights[0].icon}
+                  </div>
+                  <div>
+                    <p className="font-heading text-lg font-bold text-[#1E2A6E] md:text-xl">{journeyHighlights[0].title}</p>
+                    <p className="mt-1 text-sm leading-6 text-muted-foreground">{journeyHighlights[0].description}</p>
+                  </div>
+                </div>
+              </div>
+            </article>
 
             <div className="relative hidden h-10 items-center justify-center lg:flex">
               <div className="h-2 w-full rounded-full border-2 border-[#1E2A6E] bg-[#1E2A6E] shadow-[inset_0_0_0_2px_#FFD700]" />
               <div className="absolute h-8 w-8 rounded-full border-4 border-[#1E2A6E] bg-white" />
             </div>
 
-            <div className="rounded-2xl border border-border bg-white p-6 shadow-sm">
-              <div className="flex items-start gap-4">
-                <div className="mt-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                  <MapPin className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="font-heading text-2xl font-bold text-[#1E2A6E]">2026</p>
-                  <p className="mt-1 font-heading text-lg font-bold text-[#1E2A6E]">Growing Across Tamil Nadu</p>
-                  <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                    Within a year, Root Cabs expanded its presence to more than 10 cities and broadened its service portfolio to meet different mobility needs. New additions such as Bike Taxi and Parcel Delivery extended the platform beyond passenger travel and marked the next stage of Root CabsÃ¢â‚¬â„¢ growth.
-                  </p>
+            <article className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
+              <div className="relative flex aspect-[16/10] w-full items-center justify-center overflow-hidden bg-[#f4f1ff] p-2 md:p-3">
+                <img
+                  src={journeyHighlights[1].image}
+                  alt={journeyHighlights[1].alt}
+                  className="h-full w-full object-contain transition-transform duration-300 hover:scale-[1.02]"
+                />
+                <div className="absolute left-3 top-3 rounded-full bg-[#1E2A6E]/90 px-3 py-1 text-[11px] font-semibold tracking-wide text-white shadow-sm md:left-4 md:top-4 md:text-xs">
+                  {journeyHighlights[1].year}
                 </div>
               </div>
-            </div>
+              <div className="p-5 md:p-6">
+                <div className="flex items-start gap-3">
+                  <div className="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary md:h-10 md:w-10">
+                    {journeyHighlights[1].icon}
+                  </div>
+                  <div>
+                    <p className="font-heading text-lg font-bold text-[#1E2A6E] md:text-xl">{journeyHighlights[1].title}</p>
+                    <p className="mt-1 text-sm leading-6 text-muted-foreground">{journeyHighlights[1].description}</p>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
         </section>
 
