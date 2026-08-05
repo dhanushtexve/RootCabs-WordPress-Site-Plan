@@ -172,17 +172,17 @@ export function BusinessPage() {
         <section className="rounded-2xl border border-border bg-muted/50 px-6 py-8 text-center md:px-8">
           <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Contact Us</h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-muted-foreground md:text-base">
-            Tell us about your companyÃ¢â‚¬â„¢s travel requirements, and our team will help you find a suitable business transport plan.
+            Tell us about your company's travel requirements, and our team will help you find a suitable business transport plan.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <a href={`tel:${companyInfo.phone}`}>
               <Button className="min-w-[160px] bg-[#1E2A6E] px-5 py-3 font-semibold text-white hover:bg-[#2A3A8A] cursor-pointer">
-                {companyInfo.phone}
+                Call Now
               </Button>
             </a>
             <a href={`mailto:${companyInfo.email}`}>
               <Button variant="outline" className="min-w-[160px] px-5 py-3 font-semibold cursor-pointer">
-                {companyInfo.email}
+                Email Us
               </Button>
             </a>
           </div>

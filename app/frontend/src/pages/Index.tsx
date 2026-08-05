@@ -511,13 +511,16 @@ export default function Index() {
               <Card key={`${experience.name}-${experience.city}`} className="border-border">
                 <CardContent className="flex h-full flex-col p-6">
                   <div className="mb-4 flex items-center justify-between gap-3">
-                    <div className="flex gap-1">
+                    <div className="flex items-center gap-2">
+                      <div className="flex gap-1">
                       {Array.from({ length: 5 }).map((_, index) => (
                         <Star
                           key={`${experience.name}-star-${index}`}
                           className={`h-4 w-4 ${index < experience.rating ? "fill-[#FFD700] text-[#FFD700]" : "text-[#D8DDEA]"}`}
                         />
                       ))}
+                      </div>
+                      <span className="text-sm font-semibold text-[#1E2A6E]">{experience.rating}</span>
                     </div>
                     <GoogleReviewBadge className="shrink-0 bg-transparent px-0 py-0 text-[11px] font-medium text-[#1a73e8]" />
                   </div>

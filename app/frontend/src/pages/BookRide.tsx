@@ -1772,7 +1772,7 @@ export default function BookRide() {
                 </ul>
                 <a href={`tel:${companyInfo.phone}`}>
                   <Button className="w-full bg-primary hover:bg-primary/90 cursor-pointer">
-                    <Phone className="w-4 h-4 mr-2" /> Call +91 8608606474
+                    <Phone className="w-4 h-4 mr-2" /> Call now
                   </Button>
                 </a>
               </CardContent>

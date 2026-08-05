@@ -116,23 +116,20 @@ export function DriversPage() {
     <div>
       <section className="bg-gradient-to-br from-[#1E2A6E] to-[#24377F] text-white">
         <div className="max-w-screen-xl mx-auto px-4 py-14 md:py-16">
-          <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_.9fr]">
+          <div className="grid items-start gap-10 lg:grid-cols-[1.2fr_.8fr]">
             <div className="max-w-2xl">
               <h1 className="font-heading text-3xl font-extrabold leading-[1.1] tracking-normal md:text-4xl lg:text-5xl">Drive and Earn with Root Cabs</h1>
               <p className="mt-5 max-w-2xl text-base leading-7 text-white/82 md:text-lg">
                 Become a Root Cabs driver partner and earn through ride opportunities suited to your vehicle. Auto, Cab and Bike owners can join the platform, choose flexible working hours, receive daily and weekly bonuses, and get dedicated support through the Root Partner app.
               </p>
-              <div className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm md:p-5">
-                <h2 className="font-heading text-base font-semibold text-white md:text-lg">Apply to Join</h2>
-                <p className="mt-2 max-w-lg text-xs leading-6 text-white/75 md:text-sm">
-                  Share your details and choose the service that matches your vehicle. Our onboarding team will contact you and guide you through the next steps.
-                </p>
-              </div>
             </div>
 
-            <div className="rounded-3xl bg-white p-6 text-slate-900 shadow-2xl md:p-7">
+            <div className="w-full rounded-3xl bg-white p-5 text-slate-900 shadow-2xl md:p-6 lg:max-w-[460px] lg:justify-self-end">
               <h2 className="font-heading text-2xl font-bold text-[#1E2A6E]">Apply to Drive</h2>
-              <p className="mt-1 text-sm text-slate-500">Takes less than a minute. Our team will call you back.</p>
+              <p className="mt-2 text-sm leading-6 text-slate-600">
+                Share your details and choose the service that matches your vehicle. Our onboarding team will contact you and guide you through the next steps.
+              </p>
+              <p className="mt-2 text-sm text-slate-500">Takes less than a minute. Our team will call you back.</p>
               <form className="mt-6 space-y-4">
                 <div>
                   <label className="mb-2 block text-sm font-semibold text-slate-700">Full Name</label>

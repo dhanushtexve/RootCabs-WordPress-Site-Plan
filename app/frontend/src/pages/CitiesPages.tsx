@@ -82,7 +82,7 @@ const chennaiServices = [
   {
     title: "Local Taxi",
     description: "Travel comfortably across Chennai for work, shopping, hospital visits, appointments, and everyday journeys. Choose convenient cab booking in Chennai for quick city travel without the hassle of searching for transport.",
-    fare: "Starting at â‚¹90/3km",
+    fare: "Starting at \u20B990/3km",
     href: "/taxi-in-chennai/local-taxi",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-local.webp" alt="Local Taxi service icon" className="h-8 w-8 object-contain" />,
@@ -90,7 +90,7 @@ const chennaiServices = [
   {
     title: "Outstation Taxi",
     description: "Plan round trips from Chennai to nearby towns, tourist destinations, and major cities. Our flexible outstation cabs in Chennai are suitable for family holidays, business journeys, and weekend travel.",
-    fare: "Starting at â‚¹300/20Km",
+    fare: "Starting at \u20B9300/20Km",
     href: "/taxi-in-chennai/outstation",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-outstation.webp" alt="Outstation Taxi service icon" className="h-8 w-8 object-contain" />,
@@ -98,7 +98,7 @@ const chennaiServices = [
   {
     title: "Acting Driver",
     description: "Hire an experienced acting driver in Chennai to drive your own car safely. It is ideal for late-night returns, hospital visits, events, business travel, and long-distance journeys.",
-    fare: "Starting at â‚¹500/100 Km",
+    fare: "Starting at \u20B9500/100 Km",
     href: "/taxi-in-chennai/acting-driver",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-acting-driver.webp" alt="Acting Driver service icon" className="h-8 w-8 object-contain" />,
@@ -106,7 +106,7 @@ const chennaiServices = [
   {
     title: "One-Way Taxi",
     description: "Choose a one-way taxi from Chennai for convenient intercity travel. Pay only for the journey you take without unnecessary return charges, making it suitable for airport transfers and long-distance drops.",
-    fare: "Starting at â‚¹300/Km",
+    fare: "Starting at \u20B9300/Km",
     href: "/book-ride",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-one-way.webp" alt="One-Way Taxi service icon" className="h-8 w-8 object-contain" />,
@@ -114,7 +114,7 @@ const chennaiServices = [
   {
     title: "Auto Rickshaw",
     description: "Travel easily through Chennai's busy streets, shopping areas, railway stations, and nearby neighbourhoods. Book an auto for everyday errands, short trips, and quick local travel across the city.",
-    fare: "Starting at â‚¹40/1Km",
+    fare: "Starting at \u20B940/1Km",
     href: "/taxi-in-chennai/auto",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-auto.webp" alt="Auto Rickshaw service icon" className="h-8 w-8 object-contain" />,
@@ -122,7 +122,7 @@ const chennaiServices = [
   {
     title: "Bike Taxi",
     description: "Move through Chennai traffic quickly with an affordable bike taxi ride. It is a convenient choice for office commutes, college travel, everyday errands, and short-distance journeys.",
-    fare: "Starting at â‚¹25/2km",
+    fare: "Starting at \u20B925/2km",
     href: "/book-ride",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-bike-taxi.webp" alt="Bike Taxi service icon" className="h-8 w-8 object-contain" />,
@@ -130,7 +130,7 @@ const chennaiServices = [
   {
     title: "Hourly Package",
     description: "Keep a cab for a selected number of hours and travel across Chennai with multiple stops. Complete meetings, shopping, appointments, and city visits without making separate bookings for every trip.",
-    fare: "Starting at â‚¹100/3km",
+    fare: "Starting at \u20B9100/3km",
     href: "/book-ride",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-hourly-package.webp" alt="Hourly Package service icon" className="h-8 w-8 object-contain" />,
@@ -138,7 +138,7 @@ const chennaiServices = [
   {
     title: "Parcel Delivery",
     description: "Send documents, packages, and everyday essentials safely across Chennai. Convenient doorstep pickup and delivery make it easier to send important items without travelling across the city yourself.",
-    fare: "Starting at â‚¹50/1km",
+    fare: "Starting at \u20B950/1km",
     href: "/taxi-in-chennai/parcel-delivery",
     iconWrapClass: "bg-white",
     icon: <img src="/assets/chennai-service-parcel.webp" alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
@@ -147,48 +147,48 @@ const chennaiServices = [
 
 const chennaiRoutes = [
   {
-    title: "Chennai â†’ Bangalore",
-    meta: "Km- 697 Approx. hrs - 23",
+    title: "Chennai \u2192 Bangalore",
+    meta: "Km - 697 Approx. hrs - 23",
     fares: [
-      { label: "MINI", value: "â‚¹8,430" },
-      { label: "SEDAN", value: "â‚¹8,530" },
-      { label: "SUV", value: "â‚¹11,440" },
+      { label: "MINI", value: "\u20B98,430" },
+      { label: "SEDAN", value: "\u20B98,530" },
+      { label: "SUV", value: "\u20B911,440" },
     ],
   },
   {
-    title: "Chennai â†’ Pondicherry",
-    meta: "Km- 331 Approx Hrs- 10",
+    title: "Chennai \u2192 Pondicherry",
+    meta: "Km - 331 Approx. hrs - 10",
     fares: [
-      { label: "MINI", value: "â‚¹4,040" },
-      { label: "SEDAN", value: "â‚¹4,140" },
-      { label: "SUV", value: "â‚¹5,587" },
+      { label: "MINI", value: "\u20B94,040" },
+      { label: "SEDAN", value: "\u20B94,140" },
+      { label: "SUV", value: "\u20B95,587" },
     ],
   },
   {
-    title: "Chennai â†’ Vellore",
-    meta: "Km- 274 Approx. hrs- 9",
+    title: "Chennai \u2192 Vellore",
+    meta: "Km - 274 Approx. hrs - 9",
     fares: [
-      { label: "MINI", value: "â‚¹3,350" },
-      { label: "SEDAN", value: "â‚¹3,450" },
-      { label: "SUV", value: "â‚¹4,667" },
+      { label: "MINI", value: "\u20B93,350" },
+      { label: "SEDAN", value: "\u20B93,450" },
+      { label: "SUV", value: "\u20B94,667" },
     ],
   },
   {
-    title: "Chennai â†’ Tirupati",
-    meta: "Km- 269 Approx- 9",
+    title: "Chennai \u2192 Tirupati",
+    meta: "Km - 269 Approx. hrs - 9",
     fares: [
-      { label: "MINI", value: "â‚¹3,285" },
-      { label: "SEDAN", value: "â‚¹3,385" },
-      { label: "SUV", value: "â‚¹4,580" },
+      { label: "MINI", value: "\u20B93,285" },
+      { label: "SEDAN", value: "\u20B93,385" },
+      { label: "SUV", value: "\u20B94,580" },
     ],
   },
   {
-    title: "Chennai â†’ Mahabalipuram",
-    meta: "Km- 115 Approx hrs- 5",
+    title: "Chennai \u2192 Mahabalipuram",
+    meta: "Km - 115 Approx. hrs - 5",
     fares: [
-      { label: "MINI", value: "â‚¹1,441" },
-      { label: "SEDAN", value: "â‚¹1,541" },
-      { label: "SUV", value: "â‚¹2,121" },
+      { label: "MINI", value: "\u20B91,441" },
+      { label: "SEDAN", value: "\u20B91,541" },
+      { label: "SUV", value: "\u20B92,121" },
     ],
   },
 ] as const;
@@ -197,17 +197,17 @@ const chennaiReviews = [
   {
     text: "Booking process was simple, and the driver arrived on time for my early-morning airport trip. The ride was smooth, and the fare was clear from the start. A convenient choice for anyone looking for Chennai airport cab services.",
     name: "Rajesh Kumar",
-    meta: "Airport Taxi Â· Chennai",
+    meta: "Airport Taxi · Chennai",
   },
   {
     text: "I needed a cab from Chennai to Tirupati for a family trip. The car was clean, the driver was polite, and the journey was comfortable throughout. The service made our taxi booking in Chennai quick and stress-free.",
     name: "Priya Sundaram",
-    meta: "Outstation Taxi Â· Chennai to Tirupati",
+    meta: "Outstation Taxi · Chennai to Tirupati",
   },
   {
     text: "I used Root Cabs for same-day parcel delivery across the city. The pickup was on time, the package reached safely, and I received regular updates. The whole process was simple and convenient.",
     name: "Arun Vijay",
-    meta: "Parcel Delivery Â· Chennai",
+    meta: "Parcel Delivery · Chennai",
   },
 ] as const;
 
@@ -830,7 +830,7 @@ export function CityPage() {
             </Link>
             <a href={`tel:${isChennai ? "8608606474" : companyInfo.phone}`}>
               <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 cursor-pointer !bg-transparent">
-                <Phone className="w-4 h-4 mr-2" /> {isChennai ? "8608606474" : companyInfo.phone}
+                <Phone className="w-4 h-4 mr-2" /> Call now
               </Button>
             </a>
           </div>
@@ -900,7 +900,7 @@ export function CityPage() {
             <h2 className="font-heading text-2xl font-bold mb-2">Popular Pickup Spots in {city.name}</h2>
             {city.name === "Chennai" && (
               <p className="mb-6 max-w-none text-sm leading-6 text-muted-foreground md:whitespace-nowrap md:text-base">
-                Root Cabs makes it easy to arrange a ride from the cityâ€™s busiest travel hubs, landmarks, and neighbourhoods with a convenient taxi service in Chennai.
+                Root Cabs makes it easy to arrange a ride from the city's busiest travel hubs, landmarks, and neighbourhoods with a convenient taxi service in Chennai.
               </p>
             )}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
@@ -918,12 +918,12 @@ export function CityPage() {
                       />
                     )}
                     <div className="p-4">
-                      <div className="flex items-start gap-2 text-sm font-semibold text-[#1E2A6E]">
+                      <div className="flex items-start gap-2 text-sm font-bold text-[#1E2A6E]">
                         <MapPin className="mt-0.5 w-4 h-4 shrink-0 text-primary" />
                         <span>{content?.title ?? landmark}</span>
                       </div>
                       {content?.description && (
-                        <p className="mt-2 text-xs leading-6 text-muted-foreground">
+                        <p className="mt-2 text-xs leading-6 font-medium text-[#33406F]">
                           {content.description}
                         </p>
                       )}
@@ -1027,7 +1027,7 @@ export function CityPage() {
               {`Drive with Root Cabs in ${city.name}`}
             </h3>
             <p className="mb-4 text-sm text-muted-foreground">
-              Earn up to â‚¹40,000/month with flexible hours and low commission.
+              Earn up to \u20B940,000/month with flexible hours and low commission.
             </p>
             <Link to="/drivers">
               <Button className="cursor-pointer bg-primary hover:bg-primary/90">
