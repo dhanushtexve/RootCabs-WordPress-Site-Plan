@@ -297,13 +297,13 @@ export function ServicesHub() {
         </section>
 
         {/* Drive and Earn CTA */}
-        <section className="mt-8 grid items-center gap-6 rounded-2xl border border-[#D7DDED] bg-white px-6 py-7 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(280px,1.05fr)] md:px-8">
+        <section className="mt-8 grid items-center gap-6 rounded-2xl border border-[#D7DDED] bg-white px-6 py-7 shadow-sm md:grid-cols-[minmax(0,1.15fr)_minmax(240px,0.85fr)] md:px-8">
           <div className="text-center md:text-left">
             <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
               Drive and Earn with Root Cabs
             </h2>
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-base">
-              Earn up to ?40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-[0.92rem] lg:text-[0.98rem]">
+              Earn up to {"\u20B9"}40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
             </p>
             <Button asChild className="mt-6 bg-[#1E2A6E] text-white hover:bg-[#17225E]">
               <Link to="/drivers">
@@ -311,11 +311,11 @@ export function ServicesHub() {
               </Link>
             </Button>
           </div>
-          <div className="overflow-hidden rounded-lg bg-muted">
+          <div className="mx-auto w-full max-w-[360px] overflow-hidden rounded-lg bg-muted">
             <img
               src="/assets/homepage-rootpartner-banner.webp"
               alt="Drive and earn with Root Cabs"
-              className="h-56 w-full object-cover md:h-64"
+              className="h-44 w-full object-cover md:h-52"
             />
           </div>
         </section>

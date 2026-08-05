@@ -994,7 +994,7 @@ export function CityPage() {
           <>
             <AppDownloadCard />
             <section className="py-2">
-              <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(280px,1.05fr)] md:px-8">
+              <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,1.15fr)_minmax(240px,0.85fr)] md:px-8">
                 <div className="text-center md:text-left">
                   <h3 className="mb-2 font-heading text-xl font-bold">
                     Drive and Earn with Root Cabs
@@ -1008,11 +1008,11 @@ export function CityPage() {
                     </Button>
                   </Link>
                 </div>
-                <div className="overflow-hidden rounded-lg bg-muted">
+                <div className="mx-auto w-full max-w-[360px] overflow-hidden rounded-lg bg-muted">
                   <img
                     src="/assets/homepage-rootpartner-banner.webp"
                     alt="Drive and earn with Root Cabs"
-                    className="h-56 w-full object-cover md:h-64"
+                    className="h-44 w-full object-cover md:h-52"
                   />
                 </div>
               </div>

@@ -1787,19 +1787,19 @@ export default function BookRide() {
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between items-center py-1 border-b border-border">
                     <span>Mini</span>
-                    <span className="font-semibold text-primary">?24/km</span>
+                    <span className="font-semibold text-primary">₹24/km</span>
                   </div>
                   <div className="flex justify-between items-center py-1 border-b border-border">
                     <span>Sedan</span>
-                    <span className="font-semibold text-primary">?24/km</span>
+                    <span className="font-semibold text-primary">₹24/km</span>
                   </div>
                   <div className="flex justify-between items-center py-1 border-b border-border">
                     <span>SUV</span>
-                    <span className="font-semibold text-primary">?24/km</span>
+                    <span className="font-semibold text-primary">₹24/km</span>
                   </div>
                   <div className="flex justify-between items-center py-1 border-b border-border">
                     <span>MUV</span>
-                    <span className="font-semibold text-primary">?29/km</span>
+                    <span className="font-semibold text-primary">₹29/km</span>
                   </div>
                 </div>
                 <p className="text-xs text-muted-foreground mt-3">
@@ -1929,7 +1929,7 @@ export default function BookRide() {
 
       <section className="max-w-screen-xl mx-auto px-4 pb-12 md:pb-14">
         <Card className="border-border">
-          <CardContent className="grid items-center gap-6 p-6 md:grid-cols-[minmax(0,0.95fr)_minmax(280px,1.05fr)] md:p-8">
+          <CardContent className="grid items-center gap-6 p-6 md:grid-cols-[minmax(0,1.15fr)_minmax(240px,0.85fr)] md:p-8">
             <div className="text-center md:text-left">
               <h2 className="font-heading text-2xl font-bold md:text-3xl">Drive and Earn with Root Cabs</h2>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground md:text-base">
@@ -1941,11 +1941,11 @@ export default function BookRide() {
                 </Button>
               </a>
             </div>
-            <div className="overflow-hidden rounded-lg bg-muted">
+            <div className="mx-auto w-full max-w-[360px] overflow-hidden rounded-lg bg-muted">
               <img
                 src="/assets/homepage-rootpartner-banner.webp"
                 alt="Drive and earn with Root Cabs"
-                className="h-56 w-full object-cover md:h-64"
+                className="h-44 w-full object-cover md:h-52"
               />
             </div>
           </CardContent>

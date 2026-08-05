@@ -356,7 +356,7 @@ export default function Index() {
                 className="group rounded-xl border border-[#E2E8F3] bg-white p-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:shadow-md"
               >
                 <img
-                  src="/assets/location-icon.png"
+                  src="/assets/cities-live-ride-tracking.png"
                   alt=""
                   className="mx-auto mb-3 h-7 w-7 object-contain transition-transform group-hover:scale-110"
                 />
@@ -629,7 +629,7 @@ export default function Index() {
 
       {/* Driver CTA */}
       <section className="max-w-screen-xl mx-auto px-4 py-2">
-        <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(280px,1.05fr)] md:px-8">
+        <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,1.15fr)_minmax(240px,0.85fr)] md:px-8">
           <div className="text-center md:text-left">
             <h2 className="font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Drive and Earn with Root Cabs</h2>
             <p className="mt-3 mb-5 max-w-2xl text-sm leading-6 text-muted-foreground md:mx-0">
@@ -641,11 +641,11 @@ export default function Index() {
               </Button>
             </Link>
           </div>
-          <div className="overflow-hidden rounded-lg bg-muted">
+          <div className="mx-auto w-full max-w-[360px] overflow-hidden rounded-lg bg-muted">
             <img
               src="/assets/homepage-rootpartner-banner.webp"
               alt="Drive and earn with Root Cabs"
-              className="h-56 w-full object-cover md:h-64"
+              className="h-44 w-full object-cover md:h-52"
             />
           </div>
         </div>

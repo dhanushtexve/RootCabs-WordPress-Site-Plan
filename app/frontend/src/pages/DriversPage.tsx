@@ -281,15 +281,15 @@ export function DriversPage() {
               Earn extra rewards by introducing new customers and drivers to Root Cabs. Share your referral, help them complete the required activity and receive the reward directly.
             </p>
 
-            <div className="mt-6 grid gap-3 md:grid-cols-2 md:max-w-3xl md:mx-auto">
-              <div className="rounded-2xl bg-[#F4F5FA] px-5 py-7 text-center">
+            <div className="mt-6 grid gap-3 md:mx-auto md:max-w-3xl md:grid-cols-2">
+              <div className="rounded-2xl border border-transparent bg-[#F4F5FA] px-5 py-7 text-center transition-all duration-200 hover:-translate-y-1 hover:border-[#0F1B57] hover:bg-white hover:shadow-[0_16px_34px_rgba(15,27,87,0.18)]">
                 <p className="text-sm font-semibold text-slate-500">Refer a customer</p>
                 <p className="mt-4 font-heading text-4xl font-bold text-[#D8A300]">₹50</p>
                 <p className="mt-4 text-sm leading-6 text-slate-500">
                   Reward credited after the customer completes their first eligible ride.
                 </p>
               </div>
-              <div className="rounded-2xl bg-[#F4F5FA] px-5 py-7 text-center">
+              <div className="rounded-2xl border border-transparent bg-[#F4F5FA] px-5 py-7 text-center transition-all duration-200 hover:-translate-y-1 hover:border-[#0F1B57] hover:bg-white hover:shadow-[0_16px_34px_rgba(15,27,87,0.18)]">
                 <p className="text-sm font-semibold text-slate-500">Refer a Driver</p>
                 <p className="mt-4 font-heading text-4xl font-bold text-[#D8A300]">₹100</p>
                 <p className="mt-4 text-sm leading-6 text-slate-500">
@@ -323,7 +323,7 @@ export function DriversPage() {
                 <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                   GET THE APP
                 </span>
-                <h2 className="mt-5 max-w-[760px] font-heading text-3xl font-bold leading-[1.08] md:mt-6 md:text-4xl lg:text-[3rem]">
+                <h2 className="mt-5 max-w-[820px] font-heading text-[1.7rem] font-bold leading-tight md:mt-6 md:text-[2.05rem] lg:whitespace-nowrap lg:text-[2.35rem]">
                   Drive Smarter with the Root Partner App
                 </h2>
                 <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
@@ -399,3 +399,5 @@ export function DriversPage() {
     </div>
   );
 }
+
+
