@@ -234,7 +234,7 @@ function findCustomZonePackageId(zonePackagesResponse: unknown) {
 function hasPackagePeriod(
   option: ActingDriverPackageOption | undefined,
 ): option is ActingDriverPackageOption & { period: number } {
-  return typeof option?.period === "number";
+  return Boolean(option && "period" in option && typeof option.period === "number");
 }
 
 export default function BookRide() {
@@ -975,12 +975,12 @@ export default function BookRide() {
 
                   <div>
                     <Label className="text-sm font-medium mb-1.5 block">Zone</Label>
-                      <Select value={zone} onValueChange={setZone} disabled={tripType === "parcel"}>
+                      <Select value={zone} onValueChange={setZone}>
                         <SelectTrigger className="cursor-pointer">
                           <SelectValue placeholder="Select service zone" />
                         </SelectTrigger>
                         <SelectContent className="max-h-60 overflow-y-auto">
-                          {(tripType === "parcel" ? ["Chennai"] : bookingZones).map((city) => (
+                          {bookingZones.map((city) => (
                             <SelectItem key={city} value={city} className="cursor-pointer">
                               {city}
                             </SelectItem>
