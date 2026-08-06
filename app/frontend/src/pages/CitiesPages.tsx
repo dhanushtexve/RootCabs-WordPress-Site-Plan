@@ -9,6 +9,9 @@ import { GoogleReviewBadge } from "@/components/GoogleReviewBadge";
 import { cities, services, companyInfo, testimonials } from "@/data/siteData";
 import FareCalculator from "@/components/FareCalculator";
 
+const ASSET_VERSION = "20260806";
+const assetPath = (path: string) => `${path}?v=${ASSET_VERSION}`;
+
 const serviceIconMap: Record<string, React.ReactNode> = {
   "local-taxi": <Car className="w-5 h-5" />,
   "airport-taxi": <Plane className="w-5 h-5" />,
@@ -147,7 +150,7 @@ const chennaiServices = [
     fare: "Starting at \u20B9100/3km",
     href: "/book-ride",
     iconWrapClass: "bg-white",
-    icon: <img src="/assets/chennai-service-hourly-package.webp" alt="Hourly Package service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src={assetPath("/assets/chennai-service-hourly-package.webp")} alt="Hourly Package service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Parcel Delivery",
@@ -155,7 +158,7 @@ const chennaiServices = [
     fare: "Starting at \u20B950/1km",
     href: "/taxi-in-chennai/parcel-delivery",
     iconWrapClass: "bg-white",
-    icon: <img src="/assets/chennai-service-parcel.webp" alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src={assetPath("/assets/chennai-service-parcel.webp")} alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
   },
 ] as const;
 

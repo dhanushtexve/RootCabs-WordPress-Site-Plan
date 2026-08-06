@@ -8,6 +8,9 @@ import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import { services, cities, companyInfo } from "@/data/siteData";
 import FareCalculator from "@/components/FareCalculator";
 
+const ASSET_VERSION = "20260806";
+const assetPath = (path: string) => `${path}?v=${ASSET_VERSION}`;
+
 const iconMap: Record<string, React.ReactNode> = {
   Car: <Car className="w-8 h-8" />,
   Plane: <Plane className="w-8 h-8" />,
@@ -56,7 +59,7 @@ export function ServicesHub() {
       description: "A reliable local taxi service for daily travel within the city.",
       features: ["Quick ride confirmation", "Verified drivers", "Comfortable vehicles"],
       price: "From ₹ 90/2 Km",
-      iconSrc: "/assets/home-service-local.webp",
+      iconSrc: assetPath("/assets/home-service-local.webp"),
       href: "/services/local-taxi",
     },
     {
@@ -64,7 +67,7 @@ export function ServicesHub() {
       description: "Comfortable round-trip travel for business, family visits and holidays.",
       features: ["Multiple vehicle options", "Experienced drivers", "Suitable for long journeys"],
       price: "From ₹ 300/20 Km",
-      iconSrc: "/assets/home-service-outstation.webp",
+      iconSrc: assetPath("/assets/home-service-outstation.webp"),
       href: "/services/outstation",
     },
     {
@@ -72,7 +75,7 @@ export function ServicesHub() {
       description: "Book a professional car rental with driver service for your own vehicle.",
       features: ["Trained and verified drivers", "Local and outstation trips", "Available for events and parties"],
       price: "From ₹ 500/100 Km",
-      iconSrc: "/assets/home-service-acting-driver.webp",
+      iconSrc: assetPath("/assets/home-service-acting-driver.webp"),
       href: "/services/acting-driver",
     },
     {
@@ -80,7 +83,7 @@ export function ServicesHub() {
       description: "Travel to your destination without paying return charges.",
       features: ["Pay only for one way", "Comfortable long-distance travel", "Clear fare details"],
       price: "From ₹ 300/20 Km",
-      iconSrc: "/assets/home-service-one-way.webp",
+      iconSrc: assetPath("/assets/home-service-one-way.webp"),
       href: "/book-ride",
     },
     {
@@ -88,7 +91,7 @@ export function ServicesHub() {
       description: "Convenient auto rides for short trips and everyday commuting.",
       features: ["Easy booking", "App fare is the final fare", "No bargaining with drivers"],
       price: "From ₹ 100/ 2 Km",
-      iconSrc: "/assets/home-service-auto.webp",
+      iconSrc: assetPath("/assets/home-service-auto.webp"),
       href: "/services/auto",
     },
     {
@@ -96,7 +99,7 @@ export function ServicesHub() {
       description: "A quick and practical option for solo city travel.",
       features: ["Ideal for short distances", "Easy pickup", "Affordable daily rides"],
       price: "From ₹ 25/2km",
-      iconSrc: "/assets/home-service-bike-taxi.webp",
+      iconSrc: assetPath("/assets/home-service-bike-taxi.webp"),
       href: "/book-ride",
     },
     {
@@ -104,7 +107,7 @@ export function ServicesHub() {
       description: "Keep a cab and driver with you for multiple stops within a selected time.",
       features: ["Flexible travel hours", "Multiple stops allowed", "Suitable for errands and meetings"],
       price: "From ₹ 100/3 Km",
-      iconSrc: "/assets/chennai-service-hourly-package.webp",
+      iconSrc: assetPath("/assets/chennai-service-hourly-package.webp"),
       href: "/book-ride",
     },
     {
@@ -112,7 +115,7 @@ export function ServicesHub() {
       description: "Send documents and small packages safely across the city.",
       features: ["Doorstep pickup", "Live delivery updates", "Quick and secure service"],
       price: "From ₹ 50/1km",
-      iconSrc: "/assets/chennai-service-parcel.webp",
+      iconSrc: assetPath("/assets/chennai-service-parcel.webp"),
       href: "/services/parcel-delivery",
     },
   ];
