@@ -118,14 +118,24 @@ export function DriversPage() {
         <div className="max-w-screen-xl mx-auto px-4 py-14 md:py-16">
           <div className="grid items-start gap-10 lg:grid-cols-[1.2fr_.8fr]">
             <div className="max-w-2xl">
-              <h1 className="font-heading text-3xl font-extrabold leading-[1.1] tracking-normal md:text-4xl lg:text-5xl">Drive and Earn with Root Cabs</h1>
+              <h1 className="font-heading text-2xl font-extrabold leading-[1.1] tracking-tight md:text-3xl lg:whitespace-nowrap lg:text-[2.45rem]">
+                Drive And Earn With Root Cabs
+              </h1>
               <p className="mt-5 max-w-2xl text-base leading-7 text-white/82 md:text-lg">
                 Become a Root Cabs driver partner and earn through ride opportunities suited to your vehicle. Auto, Cab and Bike owners can join the platform, choose flexible working hours, receive daily and weekly bonuses, and get dedicated support through the Root Partner app.
               </p>
+              <div className="mt-8 max-w-2xl overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl ring-1 ring-white/10">
+                <img
+                  src="/assets/earn-with-root-cabs.webp"
+                  alt="Drive and Earn with Root Cabs"
+                  className="h-auto w-full object-cover"
+                  loading="eager"
+                />
+              </div>
             </div>
 
             <div className="w-full rounded-3xl bg-white p-5 text-slate-900 shadow-2xl md:p-6 lg:max-w-[460px] lg:justify-self-end">
-              <h2 className="font-heading text-2xl font-bold text-[#1E2A6E]">Apply to Drive</h2>
+              <h2 className="font-heading text-2xl font-bold text-[#1E2A6E]">Apply To Drive</h2>
               <p className="mt-2 text-sm leading-6 text-slate-600">
                 Share your details and choose the service that matches your vehicle. Our onboarding team will contact you and guide you through the next steps.
               </p>
@@ -181,39 +191,56 @@ export function DriversPage() {
         </div>
       </section>
 
-      <section className="bg-[#F5F7FB] py-10 md:py-12">
+      <section className="bg-[#F5F7FB] py-8 md:py-10">
         <div className="max-w-screen-xl mx-auto px-4">
           <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl lg:text-4xl">Driver Benefits</h2>
-          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid auto-rows-fr gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
                 title: "0% Commission and 1 Month Free Subscription",
                 desc: "Start with one month of free subscription and keep the full fare from every completed trip without commission deductions.",
+                iconSrc: "/assets/driver-benefits/commission-free.webp",
+                iconAlt: "0% commission and 1 month free subscription icon",
               },
               {
                 title: "Flexible Working Hours",
                 desc: "Go online when it suits you and decide how long you want to drive.",
+                iconSrc: "/assets/driver-benefits/flexible-hours.webp",
+                iconAlt: "Flexible working hours icon",
               },
               {
                 title: "Direct Customer Payments",
                 desc: "Receive ride payments directly from customers through cash or UPI.",
+                iconSrc: "/assets/driver-benefits/direct-customer-payments.webp",
+                iconAlt: "Direct customer payments icon",
               },
               {
                 title: "Daily and Weekly Bonuses",
                 desc: "Complete eligible trips and earn additional rewards through active bonus plans.",
+                iconSrc: "/assets/driver-benefits/daily-weekly-bonuses.webp",
+                iconAlt: "Daily and weekly bonuses icon",
               },
               {
                 title: "Training and Support",
                 desc: "Get onboarding guidance, service training and ongoing assistance from the Root Cabs team.",
+                iconSrc: "/assets/driver-benefits/training-support.webp",
+                iconAlt: "Training and support icon",
               },
               {
                 title: "Referral Rewards",
                 desc: "Refer drivers or customers and earn rewards when they complete the required activity.",
+                iconSrc: "/assets/driver-benefits/referral-rewards.webp",
+                iconAlt: "Referral rewards icon",
               },
             ].map((benefit) => (
-              <Card key={benefit.title} className="border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
-                <CardContent className="p-5 md:p-6">
-                  <div className="h-10 w-10 rounded-lg bg-[#EAE7FF]" />
+              <Card key={benefit.title} className="h-full border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+                <CardContent className="flex h-full flex-col p-5 md:p-6">
+                  <img
+                    src={benefit.iconSrc}
+                    alt={benefit.iconAlt}
+                    className="mx-auto h-12 w-auto object-contain md:h-14"
+                    loading="lazy"
+                  />
                   <h3 className="mt-4 font-heading text-lg font-bold leading-snug text-[#1E2A6E]">{benefit.title}</h3>
                   <p className="mt-2 text-sm leading-6 text-muted-foreground md:text-base">{benefit.desc}</p>
                 </CardContent>
@@ -223,34 +250,34 @@ export function DriversPage() {
         </div>
       </section>
 
-      <section className="bg-muted/40 py-10 md:py-12">
+      <section className="bg-muted/40 py-8 md:py-10">
         <div className="max-w-screen-xl mx-auto px-4">
-          <div className="rounded-3xl border border-border bg-white p-6 shadow-sm md:p-8">
+          <div className="rounded-3xl border border-border bg-white p-5 shadow-sm md:p-7">
             <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl lg:text-4xl">Earnings Potential</h2>
-            <div className="mt-6 grid gap-3 md:grid-cols-3">
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
               {[
                 { type: "Part-time", earnings: "₹15,000-20,000/month", hours: "4 hrs/day" },
                 { type: "Full-time", earnings: "₹30,000-40,000/month", hours: "8 hrs/day" },
                 { type: "Premium", earnings: "₹45,000-60,000/month", hours: "12 hrs/day" },
               ].map((tier) => (
-                <div key={tier.type} className="flex min-h-[178px] flex-col items-center justify-center rounded-2xl bg-[#F4F5FA] px-5 py-7 text-center">
+                <div key={tier.type} className="flex min-h-[160px] flex-col items-center justify-center rounded-2xl bg-[#F4F5FA] px-5 py-5 text-center">
                   <p className="text-sm text-slate-500">{tier.type}</p>
-                  <p className="mt-3 whitespace-nowrap font-heading text-xl font-bold leading-tight tracking-tight text-[#1E2A6E] md:text-2xl lg:text-[26px]">
+                  <p className="mt-2.5 whitespace-nowrap font-heading text-xl font-bold leading-tight tracking-tight text-[#1E2A6E] md:text-2xl lg:text-[26px]">
                     {tier.earnings}
                   </p>
-                  <p className="mt-2 text-sm text-slate-500">{tier.hours}</p>
+                  <p className="mt-1.5 text-sm text-slate-500">{tier.hours}</p>
                 </div>
               ))}
             </div>
-            <p className="mt-5 text-center text-sm text-slate-500">* Earnings vary based on city, working hours and trip type</p>
+            <p className="mt-4 text-center text-sm text-slate-500">* Earnings vary based on city, working hours and trip type</p>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#F5F7FB] py-10 md:py-12">
+      <section className="bg-[#F5F7FB] py-8 md:py-10">
         <div className="max-w-screen-xl mx-auto px-4">
-          <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl lg:text-4xl">Requirements to Join</h2>
-          <div className="mt-6 grid gap-2 md:grid-cols-2">
+          <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl lg:text-4xl">Requirements To Join</h2>
+          <div className="mt-5 grid gap-2.5 md:grid-cols-2">
             {[
               "Valid driving licence (LMV/Transport)",
               "Vehicle registration certificate (RC)",
@@ -261,7 +288,7 @@ export function DriversPage() {
               "Clean driving record",
               "Minimum 2 years of driving experience",
             ].map((item) => (
-              <div key={item} className="flex items-start gap-3 rounded-xl border border-[#DCE3F3] bg-white px-4 py-3.5 text-sm font-medium text-slate-900 shadow-sm">
+              <div key={item} className="flex items-start gap-3 rounded-xl border border-[#DCE3F3] bg-white px-4 py-3 text-sm font-medium text-slate-900 shadow-sm">
                 <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#1E2A6E]" />
                 <span>{item}</span>
               </div>
@@ -270,23 +297,23 @@ export function DriversPage() {
         </div>
       </section>
 
-      <section className="bg-muted/40 py-10 md:py-12">
+      <section className="bg-muted/40 py-8 md:py-10">
         <div className="max-w-screen-xl mx-auto px-4">
-          <div className="rounded-3xl border border-border bg-white px-6 py-8 shadow-sm md:px-8 md:py-10">
+          <div className="rounded-3xl border border-border bg-white px-6 py-7 shadow-sm md:px-8 md:py-8">
             <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl lg:text-4xl">Referral Program</h2>
-            <p className="mx-auto mt-3 max-w-3xl text-center text-sm leading-7 text-slate-500 md:text-base">
+            <p className="mx-auto mt-3 max-w-3xl text-center text-sm leading-6 text-slate-500 md:text-base">
               Earn extra rewards by introducing new customers and drivers to Root Cabs. Share your referral, help them complete the required activity and receive the reward directly.
             </p>
 
-            <div className="mt-6 grid gap-3 md:mx-auto md:max-w-3xl md:grid-cols-2">
-              <div className="rounded-2xl border border-transparent bg-[#F4F5FA] px-5 py-7 text-center transition-all duration-200 hover:-translate-y-1 hover:border-[#0F1B57] hover:bg-white hover:shadow-[0_16px_34px_rgba(15,27,87,0.18)]">
+            <div className="mt-5 grid gap-3 md:mx-auto md:max-w-3xl md:grid-cols-2">
+              <div className="rounded-2xl border border-transparent bg-[#F4F5FA] px-5 py-5 text-center transition-all duration-200 hover:-translate-y-1 hover:border-[#0F1B57] hover:bg-white hover:shadow-[0_16px_34px_rgba(15,27,87,0.18)]">
                 <p className="text-sm font-semibold text-slate-500">Refer a customer</p>
                 <p className="mt-4 font-heading text-4xl font-bold text-[#D8A300]">₹50</p>
                 <p className="mt-4 text-sm leading-6 text-slate-500">
                   Reward credited after the customer completes their first eligible ride.
                 </p>
               </div>
-              <div className="rounded-2xl border border-transparent bg-[#F4F5FA] px-5 py-7 text-center transition-all duration-200 hover:-translate-y-1 hover:border-[#0F1B57] hover:bg-white hover:shadow-[0_16px_34px_rgba(15,27,87,0.18)]">
+              <div className="rounded-2xl border border-transparent bg-[#F4F5FA] px-5 py-5 text-center transition-all duration-200 hover:-translate-y-1 hover:border-[#0F1B57] hover:bg-white hover:shadow-[0_16px_34px_rgba(15,27,87,0.18)]">
                 <p className="text-sm font-semibold text-slate-500">Refer a Driver</p>
                 <p className="mt-4 font-heading text-4xl font-bold text-[#D8A300]">₹100</p>
                 <p className="mt-4 text-sm leading-6 text-slate-500">
@@ -295,7 +322,7 @@ export function DriversPage() {
               </div>
             </div>
 
-            <div className="mt-6 flex justify-center">
+            <div className="mt-5 flex justify-center">
               <Button className="rounded-xl bg-[#1E2A6E] px-6 py-3 font-semibold text-white hover:bg-[#2A3A8A]">
                 Refer Now
               </Button>
@@ -321,7 +348,7 @@ export function DriversPage() {
                   GET THE APP
                 </span>
                 <h2 className="mt-5 max-w-[820px] font-heading text-[1.7rem] font-bold leading-tight md:mt-6 md:text-[2.05rem] lg:whitespace-nowrap lg:text-[2.35rem]">
-                  Drive Smarter with the Root Partner App
+                  Drive Smarter With The Root Partner App
                 </h2>
                 <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
                   Manage your work directly from the Root Partner app. Accept trip requests, monitor your earnings and stay updated on bonuses and payouts without switching between multiple platforms.

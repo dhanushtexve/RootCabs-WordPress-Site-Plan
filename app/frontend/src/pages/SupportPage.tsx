@@ -7,42 +7,42 @@ import { ArrowRight, CheckCircle, Clock, Mail, MapPin } from "lucide-react";
 
 const faqs = [
   {
-    q: "Can I share my live trip location with a family member?",
+    q: "Can I Share My Live Trip Location With A Family Member?",
     a: "Yes. You can share your live trip details with a family member or friend from the Root Cabs app once the ride begins.",
     category: "riders",
   },
   {
-    q: "I left something in the cab. How can I get it back?",
+    q: "I Left Something In The Cab. How Can I Get It Back?",
     a: "Contact Root Cabs support as soon as possible and share your booking details. Our team will help you connect with the driver and assist with recovering the item.",
     category: "riders",
   },
   {
-    q: "How do I become a Root Cabs driver partner?",
+    q: "How Do I Become A Root Cabs Driver Partner?",
     a: "Download the Root Partner app and complete the registration process with your personal, vehicle and licence details. Once the documents are verified, your account can be activated.",
     category: "drivers",
   },
   {
-    q: "How do I file a complaint about a driver?",
+    q: "How Do I File A Complaint About A Driver?",
     a: "Contact the Root Cabs support team and share your booking ID along with the details of the issue. The team will review the complaint and take the necessary action.",
     category: "riders",
   },
   {
-    q: "I want a refund for a cancelled ride. How long does it take?",
+    q: "I Want A Refund For A Cancelled Ride. How Long Does It Take?",
     a: "Once approved, refunds are usually processed within 24 to 48 hours. The time taken to reflect may vary depending on the payment method.",
     category: "riders",
   },
   {
-    q: "How do I check my daily payout status?",
+    q: "How Do I Check My Daily Payout Status?",
     a: "Driver partners can view daily earnings and payout details in the Root Partner app. Contact driver support if a completed payout is not reflected.",
     category: "drivers",
   },
   {
-    q: "What should I do if my ride is delayed?",
+    q: "What Should I Do If My Ride Is Delayed?",
     a: "Check the driver's location and trip status in the app. You can contact the driver directly or reach Root Cabs support if you need further assistance.",
     category: "riders",
   },
   {
-    q: "How can I update the phone number linked to my account?",
+    q: "How Can I Update The Phone Number Linked To My Account?",
     a: "Contact the Root Cabs support team with your registered details. The team will guide you through the verification and account update process.",
     category: "business",
   },
@@ -244,7 +244,7 @@ export function SupportPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-xl border border-primary/10 bg-white/70 px-4 py-3 text-xs text-muted-foreground">
+                  <div className="rounded-xl border border-[#1E2A6E] bg-[#1E2A6E] px-4 py-3 text-xs font-semibold text-white shadow-sm">
                     We reply to queries within 2 hours, any time of day.
                   </div>
                 </div>
@@ -269,7 +269,7 @@ export function SupportPage() {
               <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                 GET THE APP
               </span>
-              <h2 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-4xl">Get Help and Manage Rides in One Place</h2>
+              <h2 className="mt-4 font-heading text-2xl font-bold leading-tight md:text-4xl lg:whitespace-nowrap">Get Help And Manage Rides In One Place</h2>
               <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
                 Use the Root Cabs app to check ride details, reach support and stay updated throughout your journey.
               </p>
@@ -341,10 +341,10 @@ export function SupportPage() {
       </section>
 
       <section className="mx-auto mt-8 max-w-screen-xl px-4">
-        <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,1.15fr)_minmax(240px,0.85fr)] md:px-8">
+        <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
           <div className="text-center md:text-left">
             <h2 className="font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">
-              Drive and Earn with Root Cabs
+              Drive And Earn With Root Cabs
             </h2>
             <p className="mt-3 mb-5 max-w-2xl text-sm leading-6 text-muted-foreground">
               Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
@@ -355,11 +355,11 @@ export function SupportPage() {
               </Button>
             </Link>
           </div>
-          <div className="mx-auto w-full max-w-[360px] overflow-hidden rounded-lg bg-muted">
+          <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
             <img
               src="/assets/homepage-rootpartner-banner.webp"
               alt="Drive and earn with Root Cabs"
-              className="h-44 w-full object-cover md:h-52"
+              className="h-full w-full object-cover object-center"
             />
           </div>
         </div>

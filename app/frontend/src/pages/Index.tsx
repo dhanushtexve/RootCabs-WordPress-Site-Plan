@@ -12,56 +12,56 @@ const homepageServices = [
   {
     name: "Local Taxi",
     description: "Easy local cab booking for daily travel within your city.",
-    fare: "Starting at 90/3km",
+    fare: "Starting at ₹90/3km",
     href: "/services/local-taxi",
     icon: <img src="/assets/home-service-local.webp" alt="Local Taxi service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Outstation Taxi",
     description: "Comfortable round trips for long-distance travel with verified drivers and transparent fares.",
-    fare: "Starting at 300/20Km",
+    fare: "Starting at ₹300/20Km",
     href: "/services/outstation",
     icon: <img src="/assets/home-service-outstation.webp" alt="Outstation Taxi service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Acting Driver",
     description: "Book a professional driver to drive your own car for local or outstation journeys.",
-    fare: "Starting at 500/ 100Km",
+    fare: "Starting at ₹500/100Km",
     href: "/services/acting-driver",
     icon: <img src="/assets/home-service-acting-driver.webp" alt="Acting Driver service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "One-Way Taxi",
     description: "A simple online cab service for one-way travel without return charges.",
-    fare: "Starting at 300/20Km",
+    fare: "Starting at ₹300/20Km",
     href: "/book-ride",
     icon: <img src="/assets/home-service-one-way.webp" alt="One-Way Taxi service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Auto Rickshaw",
     description: "Quick and affordable rides for short-distance travel around the city.",
-    fare: "Starting at 40/1Km",
+    fare: "Starting at ₹40/1Km",
     href: "/services/auto",
     icon: <img src="/assets/home-service-auto.webp" alt="Auto Rickshaw service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Bike Taxi",
     description: "A faster and budget-friendly option for nearby trips.",
-    fare: "Starting at 25/2km",
+    fare: "Starting at ₹25/2km",
     href: "/book-ride",
     icon: <img src="/assets/home-service-bike-taxi.webp" alt="Bike Taxi service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Hourly Package",
     description: "Keep a cab for multiple stops with flexible hourly travel plans.",
-    fare: "Starting at 100/3km",
+    fare: "Starting at ₹100/3km",
     href: "/book-ride",
     icon: <img src="/assets/chennai-service-hourly-package.webp" alt="Hourly Package service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Parcel Delivery",
     description: "Send documents and everyday essentials with reliable pickup and live tracking.",
-    fare: "Starting at 50/1km",
+    fare: "Starting at ₹50/1km",
     href: "/services/parcel-delivery",
     icon: <img src="/assets/chennai-service-parcel.webp" alt="Parcel Delivery service" className="h-12 w-12 object-contain" />,
   },
@@ -191,23 +191,23 @@ const homepageCities = [
 
 const homepageFaqs = [
   {
-    q: "How can I book a taxi online with Root Cabs?",
+    q: "How Can I Book A Taxi Online With Root Cabs?",
     a: "You can book a taxi online through the Root Cabs app by entering your pickup and drop locations, choosing a vehicle and confirming the ride.",
   },
   {
-    q: "What types of cab services does Root Cabs offer?",
+    q: "What Types Of Cab Services Does Root Cabs Offer?",
     a: "Root Cabs offers local rides, airport transfers, one-way taxis, outstation trips, hourly packages, autos, bike taxis and acting driver services.",
   },
   {
-    q: "Can I schedule a cab for a future date?",
+    q: "Can I Schedule A Cab For A Future Date?",
     a: "Yes. You can pre-book a taxi for a future date and time, making it easier to plan airport transfers, office trips and outstation journeys.",
   },
   {
-    q: "How is the cab fare calculated?",
+    q: "How Is The Cab Fare Calculated?",
     a: "The fare is estimated based on the trip distance, vehicle type and service selected. You can view the estimated fare before confirming the booking.",
   },
   {
-    q: "Are Root Cabs drivers verified?",
+    q: "Are Root Cabs Drivers Verified?",
     a: "Yes. Drivers are verified through document checks and an approval process before they are allowed to accept rides.",
   },
 ];
@@ -229,7 +229,7 @@ export default function Index() {
                 <span>Top-Rated by Riders Across Tamil Nadu</span>
               </div>
               <h1 className="font-heading text-3xl font-extrabold leading-[1.1] tracking-normal text-white md:text-4xl lg:text-5xl">
-                Tamil Nadu's Trusted Cab Service for Every Journey
+                Tamil Nadu's Trusted Cab Service For Every Journey
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-7 text-white/82 md:text-lg">
                 Book local rides, airport transfers and outstation trips through a reliable online taxi booking service across 10+ cities. Travel with verified drivers, transparent fares and dependable support.
@@ -278,7 +278,7 @@ export default function Index() {
           <span className="inline-flex rounded-full bg-[#FFD700] px-4 py-1.5 text-sm font-extrabold uppercase tracking-wide text-[#1E2A6E] shadow-sm">
             HOW ROOT CABS WORKS
           </span>
-          <h2 className="mt-4 font-heading text-3xl font-bold text-[#1E2A6E] md:text-4xl">Booking Your Ride Is Quick and Simple</h2>
+          <h2 className="mt-4 font-heading text-3xl font-bold text-[#1E2A6E] md:text-4xl">Booking Your Ride Is Quick And Simple</h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-base">
             Use the Root Cabs online cab booking app to plan your trip in just a few steps.
           </p>
@@ -303,7 +303,7 @@ export default function Index() {
             <span className="inline-flex rounded-full bg-[#FFD700] px-4 py-1.5 text-sm font-extrabold uppercase tracking-wide text-[#1E2A6E] shadow-sm">
               Our Services
             </span>
-            <h2 className="mt-4 font-heading text-3xl font-bold text-[#1E2A6E] md:text-4xl">Explore Every Way to Travel with Root Cabs</h2>
+            <h2 className="mt-4 font-heading text-3xl font-bold text-[#1E2A6E] md:text-4xl">Explore Every Way To Travel With Root Cabs</h2>
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-base">
               From everyday city rides to long-distance travel, we've got you covered.
             </p>
@@ -383,7 +383,7 @@ export default function Index() {
               Acting Driver
             </div>
             <h2 className="mt-5 max-w-xl font-heading text-3xl font-bold leading-tight text-[#1E2A6E] md:text-4xl">
-              Need someone to take the wheel of your car?
+              Need Someone To Take The Wheel Of Your Car?
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground md:text-base">
               Hire a professional driver through Root Cabs for hospital visits, family functions, late-night returns,
@@ -432,7 +432,7 @@ export default function Index() {
               AIRPORT TRANSFERS
             </div>
             <h2 className="mt-5 max-w-xl font-heading text-3xl font-bold leading-tight text-[#1E2A6E] md:text-4xl">
-              Airport Rides Without the Last-Minute Stress
+              Airport Rides Without The Last Minute Stress
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground md:text-base">
               Pre-book reliable airport pickups and drops with verified drivers and clear fares.
@@ -441,7 +441,7 @@ export default function Index() {
               {[
                 "On-time airport pickup",
                 "Doorstep drop service",
-                "Advance ride scheduling",
+                "Advance ride scheduling",    
                 "Live driver tracking",
                 "Verified drivers",
                 "24/7 booking support",
@@ -549,7 +549,7 @@ export default function Index() {
               <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                 Book Faster
               </span>
-              <h2 className="mt-3 font-heading text-3xl font-bold leading-tight md:text-4xl">Download the Root Cabs App</h2>
+              <h2 className="mt-3 font-heading text-3xl font-bold leading-tight md:text-4xl">Download The Root Cabs App</h2>
               <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
                 Book rides faster and keep all your travel needs within easy reach
               </p>
@@ -629,9 +629,9 @@ export default function Index() {
 
       {/* Driver CTA */}
       <section className="max-w-screen-xl mx-auto px-4 py-2">
-        <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,1.15fr)_minmax(240px,0.85fr)] md:px-8">
+        <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
           <div className="text-center md:text-left">
-            <h2 className="font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Drive and Earn with Root Cabs</h2>
+            <h2 className="font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Drive And Earn With Root Cabs</h2>
             <p className="mt-3 mb-5 max-w-2xl text-sm leading-6 text-muted-foreground md:mx-0">
               Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
             </p>
@@ -641,11 +641,11 @@ export default function Index() {
               </Button>
             </Link>
           </div>
-          <div className="mx-auto w-full max-w-[360px] overflow-hidden rounded-lg bg-muted">
+          <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
             <img
               src="/assets/homepage-rootpartner-banner.webp"
               alt="Drive and earn with Root Cabs"
-              className="h-44 w-full object-cover md:h-52"
+              className="h-full w-full object-cover object-center"
             />
           </div>
         </div>

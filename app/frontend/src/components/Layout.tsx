@@ -40,25 +40,6 @@ function Navbar() {
 
   return (
     <>
-      {/* Top bar - Navy blue brand */}
-      <div className="bg-[#2E3A8C] text-white text-sm py-2 hidden md:block">
-        <div className="max-w-screen-xl mx-auto px-4 flex justify-between items-center">
-          <div className="flex items-center gap-6">
-            <a href={`tel:${companyInfo.phone}`} className="flex items-center gap-2 hover:text-yellow-300 transition-colors cursor-pointer">
-              <Phone className="w-3.5 h-3.5" /> Call us
-            </a>
-            <a href={`mailto:${companyInfo.email}`} className="flex items-center gap-2 hover:text-yellow-300 transition-colors cursor-pointer">
-              <Mail className="w-3.5 h-3.5" /> Email us
-            </a>
-          </div>
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1"><MapPin className="w-3.5 h-3.5" /> 10+ Cities in Tamil Nadu</span>
-            <span>|</span>
-            <span>24/7 Service</span>
-          </div>
-        </div>
-      </div>
-
       {/* Main navbar */}
       <nav className="bg-white sticky top-0 z-50 shadow-md border-b border-border">
         <div className="max-w-screen-xl mx-auto px-4 flex items-center justify-between h-24">

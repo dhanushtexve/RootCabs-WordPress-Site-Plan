@@ -21,6 +21,29 @@ const benefitIcons: Record<string, React.ReactNode> = {
 // BUSINESS PAGE
 // ============================================================
 export function BusinessPage() {
+  const businessFaqs = [
+    {
+      q: "Which Cities Are Covered Under Root Cabs Business Solutions?",
+      a: "Root Cabs business solutions are available across the cities we currently serve in Tamil Nadu. Coverage may vary based on the type of service and travel requirement.",
+    },
+    {
+      q: "Is There A Minimum Company Size Required For A Corporate Account?",
+      a: "No fixed company size is required. We work with startups, small businesses and larger organisations based on their travel needs.",
+    },
+    {
+      q: "How Can I Get Pricing For My Business?",
+      a: "Share your expected ride volume, locations and service requirements with our team. We will provide a customised quote based on your business travel plan.",
+    },
+    {
+      q: "Can Travel Agents Add Root Cabs Bookings To Their Own Platform?",
+      a: "Yes. Travel agents can discuss booking integration and partnership options with the Root Cabs team. The setup will depend on the platform and booking volume.",
+    },
+    {
+      q: "Can Businesses Schedule Rides In Advance?",
+      a: "Yes. Corporate clients, hotels and travel agents can arrange rides ahead of time for employees, guests or customers based on their planned travel schedule.",
+    },
+  ];
+
   useEffect(() => {
     const previousTitle = document.title;
     const previousLang = document.documentElement.lang;
@@ -169,22 +192,35 @@ export function BusinessPage() {
         ))}
 
         {/* Contact CTA */}
-        <section className="rounded-2xl border border-border bg-muted/50 px-6 py-8 text-center md:px-8">
-          <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Contact Us</h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-muted-foreground md:text-base">
-            Tell us about your company's travel requirements, and our team will help you find a suitable business transport plan.
-          </p>
-          <div className="mt-6 flex flex-wrap justify-center gap-3">
-            <a href={`tel:${companyInfo.phone}`}>
-              <Button className="min-w-[160px] bg-[#1E2A6E] px-5 py-3 font-semibold text-white hover:bg-[#2A3A8A] cursor-pointer">
-                Call Now
-              </Button>
-            </a>
-            <a href={`mailto:${companyInfo.email}`}>
-              <Button variant="outline" className="min-w-[160px] px-5 py-3 font-semibold cursor-pointer">
-                Email Us
-              </Button>
-            </a>
+        <section className="overflow-hidden rounded-2xl border border-border bg-muted/50 md:px-8">
+          <div className="grid items-center gap-0 lg:grid-cols-[minmax(0,1.15fr)_minmax(280px,0.85fr)]">
+            <div className="px-6 py-8 text-center md:px-8">
+              <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Contact Us</h2>
+              <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-muted-foreground md:text-base">
+                Tell us about your company's travel requirements, and our team will help you find a suitable business transport plan.
+              </p>
+              <div className="mt-6 flex flex-wrap justify-center gap-3">
+                <a href={`tel:${companyInfo.phone}`}>
+                  <Button className="min-w-[160px] bg-[#1E2A6E] px-5 py-3 font-semibold text-white hover:bg-[#2A3A8A] cursor-pointer">
+                    Call Now
+                  </Button>
+                </a>
+                <a href={`mailto:${companyInfo.email}`}>
+                  <Button variant="outline" className="min-w-[160px] px-5 py-3 font-semibold cursor-pointer">
+                    Email Us
+                  </Button>
+                </a>
+              </div>
+            </div>
+            <div className="h-full min-h-[220px] border-t border-border/70 p-3 lg:min-h-[280px] lg:border-t-0">
+              <div className="h-full overflow-hidden rounded-[18px] shadow-[0_8px_24px_rgba(30,42,110,0.12)]">
+                <img
+                  src="/assets/support-page-banner.webp"
+                  alt="Root Cabs support team"
+                  className="h-full min-h-[220px] w-full object-cover object-center lg:min-h-[280px]"
+                />
+              </div>
+            </div>
           </div>
         </section>
 
@@ -279,10 +315,10 @@ export function BusinessPage() {
 
         {/* Driver CTA */}
         <section className="max-w-screen-xl mx-auto px-4 py-2">
-          <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,1.15fr)_minmax(220px,0.85fr)] md:px-8">
+          <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
             <div className="text-center md:text-left">
               <h2 className="font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">
-                Drive and Earn with Root Cabs
+                Drive And Earn With Root Cabs
               </h2>
               <p className="mt-3 mb-5 max-w-2xl text-sm leading-6 text-muted-foreground">
                 Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
@@ -293,13 +329,32 @@ export function BusinessPage() {
                 </Button>
               </Link>
             </div>
-            <div className="mx-auto w-full max-w-[360px] overflow-hidden rounded-lg bg-muted">
+            <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
               <img
                 src="/assets/homepage-rootpartner-banner.webp"
                 alt="Drive and earn with Root Cabs"
-                className="h-44 w-full object-cover md:h-52"
+                className="h-full w-full object-cover object-center"
               />
             </div>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="rounded-2xl border border-border bg-white p-6 shadow-sm md:p-8">
+          <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Frequently Asked Questions</h2>
+          <div className="mt-4">
+            <Accordion type="single" collapsible className="w-full">
+              {businessFaqs.map((faq, index) => (
+                <AccordionItem key={faq.q} value={`business-faq-${index}`}>
+                  <AccordionTrigger className="text-left text-sm font-semibold text-[#1E2A6E] no-underline hover:no-underline focus:no-underline md:text-base [&_span]:no-underline [&_svg]:shrink-0">
+                    {faq.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-sm leading-7 text-muted-foreground md:text-base">
+                    {faq.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           </div>
         </section>
       </div>
@@ -714,9 +769,9 @@ export function AboutPage() {
             </p>
           </div>
 
-          <div className="mt-6 rounded-2xl border border-border bg-white p-6 shadow-sm md:p-8">
-            <div className="flex flex-col items-center gap-3 text-center md:flex-row md:justify-center md:gap-4 md:text-left">
-              <div className="text-4xl font-heading font-bold text-[#1E2A6E]">4.8</div>
+          <div className="mx-auto mt-6 w-full max-w-[520px] rounded-2xl border border-border bg-white px-5 py-4 shadow-sm md:px-6 md:py-5">
+            <div className="flex flex-col items-center gap-2.5 text-center md:flex-row md:justify-center md:gap-3 md:text-left">
+              <div className="text-3xl font-heading font-bold text-[#1E2A6E] md:text-[2.15rem]">4.8</div>
               <div>
                 <div className="flex items-center justify-center gap-1 md:justify-start">
                   {Array.from({ length: 5 }).map((_, index) => (
@@ -861,10 +916,10 @@ export function AboutPage() {
 
         {/* Driver CTA */}
         <section className="max-w-screen-xl mx-auto px-4 py-2">
-          <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,1.15fr)_minmax(240px,0.85fr)] md:px-8">
+          <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
             <div className="text-center md:text-left">
               <h2 className="font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">
-                Drive and Earn with Root Cabs
+                Drive And Earn With Root Cabs
               </h2>
               <p className="mt-3 mb-5 max-w-2xl text-sm leading-6 text-muted-foreground">
                 Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
@@ -875,11 +930,11 @@ export function AboutPage() {
                 </Button>
               </Link>
             </div>
-            <div className="mx-auto w-full max-w-[360px] overflow-hidden rounded-lg bg-muted">
+            <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
               <img
                 src="/assets/homepage-rootpartner-banner.webp"
                 alt="Drive and earn with Root Cabs"
-                className="h-44 w-full object-cover md:h-52"
+                className="h-full w-full object-cover object-center"
               />
             </div>
           </div>
@@ -895,35 +950,35 @@ export function AboutPage() {
 export function SupportPage() {
   const faqs = [
     {
-      q: "Can I share my live trip location with a family member?",
+      q: "Can I Share My Live Trip Location With A Family Member?",
       a: "Yes. You can share your live trip details with a family member or friend from the Root Cabs app once the ride begins.",
     },
     {
-      q: "I left something in the cab. How can I get it back?",
+      q: "I Left Something In The Cab. How Can I Get It Back?",
       a: "Contact Root Cabs support as soon as possible and share your booking details. Our team will help you connect with the driver and assist with recovering the item.",
     },
     {
-      q: "How do I become a Root Cabs driver partner?",
+      q: "How Do I Become A Root Cabs Driver Partner?",
       a: "Download the Root Partner app and complete the registration process with your personal, vehicle and licence details. Once the documents are verified, your account can be activated.",
     },
     {
-      q: "How do I file a complaint about a driver?",
+      q: "How Do I File A Complaint About A Driver?",
       a: "Contact the Root Cabs support team and share your booking ID along with the details of the issue. The team will review the complaint and take the necessary action.",
     },
     {
-      q: "I want a refund for a cancelled ride. How long does it take?",
+      q: "I Want A Refund For A Cancelled Ride. How Long Does It Take?",
       a: "Once approved, refunds are usually processed within 24 to 48 hours. The time taken to reflect may vary depending on the payment method.",
     },
     {
-      q: "How do I check my daily payout status?",
+      q: "How Do I Check My Daily Payout Status?",
       a: "Driver partners can view daily earnings and payout details in the Root Partner app. Contact driver support if a completed payout is not reflected.",
     },
     {
-      q: "What should I do if my ride is delayed?",
+      q: "What Should I Do If My Ride Is Delayed?",
       a: "Check the driverâ€™s location and trip status in the app. You can contact the driver directly or reach Root Cabs support if you need further assistance.",
     },
     {
-      q: "How can I update the phone number linked to my account?",
+      q: "How Can I Update The Phone Number Linked To My Account?",
       a: "Contact the Root Cabs support team with your registered details. The team will guide you through the verification and account update process.",
     },
   ];
@@ -1048,7 +1103,7 @@ export function SupportPage() {
             <Accordion type="single" collapsible className="w-full">
               {faqs.map((faq, i) => (
                 <AccordionItem key={i} value={`faq-${i}`}>
-                  <AccordionTrigger className="text-left text-sm md:text-base font-medium cursor-pointer">{faq.q}</AccordionTrigger>
+                  <AccordionTrigger className="text-left text-sm md:text-base font-medium cursor-pointer no-underline hover:no-underline focus:no-underline [&_span]:no-underline [&_svg]:shrink-0">{faq.q}</AccordionTrigger>
                   <AccordionContent className="text-sm text-muted-foreground">{faq.a}</AccordionContent>
                 </AccordionItem>
               ))}

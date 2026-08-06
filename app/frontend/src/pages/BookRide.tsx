@@ -70,35 +70,35 @@ type ActingDriverPackageOption =
 
 const bookRideFaqs = [
   {
-    q: "How can I book my ride with Root Cabs?",
+    q: "How Can I Book My Ride With Root Cabs?",
     a: "You can book your ride online through the Root Cabs app by selecting your pickup location, destination and preferred vehicle. Review the fare details and confirm your booking.",
   },
   {
-    q: "Can I book a ride for later with Root Cabs?",
+    q: "Can I Book A Ride For Later With Root Cabs?",
     a: "Yes. Root Cabs allows you to schedule your trip in advance by selecting your preferred pickup date and time during the online ride booking process.",
   },
   {
-    q: "What ride options are available with Root Cabs?",
+    q: "What Ride Options Are Available With Root Cabs?",
     a: "Root Cabs offers Auto, Cab and Bike Taxi services for city travel. You can also book local taxis, one-way drop taxis, round trips, hourly rentals and parcel delivery.",
   },
   {
-    q: "Can I book a transfer from the airport through Root Cabs?",
+    q: "Can I Book A Transfer From The Airport Through Root Cabs?",
     a: "Yes. You can book a transfer from the airport or arrange an airport drop through the Root Cabs app. Add the correct terminal, pickup details and travel time while confirming your ride.",
   },
   {
-    q: "Will the driver ask for an amount above the app fare?",
+    q: "Will The Driver Ask For An Amount Above The App Fare?",
     a: "No. With Root Cabs, there is no bargaining with drivers. The fare shown in the app is the final ride fare, excluding applicable tolls, parking fees and other charges shown separately.",
   },
   {
-    q: "Can I cancel my ride after booking?",
+    q: "Can I Cancel My Ride After Booking?",
     a: "Yes. You can cancel your Root Cabs ride through the app before the trip begins. Cancellation charges may apply based on the booking stage.",
   },
   {
-    q: "Can I book a ride for someone else?",
+    q: "Can I Book A Ride For Someone Else?",
     a: "Yes. You can book a Root Cabs ride for a family member or friend by entering their pickup and drop details along with the correct contact number.",
   },
   {
-    q: "What should I do if I need help with my booking?",
+    q: "What Should I Do If I Need Help With My Booking?",
     a: "Call the Root Cabs support team at +91 86080 66474 for help with pickup details, ride changes, cancellations or other booking-related questions.",
   },
 ];
@@ -116,7 +116,13 @@ function buildFromDateTimeInput(dateTime: string) {
 }
 
 function getCurrentDeviceTime() {
-  return new Date().toISOString();
+  return new Intl.DateTimeFormat("en-GB", {
+    hour12: false,
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    timeZone: "Asia/Kolkata",
+  }).format(new Date());
 }
 
 function getBookingZonePayload(zone: string) {
@@ -1364,7 +1370,7 @@ export default function BookRide() {
                           <div>
                             <p className="font-semibold">{v.name}</p>
                             <p className="text-xs text-muted-foreground">{v.desc}</p>
-                            <p className="text-xs text-muted-foreground">{v.capacity} • ?{v.rate.perKm}/km</p>
+                            <p className="text-xs text-muted-foreground">{v.capacity} • ₹{v.rate.perKm}/km</p>
                           </div>
                         </div>
                       </div>
@@ -1703,7 +1709,7 @@ export default function BookRide() {
 
               <Card className="border-border">
                 <CardContent className="p-6">
-                  <h3 className="font-heading font-semibold mb-2">Why Book Your Ride with Root Cabs?</h3>
+                  <h3 className="font-heading font-semibold mb-2">Why Book Your Ride With Root Cabs?</h3>
                   <p className="text-sm leading-6 text-muted-foreground mb-4">
                     From quick city rides to airport travel, Root Cabs makes it easy to book your ride with clear fares and dependable service.
                   </p>
@@ -1722,7 +1728,7 @@ export default function BookRide() {
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#1E2A6E]" />
-                      <span>Refer a customer and earn ?100</span>
+                      <span>Refer a customer and earn ₹100</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-[#1E2A6E]" />
@@ -1929,9 +1935,9 @@ export default function BookRide() {
 
       <section className="max-w-screen-xl mx-auto px-4 pb-12 md:pb-14">
         <Card className="border-border">
-          <CardContent className="grid items-center gap-6 p-6 md:grid-cols-[minmax(0,1.15fr)_minmax(240px,0.85fr)] md:p-8">
+          <CardContent className="grid items-center gap-6 p-6 md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:p-8">
             <div className="text-center md:text-left">
-              <h2 className="font-heading text-2xl font-bold md:text-3xl">Drive and Earn with Root Cabs</h2>
+              <h2 className="font-heading text-2xl font-bold md:text-3xl">Drive And Earn With Root Cabs</h2>
               <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground md:text-base">
                 Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
               </p>
@@ -1941,11 +1947,11 @@ export default function BookRide() {
                 </Button>
               </a>
             </div>
-            <div className="mx-auto w-full max-w-[360px] overflow-hidden rounded-lg bg-muted">
+            <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
               <img
                 src="/assets/homepage-rootpartner-banner.webp"
                 alt="Drive and earn with Root Cabs"
-                className="h-44 w-full object-cover md:h-52"
+                className="h-full w-full object-cover object-center"
               />
             </div>
           </CardContent>

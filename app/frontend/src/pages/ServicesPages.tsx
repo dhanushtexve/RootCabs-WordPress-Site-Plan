@@ -29,23 +29,23 @@ export function ServicesHub() {
   ];
   const serviceFaqs = [
     {
-      q: "What services can I book through Root Cabs?",
+      q: "What Services Can I Book Through Root Cabs?",
       a: "Root Cabs offers local taxis, outstation taxis, one-way rides, Auto, Bike Taxi, hourly packages, acting drivers and parcel delivery.",
     },
     {
-      q: "Can I book a Root Cabs ride for someone else?",
+      q: "Can I Book A Root Cabs Ride For Someone Else?",
       a: "Yes. You can book a ride for a family member or friend by entering their pickup location, destination and correct contact number.",
     },
     {
-      q: "Which service is suitable for long-distance travel?",
+      q: "Which Service Is Suitable For Long-Distance Travel?",
       a: "An outstation taxi service is ideal for round trips, while a one-way taxi is better when you only need a drop at your destination.",
     },
     {
-      q: "Can I book a car with a driver for several hours?",
+      q: "Can I Book A Car With A Driver For Several Hours?",
       a: "Yes. You can choose an hourly package service for meetings, shopping, events or trips with multiple stops.",
     },
     {
-      q: "Are Root Cabs drivers verified?",
+      q: "Are Root Cabs Drivers Verified?",
       a: "Yes. Root Cabs works with verified drivers to provide safer and more reliable travel across its available services.",
     },
   ];
@@ -55,7 +55,7 @@ export function ServicesHub() {
       description: "A reliable local taxi service for daily travel within the city.",
       features: ["Quick ride confirmation", "Verified drivers", "Comfortable vehicles"],
       price: "From ₹ 90/2 Km",
-      iconSrc: "/assets/service-icons/local.webp",
+      iconSrc: "/assets/home-service-local.webp",
       href: "/services/local-taxi",
     },
     {
@@ -63,7 +63,7 @@ export function ServicesHub() {
       description: "Comfortable round-trip travel for business, family visits and holidays.",
       features: ["Multiple vehicle options", "Experienced drivers", "Suitable for long journeys"],
       price: "From ₹ 300/20 Km",
-      iconSrc: "/assets/service-icons/outstation.webp",
+      iconSrc: "/assets/home-service-outstation.webp",
       href: "/services/outstation",
     },
     {
@@ -71,7 +71,7 @@ export function ServicesHub() {
       description: "Book a professional car rental with driver service for your own vehicle.",
       features: ["Trained and verified drivers", "Local and outstation trips", "Available for events and parties"],
       price: "From ₹ 500/100 Km",
-      iconSrc: "/assets/service-icons/acting-driver.webp",
+      iconSrc: "/assets/home-service-acting-driver.webp",
       href: "/services/acting-driver",
     },
     {
@@ -79,7 +79,7 @@ export function ServicesHub() {
       description: "Travel to your destination without paying return charges.",
       features: ["Pay only for one way", "Comfortable long-distance travel", "Clear fare details"],
       price: "From ₹ 300/20 Km",
-      iconSrc: "/assets/service-icons/one-way.webp",
+      iconSrc: "/assets/home-service-one-way.webp",
       href: "/book-ride",
     },
     {
@@ -87,7 +87,7 @@ export function ServicesHub() {
       description: "Convenient auto rides for short trips and everyday commuting.",
       features: ["Easy booking", "App fare is the final fare", "No bargaining with drivers"],
       price: "From ₹ 100/ 2 Km",
-      iconSrc: "/assets/service-icons/auto.webp",
+      iconSrc: "/assets/home-service-auto.webp",
       href: "/services/auto",
     },
     {
@@ -95,7 +95,7 @@ export function ServicesHub() {
       description: "A quick and practical option for solo city travel.",
       features: ["Ideal for short distances", "Easy pickup", "Affordable daily rides"],
       price: "From ₹ 25/2km",
-      iconSrc: "/assets/service-icons/bike-taxi.webp",
+      iconSrc: "/assets/home-service-bike-taxi.webp",
       href: "/book-ride",
     },
     {
@@ -103,7 +103,7 @@ export function ServicesHub() {
       description: "Keep a cab and driver with you for multiple stops within a selected time.",
       features: ["Flexible travel hours", "Multiple stops allowed", "Suitable for errands and meetings"],
       price: "From ₹ 100/3 Km",
-      iconSrc: "/assets/service-icons/hourly-package.webp",
+      iconSrc: "/assets/chennai-service-hourly-package.webp",
       href: "/book-ride",
     },
     {
@@ -111,7 +111,7 @@ export function ServicesHub() {
       description: "Send documents and small packages safely across the city.",
       features: ["Doorstep pickup", "Live delivery updates", "Quick and secure service"],
       price: "From ₹ 50/1km",
-      iconSrc: "/assets/service-icons/parcel.webp",
+      iconSrc: "/assets/chennai-service-parcel.webp",
       href: "/services/parcel-delivery",
     },
   ];
@@ -297,10 +297,10 @@ export function ServicesHub() {
         </section>
 
         {/* Drive and Earn CTA */}
-        <section className="mt-8 grid items-center gap-6 rounded-2xl border border-[#D7DDED] bg-white px-6 py-7 shadow-sm md:grid-cols-[minmax(0,1.15fr)_minmax(240px,0.85fr)] md:px-8">
+        <section className="mt-8 grid items-center gap-6 rounded-2xl border border-[#D7DDED] bg-white px-6 py-7 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
           <div className="text-center md:text-left">
             <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
-              Drive and Earn with Root Cabs
+              Drive And Earn With Root Cabs
             </h2>
             <p className="mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-[0.92rem] lg:text-[0.98rem]">
               Earn up to {"\u20B9"}40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
@@ -311,11 +311,11 @@ export function ServicesHub() {
               </Link>
             </Button>
           </div>
-          <div className="mx-auto w-full max-w-[360px] overflow-hidden rounded-lg bg-muted">
+          <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
             <img
               src="/assets/homepage-rootpartner-banner.webp"
               alt="Drive and earn with Root Cabs"
-              className="h-44 w-full object-cover md:h-52"
+              className="h-full w-full object-cover object-center"
             />
           </div>
         </section>

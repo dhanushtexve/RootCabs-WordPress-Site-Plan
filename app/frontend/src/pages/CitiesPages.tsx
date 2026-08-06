@@ -42,6 +42,19 @@ const cityCardSummaryMap: Record<string, string> = {
   Ranipet: "Choose convenient rides across Ranipet for local travel, industrial visits and nearby outstation journeys.",
 };
 
+const cityImageMap: Record<string, string> = {
+  Chennai: "/assets/cities/chennai.webp",
+  Vellore: "/assets/cities/vellore.webp",
+  Coimbatore: "/assets/cities/coimbatore.webp",
+  Madurai: "/assets/cities/madurai.webp",
+  Trichy: "/assets/cities/trichy.webp",
+  Salem: "/assets/cities/salem.webp",
+  Tiruppur: "/assets/cities/tiruppur.webp",
+  Kanchipuram: "/assets/cities/kanchipuram.webp",
+  Tiruvannamalai: "/assets/cities/tiruvannamalai.webp",
+  Ranipet: "/assets/cities/ranipet.webp",
+};
+
 const chennaiPickupImages: Record<string, string> = {
   "Chennai Airport": "/assets/chennai-airport.webp",
   "Chennai Central Railway Station": "/assets/chennai-central.webp",
@@ -215,7 +228,6 @@ const chennaiReviews = [
 // CITIES HUB
 // ============================================================
 export function CitiesHub() {
-  const [expandedCities, setExpandedCities] = useState<string[]>([]);
   const [showAllCities, setShowAllCities] = useState(false);
 
   useEffect(() => {
@@ -344,14 +356,17 @@ export function CitiesHub() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {(showAllCities ? cities : cities.slice(0, 9)).map((city) => (
             <Link key={city.slug} to={`/${city.slug}`} className="group cursor-pointer">
-              {(() => {
-                const isExpanded = expandedCities.includes(city.slug);
-                const visibleServices = isExpanded ? city.services : city.services.slice(0, 4);
-                const hiddenCount = city.services.length - visibleServices.length;
-
-                return (
               <Card className="h-full border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-lg">
-                <CardContent className="p-5 md:p-6">
+                <CardContent className="p-0">
+                  <div className="aspect-[16/9] w-full overflow-hidden bg-[#EEF3FF]">
+                    <img
+                      src={cityImageMap[city.name] ?? "/assets/cities/chennai.webp"}
+                      alt={`${city.name} city`}
+                      className="h-full w-full object-cover object-center"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-5 md:p-6">
                   <div className="flex items-start gap-3">
                     <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-[#E9E6FF] text-[#6B63FF]">
                       <MapPin className="h-4 w-4" />
@@ -365,7 +380,7 @@ export function CitiesHub() {
                     {cityCardSummaryMap[city.name] ?? city.tagline}
                   </p>
                   <div className="mt-4 flex flex-wrap gap-2">
-                    {visibleServices.map((s) => (
+                    {city.services.map((s) => (
                       <span
                         key={s}
                         className="rounded-full bg-[#F4F5FA] px-3 py-1 text-xs font-semibold text-[#1E2A6E]"
@@ -373,32 +388,14 @@ export function CitiesHub() {
                         {serviceLabelMap[s] ?? s.replace("-", " ")}
                       </span>
                     ))}
-                    {hiddenCount > 0 && (
-                      <button
-                        type="button"
-                        className="rounded-full bg-[#F4F5FA] px-3 py-1 text-xs font-semibold text-[#1E2A6E] transition-colors hover:bg-[#E9E6FF]"
-                        onClick={(event) => {
-                          event.preventDefault();
-                          event.stopPropagation();
-                          setExpandedCities((current) =>
-                            current.includes(city.slug)
-                              ? current.filter((slug) => slug !== city.slug)
-                              : [...current, city.slug]
-                          );
-                        }}
-                      >
-                        {isExpanded ? "Show less" : `+${hiddenCount}`}
-                      </button>
-                    )}
                   </div>
                   <div className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[#1E2A6E] transition-transform group-hover:translate-x-0.5">
                     Explore {city.name}
                     <ArrowRight className="h-4 w-4" />
                   </div>
+                  </div>
                 </CardContent>
               </Card>
-                );
-              })()}
             </Link>
           ))}
         </div>
@@ -413,6 +410,33 @@ export function CitiesHub() {
             </button>
           </div>
         )}
+
+        <div className="mt-14 space-y-8">
+          <AppDownloadCard />
+
+          <section className="grid items-center gap-6 rounded-2xl border border-[#D7DDED] bg-white px-6 py-7 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
+            <div className="text-center md:text-left">
+              <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+                Drive And Earn With Root Cabs
+              </h2>
+              <p className="mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-[0.92rem] lg:text-[0.98rem]">
+                Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+              </p>
+              <Button asChild className="mt-6 bg-[#1E2A6E] text-white hover:bg-[#17225E]">
+                <Link to="/drivers">
+                  Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+            <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
+              <img
+                src="/assets/homepage-rootpartner-banner.webp"
+                alt="Drive and earn with Root Cabs"
+                className="h-full w-full object-cover object-center"
+              />
+            </div>
+          </section>
+        </div>
       </div>
     </div>
   );
@@ -435,15 +459,15 @@ function AppDownloadCard() {
             <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
               GET THE APP
             </span>
-            <h2 className="mt-3 font-heading text-3xl font-bold leading-tight md:text-4xl">Your Chennai Rides, Just a Tap Away</h2>
+            <h2 className="mt-3 font-heading text-3xl font-bold leading-tight md:text-4xl">Book Every Journey with Root Cabs</h2>
             <p className="mx-auto mt-2.5 max-w-xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
-              Use the Root Cabs app to plan local, airport, and outstation trips with quick booking and easy access to your ride details.
+              Manage local rides, one-way trips and outstation travel through the Root Cabs app with simple booking and all your trip details in one place.
             </p>
             <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-semibold text-white/85 md:justify-start">
-              <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> No surge charges</span>
-              <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Live ride tracking</span>
-              <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> No Last-minute Cancellation</span>
-              <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Quick rebooking</span>
+              <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Verified drivers</span>
+              <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> On-time ride updates</span>
+              <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Easy ride scheduling</span>
+              <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> No last-minute cancellations</span>
             </div>
             <div className="mt-5 grid max-w-[470px] grid-cols-1 justify-items-center gap-3 sm:grid-cols-2 md:justify-items-start">
               <div className="flex w-[170px] flex-col items-center">
@@ -542,7 +566,7 @@ function ChennaiContentSection() {
   return (
     <section className="rounded-[2rem] bg-[#F5F7FB] p-6 md:p-8 lg:p-10">
       <div className="max-w-6xl">
-        <h2 className="mb-3 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Getting Around Chennai with Root Cabs</h2>
+        <h2 className="mb-3 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Getting Around Chennai With Root Cabs</h2>
         <p className="mb-8 max-w-3xl text-base text-[#5D6A90]">A practical guide to choosing the right ride for every trip across the city and beyond.</p>
         <div className="grid gap-6 lg:grid-cols-3">
           <article className="rounded-[2.25rem] border border-[#E4EAF5] bg-white p-6 text-base leading-8 text-[#111827] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:bg-[#1E2A6E] hover:text-white hover:shadow-lg md:p-7">
@@ -674,7 +698,7 @@ function ChennaiRoutesSection() {
 function ChennaiReviewsSection() {
   return (
     <section>
-      <h2 className="font-heading text-2xl font-bold mb-3">Customer Reviews in Chennai</h2>
+      <h2 className="font-heading text-2xl font-bold mb-3">Customer Reviews In Chennai</h2>
       <p className="mb-6 text-sm text-muted-foreground md:text-base">Real experiences from customers who travel with Root Cabs.</p>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         {chennaiReviews.map((review) => (
@@ -750,7 +774,7 @@ function ChennaiActingDriverSection() {
           Acting Driver
         </div>
         <h2 className="mt-5 max-w-xl font-heading text-2xl font-bold leading-tight text-[#1E2A6E] md:text-3xl">
-          Make Every Trip Easier with an Acting Driver
+          Make Every Trip Easier With An Acting Driver
         </h2>
         <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground md:text-base">
           Need someone to take the wheel of your car? Hire a driver in Chennai through Root Cabs for hospital
@@ -897,7 +921,7 @@ export function CityPage() {
         {/* Landmarks */}
         {city.landmarks.length > 0 && (
           <section>
-            <h2 className="font-heading text-2xl font-bold mb-2">Popular Pickup Spots in {city.name}</h2>
+            <h2 className="font-heading text-2xl font-bold mb-2">Popular Pickup Spots In {city.name}</h2>
             {city.name === "Chennai" && (
               <p className="mb-6 max-w-none text-sm leading-6 text-muted-foreground md:whitespace-nowrap md:text-base">
                 Root Cabs makes it easy to arrange a ride from the city's busiest travel hubs, landmarks, and neighbourhoods with a convenient taxi service in Chennai.
@@ -994,10 +1018,10 @@ export function CityPage() {
           <>
             <AppDownloadCard />
             <section className="py-2">
-              <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,1.15fr)_minmax(240px,0.85fr)] md:px-8">
+              <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
                 <div className="text-center md:text-left">
                   <h3 className="mb-2 font-heading text-xl font-bold">
-                    Drive and Earn with Root Cabs
+                    Drive And Earn With Root Cabs
                   </h3>
                   <p className="mb-4 text-sm text-muted-foreground">
                     Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
@@ -1008,11 +1032,11 @@ export function CityPage() {
                     </Button>
                   </Link>
                 </div>
-                <div className="mx-auto w-full max-w-[360px] overflow-hidden rounded-lg bg-muted">
+                <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
                   <img
                     src="/assets/homepage-rootpartner-banner.webp"
                     alt="Drive and earn with Root Cabs"
-                    className="h-44 w-full object-cover md:h-52"
+                    className="h-full w-full object-cover object-center"
                   />
                 </div>
               </div>
