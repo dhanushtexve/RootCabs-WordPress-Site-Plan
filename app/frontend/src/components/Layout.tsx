@@ -45,10 +45,10 @@ function Navbar() {
         <div className="max-w-screen-xl mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center gap-6">
             <a href={`tel:${companyInfo.phone}`} className="flex items-center gap-2 hover:text-yellow-300 transition-colors cursor-pointer">
-              <Phone className="w-3.5 h-3.5" /> {companyInfo.phone}
+              <Phone className="w-3.5 h-3.5" /> Call us
             </a>
             <a href={`mailto:${companyInfo.email}`} className="flex items-center gap-2 hover:text-yellow-300 transition-colors cursor-pointer">
-              <Mail className="w-3.5 h-3.5" /> {companyInfo.email}
+              <Mail className="w-3.5 h-3.5" /> Email us
             </a>
           </div>
           <div className="flex items-center gap-4">
