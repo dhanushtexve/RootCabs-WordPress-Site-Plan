@@ -9,6 +9,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import { fareRates, companyInfo } from "@/data/siteData";
 import {
   addBooking,
@@ -912,6 +913,13 @@ export default function BookRide() {
           <p className="text-gray-300 max-w-none md:whitespace-nowrap">
             Plan your journey with ease and book your ride online for a safe, comfortable and reliable travel experience.
           </p>
+          <PageBreadcrumb
+            className="mt-4 text-white/70"
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Book Ride" },
+            ]}
+          />
         </div>
       </section>
 

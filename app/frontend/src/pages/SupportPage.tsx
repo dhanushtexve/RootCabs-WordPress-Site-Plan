@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import { ArrowRight, CheckCircle, Clock, Mail, MapPin } from "lucide-react";
 
 const faqs = [
@@ -163,15 +164,24 @@ export function SupportPage() {
           <p className="max-w-4xl text-sm leading-relaxed text-white/80 md:text-base">
             Need help with a booking, payment, ride update or service request? Find quick answers here or contact the Root Cabs support team for assistance.
           </p>
+          <PageBreadcrumb
+            className="mt-4 text-white/70"
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Support" },
+            ]}
+          />
         </div>
       </section>
 
-      <section className="mx-auto max-w-screen-xl px-4 py-12">
+      <section className="mx-auto max-w-screen-xl px-4 py-16 md:py-20">
         <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.9fr)]">
-          <div>
-            <h2 className="mb-2 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Frequently Asked Questions</h2>
-            <p className="mb-6 text-sm text-muted-foreground">Filter by who you are, or browse everything below.</p>
-            <div className="mb-6 flex flex-wrap gap-3">
+          <div className="mx-auto w-full max-w-3xl lg:max-w-none">
+            <h2 className="mb-2 text-center font-heading text-3xl font-bold text-[#1E2A6E] md:text-4xl">
+              Frequently Asked Questions
+            </h2>
+            <p className="mb-6 text-center text-sm text-muted-foreground">Filter by who you are, or browse everything below.</p>
+            <div className="mb-6 flex flex-wrap justify-center gap-3">
               {[
                 { value: "all", label: "All" },
                 { value: "riders", label: "For Riders" },
@@ -192,13 +202,15 @@ export function SupportPage() {
                 </button>
               ))}
             </div>
-            <Accordion type="single" collapsible className="w-full">
+            <Accordion type="single" collapsible className="space-y-3">
               {visibleFaqs.map((faq, index) => (
-                <AccordionItem key={faq.q} value={`faq-${index}`}>
-                  <AccordionTrigger className="cursor-pointer text-left text-sm font-medium md:text-base">
+                <AccordionItem key={faq.q} value={`faq-${index}`} className="border-0">
+                  <AccordionTrigger className="rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline">
                     {faq.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm text-muted-foreground">{faq.a}</AccordionContent>
+                  <AccordionContent className="rounded-b-lg bg-white px-5 pb-5 text-sm leading-6 text-muted-foreground shadow-sm">
+                    {faq.a}
+                  </AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>

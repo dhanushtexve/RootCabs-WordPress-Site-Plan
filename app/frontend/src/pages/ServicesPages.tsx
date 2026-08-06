@@ -4,6 +4,7 @@ import { Car, Plane, Navigation, User, Package, Bike, CheckCircle, ArrowRight, P
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import { services, cities, companyInfo } from "@/data/siteData";
 import FareCalculator from "@/components/FareCalculator";
 
@@ -133,6 +134,13 @@ export function ServicesHub() {
               </div>
             ))}
           </div>
+          <PageBreadcrumb
+            className="mt-4 text-white/70"
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Services" },
+            ]}
+          />
         </div>
       </section>
 
@@ -377,6 +385,14 @@ export function ServicePage() {
             </div>
           </div>
           <p className="text-gray-300 max-w-2xl text-lg">{service.description}</p>
+          <PageBreadcrumb
+            className="mt-4 text-white/70"
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Services", href: "/services" },
+              { label: service.name },
+            ]}
+          />
         </div>
       </section>
 

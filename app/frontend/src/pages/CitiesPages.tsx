@@ -1,9 +1,10 @@
 ﻿import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { MapPin, ArrowRight, Car, Plane, Navigation, User, Package, Bike, Star, CheckCircle, Phone, ChevronRight } from "lucide-react";
+import { MapPin, ArrowRight, Car, Plane, Navigation, User, Package, Bike, Star, CheckCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import { GoogleReviewBadge } from "@/components/GoogleReviewBadge";
 import { cities, services, companyInfo, testimonials } from "@/data/siteData";
 import FareCalculator from "@/components/FareCalculator";
@@ -349,6 +350,13 @@ export function CitiesHub() {
           <p className="text-gray-300 max-w-none md:whitespace-nowrap">
             Root Cabs brings dependable taxi services to 10+ cities across Tamil Nadu, making local, one-way and outstation travel easier to book.
           </p>
+          <PageBreadcrumb
+            className="mt-4 text-white/70"
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Cities" },
+            ]}
+          />
         </div>
       </section>
 
@@ -837,15 +845,16 @@ export function CityPage() {
       {/* Hero */}
       <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12 md:py-16">
         <div className="max-w-screen-xl mx-auto px-4">
-          <div className="flex items-center gap-2 text-sm text-gray-400 mb-4">
-            <Link to="/" className="hover:text-white cursor-pointer">Home</Link>
-            <ChevronRight className="w-3 h-3" />
-            <Link to="/cities" className="hover:text-white cursor-pointer">Cities</Link>
-            <ChevronRight className="w-3 h-3" />
-            <span className="text-white">{city.name}</span>
-          </div>
           <h1 className="font-heading text-3xl md:text-5xl font-bold mb-4">{city.tagline}</h1>
           <p className="text-gray-300 max-w-2xl text-lg">{city.description}</p>
+          <PageBreadcrumb
+            className="mt-4 text-white/70"
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Cities", href: "/cities" },
+              { label: city.name },
+            ]}
+          />
           <div className="flex flex-wrap gap-4 mt-6">
             <Link to="/book-ride">
               <Button size="lg" className="bg-[#FFD700] hover:bg-[#E6C200] text-[#2E3A8C] font-bold cursor-pointer shadow-sm">
@@ -1104,15 +1113,16 @@ export function CityServicePage() {
       {/* Hero */}
       <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12">
         <div className="max-w-screen-xl mx-auto px-4">
-          <div className="flex items-center gap-2 text-sm text-gray-400 mb-4">
-            <Link to="/" className="hover:text-white cursor-pointer">Home</Link>
-            <ChevronRight className="w-3 h-3" />
-            <Link to={`/${city.slug}`} className="hover:text-white cursor-pointer">{city.name}</Link>
-            <ChevronRight className="w-3 h-3" />
-            <span className="text-white">{service.name}</span>
-          </div>
           <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">{service.name} in {city.name}</h1>
           <p className="text-gray-300 max-w-2xl">{service.description}</p>
+          <PageBreadcrumb
+            className="mt-4 text-white/70"
+            items={[
+              { label: "Home", href: "/" },
+              { label: city.name, href: `/${city.slug}` },
+              { label: service.name },
+            ]}
+          />
           <div className="mt-6">
             <Link to="/book-ride">
               <Button size="lg" className="bg-[#FFD700] hover:bg-[#E6C200] text-[#2E3A8C] font-bold cursor-pointer shadow-sm">

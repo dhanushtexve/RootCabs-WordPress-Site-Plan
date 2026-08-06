@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Phone, Mail, MapPin, Clock, Shield, Star, Users, Percent, Wallet, GraduationCap, Car, CheckCircle, Building, Hotel, Briefcase, Calendar, MessageSquare, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import { GoogleReviewBadge } from "@/components/GoogleReviewBadge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { companyInfo, businessSolutions, blogPosts, cities } from "@/data/siteData";
@@ -162,6 +163,13 @@ export function BusinessPage() {
           <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-white/80 md:text-lg">
             Make employee travel and business transportation easier to manage with Root Cabs. We offer flexible ride solutions for daily office commutes, client travel, airport trips and other company requirements.
           </p>
+          <PageBreadcrumb
+            className="mt-4 justify-center text-white/70"
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Business" },
+            ]}
+          />
         </div>
       </section>
 
@@ -340,16 +348,18 @@ export function BusinessPage() {
         </section>
 
         {/* FAQ */}
-        <section className="rounded-2xl border border-border bg-white p-6 shadow-sm md:p-8">
-          <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Frequently Asked Questions</h2>
-          <div className="mt-4">
-            <Accordion type="single" collapsible className="w-full">
+        <section className="bg-muted/50 px-4 py-16 md:py-20">
+          <div className="mx-auto max-w-3xl">
+            <h2 className="mb-10 text-center font-heading text-3xl font-bold text-[#1E2A6E] md:text-4xl">
+              Frequently Asked Questions
+            </h2>
+            <Accordion type="single" collapsible className="space-y-3">
               {businessFaqs.map((faq, index) => (
-                <AccordionItem key={faq.q} value={`business-faq-${index}`}>
-                  <AccordionTrigger className="text-left text-sm font-semibold text-[#1E2A6E] no-underline hover:no-underline focus:no-underline md:text-base [&_span]:no-underline [&_svg]:shrink-0">
+                <AccordionItem key={faq.q} value={`business-faq-${index}`} className="border-0">
+                  <AccordionTrigger className="rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline">
                     {faq.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-sm leading-7 text-muted-foreground md:text-base">
+                  <AccordionContent className="rounded-b-lg bg-white px-5 pb-5 text-sm leading-6 text-muted-foreground shadow-sm">
                     {faq.a}
                   </AccordionContent>
                 </AccordionItem>
@@ -531,6 +541,13 @@ export function AboutPage() {
           <p className="mx-auto mt-4 max-w-4xl text-base leading-7 text-white/80 md:text-lg">
             Root Cabs operates as a unit of Texve Innovations Pvt. Ltd., offering a unified range of mobility and transport services across Tamil Nadu. Through a single platform, customers can access multiple options for everyday travel, intercity journeys and other transport needs.
           </p>
+          <PageBreadcrumb
+            className="mt-4 justify-center text-white/70"
+            items={[
+              { label: "Home", href: "/" },
+              { label: "About" },
+            ]}
+          />
         </div>
       </section>
 
@@ -1187,6 +1204,13 @@ function PolicyDocumentPage({ policyKey }: { policyKey: string }) {
             <span className="hidden sm:inline">|</span>
             <span>{policy.jurisdiction}</span>
           </div>
+          <PageBreadcrumb
+            className="mt-4 text-white/70"
+            items={[
+              { label: "Home", href: "/" },
+              { label: policy.title },
+            ]}
+          />
         </div>
       </section>
 

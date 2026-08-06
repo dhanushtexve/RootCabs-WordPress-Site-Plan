@@ -1,7 +1,9 @@
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import { cities, companyInfo } from "@/data/siteData";
 
 // ============================================================
@@ -132,6 +134,13 @@ export function DriversPage() {
                   loading="eager"
                 />
               </div>
+              <PageBreadcrumb
+                className="mt-4 text-white/70"
+                items={[
+                  { label: "Home", href: "/" },
+                  { label: "Drivers" },
+                ]}
+              />
             </div>
 
             <div className="w-full rounded-3xl bg-white p-5 text-slate-900 shadow-2xl md:p-6 lg:max-w-[460px] lg:justify-self-end">
