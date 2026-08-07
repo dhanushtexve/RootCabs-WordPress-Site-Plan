@@ -25,8 +25,8 @@ export function PageBreadcrumb({ items, className }: PageBreadcrumbProps) {
   if (!items.length) return null;
 
   return (
-    <Breadcrumb className={cn("mt-4", className)}>
-      <BreadcrumbList className={cn("justify-start", className)}>
+    <Breadcrumb className={cn("w-full", className)}>
+      <BreadcrumbList className="justify-start">
         {items.map((item, index) => {
           const isLast = index === items.length - 1;
 

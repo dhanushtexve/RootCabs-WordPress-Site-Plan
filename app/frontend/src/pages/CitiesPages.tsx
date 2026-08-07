@@ -102,7 +102,7 @@ const chennaiServices = [
     fare: "Starting at \u20B990/3km",
     href: "/taxi-in-chennai/local-taxi",
     iconWrapClass: "bg-white",
-    icon: <img src="/assets/chennai-service-local.webp" alt="Local Taxi service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src={assetPath("/assets/chennai-service-local.webp")} alt="Local Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Outstation Taxi",
@@ -110,7 +110,7 @@ const chennaiServices = [
     fare: "Starting at \u20B9300/20Km",
     href: "/taxi-in-chennai/outstation",
     iconWrapClass: "bg-white",
-    icon: <img src="/assets/chennai-service-outstation.webp" alt="Outstation Taxi service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src={assetPath("/assets/chennai-service-outstation.webp")} alt="Outstation Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Acting Driver",
@@ -118,7 +118,7 @@ const chennaiServices = [
     fare: "Starting at \u20B9500/100 Km",
     href: "/taxi-in-chennai/acting-driver",
     iconWrapClass: "bg-white",
-    icon: <img src="/assets/chennai-service-acting-driver.webp" alt="Acting Driver service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src={assetPath("/assets/chennai-service-acting-driver.webp")} alt="Acting Driver service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "One-Way Taxi",
@@ -126,7 +126,7 @@ const chennaiServices = [
     fare: "Starting at \u20B9300/Km",
     href: "/book-ride",
     iconWrapClass: "bg-white",
-    icon: <img src="/assets/chennai-service-one-way.webp" alt="One-Way Taxi service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src={assetPath("/assets/chennai-service-one-way.webp")} alt="One-Way Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Auto Rickshaw",
@@ -134,7 +134,7 @@ const chennaiServices = [
     fare: "Starting at \u20B940/1Km",
     href: "/taxi-in-chennai/auto",
     iconWrapClass: "bg-white",
-    icon: <img src="/assets/chennai-service-auto.webp" alt="Auto Rickshaw service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src={assetPath("/assets/chennai-service-auto.webp")} alt="Auto Rickshaw service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Bike Taxi",
@@ -142,7 +142,7 @@ const chennaiServices = [
     fare: "Starting at \u20B925/2km",
     href: "/book-ride",
     iconWrapClass: "bg-white",
-    icon: <img src="/assets/chennai-service-bike-taxi.webp" alt="Bike Taxi service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src={assetPath("/assets/chennai-service-bike-taxi.webp")} alt="Bike Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Hourly Package",
@@ -349,17 +349,17 @@ export function CitiesHub() {
     <div>
       <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12">
         <div className="max-w-screen-xl mx-auto px-4">
-          <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Cities We Serve</h1>
-          <p className="text-gray-300 max-w-none md:whitespace-nowrap">
-            Root Cabs brings dependable taxi services to 10+ cities across Tamil Nadu, making local, one-way and outstation travel easier to book.
-          </p>
           <PageBreadcrumb
-            className="mt-4 text-white/70"
+            className="mb-4 text-white/70"
             items={[
               { label: "Home", href: "/" },
               { label: "Cities" },
             ]}
           />
+          <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Cities We Serve</h1>
+          <p className="text-gray-300 max-w-none md:whitespace-nowrap">
+            Root Cabs brings dependable taxi services to 10+ cities across Tamil Nadu, making local, one-way and outstation travel easier to book.
+          </p>
         </div>
       </section>
 
@@ -379,8 +379,13 @@ export function CitiesHub() {
                   </div>
                   <div className="p-5 md:p-6">
                   <div className="flex items-start gap-3">
-                    <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-[#E9E6FF] text-[#6B63FF]">
-                      <MapPin className="h-4 w-4" />
+                    <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-[#D7DDED] bg-[#EFF4FF] text-[#1E2A6E]">
+                      <img
+                        src="/assets/cities-live-ride-tracking.png"
+                        alt=""
+                        aria-hidden="true"
+                        className="h-4 w-4 object-contain"
+                      />
                     </div>
                     <div className="min-w-0 flex-1">
                       <h3 className="font-heading text-lg font-bold text-[#1E2A6E]">{city.name}</h3>
@@ -848,16 +853,16 @@ export function CityPage() {
       {/* Hero */}
       <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12 md:py-16">
         <div className="max-w-screen-xl mx-auto px-4">
-          <h1 className="font-heading text-3xl md:text-5xl font-bold mb-4">{city.tagline}</h1>
-          <p className="text-gray-300 max-w-2xl text-lg">{city.description}</p>
           <PageBreadcrumb
-            className="mt-4 text-white/70"
+            className="mb-4 text-white/70"
             items={[
               { label: "Home", href: "/" },
               { label: "Cities", href: "/cities" },
               { label: city.name },
             ]}
           />
+          <h1 className="font-heading text-3xl md:text-5xl font-bold mb-4">{city.tagline}</h1>
+          <p className="text-gray-300 max-w-2xl text-lg">{city.description}</p>
           <div className="flex flex-wrap gap-4 mt-6">
             <Link to="/book-ride">
               <Button size="lg" className="bg-[#FFD700] hover:bg-[#E6C200] text-[#2E3A8C] font-bold cursor-pointer shadow-sm">
@@ -1116,16 +1121,16 @@ export function CityServicePage() {
       {/* Hero */}
       <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12">
         <div className="max-w-screen-xl mx-auto px-4">
-          <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">{service.name} in {city.name}</h1>
-          <p className="text-gray-300 max-w-2xl">{service.description}</p>
           <PageBreadcrumb
-            className="mt-4 text-white/70"
+            className="mb-4 text-white/70"
             items={[
               { label: "Home", href: "/" },
               { label: city.name, href: `/${city.slug}` },
               { label: service.name },
             ]}
           />
+          <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">{service.name} in {city.name}</h1>
+          <p className="text-gray-300 max-w-2xl">{service.description}</p>
           <div className="mt-6">
             <Link to="/book-ride">
               <Button size="lg" className="bg-[#FFD700] hover:bg-[#E6C200] text-[#2E3A8C] font-bold cursor-pointer shadow-sm">

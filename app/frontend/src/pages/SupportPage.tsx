@@ -160,17 +160,17 @@ export function SupportPage() {
     <div>
       <section className="bg-[#1E2A6E] py-14 text-white md:py-16">
         <div className="mx-auto max-w-screen-xl px-4">
-          <h1 className="mb-3 font-heading text-3xl font-bold md:text-4xl">Support & Help Centre</h1>
-          <p className="max-w-4xl text-sm leading-relaxed text-white/80 md:text-base">
-            Need help with a booking, payment, ride update or service request? Find quick answers here or contact the Root Cabs support team for assistance.
-          </p>
           <PageBreadcrumb
-            className="mt-4 text-white/70"
+            className="mb-4 text-white/70"
             items={[
               { label: "Home", href: "/" },
               { label: "Support" },
             ]}
           />
+          <h1 className="mb-3 font-heading text-3xl font-bold md:text-4xl">Support & Help Centre</h1>
+          <p className="max-w-4xl text-sm leading-relaxed text-white/80 md:text-base">
+            Need help with a booking, payment, ride update or service request? Find quick answers here or contact the Root Cabs support team for assistance.
+          </p>
         </div>
       </section>
 

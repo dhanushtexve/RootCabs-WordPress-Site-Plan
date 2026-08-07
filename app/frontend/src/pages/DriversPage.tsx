@@ -120,6 +120,13 @@ export function DriversPage() {
         <div className="max-w-screen-xl mx-auto px-4 py-14 md:py-16">
           <div className="grid items-start gap-10 lg:grid-cols-[1.2fr_.8fr]">
             <div className="max-w-2xl">
+              <PageBreadcrumb
+                className="mb-4 text-white/70"
+                items={[
+                  { label: "Home", href: "/" },
+                  { label: "Drivers" },
+                ]}
+              />
               <h1 className="font-heading text-2xl font-extrabold leading-[1.1] tracking-tight md:text-3xl lg:whitespace-nowrap lg:text-[2.45rem]">
                 Drive And Earn With Root Cabs
               </h1>
@@ -134,13 +141,6 @@ export function DriversPage() {
                   loading="eager"
                 />
               </div>
-              <PageBreadcrumb
-                className="mt-4 text-white/70"
-                items={[
-                  { label: "Home", href: "/" },
-                  { label: "Drivers" },
-                ]}
-              />
             </div>
 
             <div className="w-full rounded-3xl bg-white p-5 text-slate-900 shadow-2xl md:p-6 lg:max-w-[460px] lg:justify-self-end">

@@ -159,17 +159,17 @@ export function BusinessPage() {
     <div>
       <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-14 md:py-16">
         <div className="max-w-screen-xl mx-auto px-4 text-center">
-          <h1 className="font-heading text-3xl font-bold leading-tight md:text-5xl">Business Solutions</h1>
-          <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-white/80 md:text-lg">
-            Make employee travel and business transportation easier to manage with Root Cabs. We offer flexible ride solutions for daily office commutes, client travel, airport trips and other company requirements.
-          </p>
           <PageBreadcrumb
-            className="mt-4 justify-center text-white/70"
+            className="mb-4 text-white/70"
             items={[
               { label: "Home", href: "/" },
               { label: "Business" },
             ]}
           />
+          <h1 className="font-heading text-3xl font-bold leading-tight md:text-5xl">Business Solutions</h1>
+          <p className="mx-auto mt-4 max-w-3xl text-base leading-7 text-white/80 md:text-lg">
+            Make employee travel and business transportation easier to manage with Root Cabs. We offer flexible ride solutions for daily office commutes, client travel, airport trips and other company requirements.
+          </p>
         </div>
       </section>
 
@@ -516,7 +516,7 @@ export function AboutPage() {
     {
       year: "2025",
       title: "The Beginning",
-      image: "/assets/the-beginning.webp",
+      image: "/assets/about-us-2025.webp",
       alt: "Root Cabs launch milestone",
       description:
         "Root Cabs launched in Vellore with Cab, Auto and Acting Driver services, bringing essential travel options together on one platform. The focus was to make daily transportation easier to access and more convenient to book.",
@@ -525,7 +525,7 @@ export function AboutPage() {
     {
       year: "2026",
       title: "Growing Across Tamil Nadu",
-      image: "/assets/growing-across-tamil-nadu.webp",
+      image: "/assets/about-us-2026.webp",
       alt: "Root Cabs expanding across Tamil Nadu",
       description:
         "Within a year, Root Cabs expanded its presence to more than 10 cities and broadened its service portfolio to meet different mobility needs. New additions such as Bike Taxi and Parcel Delivery extended the platform beyond passenger travel and marked the next stage of Root Cabs growth.",
@@ -537,17 +537,17 @@ export function AboutPage() {
     <div>
       <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-14 md:py-16">
         <div className="max-w-screen-xl mx-auto px-4 text-center">
-          <h1 className="font-heading text-3xl font-bold leading-tight md:text-5xl">About Root Cabs</h1>
-          <p className="mx-auto mt-4 max-w-4xl text-base leading-7 text-white/80 md:text-lg">
-            Root Cabs operates as a unit of Texve Innovations Pvt. Ltd., offering a unified range of mobility and transport services across Tamil Nadu. Through a single platform, customers can access multiple options for everyday travel, intercity journeys and other transport needs.
-          </p>
           <PageBreadcrumb
-            className="mt-4 justify-center text-white/70"
+            className="mb-4 text-white/70"
             items={[
               { label: "Home", href: "/" },
               { label: "About" },
             ]}
           />
+          <h1 className="font-heading text-3xl font-bold leading-tight md:text-5xl">About Root Cabs</h1>
+          <p className="mx-auto mt-4 max-w-4xl text-base leading-7 text-white/80 md:text-lg">
+            Root Cabs operates as a unit of Texve Innovations Pvt. Ltd., offering a unified range of mobility and transport services across Tamil Nadu. Through a single platform, customers can access multiple options for everyday travel, intercity journeys and other transport needs.
+          </p>
         </div>
       </section>
 
@@ -711,9 +711,45 @@ export function AboutPage() {
               </div>
             </article>
 
-            <div className="relative hidden h-10 items-center justify-center lg:flex">
-              <div className="h-2 w-full rounded-full border-2 border-[#1E2A6E] bg-[#1E2A6E] shadow-[inset_0_0_0_2px_#FFD700]" />
-              <div className="absolute h-8 w-8 rounded-full border-4 border-[#1E2A6E] bg-white" />
+            <div className="relative hidden h-28 items-center justify-center lg:flex">
+              <svg
+                viewBox="0 0 340 108"
+                aria-hidden="true"
+                className="h-28 w-full max-w-[340px] drop-shadow-sm"
+              >
+                <defs>
+                  <linearGradient id="journey-road" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#1E2A6E" />
+                    <stop offset="48%" stopColor="#273588" />
+                    <stop offset="100%" stopColor="#1E2A6E" />
+                  </linearGradient>
+                </defs>
+                <path
+                  d="M16 58H324"
+                  fill="none"
+                  stroke="url(#journey-road)"
+                  strokeWidth="8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M16 58H324"
+                  fill="none"
+                  stroke="#FFD700"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  opacity="0.85"
+                  strokeDasharray="12 12"
+                />
+                <circle cx="16" cy="58" r="6.5" fill="#fff" stroke="#1E2A6E" strokeWidth="3" />
+                <circle cx="324" cy="58" r="6.5" fill="#fff" stroke="#1E2A6E" strokeWidth="3" />
+                <circle cx="170" cy="58" r="11" fill="#fff" stroke="#1E2A6E" strokeWidth="3.5" />
+                <path d="M170 49v18" stroke="#FFD700" strokeWidth="3" strokeLinecap="round" />
+                <path d="M162 58h16" stroke="#FFD700" strokeWidth="3" strokeLinecap="round" />
+                <path d="M48 48h18M276 48h18" stroke="#1E2A6E" strokeWidth="3" strokeLinecap="round" opacity="0.5" />
+                <path d="M78 68h18M246 68h18" stroke="#1E2A6E" strokeWidth="3" strokeLinecap="round" opacity="0.3" />
+              </svg>
             </div>
 
             <article className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
@@ -1196,6 +1232,13 @@ function PolicyDocumentPage({ policyKey }: { policyKey: string }) {
     <div>
       <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12">
         <div className="max-w-screen-xl mx-auto px-4">
+          <PageBreadcrumb
+            className="mb-4 text-white/70"
+            items={[
+              { label: "Home", href: "/" },
+              { label: policy.title },
+            ]}
+          />
           <p className="text-sm font-semibold text-[#FFD700] mb-3">{policy.eyebrow}</p>
           <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">{policy.title}</h1>
           <p className="text-gray-300 max-w-3xl">{policy.subtitle}</p>
@@ -1204,13 +1247,6 @@ function PolicyDocumentPage({ policyKey }: { policyKey: string }) {
             <span className="hidden sm:inline">|</span>
             <span>{policy.jurisdiction}</span>
           </div>
-          <PageBreadcrumb
-            className="mt-4 text-white/70"
-            items={[
-              { label: "Home", href: "/" },
-              { label: policy.title },
-            ]}
-          />
         </div>
       </section>
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Car, Plane, Navigation, User, Package, Bike, CheckCircle, ArrowRight, Phone, MapPin } from "lucide-react";
+import { Car, Plane, Navigation, User, Package, Bike, CheckCircle, ArrowRight, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -125,6 +125,13 @@ export function ServicesHub() {
     <div>
       <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12 md:py-14">
         <div className="max-w-screen-xl mx-auto px-4">
+          <PageBreadcrumb
+            className="mb-4 text-white/70"
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Services" },
+            ]}
+          />
           <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Our Services</h1>
           <p className="max-w-none text-sm leading-6 text-gray-300 md:whitespace-nowrap md:text-base">
             Explore our reliable Taxi Services in Tamil Nadu for local travel, outstation trips and everyday commuting.
@@ -137,13 +144,6 @@ export function ServicesHub() {
               </div>
             ))}
           </div>
-          <PageBreadcrumb
-            className="mt-4 text-white/70"
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Services" },
-            ]}
-          />
         </div>
       </section>
 
@@ -213,7 +213,12 @@ export function ServicesHub() {
                 to={`/${city.slug}`}
                 className="flex items-center gap-2 rounded-lg border border-[#E2E8F3] bg-white p-3 shadow-sm transition-all hover:-translate-y-0.5 hover:border-[#1E2A6E] hover:shadow-md"
               >
-                <MapPin className="h-4 w-4 shrink-0 text-primary" />
+                <img
+                  src="/assets/cities-live-ride-tracking.png"
+                  alt=""
+                  aria-hidden="true"
+                  className="h-4 w-4 shrink-0 object-contain"
+                />
                 <span className="text-sm font-semibold text-[#07143F]">{city.name}</span>
               </Link>
             ))}
@@ -378,6 +383,14 @@ export function ServicePage() {
       {/* Hero */}
       <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12 md:py-16">
         <div className="max-w-screen-xl mx-auto px-4">
+          <PageBreadcrumb
+            className="mb-4 text-white/70"
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Services", href: "/services" },
+              { label: service.name },
+            ]}
+          />
           <div className="flex items-center gap-4 mb-4">
             <div className="w-16 h-16 rounded-xl bg-white/10 flex items-center justify-center">
               {iconMap[service.icon]}
@@ -388,14 +401,6 @@ export function ServicePage() {
             </div>
           </div>
           <p className="text-gray-300 max-w-2xl text-lg">{service.description}</p>
-          <PageBreadcrumb
-            className="mt-4 text-white/70"
-            items={[
-              { label: "Home", href: "/" },
-              { label: "Services", href: "/services" },
-              { label: service.name },
-            ]}
-          />
         </div>
       </section>
 
@@ -425,7 +430,12 @@ export function ServicePage() {
                     to={`/${city.slug}/${service.slug}`}
                     className="flex items-center gap-2 p-3 rounded-lg border border-border hover:border-primary/30 hover:bg-primary/5 transition-all cursor-pointer"
                   >
-                    <MapPin className="w-4 h-4 text-primary shrink-0" />
+                    <img
+                      src="/assets/cities-live-ride-tracking.png"
+                      alt=""
+                      aria-hidden="true"
+                      className="h-4 w-4 shrink-0 object-contain"
+                    />
                     <span className="text-sm font-medium">{city.name}</span>
                   </Link>
                 ))}

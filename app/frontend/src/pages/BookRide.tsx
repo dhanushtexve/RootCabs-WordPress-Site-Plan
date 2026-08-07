@@ -909,17 +909,17 @@ export default function BookRide() {
       {/* Header */}
       <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12">
         <div className="max-w-screen-xl mx-auto px-4">
-          <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Book Your Ride</h1>
-          <p className="text-gray-300 max-w-none md:whitespace-nowrap">
-            Plan your journey with ease and book your ride online for a safe, comfortable and reliable travel experience.
-          </p>
           <PageBreadcrumb
-            className="mt-4 text-white/70"
+            className="mb-4 text-white/70"
             items={[
               { label: "Home", href: "/" },
               { label: "Book Ride" },
             ]}
           />
+          <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Book Your Ride</h1>
+          <p className="text-gray-300 max-w-none md:whitespace-nowrap">
+            Plan your journey with ease and book your ride online for a safe, comfortable and reliable travel experience.
+          </p>
         </div>
       </section>
 
