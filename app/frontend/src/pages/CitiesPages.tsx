@@ -378,23 +378,19 @@ export function CitiesHub() {
                     />
                   </div>
                   <div className="p-5 md:p-6">
-                  <div className="flex items-start gap-3">
-                    <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-[#D7DDED] bg-[#EFF4FF] text-[#1E2A6E]">
+                    <div className="flex flex-col items-center text-center">
                       <img
                         src="/assets/cities-live-ride-tracking.png"
                         alt=""
                         aria-hidden="true"
-                        className="h-4 w-4 object-contain"
+                        className="mb-3 h-7 w-7 object-contain transition-transform group-hover:scale-110"
                       />
-                    </div>
-                    <div className="min-w-0 flex-1">
                       <h3 className="font-heading text-lg font-bold text-[#1E2A6E]">{city.name}</h3>
-                      <p className="text-xs text-muted-foreground">{city.state}</p>
+                      <p className="mt-1 text-xs text-muted-foreground">{city.state}</p>
                     </div>
-                  </div>
-                  <p className="mt-4 text-sm leading-6 text-muted-foreground">
-                    {cityCardSummaryMap[city.name] ?? city.tagline}
-                  </p>
+                    <p className="mt-4 text-sm leading-6 text-muted-foreground">
+                      {cityCardSummaryMap[city.name] ?? city.tagline}
+                    </p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {city.services.map((s) => (
                       <span

@@ -211,15 +211,15 @@ export function ServicesHub() {
               <Link
                 key={city.slug}
                 to={`/${city.slug}`}
-                className="flex items-center gap-2 rounded-lg border border-[#E2E8F3] bg-white p-3 shadow-sm transition-all hover:-translate-y-0.5 hover:border-[#1E2A6E] hover:shadow-md"
+                className="group rounded-xl border border-[#E2E8F3] bg-white p-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:shadow-md"
               >
                 <img
                   src="/assets/cities-live-ride-tracking.png"
                   alt=""
                   aria-hidden="true"
-                  className="h-4 w-4 shrink-0 object-contain"
+                  className="mx-auto mb-3 h-7 w-7 object-contain transition-transform group-hover:scale-110"
                 />
-                <span className="text-sm font-semibold text-[#07143F]">{city.name}</span>
+                <span className="text-sm font-semibold text-[#1E2A6E]">{city.name}</span>
               </Link>
             ))}
           </div>
