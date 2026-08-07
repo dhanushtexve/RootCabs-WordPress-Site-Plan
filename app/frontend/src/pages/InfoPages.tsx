@@ -711,45 +711,12 @@ export function AboutPage() {
               </div>
             </article>
 
-            <div className="relative hidden h-28 items-center justify-center lg:flex">
-              <svg
-                viewBox="0 0 340 108"
+            <div className="hidden h-28 items-center justify-center lg:flex">
+              <ArrowRight
                 aria-hidden="true"
-                className="h-28 w-full max-w-[340px] drop-shadow-sm"
-              >
-                <defs>
-                  <linearGradient id="journey-road" x1="0%" y1="0%" x2="100%" y2="0%">
-                    <stop offset="0%" stopColor="#1E2A6E" />
-                    <stop offset="48%" stopColor="#273588" />
-                    <stop offset="100%" stopColor="#1E2A6E" />
-                  </linearGradient>
-                </defs>
-                <path
-                  d="M16 58H324"
-                  fill="none"
-                  stroke="url(#journey-road)"
-                  strokeWidth="8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-                <path
-                  d="M16 58H324"
-                  fill="none"
-                  stroke="#FFD700"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  opacity="0.85"
-                  strokeDasharray="12 12"
-                />
-                <circle cx="16" cy="58" r="6.5" fill="#fff" stroke="#1E2A6E" strokeWidth="3" />
-                <circle cx="324" cy="58" r="6.5" fill="#fff" stroke="#1E2A6E" strokeWidth="3" />
-                <circle cx="170" cy="58" r="11" fill="#fff" stroke="#1E2A6E" strokeWidth="3.5" />
-                <path d="M170 49v18" stroke="#FFD700" strokeWidth="3" strokeLinecap="round" />
-                <path d="M162 58h16" stroke="#FFD700" strokeWidth="3" strokeLinecap="round" />
-                <path d="M48 48h18M276 48h18" stroke="#1E2A6E" strokeWidth="3" strokeLinecap="round" opacity="0.5" />
-                <path d="M78 68h18M246 68h18" stroke="#1E2A6E" strokeWidth="3" strokeLinecap="round" opacity="0.3" />
-              </svg>
+                className="h-20 w-20 text-black"
+                strokeWidth={3}
+              />
             </div>
 
             <article className="overflow-hidden rounded-2xl border border-border bg-white shadow-sm">
