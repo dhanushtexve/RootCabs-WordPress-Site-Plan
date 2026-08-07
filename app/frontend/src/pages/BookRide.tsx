@@ -1506,6 +1506,13 @@ export default function BookRide() {
                                 placeholder="Enter OTP"
                                 inputMode="numeric"
                                 disabled={phoneVerified}
+                                onKeyDown={(event) => {
+                                  if (event.key !== "Enter") return;
+                                  event.preventDefault();
+                                  if (!phoneVerified) {
+                                    void handleVerifyOtp();
+                                  }
+                                }}
                               />
                               <Button
                                 type="button"

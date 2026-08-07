@@ -268,6 +268,26 @@ export default defineConfig(({ command, mode }) => {
             proxy.on('proxyReq', removeBrowserOriginHeaders);
           },
         },
+        '/api/customer/dev/register/admin/account': {
+          target: bookingApiProxyTarget,
+          changeOrigin: true,
+          headers: {
+            'ngrok-skip-browser-warning': 'true',
+          },
+          configure(proxy) {
+            proxy.on('proxyReq', removeBrowserOriginHeaders);
+          },
+        },
+        '/api/customer/dev/register/admin/driver': {
+          target: bookingApiProxyTarget,
+          changeOrigin: true,
+          headers: {
+            'ngrok-skip-browser-warning': 'true',
+          },
+          configure(proxy) {
+            proxy.on('proxyReq', removeBrowserOriginHeaders);
+          },
+        },
         '/api': {
           target: apiProxyTarget,
           changeOrigin: true,

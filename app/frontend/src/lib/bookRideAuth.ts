@@ -107,6 +107,52 @@ type ZonePackagesResponse = {
   data?: unknown;
 };
 
+type RegisterAdminAccountRequest = {
+  name: string;
+  type: "Individual" | "Auto" | "Bike" | "Driver" | "Parcel";
+  phoneNumber: string;
+  email: string;
+  source: "RootCabs Website";
+  zone: string;
+  dob?: string;
+  age?: string;
+};
+
+type RegisterAdminDriverRequest = {
+  driverDetails: {
+    salutation: string;
+    firstName: string;
+    fatherName: string;
+    dob: string;
+    age: number;
+    address: string;
+    country: "India";
+    district: string;
+    license: string;
+    licenseExpiry: string;
+    licenseType: string;
+    packages: unknown[];
+    phoneNumber: string;
+    pincode: string;
+    reference1: string;
+    reference1_phone: string;
+    serviceType: "DRIVER";
+    source: "Website";
+    state: string;
+    street: string;
+    thaluk: string;
+    transmissionType: string;
+    zone: string;
+  };
+};
+
+type RegisterAdminAccountResponse = {
+  success?: boolean;
+  message?: string;
+  code?: number;
+  data?: unknown;
+};
+
 const BOOKING_API_BASE_URL = import.meta.env.DEV
   ? "/api/customer/dev"
   : `${import.meta.env.VITE_BOOKING_API_BASE_URL || "https://perihelial-ariella-unserious.ngrok-free.dev"}/api/customer/dev`;
@@ -132,7 +178,10 @@ function getStoredBookingSessionId() {
   if (bookingSessionId) return bookingSessionId;
 
   try {
-    bookingSessionId = window.sessionStorage.getItem(BOOKING_SESSION_STORAGE_KEY) || "";
+    bookingSessionId =
+      window.localStorage.getItem(BOOKING_SESSION_STORAGE_KEY) ||
+      window.sessionStorage.getItem(BOOKING_SESSION_STORAGE_KEY) ||
+      "";
   } catch {
     bookingSessionId = "";
   }
@@ -344,4 +393,26 @@ export async function addSupportParcelBooking(payload: RentalBookingRequest) {
   }
 
   return response;
+}
+
+export async function registerAdminAccount(payload: RegisterAdminAccountRequest) {
+  return requestJson<RegisterAdminAccountResponse>(
+    "/register/admin/account",
+    {
+      method: "POST",
+      body: JSON.stringify(payload),
+    },
+    { includeSessionToken: true },
+  );
+}
+
+export async function registerAdminDriver(payload: RegisterAdminDriverRequest) {
+  return requestJson<RegisterAdminAccountResponse>(
+    "/register/admin/driver",
+    {
+      method: "POST",
+      body: JSON.stringify(payload),
+    },
+    { includeSessionToken: true },
+  );
 }
