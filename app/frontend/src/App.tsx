@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Layout from "@/components/Layout";
 import Index from "@/pages/Index";
 import BookRide from "@/pages/BookRide";
+import BlogRoutes from "@/blog-routes";
 import { ServicesHub, ServicePage } from "@/pages/ServicesPages";
 import { CitiesHub, CityPage, CityServicePage } from "@/pages/CitiesPages";
 import { RoutePage, LandmarkPage } from "@/pages/RoutesAndLandmarks";
@@ -48,6 +49,7 @@ function App() {
           <Route path="/drivers" element={<DriversPage />} />
           <Route path="/business" element={<BusinessPage />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/*" element={<BlogRoutes />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/about-us" element={<AboutPage />} />
           <Route path="/support" element={<SupportPage />} />
