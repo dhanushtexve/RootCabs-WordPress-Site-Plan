@@ -165,7 +165,7 @@ const chennaiServices = [
 const chennaiRoutes = [
   {
     title: "Chennai \u2192 Bangalore",
-    meta: "Km - 697 Approx. hrs - 23",
+    meta: "One-Way Km - 350 Approx. Hours - 7-8 hrs",
     fares: [
       { label: "MINI", value: "\u20B98,430" },
       { label: "SEDAN", value: "\u20B98,530" },
@@ -174,7 +174,7 @@ const chennaiRoutes = [
   },
   {
     title: "Chennai \u2192 Pondicherry",
-    meta: "Km - 331 Approx. hrs - 10",
+    meta: "One-Way Km - 165 Approx. Hours - 3-3.5 hrs",
     fares: [
       { label: "MINI", value: "\u20B94,040" },
       { label: "SEDAN", value: "\u20B94,140" },
@@ -183,7 +183,7 @@ const chennaiRoutes = [
   },
   {
     title: "Chennai \u2192 Vellore",
-    meta: "Km - 274 Approx. hrs - 9",
+    meta: "One-Way Km - 140 Approx. Hours - 2-2.5 hrs",
     fares: [
       { label: "MINI", value: "\u20B93,350" },
       { label: "SEDAN", value: "\u20B93,450" },
@@ -192,7 +192,7 @@ const chennaiRoutes = [
   },
   {
     title: "Chennai \u2192 Tirupati",
-    meta: "Km - 269 Approx. hrs - 9",
+    meta: "One-Way Km - 135 Approx. Hours - 3-3.5 hrs",
     fares: [
       { label: "MINI", value: "\u20B93,285" },
       { label: "SEDAN", value: "\u20B93,385" },
@@ -201,7 +201,7 @@ const chennaiRoutes = [
   },
   {
     title: "Chennai \u2192 Mahabalipuram",
-    meta: "Km - 115 Approx. hrs - 5",
+    meta: "One-Way Km - 55 Approx. Hours - 1-1.5 hrs",
     fares: [
       { label: "MINI", value: "\u20B91,441" },
       { label: "SEDAN", value: "\u20B91,541" },

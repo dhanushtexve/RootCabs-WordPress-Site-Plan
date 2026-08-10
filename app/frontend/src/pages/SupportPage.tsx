@@ -158,7 +158,7 @@ export function SupportPage() {
 
   return (
     <div>
-      <section className="bg-[#1E2A6E] py-14 text-white md:py-16">
+      <section className="bg-[#1E2A6E] py-10 text-white md:py-12">
         <div className="mx-auto max-w-screen-xl px-4">
           <PageBreadcrumb
             className="mb-4 text-white/70"
@@ -167,21 +167,21 @@ export function SupportPage() {
               { label: "Support" },
             ]}
           />
-          <h1 className="mb-3 font-heading text-3xl font-bold md:text-4xl">Support & Help Centre</h1>
+          <h1 className="mb-2 font-heading text-3xl font-bold md:text-4xl">Support & Help Centre</h1>
           <p className="max-w-4xl text-sm leading-relaxed text-white/80 md:text-base">
             Need help with a booking, payment, ride update or service request? Find quick answers here or contact the Root Cabs support team for assistance.
           </p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-screen-xl px-4 py-16 md:py-20">
-        <div className="grid items-start gap-8 lg:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.9fr)]">
+      <section className="mx-auto max-w-screen-xl px-4 py-10 md:py-12">
+        <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.9fr)]">
           <div className="mx-auto w-full max-w-3xl lg:max-w-none">
             <h2 className="mb-2 text-center font-heading text-3xl font-bold text-[#1E2A6E] md:text-4xl">
               Frequently Asked Questions
             </h2>
-            <p className="mb-6 text-center text-sm text-muted-foreground">Filter by who you are, or browse everything below.</p>
-            <div className="mb-6 flex flex-wrap justify-center gap-3">
+            <p className="mb-5 text-center text-sm text-muted-foreground">Filter by who you are, or browse everything below.</p>
+            <div className="mb-5 flex flex-wrap justify-center gap-3">
               {[
                 { value: "all", label: "All" },
                 { value: "riders", label: "For Riders" },
@@ -205,7 +205,7 @@ export function SupportPage() {
             <Accordion type="single" collapsible className="space-y-3">
               {visibleFaqs.map((faq, index) => (
                 <AccordionItem key={faq.q} value={`faq-${index}`} className="border-0">
-                  <AccordionTrigger className="rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline">
+                  <AccordionTrigger className="rounded-lg bg-white px-5 py-4 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline">
                     {faq.q}
                   </AccordionTrigger>
                   <AccordionContent className="rounded-b-lg bg-white px-5 pb-5 text-sm leading-6 text-muted-foreground shadow-sm">
@@ -216,11 +216,11 @@ export function SupportPage() {
             </Accordion>
           </div>
 
-          <div className="lg:sticky lg:top-6">
+          <div className="lg:sticky lg:top-4">
             <Card className="border-primary/20 bg-primary/5 shadow-sm">
-              <CardContent className="p-6">
-                <h3 className="mb-4 font-heading text-xl font-semibold">Contact Us</h3>
-                <div className="space-y-5 text-sm">
+              <CardContent className="p-5 md:p-6">
+                <h3 className="mb-3 font-heading text-xl font-semibold">Contact Us</h3>
+                <div className="space-y-4 text-sm">
                   <div>
                     <p className="font-medium text-[#1E2A6E]">Phone (24/7)</p>
                     <a href="tel:+918608066474" className="mt-1 block text-muted-foreground hover:text-primary cursor-pointer">
