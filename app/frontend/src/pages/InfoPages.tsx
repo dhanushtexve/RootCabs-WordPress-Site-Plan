@@ -538,7 +538,7 @@ export function BlogPage() {
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(30,42,110,0.08),_transparent_36%),linear-gradient(180deg,_#f8fafc_0%,_#eef2ff_100%)] text-slate-900">
       <section className="bg-gradient-to-br from-[#1E2A6E] via-[#25357f] to-[#2E3A8C] text-white">
-        <div className="mx-auto max-w-screen-xl px-4 py-12 md:py-14">
+        <div className="mx-auto max-w-screen-xl px-4 py-8 md:py-10">
           <PageBreadcrumb
             className="mb-4 text-white/70"
             items={[
@@ -554,7 +554,7 @@ export function BlogPage() {
             <p className="mt-4 max-w-3xl text-sm leading-7 text-white/80 md:text-base">
               Root Cabs began with a simple observation. Cab booking apps had made it easier to search for a ride, but many everyday travel problems were still unresolved.
             </p>
-            <div className="mt-6 flex flex-wrap gap-3">
+            <div className="mt-4 flex flex-wrap gap-3">
               <Link
                 to="/blog/launch-of-root-cabs"
                 className="inline-flex items-center rounded-full bg-[#FFD700] px-5 py-3 text-sm font-bold text-[#1E2A6E] shadow-sm transition-colors hover:bg-[#ffe14d]"
@@ -562,7 +562,7 @@ export function BlogPage() {
                 Read the launch story
               </Link>
             </div>
-            <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-white/80">
+            <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-white/80">
               <span className="inline-flex items-center gap-2">
                 <Calendar className="h-4 w-4 text-[#FFD700]" />
                 <time dateTime="2025-06-05">June 5, 2025</time>
@@ -584,34 +584,18 @@ export function BlogPage() {
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1.72fr)_minmax(300px,0.78fr)]">
           <article className="min-w-0">
             <section className="overflow-hidden rounded-[28px] border border-white/70 bg-white shadow-[0_20px_60px_rgba(30,42,110,0.08)]">
-              <div className="border-b border-slate-200 bg-slate-50 px-6 py-4">
-                <div className="flex flex-wrap items-center gap-3 text-sm text-slate-600">
-                  <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800">
-                    Travel Guide
-                  </span>
-                  <span className="inline-flex items-center gap-1.5">
-                    <Clock className="h-4 w-4 text-slate-400" />
-                    8 min read
-                  </span>
-                  <span className="inline-flex items-center gap-1.5">
-                    <Users className="h-4 w-4 text-slate-400" />
-                    Root Cabs Editorial
-                  </span>
-                </div>
-              </div>
-
               <div className="px-6 py-6 md:px-8 md:py-8">
-                <div className="overflow-hidden rounded-[24px] border border-slate-200 bg-slate-100">
-                  <div className="relative aspect-[16/9] min-h-[280px] md:min-h-[340px]">
+                <div className="overflow-hidden rounded-[24px] border border-slate-200 bg-white">
+                  <div className="relative aspect-[16/9]">
                     <img
                       src={storyHeroImage}
                       alt="The story behind Root Cabs"
-                      className="h-full w-full object-contain object-center p-2"
+                      className="h-full w-full object-contain object-center"
                     />
                   </div>
                 </div>
 
-                <div className="mt-8 grid gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.72fr)]">
+                <div className="mt-8">
                   <div className="space-y-6 text-[1.04rem] leading-8 text-slate-700">
                     <p>
                       Root Cabs began with a simple observation. Cab booking apps had made it easier to search for a ride, but many everyday travel problems were still unresolved. Customers continued to face unclear fares, limited vehicle availability and difficulty arranging transport during early mornings, late nights and busy hours.
@@ -623,7 +607,6 @@ export function BlogPage() {
                       Root Cabs was founded by Selvarathinam Perumal with the vision of making everyday travel more affordable, reliable and easier to book. What started as an idea later developed into a mobility platform created for both customers and driver partners.
                     </p>
                   </div>
-
                 </div>
 
                 <div className="mt-10 space-y-10">

@@ -255,72 +255,73 @@ const BlogLandingPage = () => {
       <section className="mx-auto max-w-screen-xl px-4 pb-16 md:pb-20">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1.45fr)_minmax(300px,0.55fr)]">
           <div className="space-y-8">
-            <Card className="overflow-hidden border-slate-200 bg-white shadow-[0_18px_50px_rgba(30,42,110,0.09)]">
-              <div className="grid overflow-hidden lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] lg:items-center">
-                <div className="relative aspect-[16/9] overflow-hidden bg-white">
+            <Link
+              to={featuredPost.href}
+              className="group block rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E2A6E] focus:ring-offset-2"
+              aria-label={`Read ${featuredPost.title}`}
+            >
+              <Card className="overflow-hidden border-slate-200 bg-white shadow-[0_18px_50px_rgba(30,42,110,0.09)] transition-transform duration-200 group-hover:-translate-y-1 group-hover:shadow-[0_22px_55px_rgba(30,42,110,0.13)]">
+                <div className="grid overflow-hidden lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] lg:items-center">
+                  <div className="relative block aspect-[16/9] overflow-hidden bg-white">
                   <img
                     src={featuredPost.image}
                     alt={featuredPost.imageAlt}
                     className="absolute inset-0 h-full w-full object-contain object-center"
                   />
-                </div>
-
-                <CardContent className="flex flex-col justify-center p-6 md:p-8">
-                  <h2 className="mt-4 font-heading text-2xl font-bold leading-tight text-slate-950 md:text-3xl">
-                    {featuredPost.title}
-                  </h2>
-                  <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600 md:text-base">
-                    {featuredPost.description}
-                  </p>
-                  <div className="mt-6 flex flex-wrap gap-3">
-                    <Link to={featuredPost.href}>
-                      <Button className="bg-[#1E2A6E] text-white hover:bg-[#273588]">
-                        Read Story <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </Link>
                   </div>
-                </CardContent>
-              </div>
-            </Card>
+
+                  <CardContent className="flex flex-col justify-center p-6 md:p-8">
+                    <h2 className="mt-4 font-heading text-2xl font-bold leading-tight text-slate-950 group-hover:text-[#1E2A6E] md:text-3xl">
+                      {featuredPost.title}
+                    </h2>
+                    <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600 md:text-base">
+                      {featuredPost.description}
+                    </p>
+                    <div className="mt-6 flex flex-wrap gap-3">
+                      <span className="inline-flex h-10 items-center justify-center rounded-md bg-[#1E2A6E] px-4 py-2 text-sm font-medium text-white transition-colors group-hover:bg-[#273588]">
+                        Read Story <ArrowRight className="ml-2 h-4 w-4" />
+                      </span>
+                    </div>
+                  </CardContent>
+                </div>
+              </Card>
+            </Link>
 
             <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
               {pagedPosts.map((post) => (
-                <Card
+                <Link
                   key={post.slug}
-                  className="group overflow-hidden border-slate-200 bg-white shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg"
+                  to={post.href}
+                  className="group block rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E2A6E] focus:ring-offset-2"
+                  aria-label={`Read ${post.title}`}
                 >
-                  <div className="relative aspect-[16/9] overflow-hidden bg-white">
-                    <img
-                      src={post.image}
-                      alt={post.imageAlt}
-                      className="h-full w-full object-contain object-center"
-                    />
-                  </div>
-                  <CardContent className="p-5">
-                    <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
-                      <span className="rounded-full bg-[#1E2A6E]/10 px-2.5 py-1 text-[#1E2A6E]">
-                        {post.category}
+                  <Card className="h-full overflow-hidden border-slate-200 bg-white shadow-sm transition-transform duration-200 group-hover:-translate-y-1 group-hover:shadow-lg">
+                    <div className="relative block aspect-[16/9] overflow-hidden bg-white">
+                      <img
+                        src={post.image}
+                        alt={post.imageAlt}
+                        className="h-full w-full object-contain object-center"
+                      />
+                    </div>
+                    <CardContent className="p-5">
+                      <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                        <span className="rounded-full bg-[#1E2A6E]/10 px-2.5 py-1 text-[#1E2A6E]">
+                          {post.category}
+                        </span>
+                        <span>{post.readTime}</span>
+                      </div>
+                      <h3 className="mt-4 font-heading text-lg font-bold leading-snug text-slate-950 group-hover:text-[#1E2A6E]">
+                        {post.title}
+                      </h3>
+                      <p className="mt-3 text-sm leading-6 text-slate-600">
+                        {post.description}
+                      </p>
+                      <span className="mt-5 inline-flex items-center text-sm font-semibold text-[#1E2A6E] underline underline-offset-4">
+                        Read More
                       </span>
-                      <span>{post.readTime}</span>
-                    </div>
-                    <h3 className="mt-4 font-heading text-lg font-bold leading-snug text-slate-950">
-                      {post.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-6 text-slate-600">
-                      {post.description}
-                    </p>
-                    <div className="mt-4 flex items-center justify-between gap-3 text-xs text-slate-500">
-                      <span>{post.publishedLabel}</span>
-                      <span>{post.author}</span>
-                    </div>
-                    <Link
-                      to={post.href}
-                      className="mt-5 inline-flex items-center text-sm font-semibold text-[#1E2A6E] underline underline-offset-4"
-                    >
-                      Read More
-                    </Link>
-                  </CardContent>
-                </Card>
+                    </CardContent>
+                  </Card>
+                </Link>
               ))}
             </div>
 
