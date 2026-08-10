@@ -4,20 +4,15 @@ import {
   Calendar,
   CheckCircle,
   Clock,
+  Mail,
   MessageSquare,
-  Shield,
+  Phone,
   Users,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { PageBreadcrumb } from '@/components/PageBreadcrumb';
-
-const storyFacts = [
-  { label: 'Topic', value: 'Driver feedback and experience' },
-  { label: 'Audience', value: 'Cab, auto, bike and acting drivers' },
-  { label: 'Focus', value: 'Transparency, support and flexibility' },
-  { label: 'Goal', value: 'A better driver experience' },
-];
+import { companyInfo } from '@/data/siteData';
 
 const onThisPage = [
   { label: 'Why Driver Feedback Matters', href: '#why-feedback-matters' },
@@ -67,7 +62,7 @@ const driverQuotes = [
 const relatedPosts = [
   {
     category: 'Drivers',
-    href: '/blog/how-root-cabs-helps-drivers-earn-up-to-40000-extra-every-month',
+    href: '/blog/how-root-cabs-helps-drivers-earn-up',
     title: 'How Root Cabs Helps Drivers Earn Up to Rs. 40,000 Extra Every Month',
     note: 'Read earnings guide',
   },
@@ -84,6 +79,8 @@ const relatedPosts = [
     note: 'Read launch story',
   },
 ];
+
+const driverFeedbackHeroImage = '/assets/driver-feedback-root-cabs.avif';
 
 function upsertMeta(
   head: HTMLHeadElement,
@@ -127,7 +124,7 @@ const DriverFeedbackPage = () => {
       keywords:
         'Root Cabs driver feedback, driver partners, cab driver support, flexible working hours, driver earnings, Tamil Nadu drivers, Root Partner app',
       url: 'https://rootcabs.com/blog/what-our-driver-partners-say-about-root-cabs',
-      image: 'https://rootcabs.com/assets/root-cabs-logo.webp',
+      image: 'https://rootcabs.com/assets/driver-feedback-root-cabs.avif',
     };
 
     const canonicalSelector = 'link[rel="canonical"]';
@@ -245,39 +242,18 @@ const DriverFeedbackPage = () => {
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1.72fr)_minmax(300px,0.78fr)]">
           <article className="min-w-0">
             <section className="overflow-hidden rounded-[28px] border border-white/70 bg-white shadow-[0_20px_60px_rgba(30,42,110,0.08)]">
-              <div className="border-b border-slate-200 bg-slate-50 px-6 py-4">
-                <div className="flex flex-wrap items-center gap-3 text-sm text-slate-600">
-                  <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800">
-                    Drivers
-                  </span>
-                  <span className="inline-flex items-center gap-1.5">
-                    <Clock className="h-4 w-4 text-slate-400" />
-                    9 min read
-                  </span>
-                  <span className="inline-flex items-center gap-1.5">
-                    <Users className="h-4 w-4 text-slate-400" />
-                    Root Cabs Editorial
-                  </span>
-                </div>
-              </div>
-
               <div className="px-6 py-6 md:px-8 md:py-8">
-                <div className="overflow-hidden rounded-[24px] border border-dashed border-indigo-200 bg-[linear-gradient(135deg,_rgba(30,42,110,0.04),_rgba(255,215,0,0.08))]">
-                  <div className="flex aspect-[16/9] min-h-[280px] items-center justify-center px-6 text-center md:min-h-[340px]">
-                    <div className="max-w-lg space-y-3">
-                      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm">
-                        <Shield className="h-7 w-7 text-[#1E2A6E]" />
-                      </div>
-                      <p className="font-semibold text-slate-800">Featured image space reserved</p>
-                      <p className="text-sm leading-6 text-slate-600">
-                        Upload the driver feedback image here when it is ready. For media updates, contact{' '}
-                        <span className="font-semibold text-slate-800">support@rootcabs.com</span>.
-                      </p>
-                    </div>
+                <div className="overflow-hidden rounded-[24px] border border-slate-200 bg-slate-100">
+                  <div className="relative aspect-[16/9] min-h-[280px] md:min-h-[340px]">
+                    <img
+                      src={driverFeedbackHeroImage}
+                      alt="Driver partner feedback about Root Cabs"
+                      className="h-full w-full object-cover object-center"
+                    />
                   </div>
                 </div>
 
-                <div className="mt-8 grid gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.72fr)]">
+                <div className="mt-8">
                   <div className="space-y-6 text-[1.04rem] leading-8 text-slate-700">
                     <p>
                       Drivers are an important part of every Root Cabs journey. They meet customers, manage different routes and handle the practical side of each trip. Their experience helps us understand what works well and where the platform needs improvement.
@@ -289,22 +265,6 @@ const DriverFeedbackPage = () => {
                       Listening to driver feedback helps Root Cabs improve communication, trip information, payments and support.
                     </p>
                   </div>
-
-                  <aside className="rounded-[22px] border border-slate-200 bg-slate-50 p-5">
-                    <h2 className="text-sm font-extrabold uppercase tracking-[0.2em] text-[#1E2A6E]">
-                      Driver Snapshot
-                    </h2>
-                    <div className="mt-4 space-y-4">
-                      {storyFacts.map((fact) => (
-                        <div key={fact.label} className="rounded-2xl bg-white px-4 py-3 shadow-sm">
-                          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                            {fact.label}
-                          </p>
-                          <p className="mt-1 text-sm font-semibold text-slate-900">{fact.value}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </aside>
                 </div>
 
                 <div className="mt-10 space-y-10">
@@ -399,7 +359,7 @@ const DriverFeedbackPage = () => {
                       </p>
                     </div>
                     <div className="flex flex-wrap gap-3">
-                      <Link to="/blog/how-root-cabs-helps-drivers-earn-up-to-40000-extra-every-month">
+                      <Link to="/blog/how-root-cabs-helps-drivers-earn-up">
                         <Button className="bg-[#1E2A6E] text-white hover:bg-[#273588]">
                           Read earnings guide
                         </Button>
@@ -448,22 +408,6 @@ const DriverFeedbackPage = () => {
                     </a>
                   ))}
                 </nav>
-              </CardContent>
-            </Card>
-
-            <Card className="border-slate-200 shadow-sm">
-              <CardContent className="p-5">
-                <h2 className="font-heading text-xl font-bold text-slate-950">Driver Snapshot</h2>
-                <div className="mt-4 space-y-3">
-                  {storyFacts.map((fact) => (
-                    <div key={fact.label} className="rounded-2xl bg-slate-50 px-4 py-3">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                        {fact.label}
-                      </p>
-                      <p className="mt-1 text-sm font-semibold text-slate-900">{fact.value}</p>
-                    </div>
-                  ))}
-                </div>
               </CardContent>
             </Card>
 
@@ -518,12 +462,37 @@ const DriverFeedbackPage = () => {
             <Card className="border-slate-200 bg-[#1E2A6E] text-white shadow-sm">
               <CardContent className="p-5">
                 <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#FFD700]">
-                  Media contact
+                  Contact Us
                 </p>
-                <h2 className="mt-3 font-heading text-2xl font-bold">Image space reserved</h2>
+                <h2 className="mt-3 font-heading text-2xl font-bold">Need Help With Root Cabs?</h2>
                 <p className="mt-3 text-sm leading-6 text-white/80">
-                  The featured image area is intentionally left open until the final artwork is provided. Send the asset to support@rootcabs.com when ready.
+                  Reach the Root Cabs team for driver support, booking questions or general assistance.
                 </p>
+                <div className="mt-5 grid gap-3">
+                  <a href={`tel:${companyInfo.phone}`}>
+                    <Button className="w-full justify-start bg-[#FFD700] text-[#1E2A6E] hover:bg-[#ffe14d]">
+                      <Phone className="mr-2 h-4 w-4" />
+                      Call Us
+                    </Button>
+                  </a>
+                  <a href={`mailto:${companyInfo.email}`}>
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start border-white/30 bg-white/10 text-white hover:bg-white hover:text-[#1E2A6E]"
+                    >
+                      <Mail className="mr-2 h-4 w-4" />
+                      Email Us
+                    </Button>
+                  </a>
+                </div>
+                <div className="mt-4 space-y-2 text-sm leading-6 text-white/80">
+                  <p>
+                    <span className="font-semibold text-white">Phone:</span> {companyInfo.phone}
+                  </p>
+                  <p>
+                    <span className="font-semibold text-white">Email:</span> {companyInfo.email}
+                  </p>
+                </div>
               </CardContent>
             </Card>
           </aside>

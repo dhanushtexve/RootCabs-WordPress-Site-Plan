@@ -1,0 +1,417 @@
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import {
+  ArrowRight,
+  Calendar,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
+  Search,
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
+import { PageBreadcrumb } from '@/components/PageBreadcrumb';
+import {
+  blogLandingCategoryOrder,
+  blogLandingPosts,
+  featuredBlogSlug,
+  type BlogLandingPost,
+} from '@/data/blogLandingData';
+
+const formatPostCount = (count: number) => `${count} article${count === 1 ? '' : 's'}`;
+
+function sortByDateDesc(a: BlogLandingPost, b: BlogLandingPost) {
+  return Date.parse(b.publishedAt) - Date.parse(a.publishedAt);
+}
+
+function matchesQuery(post: BlogLandingPost, query: string, category: string) {
+  const normalizedQuery = query.trim().toLowerCase();
+  const categoryMatches = category === 'All' || post.category === category;
+
+  if (!categoryMatches) {
+    return false;
+  }
+
+  if (!normalizedQuery) {
+    return true;
+  }
+
+  return [
+    post.title,
+    post.description,
+    post.category,
+    post.author,
+  ].some((value) => value.toLowerCase().includes(normalizedQuery));
+}
+
+const BlogLandingPage = () => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [activeCategory, setActiveCategory] = useState<(typeof blogLandingCategoryOrder)[number]>('All');
+  const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    const previousTitle = document.title;
+    const previousLang = document.documentElement.lang;
+    const head = document.head;
+    const seo = {
+      title: 'Blog & Travel Guides | Root Cabs',
+      description:
+        'Explore Root Cabs stories, travel guides, driver updates and city coverage across Tamil Nadu.',
+      keywords:
+        'Root Cabs blog, travel guides, Root Cabs stories, driver updates, Tamil Nadu travel, local rides, outstation travel, support articles',
+      url: 'https://rootcabs.com/blog',
+      image: 'https://rootcabs.com/assets/story-behind-root-cabs.avif',
+    };
+
+    const upsertMeta = (attribute: 'name' | 'property', key: string, content: string) => {
+      const selector = `meta[${attribute}="${key}"]`;
+      let tag = head.querySelector(selector) as HTMLMetaElement | null;
+      const existed = Boolean(tag);
+      const previousContent = tag?.getAttribute('content');
+
+      if (!tag) {
+        tag = document.createElement('meta');
+        tag.setAttribute(attribute, key);
+        head.appendChild(tag);
+      }
+
+      tag.setAttribute('content', content);
+
+      return () => {
+        if (!tag) return;
+        if (existed) {
+          if (previousContent !== null) tag.setAttribute('content', previousContent);
+        } else {
+          tag.remove();
+        }
+      };
+    };
+
+    const canonicalSelector = 'link[rel="canonical"]';
+    let canonicalTag = head.querySelector(canonicalSelector) as HTMLLinkElement | null;
+    const canonicalExisted = Boolean(canonicalTag);
+    const previousCanonicalHref = canonicalTag?.getAttribute('href');
+    if (!canonicalTag) {
+      canonicalTag = document.createElement('link');
+      canonicalTag.rel = 'canonical';
+      head.appendChild(canonicalTag);
+    }
+    canonicalTag.href = seo.url;
+
+    const cleanupMeta = [
+      upsertMeta('name', 'description', seo.description),
+      upsertMeta('name', 'keywords', seo.keywords),
+      upsertMeta('property', 'og:site_name', 'Root Cabs'),
+      upsertMeta('property', 'og:title', seo.title),
+      upsertMeta('property', 'og:description', seo.description),
+      upsertMeta('property', 'og:url', seo.url),
+      upsertMeta('property', 'og:image', seo.image),
+      upsertMeta('property', 'og:type', 'website'),
+      upsertMeta('name', 'twitter:card', 'summary_large_image'),
+      upsertMeta('name', 'twitter:title', seo.title),
+      upsertMeta('name', 'twitter:description', seo.description),
+      upsertMeta('name', 'twitter:image', seo.image),
+    ];
+
+    document.title = seo.title;
+    document.documentElement.lang = 'en-IN';
+
+    const schema = document.createElement('script');
+    schema.type = 'application/ld+json';
+    schema.text = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Blog',
+      name: seo.title,
+      description: seo.description,
+      url: seo.url,
+      publisher: {
+        '@type': 'Organization',
+        name: 'Root Cabs',
+        logo: {
+          '@type': 'ImageObject',
+          url: seo.image,
+        },
+      },
+      blogPost: blogLandingPosts.map((post) => ({
+        '@type': 'BlogPosting',
+        headline: post.title,
+        description: post.description,
+        datePublished: post.publishedAt,
+        author: {
+          '@type': 'Organization',
+          name: post.author,
+        },
+        url: `${seo.url.replace(/\/$/, '')}${post.href.replace('/blog', '')}`,
+      })),
+    });
+    head.appendChild(schema);
+
+    return () => {
+      document.title = previousTitle;
+      document.documentElement.lang = previousLang;
+      cleanupMeta.forEach((dispose) => dispose());
+
+      if (canonicalExisted) {
+        if (previousCanonicalHref !== null) canonicalTag?.setAttribute('href', previousCanonicalHref);
+      } else {
+        canonicalTag?.remove();
+      }
+
+      schema.remove();
+    };
+  }, []);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeCategory, searchQuery]);
+
+  const sortedPosts = [...blogLandingPosts].sort(sortByDateDesc);
+  const featuredPost = sortedPosts.find((post) => post.slug === featuredBlogSlug) ?? sortedPosts[0];
+  const secondaryPosts = sortedPosts.filter((post) => post.slug !== featuredPost.slug);
+  const filteredPosts = secondaryPosts.filter((post) =>
+    matchesQuery(post, searchQuery, activeCategory),
+  );
+
+  const pageSize = 8;
+  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / pageSize));
+  const safePage = Math.min(currentPage, totalPages);
+  const pagedPosts = filteredPosts.slice((safePage - 1) * pageSize, safePage * pageSize);
+  const popularPosts = secondaryPosts.slice(0, 5);
+
+  return (
+    <main className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(30,42,110,0.12),_transparent_30%),linear-gradient(180deg,_#f8fafc_0%,_#eef2ff_100%)] text-slate-900">
+      <section className="bg-gradient-to-br from-[#1E2A6E] via-[#23347d] to-[#2E3A8C] text-white">
+        <div className="mx-auto max-w-screen-xl px-4 py-12 md:py-14">
+          <PageBreadcrumb
+            className="mb-4 text-white/70"
+            items={[
+              { label: 'Home', href: '/' },
+              { label: 'Blog' },
+            ]}
+          />
+          <div className="max-w-4xl">
+            <span className="inline-flex rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.22em] text-[#1E2A6E]">
+              Root Cabs Blog
+            </span>
+            <h1 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-5xl">
+              Blog & Travel Guides
+            </h1>
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-white/80 md:text-base">
+              Tips, guides and stories about Root Cabs, travel across Tamil Nadu, and the people who use the service every day.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-white/80">
+              <span className="inline-flex items-center gap-2">
+                <Calendar className="h-4 w-4 text-[#FFD700]" />
+                {formatPostCount(blogLandingPosts.length)}
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <Clock className="h-4 w-4 text-[#FFD700]" />
+                Updated regularly
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-screen-xl px-4 py-8 md:py-10">
+        <div className="rounded-[28px] border border-white/70 bg-white/95 p-4 shadow-lg shadow-slate-200/70 backdrop-blur md:p-5">
+          <div className="grid gap-4 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+            <div className="relative">
+              <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+              <Input
+                value={searchQuery}
+                onChange={(event) => setSearchQuery(event.target.value)}
+                placeholder="Search articles..."
+                aria-label="Search articles"
+                className="h-11 rounded-full border-slate-200 bg-slate-50 pl-10 pr-4 text-sm shadow-sm focus-visible:ring-[#1E2A6E]"
+              />
+            </div>
+
+            <div className="flex flex-wrap gap-2 lg:justify-end">
+              {blogLandingCategoryOrder.map((category) => {
+                const active = activeCategory === category;
+                return (
+                  <button
+                    key={category}
+                    type="button"
+                    onClick={() => setActiveCategory(category)}
+                    className={`rounded-full px-4 py-2 text-xs font-semibold transition-colors ${
+                      active
+                        ? 'bg-[#1E2A6E] text-white shadow-sm'
+                        : 'border border-slate-200 bg-white text-slate-600 hover:border-[#1E2A6E]/20 hover:text-[#1E2A6E]'
+                    }`}
+                  >
+                    {category}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-screen-xl px-4 pb-16 md:pb-20">
+        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.45fr)_minmax(300px,0.55fr)]">
+          <div className="space-y-8">
+            <Card className="overflow-hidden border-slate-200 bg-white shadow-[0_18px_50px_rgba(30,42,110,0.09)]">
+              <div className="grid overflow-hidden lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] lg:items-center">
+                <div className="relative aspect-[16/9] overflow-hidden bg-white">
+                  <img
+                    src={featuredPost.image}
+                    alt={featuredPost.imageAlt}
+                    className="absolute inset-0 h-full w-full object-contain object-center"
+                  />
+                </div>
+
+                <CardContent className="flex flex-col justify-center p-6 md:p-8">
+                  <h2 className="mt-4 font-heading text-2xl font-bold leading-tight text-slate-950 md:text-3xl">
+                    {featuredPost.title}
+                  </h2>
+                  <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600 md:text-base">
+                    {featuredPost.description}
+                  </p>
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    <Link to={featuredPost.href}>
+                      <Button className="bg-[#1E2A6E] text-white hover:bg-[#273588]">
+                        Read Story <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                  </div>
+                </CardContent>
+              </div>
+            </Card>
+
+            <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+              {pagedPosts.map((post) => (
+                <Card
+                  key={post.slug}
+                  className="group overflow-hidden border-slate-200 bg-white shadow-sm transition-transform duration-200 hover:-translate-y-1 hover:shadow-lg"
+                >
+                  <div className="relative aspect-[16/9] overflow-hidden bg-white">
+                    <img
+                      src={post.image}
+                      alt={post.imageAlt}
+                      className="h-full w-full object-contain object-center"
+                    />
+                  </div>
+                  <CardContent className="p-5">
+                    <div className="flex flex-wrap items-center gap-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                      <span className="rounded-full bg-[#1E2A6E]/10 px-2.5 py-1 text-[#1E2A6E]">
+                        {post.category}
+                      </span>
+                      <span>{post.readTime}</span>
+                    </div>
+                    <h3 className="mt-4 font-heading text-lg font-bold leading-snug text-slate-950">
+                      {post.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-6 text-slate-600">
+                      {post.description}
+                    </p>
+                    <div className="mt-4 flex items-center justify-between gap-3 text-xs text-slate-500">
+                      <span>{post.publishedLabel}</span>
+                      <span>{post.author}</span>
+                    </div>
+                    <Link
+                      to={post.href}
+                      className="mt-5 inline-flex items-center text-sm font-semibold text-[#1E2A6E] underline underline-offset-4"
+                    >
+                      Read More
+                    </Link>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            {totalPages > 1 ? (
+              <div className="flex items-center justify-center gap-2 pt-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="rounded-full border-slate-200 px-4"
+                  onClick={() => setCurrentPage((value) => Math.max(1, value - 1))}
+                  disabled={safePage === 1}
+                >
+                  <ChevronLeft className="mr-1 h-4 w-4" />
+                  Previous
+                </Button>
+
+                {Array.from({ length: totalPages }, (_, index) => index + 1).map((pageNumber) => (
+                  <Button
+                    key={pageNumber}
+                    type="button"
+                    onClick={() => setCurrentPage(pageNumber)}
+                    className={`h-10 min-w-10 rounded-full px-4 ${
+                      pageNumber === safePage
+                        ? 'bg-[#1E2A6E] text-white hover:bg-[#273588]'
+                        : 'bg-white text-slate-700 hover:bg-slate-50'
+                    }`}
+                    variant={pageNumber === safePage ? 'default' : 'outline'}
+                  >
+                    {pageNumber}
+                  </Button>
+                ))}
+
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="rounded-full border-slate-200 px-4"
+                  onClick={() => setCurrentPage((value) => Math.min(totalPages, value + 1))}
+                  disabled={safePage === totalPages}
+                >
+                  Next
+                  <ChevronRight className="ml-1 h-4 w-4" />
+                </Button>
+              </div>
+            ) : null}
+          </div>
+
+          <aside className="space-y-6 lg:sticky lg:top-6 lg:self-start">
+            <Card className="border-slate-200 bg-white shadow-sm">
+              <CardContent className="p-5">
+                <h2 className="font-heading text-xl font-bold text-slate-950">Popular Posts</h2>
+                <div className="mt-4 space-y-3">
+                  {popularPosts.map((post, index) => (
+                    <Link
+                      key={post.slug}
+                      to={post.href}
+                      className="group flex gap-3 rounded-2xl border border-slate-200 bg-white p-3 transition-colors hover:border-[#1E2A6E]/20 hover:bg-slate-50"
+                    >
+                      <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-slate-100">
+                        <img
+                          src={post.image}
+                          alt={post.imageAlt}
+                          className="h-full w-full object-contain object-center p-1"
+                        />
+                      </div>
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center justify-between gap-3 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                          <span className="rounded-full bg-amber-100 px-2.5 py-1 text-amber-800">
+                            #{index + 1}
+                          </span>
+                          <span>{post.category}</span>
+                        </div>
+                        <p className="mt-2 text-sm font-semibold leading-6 text-slate-900 group-hover:text-[#1E2A6E]">
+                          {post.title}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+                <Link
+                  to={featuredPost.href}
+                  className="mt-4 inline-flex items-center text-sm font-semibold text-[#1E2A6E] underline underline-offset-4"
+                >
+                  View Featured Story
+                </Link>
+              </CardContent>
+            </Card>
+
+          </aside>
+        </div>
+      </section>
+    </main>
+  );
+};
+
+export default BlogLandingPage;

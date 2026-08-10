@@ -6,17 +6,13 @@ import {
   Clock,
   HelpCircle,
   MessageSquare,
+  Mail,
+  Phone,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { PageBreadcrumb } from '@/components/PageBreadcrumb';
-
-const storyFacts = [
-  { label: 'Launch city', value: 'Vellore' },
-  { label: 'Official launch date', value: 'June 5, 2025' },
-  { label: 'Launch support', value: 'A.P. Nandakumar' },
-  { label: 'Initial services', value: 'Local, outstation, one way, hourly, auto and acting driver' },
-];
+import { companyInfo } from '@/data/siteData';
 
 const onThisPage = [
   { label: 'Root Cabs Begins Its Journey In Vellore', href: '#vellore' },
@@ -28,14 +24,8 @@ const onThisPage = [
   { label: 'The Journey Continues', href: '#continue' },
 ];
 
-const relatedPosts = [
-  {
-    category: 'Route Guide',
-    href: '/blog/root-cabs-success-stories',
-    title: 'Root Cabs Success Stories: Inspiring Journeys of Our Driver Partners',
-    note: 'Read next',
-  },
-];
+const launchHeroImage = '/assets/launch-of-root-cabs.webp';
+const velloreWhyImage = '/assets/launch-vellore-why-image.webp';
 
 function upsertMeta(
   head: HTMLHeadElement,
@@ -79,7 +69,7 @@ const LaunchRootCabsPage = () => {
       keywords:
         'Root Cabs launch, Vellore taxi service, Tamil Nadu taxi industry, Root Cabs blog, local rides, outstation taxi, one way taxi, acting driver, auto taxi',
       url: 'https://rootcabs.com/blog/launch-of-root-cabs',
-      image: 'https://rootcabs.com/assets/root-cabs-logo.webp',
+      image: 'https://rootcabs.com/assets/launch-of-root-cabs.webp',
     };
 
     const canonicalSelector = 'link[rel="canonical"]';
@@ -197,43 +187,18 @@ const LaunchRootCabsPage = () => {
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1.72fr)_minmax(300px,0.78fr)]">
           <article className="min-w-0">
             <section className="overflow-hidden rounded-[28px] border border-white/70 bg-white shadow-[0_20px_60px_rgba(30,42,110,0.08)]">
-              <div className="border-b border-slate-200 bg-slate-50 px-6 py-4">
-                <div className="flex flex-wrap items-center gap-3 text-sm text-slate-600">
-                  <span className="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-800">
-                    Business
-                  </span>
-                  <span className="inline-flex items-center gap-1.5">
-                    <Clock className="h-4 w-4 text-slate-400" />
-                    8 min read
-                  </span>
-                  <span className="inline-flex items-center gap-1.5">
-                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-[#1E2A6E] text-[10px] font-bold text-white">
-                      RC
-                    </span>
-                    Root Cabs Editorial
-                  </span>
-                </div>
-              </div>
-
               <div className="px-6 py-6 md:px-8 md:py-8">
-                <div className="overflow-hidden rounded-[24px] border border-dashed border-indigo-200 bg-[linear-gradient(135deg,_rgba(30,42,110,0.04),_rgba(255,215,0,0.08))]">
-                  <div className="flex aspect-[16/9] min-h-[280px] items-center justify-center px-6 text-center md:min-h-[340px]">
-                    <div className="max-w-lg space-y-3">
-                      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm">
-                        <span className="text-[10px] font-extrabold uppercase tracking-[0.22em] text-slate-500">
-                          Image
-                        </span>
-                      </div>
-                      <p className="font-semibold text-slate-800">Featured image space reserved</p>
-                      <p className="text-sm leading-6 text-slate-600">
-                        Upload the launch image here when it is ready. For media updates, contact{' '}
-                        <span className="font-semibold text-slate-800">support@rootcabs.com</span>.
-                      </p>
-                    </div>
+                <div className="overflow-hidden rounded-[24px] border border-slate-200 bg-slate-100">
+                  <div className="relative aspect-[16/9] min-h-[280px] md:min-h-[340px]">
+                    <img
+                      src={launchHeroImage}
+                      alt="Root Cabs launch ceremony"
+                      className="h-full w-full object-cover object-center"
+                    />
                   </div>
                 </div>
 
-                <div className="mt-8 grid gap-6 md:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.72fr)]">
+                <div className="mt-8">
                   <div className="space-y-6 text-[1.04rem] leading-8 text-slate-700">
                     <p>
                       Every business begins with an idea, and Root Cabs began with a clear one. The aim was to make everyday travel more affordable, reliable and convenient for people across Tamil Nadu. That idea became a reality in Vellore on June 5, 2025, when Root Cabs was officially inaugurated by A.P. Nandakumar, who was then the Anaikattu MLA and a prominent DMK district leader.
@@ -241,26 +206,17 @@ const LaunchRootCabsPage = () => {
                     <p>
                       The occasion marked the public introduction of Root Cabs and the beginning of its journey in Tamil Nadu. Since then, what began as a local taxi service in one city has grown into a mobility platform serving more than ten cities across the state.
                     </p>
+                    <div className="overflow-hidden rounded-[22px] border border-slate-200 bg-white">
+                      <img
+                        src={velloreWhyImage}
+                        alt="Root Cabs launch image showing the early Vellore journey"
+                        className="h-auto w-full object-contain object-center"
+                      />
+                    </div>
                     <p>
                       Root Cabs was not created to be just another cab booking app. It was built around the way people actually travel in Tamil Nadu. Some need a ride to work or college, while others may be heading to a hospital, railway station, family event or another city. Root Cabs was developed with these everyday journeys in mind.
                     </p>
                   </div>
-
-                  <aside className="rounded-[22px] border border-slate-200 bg-slate-50 p-5">
-                    <h2 className="text-sm font-extrabold uppercase tracking-[0.2em] text-[#1E2A6E]">
-                      Launch Snapshot
-                    </h2>
-                    <div className="mt-4 space-y-4">
-                      {storyFacts.map((fact) => (
-                        <div key={fact.label} className="rounded-2xl bg-white px-4 py-3 shadow-sm">
-                          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                            {fact.label}
-                          </p>
-                          <p className="mt-1 text-sm font-semibold text-slate-900">{fact.value}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </aside>
                 </div>
 
                 <div className="mt-10 space-y-10">
@@ -447,57 +403,43 @@ const LaunchRootCabsPage = () => {
               </CardContent>
             </Card>
 
-            <Card className="border-slate-200 shadow-sm">
-              <CardContent className="p-5">
-                <h2 className="font-heading text-xl font-bold text-slate-950">Launch Highlights</h2>
-                <div className="mt-4 space-y-3">
-                  {storyFacts.map((fact) => (
-                    <div key={fact.label} className="rounded-2xl bg-slate-50 px-4 py-3">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                        {fact.label}
-                      </p>
-                      <p className="mt-1 text-sm font-semibold text-slate-900">{fact.value}</p>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-slate-200 shadow-sm">
-              <CardContent className="p-5">
-                <h2 className="font-heading text-xl font-bold text-slate-950">Related Posts</h2>
-                <div className="mt-4 space-y-3">
-                  {relatedPosts.map((post, index) => (
-                    <div key={post.title} className="rounded-2xl border border-slate-200 bg-white px-4 py-3">
-                      <div className="flex items-center justify-between gap-3 text-xs">
-                        <span className="rounded-full bg-amber-100 px-2.5 py-1 font-semibold text-amber-800">
-                          {post.category}
-                        </span>
-                        <span className="font-medium text-slate-400">#{index + 1}</span>
-                      </div>
-                      <p className="mt-3 text-sm font-semibold leading-6 text-slate-900">
-                        {post.title}
-                      </p>
-                      <p className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-500">
-                        {post.note}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
             <Card className="border-slate-200 bg-[#1E2A6E] text-white shadow-sm">
               <CardContent className="p-5">
                 <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#FFD700]">
-                  Media contact
+                  Contact Us
                 </p>
-                <h2 className="mt-3 font-heading text-2xl font-bold">Image space reserved</h2>
+                <h2 className="mt-3 font-heading text-2xl font-bold">Need Help With Root Cabs?</h2>
                 <p className="mt-3 text-sm leading-6 text-white/80">
-                  Add the final launch image later. For now, this article keeps the reserved space and the contact address visible at support@rootcabs.com.
+                  Reach the Root Cabs team for booking support, driver questions or general assistance.
                 </p>
+                <div className="mt-5 grid gap-3">
+                  <a href={`tel:${companyInfo.phone}`}>
+                    <Button className="w-full justify-start bg-[#FFD700] text-[#1E2A6E] hover:bg-[#ffe14d]">
+                      <Phone className="mr-2 h-4 w-4" />
+                      Call Us
+                    </Button>
+                  </a>
+                  <a href={`mailto:${companyInfo.email}`}>
+                    <Button
+                      variant="outline"
+                      className="w-full justify-start border-white/30 bg-white/10 text-white hover:bg-white hover:text-[#1E2A6E]"
+                    >
+                      <Mail className="mr-2 h-4 w-4" />
+                      Email Us
+                    </Button>
+                  </a>
+                </div>
+                <div className="mt-4 space-y-2 text-sm leading-6 text-white/80">
+                  <p>
+                    <span className="font-semibold text-white">Phone:</span> {companyInfo.phone}
+                  </p>
+                  <p>
+                    <span className="font-semibold text-white">Email:</span> {companyInfo.email}
+                  </p>
+                </div>
               </CardContent>
             </Card>
+
           </aside>
         </div>
       </div>

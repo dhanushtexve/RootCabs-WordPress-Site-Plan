@@ -68,7 +68,7 @@ function getDriverEarningsSeo() {
       'Learn how Root Cabs helps cab, auto, bike and acting drivers earn through flexible working hours, subscription plans and trips available in their city.',
     keywords:
       'Root Cabs driver earnings, earn 40000 extra monthly, cab driver income, auto driver income, bike driver income, acting driver, Root Partner app, flexible working hours',
-    url: 'https://rootcabs.com/blog/how-root-cabs-helps-drivers-earn-up-to-40000-extra-every-month',
+    url: 'https://rootcabs.com/blog/how-root-cabs-helps-drivers-earn-up',
     siteName: 'Root Cabs',
     ogTitle: 'How Root Cabs Helps Drivers Earn Up to Rs. 40,000 Extra Every Month | Root Cabs',
     ogDescription:
@@ -202,7 +202,7 @@ function getSpecialBlogPost(slug) {
     };
   }
 
-  if (slug === 'how-root-cabs-helps-drivers-earn-up-to-40000-extra-every-month') {
+  if (slug === 'how-root-cabs-helps-drivers-earn-up') {
     return {
       slug,
       title: 'How Root Cabs Helps Drivers Earn Up to Rs. 40,000 Extra Every Month',
@@ -276,7 +276,7 @@ function getHeadElements(url) {
       ? getSpecialBlogSeo()
       : slug === 'root-cabs-success-stories'
         ? getSuccessStoriesSeo()
-      : slug === 'how-root-cabs-helps-drivers-earn-up-to-40000-extra-every-month'
+      : slug === 'how-root-cabs-helps-drivers-earn-up'
           ? getDriverEarningsSeo()
       : slug === 'growth-of-root-cabs-in-chennai'
             ? getChennaiGrowthSeo()

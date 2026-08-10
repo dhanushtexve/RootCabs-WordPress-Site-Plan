@@ -376,6 +376,8 @@ export function BusinessPage() {
 // BLOG PAGE
 // ============================================================
 export function BlogPage() {
+  const storyHeroImage = "/assets/story-behind-root-cabs.avif";
+
   useEffect(() => {
     const previousTitle = document.title;
     const previousLang = document.documentElement.lang;
@@ -387,8 +389,8 @@ export function BlogPage() {
         "Read how Root Cabs began from a simple observation, launched in Vellore, and grew into a mobility platform built for everyday travel across Tamil Nadu.",
       keywords:
         "Root Cabs blog, Root Cabs story, Root Cabs origin, Vellore taxi launch, Tamil Nadu mobility platform, Root Cabs founders, everyday travel Tamil Nadu",
-      url: "https://rootcabs.com/blog",
-      image: "https://rootcabs.com/assets/root-cabs-logo.webp",
+      url: "https://rootcabs.com/blog/the-story-behind-root-cabs",
+      image: "https://rootcabs.com/assets/story-behind-root-cabs.avif",
     };
 
     const upsertMeta = (attribute: "name" | "property", key: string, content: string) => {
@@ -494,13 +496,6 @@ export function BlogPage() {
     { label: "From Vellore To More Cities", href: "#growth" },
   ];
 
-  const storyFacts = [
-    { label: "Founded by", value: "Selvarathinam Perumal" },
-    { label: "Launch city", value: "Vellore" },
-    { label: "Official start date", value: "June 5, 2025" },
-    { label: "Primary focus", value: "Clear fares and easier booking" },
-  ];
-
   const relatedPosts = [
     {
       category: "Brand Story",
@@ -516,7 +511,7 @@ export function BlogPage() {
     },
     {
       category: "Safety",
-      href: "/blog/how-root-cabs-helps-drivers-earn-up-to-40000-extra-every-month",
+      href: "/blog/how-root-cabs-helps-drivers-earn-up",
       title: "How Root Cabs Helps Drivers Earn Up to Rs. 40,000 Extra Every Month",
       note: "Read earnings guide",
     },
@@ -606,21 +601,13 @@ export function BlogPage() {
               </div>
 
               <div className="px-6 py-6 md:px-8 md:py-8">
-                <div className="overflow-hidden rounded-[24px] border border-dashed border-indigo-200 bg-[linear-gradient(135deg,_rgba(30,42,110,0.04),_rgba(255,215,0,0.08))]">
-                  <div className="flex aspect-[16/9] min-h-[280px] items-center justify-center px-6 text-center md:min-h-[340px]">
-                    <div className="max-w-lg space-y-3">
-                      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-sm">
-                        <img
-                          src="/assets/root-cabs-logo.webp"
-                          alt="Root Cabs logo placeholder"
-                          className="h-10 w-10 object-contain"
-                        />
-                      </div>
-                      <p className="font-semibold text-slate-800">Featured image space reserved</p>
-                      <p className="text-sm leading-6 text-slate-600">
-                        Upload the article image here when it is ready. For media updates, contact <span className="font-semibold text-slate-800">support@rootcabs.com</span>.
-                      </p>
-                    </div>
+                <div className="overflow-hidden rounded-[24px] border border-slate-200 bg-slate-100">
+                  <div className="relative aspect-[16/9] min-h-[280px] md:min-h-[340px]">
+                    <img
+                      src={storyHeroImage}
+                      alt="The story behind Root Cabs"
+                      className="h-full w-full object-contain object-center p-2"
+                    />
                   </div>
                 </div>
 
@@ -637,21 +624,6 @@ export function BlogPage() {
                     </p>
                   </div>
 
-                  <aside className="rounded-[22px] border border-slate-200 bg-slate-50 p-5">
-                    <h2 className="text-sm font-extrabold uppercase tracking-[0.2em] text-[#1E2A6E]">
-                      Story Snapshot
-                    </h2>
-                    <div className="mt-4 space-y-4">
-                      {storyFacts.map((fact) => (
-                        <div key={fact.label} className="rounded-2xl bg-white px-4 py-3 shadow-sm">
-                          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                            {fact.label}
-                          </p>
-                          <p className="mt-1 text-sm font-semibold text-slate-900">{fact.value}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </aside>
                 </div>
 
                 <div className="mt-10 space-y-10">
@@ -820,22 +792,6 @@ export function BlogPage() {
 
             <Card className="border-slate-200 shadow-sm">
               <CardContent className="p-5">
-                <h2 className="font-heading text-xl font-bold text-slate-950">Story Highlights</h2>
-                <div className="mt-4 space-y-3">
-                  {storyFacts.map((fact) => (
-                    <div key={fact.label} className="rounded-2xl bg-slate-50 px-4 py-3">
-                      <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                        {fact.label}
-                      </p>
-                      <p className="mt-1 text-sm font-semibold text-slate-900">{fact.value}</p>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-slate-200 shadow-sm">
-              <CardContent className="p-5">
                 <h2 className="font-heading text-xl font-bold text-slate-950">Popular Posts</h2>
                 <div className="mt-4 space-y-3">
                   {relatedPosts.map((post, index) => (
@@ -885,12 +841,34 @@ export function BlogPage() {
             <Card className="border-slate-200 bg-[#1E2A6E] text-white shadow-sm">
               <CardContent className="p-5">
                 <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#FFD700]">
-                  Media contact
+                  Contact Us
                 </p>
-                <h2 className="mt-3 font-heading text-2xl font-bold">Image space reserved</h2>
+                <h2 className="mt-3 font-heading text-2xl font-bold">Need Help With Root Cabs?</h2>
                 <p className="mt-3 text-sm leading-6 text-white/80">
-                  The featured image area is intentionally left open until the final artwork is provided. Send the asset to support@rootcabs.com when ready.
+                  Reach the Root Cabs team for booking support, business travel questions or general assistance.
                 </p>
+                <div className="mt-5 grid gap-3">
+                  <a href={`tel:${companyInfo.phone}`}>
+                    <Button className="w-full justify-start bg-[#FFD700] text-[#1E2A6E] hover:bg-[#ffe14d]">
+                      <Phone className="mr-2 h-4 w-4" />
+                      Call Us
+                    </Button>
+                  </a>
+                  <a href={`mailto:${companyInfo.email}`}>
+                    <Button variant="outline" className="w-full justify-start border-white/30 bg-white/10 text-white hover:bg-white hover:text-[#1E2A6E]">
+                      <Mail className="mr-2 h-4 w-4" />
+                      Email Us
+                    </Button>
+                  </a>
+                </div>
+                <div className="mt-4 space-y-2 text-sm leading-6 text-white/80">
+                  <p>
+                    <span className="font-semibold text-white">Phone:</span> {companyInfo.phone}
+                  </p>
+                  <p>
+                    <span className="font-semibold text-white">Email:</span> {companyInfo.email}
+                  </p>
+                </div>
               </CardContent>
             </Card>
           </aside>

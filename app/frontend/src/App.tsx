@@ -4,6 +4,7 @@ import Layout from "@/components/Layout";
 import Index from "@/pages/Index";
 import BookRide from "@/pages/BookRide";
 import BlogRoutes from "@/blog-routes";
+import BlogLandingPage from "@/components/blog/BlogLandingPage";
 import { ServicesHub, ServicePage } from "@/pages/ServicesPages";
 import { CitiesHub, CityPage, CityServicePage } from "@/pages/CitiesPages";
 import { RoutePage, LandmarkPage } from "@/pages/RoutesAndLandmarks";
@@ -11,7 +12,6 @@ import { DriversPage } from "@/pages/DriversPage";
 import { SupportPage } from "@/pages/SupportPage";
 import {
   BusinessPage,
-  BlogPage,
   AboutPage,
   PrivacyPolicyPage,
   TermsOfUsePage,
@@ -48,7 +48,7 @@ function App() {
           {/* Info Pages */}
           <Route path="/drivers" element={<DriversPage />} />
           <Route path="/business" element={<BusinessPage />} />
-          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog" element={<BlogLandingPage />} />
           <Route path="/blog/*" element={<BlogRoutes />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/about-us" element={<AboutPage />} />
