@@ -907,7 +907,7 @@ export default function BookRide() {
   return (
     <div>
       {/* Header */}
-      <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12">
+      <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] py-8 text-white md:py-10">
         <div className="max-w-screen-xl mx-auto px-4">
           <PageBreadcrumb
             className="mb-4 text-white/70"

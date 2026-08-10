@@ -123,7 +123,7 @@ export function ServicesHub() {
 
   return (
     <div>
-      <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12 md:py-14">
+      <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] py-8 text-white md:py-10">
         <div className="max-w-screen-xl mx-auto px-4">
           <PageBreadcrumb
             className="mb-4 text-white/70"
@@ -136,7 +136,7 @@ export function ServicesHub() {
           <p className="max-w-none text-sm leading-6 text-gray-300 md:whitespace-nowrap md:text-base">
             Explore our reliable Taxi Services in Tamil Nadu for local travel, outstation trips and everyday commuting.
           </p>
-          <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-300">
+          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-300">
             {serviceStats.map((stat) => (
               <div key={stat.label} className="flex items-center gap-1.5">
                 <span className="font-heading font-extrabold text-[#FFD700]">{stat.value}</span>

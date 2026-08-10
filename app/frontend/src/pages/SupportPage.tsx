@@ -158,7 +158,7 @@ export function SupportPage() {
 
   return (
     <div>
-      <section className="bg-[#1E2A6E] py-10 text-white md:py-12">
+      <section className="bg-[#1E2A6E] py-8 text-white md:py-10">
         <div className="mx-auto max-w-screen-xl px-4">
           <PageBreadcrumb
             className="mb-4 text-white/70"

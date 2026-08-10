@@ -151,7 +151,7 @@ const SuccessStoriesPage = () => {
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(30,42,110,0.08),_transparent_36%),linear-gradient(180deg,_#f8fafc_0%,_#eef2ff_100%)] text-slate-900">
       <section className="bg-gradient-to-br from-[#1E2A6E] via-[#25357f] to-[#2E3A8C] text-white">
-        <div className="mx-auto max-w-screen-xl px-4 py-12 md:py-14">
+        <div className="mx-auto max-w-screen-xl px-4 py-8 md:py-10">
           <PageBreadcrumb
             className="mb-4 text-white/70"
             items={[
@@ -170,7 +170,7 @@ const SuccessStoriesPage = () => {
             <p className="mt-4 max-w-3xl text-sm leading-7 text-white/80 md:text-base">
               Behind every Root Cabs ride is a driver working towards a personal goal. Some join to build a full-time income, while others begin with part-time driving.
             </p>
-            <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-white/80">
+            <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-white/80">
               <span className="inline-flex items-center gap-2">
                 <Calendar className="h-4 w-4 text-[#FFD700]" />
                 <time dateTime="2025-06-12">June 12, 2025</time>

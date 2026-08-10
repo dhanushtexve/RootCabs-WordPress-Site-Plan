@@ -428,7 +428,7 @@ export function DriversPage() {
   return (
     <div>
       <section className="bg-gradient-to-br from-[#1E2A6E] to-[#24377F] text-white">
-        <div className="max-w-screen-xl mx-auto px-4 py-14 md:py-16">
+        <div className="max-w-screen-xl mx-auto px-4 py-8 md:py-10">
           <div className="grid gap-8 lg:grid-cols-[1.2fr_.8fr] lg:items-stretch lg:gap-4">
             <div className="max-w-2xl">
               <PageBreadcrumb
@@ -441,10 +441,10 @@ export function DriversPage() {
               <h1 className="font-heading text-2xl font-extrabold leading-[1.1] tracking-tight md:text-3xl lg:whitespace-nowrap lg:text-[2.45rem]">
                 Drive And Earn With Root Cabs
               </h1>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-white/82 md:text-lg">
+              <p className="mt-4 max-w-2xl text-base leading-7 text-white/82 md:text-lg">
                 Become a Root Cabs driver partner and earn through ride opportunities suited to your vehicle. Auto, Cab and Bike owners can join the platform, choose flexible working hours, receive daily and weekly bonuses, and get dedicated support through the Root Partner app.
               </p>
-              <div className="mt-8 max-w-2xl overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl ring-1 ring-white/10">
+              <div className="mt-5 max-w-2xl overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl ring-1 ring-white/10">
                 <img
                   src="/assets/earn-with-root-cabs.webp"
                   alt="Drive and Earn with Root Cabs"
