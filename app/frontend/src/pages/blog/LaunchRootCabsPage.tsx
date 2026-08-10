@@ -19,12 +19,12 @@ const storyFacts = [
 ];
 
 const onThisPage = [
-  { label: 'Root Cabs Begins Its Journey in Vellore', href: '#vellore' },
-  { label: 'Why the Journey Started in Vellore', href: '#why-vellore' },
-  { label: 'Services Available at Launch', href: '#services' },
+  { label: 'Root Cabs Begins Its Journey In Vellore', href: '#vellore' },
+  { label: 'Why The Journey Started In Vellore', href: '#why-vellore' },
+  { label: 'Services Available At Launch', href: '#services' },
   { label: 'Making Booking Easier', href: '#booking' },
   { label: 'Expanding Across Tamil Nadu', href: '#expanding' },
-  { label: 'New Services Along the Journey', href: '#new-services' },
+  { label: 'New Services Along The Journey', href: '#new-services' },
   { label: 'The Journey Continues', href: '#continue' },
 ];
 
@@ -73,7 +73,7 @@ const LaunchRootCabsPage = () => {
     const head = document.head;
 
     const seo = {
-      title: 'The Launch of Root Cabs: A New Chapter in Tamil Nadu’s Taxi Industry | Root Cabs',
+      title: 'The Launch Of Root Cabs: A New Chapter In Tamil Nadu’s Taxi Industry | Root Cabs',
       description:
         'Read how Root Cabs launched in Vellore, why the city was chosen first, and how the service expanded across Tamil Nadu with local, outstation and acting driver options.',
       keywords:
@@ -116,7 +116,7 @@ const LaunchRootCabsPage = () => {
     schema.text = JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
-      headline: 'The Launch of Root Cabs: A New Chapter in Tamil Nadu’s Taxi Industry',
+      headline: 'The Launch Of Root Cabs: A New Chapter In Tamil Nadu’s Taxi Industry',
       description: seo.description,
       datePublished: '2025-06-05',
       dateModified: '2025-06-06',
@@ -170,7 +170,7 @@ const LaunchRootCabsPage = () => {
               Launch Story
             </span>
             <h1 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-5xl">
-              The Launch of Root Cabs: A New Chapter in Tamil Nadu’s Taxi Industry
+              The Launch Of Root Cabs: A New Chapter In Tamil Nadu’s Taxi Industry
             </h1>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-white/80 md:text-base">
               Every business begins with an idea, and Root Cabs began with a clear one. The aim was to make everyday travel more affordable, reliable and convenient for people across Tamil Nadu.
@@ -266,7 +266,7 @@ const LaunchRootCabsPage = () => {
                 <div className="mt-10 space-y-10">
                   <section id="vellore" className="scroll-mt-28">
                     <h2 className="font-heading text-2xl font-bold text-slate-950 md:text-3xl">
-                      Root Cabs Begins Its Journey in Vellore
+                      Root Cabs Begins Its Journey In Vellore
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
@@ -280,7 +280,7 @@ const LaunchRootCabsPage = () => {
 
                   <section id="why-vellore" className="scroll-mt-28">
                     <h2 className="font-heading text-2xl font-bold text-slate-950 md:text-3xl">
-                      Why the Journey Started in Vellore
+                      Why The Journey Started In Vellore
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
@@ -297,7 +297,7 @@ const LaunchRootCabsPage = () => {
 
                   <section id="services" className="scroll-mt-28">
                     <h2 className="font-heading text-2xl font-bold text-slate-950 md:text-3xl">
-                      Services Available at Launch
+                      Services Available At Launch
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
@@ -351,7 +351,7 @@ const LaunchRootCabsPage = () => {
 
                   <section id="new-services" className="scroll-mt-28">
                     <h2 className="font-heading text-2xl font-bold text-slate-950 md:text-3xl">
-                      New Services Along the Journey
+                      New Services Along The Journey
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
@@ -388,7 +388,7 @@ const LaunchRootCabsPage = () => {
                         Keep the launch moving
                       </p>
                       <h2 className="mt-2 font-heading text-2xl font-bold text-slate-950">
-                        Explore Root Cabs, book a ride, or join as a driver
+                        Explore Root Cabs, Book a Ride, Or Join as a Driver
                       </h2>
                       <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-600">
                         The launch story is only the beginning. Use the app to plan your next ride or open the driver route if you want to earn with flexible hours in your city.

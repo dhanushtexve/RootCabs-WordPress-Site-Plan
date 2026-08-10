@@ -80,7 +80,7 @@ const relatedPosts = [
   {
     category: 'Launch Story',
     href: '/blog/launch-of-root-cabs',
-    title: "The Launch of Root Cabs: A New Chapter in Tamil Nadu's Taxi Industry",
+    title: "The Launch Of Root Cabs: A New Chapter In Tamil Nadu's Taxi Industry",
     note: 'Read launch story',
   },
 ];
@@ -392,7 +392,7 @@ const DriverFeedbackPage = () => {
                         Driver feedback next step
                       </p>
                       <h2 className="mt-2 font-heading text-2xl font-bold text-slate-950">
-                        Explore more Root Cabs driver content
+                        Explore More Root Cabs Driver Content
                       </h2>
                       <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-600">
                         Read more about earnings, success stories and the company launch if you want the full Root Cabs story for drivers.

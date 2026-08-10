@@ -382,7 +382,7 @@ export function BlogPage() {
     const head = document.head;
 
     const seo = {
-      title: "The Story Behind Root Cabs: How a Vision Became a Reality | Root Cabs",
+      title: "The Story Behind Root Cabs: How A Vision Became A Reality | Root Cabs",
       description:
         "Read how Root Cabs began from a simple observation, launched in Vellore, and grew into a mobility platform built for everyday travel across Tamil Nadu.",
       keywords:
@@ -449,7 +449,7 @@ export function BlogPage() {
     schema.text = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      headline: "The Story Behind Root Cabs: How a Vision Became a Reality",
+      headline: "The Story Behind Root Cabs: How A Vision Became A Reality",
       description: seo.description,
       datePublished: "2025-06-05",
       dateModified: "2025-06-05",
@@ -487,11 +487,11 @@ export function BlogPage() {
   }, []);
 
   const onThisPage = [
-    { label: "The Problem We Wanted to Solve", href: "#problem" },
-    { label: "The Journey Started in Vellore", href: "#vellore" },
-    { label: "Built as a Unit of Texve Innovations", href: "#texve" },
-    { label: "Why the Name Root Cabs", href: "#name" },
-    { label: "From Vellore to More Cities", href: "#growth" },
+    { label: "The Problem We Wanted To Solve", href: "#problem" },
+    { label: "The Journey Started In Vellore", href: "#vellore" },
+    { label: "Built As A Unit Of Texve Innovations", href: "#texve" },
+    { label: "Why The Name Root Cabs", href: "#name" },
+    { label: "From Vellore To More Cities", href: "#growth" },
   ];
 
   const storyFacts = [
@@ -505,7 +505,7 @@ export function BlogPage() {
     {
       category: "Brand Story",
       href: "/blog/launch-of-root-cabs",
-      title: "The Launch of Root Cabs: A New Chapter in Tamil Nadu's Taxi Industry",
+      title: "The Launch Of Root Cabs: A New Chapter In Tamil Nadu's Taxi Industry",
       note: "Read launch story",
     },
     {
@@ -555,9 +555,7 @@ export function BlogPage() {
             <span className="inline-flex rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.22em] text-[#1E2A6E]">
               Root Story
             </span>
-            <h1 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-5xl">
-              The Story Behind Root Cabs: How a Vision Became a Reality
-            </h1>
+            <h1 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-5xl">The Story Behind Root Cabs: How A Vision Became A Reality</h1>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-white/80 md:text-base">
               Root Cabs began with a simple observation. Cab booking apps had made it easier to search for a ride, but many everyday travel problems were still unresolved.
             </p>
@@ -658,9 +656,7 @@ export function BlogPage() {
 
                 <div className="mt-10 space-y-10">
                   <section id="problem" className="scroll-mt-28">
-                    <h2 className="font-heading text-2xl font-bold text-slate-950 md:text-3xl">
-                      The Problem We Wanted to Solve
-                    </h2>
+                    <h2 className="font-heading text-2xl font-bold text-slate-950 md:text-3xl">The Problem We Wanted To Solve</h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
                         Arranging a cab was not always a smooth process. Customers often found that fares varied from one cab booking app to another, making it harder to know the expected cost before confirming a ride. Vehicle availability could also become uncertain during busy hours or at less convenient times.
@@ -682,7 +678,7 @@ export function BlogPage() {
 
                   <section id="vellore" className="scroll-mt-28">
                     <h2 className="font-heading text-2xl font-bold text-slate-950 md:text-3xl">
-                      The Journey Started in Vellore
+                      The Journey Started In Vellore
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
@@ -705,7 +701,7 @@ export function BlogPage() {
 
                   <section id="texve" className="scroll-mt-28">
                     <h2 className="font-heading text-2xl font-bold text-slate-950 md:text-3xl">
-                      Built as a Unit of Texve Innovations
+                      Built As A Unit Of Texve Innovations
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
@@ -728,7 +724,7 @@ export function BlogPage() {
 
                   <section id="name" className="scroll-mt-28">
                     <h2 className="font-heading text-2xl font-bold text-slate-950 md:text-3xl">
-                      Why the Name Root Cabs
+                      Why The Name Root Cabs
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
@@ -748,7 +744,7 @@ export function BlogPage() {
 
                   <section id="growth" className="scroll-mt-28">
                     <h2 className="font-heading text-2xl font-bold text-slate-950 md:text-3xl">
-                      From Vellore to More Cities
+                      From Vellore To More Cities
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
@@ -777,7 +773,7 @@ export function BlogPage() {
                         Next step
                       </p>
                       <h2 className="mt-2 font-heading text-2xl font-bold text-slate-950">
-                        Explore more of the Root Cabs story
+                        Explore More of the Root Cabs Story
                       </h2>
                       <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-600">
                         Learn how the company expanded, how driver partners earn and where Root Cabs is available today.

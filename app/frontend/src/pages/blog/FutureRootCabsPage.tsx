@@ -44,7 +44,7 @@ const relatedPosts = [
   {
     category: 'Launch Story',
     href: '/blog/launch-of-root-cabs',
-    title: "The Launch of Root Cabs: A New Chapter in Tamil Nadu's Taxi Industry",
+    title: "The Launch Of Root Cabs: A New Chapter In Tamil Nadu's Taxi Industry",
     note: 'Read launch story',
   },
 ];

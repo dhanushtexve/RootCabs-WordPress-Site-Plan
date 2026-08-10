@@ -23,11 +23,11 @@ const storyFacts = [
 const onThisPage = [
   { label: 'How Driver Earnings Work', href: '#how-earnings-work' },
   { label: 'Earning Up to Rs. 40,000 a Month', href: '#earnings-40000' },
-  { label: 'Zero Commission with a Subscription Plan', href: '#zero-commission' },
+  { label: 'Zero Commission With A Subscription Plan', href: '#zero-commission' },
   { label: 'Work When It Suits You', href: '#flexibility' },
-  { label: 'Receive the Trip Fare Directly', href: '#direct-payment' },
-  { label: 'Joining Root Cabs as a Driver Partner', href: '#join' },
-  { label: 'Building a More Reliable Monthly Income', href: '#reliable-income' },
+  { label: 'Receive The Trip Fare Directly', href: '#direct-payment' },
+  { label: 'Joining Root Cabs As A Driver Partner', href: '#join' },
+  { label: 'Building A More Reliable Monthly Income', href: '#reliable-income' },
 ];
 
 const relatedPosts = [
@@ -40,13 +40,13 @@ const relatedPosts = [
   {
     category: 'Launch Story',
     href: '/blog/launch-of-root-cabs',
-    title: "The Launch of Root Cabs: A New Chapter in Tamil Nadu's Taxi Industry",
+    title: "The Launch Of Root Cabs: A New Chapter In Tamil Nadu's Taxi Industry",
     note: 'Read launch story',
   },
   {
     category: 'Brand Story',
     href: '/blog',
-    title: 'The Story Behind Root Cabs: How a Vision Became a Reality',
+    title: 'The Story Behind Root Cabs: How A Vision Became A Reality',
     note: 'Read first',
   },
 ];
@@ -319,7 +319,7 @@ const DriverEarningsPage = () => {
 
                   <section id="zero-commission" className="scroll-mt-28">
                     <h2 className="font-heading text-2xl font-bold text-slate-950 md:text-3xl">
-                      Zero Commission with a Subscription Plan
+                      Zero Commission With A Subscription Plan
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
@@ -365,7 +365,7 @@ const DriverEarningsPage = () => {
 
                   <section id="direct-payment" className="scroll-mt-28">
                     <h2 className="font-heading text-2xl font-bold text-slate-950 md:text-3xl">
-                      Receive the Trip Fare Directly
+                      Receive The Trip Fare Directly
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
@@ -379,7 +379,7 @@ const DriverEarningsPage = () => {
 
                   <section id="join" className="scroll-mt-28">
                     <h2 className="font-heading text-2xl font-bold text-slate-950 md:text-3xl">
-                      Joining Root Cabs as a Driver Partner
+                      Joining Root Cabs As A Driver Partner
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
@@ -396,7 +396,7 @@ const DriverEarningsPage = () => {
 
                   <section id="reliable-income" className="scroll-mt-28">
                     <h2 className="font-heading text-2xl font-bold text-slate-950 md:text-3xl">
-                      Building a More Reliable Monthly Income
+                      Building A More Reliable Monthly Income
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>

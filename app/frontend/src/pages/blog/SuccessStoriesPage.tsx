@@ -20,9 +20,9 @@ const storyFacts = [
 ];
 
 const onThisPage = [
-  { label: 'A Fresh Start for our Driver', href: '#fresh-start' },
-  { label: 'From Part Time to Full Time', href: '#part-time-full-time' },
-  { label: 'Finding Time for Family', href: '#family' },
+  { label: 'A Fresh Start For Our Driver', href: '#fresh-start' },
+  { label: 'From Part Time To Full Time', href: '#part-time-full-time' },
+  { label: 'Finding Time For Family', href: '#family' },
   { label: 'What Connects Their Journeys', href: '#connects' },
   { label: 'Progress Happens Over Time', href: '#progress' },
 ];
@@ -31,13 +31,13 @@ const relatedPosts = [
   {
     category: 'Launch Story',
     href: '/blog/launch-of-root-cabs',
-    title: "The Launch of Root Cabs: A New Chapter in Tamil Nadu's Taxi Industry",
+    title: "The Launch Of Root Cabs: A New Chapter In Tamil Nadu's Taxi Industry",
     note: 'Read next',
   },
   {
     category: 'Brand Story',
     href: '/blog',
-    title: 'The Story Behind Root Cabs: How a Vision Became a Reality',
+    title: 'The Story Behind Root Cabs: How A Vision Became A Reality',
     note: 'Read first',
   },
 ];
@@ -267,7 +267,7 @@ const SuccessStoriesPage = () => {
                 <div className="mt-10 space-y-10">
                   <section id="fresh-start" className="scroll-mt-28">
                     <h2 className="font-heading text-2xl font-bold text-slate-950 md:text-3xl">
-                      A Fresh Start for our Driver
+                      A Fresh Start For Our Driver
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
@@ -287,7 +287,7 @@ const SuccessStoriesPage = () => {
 
                   <section id="part-time-full-time" className="scroll-mt-28">
                     <h2 className="font-heading text-2xl font-bold text-slate-950 md:text-3xl">
-                      From Part Time to Full Time
+                      From Part Time To Full Time
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
@@ -310,7 +310,7 @@ const SuccessStoriesPage = () => {
 
                   <section id="family" className="scroll-mt-28">
                     <h2 className="font-heading text-2xl font-bold text-slate-950 md:text-3xl">
-                      Finding Time for Family
+                      Finding Time For Family
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
@@ -373,7 +373,7 @@ const SuccessStoriesPage = () => {
                         Driver journey next step
                       </p>
                       <h2 className="mt-2 font-heading text-2xl font-bold text-slate-950">
-                        Explore driver opportunities with Root Cabs
+                        Explore Driver Opportunities With Root Cabs
                       </h2>
                       <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-600">
                         Review the driver joining process, service categories and support options if you want to build your own routine with flexible hours.

@@ -24,7 +24,7 @@ const onThisPage = [
   { label: 'Building the Service Gradually', href: '#building-gradually' },
   { label: 'Local Rides across Chennai', href: '#local-rides' },
   { label: 'Chennai Airport Pickups and Drops', href: '#airport' },
-  { label: 'Travel beyond Chennai', href: '#beyond-chennai' },
+  { label: 'Travel Beyond Chennai', href: '#beyond-chennai' },
   { label: 'Learning from Customers and Drivers', href: '#learning' },
   { label: 'Continuing the Growth in Chennai', href: '#continuing-growth' },
 ];
@@ -39,13 +39,13 @@ const relatedPosts = [
   {
     category: 'Launch Story',
     href: '/blog/launch-of-root-cabs',
-    title: "The Launch of Root Cabs: A New Chapter in Tamil Nadu's Taxi Industry",
+    title: "The Launch Of Root Cabs: A New Chapter In Tamil Nadu's Taxi Industry",
     note: 'Read launch story',
   },
   {
     category: 'Brand Story',
     href: '/blog',
-    title: 'The Story Behind Root Cabs: How a Vision Became a Reality',
+    title: 'The Story Behind Root Cabs: How A Vision Became A Reality',
     note: 'Read first',
   },
 ];
@@ -352,7 +352,7 @@ const ChennaiGrowthPage = () => {
 
                   <section id="beyond-chennai" className="scroll-mt-28">
                     <h2 className="font-heading text-2xl font-bold text-slate-950 md:text-3xl">
-                      Travel beyond Chennai
+                      Travel Beyond Chennai
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
@@ -406,7 +406,7 @@ const ChennaiGrowthPage = () => {
                         Chennai growth next step
                       </p>
                       <h2 className="mt-2 font-heading text-2xl font-bold text-slate-950">
-                        Explore more Root Cabs stories and services
+                        Explore More Root Cabs Stories and Services
                       </h2>
                       <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-600">
                         Keep reading to see how the launch, driver stories and earnings guidance connect with the Chennai growth story.
