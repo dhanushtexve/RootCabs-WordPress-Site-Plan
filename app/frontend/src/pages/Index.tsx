@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Car, MapPin, Star, Shield, Clock, Phone, CheckCircle, ArrowRight, Users, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -218,6 +218,84 @@ const homepageFaqs = [
 export default function Index() {
   const [showAllServices, setShowAllServices] = useState(false);
   const visibleServices = showAllServices ? homepageServices : homepageServices.slice(0, 6);
+
+  useEffect(() => {
+    const previousTitle = document.title;
+    const previousLang = document.documentElement.lang;
+    const head = document.head;
+
+    const seo = {
+      title: "Taxi, Drop Taxi & Outstation Cab Service in Tamil Nadu - Root Cabs",
+      description:
+        "Book Root Cabs for local, airport and outstation taxi services across Tamil Nadu. Enjoy fixed fares, verified drivers and 24/7 booking. Call 8608606474.",
+      url: "https://rootcabs.com/",
+      image: "https://rootcabs.com/assets/root-cabs-logo.webp",
+    };
+
+    const upsertMeta = (attribute: "name" | "property", key: string, content: string) => {
+      const selector = `meta[${attribute}="${key}"]`;
+      let tag = head.querySelector(selector) as HTMLMetaElement | null;
+      const existed = Boolean(tag);
+      const previousContent = tag?.getAttribute("content");
+
+      if (!tag) {
+        tag = document.createElement("meta");
+        tag.setAttribute(attribute, key);
+        head.appendChild(tag);
+      }
+
+      tag.setAttribute("content", content);
+
+      return () => {
+        if (!tag) return;
+        if (existed) {
+          if (previousContent !== null) tag.setAttribute("content", previousContent);
+        } else {
+          tag.remove();
+        }
+      };
+    };
+
+    const canonicalSelector = 'link[rel="canonical"]';
+    let canonicalTag = head.querySelector(canonicalSelector) as HTMLLinkElement | null;
+    const canonicalExisted = Boolean(canonicalTag);
+    const previousCanonicalHref = canonicalTag?.getAttribute("href");
+    if (!canonicalTag) {
+      canonicalTag = document.createElement("link");
+      canonicalTag.rel = "canonical";
+      head.appendChild(canonicalTag);
+    }
+    canonicalTag.href = seo.url;
+
+    const cleanupMeta = [
+      upsertMeta("name", "description", seo.description),
+      upsertMeta("property", "og:site_name", "Root Cabs"),
+      upsertMeta("property", "og:title", seo.title),
+      upsertMeta("property", "og:description", seo.description),
+      upsertMeta("property", "og:url", seo.url),
+      upsertMeta("property", "og:image", seo.image),
+      upsertMeta("property", "og:type", "website"),
+      upsertMeta("name", "twitter:card", "summary_large_image"),
+      upsertMeta("name", "twitter:title", seo.title),
+      upsertMeta("name", "twitter:description", seo.description),
+      upsertMeta("name", "twitter:image", seo.image),
+    ];
+
+    document.title = seo.title;
+    document.documentElement.lang = "en-IN";
+
+    return () => {
+      document.title = previousTitle;
+      document.documentElement.lang = previousLang;
+      cleanupMeta.forEach((dispose) => dispose());
+
+      if (canonicalExisted) {
+        if (previousCanonicalHref !== null) canonicalTag?.setAttribute("href", previousCanonicalHref);
+      } else {
+        canonicalTag?.remove();
+      }
+    };
+  }, []);
 
   return (
     <div>
