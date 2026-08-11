@@ -44,6 +44,7 @@ function App() {
 
           {/* Cities */}
           <Route path="/cities" element={<CitiesHub />} />
+          <Route path="/chennai" element={<CityPage citySlugOverride="taxi-in-chennai" />} />
 
           {/* Info Pages */}
           <Route path="/drivers" element={<DriversPage />} />

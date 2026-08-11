@@ -271,8 +271,34 @@ function getHeadElements(url) {
     .replace(/\/+$/, '')
     .replace(/^\/+/, '');
 
+  const blogLandingSeo = {
+    title: 'Blog & Travel Guides | Root Cabs',
+    description:
+      'Explore Root Cabs stories, travel guides, driver updates and city coverage across Tamil Nadu.',
+    keywords:
+      'Root Cabs blog, travel guides, Root Cabs stories, driver updates, Tamil Nadu travel, local rides, outstation travel, support articles',
+    url: 'https://rootcabs.com/blog',
+    siteName: 'Root Cabs',
+    ogTitle: 'Blog & Travel Guides | Root Cabs',
+    ogDescription:
+      'Explore Root Cabs stories, travel guides, driver updates and city coverage across Tamil Nadu.',
+    ogImage: 'https://rootcabs.com/assets/story-behind-root-cabs.avif',
+    ogImageAlt: 'Root Cabs',
+    ogType: 'website',
+    twitterCard: 'summary_large_image',
+    twitterSite: '@rootcabs',
+    twitterCreator: '@rootcabs',
+    twitterTitle: 'Blog & Travel Guides | Root Cabs',
+    twitterDescription:
+      'Explore Root Cabs stories, travel guides, driver updates and city coverage across Tamil Nadu.',
+    twitterImage: 'https://rootcabs.com/assets/story-behind-root-cabs.avif',
+    twitterImageAlt: 'Root Cabs',
+  };
+
   const specialSeo =
-    slug === 'launch-of-root-cabs'
+    !slug
+      ? blogLandingSeo
+      : slug === 'launch-of-root-cabs'
       ? getSpecialBlogSeo()
       : slug === 'root-cabs-success-stories'
         ? getSuccessStoriesSeo()
@@ -323,8 +349,29 @@ function getHeadElements(url) {
     {
       type: 'meta',
       props: {
+        property: 'og:title',
+        content: seoMeta.ogTitle,
+      },
+    },
+    {
+      type: 'meta',
+      props: {
+        property: 'og:description',
+        content: seoMeta.ogDescription,
+      },
+    },
+    {
+      type: 'meta',
+      props: {
         property: 'og:site_name',
         content: seoMeta.siteName,
+      },
+    },
+    {
+      type: 'meta',
+      props: {
+        property: 'og:type',
+        content: seoMeta.ogType,
       },
     },
     seoMeta.ogImage

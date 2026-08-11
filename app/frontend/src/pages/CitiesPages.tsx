@@ -885,8 +885,9 @@ function ChennaiActingDriverSection() {
 // ============================================================
 // INDIVIDUAL CITY PAGE
 // ============================================================
-export function CityPage() {
-  const { citySlug } = useParams();
+export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {}) {
+  const { citySlug: routeCitySlug } = useParams();
+  const citySlug = citySlugOverride ?? routeCitySlug;
   const city = cities.find((c) => c.slug === citySlug);
   const isChennai = city?.name === "Chennai";
 
