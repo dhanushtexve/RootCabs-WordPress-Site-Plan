@@ -164,48 +164,103 @@ const chennaiServices = [
 
 const chennaiRoutes = [
   {
-    title: "Chennai \u2192 Bangalore",
-    meta: "One-Way Km - 350 Approx. Hours - 7-8 hrs",
+    title: "Chennai to Bangalore - Round Trip (Non-AC)",
+    meta: "Estimated Distance - 697 km | Base Hours - 23 Hours",
     fares: [
       { label: "MINI", value: "\u20B98,430" },
       { label: "SEDAN", value: "\u20B98,530" },
       { label: "SUV", value: "\u20B911,440" },
+      { label: "MUV", value: "\u20B912,895" },
     ],
   },
   {
-    title: "Chennai \u2192 Pondicherry",
-    meta: "One-Way Km - 165 Approx. Hours - 3-3.5 hrs",
+    title: "Chennai to Pondicherry - Round Trip",
+    meta: "Estimated Distance - 331 km | Base Hours - 10 Hours",
     fares: [
       { label: "MINI", value: "\u20B94,040" },
       { label: "SEDAN", value: "\u20B94,140" },
       { label: "SUV", value: "\u20B95,587" },
+      { label: "MUV", value: "\u20B96,310" },
     ],
   },
   {
-    title: "Chennai \u2192 Vellore",
-    meta: "One-Way Km - 140 Approx. Hours - 2-2.5 hrs",
+    title: "Chennai to Vellore - Round Trip",
+    meta: "Estimated Distance - 274 km | Base Hours - 9 Hours",
     fares: [
       { label: "MINI", value: "\u20B93,350" },
       { label: "SEDAN", value: "\u20B93,450" },
       { label: "SUV", value: "\u20B94,667" },
+      { label: "MUV", value: "\u20B95,275" },
     ],
   },
   {
-    title: "Chennai \u2192 Tirupati",
-    meta: "One-Way Km - 135 Approx. Hours - 3-3.5 hrs",
+    title: "Chennai to Tirupati - Round Trip",
+    meta: "Estimated Distance - 269 km | Base Hours - 9 Hours",
     fares: [
       { label: "MINI", value: "\u20B93,285" },
       { label: "SEDAN", value: "\u20B93,385" },
       { label: "SUV", value: "\u20B94,580" },
+      { label: "MUV", value: "\u20B95,178" },
     ],
   },
   {
-    title: "Chennai \u2192 Mahabalipuram",
-    meta: "One-Way Km - 55 Approx. Hours - 1-1.5 hrs",
+    title: "Chennai to Mahabalipuram - Round Trip",
+    meta: "Estimated Distance - 115 km | Base Hours - 5 Hours",
     fares: [
       { label: "MINI", value: "\u20B91,441" },
       { label: "SEDAN", value: "\u20B91,541" },
       { label: "SUV", value: "\u20B92,121" },
+      { label: "MUV", value: "\u20B92,411" },
+    ],
+  },
+  {
+    title: "Vellore to Chennai - Round Trip",
+    meta: "Estimated Distance - 274 km | Base Hours - 9 Hours",
+    fares: [
+      { label: "MINI", value: "\u20B93,350" },
+      { label: "SEDAN", value: "\u20B93,450" },
+      { label: "SUV", value: "\u20B94,667" },
+      { label: "MUV", value: "\u20B95,275" },
+    ],
+  },
+  {
+    title: "Vellore to Bangalore - Round Trip",
+    meta: "Estimated Distance - 424 km | Base Hours - 14 Hours",
+    fares: [
+      { label: "MINI", value: "\u20B95,144" },
+      { label: "SEDAN", value: "\u20B95,244" },
+      { label: "SUV", value: "\u20B97,059" },
+      { label: "MUV", value: "\u20B97,966" },
+    ],
+  },
+  {
+    title: "Vellore to Tirupati - Round Trip",
+    meta: "Estimated Distance - 215 km | Base Hours - 7 Hours",
+    fares: [
+      { label: "MINI", value: "\u20B92,634" },
+      { label: "SEDAN", value: "\u20B92,734" },
+      { label: "SUV", value: "\u20B93,712" },
+      { label: "MUV", value: "\u20B94,201" },
+    ],
+  },
+  {
+    title: "Vellore to Tiruvannamalai - Round Trip",
+    meta: "Estimated Distance - 176 km | Base Hours - 6 Hours",
+    fares: [
+      { label: "MINI", value: "\u20B92,170" },
+      { label: "SEDAN", value: "\u20B92,270" },
+      { label: "SUV", value: "\u20B93,094" },
+      { label: "MUV", value: "\u20B93,506" },
+    ],
+  },
+  {
+    title: "Vellore to Pondicherry - Round Trip",
+    meta: "Estimated Distance - 320 km | Base Hours - 10 Hours",
+    fares: [
+      { label: "MINI", value: "\u20B93,903" },
+      { label: "SEDAN", value: "\u20B94,003" },
+      { label: "SUV", value: "\u20B95,404" },
+      { label: "MUV", value: "\u20B96,105" },
     ],
   },
 ] as const;
@@ -652,9 +707,9 @@ function ChennaiServicesSection() {
 function ChennaiRoutesSection() {
   return (
     <section>
-      <h2 className="font-heading text-2xl font-bold mb-3">Popular Outstation Routes from Chennai</h2>
+      <h2 className="font-heading text-2xl font-bold mb-3">Round Trip Tariff Details</h2>
       <p className="mb-6 max-w-none text-sm text-muted-foreground md:whitespace-nowrap md:text-base">
-        Compare fares by vehicle type and choose from our available outstation cabs in Chennai.
+        Compare fares by vehicle type for Chennai and Vellore round trips.
       </p>
 
       <div className="grid gap-4 lg:grid-cols-[minmax(0,0.82fr)_minmax(320px,0.38fr)] lg:items-start">
@@ -669,7 +724,7 @@ function ChennaiRoutesSection() {
                   <h3 className="font-heading text-sm font-bold text-[#1E2A6E]">{route.title}</h3>
                   <p className="text-[10px] text-muted-foreground">{route.meta}</p>
                 </div>
-                <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-3">
+                <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
                   {route.fares.map((fare) => (
                     <div key={fare.label} className="rounded-md border border-[#E6ECF7] bg-[#F7F9FE] px-2.5 py-1.5 text-center">
                       <p className="text-[10px] font-extrabold uppercase tracking-wide text-[#1E2A6E]">{fare.label}</p>
@@ -699,6 +754,9 @@ function ChennaiRoutesSection() {
               Root Cabs drivers are verified and trained to handle city traffic, airport transfers, and longer journeys
               with care. Their focus on timely pickup, courteous service, and smooth driving helps make every trip more
               comfortable.
+            </p>
+            <p className="mt-3 text-[11px] leading-5 text-muted-foreground">
+              Note: Additional kilometres and hours will be charged extra. Toll, parking, permit and driver night charges are extra.
             </p>
           </div>
         </div>

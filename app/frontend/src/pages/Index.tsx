@@ -354,7 +354,7 @@ export default function Index() {
       </section>
 
       {/* How Root Cabs Works */}
-      <section className="max-w-screen-xl mx-auto px-4 py-14 md:py-18">
+      <section className="max-w-screen-xl mx-auto px-4 py-10 md:py-12">
         <div className="mb-9 text-center">
           <span className="inline-flex rounded-full bg-[#FFD700] px-4 py-1.5 text-sm font-extrabold uppercase tracking-wide text-[#1E2A6E] shadow-sm">
             HOW ROOT CABS WORKS
@@ -378,7 +378,7 @@ export default function Index() {
       </section>
 
       {/* Services */}
-      <section className="bg-[#F5F7FB] pb-6 pt-12 md:pb-8 md:pt-14">
+      <section className="bg-[#F5F7FB] pb-6 pt-0 md:pb-8 md:pt-2">
         <div className="max-w-screen-xl mx-auto px-4">
           <div className="mb-8 text-center">
             <span className="inline-flex rounded-full bg-[#FFD700] px-4 py-1.5 text-sm font-extrabold uppercase tracking-wide text-[#1E2A6E] shadow-sm">

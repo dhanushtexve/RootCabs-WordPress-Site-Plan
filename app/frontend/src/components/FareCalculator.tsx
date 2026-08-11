@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Calculator, MapPin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -13,6 +13,9 @@ const allLocations = [
   "Yercaud", "Thanjavur", "Mahabalipuram", "Hosur",
 ];
 
+const routeUnavailableMessage =
+  "This route is not available for fare calculation right now. Please select another pickup or destination. If you need help, call support at +91 8608606474.";
+
 interface FareCalculatorProps {
   defaultFrom?: string;
   defaultTo?: string;
@@ -26,6 +29,13 @@ export default function FareCalculator({ defaultFrom = "", defaultTo = "", compa
   const [result, setResult] = useState<FareEstimateData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const destinationLocations = allLocations.filter((loc) => loc !== from);
+
+  useEffect(() => {
+    if (from && to === from) {
+      setTo("");
+    }
+  }, [from, to]);
 
   const calculateFare = async () => {
     setIsLoading(true);
@@ -41,7 +51,7 @@ export default function FareCalculator({ defaultFrom = "", defaultTo = "", compa
       const drop = toMatches.find((item) => typeof item.latitude === "number" && typeof item.longitude === "number");
 
       if (!pickup || !drop) {
-        throw new Error("Unable to resolve coordinates for the selected locations.");
+        throw new Error(routeUnavailableMessage);
       }
 
       const estimate = await getFareEstimate({
@@ -53,7 +63,7 @@ export default function FareCalculator({ defaultFrom = "", defaultTo = "", compa
       });
       setResult(estimate);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Unable to fetch fare estimate. Please try again.");
+      setError(err instanceof Error ? err.message : routeUnavailableMessage);
     } finally {
       setIsLoading(false);
     }
@@ -88,7 +98,7 @@ export default function FareCalculator({ defaultFrom = "", defaultTo = "", compa
               <SelectValue placeholder="Select destination" />
             </SelectTrigger>
             <SelectContent>
-              {allLocations.map((loc) => (
+              {destinationLocations.map((loc) => (
                 <SelectItem key={loc} value={loc} className="cursor-pointer">{loc}</SelectItem>
               ))}
             </SelectContent>
@@ -122,7 +132,7 @@ export default function FareCalculator({ defaultFrom = "", defaultTo = "", compa
       </div>
 
       {error && (
-        <div className="mt-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+        <div className="mt-4 rounded-lg border border-blue-200 bg-blue-50 p-3 text-sm text-slate-700">
           {error}
         </div>
       )}

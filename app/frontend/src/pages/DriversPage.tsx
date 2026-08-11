@@ -1049,11 +1049,6 @@ export function DriversPage() {
               </div>
             </div>
 
-            <div className="mt-5 flex justify-center">
-              <Button className="rounded-xl bg-[#1E2A6E] px-6 py-3 font-semibold text-white hover:bg-[#2A3A8A]">
-                Refer Now
-              </Button>
-            </div>
           </div>
         </div>
       </section>
