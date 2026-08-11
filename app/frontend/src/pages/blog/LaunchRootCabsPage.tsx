@@ -206,13 +206,6 @@ const LaunchRootCabsPage = () => {
                     <p>
                       The occasion marked the public introduction of Root Cabs and the beginning of its journey in Tamil Nadu. Since then, what began as a local taxi service in one city has grown into a mobility platform serving more than ten cities across the state.
                     </p>
-                    <div className="overflow-hidden rounded-[22px] border border-slate-200 bg-white">
-                      <img
-                        src={velloreWhyImage}
-                        alt="Root Cabs launch image showing the early Vellore journey"
-                        className="h-auto w-full object-contain object-center"
-                      />
-                    </div>
                     <p>
                       Root Cabs was not created to be just another cab booking app. It was built around the way people actually travel in Tamil Nadu. Some need a ride to work or college, while others may be heading to a hospital, railway station, family event or another city. Root Cabs was developed with these everyday journeys in mind.
                     </p>
@@ -228,6 +221,13 @@ const LaunchRootCabsPage = () => {
                       <p>
                         The launch celebrations continued on June 6, 2025, with Navin Venkadasubbu, Director of Darling Group, and Nagalingam Jeyakumar, Managing Director of Cloud Desk Technology, inaugurating the service. Their participation added further significance to the occasion and reflected the support Root Cabs received during its early stage.
                       </p>
+                      <div className="overflow-hidden rounded-[22px] border border-slate-200 bg-white">
+                        <img
+                          src={velloreWhyImage}
+                          alt="Root Cabs launch image showing the early Vellore journey"
+                          className="h-auto w-full object-contain object-center"
+                        />
+                      </div>
                       <p>
                         For the Root Cabs team, these two days marked the end of months of planning, app development and preparation. More importantly, they marked the moment the service was introduced to customers and driver partners in Vellore. The launch also gave the team an opportunity to explain why Root Cabs had been started and how it planned to make everyday travel simpler, more affordable and easier to arrange.
                       </p>

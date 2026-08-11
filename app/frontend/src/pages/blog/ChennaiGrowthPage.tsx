@@ -226,9 +226,6 @@ const ChennaiGrowthPage = () => {
                     <p>
                       Root Cabs began serving Chennai to support these everyday journeys. The city is an important part of the company's growth, but building a dependable service here takes more than adding vehicles to an app. It requires an understanding of Chennai's neighbourhoods, travel timings and the concerns people face while arranging a ride.
                     </p>
-                    <p className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-7 text-amber-900">
-                      The growth in Chennai is being built area by area, with local, airport and outstation travel all forming part of the service.
-                    </p>
                   </div>
                 </div>
 

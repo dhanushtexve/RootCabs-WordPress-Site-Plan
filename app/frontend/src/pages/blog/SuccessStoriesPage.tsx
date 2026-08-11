@@ -211,9 +211,6 @@ const SuccessStoriesPage = () => {
                     <p>
                       Every driver partner has a different journey, but progress often begins in the same way. They complete a few trips, understand the platform and gradually build a routine that works for them.
                     </p>
-                    <p className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-7 text-amber-900">
-                      The following stories are sample driver journeys based on common experiences. Real names and earning details should be used only with the drivers' permission.
-                    </p>
                   </div>
                 </div>
 

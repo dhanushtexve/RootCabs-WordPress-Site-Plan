@@ -226,9 +226,6 @@ const DriverEarningsPage = () => {
                     <p>
                       Root Cabs gives cab, auto, bike and acting driver partners a way to earn through the trips available in their city. The platform allows drivers to choose suitable working hours and take bookings based on their availability.
                     </p>
-                    <p className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-7 text-amber-900">
-                      Active driver partners may earn up to Rs. 40,000 extra in a month. However, this is not a fixed salary or guaranteed amount. Actual Root Cabs driver earnings depend on the vehicle category, city, completed trips, time spent online and customer demand.
-                    </p>
                   </div>
                 </div>
 

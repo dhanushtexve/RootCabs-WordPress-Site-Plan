@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Calendar,
@@ -112,6 +112,8 @@ function upsertMeta(
 }
 
 const DriverFeedbackPage = () => {
+  const [showAllQuotes, setShowAllQuotes] = useState(false);
+
   useEffect(() => {
     const previousTitle = document.title;
     const previousLang = document.documentElement.lang;
@@ -261,9 +263,6 @@ const DriverFeedbackPage = () => {
                     <p>
                       Every driver has a different reason for joining. Some drive full time, while others work only during selected hours. Their expectations may vary, but most look for clear earnings, flexible working hours and proper support when something goes wrong.
                     </p>
-                    <p className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-7 text-amber-900">
-                      Listening to driver feedback helps Root Cabs improve communication, trip information, payments and support.
-                    </p>
                   </div>
                 </div>
 
@@ -287,14 +286,17 @@ const DriverFeedbackPage = () => {
                       What Our Driver Partners Say
                     </h2>
                     <div className="mt-5 grid gap-4 md:grid-cols-2">
-                      {driverQuotes.map((item) => (
-                        <div key={item.quote} className="rounded-3xl border border-slate-200 bg-slate-50 p-5 shadow-sm">
+                      {driverQuotes.slice(0, showAllQuotes ? driverQuotes.length : 4).map((item) => (
+                        <div
+                          key={item.quote}
+                          className={`rounded-3xl border border-slate-200 bg-slate-50 p-5 shadow-sm ${
+                            showAllQuotes && item.quote === driverQuotes[4]?.quote ? 'md:col-span-2' : ''
+                          }`}
+                        >
                           <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#1E2A6E]">
                             {item.quote}
                           </p>
-                          <p className="mt-3 text-[1.02rem] leading-7 text-slate-700">
-                            {item.body}
-                          </p>
+                          <p className="mt-3 text-[1.02rem] leading-7 text-slate-700">{item.body}</p>
                           <div className="mt-4 flex items-center gap-3 border-t border-slate-200 pt-4">
                             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#1E2A6E] text-xs font-bold text-white">
                               {item.name
@@ -310,6 +312,15 @@ const DriverFeedbackPage = () => {
                           </div>
                         </div>
                       ))}
+                    </div>
+                    <div className="mt-6 flex justify-center">
+                      <button
+                        type="button"
+                        className="inline-flex items-center justify-center rounded-full border border-[#1E2A6E]/20 bg-white px-8 py-3 text-sm font-semibold text-[#1E2A6E] shadow-sm transition-colors hover:bg-slate-50"
+                        onClick={() => setShowAllQuotes((current) => !current)}
+                      >
+                        {showAllQuotes ? 'Show Less' : 'See More'}
+                      </button>
                     </div>
                   </section>
 

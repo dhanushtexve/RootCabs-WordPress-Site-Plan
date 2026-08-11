@@ -224,9 +224,6 @@ const FutureRootCabsPage = () => {
                     <p>
                       The next stage is not simply about entering more cities. Root Cabs is working towards a service that is quicker to use, safer during every journey and easier for both customers and drivers to understand.
                     </p>
-                    <p className="rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-7 text-amber-900">
-                      Technology will play an important role in that progress, but the purpose behind it remains practical.
-                    </p>
                   </div>
                 </div>
 
