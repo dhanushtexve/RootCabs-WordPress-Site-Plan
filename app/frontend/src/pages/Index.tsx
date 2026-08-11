@@ -15,56 +15,56 @@ const homepageServices = [
   {
     name: "Local Taxi",
     description: "Easy local cab booking for daily travel within your city.",
-    fare: "Starting at ₹90/3km",
+    fare: "Starting at Rs. 100/2km",
     href: "/services/local-taxi",
     icon: <img src={assetPath("/assets/home-service-local.webp")} alt="Local Taxi service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Outstation Taxi",
     description: "Comfortable round trips for long-distance travel with verified drivers and transparent fares.",
-    fare: "Starting at ₹300/20Km",
+    fare: "Starting at Rs. 300/20km",
     href: "/services/outstation",
     icon: <img src={assetPath("/assets/home-service-outstation.webp")} alt="Outstation Taxi service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Acting Driver",
     description: "Book a professional driver to drive your own car for local or outstation journeys.",
-    fare: "Starting at ₹500/100Km",
+    fare: "Starting at Rs. 500/100km",
     href: "/services/acting-driver",
     icon: <img src={assetPath("/assets/home-service-acting-driver.webp")} alt="Acting Driver service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "One-Way Taxi",
     description: "A simple online cab service for one-way travel without return charges.",
-    fare: "Starting at ₹300/20Km",
+    fare: "Starting at Rs. 300/20km",
     href: "/book-ride",
     icon: <img src={assetPath("/assets/home-service-one-way.webp")} alt="One-Way Taxi service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Auto Rickshaw",
     description: "Quick and affordable rides for short-distance travel around the city.",
-    fare: "Starting at ₹40/1Km",
+    fare: "Starting at Rs. 100/2km",
     href: "/services/auto",
     icon: <img src={assetPath("/assets/home-service-auto.webp")} alt="Auto Rickshaw service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Bike Taxi",
     description: "A faster and budget-friendly option for nearby trips.",
-    fare: "Starting at ₹25/2km",
+    fare: "Starting at Rs. 25/2km",
     href: "/book-ride",
     icon: <img src={assetPath("/assets/home-service-bike-taxi.webp")} alt="Bike Taxi service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Hourly Package",
     description: "Keep a cab for multiple stops with flexible hourly travel plans.",
-    fare: "Starting at ₹100/3km",
+    fare: "Starting at Rs. 100/3km",
     href: "/book-ride",
     icon: <img src={assetPath("/assets/chennai-service-hourly-package.webp")} alt="Hourly Package service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Parcel Delivery",
     description: "Send documents and everyday essentials with reliable pickup and live tracking.",
-    fare: "Starting at ₹50/1km",
+    fare: "Starting at Rs. 50/1km",
     href: "/services/parcel-delivery",
     icon: <img src={assetPath("/assets/chennai-service-parcel.webp")} alt="Parcel Delivery service" className="h-12 w-12 object-contain" />,
   },
@@ -406,6 +406,9 @@ export default function Index() {
               </Link>
             ))}
           </div>
+          <p className="mx-auto mt-4 max-w-3xl text-center text-sm leading-6 text-[#4B587C]">
+            <span className="font-semibold text-[#1E2A6E]">Note:</span> The fare shown above is based on Vellore fares. Pricing may vary depending on the city you choose.
+          </p>
           <div className="mt-4 text-center">
             <Button
               variant="outline"
@@ -773,3 +776,4 @@ export default function Index() {
     </div>
   );
 }
+
