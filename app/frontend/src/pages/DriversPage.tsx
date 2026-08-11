@@ -181,9 +181,9 @@ export function DriversPage() {
     const head = document.head;
 
     const seo = {
-      title: "Drive and Earn with Root Cabs | Driver Partner Opportunities",
+      title: "Drive with Root Cabs | Become a Driver Partner",
       description:
-        "Become a Root Cabs driver partner and earn through ride opportunities suited to your vehicle. Auto, Cab and Bike owners can join the platform with flexible working hours and dedicated support.",
+        "Earn up to ₹40,000+ monthly as a Root Cabs driver partner. Low commission, flexible hours, daily payouts, and free training. Apply now.",
       keywords:
         "drive and earn with Root Cabs, driver partner, become a driver, driver jobs Tamil Nadu, auto driver partner, cab driver partner, bike driver partner, flexible driver jobs",
       url: "https://rootcabs.com/drivers",

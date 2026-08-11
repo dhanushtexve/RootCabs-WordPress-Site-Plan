@@ -240,9 +240,9 @@ export function CitiesHub() {
     const head = document.head;
 
     const seo = {
-      title: "Cities We Serve | Taxi Services in Tamil Nadu | Root Cabs",
+      title: "Cities We Serve | Root Cabs Taxi Service in Tamil Nadu",
       description:
-        "Root Cabs brings dependable taxi services to 10+ cities across Tamil Nadu, making local, one-way and outstation travel easier to book.",
+        "Root Cabs operates in 10+ cities across Tamil Nadu covering Chennai, Coimbatore, Vellore, Madurai, Trichy, Salem & more. Find local, airport & outstation taxi near you.",
       keywords:
         "Taxi Services in Tamil Nadu, online taxi booking, affordable taxi service, outstation taxi service, one way taxi service, airport taxi service, local taxi service, car rental with driver, bike taxi service, auto booking service",
       url: "https://rootcabs.com/cities",
@@ -830,6 +830,94 @@ function ChennaiActingDriverSection() {
 export function CityPage() {
   const { citySlug } = useParams();
   const city = cities.find((c) => c.slug === citySlug);
+  const isChennai = city?.name === "Chennai";
+
+  useEffect(() => {
+    if (!city) return;
+
+    const previousTitle = document.title;
+    const previousLang = document.documentElement.lang;
+    const head = document.head;
+
+    const seo = isChennai
+      ? {
+          title: "Taxi Service in Chennai | Cab Booking 24/7 - Root Cabs",
+          description:
+            "Root Cabs offers the best taxi service in Chennai  reliable cab service, fixed fares from ₹11/km, verified drivers, no surge pricing, 24/7 booking.",
+          url: "https://rootcabs.com/chennai",
+          image: "https://rootcabs.com/assets/root-cabs-logo.webp",
+        }
+      : {
+          title: `${city.name} Taxi Service | Root Cabs`,
+          description: city.description,
+          url: `https://rootcabs.com/${city.slug}`,
+          image: "https://rootcabs.com/assets/root-cabs-logo.webp",
+        };
+
+    const upsertMeta = (attribute: "name" | "property", key: string, content: string) => {
+      const selector = `meta[${attribute}="${key}"]`;
+      let tag = head.querySelector(selector) as HTMLMetaElement | null;
+      const existed = Boolean(tag);
+      const previousContent = tag?.getAttribute("content");
+
+      if (!tag) {
+        tag = document.createElement("meta");
+        tag.setAttribute(attribute, key);
+        head.appendChild(tag);
+      }
+
+      tag.setAttribute("content", content);
+
+      return () => {
+        if (!tag) return;
+        if (existed) {
+          if (previousContent !== null) tag.setAttribute("content", previousContent);
+        } else {
+          tag.remove();
+        }
+      };
+    };
+
+    const canonicalSelector = 'link[rel="canonical"]';
+    let canonicalTag = head.querySelector(canonicalSelector) as HTMLLinkElement | null;
+    const canonicalExisted = Boolean(canonicalTag);
+    const previousCanonicalHref = canonicalTag?.getAttribute("href");
+    if (!canonicalTag) {
+      canonicalTag = document.createElement("link");
+      canonicalTag.rel = "canonical";
+      head.appendChild(canonicalTag);
+    }
+    canonicalTag.href = seo.url;
+
+    const cleanupMeta = [
+      upsertMeta("name", "description", seo.description),
+      upsertMeta("property", "og:site_name", "Root Cabs"),
+      upsertMeta("property", "og:title", seo.title),
+      upsertMeta("property", "og:description", seo.description),
+      upsertMeta("property", "og:url", seo.url),
+      upsertMeta("property", "og:image", seo.image),
+      upsertMeta("property", "og:type", "website"),
+      upsertMeta("name", "twitter:card", "summary_large_image"),
+      upsertMeta("name", "twitter:title", seo.title),
+      upsertMeta("name", "twitter:description", seo.description),
+      upsertMeta("name", "twitter:image", seo.image),
+    ];
+
+    document.title = seo.title;
+    document.documentElement.lang = "en-IN";
+
+    return () => {
+      document.title = previousTitle;
+      document.documentElement.lang = previousLang;
+      cleanupMeta.forEach((dispose) => dispose());
+
+      if (canonicalExisted) {
+        if (previousCanonicalHref !== null) canonicalTag?.setAttribute("href", previousCanonicalHref);
+      } else {
+        canonicalTag?.remove();
+      }
+    };
+  }, [city, isChennai]);
 
   if (!city) {
     return (
@@ -842,7 +930,6 @@ export function CityPage() {
   }
 
   const cityTestimonials = testimonials.filter((t) => t.city === city.name);
-  const isChennai = city.name === "Chennai";
 
   return (
     <div>

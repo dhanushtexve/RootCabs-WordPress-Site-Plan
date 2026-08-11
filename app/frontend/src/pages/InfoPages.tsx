@@ -871,12 +871,12 @@ export function AboutPage() {
     const head = document.head;
 
     const seo = {
-      title: "About Root Cabs | Root Cabs",
+      title: "About Root Cabs - Our Story and Values",
       description:
-        "Root Cabs operates as a unit of Texve Innovations Pvt. Ltd., offering a unified range of mobility and transport services across Tamil Nadu through a single platform.",
+        "Root Cabs, Tamil Nadu's fastest-growing taxi aggregator. Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto Rickshaw across 10+ cities.",
       keywords:
         "about root cabs, root cabs tamil nadu, texve innovations pvt ltd, taxi services tamil nadu, mobility services tamil nadu, transport services tamil nadu",
-      url: "https://rootcabs.com/about-us",
+      url: "https://rootcabs.com/about",
       image: "https://rootcabs.com/assets/root-cabs-logo.webp",
     };
 
@@ -1643,6 +1643,110 @@ export function SupportPage() {
 // ============================================================
 function PolicyDocumentPage({ policyKey }: { policyKey: string }) {
   const policy = getPolicyDocument(policyKey) ?? getPolicyDocument("privacy-policy");
+
+  useEffect(() => {
+    if (!policy) return;
+
+    const previousTitle = document.title;
+    const previousLang = document.documentElement.lang;
+    const head = document.head;
+
+    const seo =
+      policyKey === "privacy-policy"
+        ? {
+            title: "Privacy Policy | Root Cabs",
+            description:
+              "Read how Root Cabs collects, uses, and protects your personal data when you book rides, use the app, or contact our support team.",
+            url: "https://rootcabs.com/privacy-policy",
+            image: "https://rootcabs.com/assets/root-cabs-logo.webp",
+          }
+        : policyKey === "terms-of-use"
+          ? {
+              title: "Terms of Use | Root Cabs",
+              description:
+                "Read the terms and conditions for booking and using Root Cabs' taxi, driver, and business services across Tamil Nadu.",
+            url: "https://rootcabs.com/terms-of-use",
+            image: "https://rootcabs.com/assets/root-cabs-logo.webp",
+          }
+        : policyKey === "wallet-policy"
+          ? {
+              title: "Wallet Policy | Root Cabs",
+              description:
+                "Understand how the Root Cabs wallet works  adding funds, cashback credits, refunds, and terms for using wallet balance on rides.",
+              url: "https://rootcabs.com/wallet-policy",
+              image: "https://rootcabs.com/assets/root-cabs-logo.webp",
+            }
+          : {
+              title: policy.title,
+              description: policy.subtitle,
+              url: `https://rootcabs.com/${policyKey}`,
+              image: "https://rootcabs.com/assets/root-cabs-logo.webp",
+            };
+
+    const upsertMeta = (attribute: "name" | "property", key: string, content: string) => {
+      const selector = `meta[${attribute}="${key}"]`;
+      let tag = head.querySelector(selector) as HTMLMetaElement | null;
+      const existed = Boolean(tag);
+      const previousContent = tag?.getAttribute("content");
+
+      if (!tag) {
+        tag = document.createElement("meta");
+        tag.setAttribute(attribute, key);
+        head.appendChild(tag);
+      }
+
+      tag.setAttribute("content", content);
+
+      return () => {
+        if (!tag) return;
+        if (existed) {
+          if (previousContent !== null) tag.setAttribute("content", previousContent);
+        } else {
+          tag.remove();
+        }
+      };
+    };
+
+    const canonicalSelector = 'link[rel="canonical"]';
+    let canonicalTag = head.querySelector(canonicalSelector) as HTMLLinkElement | null;
+    const canonicalExisted = Boolean(canonicalTag);
+    const previousCanonicalHref = canonicalTag?.getAttribute("href");
+    if (!canonicalTag) {
+      canonicalTag = document.createElement("link");
+      canonicalTag.rel = "canonical";
+      head.appendChild(canonicalTag);
+    }
+    canonicalTag.href = seo.url;
+
+    const cleanupMeta = [
+      upsertMeta("name", "description", seo.description),
+      upsertMeta("property", "og:site_name", "Root Cabs"),
+      upsertMeta("property", "og:title", seo.title),
+      upsertMeta("property", "og:description", seo.description),
+      upsertMeta("property", "og:url", seo.url),
+      upsertMeta("property", "og:image", seo.image),
+      upsertMeta("property", "og:type", "website"),
+      upsertMeta("name", "twitter:card", "summary_large_image"),
+      upsertMeta("name", "twitter:title", seo.title),
+      upsertMeta("name", "twitter:description", seo.description),
+      upsertMeta("name", "twitter:image", seo.image),
+    ];
+
+    document.title = seo.title;
+    document.documentElement.lang = "en-IN";
+
+    return () => {
+      document.title = previousTitle;
+      document.documentElement.lang = previousLang;
+      cleanupMeta.forEach((dispose) => dispose());
+
+      if (canonicalExisted) {
+        if (previousCanonicalHref !== null) canonicalTag?.setAttribute("href", previousCanonicalHref);
+      } else {
+        canonicalTag?.remove();
+      }
+    };
+  }, [policy, policyKey]);
 
   if (!policy) {
     return null;

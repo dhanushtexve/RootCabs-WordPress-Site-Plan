@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Car, Plane, Navigation, User, Package, Bike, CheckCircle, ArrowRight, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -53,6 +53,85 @@ export function ServicesHub() {
       a: "Yes. Root Cabs works with verified drivers to provide safer and more reliable travel across its available services.",
     },
   ];
+
+  useEffect(() => {
+    const previousTitle = document.title;
+    const previousLang = document.documentElement.lang;
+    const head = document.head;
+
+    const seo = {
+      title: "Our Services | Local, Airport & Outstation Taxi - Root Cabs",
+      description:
+        "Root Cabs offers Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto Rickshaw across Tamil Nadu. Fixed fares, verified drivers, 10+ cities.",
+      url: "https://rootcabs.com/services",
+      image: "https://rootcabs.com/assets/root-cabs-logo.webp",
+    };
+
+    const upsertMeta = (attribute: "name" | "property", key: string, content: string) => {
+      const selector = `meta[${attribute}="${key}"]`;
+      let tag = head.querySelector(selector) as HTMLMetaElement | null;
+      const existed = Boolean(tag);
+      const previousContent = tag?.getAttribute("content");
+
+      if (!tag) {
+        tag = document.createElement("meta");
+        tag.setAttribute(attribute, key);
+        head.appendChild(tag);
+      }
+
+      tag.setAttribute("content", content);
+
+      return () => {
+        if (!tag) return;
+        if (existed) {
+          if (previousContent !== null) tag.setAttribute("content", previousContent);
+        } else {
+          tag.remove();
+        }
+      };
+    };
+
+    const canonicalSelector = 'link[rel="canonical"]';
+    let canonicalTag = head.querySelector(canonicalSelector) as HTMLLinkElement | null;
+    const canonicalExisted = Boolean(canonicalTag);
+    const previousCanonicalHref = canonicalTag?.getAttribute("href");
+    if (!canonicalTag) {
+      canonicalTag = document.createElement("link");
+      canonicalTag.rel = "canonical";
+      head.appendChild(canonicalTag);
+    }
+    canonicalTag.href = seo.url;
+
+    const cleanupMeta = [
+      upsertMeta("name", "description", seo.description),
+      upsertMeta("property", "og:site_name", "Root Cabs"),
+      upsertMeta("property", "og:title", seo.title),
+      upsertMeta("property", "og:description", seo.description),
+      upsertMeta("property", "og:url", seo.url),
+      upsertMeta("property", "og:image", seo.image),
+      upsertMeta("property", "og:type", "website"),
+      upsertMeta("name", "twitter:card", "summary_large_image"),
+      upsertMeta("name", "twitter:title", seo.title),
+      upsertMeta("name", "twitter:description", seo.description),
+      upsertMeta("name", "twitter:image", seo.image),
+    ];
+
+    document.title = seo.title;
+    document.documentElement.lang = "en-IN";
+
+    return () => {
+      document.title = previousTitle;
+      document.documentElement.lang = previousLang;
+      cleanupMeta.forEach((dispose) => dispose());
+
+      if (canonicalExisted) {
+        if (previousCanonicalHref !== null) canonicalTag?.setAttribute("href", previousCanonicalHref);
+      } else {
+        canonicalTag?.remove();
+      }
+    };
+  }, []);
+
   const serviceCards = [
     {
       name: "Local Taxi",

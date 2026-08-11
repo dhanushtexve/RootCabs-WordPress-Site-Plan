@@ -61,9 +61,9 @@ export function SupportPage() {
     const head = document.head;
 
     const seo = {
-      title: "Support & Help Centre | Root Cabs",
+      title: "Support & Help Center | Root Cabs",
       description:
-        "Need help with a booking, payment, ride update or service request? Find quick answers here or contact the Root Cabs support team for assistance.",
+        "Get answers to common Root Cabs questions on bookings, payments, and safety, or reach our 24/7 support team by phone or email. Call +91 8608606474.",
       keywords:
         "Root Cabs support, help centre, customer support, booking help, ride updates, payment help, service request support, Tamil Nadu taxi support",
       url: "https://rootcabs.com/support",
