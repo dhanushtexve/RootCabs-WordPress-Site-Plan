@@ -191,11 +191,11 @@ function getSiteDomainUrl() {
 }
 
 function getSiteName() {
-  return import.meta.env.VITE_APP_TITLE?.trim() || 'Atoms';
+  return import.meta.env.VITE_APP_TITLE?.trim() || 'Root Cabs';
 }
 
 function getTwitterSiteHandle() {
-  return import.meta.env.VITE_TWITTER_SITE?.trim() || '@atoms';
+  return import.meta.env.VITE_TWITTER_SITE?.trim() || '@rootcabs';
 }
 
 function getTwitterCreatorHandle() {
@@ -248,9 +248,9 @@ function getPostSeoMeta(post?: BlogPost | null): SeoMeta {
   const siteName = getSiteName();
   const twitterSiteHandle = getTwitterSiteHandle();
   const twitterCreatorHandle = getTwitterCreatorHandle();
-  const fallbackTitle = `Blog | ${siteName}`;
+  const fallbackTitle = `Blog & Travel Guides | ${siteName}`;
   const fallbackDescription =
-    'This is a flexible blog starter that can be filled with Markdown content and prerendered into indexable pages.';
+    'Explore Root Cabs stories, travel guides, driver updates and city coverage across Tamil Nadu.';
 
   if (!post) {
     const fallbackUrl = getAbsoluteUrl('/blog/');
