@@ -965,6 +965,148 @@ export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {
     document.title = seo.title;
     document.documentElement.lang = "en-IN";
 
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      url: "https://rootcabs.com/cities",
+      name: "Cities We Serve | Root Cabs Taxi Service in Tamil Nadu",
+      description:
+        "Root Cabs operates in 10+ cities across Tamil Nadu covering Chennai, Coimbatore, Vellore, Madurai, Trichy, Salem & more. Find local, airport & outstation taxi near you.",
+      inLanguage: "en-IN",
+      publisher: {
+        "@type": "Organization",
+        name: "Root Cabs",
+        url: "https://rootcabs.com/",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://rootcabs.com/assets/root-cabs-logo.webp",
+        },
+        email: "support@rootcabs.com",
+        telephone: "+91-8608606474",
+        areaServed: {
+          "@type": "State",
+          name: "Tamil Nadu",
+        },
+        sameAs: [
+          "https://www.instagram.com/rootcabs/",
+          "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+        ],
+      },
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://rootcabs.com/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Cities We Serve",
+            item: "https://rootcabs.com/cities",
+          },
+        ],
+      },
+      mainEntity: {
+        "@type": "ItemList",
+        name: "Root Cabs Service Cities in Tamil Nadu",
+        numberOfItems: 10,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            item: {
+              "@type": "City",
+              name: "Chennai",
+              url: "https://rootcabs.com/taxi-in-chennai",
+            },
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            item: {
+              "@type": "City",
+              name: "Vellore",
+              url: "https://rootcabs.com/taxi-in-vellore/",
+            },
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            item: {
+              "@type": "City",
+              name: "Coimbatore",
+            },
+          },
+          {
+            "@type": "ListItem",
+            position: 4,
+            item: {
+              "@type": "City",
+              name: "Madurai",
+            },
+          },
+          {
+            "@type": "ListItem",
+            position: 5,
+            item: {
+              "@type": "City",
+              name: "Tiruchirappalli",
+              alternateName: "Trichy",
+            },
+          },
+          {
+            "@type": "ListItem",
+            position: 6,
+            item: {
+              "@type": "City",
+              name: "Salem",
+              url: "https://rootcabs.com/salem",
+            },
+          },
+          {
+            "@type": "ListItem",
+            position: 7,
+            item: {
+              "@type": "City",
+              name: "Tiruppur",
+            },
+          },
+          {
+            "@type": "ListItem",
+            position: 8,
+            item: {
+              "@type": "City",
+              name: "Kanchipuram",
+              url: "https://rootcabs.com/taxi-service-in-kanchipuram/",
+            },
+          },
+          {
+            "@type": "ListItem",
+            position: 9,
+            item: {
+              "@type": "City",
+              name: "Tiruvannamalai",
+              url: "https://rootcabs.com/taxi-in-tiruvannamalai/",
+            },
+          },
+          {
+            "@type": "ListItem",
+            position: 10,
+            item: {
+              "@type": "City",
+              name: "Ranipet",
+            },
+          },
+        ],
+      },
+    });
+    head.appendChild(schema);
+
     return () => {
       document.title = previousTitle;
       document.documentElement.lang = previousLang;
@@ -975,6 +1117,8 @@ export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {
       } else {
         canonicalTag?.remove();
       }
+
+      schema.remove();
     };
   }, [city, isChennai]);
 
@@ -1221,21 +1365,6 @@ export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {
         )}
       </div>
 
-      {/* Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": ["TaxiService", "LocalBusiness"],
-            name: `Root Cabs ${city.name}`,
-            description: city.description,
-            telephone: companyInfo.phone,
-            address: { "@type": "PostalAddress", addressLocality: city.name, addressRegion: "Tamil Nadu", addressCountry: "IN" },
-            openingHoursSpecification: { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"], opens: "00:00", closes: "23:59" },
-          }),
-        }}
-      />
     </div>
   );
 }

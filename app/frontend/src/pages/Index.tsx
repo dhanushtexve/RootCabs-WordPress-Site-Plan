@@ -284,6 +284,113 @@ export default function Index() {
     document.title = seo.title;
     document.documentElement.lang = "en-IN";
 
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": ["WebPage", "FAQPage"],
+      url: "https://rootcabs.com/",
+      name: "Taxi, Drop Taxi & Outstation Cab Service in Tamil Nadu",
+      description:
+        "Book Root Cabs for local, airport and outstation taxi services across Tamil Nadu. Enjoy fixed fares, verified drivers and 24/7 booking. Call 8608606474.",
+      inLanguage: "en-IN",
+      about: {
+        "@type": "Organization",
+        name: "Root Cabs",
+        url: "https://rootcabs.com/",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://rootcabs.com/assets/root-cabs-logo.webp",
+          contentUrl: "https://rootcabs.com/assets/root-cabs-logo.webp",
+          caption: "Root Cabs Logo",
+        },
+        image: "https://rootcabs.com/assets/root-cabs-logo.webp",
+        description:
+          "Root Cabs is an online taxi booking service offering local rides, airport transfers, one-way taxis, outstation trips, hourly packages, auto rides, bike taxis and acting driver services across Tamil Nadu.",
+        email: "support@rootcabs.com",
+        telephone: "+91-8608606474",
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: "+91-8608606474",
+          email: "support@rootcabs.com",
+          contactType: "customer support",
+          areaServed: {
+            "@type": "State",
+            name: "Tamil Nadu",
+          },
+          availableLanguage: ["English", "Tamil"],
+        },
+        areaServed: {
+          "@type": "State",
+          name: "Tamil Nadu",
+        },
+        sameAs: [
+          "https://www.instagram.com/rootcabs/",
+          "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+        ],
+      },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: "https://rootcabs.com/assets/root-cabs-logo.webp",
+        contentUrl: "https://rootcabs.com/assets/root-cabs-logo.webp",
+        caption: "Root Cabs Logo",
+      },
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://rootcabs.com/",
+          },
+        ],
+      },
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "How can I book a taxi online with Root Cabs?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "You can book a taxi online through the Root Cabs app by entering your pickup and drop locations, choosing a vehicle and confirming the ride.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What types of cab services does Root Cabs offer?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Root Cabs offers local rides, airport transfers, one-way taxis, outstation trips, hourly packages, autos, bike taxis and acting driver services.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can I schedule a cab for a future date?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. You can pre-book a taxi for a future date and time, making it easier to plan airport transfers, office trips and outstation journeys.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How is the cab fare calculated?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "The fare is estimated based on the trip distance, vehicle type and service selected. You can view the estimated fare before confirming the booking.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Are Root Cabs drivers verified?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. Drivers are verified through document checks and an approval process before they are allowed to accept rides.",
+          },
+        },
+      ],
+    });
+    head.appendChild(schema);
+
     return () => {
       document.title = previousTitle;
       document.documentElement.lang = previousLang;
@@ -294,6 +401,8 @@ export default function Index() {
       } else {
         canonicalTag?.remove();
       }
+
+      schema.remove();
     };
   }, []);
 

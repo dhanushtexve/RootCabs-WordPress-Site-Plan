@@ -127,17 +127,75 @@ export function SupportPage() {
     schema.type = "application/ld+json";
     schema.text = JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "FAQPage",
+      "@type": ["WebPage", "ContactPage", "FAQPage"],
+      url: "https://rootcabs.com/support",
+      name: "Support & Help Center | Root Cabs",
+      description:
+        "Get answers to common Root Cabs questions on bookings, payments, and safety, or reach our 24/7 support team by phone or email. Call +91 8608606474.",
+      inLanguage: "en-IN",
+      about: {
+        "@type": "Organization",
+        name: "Root Cabs",
+        url: "https://rootcabs.com/",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://rootcabs.com/assets/root-cabs-logo.webp",
+          contentUrl: "https://rootcabs.com/assets/root-cabs-logo.webp",
+          caption: "Root Cabs Logo",
+        },
+        image: "https://rootcabs.com/assets/root-cabs-logo.webp",
+        description:
+          "Root Cabs provides local, airport and outstation taxi services, auto rides, bike taxis, acting driver services and parcel delivery across Tamil Nadu.",
+        email: "support@rootcabs.com",
+        telephone: "+91-8608606474",
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: "+91-8608606474",
+          email: "support@rootcabs.com",
+          contactType: "customer support",
+          areaServed: {
+            "@type": "State",
+            name: "Tamil Nadu",
+          },
+          availableLanguage: ["English", "Tamil"],
+        },
+        areaServed: {
+          "@type": "State",
+          name: "Tamil Nadu",
+        },
+        sameAs: [
+          "https://www.instagram.com/rootcabs/",
+          "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+        ],
+      },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: "https://rootcabs.com/assets/root-cabs-logo.webp",
+        contentUrl: "https://rootcabs.com/assets/root-cabs-logo.webp",
+        caption: "Root Cabs Logo",
+      },
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://rootcabs.com/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Support & Help Center",
+            item: "https://rootcabs.com/support",
+          },
+        ],
+      },
       mainEntity: faqs.map((faq) => ({
         "@type": "Question",
         name: faq.q,
         acceptedAnswer: { "@type": "Answer", text: faq.a },
       })),
-      isPartOf: {
-        "@type": "WebSite",
-        name: "Root Cabs",
-        url: "https://rootcabs.com",
-      },
     });
     head.appendChild(schema);
 

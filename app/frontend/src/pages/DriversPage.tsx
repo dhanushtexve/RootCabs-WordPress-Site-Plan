@@ -248,18 +248,67 @@ export function DriversPage() {
     schema.text = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebPage",
-      name: seo.title,
-      description: seo.description,
-      url: seo.url,
-      isPartOf: {
-        "@type": "WebSite",
+      url: "https://rootcabs.com/drivers",
+      name: "Drive with Root Cabs | Become a Driver Partner",
+      description:
+        "Earn up to ₹40,000+ monthly as a Root Cabs driver partner. Low commission, flexible hours, daily payouts, and free training. Apply now.",
+      inLanguage: "en-IN",
+      publisher: {
+        "@type": "Organization",
         name: "Root Cabs",
-        url: "https://rootcabs.com",
+        url: "https://rootcabs.com/",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://rootcabs.com/assets/root-cabs-logo.webp",
+          contentUrl: "https://rootcabs.com/assets/root-cabs-logo.webp",
+          caption: "Root Cabs Logo",
+        },
+        description:
+          "Root Cabs provides taxi and mobility services across Tamil Nadu and offers earning opportunities for cab, auto, bike taxi and acting driver partners.",
+        email: "support@rootcabs.com",
+        telephone: "+91-8608606474",
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: "+91-8608606474",
+          email: "support@rootcabs.com",
+          contactType: "driver partner support",
+          areaServed: {
+            "@type": "State",
+            name: "Tamil Nadu",
+          },
+          availableLanguage: ["English", "Tamil"],
+        },
+        sameAs: [
+          "https://www.instagram.com/rootcabs/",
+          "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+        ],
       },
-      about: "Driver Partner Opportunities in Tamil Nadu",
-      audience: {
-        "@type": "Audience",
-        audienceType: "Drivers",
+      about: {
+        "@type": "Occupation",
+        name: "Root Cabs Driver Partner",
+        description:
+          "Driver partner opportunities with flexible working hours, daily payouts, low commission and training support.",
+        occupationLocation: {
+          "@type": "State",
+          name: "Tamil Nadu",
+        },
+      },
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://rootcabs.com/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Become a Driver Partner",
+            item: "https://rootcabs.com/drivers",
+          },
+        ],
       },
     });
     head.appendChild(schema);

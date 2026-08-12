@@ -414,6 +414,78 @@ export default function BookRide() {
     document.title = seo.title;
     document.documentElement.lang = "en-IN";
 
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      url: "https://rootcabs.com/book-ride",
+      name: "Book a Ride | Local, Airport & Outstation Taxi - Root Cabs",
+      description:
+        "Book your ride online with Root Cabs in seconds for local, airport and outstation taxi services across Tamil Nadu. Fixed fares, verified drivers and instant confirmation.",
+      inLanguage: "en-IN",
+      about: {
+        "@type": "Organization",
+        name: "Root Cabs",
+        url: "https://rootcabs.com/",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://rootcabs.com/assets/root-cabs-logo.webp",
+          contentUrl: "https://rootcabs.com/assets/root-cabs-logo.webp",
+          caption: "Root Cabs Logo",
+        },
+        image: "https://rootcabs.com/assets/root-cabs-logo.webp",
+        description:
+          "Root Cabs provides local, airport and outstation taxi services with verified drivers, transparent fares and 24/7 online booking across Tamil Nadu.",
+        email: "support@rootcabs.com",
+        telephone: "+91-8608606474",
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: "+91-8608606474",
+          email: "support@rootcabs.com",
+          contactType: "customer support",
+          areaServed: {
+            "@type": "State",
+            name: "Tamil Nadu",
+          },
+          availableLanguage: ["English", "Tamil"],
+        },
+        areaServed: {
+          "@type": "State",
+          name: "Tamil Nadu",
+        },
+        sameAs: [
+          "https://www.instagram.com/rootcabs/",
+          "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+          "https://play.google.com/store/apps/details?id=com.nativecustomer",
+          "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062",
+        ],
+      },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: "https://rootcabs.com/assets/root-cabs-logo.webp",
+        caption: "Root Cabs Logo",
+      },
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://rootcabs.com/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Book Your Ride",
+            item: "https://rootcabs.com/book-ride",
+          },
+        ],
+      },
+    });
+    head.appendChild(schema);
+
     return () => {
       document.title = previousTitle;
       document.documentElement.lang = previousLang;
@@ -424,6 +496,8 @@ export default function BookRide() {
       } else {
         canonicalTag?.remove();
       }
+
+      schema.remove();
     };
   }, []);
 

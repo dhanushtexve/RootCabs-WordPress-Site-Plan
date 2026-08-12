@@ -119,6 +119,124 @@ export function ServicesHub() {
     document.title = seo.title;
     document.documentElement.lang = "en-IN";
 
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      url: "https://rootcabs.com/services",
+      name: "Our Services | Local, Airport & Outstation Taxi - Root Cabs",
+      description:
+        "Root Cabs offers Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto Rickshaw across Tamil Nadu. Fixed fares, verified drivers, 10+ cities.",
+      inLanguage: "en-IN",
+      about: {
+        "@type": "Organization",
+        name: "Root Cabs",
+        url: "https://rootcabs.com/",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://rootcabs.com/assets/root-cabs-logo.webp",
+          contentUrl: "https://rootcabs.com/assets/root-cabs-logo.webp",
+          caption: "Root Cabs Logo",
+        },
+        image: "https://rootcabs.com/assets/root-cabs-logo.webp",
+        description:
+          "Root Cabs provides local, airport and outstation taxi services, acting driver services, parcel delivery, auto rickshaw rides and other mobility services across Tamil Nadu.",
+        email: "support@rootcabs.com",
+        telephone: "+91-8608606474",
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: "+91-8608606474",
+          email: "support@rootcabs.com",
+          contactType: "customer support",
+          areaServed: {
+            "@type": "State",
+            name: "Tamil Nadu",
+          },
+          availableLanguage: ["English", "Tamil"],
+        },
+        areaServed: {
+          "@type": "State",
+          name: "Tamil Nadu",
+        },
+        sameAs: [
+          "https://www.instagram.com/rootcabs/",
+          "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+          "https://play.google.com/store/apps/details?id=com.nativecustomer",
+          "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062",
+        ],
+      },
+      primaryImageOfPage: {
+        "@type": "ImageObject",
+        url: "https://rootcabs.com/assets/root-cabs-logo.webp",
+        contentUrl: "https://rootcabs.com/assets/root-cabs-logo.webp",
+        caption: "Root Cabs Logo",
+      },
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://rootcabs.com/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Our Services",
+            item: "https://rootcabs.com/services",
+          },
+        ],
+      },
+      mainEntity: {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "What services can I book through Root Cabs?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Root Cabs offers local taxis, outstation taxis, one-way rides, autos, bike taxis, hourly packages, acting drivers and parcel delivery.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Can I book a Root Cabs ride for someone else?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. You can book a ride for a family member or friend by entering their pickup location, destination and correct contact number.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Which service is suitable for long-distance travel?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "An outstation taxi service is ideal for round trips, while a one-way taxi is better when you only need a drop at your destination.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Can I book a car with a driver for several hours?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. You can choose an hourly package service for meetings, shopping, events or trips with multiple stops.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Are Root Cabs drivers verified?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Yes. Root Cabs works with verified drivers to provide safer and more reliable travel across its available services.",
+            },
+          },
+        ],
+      },
+    });
+    head.appendChild(schema);
+
     return () => {
       document.title = previousTitle;
       document.documentElement.lang = previousLang;
@@ -129,6 +247,8 @@ export function ServicesHub() {
       } else {
         canonicalTag?.remove();
       }
+
+      schema.remove();
     };
   }, []);
 

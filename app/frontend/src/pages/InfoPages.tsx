@@ -53,10 +53,10 @@ export function BusinessPage() {
     const seo = {
       title: "Business Solutions | Root Cabs",
       description:
-        "Make employee travel and business transportation easier to manage with Root Cabs. Flexible ride solutions for office commutes, client travel, airport trips and company requirements.",
+        "Explore business and corporate travel options with Root Cabs across Tamil Nadu. Get in touch to learn more about partnering with us.",
       keywords:
         "business solutions, corporate travel, business transportation, employee travel, hotel partner program, travel agent partnership, corporate taxi service Tamil Nadu",
-      url: "https://rootcabs.com/business-solutions",
+      url: "https://rootcabs.com/business",
       image: "https://rootcabs.com/assets/root-cabs-logo.webp",
     };
 
@@ -118,18 +118,73 @@ export function BusinessPage() {
     schema.text = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "WebPage",
-      name: seo.title,
-      description: seo.description,
-      url: seo.url,
-      isPartOf: {
-        "@type": "WebSite",
+      url: "https://rootcabs.com/business",
+      name: "Business Solutions | Root Cabs",
+      description:
+        "Explore business and corporate travel options with Root Cabs across Tamil Nadu. Get in touch to learn more about partnering with us.",
+      inLanguage: "en-IN",
+      about: {
+        "@type": "Organization",
         name: "Root Cabs",
-        url: "https://rootcabs.com",
+        url: "https://rootcabs.com/",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://rootcabs.com/assets/root-cabs-logo.webp",
+          contentUrl: "https://rootcabs.com/assets/root-cabs-logo.webp",
+          caption: "Root Cabs Logo",
+        },
+        image: "https://rootcabs.com/assets/root-cabs-logo.webp",
+        description:
+          "Root Cabs provides business and corporate travel solutions along with local, airport and outstation taxi services across Tamil Nadu.",
+        email: "support@rootcabs.com",
+        telephone: "+91-8608606474",
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: "+91-8608606474",
+          email: "support@rootcabs.com",
+          contactType: "business enquiries",
+          areaServed: {
+            "@type": "State",
+            name: "Tamil Nadu",
+          },
+          availableLanguage: ["English", "Tamil"],
+        },
+        areaServed: {
+          "@type": "State",
+          name: "Tamil Nadu",
+        },
+        sameAs: [
+          "https://www.instagram.com/rootcabs/",
+          "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+        ],
       },
-      about: "Business transportation and corporate travel solutions in Tamil Nadu",
-      audience: {
-        "@type": "Audience",
-        audienceType: "Businesses",
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://rootcabs.com/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "Business Solutions",
+            item: "https://rootcabs.com/business",
+          },
+        ],
+      },
+      mainEntity: {
+        "@type": "FAQPage",
+        mainEntity: businessFaqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.q,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.a,
+          },
+        })),
       },
     });
     head.appendChild(schema);
@@ -938,15 +993,83 @@ export function AboutPage() {
     schema.text = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "AboutPage",
-      name: seo.title,
-      description: seo.description,
-      url: seo.url,
-      isPartOf: {
-        "@type": "WebSite",
+      url: "https://rootcabs.com/about",
+      name: "About Root Cabs | Our Mission, Values & Journey",
+      description:
+        "Root Cabs, a unit of Texve Innovations, connects Tamil Nadu with organised, fair mobility services. 10+ cities, 2,000+ driver partners, 4.8/5 rating.",
+      inLanguage: "en-IN",
+      publisher: {
+        "@type": "Organization",
         name: "Root Cabs",
-        url: "https://rootcabs.com",
+        url: "https://rootcabs.com/",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://rootcabs.com/assets/root-cabs-logo.webp",
+          contentUrl: "https://rootcabs.com/assets/root-cabs-logo.webp",
+          caption: "Root Cabs Logo",
+        },
+        description:
+          "Root Cabs, a unit of Texve Innovations, provides organised and fair mobility services across Tamil Nadu.",
+        email: "support@rootcabs.com",
+        telephone: "+91-8608606474",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "REPLACE WITH ROOT CABS VELLORE STREET ADDRESS",
+          addressLocality: "Vellore",
+          addressRegion: "Tamil Nadu",
+          postalCode: "REPLACE WITH PIN CODE",
+          addressCountry: "IN",
+        },
+        parentOrganization: {
+          "@type": "Organization",
+          name: "Texve Innovations",
+        },
+        areaServed: {
+          "@type": "State",
+          name: "Tamil Nadu",
+        },
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: "+91-8608606474",
+          email: "support@rootcabs.com",
+          contactType: "customer support",
+          areaServed: {
+            "@type": "State",
+            name: "Tamil Nadu",
+          },
+          availableLanguage: ["English", "Tamil"],
+        },
+        sameAs: [
+          "https://www.instagram.com/rootcabs/",
+          "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+        ],
       },
-      about: "Root Cabs mobility and transport services across Tamil Nadu",
+      about: {
+        "@type": "Organization",
+        name: "Root Cabs",
+        url: "https://rootcabs.com/",
+        parentOrganization: {
+          "@type": "Organization",
+          name: "Texve Innovations",
+        },
+      },
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://rootcabs.com/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "About Root Cabs",
+            item: "https://rootcabs.com/about",
+          },
+        ],
+      },
     });
     head.appendChild(schema);
 
@@ -1735,6 +1858,71 @@ function PolicyDocumentPage({ policyKey }: { policyKey: string }) {
     document.title = seo.title;
     document.documentElement.lang = "en-IN";
 
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      url:
+        policyKey === "terms-of-use"
+          ? "https://rootcabs.com/terms-of-use"
+          : policyKey === "wallet-policy"
+            ? "https://rootcabs.com/wallet-policy"
+          : "https://rootcabs.com/privacy-policy",
+      name:
+        policyKey === "terms-of-use"
+          ? "Terms of Use | Root Cabs"
+          : policyKey === "wallet-policy"
+            ? "Wallet Policy | Root Cabs"
+            : "Privacy Policy | Root Cabs",
+      description:
+        policyKey === "terms-of-use"
+          ? "Read the terms and conditions for booking and using Root Cabs' taxi, driver, and business services across Tamil Nadu."
+          : policyKey === "wallet-policy"
+            ? "Understand how the Root Cabs wallet works, including adding funds, cashback credits, refunds, and terms for using wallet balance on rides."
+          : "Read how Root Cabs collects, uses, and protects your personal data when you book rides, use the app, or contact our support team.",
+      inLanguage: "en-IN",
+      publisher: {
+        "@type": "Organization",
+        name: "Root Cabs",
+        url: "https://rootcabs.com/",
+        logo: {
+          "@type": "ImageObject",
+          url: "https://rootcabs.com/assets/root-cabs-logo.webp",
+        },
+        email: "support@rootcabs.com",
+        telephone: "+91-8608606474",
+      },
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: "https://rootcabs.com/",
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name:
+              policyKey === "terms-of-use"
+                ? "Terms of Use"
+                : policyKey === "wallet-policy"
+                  ? "Wallet Policy"
+                  : "Privacy Policy",
+            item:
+              policyKey === "terms-of-use"
+                ? "https://rootcabs.com/terms-of-use"
+                : policyKey === "wallet-policy"
+                  ? "https://rootcabs.com/wallet-policy"
+                : "https://rootcabs.com/privacy-policy",
+          },
+        ],
+      },
+    });
+    head.appendChild(schema);
+
     return () => {
       document.title = previousTitle;
       document.documentElement.lang = previousLang;
@@ -1745,6 +1933,8 @@ function PolicyDocumentPage({ policyKey }: { policyKey: string }) {
       } else {
         canonicalTag?.remove();
       }
+
+      schema.remove();
     };
   }, [policy, policyKey]);
 
