@@ -1,19 +1,102 @@
 <IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteRule . /index.html [L]
-</IfModule>
 
+    RewriteEngine On
+
+    RewriteBase /
+ 
+    # --------------------------------------------------
+
+    # 1. Disable Apache's automatic directory slash
+
+    # --------------------------------------------------
+
+    DirectorySlash Off
+ 
+    # --------------------------------------------------
+
+    # 2. Redirect trailing-slash URLs to non-trailing-slash
+
+    #
+
+    # /about/   -> /about
+
+    # /support/ -> /support
+
+    # /cities/  -> /cities
+
+    #
+
+    # Only redirect URLs actually requested by the browser.
+
+    # This prevents internal rewrites from causing redirects.
+
+    # --------------------------------------------------
+
+    RewriteCond %{THE_REQUEST} \s/+(.+?)/+(?:\?[^\s]*)?\s [NC]
+
+    RewriteRule ^(.+)/$ /$1 [R=301,L,NE]
+ 
+    # --------------------------------------------------
+
+    # 3. Don't rewrite existing files
+
+    # --------------------------------------------------
+
+    RewriteCond %{REQUEST_FILENAME} -f
+
+    RewriteRule ^ - [L]
+ 
+    # --------------------------------------------------
+
+    # 4. Serve prerendered routes without the slash
+
+    #
+
+    # /about       -> /about/index.html
+
+    # /support     -> /support/index.html
+
+    # /cities      -> /cities/index.html
+
+    #
+
+    # The browser stays on /about, /support, etc.
+
+    # --------------------------------------------------
+
+    RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+
+    RewriteRule ^(.+)$ $1/index.html [L]
+ 
+    # --------------------------------------------------
+
+    # 5. React SPA fallback
+
+    # --------------------------------------------------
+
+    RewriteRule ^index\.html$ - [L]
+ 
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    RewriteRule . /index.html [L]
+</IfModule>
+ 
+ 
 <IfModule mod_expires.c>
-  ExpiresActive On
-  ExpiresByType text/css "access plus 1 year"
-  ExpiresByType application/javascript "access plus 1 year"
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType image/jpeg "access plus 1 year"
-  ExpiresByType image/webp "access plus 1 year"
-  ExpiresByType image/avif "access plus 1 year"
-  ExpiresByType image/svg+xml "access plus 1 year"
+
+    ExpiresActive On
+ 
+    ExpiresByType text/css "access plus 1 year"
+
+    ExpiresByType application/javascript "access plus 1 year"
+ 
+    ExpiresByType image/png "access plus 1 year"
+
+    ExpiresByType image/jpeg "access plus 1 year"
+
+    ExpiresByType image/webp "access plus 1 year"
+
+    ExpiresByType image/avif "access plus 1 year"
+
+    ExpiresByType image/svg+xml "access plus 1 year"
 </IfModule>
