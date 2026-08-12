@@ -899,11 +899,11 @@ export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {
     const head = document.head;
 
     const seo = isChennai
-      ? {
+        ? {
           title: "Taxi Service in Chennai | Cab Booking 24/7 - Root Cabs",
           description:
             "Root Cabs offers the best taxi service in Chennai  reliable cab service, fixed fares from ₹11/km, verified drivers, no surge pricing, 24/7 booking.",
-          url: "https://rootcabs.com/chennai",
+          url: "https://rootcabs.com/taxi-in-chennai",
           image: "https://rootcabs.com/assets/root-cabs-logo.webp",
         }
       : {
