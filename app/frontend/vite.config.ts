@@ -7,6 +7,8 @@ import { atoms } from '@metagptx/web-sdk/plugins';
 import { vitePrerenderPlugin } from 'vite-prerender-plugin';
 import { getBlogRoutes } from './prerender/blog-routes.js';
 import { getSitemapLastmod } from './prerender/blog-sitemap.js';
+import { staticRouteSchemas } from './prerender/static-route-schema.js';
+import { staticSeoRoutes as importedStaticSeoRoutes } from './prerender/static-route-meta.js';
 import { cities, landmarks, routes, services } from './src/data/siteData';
 
 function escapeHtmlAttr(str: string): string {
@@ -104,126 +106,7 @@ type StaticSeoRoute = {
   keywords?: string;
 };
 
-const staticSeoRoutes: StaticSeoRoute[] = [
-  {
-    path: '/',
-    title: 'Taxi, Drop Taxi & Outstation Cab Service in Tamil Nadu - Root Cabs',
-    description:
-      'Book Root Cabs for local, airport and outstation taxi services across Tamil Nadu. Enjoy fixed fares, verified drivers and 24/7 booking. Call 8608606474.',
-    canonicalUrl: 'https://rootcabs.com/',
-    ogImage: 'https://rootcabs.com/assets/root-cabs-logo.webp',
-    ogType: 'website',
-    siteName: 'Root Cabs',
-  },
-  {
-    path: '/about',
-    title: 'About Root Cabs - Our Story and Values',
-    description:
-      "Root Cabs, Tamil Nadu's fastest-growing taxi aggregator. Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto Rickshaw across 10+ cities.",
-    canonicalUrl: 'https://rootcabs.com/about',
-    ogImage: 'https://rootcabs.com/assets/root-cabs-logo.webp',
-    ogType: 'website',
-    siteName: 'Root Cabs',
-    keywords:
-      'about root cabs, root cabs tamil nadu, texve innovations pvt ltd, taxi services tamil nadu, mobility services tamil nadu, transport services tamil nadu',
-  },
-  {
-    path: '/cities',
-    title: 'Cities We Serve | Root Cabs Taxi Service in Tamil Nadu',
-    description:
-      'Root Cabs operates in 10+ cities across Tamil Nadu covering Chennai, Coimbatore, Vellore, Madurai, Trichy, Salem & more. Find local, airport & outstation taxi near you.',
-    canonicalUrl: 'https://rootcabs.com/cities',
-    ogImage: 'https://rootcabs.com/assets/root-cabs-logo.webp',
-    ogType: 'website',
-    siteName: 'Root Cabs',
-    keywords:
-      'Taxi Services in Tamil Nadu, online taxi booking, affordable taxi service, outstation taxi service, one way taxi service, airport taxi service, local taxi service, car rental with driver, bike taxi service, auto booking service',
-  },
-  {
-    path: '/drivers',
-    title: 'Drive with Root Cabs | Become a Driver Partner',
-    description:
-      'Earn up to ₹40,000+ monthly as a Root Cabs driver partner. Low commission, flexible hours, daily payouts, and free training. Apply now.',
-    canonicalUrl: 'https://rootcabs.com/drivers',
-    ogImage: 'https://rootcabs.com/assets/root-cabs-logo.webp',
-    ogType: 'website',
-    siteName: 'Root Cabs',
-    keywords:
-      'drive and earn with Root Cabs, driver partner, become a driver, driver jobs Tamil Nadu, auto driver partner, cab driver partner, bike driver partner, flexible driver jobs',
-  },
-  {
-    path: '/privacy-policy',
-    title: 'Privacy Policy | Root Cabs',
-    description:
-      'Read how Root Cabs collects, uses, and protects your personal data when you book rides, use the app, or contact our support team.',
-    canonicalUrl: 'https://rootcabs.com/privacy-policy',
-    ogImage: 'https://rootcabs.com/assets/root-cabs-logo.webp',
-    ogType: 'website',
-    siteName: 'Root Cabs',
-  },
-  {
-    path: '/support',
-    title: 'Support & Help Center | Root Cabs',
-    description:
-      'Get answers to common Root Cabs questions on bookings, payments, and safety, or reach our 24/7 support team by phone or email. Call +91 8608606474.',
-    canonicalUrl: 'https://rootcabs.com/support',
-    ogImage: 'https://rootcabs.com/assets/root-cabs-logo.webp',
-    ogType: 'website',
-    siteName: 'Root Cabs',
-    keywords:
-      'Root Cabs support, help centre, customer support, booking help, ride updates, payment help, service request support, Tamil Nadu taxi support',
-  },
-  {
-    path: '/terms-of-use',
-    title: 'Terms of Use | Root Cabs',
-    description:
-      "Read the terms and conditions for booking and using Root Cabs' taxi, driver, and business services across Tamil Nadu.",
-    canonicalUrl: 'https://rootcabs.com/terms-of-use',
-    ogImage: 'https://rootcabs.com/assets/root-cabs-logo.webp',
-    ogType: 'website',
-    siteName: 'Root Cabs',
-  },
-  {
-    path: '/wallet-policy',
-    title: 'Wallet Policy | Root Cabs',
-    description:
-      'Understand how the Root Cabs wallet works  adding funds, cashback credits, refunds, and terms for using wallet balance on rides.',
-    canonicalUrl: 'https://rootcabs.com/wallet-policy',
-    ogImage: 'https://rootcabs.com/assets/root-cabs-logo.webp',
-    ogType: 'website',
-    siteName: 'Root Cabs',
-  },
-  {
-    path: '/chennai',
-    title: 'Taxi Service in Chennai | Cab Booking 24/7 - Root Cabs',
-    description:
-      'Root Cabs offers the best taxi service in Chennai  reliable cab service, fixed fares from ₹11/km, verified drivers, no surge pricing, 24/7 booking.',
-    canonicalUrl: 'https://rootcabs.com/chennai',
-    ogImage: 'https://rootcabs.com/assets/root-cabs-logo.webp',
-    ogType: 'website',
-    siteName: 'Root Cabs',
-  },
-  {
-    path: '/book-ride',
-    title: 'Book a Ride | Local, Airport & Outstation Taxi - Root Cabs',
-    description:
-      'Book your ride online with Root Cabs in seconds local, airport & outstation taxi across Tamil Nadu. Fixed fares, verified drivers, instant confirmation.',
-    canonicalUrl: 'https://rootcabs.com/book-ride',
-    ogImage: 'https://rootcabs.com/assets/root-cabs-logo.webp',
-    ogType: 'website',
-    siteName: 'Root Cabs',
-  },
-  {
-    path: '/services',
-    title: 'Our Services | Local, Airport & Outstation Taxi - Root Cabs',
-    description:
-      'Root Cabs offers Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto Rickshaw across Tamil Nadu. Fixed fares, verified drivers, 10+ cities.',
-    canonicalUrl: 'https://rootcabs.com/services',
-    ogImage: 'https://rootcabs.com/assets/root-cabs-logo.webp',
-    ogType: 'website',
-    siteName: 'Root Cabs',
-  },
-];
+const staticSeoRoutes: StaticSeoRoute[] = importedStaticSeoRoutes as unknown as StaticSeoRoute[];
 
 function escapeXml(str: string): string {
   return str
@@ -264,7 +147,7 @@ function generateSitemapPlugin(siteUrl: string, blogRoutes: string[]): Plugin {
         createRoute('/book-ride', 'daily', '0.9'),
         createRoute('/services', 'weekly', '0.9'),
         createRoute('/cities', 'weekly', '0.9'),
-        createRoute('/chennai', 'weekly', '0.8'),
+        createRoute('/taxi-in-chennai', 'weekly', '0.8'),
         createRoute('/drivers', 'weekly', '0.8'),
         createRoute('/business', 'weekly', '0.8'),
         createRoute('/blog', 'weekly', '0.8'),
@@ -418,6 +301,19 @@ function materializeStaticSeoRoutes(): Plugin {
     return nextHtml;
   }
 
+  function upsertSchema(html: string, routePath: string) {
+    const schema = staticRouteSchemas[routePath];
+    const escapedRoutePath = routePath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const replacement = `    <script type="application/ld+json" data-static-schema="${escapeHtml(routePath)}">${JSON.stringify(schema)}</script>`;
+    const regex = new RegExp(`<script[^>]*data-static-schema="${escapedRoutePath}"[^>]*>[\\s\\S]*?<\\/script>`, 'i');
+
+    if (!schema) {
+      return html.replace(regex, '\n');
+    }
+
+    return replaceOrInsert(html, regex, replacement);
+  }
+
   return {
     name: 'materialize-static-seo-routes',
     configResolved(config: ResolvedConfig) {
@@ -430,7 +326,7 @@ function materializeStaticSeoRoutes(): Plugin {
       const rootHtml = fs.readFileSync(rootIndexPath, 'utf8');
 
       for (const route of staticSeoRoutes) {
-        const html = applySeo(rootHtml, route);
+        const html = upsertSchema(applySeo(rootHtml, route), route.path);
         const outputPath =
           route.path === '/'
             ? rootIndexPath
