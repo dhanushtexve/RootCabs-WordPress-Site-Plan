@@ -24,23 +24,23 @@ const benefitIcons: Record<string, React.ReactNode> = {
 export function BusinessPage() {
   const businessFaqs = [
     {
-      q: "Which Cities Are Covered Under Root Cabs Business Solutions?",
+      q: "Which cities are covered under Root Cabs business solutions?",
       a: "Root Cabs business solutions are available across the cities we currently serve in Tamil Nadu. Coverage may vary based on the type of service and travel requirement.",
     },
     {
-      q: "Is There A Minimum Company Size Required For A Corporate Account?",
+      q: "Is there a minimum company size required for a corporate account?",
       a: "No fixed company size is required. We work with startups, small businesses and larger organisations based on their travel needs.",
     },
     {
-      q: "How Can I Get Pricing For My Business?",
+      q: "How can I get pricing for my business?",
       a: "Share your expected ride volume, locations and service requirements with our team. We will provide a customised quote based on your business travel plan.",
     },
     {
-      q: "Can Travel Agents Add Root Cabs Bookings To Their Own Platform?",
+      q: "Can travel agents add Root Cabs bookings to their own platform?",
       a: "Yes. Travel agents can discuss booking integration and partnership options with the Root Cabs team. The setup will depend on the platform and booking volume.",
     },
     {
-      q: "Can Businesses Schedule Rides In Advance?",
+      q: "Can businesses schedule rides in advance?",
       a: "Yes. Corporate clients, hotels and travel agents can arrange rides ahead of time for employees, guests or customers based on their planned travel schedule.",
     },
   ];
@@ -926,9 +926,9 @@ export function AboutPage() {
     const head = document.head;
 
     const seo = {
-      title: "About Root Cabs - Our Story and Values",
+      title: "About Root Cabs | Our Mission, Values & Journey",
       description:
-        "Root Cabs, Tamil Nadu's fastest-growing taxi aggregator. Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto Rickshaw across 10+ cities.",
+        "Root Cabs, a unit of Texve Innovations, connects Tamil Nadu with organised, fair mobility services. 10+ cities, 2,000+ driver partners, 4.8/5 rating.",
       keywords:
         "about root cabs, root cabs tamil nadu, texve innovations pvt ltd, taxi services tamil nadu, mobility services tamil nadu, transport services tamil nadu",
       url: "https://rootcabs.com/about",

@@ -6,44 +6,44 @@ import { Card, CardContent } from "@/components/ui/card";
 import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import { ArrowRight, CheckCircle, Clock, Mail, MapPin } from "lucide-react";
 
-const faqs = [
+  const faqs = [
   {
-    q: "Can I Share My Live Trip Location With A Family Member?",
+    q: "Can I share my live trip location with a family member?",
     a: "Yes. You can share your live trip details with a family member or friend from the Root Cabs app once the ride begins.",
     category: "riders",
   },
   {
-    q: "I Left Something In The Cab. How Can I Get It Back?",
+    q: "I left something in the cab. How can I get it back?",
     a: "Contact Root Cabs support as soon as possible and share your booking details. Our team will help you connect with the driver and assist with recovering the item.",
     category: "riders",
   },
   {
-    q: "How Do I Become A Root Cabs Driver Partner?",
+    q: "How do I become a Root Cabs driver partner?",
     a: "Download the Root Partner app and complete the registration process with your personal, vehicle and licence details. Once the documents are verified, your account can be activated.",
     category: "drivers",
   },
   {
-    q: "How Do I File A Complaint About A Driver?",
+    q: "How do I file a complaint about a driver?",
     a: "Contact the Root Cabs support team and share your booking ID along with the details of the issue. The team will review the complaint and take the necessary action.",
     category: "riders",
   },
   {
-    q: "I Want A Refund For A Cancelled Ride. How Long Does It Take?",
+    q: "I want a refund for a cancelled ride. How long does it take?",
     a: "Once approved, refunds are usually processed within 24 to 48 hours. The time taken to reflect may vary depending on the payment method.",
     category: "riders",
   },
   {
-    q: "How Do I Check My Daily Payout Status?",
+    q: "How do I check my daily payout status?",
     a: "Driver partners can view daily earnings and payout details in the Root Partner app. Contact driver support if a completed payout is not reflected.",
     category: "drivers",
   },
   {
-    q: "What Should I Do If My Ride Is Delayed?",
+    q: "What should I do if my ride is delayed?",
     a: "Check the driver's location and trip status in the app. You can contact the driver directly or reach Root Cabs support if you need further assistance.",
     category: "riders",
   },
   {
-    q: "How Can I Update The Phone Number Linked To My Account?",
+    q: "How can I update the phone number linked to my account?",
     a: "Contact the Root Cabs support team with your registered details. The team will guide you through the verification and account update process.",
     category: "business",
   },
