@@ -25,7 +25,6 @@ export default function RootCabsAnimatedLogo({
 
         <div className="rc-logo__wheel-drop" aria-hidden="true">
           <div className="rc-logo__wheel-spin">
-            <div className="rc-logo__wheel-ring" />
             <div className="rc-logo__wheel-hub" />
           </div>
           <div className="rc-logo__wheel-text">CABS</div>
