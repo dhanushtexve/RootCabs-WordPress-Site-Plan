@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { Calculator, MapPin, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
@@ -20,9 +21,15 @@ interface FareCalculatorProps {
   defaultFrom?: string;
   defaultTo?: string;
   compact?: boolean;
+  showBookNowButton?: boolean;
 }
 
-export default function FareCalculator({ defaultFrom = "", defaultTo = "", compact = false }: FareCalculatorProps) {
+export default function FareCalculator({
+  defaultFrom = "",
+  defaultTo = "",
+  compact = false,
+  showBookNowButton = false,
+}: FareCalculatorProps) {
   const [from, setFrom] = useState(defaultFrom);
   const [to, setTo] = useState(defaultTo);
   const [vehicle, setVehicle] = useState<FareEstimateRequest["cabType"]>("Sedan");
@@ -121,11 +128,11 @@ export default function FareCalculator({ defaultFrom = "", defaultTo = "", compa
         </div>
 
         <div className="flex items-end">
-          <Button
-            onClick={calculateFare}
-            className="w-full bg-[#FFD700] hover:bg-[#E6C200] text-[#2E3A8C] font-bold cursor-pointer shadow-sm"
-            disabled={!from || !to || isLoading}
-          >
+            <Button
+              onClick={calculateFare}
+              className="w-full bg-[#1E2A6E] hover:bg-[#2E3A8C] text-white font-bold cursor-pointer shadow-sm"
+              disabled={!from || !to || isLoading}
+            >
             {isLoading ? "Calculating..." : "Calculate Fare"}
           </Button>
         </div>
@@ -162,6 +169,15 @@ export default function FareCalculator({ defaultFrom = "", defaultTo = "", compa
             </div>
           </div>
           <p className="text-xs text-muted-foreground mt-2">* Estimated fare. Actual fare may vary based on route, traffic, and tolls.</p>
+          {showBookNowButton && (
+            <div className="mt-4 flex justify-center sm:justify-end">
+              <Link to="/book-ride">
+                <Button className="bg-[#FFD700] hover:bg-[#E6C200] text-[#2E3A8C] font-bold cursor-pointer shadow-sm">
+                  Book Now <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+            </div>
+          )}
         </div>
       )}
     </div>

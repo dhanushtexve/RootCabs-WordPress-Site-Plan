@@ -446,9 +446,9 @@ export default function Index() {
                 { label: "Driver Partners", value: companyInfo.drivers, icon: <Users className="w-5 h-5" /> },
                 { label: "Customer Rating", value: companyInfo.rating + "/5", icon: <Award className="w-5 h-5" /> },
               ].map((stat) => (
-                <div key={stat.label} className="rounded-xl border border-white/10 bg-white/10 p-5 text-center shadow-sm backdrop-blur-sm transition-all hover:border-[#FFD700]/60 hover:bg-white/15">
-                  <div className="mx-auto mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-[#FFD700]/12 text-[#FFD700]">{stat.icon}</div>
-                  <p className="font-heading text-2xl font-extrabold text-[#FFD700] md:text-3xl">{stat.value}</p>
+                  <div key={stat.label} className="rounded-xl border border-white/10 bg-white/10 p-5 text-center shadow-sm backdrop-blur-sm transition-all hover:border-white/25 hover:bg-white/15">
+                  <div className="mx-auto mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-white/10 text-white">{stat.icon}</div>
+                  <p className="font-heading text-2xl font-extrabold text-white md:text-3xl">{stat.value}</p>
                   <p className="mt-1 text-xs font-medium text-white/70 md:text-sm">{stat.label}</p>
                 </div>
               ))}
@@ -459,15 +459,15 @@ export default function Index() {
 
       {/* Fare Calculator */}
       <section className="max-w-screen-xl mx-auto px-4 -mt-8 relative z-20">
-        <FareCalculator />
+        <FareCalculator showBookNowButton />
       </section>
 
       {/* How Root Cabs Works */}
       <section className="max-w-screen-xl mx-auto px-4 py-10 md:py-12">
         <div className="mb-9 text-center">
-          <span className="inline-flex rounded-full bg-[#FFD700] px-4 py-1.5 text-sm font-extrabold uppercase tracking-wide text-[#1E2A6E] shadow-sm">
-            HOW ROOT CABS WORKS
-          </span>
+            <span className="inline-flex rounded-full bg-[#E9EDFF] px-4 py-1.5 text-sm font-extrabold uppercase tracking-wide text-[#1E2A6E] shadow-sm">
+              HOW ROOT CABS WORKS
+            </span>
           <h2 className="mt-4 font-heading text-3xl font-bold text-[#1E2A6E] md:text-4xl">Booking Your Ride Is Quick And Simple</h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-base">
             Use the Root Cabs online cab booking app to plan your trip in just a few steps.
@@ -490,9 +490,9 @@ export default function Index() {
       <section className="bg-[#F5F7FB] pb-6 pt-0 md:pb-8 md:pt-2">
         <div className="max-w-screen-xl mx-auto px-4">
           <div className="mb-8 text-center">
-            <span className="inline-flex rounded-full bg-[#FFD700] px-4 py-1.5 text-sm font-extrabold uppercase tracking-wide text-[#1E2A6E] shadow-sm">
-              Our Services
-            </span>
+              <span className="inline-flex rounded-full bg-[#E9EDFF] px-4 py-1.5 text-sm font-extrabold uppercase tracking-wide text-[#1E2A6E] shadow-sm">
+                Our Services
+              </span>
             <h2 className="mt-4 font-heading text-3xl font-bold text-[#1E2A6E] md:text-4xl">Explore Every Way To Travel With Root Cabs</h2>
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-base">
               From everyday city rides to long-distance travel, we've got you covered.
@@ -534,9 +534,9 @@ export default function Index() {
       <section className="bg-white pb-12 pt-2 md:pb-14 md:pt-3">
         <div className="max-w-screen-xl mx-auto px-4">
           <div className="mb-8 text-center">
-            <span className="inline-flex rounded-full bg-[#FFD700] px-4 py-1.5 text-sm font-extrabold uppercase tracking-wide text-[#1E2A6E] shadow-sm">
-              Cities We Serve
-            </span>
+              <span className="inline-flex rounded-full bg-[#E9EDFF] px-4 py-1.5 text-sm font-extrabold uppercase tracking-wide text-[#1E2A6E] shadow-sm">
+                Cities We Serve
+              </span>
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-base">
               Expanding across Tamil Nadu, offering affordable cab service in every major city.
             </p>

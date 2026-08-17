@@ -238,7 +238,7 @@ export function BusinessPage() {
               <h2 className="font-heading text-2xl font-bold mb-3">{sol.title}</h2>
               <p className="text-muted-foreground mb-6">{sol.description}</p>
               <a href={`tel:${companyInfo.phone}`}>
-                <Button className="bg-[#FFD700] hover:bg-[#E6C200] text-[#2E3A8C] font-bold cursor-pointer shadow-sm">
+                <Button className="bg-[#1E2A6E] hover:bg-[#2E3A8C] text-white font-bold cursor-pointer shadow-sm">
                   Contact Sales <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </a>

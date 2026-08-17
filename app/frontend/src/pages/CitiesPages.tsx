@@ -1166,7 +1166,7 @@ export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {
 
       <div className="max-w-screen-xl mx-auto px-4 py-10 space-y-12">
         {/* Fare Calculator */}
-        <FareCalculator defaultFrom={city.name} />
+        <FareCalculator defaultFrom={city.name} showBookNowButton={isChennai} />
 
         {/* Services */}
         {isChennai ? (

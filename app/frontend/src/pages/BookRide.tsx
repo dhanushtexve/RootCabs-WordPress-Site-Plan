@@ -457,14 +457,7 @@ export default function BookRide() {
         sameAs: [
           "https://www.instagram.com/rootcabs/",
           "https://www.facebook.com/people/Root-Cabs/61575197818182/",
-          "https://play.google.com/store/apps/details?id=com.nativecustomer",
-          "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062",
         ],
-      },
-      primaryImageOfPage: {
-        "@type": "ImageObject",
-        url: "https://rootcabs.com/assets/root-cabs-logo.webp",
-        caption: "Root Cabs Logo",
       },
       breadcrumb: {
         "@type": "BreadcrumbList",
@@ -482,6 +475,17 @@ export default function BookRide() {
             item: "https://rootcabs.com/book-ride",
           },
         ],
+      },
+      mainEntity: {
+        "@type": "FAQPage",
+        mainEntity: bookRideFaqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.q,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.a,
+          },
+        })),
       },
     });
     head.appendChild(schema);
