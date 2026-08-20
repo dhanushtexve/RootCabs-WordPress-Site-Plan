@@ -67,6 +67,14 @@ const chennaiPickupImages: Record<string, string> = {
   "Koyambedu": "/assets/chennai-koyambedu.webp",
 };
 
+const vellorePickupImages: Record<string, string> = {
+  "VIT University": "/assets/vellore-city-page/VIT.png",
+  "CMC Hospital": "/assets/vellore-city-page/CMC.png",
+  "Golden Temple": "/assets/vellore-city-page/Golden Temple.png",
+  "Vellore Fort": "/assets/vellore-city-page/Vellore Fort.png",
+  "Katpadi Railway Station": "/assets/vellore-city-page/Junction.png",
+};
+
 const chennaiPickupSpotContent: Record<string, { title: string; description: string }> = {
   "Chennai Airport": {
     title: "Chennai Airport",
@@ -92,6 +100,34 @@ const chennaiPickupSpotContent: Record<string, { title: string; description: str
     title: "Koyambedu",
     description:
       "Continue your journey with Root Cabs after arriving at Koyambedu by booking a pickup near the bus terminus. Travel comfortably to your home, hotel, railway station, airport, or any other location across Chennai.",
+  },
+};
+
+const vellorePickupSpotContent: Record<string, { title: string; description: string }> = {
+  "VIT University": {
+    title: "VIT University",
+    description:
+      "Root Cabs provides convenient pickups near the main gate for college travel, railway station drops, airport transfers, and weekend journeys. Our cabs in Vellore are suitable for students, parents, faculty members, and campus visitors.",
+  },
+  "CMC Hospital": {
+    title: "CMC Hospital",
+    description:
+      "Root Cabs provides pickups near the hospital entrance for appointments, patient visits, discharge travel, and pharmacy stops. It is a convenient option for those looking for cabs near CMC Hospital Vellore, especially when travelling with patients or luggage.",
+  },
+  "Golden Temple": {
+    title: "Golden Temple",
+    description:
+      "Book a Root Cabs pickup near Sripuram Golden Temple for temple visits, family outings, and return travel to hotels, railway stations, hospitals, or other destinations across Vellore.",
+  },
+  "Vellore Fort": {
+    title: "Vellore Fort",
+    description:
+      "Choose a Root Cabs pickup point near Vellore Fort after sightseeing, temple visits, shopping, or family outings. Continue comfortably to your hotel, railway station, hospital, or another destination within Vellore.",
+  },
+  "Katpadi Railway Station": {
+    title: "Katpadi Junction",
+    description:
+      "Root Cabs offers pickups from Katpadi Junction for travel to VIT University, CMC Hospital, central Vellore, or nearby towns. This is especially convenient for early-morning arrivals, late-night journeys, and passengers carrying luggage.",
   },
 };
 
@@ -262,6 +298,233 @@ const chennaiRoutes = [
       { label: "SUV", value: "\u20B95,404" },
       { label: "MUV", value: "\u20B96,105" },
     ],
+  },
+] as const;
+
+const velloreServices = [
+  {
+    title: "Local Taxi",
+    description:
+      "Comfortable local rides across Vellore for office commutes, hospital appointments, shopping, railway station pickups, and daily errands. With convenient cab booking in Vellore, you can plan short city journeys without searching for transport at the last minute.",
+    fare: "Starting at \u20B9 90/2 Km",
+    href: "/taxi-in-vellore/local-taxi",
+    iconWrapClass: "bg-white",
+    icon: <img src={assetPath("/assets/chennai-service-local.webp")} alt="Local Taxi service icon" className="h-8 w-8 object-contain" />,
+  },
+  {
+    title: "Outstation Taxi",
+    description:
+      "Round-trip travel from Vellore for family visits, business journeys, temple trips, weekend breaks, and longer road travel. Select a vehicle that suits your group size, luggage, route, and overall travel plan.",
+    fare: "Starting at \u20B9 300/20 Km",
+    href: "/taxi-in-vellore/outstation",
+    iconWrapClass: "bg-white",
+    icon: <img src={assetPath("/assets/chennai-service-outstation.webp")} alt="Outstation Taxi service icon" className="h-8 w-8 object-contain" />,
+  },
+  {
+    title: "Acting Driver",
+    description:
+      "Experienced drivers are available to drive your own car for hospital visits, family events, business travel, late-night returns, and long journeys. This service lets you travel in your vehicle without handling the drive yourself.",
+    fare: "Starting at \u20B9 500/100 Km",
+    href: "/taxi-in-vellore/acting-driver",
+    iconWrapClass: "bg-white",
+    icon: <img src={assetPath("/assets/chennai-service-acting-driver.webp")} alt="Acting Driver service icon" className="h-8 w-8 object-contain" />,
+  },
+  {
+    title: "One-Way Taxi",
+    description:
+      "Travel from Vellore to another city and pay only for the trip you need. The one way drop taxi Vellore service is suitable for airport transfers, railway station drops, relocations, and intercity journeys without return charges.",
+    fare: "Starting at \u20B9 300/20 Km",
+    href: "/book-ride",
+    iconWrapClass: "bg-white",
+    icon: <img src={assetPath("/assets/chennai-service-one-way.webp")} alt="One-Way Taxi service icon" className="h-8 w-8 object-contain" />,
+  },
+  {
+    title: "Auto Rickshaw",
+    description:
+      "Quick auto rides for Vellore's markets, hospitals, railway stations, colleges, residential areas, and nearby destinations. It is a practical option for short trips, everyday errands, and local travel through busy streets.",
+    fare: "Starting at \u20B9 100/2 Km",
+    href: "/taxi-in-vellore/auto",
+    iconWrapClass: "bg-white",
+    icon: <img src={assetPath("/assets/chennai-service-auto.webp")} alt="Auto Rickshaw service icon" className="h-8 w-8 object-contain" />,
+  },
+  {
+    title: "Bike Taxi",
+    description:
+      "Affordable bike taxi rides help solo travellers reach offices, colleges, appointments, and nearby destinations across Vellore. It is well suited to short-distance travel, especially when roads are busy or time is limited.",
+    fare: "Starting at \u20B9 25/2km",
+    href: "/book-ride",
+    iconWrapClass: "bg-white",
+    icon: <img src={assetPath("/assets/chennai-service-bike-taxi.webp")} alt="Bike Taxi service icon" className="h-8 w-8 object-contain" />,
+  },
+  {
+    title: "Hourly Package",
+    description:
+      "Flexible hourly cab packages make it easier to complete meetings, shopping, hospital visits, and multiple stops across Vellore. One booking lets you travel at your own pace without arranging a separate ride each time.",
+    fare: "Starting at \u20B9 100/3 Km",
+    href: "/book-ride",
+    iconWrapClass: "bg-white",
+    icon: <img src={assetPath("/assets/chennai-service-hourly-package.webp")} alt="Hourly Package service icon" className="h-8 w-8 object-contain" />,
+  },
+  {
+    title: "Parcel Delivery",
+    description:
+      "Doorstep parcel delivery helps you send medicines, documents, small packages, and everyday essentials across Vellore. Items are collected from your location and delivered conveniently to the selected address.",
+    fare: "Starting at \u20B9 50/1km",
+    href: "/taxi-in-vellore/parcel-delivery",
+    iconWrapClass: "bg-white",
+    icon: <img src={assetPath("/assets/chennai-service-parcel.webp")} alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
+  },
+] as const;
+
+const velloreRoutes = [
+  {
+    title: "Vellore to Chennai",
+    meta: "Km- 274 · Approx. hrs - 9",
+    fares: [
+      { label: "MINI", value: "\u20B93,350" },
+      { label: "SEDAN", value: "\u20B93,450" },
+      { label: "SUV", value: "\u20B94,667" },
+    ],
+  },
+  {
+    title: "Vellore to Bangalore",
+    meta: "Km- 424 · Approx. hrs - 14",
+    fares: [
+      { label: "MINI", value: "\u20B95,144" },
+      { label: "SEDAN", value: "\u20B95,244" },
+      { label: "SUV", value: "\u20B97,059" },
+    ],
+  },
+  {
+    title: "Vellore to Tiruvannamalai",
+    meta: "Km- 176 · Approx. hrs - 6",
+    fares: [
+      { label: "MINI", value: "\u20B92,170" },
+      { label: "SEDAN", value: "\u20B92,270" },
+      { label: "SUV", value: "\u20B93,094" },
+    ],
+  },
+  {
+    title: "Vellore to Tirupati",
+    meta: "Km- 215 · Approx. hrs - 7",
+    fares: [
+      { label: "MINI", value: "\u20B92,634" },
+      { label: "SEDAN", value: "\u20B92,734" },
+      { label: "SUV", value: "\u20B93,712" },
+    ],
+  },
+  {
+    title: "Vellore to Pondicherry",
+    meta: "Km- 320 · Approx. hrs - 10",
+    fares: [
+      { label: "MINI", value: "\u20B93,903" },
+      { label: "SEDAN", value: "\u20B94,003" },
+      { label: "SUV", value: "\u20B95,404" },
+    ],
+  },
+] as const;
+
+const velloreAttractions = [
+  {
+    title: "Vellore Fort",
+    description:
+      "Explore one of the city's best-known landmarks, home to historic walls, a moat, and the Jalakandeswarar Temple. It is an easy local outing for families, visitors, and history enthusiasts.",
+    cta: "Book a Local Ride",
+    href: "/book-ride",
+    image: "/assets/vellore-city-page/Vellore Fort.png",
+  },
+  {
+    title: "Sripuram Golden Temple",
+    description:
+      "Visit the renowned golden temple set within a peaceful spiritual complex near Vellore. A Root Cabs ride makes the journey convenient for families, senior citizens, and pilgrims.",
+    cta: "Book a Local Ride",
+    href: "/book-ride",
+    image: "/assets/vellore-city-page/Golden Temple.png",
+  },
+  {
+    title: "Yelagiri Hills",
+    description:
+      "Enjoy a refreshing drive to Yelagiri for scenic views, boating, nature walks, and a cooler climate. It is a popular weekend escape for couples, families, and groups travelling from Vellore.",
+    cta: "Book an Outstation Trip",
+    href: "/taxi-in-vellore/outstation",
+    image: "/assets/vellore-city-page/Yelagiri Hills.png",
+  },
+  {
+    title: "Tiruvannamalai",
+    description:
+      "Travel to Arunachaleswarar Temple and experience one of Tamil Nadu's most important spiritual destinations. Choose a comfortable call taxi in Vellore for a same-day visit or an overnight journey.",
+    cta: "Book an Outstation Trip",
+    href: "/taxi-in-vellore/outstation",
+    image: "/assets/vellore-city-page/Tiruvannamalai.png",
+  },
+  {
+    title: "Amirthi Zoological Park",
+    description:
+      "Spend a relaxed day surrounded by greenery, wildlife, and walking trails at Amirthi Zoological Park. The destination is well suited to family outings and short trips with children.",
+    cta: "Book a Local Ride",
+    href: "/book-ride",
+    image: "/assets/vellore-city-page/Amirithi Zoo.png",
+  },
+  {
+    title: "Jalakandeswarar Temple",
+    description:
+      "Visit this historic temple located inside the Vellore Fort complex, known for its detailed stone carvings and traditional architecture. It is a convenient stop during a local sightseeing trip.",
+    cta: "Book a Local Ride",
+    href: "/book-ride",
+    image: "/assets/vellore-city-page/Jalakandeeswarar Temple.png",
+  },
+] as const;
+
+const velloreReviews = [
+  {
+    name: "Lakshmi Narayanan",
+    text: "I needed a ride to CMC Hospital early in the morning, and the driver arrived on time. The car was clean, the fare was clear, and the trip was comfortable. Root Cabs is a convenient option for anyone looking for a cab service near CMC Vellore.",
+    meta: "Local Taxi · CMC Hospital",
+  },
+  {
+    name: "Suresh Kumar",
+    text: "I travel between VIT and Katpadi often, and Root Cabs has been consistent every time. The drivers are polite, and online cab booking in Vellore is quick and easy.",
+    meta: "Local Taxi · VIT University",
+  },
+  {
+    name: "Divya Ramesh",
+    text: "We used Root Cabs for a family trip to Yelagiri. The cab was comfortable, the driver was professional, and the fare was explained clearly before the journey.",
+    meta: "Outstation Taxi · Vellore to Yelagiri",
+  },
+] as const;
+
+const velloreFaqs = [
+  {
+    q: "Which Is The Best Taxi Service In Vellore?",
+    a: "The best taxi service in Vellore should offer clear fares, verified drivers, dependable pickups, and responsive support. Root Cabs provides these benefits for local, hospital, station, and outstation travel.",
+  },
+  {
+    q: "How Do I Book A Taxi In Vellore With Root Cabs?",
+    a: "Enter your pickup point and destination in the Root Cabs app, choose the required service, and confirm your ride. You can also contact the Root Cabs support team to book a cab over the phone.",
+  },
+  {
+    q: "Are Root Cabs Available 24x7 In Vellore, Even During Festivals?",
+    a: "Yes, Root Cabs is available 24/7 in Vellore, including weekends and festival days. You can book a ride whenever you need to travel.",
+  },
+  {
+    q: "Which App Should I Use To Book A Cab In Vellore?",
+    a: "Use the Root Cabs app to view ride options, check fares, and confirm your pickup. It provides a convenient alternative to searching for a call taxi in Vellore.",
+  },
+  {
+    q: "Are Root Cabs Available Near Vellore Junction, VIT University, Or CMC Hospital?",
+    a: "Yes, Root Cabs serves Vellore Junction, VIT University, CMC Hospital, and nearby neighbourhoods.",
+  },
+  {
+    q: "Are Root Cabs Drivers Verified And Background-Checked In Vellore?",
+    a: "Yes, drivers must complete the required verification process before accepting rides through Root Cabs. This helps customers travel with greater confidence across Vellore and on longer journeys.",
+  },
+  {
+    q: "What Should I Do If I Can't Find My Driver At The Pickup Point?",
+    a: "Call the driver using the contact option in the Root Cabs app and confirm the exact pickup point. For further assistance, contact customer support with your booking details.",
+  },
+  {
+    q: "Is There A Safer Ride Option For Women Traveling Alone In Vellore?",
+    a: "Root Cabs supports safer travel through verified drivers, live ride tracking, and the option to share trip details with family or friends. If you need assistance before or during the ride, customer support is available to help.",
   },
 ] as const;
 
@@ -609,7 +872,7 @@ function CityFaqSection({ city }: { city: (typeof cities)[number] }) {
   if (city.faq.length === 0) return null;
 
   return (
-    <section className="bg-muted/50 rounded-2xl px-4 py-14 md:px-6 md:py-16">
+    <section className="bg-muted/50 rounded-2xl px-4 pb-14 pt-8 md:px-6 md:pb-16 md:pt-10">
       <div className="mx-auto max-w-4xl">
         <h2 className="font-heading text-center text-3xl font-bold text-[#1E2A6E] md:text-4xl">Frequently Asked Questions</h2>
         <Accordion type="single" collapsible className="mt-10 space-y-3">
@@ -654,6 +917,207 @@ function ChennaiContentSection() {
             With Root Cabs, you can book a taxi in Chennai based on the service that best suits your journey.
           </article>
         </div>
+      </div>
+    </section>
+  );
+}
+
+function VelloreAppDownloadCard() {
+  return (
+    <section className="max-w-screen-xl mx-auto">
+      <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-[#5569d4] via-[#34479f] to-[#273588] px-6 py-8 text-white shadow-[0_20px_60px_rgba(39,53,136,0.24)] md:px-10 md:py-10 lg:px-14 lg:py-12">
+        <img
+          src="/assets/home-download-car-bg.webp"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.16] saturate-75"
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.16),transparent_30%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.1),transparent_24%),linear-gradient(180deg,rgba(39,53,136,0.18),rgba(39,53,136,0.72))]" />
+        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#24347f]/70 to-transparent" />
+        <div className="relative z-10 grid items-center gap-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.8fr)]">
+          <div className="text-center md:text-left md:pl-2">
+            <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
+              GET THE APP
+            </span>
+            <h2 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-[2.6rem]">
+              Book Your Vellore Ride In A Few Simple Steps
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-white/85 md:mx-0 md:text-lg">
+              Use the Root Cabs app to manage local trips, hospital visits, station pickups, and outstation journeys across Vellore.
+            </p>
+            <div className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2 text-xs font-semibold text-white/90 md:justify-start md:text-sm">
+              <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> No Last-Minute Cancellations</span>
+              <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Transparent Fares</span>
+              <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Quick Rebooking</span>
+              <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> SOS Assistance</span>
+            </div>
+            <div className="mt-6 grid max-w-[470px] grid-cols-1 justify-items-center gap-4 sm:grid-cols-2 md:justify-items-start">
+              <div className="flex w-[170px] flex-col items-center">
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                  aria-label="Google Play"
+                >
+                  <img
+                    src="/assets/play-store.png"
+                    alt="Google Play"
+                    className="h-10 w-auto object-contain"
+                  />
+                </a>
+                <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                  <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">Scan to Download</p>
+                  <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                    <img
+                      src="/assets/app-download-qr-google-play-cropped.png"
+                      alt="Google Play QR code"
+                      className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                    />
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex w-[170px] flex-col items-center">
+                <a
+                  href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                  aria-label="App Store"
+                >
+                  <img
+                    src="/assets/app-store-badge.png"
+                    alt="App Store"
+                    className="h-10 w-auto object-contain"
+                  />
+                </a>
+                <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                  <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">Scan to Download</p>
+                  <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                    <img
+                      src="/assets/app-download-qr-app-store-cropped.png"
+                      alt="App Store QR code"
+                      className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                    />
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="relative mx-auto flex w-full max-w-[420px] items-end justify-center">
+            <div className="pointer-events-none absolute inset-x-10 bottom-2 h-16 rounded-full bg-black/35 blur-3xl" />
+            <div className="relative">
+              <img
+                src="/assets/plan-trip-root-cabs.png"
+                alt="Root Cabs app preview"
+                className="h-auto w-full max-w-[360px] object-contain drop-shadow-[0_22px_40px_rgba(0,0,0,0.35)]"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function VellorePartnerSection() {
+  return (
+    <section className="py-2">
+      <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
+        <div className="text-center md:text-left">
+          <h3 className="mb-2 font-heading text-xl font-bold">
+            Drive and Earn with Root Cabs
+          </h3>
+          <p className="mb-4 text-sm text-muted-foreground">
+            Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+          </p>
+          <Link to="/drivers">
+            <Button className="cursor-pointer bg-primary hover:bg-primary/90">
+              Join as Root Partner <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
+          </Link>
+        </div>
+        <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
+          <img
+            src="/assets/homepage-rootpartner-banner.webp"
+            alt="Drive and earn with Root Cabs"
+            className="h-full w-full object-cover object-center"
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function VelloreFaqSection() {
+  return (
+    <section className="-mt-16 rounded-2xl bg-muted/50 px-4 pb-14 pt-4 md:-mt-20 md:px-6 md:pb-16 md:pt-6">
+      <div className="mx-auto max-w-4xl">
+        <h2 className="font-heading text-center text-3xl font-bold text-[#1E2A6E] md:text-4xl">Frequently Asked Questions</h2>
+        <Accordion type="single" collapsible className="mt-10 space-y-3">
+          {velloreFaqs.map((item, i) => (
+            <AccordionItem key={i} value={`vellore-faq-${i}`} className="rounded-xl border border-[#E2E8F3] bg-white px-5 shadow-sm">
+              <AccordionTrigger className="text-left text-sm font-semibold text-[#1E2A6E] cursor-pointer hover:no-underline md:text-base">
+                <span>{item.q}</span>
+              </AccordionTrigger>
+              <AccordionContent className="pb-5 text-sm leading-7 text-muted-foreground">
+                {item.a}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+    </section>
+  );
+}
+
+function VelloreContentSection() {
+  return (
+    <section className="rounded-[2rem] bg-[#F5F7FB] p-6 md:p-8 lg:p-10">
+      <div className="max-w-6xl">
+        <h2 className="mb-3 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Getting Around Vellore with Root Cabs</h2>
+        <p className="mb-8 max-w-3xl text-base text-[#5D6A90]">A practical guide to choosing the right ride for every trip across the city and beyond.</p>
+        <div className="grid gap-6 lg:grid-cols-3">
+          <article className="rounded-[2.25rem] border border-[#E4EAF5] bg-white p-6 text-base leading-8 text-[#111827] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:bg-[#1E2A6E] hover:text-white hover:shadow-lg md:p-7">
+            Travel needs in Vellore can vary throughout the day. For office commutes, hospital visits, college travel, shopping, and short local trips, Root Cabs offers Local Taxi, Auto Rickshaw, and Bike Taxi options. Customers can also use online cab booking in Vellore to plan rides in advance and avoid last-minute travel stress.
+          </article>
+          <article className="rounded-[2.25rem] border border-[#E4EAF5] bg-white p-6 text-base leading-8 text-[#111827] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:bg-[#1E2A6E] hover:text-white hover:shadow-lg md:p-7">
+            For intercity journeys, Outstation Taxi and One-Way Taxi services make travel from Vellore to nearby cities more convenient. Round-trip options work well for family visits, business travel, and weekend plans, while one-way rides are suitable when a return journey is not required.
+          </article>
+          <article className="rounded-[2.25rem] border border-[#E4EAF5] bg-white p-6 text-base leading-8 text-[#111827] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:bg-[#1E2A6E] hover:text-white hover:shadow-lg md:p-7">
+            Customers with several stops can choose an Hourly Package for meetings, appointments, shopping, or local visits. Acting Driver services are available for those who prefer to travel in their own car, while Parcel Delivery helps move medicines, documents, and small packages across Vellore.
+          </article>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function VelloreAttractionsSection() {
+  return (
+    <section>
+      <h2 className="font-heading text-2xl font-bold mb-3 text-[#1E2A6E] md:text-3xl">Places To Visit In And Around Vellore</h2>
+      <p className="mb-6 max-w-4xl text-sm leading-6 text-muted-foreground md:text-base">
+        Explore temples, hill stations, heritage landmarks, and family attractions with a comfortable taxi in Vellore for your day trip or weekend plan.
+      </p>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+        {velloreAttractions.map((place) => (
+          <div key={place.title} className="overflow-hidden rounded-2xl border border-[#E2E8F3] bg-white shadow-sm">
+            <img
+              src={assetPath(place.image)}
+              alt={place.title}
+              className="h-52 w-full object-cover"
+            />
+            <div className="p-4">
+              <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">{place.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-[#5D6A90]">{place.description}</p>
+              <Link to={place.href} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#1E2A6E] transition-colors hover:text-primary">
+                {place.cta} <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
@@ -878,6 +1342,125 @@ function ChennaiActingDriverSection() {
             className="h-full min-h-[260px] w-full object-cover md:min-h-[300px]"
           />
         </div>
+    </section>
+  );
+}
+
+function VelloreTrustSection() {
+  return (
+    <section className="rounded-2xl bg-muted/50 p-6 md:p-8">
+      <h2 className="font-heading text-2xl font-bold text-[#1E2A6E]">Why Riders Trust Root Cabs?</h2>
+      <p className="mt-3 max-w-2xl text-sm text-muted-foreground md:text-base">
+        Clear fares, dependable rides, and support whenever you need it.
+      </p>
+      <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {[
+          {
+            icon: <CheckCircle className="h-5 w-5" />,
+            title: "Verified Drivers",
+            text: "Every driver is verified before joining the platform, helping you travel with greater confidence on local, airport, and outstation rides.",
+          },
+          {
+            icon: <Navigation className="h-5 w-5" />,
+            title: "No Last-Minute Cancellations",
+            text: "Root Cabs focuses on dependable pickups, helping reduce the chances of sudden cancellations affecting your travel plans.",
+          },
+          {
+            icon: <Phone className="h-5 w-5" />,
+            title: "24/7 Customer Support",
+            text: "Our support team is available around the clock to assist with bookings, ride concerns, payments, and other travel-related questions.",
+          },
+          {
+            icon: <MapPin className="h-5 w-5" />,
+            title: "Live Ride Tracking",
+            text: "Track your ride in real time and share the trip details with family or friends. Stay informed about your route and estimated arrival throughout the journey.",
+          },
+        ].map((item) => (
+          <div key={item.title} className="rounded-xl border border-[#E2E8F3] bg-white p-5 shadow-sm">
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+              {item.icon}
+            </div>
+            <h3 className="mt-4 font-heading text-base font-bold text-[#1E2A6E]">{item.title}</h3>
+            <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function VelloreReviewsSection() {
+  return (
+    <section>
+      <h2 className="font-heading text-2xl font-bold mb-3">Customer Reviews In Vellore</h2>
+      <p className="mb-6 text-sm text-muted-foreground md:text-base">
+        Real feedback from customers who use Root Cabs for local and outstation travel.
+      </p>
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+        {velloreReviews.map((review) => (
+          <div key={review.name} className="rounded-2xl border border-[#E2E8F3] bg-white p-5 shadow-sm">
+            <div className="mb-3 flex items-center justify-between gap-4">
+              <div className="flex gap-1 text-[#E0A800]">
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <Star key={index} className="h-4 w-4 fill-current" />
+                ))}
+              </div>
+              <GoogleReviewBadge />
+            </div>
+            <p className="text-sm leading-7 text-[#33406F]">{review.text}</p>
+            <div className="mt-5">
+              <p className="font-heading text-sm font-bold text-[#1E2A6E]">{review.name}</p>
+              <p className="text-xs text-muted-foreground">{review.meta}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function VelloreActingDriverSection() {
+  return (
+    <section className="grid items-center gap-8 rounded-2xl border border-border bg-[#F4F6FF] p-6 md:grid-cols-[1fr_0.95fr] md:p-8">
+      <div>
+        <div className="inline-flex rounded-full bg-[#E9EDFF] px-4 py-1.5 text-xs font-bold uppercase text-[#1E2A6E]">
+          Acting Driver
+        </div>
+        <h2 className="mt-5 max-w-xl font-heading text-2xl font-bold leading-tight text-[#1E2A6E] md:text-3xl">
+          Make Every Trip Easier with An Acting Driver
+        </h2>
+        <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground md:text-base">
+          Need someone to take the wheel of your car? Hire a driver in Vellore through Root Cabs for hospital
+          visits, family functions, late-night returns, business travel, and long-distance journeys.
+        </p>
+        <div className="mt-6 space-y-3 text-sm text-[#24305E]">
+          {[
+            "Verified and experienced acting drivers",
+            "Available for local and outstation travel",
+            "Flexible hourly and full-day options",
+            "Suitable for regular and premium cars",
+          ].map((item) => (
+            <div key={item} className="flex items-start gap-3">
+              <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+        <div className="mt-8">
+          <Link to="/services/acting-driver">
+            <Button size="lg" className="bg-[#1E2A6E] px-7 font-bold text-white hover:bg-[#2E3A8C]">
+              Hire an Acting Driver <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </Link>
+        </div>
+      </div>
+      <div className="overflow-hidden rounded-xl bg-[#E9EDFF] min-h-[260px] md:min-h-[300px]">
+        <img
+          src={assetPath("/assets/vellore-city-page/Acting Driver.png")}
+          alt="Acting driver at the wheel of a customer's own car in Vellore"
+          className="h-full min-h-[260px] w-full object-cover md:min-h-[300px]"
+        />
+      </div>
     </section>
   );
 }
@@ -1133,6 +1716,7 @@ export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {
   }
 
   const cityTestimonials = testimonials.filter((t) => t.city === city.name);
+  const isVellore = city?.name === "Vellore";
 
   return (
     <div>
@@ -1147,17 +1731,23 @@ export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {
               { label: city.name },
             ]}
           />
-          <h1 className="font-heading text-3xl md:text-5xl font-bold mb-4">{city.tagline}</h1>
-          <p className="text-gray-300 max-w-2xl text-lg">{city.description}</p>
+          <h1 className="font-heading text-3xl md:text-5xl font-bold mb-4">
+            {isVellore ? "Your Go-To Taxi Service in Vellore - Whenever You Need a Ride" : city.tagline}
+          </h1>
+          <p className="text-gray-300 max-w-2xl text-lg">
+            {isVellore
+              ? "From CMC appointments and VIT travel to railway station pickups and outstation trips, Root Cabs makes travelling around Vellore easier with clear fares and convenient booking."
+              : city.description}
+          </p>
           <div className="flex flex-wrap gap-4 mt-6">
             <Link to="/book-ride">
               <Button size="lg" className="bg-[#FFD700] hover:bg-[#E6C200] text-[#2E3A8C] font-bold cursor-pointer shadow-sm">
-                {isChennai ? "Book a Ride in Chennai" : `Book Ride in ${city.name}`} <ArrowRight className="w-4 h-4 ml-2" />
+                {isChennai ? "Book a Ride in Chennai" : isVellore ? "Book Ride in Vellore" : `Book Ride in ${city.name}`} <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
             <a href={`tel:${isChennai ? "8608606474" : companyInfo.phone}`}>
               <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 cursor-pointer !bg-transparent">
-                <Phone className="w-4 h-4 mr-2" /> Call now
+                <Phone className="w-4 h-4 mr-2" /> {isVellore ? "Call us" : "Call now"}
               </Button>
             </a>
           </div>
@@ -1166,11 +1756,13 @@ export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {
 
       <div className="max-w-screen-xl mx-auto px-4 py-10 space-y-12">
         {/* Fare Calculator */}
-        <FareCalculator defaultFrom={city.name} showBookNowButton={isChennai} />
+        <FareCalculator defaultFrom={city.name} showBookNowButton={isChennai || isVellore} />
 
         {/* Services */}
         {isChennai ? (
           <ChennaiServicesSection />
+        ) : isVellore ? (
+          <VelloreServicesSection />
         ) : (
           <section>
             <h2 className="font-heading text-2xl font-bold mb-6">Services Available in {city.name}</h2>
@@ -1200,6 +1792,8 @@ export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {
         {/* Popular Routes */}
         {isChennai ? (
           <ChennaiRoutesSection />
+        ) : isVellore ? (
+          <VelloreRoutesSection />
         ) : (
           <section>
             <h2 className="font-heading text-2xl font-bold mb-6">Popular Routes from {city.name}</h2>
@@ -1230,10 +1824,23 @@ export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {
                 Root Cabs makes it easy to arrange a ride from the city's busiest travel hubs, landmarks, and neighbourhoods with a convenient taxi service in Chennai.
               </p>
             )}
+            {isVellore && (
+              <p className="mb-6 max-w-none text-sm leading-6 text-muted-foreground md:whitespace-nowrap md:text-base">
+                Root Cabs offers convenient pickups from Vellore's major hospitals, colleges, railway stations, and popular landmarks throughout the day.
+              </p>
+            )}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
               {city.landmarks.map((landmark) => {
-                const image = city.name === "Chennai" ? chennaiPickupImages[landmark] : undefined;
-                const content = city.name === "Chennai" ? chennaiPickupSpotContent[landmark] : undefined;
+                const image = city.name === "Chennai"
+                  ? chennaiPickupImages[landmark]
+                  : isVellore
+                    ? vellorePickupImages[landmark]
+                    : undefined;
+                const content = city.name === "Chennai"
+                  ? chennaiPickupSpotContent[landmark]
+                  : isVellore
+                    ? vellorePickupSpotContent[landmark]
+                    : undefined;
 
                 return (
                   <div key={landmark} className="overflow-hidden rounded-xl border border-border bg-white shadow-sm">
@@ -1268,10 +1875,19 @@ export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {
             <ChennaiActingDriverSection />
           </>
         )}
+        {isVellore && (
+          <>
+            <VelloreContentSection />
+            <VelloreAttractionsSection />
+            <VelloreActingDriverSection />
+          </>
+        )}
 
         {/* Reviews */}
         {isChennai ? (
           <ChennaiReviewsSection />
+        ) : isVellore ? (
+          <VelloreReviewsSection />
         ) : cityTestimonials.length > 0 ? (
           <section>
             <h2 className="font-heading text-2xl font-bold mb-6">Customer Reviews in {city.name}</h2>
@@ -1293,11 +1909,11 @@ export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {
           </section>
         ) : null}
 
-        {city.name !== "Chennai" && <CityFaqSection city={city} />}
-
         {/* Why Root Cabs */}
         {isChennai ? (
           <ChennaiTrustSection />
+        ) : isVellore ? (
+          <VelloreTrustSection />
         ) : (
           <section className="bg-muted/50 rounded-2xl p-8">
             <h2 className="font-heading text-2xl font-bold mb-6">Why Choose Root Cabs in {city.name}?</h2>
@@ -1316,6 +1932,15 @@ export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {
             </div>
           </section>
         )}
+
+        {isVellore && (
+          <>
+            <VelloreAppDownloadCard />
+            <VellorePartnerSection />
+          </>
+        )}
+
+        {isVellore ? <VelloreFaqSection /> : city.name !== "Chennai" && <CityFaqSection city={city} />}
 
         {city.name === "Chennai" && (
           <>
@@ -1348,7 +1973,7 @@ export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {
         )}
 
         {/* Driver CTA */}
-        {!isChennai && (
+        {!isChennai && !isVellore && (
           <section className="py-8 text-center">
             <h3 className="mb-2 font-heading text-xl font-bold">
               {`Drive with Root Cabs in ${city.name}`}
@@ -1366,6 +1991,107 @@ export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {
       </div>
 
     </div>
+  );
+}
+
+function VelloreRoutesSection() {
+  return (
+    <section>
+      <h2 className="font-heading text-2xl font-bold mb-3">Popular Outstation Routes From Vellore</h2>
+      <p className="mb-6 max-w-none text-sm text-muted-foreground md:whitespace-nowrap md:text-base">
+        Plan comfortable outstation journeys from Vellore with flexible vehicle options for every route.
+      </p>
+
+      <div className="grid gap-4 lg:grid-cols-[minmax(0,0.82fr)_minmax(320px,0.38fr)] lg:items-start">
+        <div className="rounded-xl border border-[#E2E8F3] bg-[#F8FAFF] p-2 shadow-sm md:p-2.5">
+          <div className="max-h-[28rem] space-y-2 overflow-y-auto pr-1 sm:max-h-[30rem] lg:max-h-[36rem]">
+            {velloreRoutes.map((route) => (
+              <div
+                key={route.title}
+                className="rounded-lg border border-[#E2E8F3] bg-white p-2.5 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md"
+              >
+                <div className="flex flex-wrap items-end justify-between gap-1">
+                  <h3 className="font-heading text-sm font-bold text-[#1E2A6E]">{route.title}</h3>
+                  <p className="text-[10px] text-muted-foreground">{route.meta}</p>
+                </div>
+                <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-3">
+                  {route.fares.map((fare) => (
+                    <div key={fare.label} className="rounded-md border border-[#E6ECF7] bg-[#F7F9FE] px-2.5 py-1.5 text-center">
+                      <p className="text-[10px] font-extrabold uppercase tracking-wide text-[#1E2A6E]">{fare.label}</p>
+                      <p className="mt-0.5 text-xs font-bold text-[#1E2A6E]">{fare.value}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="rounded-xl border border-[#E2E8F3] bg-white p-3 shadow-sm lg:sticky lg:top-6">
+          <div className="overflow-hidden rounded-lg bg-[#F7FAFF]">
+            <img
+              src={assetPath("/assets/vellore-city-page/Car image.png")}
+              alt="Root Cabs car for Vellore outstation routes"
+              className="h-64 w-full object-contain object-center sm:h-72 lg:h-80"
+            />
+          </div>
+          <div className="mt-2">
+            <p className="text-[10px] font-extrabold uppercase tracking-wide text-[#1E2A6E]">Experienced Drivers</p>
+            <h3 className="mt-1 font-heading text-sm font-bold text-[#1E2A6E]">
+              Experienced Drivers for Every Route
+            </h3>
+            <p className="mt-2 text-xs leading-5 text-muted-foreground">
+              Root Cabs connects you with verified drivers who are familiar with major routes from Vellore. From smooth highway driving to dependable pickups, every trip is handled with care and professionalism.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function VelloreServicesSection() {
+  const [showAll, setShowAll] = useState(false);
+  const visibleServices = showAll ? velloreServices : velloreServices.slice(0, 6);
+
+  return (
+    <section>
+      <h2 className="font-heading text-2xl font-bold mb-3">Explore Our Services</h2>
+      <p className="mb-6 max-w-none text-sm text-muted-foreground md:whitespace-nowrap md:text-base">
+        Explore convenient ride, driver, and delivery services available across Vellore.
+      </p>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+        {visibleServices.map((service) => (
+          <Link
+            key={service.title}
+            to={service.href}
+            className="group relative overflow-visible rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] p-5 pr-20 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md"
+          >
+            <div className={`pointer-events-none absolute right-4 top-4 flex h-14 w-16 items-center justify-center rounded-xl border border-white/70 shadow-sm transition-all duration-300 group-hover:-right-3 group-hover:-top-3 group-hover:scale-105 ${service.iconWrapClass}`}>
+              <div className="scale-150 opacity-90">
+                {service.icon}
+              </div>
+            </div>
+            <ArrowRight className="absolute bottom-5 right-5 h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary" />
+            <h3 className="font-heading text-xl font-bold text-[#111827]">{service.title}</h3>
+            <p className="mt-1 text-sm font-medium text-primary">{service.fare}</p>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground">{service.description}</p>
+          </Link>
+        ))}
+      </div>
+      {velloreServices.length > 6 && (
+        <div className="mt-6 flex justify-center">
+          <Button
+            type="button"
+            variant="outline"
+            className="rounded-full px-6 font-semibold text-[#1E2A6E]"
+            onClick={() => setShowAll((current) => !current)}
+          >
+            {showAll ? "Show Less" : "See More"}
+          </Button>
+        </div>
+      )}
+    </section>
   );
 }
 
