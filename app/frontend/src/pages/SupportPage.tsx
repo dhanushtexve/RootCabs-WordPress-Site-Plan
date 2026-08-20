@@ -18,8 +18,43 @@ import { ArrowRight, CheckCircle, Clock, Mail, MapPin } from "lucide-react";
     category: "riders",
   },
   {
-    q: "How do I become a Root Cabs driver partner?",
-    a: "Download the Root Partner app and complete the registration process with your personal, vehicle and licence details. Once the documents are verified, your account can be activated.",
+    q: "What documents are required for driver onboarding?",
+    a: "For driver onboarding, you need to verify both your personal and vehicle details by submitting your Aadhaar Card, Driving Licence, Live Photo, Vehicle Permit, RC, Insurance, and a recent vehicle photo with the date and time.",
+    category: "drivers",
+  },
+  {
+    q: "Is there any initial registration or onboarding fee that drivers need to pay?",
+    a: "No. Drivers can complete the registration and onboarding process with Root Cabs without paying any initial fee.",
+    category: "drivers",
+  },
+  {
+    q: "What is the commission structure for drivers for each completed trip on Root Cabs?",
+    a: "Root Cabs follows a 0% commission structure, allowing drivers to keep the full fare from every completed trip.",
+    category: "drivers",
+  },
+  {
+    q: "What is the average monthly earning potential for drivers on Root Cabs?",
+    a: "Drivers can earn around Rs. 40,000 per month on average depending on the number of trips completed, online hours, and the type of rides they choose.",
+    category: "drivers",
+  },
+  {
+    q: "Is there any minimum number of trips guaranteed or required for drivers per month?",
+    a: "No, there is no fixed minimum trip count required per month. Drivers progress through Silver, Gold, and Elite tiers based on the required trip count and online hours. Once the criteria are completed, they can move to the next tier and become eligible for additional bonuses.",
+    category: "drivers",
+  },
+  {
+    q: "Compared to local trips, how frequently do drivers receive outstation trips through Root Cabs?",
+    a: "Compared to local trips, drivers generally receive more outstation trip opportunities through Root Cabs.",
+    category: "drivers",
+  },
+  {
+    q: "Is there a higher earning opportunity for drivers through outstation trips compared to local trips?",
+    a: "Earning opportunities depend on the driver's preference. Some drivers choose outstation trips, while others prefer local rides and can earn equally by completing more local trips.",
+    category: "drivers",
+  },
+  {
+    q: "How does the driver subscription work on Root Cabs?",
+    a: "Root Cabs offers three subscription plans such as Starter, Best Value and Pro. Drivers can choose a plan based on their preference and continue taking rides until the subscription period ends.",
     category: "drivers",
   },
   {
@@ -31,11 +66,6 @@ import { ArrowRight, CheckCircle, Clock, Mail, MapPin } from "lucide-react";
     q: "I want a refund for a cancelled ride. How long does it take?",
     a: "Once approved, refunds are usually processed within 24 to 48 hours. The time taken to reflect may vary depending on the payment method.",
     category: "riders",
-  },
-  {
-    q: "How do I check my daily payout status?",
-    a: "Driver partners can view daily earnings and payout details in the Root Partner app. Contact driver support if a completed payout is not reflected.",
-    category: "drivers",
   },
   {
     q: "What should I do if my ride is delayed?",

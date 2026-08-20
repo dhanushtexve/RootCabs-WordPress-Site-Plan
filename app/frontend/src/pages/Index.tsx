@@ -442,7 +442,7 @@ export default function Index() {
             <div className="grid grid-cols-2 gap-4">
               {[
                 { label: "Cities Covered", value: companyInfo.cities, icon: <MapPin className="w-5 h-5" /> },
-                { label: "Happy Rides", value: companyInfo.rides, icon: <Car className="w-5 h-5" /> },
+                { label: "Happy Clients", value: companyInfo.rides, icon: <Car className="w-5 h-5" /> },
                 { label: "Driver Partners", value: companyInfo.drivers, icon: <Users className="w-5 h-5" /> },
                 { label: "Customer Rating", value: companyInfo.rating + "/5", icon: <Award className="w-5 h-5" /> },
               ].map((stat) => (

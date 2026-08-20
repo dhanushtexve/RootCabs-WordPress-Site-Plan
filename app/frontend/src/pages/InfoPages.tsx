@@ -1140,7 +1140,7 @@ export function AboutPage() {
             {[
               { label: "Cities", value: "5" },
               { label: "Driver Partners", value: "1000" },
-              { label: "Happy Rides", value: "30,000" },
+              { label: "Happy Clients", value: "30,000" },
               { label: "Customer Rating", value: "4.2/5" },
             ].map((stat) => (
               <div
@@ -1544,7 +1544,7 @@ export function AboutPage() {
 // SUPPORT PAGE
 // ============================================================
 export function SupportPage() {
-  const faqs = [
+  const riderFaqs = [
     {
       q: "Can I Share My Live Trip Location With A Family Member?",
       a: "Yes. You can share your live trip details with a family member or friend from the Root Cabs app once the ride begins.",
@@ -1552,10 +1552,6 @@ export function SupportPage() {
     {
       q: "I Left Something In The Cab. How Can I Get It Back?",
       a: "Contact Root Cabs support as soon as possible and share your booking details. Our team will help you connect with the driver and assist with recovering the item.",
-    },
-    {
-      q: "How Do I Become A Root Cabs Driver Partner?",
-      a: "Download the Root Partner app and complete the registration process with your personal, vehicle and licence details. Once the documents are verified, your account can be activated.",
     },
     {
       q: "How Do I File A Complaint About A Driver?",
@@ -1566,10 +1562,6 @@ export function SupportPage() {
       a: "Once approved, refunds are usually processed within 24 to 48 hours. The time taken to reflect may vary depending on the payment method.",
     },
     {
-      q: "How Do I Check My Daily Payout Status?",
-      a: "Driver partners can view daily earnings and payout details in the Root Partner app. Contact driver support if a completed payout is not reflected.",
-    },
-    {
       q: "What Should I Do If My Ride Is Delayed?",
       a: "Check the driverâ€™s location and trip status in the app. You can contact the driver directly or reach Root Cabs support if you need further assistance.",
     },
@@ -1578,6 +1570,58 @@ export function SupportPage() {
       a: "Contact the Root Cabs support team with your registered details. The team will guide you through the verification and account update process.",
     },
   ];
+  const driverFaqs = [
+    {
+      q: "What Documents Are Required For Driver Onboarding?",
+      a: "For driver onboarding, you need to verify both your personal and vehicle details by submitting your Aadhaar Card, Driving Licence, Live Photo, Vehicle Permit, RC, Insurance, and a recent vehicle photo with the date and time.",
+    },
+    {
+      q: "Is There Any Initial Registration Or Onboarding Fee That Drivers Need To Pay?",
+      a: "No. Drivers can complete the registration and onboarding process with Root Cabs without paying any initial fee.",
+    },
+    {
+      q: "What Is The Commission Structure For Drivers For Each Completed Trip On Root Cabs?",
+      a: "Root Cabs follows a 0% commission structure, allowing drivers to keep the full fare from every completed trip.",
+    },
+    {
+      q: "What Is The Average Monthly Earning Potential For Drivers On Root Cabs?",
+      a: "Drivers can earn around ₹40,000 per month on average depending on the number of trips completed, online hours, and the type of rides they choose.",
+    },
+    {
+      q: "Is There Any Minimum Number Of Trips Guaranteed Or Required For Drivers Per Month?",
+      a: "No, there is no fixed minimum trip count required per month. Drivers progress through Silver, Gold, and Elite tiers based on the required trip count and online hours. Once the criteria are completed, they can move to the next tier and become eligible for additional bonuses.",
+    },
+    {
+      q: "Compared To Local Trips, How Frequently Do Drivers Receive Outstation Trips Through Root Cabs?",
+      a: "Compared to local trips, drivers generally receive more outstation trip opportunities through Root Cabs.",
+    },
+    {
+      q: "Is There A Higher Earning Opportunity For Drivers Through Outstation Trips Compared To Local Trips?",
+      a: "Earning opportunities depend on the driver’s preference. Some drivers choose outstation trips, while others prefer local rides and can earn equally by completing more local trips.",
+    },
+    {
+      q: "How Does The Driver Subscription Work On Root Cabs?",
+      a: "Root Cabs offers three subscription plans such as Starter, Best Value and Pro. Drivers can choose a plan based on their preference and continue taking rides until the subscription period ends.",
+    },
+  ];
+  const businessFaqs = [
+    {
+      q: "How Can I Get Started With Root Cabs For Business Travel?",
+      a: "You can contact the Root Cabs team with your company travel needs and service locations. Our team will guide you through the onboarding process for business travel support.",
+    },
+    {
+      q: "Can Root Cabs Support Airport, Local And Outstation Travel For Teams?",
+      a: "Yes. Root Cabs can support airport transfers, local employee movement and outstation travel depending on your business travel requirement and service coverage.",
+    },
+  ];
+  const faqGroups = {
+    All: [...riderFaqs, ...driverFaqs, ...businessFaqs],
+    "For Riders": riderFaqs,
+    "For Drivers": driverFaqs,
+    "For Business": businessFaqs,
+  } as const;
+  const [activeFaqGroup, setActiveFaqGroup] = useState<keyof typeof faqGroups>("All");
+  const faqs = faqGroups[activeFaqGroup];
 
   useEffect(() => {
     const previousTitle = document.title;
@@ -1652,7 +1696,7 @@ export function SupportPage() {
     schema.text = JSON.stringify({
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      mainEntity: faqs.map((faq) => ({
+      mainEntity: faqGroups.All.map((faq) => ({
         "@type": "Question",
         name: faq.q,
         acceptedAnswer: { "@type": "Answer", text: faq.a },
@@ -1695,7 +1739,26 @@ export function SupportPage() {
         <div className="grid lg:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.9fr)] gap-8 items-start">
           <div>
             <h2 className="font-heading text-2xl md:text-3xl font-bold mb-2">Frequently Asked Questions</h2>
-            <p className="text-sm text-muted-foreground mb-6">Find quick answers to the most common support questions below.</p>
+            <p className="text-sm text-muted-foreground mb-6">Filter by who you are, or browse everything below.</p>
+            <div className="mb-6 flex flex-wrap gap-3">
+              {(Object.keys(faqGroups) as Array<keyof typeof faqGroups>).map((group) => {
+                const active = activeFaqGroup === group;
+                return (
+                  <button
+                    key={group}
+                    type="button"
+                    onClick={() => setActiveFaqGroup(group)}
+                    className={`rounded-full border px-5 py-2 text-sm font-medium transition-colors ${
+                      active
+                        ? "border-[#1E2A6E] bg-[#1E2A6E] text-white"
+                        : "border-slate-200 bg-white text-[#1E2A6E] hover:border-[#1E2A6E]/30 hover:bg-[#1E2A6E]/5"
+                    }`}
+                  >
+                    {group}
+                  </button>
+                );
+              })}
+            </div>
             <Accordion type="single" collapsible className="w-full">
               {faqs.map((faq, i) => (
                 <AccordionItem key={i} value={`faq-${i}`}>
