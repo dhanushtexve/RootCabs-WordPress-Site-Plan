@@ -1138,10 +1138,10 @@ export function AboutPage() {
           </p>
           <section className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
             {[
-              { label: "Cities", value: "10+" },
-              { label: "Driver Partners", value: "2000+" },
-              { label: "Completed Rides", value: "50,000+" },
-              { label: "Customer Rating", value: "4.8/5" },
+              { label: "Cities", value: "5" },
+              { label: "Driver Partners", value: "1000" },
+              { label: "Happy Rides", value: "30,000" },
+              { label: "Customer Rating", value: "4.2/5" },
             ].map((stat) => (
               <div
                 key={stat.label}

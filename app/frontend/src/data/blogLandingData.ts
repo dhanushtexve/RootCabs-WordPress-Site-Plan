@@ -10,6 +10,7 @@ export type BlogLandingPost = {
   author: string;
   image: string;
   imageAlt: string;
+  imageFit?: 'contain' | 'cover';
   featured?: boolean;
 };
 
@@ -42,6 +43,7 @@ export const blogLandingPosts: BlogLandingPost[] = [
     author: 'Root Cabs Editorial',
     image: '/assets/launch-of-root-cabs.webp',
     imageAlt: 'Root Cabs launch visual',
+    imageFit: 'cover',
   },
   {
     slug: 'how-root-cabs-helps-drivers-earn-up',
@@ -96,7 +98,7 @@ export const blogLandingPosts: BlogLandingPost[] = [
     publishedLabel: 'June 12, 2025',
     readTime: '8 min read',
     author: 'Root Cabs Editorial',
-    image: '/assets/success-stories-root-cabs.avif',
+    image: '/assets/success-stories-root-cabs.webp',
     imageAlt: 'Root Cabs success stories visual',
   },
   {

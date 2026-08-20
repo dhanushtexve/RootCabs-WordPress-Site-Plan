@@ -266,7 +266,9 @@ const BlogLandingPage = () => {
                   <img
                     src={featuredPost.image}
                     alt={featuredPost.imageAlt}
-                    className="absolute inset-0 h-full w-full object-contain object-center"
+                    className={`absolute inset-0 h-full w-full object-center ${
+                      featuredPost.imageFit === 'cover' ? 'object-cover' : 'object-contain'
+                    }`}
                   />
                   </div>
 
@@ -300,7 +302,9 @@ const BlogLandingPage = () => {
                       <img
                         src={post.image}
                         alt={post.imageAlt}
-                        className="h-full w-full object-contain object-center"
+                        className={`h-full w-full object-center ${
+                          post.imageFit === 'cover' ? 'object-cover' : 'object-contain'
+                        }`}
                       />
                     </div>
                     <CardContent className="p-5">
@@ -383,7 +387,9 @@ const BlogLandingPage = () => {
                         <img
                           src={post.image}
                           alt={post.imageAlt}
-                          className="h-full w-full object-contain object-center p-1"
+                          className={`h-full w-full object-center ${
+                            post.imageFit === 'cover' ? 'object-cover' : 'object-contain p-1'
+                          }`}
                         />
                       </div>
                       <div className="min-w-0 flex-1">

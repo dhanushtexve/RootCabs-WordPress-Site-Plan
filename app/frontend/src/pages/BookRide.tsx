@@ -1915,16 +1915,12 @@ export default function BookRide() {
           <div className="space-y-6">
               <div className="relative h-52 overflow-hidden rounded-xl border border-[#d6e2ff] bg-[#f3f7ff] shadow-sm md:h-56">
                 <img
-                  src="/assets/bookride.png"
+                  src="/assets/bookride.avif"
                   alt="Root Cabs cab, auto and bike ride options"
                   className="absolute inset-0 h-full w-full object-cover object-center brightness-[0.92] saturate-[1.08] contrast-[1.02]"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#273588]/60 via-[#273588]/28 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1d286f]/35 via-transparent to-transparent" />
-                <div className="relative z-10 flex h-full flex-col justify-end p-5 text-white">
-                  <p className="text-[10px] font-extrabold uppercase tracking-wide text-[#FFD700] drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)]">Root Cabs</p>
-                  <h2 className="mt-1 font-heading text-2xl font-extrabold leading-tight text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.45)]">Ride safe,<br />every time.</h2>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#273588]/38 via-[#273588]/14 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1d286f]/18 via-transparent to-transparent" />
               </div>
 
             <Card className="border-border bg-white">

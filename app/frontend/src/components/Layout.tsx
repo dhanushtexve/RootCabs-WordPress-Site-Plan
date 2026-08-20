@@ -23,6 +23,11 @@ function Navbar() {
     { label: "Home", path: "/" },
     { label: "Book Ride", path: "/book-ride" },
     {
+      label: "Return Deals",
+      path: "https://rootcabs.com/returntrips",
+      external: true,
+    },
+    {
       label: "Services",
       path: "/services",
       children: services.map((s) => ({ label: s.name, path: `/services/${s.slug}` })),
@@ -33,7 +38,7 @@ function Navbar() {
       children: cities.map((c) => ({ label: c.name, path: `/${c.slug}` })),
     },
     { label: "Drivers", path: "/drivers" },
-    { label: "Business", path: "/business" },
+    // { label: "Business", path: "/business" },
     { label: "Blog", path: "/blog" },
     { label: "About", path: "/about" },
     { label: "Support", path: "/support" },
@@ -58,17 +63,28 @@ function Navbar() {
                 onMouseEnter={() => item.children && setActiveDropdown(item.label)}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <Link
-                  to={item.path}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-1 cursor-pointer ${
-                    location.pathname === item.path || location.pathname.startsWith(item.path + "/")
-                      ? "text-primary bg-primary/5"
-                      : "text-foreground hover:text-primary hover:bg-primary/5"
-                  }`}
-                >
-                  {item.label}
-                  {item.children && <ChevronDown className="w-3.5 h-3.5" />}
-                </Link>
+                {item.external ? (
+                  <a
+                    href={item.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-1 cursor-pointer text-foreground hover:text-primary hover:bg-primary/5"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    to={item.path}
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-1 cursor-pointer ${
+                      location.pathname === item.path || location.pathname.startsWith(item.path + "/")
+                        ? "text-primary bg-primary/5"
+                        : "text-foreground hover:text-primary hover:bg-primary/5"
+                    }`}
+                  >
+                    {item.label}
+                    {item.children && <ChevronDown className="w-3.5 h-3.5" />}
+                  </Link>
+                )}
 
                 {/* Dropdown */}
                 {item.children && activeDropdown === item.label && (
@@ -115,13 +131,25 @@ function Navbar() {
           <div className="lg:hidden bg-white border-t border-border py-4 px-4 max-h-[80vh] overflow-y-auto">
             {navItems.map((item) => (
               <div key={item.label} className="mb-1">
-                <Link
-                  to={item.path}
-                  className="block px-3 py-2.5 rounded-md text-sm font-medium text-foreground hover:bg-primary/5 hover:text-primary cursor-pointer"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {item.label}
-                </Link>
+                {item.external ? (
+                  <a
+                    href={item.path}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block px-3 py-2.5 rounded-md text-sm font-medium text-foreground hover:bg-primary/5 hover:text-primary cursor-pointer"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    to={item.path}
+                    className="block px-3 py-2.5 rounded-md text-sm font-medium text-foreground hover:bg-primary/5 hover:text-primary cursor-pointer"
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                )}
                 {item.children && (
                   <div className="pl-6 mt-1 space-y-1">
                     {item.children.slice(0, 6).map((child) => (

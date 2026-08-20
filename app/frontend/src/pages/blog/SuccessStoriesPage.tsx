@@ -30,7 +30,7 @@ const relatedPosts = [
   },
 ];
 
-const successStoriesHeroImage = '/assets/success-stories-root-cabs.avif';
+const successStoriesHeroImage = '/assets/success-stories-root-cabs.webp';
 
 function upsertMeta(
   head: HTMLHeadElement,
@@ -74,7 +74,7 @@ const SuccessStoriesPage = () => {
       keywords:
         'Root Cabs success stories, driver partner stories, Root Partner app, acting driver, part time driver, full time driver, Tamil Nadu drivers, flexible income',
       url: 'https://rootcabs.com/blog/root-cabs-success-stories',
-      image: 'https://rootcabs.com/assets/success-stories-root-cabs.avif',
+      image: 'https://rootcabs.com/assets/success-stories-root-cabs.webp',
     };
 
     const canonicalSelector = 'link[rel="canonical"]';
