@@ -528,6 +528,33 @@ const velloreFaqs = [
   },
 ] as const;
 
+const cityTrustItems = [
+  {
+    iconSrc: "/assets/home-why-choose/verified-drivers.webp",
+    iconAlt: "Verified Drivers icon",
+    title: "Verified Drivers",
+    text: "Every driver is verified before joining the platform, helping you travel with greater confidence on local, airport, and outstation rides.",
+  },
+  {
+    iconSrc: "/assets/home-why-choose/ride-availability-24-7.webp",
+    iconAlt: "Ride availability icon",
+    title: "No Last-Minute Cancellations",
+    text: "Root Cabs focuses on dependable pickups, helping reduce the chances of sudden cancellations affecting your travel plans.",
+  },
+  {
+    iconSrc: "/assets/home-why-choose/customer-support.webp",
+    iconAlt: "Customer Support icon",
+    title: "24/7 Customer Support",
+    text: "Our support team is available around the clock to assist with bookings, ride concerns, payments, and other travel-related questions.",
+  },
+  {
+    iconSrc: "/assets/home-why-choose/live-ride-tracking.webp",
+    iconAlt: "Live Ride Tracking icon",
+    title: "Live Ride Tracking",
+    text: "Track your ride in real time and share the trip details with family or friends. Stay informed about your route and estimated arrival throughout the journey.",
+  },
+] as const;
+
 const chennaiReviews = [
   {
     text: "Booking process was simple, and the driver arrived on time for my early-morning airport trip. The ride was smooth, and the fare was clear from the start. A convenient choice for anyone looking for Chennai airport cab services.",
@@ -1103,15 +1130,15 @@ function VelloreAttractionsSection() {
       </p>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {velloreAttractions.map((place) => (
-          <div key={place.title} className="overflow-hidden rounded-2xl border border-[#E2E8F3] bg-white shadow-sm">
+          <div key={place.title} className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#E2E8F3] bg-white shadow-sm">
             <img
               src={assetPath(place.image)}
               alt={place.title}
               className="h-52 w-full object-cover"
             />
-            <div className="p-4">
+            <div className="flex flex-1 flex-col p-4">
               <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">{place.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-[#5D6A90]">{place.description}</p>
+              <p className="mt-2 flex-1 text-sm leading-6 text-[#5D6A90]">{place.description}</p>
               <Link to={place.href} className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#1E2A6E] transition-colors hover:text-primary">
                 {place.cta} <ArrowRight className="h-4 w-4" />
               </Link>
@@ -1236,7 +1263,7 @@ function ChennaiReviewsSection() {
       <p className="mb-6 text-sm text-muted-foreground md:text-base">Real experiences from customers who travel with Root Cabs.</p>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         {chennaiReviews.map((review) => (
-          <div key={review.name} className="rounded-2xl border border-[#E2E8F3] bg-white p-5 shadow-sm">
+          <div key={review.name} className="flex h-full flex-col rounded-2xl border border-[#E2E8F3] bg-white p-5 shadow-sm">
             <div className="mb-3 flex items-center justify-between gap-4">
               <div className="flex gap-1 text-[#E0A800]">
                 {Array.from({ length: 5 }).map((_, index) => (
@@ -1245,7 +1272,7 @@ function ChennaiReviewsSection() {
               </div>
               <GoogleReviewBadge />
             </div>
-            <p className="text-sm leading-7 text-[#33406F]">{review.text}</p>
+            <p className="flex-1 text-sm leading-7 text-[#33406F]">{review.text}</p>
             <div className="mt-5">
               <p className="font-heading text-sm font-bold text-[#1E2A6E]">{review.name}</p>
               <p className="text-xs text-muted-foreground">{review.meta}</p>
@@ -1265,31 +1292,10 @@ function ChennaiTrustSection() {
         Clear fares, dependable rides, and support whenever you need it.
       </p>
       <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        {[
-          {
-            icon: <CheckCircle className="h-5 w-5" />,
-            title: "Verified Drivers",
-            text: "Every driver is verified before joining the platform, helping you travel with greater confidence on local, airport, and outstation rides.",
-          },
-          {
-            icon: <Navigation className="h-5 w-5" />,
-            title: "No Last-Minute Cancellations",
-            text: "Root Cabs focuses on dependable pickups, helping reduce the chances of sudden cancellations affecting your travel plans.",
-          },
-          {
-            icon: <Phone className="h-5 w-5" />,
-            title: "24/7 Customer Support",
-            text: "Our support team is available around the clock to assist with bookings, ride concerns, payments, and other travel-related questions.",
-          },
-          {
-            icon: <MapPin className="h-5 w-5" />,
-            title: "Live Ride Tracking",
-            text: "Track your ride in real time and share the trip details with family or friends. Stay informed about your route and estimated arrival throughout the journey.",
-          },
-        ].map((item) => (
+        {cityTrustItems.map((item) => (
           <div key={item.title} className="rounded-xl border border-[#E2E8F3] bg-white p-5 shadow-sm">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              {item.icon}
+            <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-xl bg-[#EEF3FF]">
+              <img src={item.iconSrc} alt={item.iconAlt} className="h-9 w-9 object-contain" />
             </div>
             <h3 className="mt-4 font-heading text-base font-bold text-[#1E2A6E]">{item.title}</h3>
             <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.text}</p>
@@ -1354,31 +1360,10 @@ function VelloreTrustSection() {
         Clear fares, dependable rides, and support whenever you need it.
       </p>
       <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        {[
-          {
-            icon: <CheckCircle className="h-5 w-5" />,
-            title: "Verified Drivers",
-            text: "Every driver is verified before joining the platform, helping you travel with greater confidence on local, airport, and outstation rides.",
-          },
-          {
-            icon: <Navigation className="h-5 w-5" />,
-            title: "No Last-Minute Cancellations",
-            text: "Root Cabs focuses on dependable pickups, helping reduce the chances of sudden cancellations affecting your travel plans.",
-          },
-          {
-            icon: <Phone className="h-5 w-5" />,
-            title: "24/7 Customer Support",
-            text: "Our support team is available around the clock to assist with bookings, ride concerns, payments, and other travel-related questions.",
-          },
-          {
-            icon: <MapPin className="h-5 w-5" />,
-            title: "Live Ride Tracking",
-            text: "Track your ride in real time and share the trip details with family or friends. Stay informed about your route and estimated arrival throughout the journey.",
-          },
-        ].map((item) => (
+        {cityTrustItems.map((item) => (
           <div key={item.title} className="rounded-xl border border-[#E2E8F3] bg-white p-5 shadow-sm">
-            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-              {item.icon}
+            <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-xl bg-[#EEF3FF]">
+              <img src={item.iconSrc} alt={item.iconAlt} className="h-9 w-9 object-contain" />
             </div>
             <h3 className="mt-4 font-heading text-base font-bold text-[#1E2A6E]">{item.title}</h3>
             <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.text}</p>
@@ -1398,7 +1383,7 @@ function VelloreReviewsSection() {
       </p>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         {velloreReviews.map((review) => (
-          <div key={review.name} className="rounded-2xl border border-[#E2E8F3] bg-white p-5 shadow-sm">
+          <div key={review.name} className="flex h-full flex-col rounded-2xl border border-[#E2E8F3] bg-white p-5 shadow-sm">
             <div className="mb-3 flex items-center justify-between gap-4">
               <div className="flex gap-1 text-[#E0A800]">
                 {Array.from({ length: 5 }).map((_, index) => (
@@ -1407,7 +1392,7 @@ function VelloreReviewsSection() {
               </div>
               <GoogleReviewBadge />
             </div>
-            <p className="text-sm leading-7 text-[#33406F]">{review.text}</p>
+            <p className="flex-1 text-sm leading-7 text-[#33406F]">{review.text}</p>
             <div className="mt-5">
               <p className="font-heading text-sm font-bold text-[#1E2A6E]">{review.name}</p>
               <p className="text-xs text-muted-foreground">{review.meta}</p>
