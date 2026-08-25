@@ -1101,7 +1101,7 @@ function VelloreFaqSection() {
 
 function VelloreContentSection() {
   return (
-    <section className="rounded-[2rem] bg-[#F5F7FB] p-6 md:p-8 lg:p-10">
+    <section className="-mt-8 rounded-[2rem] bg-[#F5F7FB] px-6 pb-6 pt-0 md:-mx-8 md:px-8 md:pb-8 md:pt-0 lg:-mx-10 lg:-mt-10 lg:px-10 lg:pb-10 lg:pt-0">
       <div className="max-w-6xl">
         <h2 className="mb-3 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Getting Around Vellore with Root Cabs</h2>
         <p className="mb-8 max-w-3xl text-base text-[#5D6A90]">A practical guide to choosing the right ride for every trip across the city and beyond.</p>
@@ -1206,25 +1206,37 @@ function ChennaiRoutesSection() {
       <div className="grid gap-4 lg:grid-cols-[minmax(0,0.82fr)_minmax(320px,0.38fr)] lg:items-start">
         <div className="rounded-xl border border-[#E2E8F3] bg-[#F8FAFF] p-2 shadow-sm md:p-2.5">
           <div className="max-h-[28rem] space-y-2 overflow-y-auto pr-1 sm:max-h-[30rem] lg:max-h-[36rem]">
-            {chennaiRoutes.map((route) => (
-              <div
-                key={route.title}
-                className="rounded-lg border border-[#E2E8F3] bg-white p-2.5 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md"
-              >
-                <div className="flex flex-wrap items-end justify-between gap-1">
-                  <h3 className="font-heading text-sm font-bold text-[#1E2A6E]">{route.title}</h3>
-                  <p className="text-[10px] text-muted-foreground">{route.meta}</p>
+            {chennaiRoutes.map((route) => {
+              const routeCities = route.title.split(" - ")[0];
+              const [fromCity, toCity] = routeCities.split(" to ");
+
+              return (
+                <div
+                  key={route.title}
+                  className="rounded-lg border border-[#E2E8F3] bg-white p-2.5 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md"
+                >
+                  <div className="flex flex-wrap items-start justify-between gap-2">
+                    <h3 className="grid w-fit grid-cols-[72px_56px_auto] items-center gap-2 font-heading text-sm font-bold text-[#111827]">
+                      <span className="text-right">{fromCity}</span>
+                      <span className="flex flex-col items-center gap-0.5 text-[#0A56C2]" aria-hidden="true">
+                        <ArrowRight className="h-3 w-14" strokeWidth={2} />
+                        <ArrowRight className="h-3 w-14 rotate-180" strokeWidth={2} />
+                      </span>
+                      <span className="text-left">{toCity}</span>
+                    </h3>
+                    <p className="text-[10px] text-muted-foreground">{route.meta}</p>
+                  </div>
+                  <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
+                    {route.fares.map((fare) => (
+                      <div key={fare.label} className="rounded-md border border-[#E6ECF7] bg-[#F7F9FE] px-2.5 py-1.5 text-center">
+                        <p className="text-[10px] font-extrabold uppercase tracking-wide text-[#1E2A6E]">{fare.label}</p>
+                        <p className="mt-0.5 text-xs font-bold text-[#1E2A6E]">{fare.value}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
-                  {route.fares.map((fare) => (
-                    <div key={fare.label} className="rounded-md border border-[#E6ECF7] bg-[#F7F9FE] px-2.5 py-1.5 text-center">
-                      <p className="text-[10px] font-extrabold uppercase tracking-wide text-[#1E2A6E]">{fare.label}</p>
-                      <p className="mt-0.5 text-xs font-bold text-[#1E2A6E]">{fare.value}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -1803,7 +1815,7 @@ export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {
         {/* Landmarks */}
         {city.landmarks.length > 0 && (
           <section>
-            <h2 className={`font-heading text-2xl font-bold mb-2 ${isChennai ? "text-[#1E2A6E] md:text-3xl" : ""}`}>Popular Pickup Spots In {city.name}</h2>
+            <h2 className={`font-heading text-2xl font-bold mb-2 ${isChennai || isVellore ? "text-[#1E2A6E] md:text-3xl" : ""}`}>Popular Pickup Spots In {city.name}</h2>
             {city.name === "Chennai" && (
               <p className="mb-6 max-w-none text-sm leading-6 text-muted-foreground md:whitespace-nowrap md:text-base">
                 Root Cabs makes it easy to arrange a ride from the city's busiest travel hubs, landmarks, and neighbourhoods with a convenient taxi service in Chennai.
@@ -1982,7 +1994,7 @@ export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {
 function VelloreRoutesSection() {
   return (
     <section>
-      <h2 className="font-heading text-2xl font-bold mb-3">Popular Outstation Routes From Vellore</h2>
+      <h2 className="mb-3 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Popular Outstation Routes From Vellore</h2>
       <p className="mb-6 max-w-none text-sm text-muted-foreground md:whitespace-nowrap md:text-base">
         Plan comfortable outstation journeys from Vellore with flexible vehicle options for every route.
       </p>
@@ -1990,25 +2002,36 @@ function VelloreRoutesSection() {
       <div className="grid gap-4 lg:grid-cols-[minmax(0,0.82fr)_minmax(320px,0.38fr)] lg:items-start">
         <div className="rounded-xl border border-[#E2E8F3] bg-[#F8FAFF] p-2 shadow-sm md:p-2.5">
           <div className="max-h-[28rem] space-y-2 overflow-y-auto pr-1 sm:max-h-[30rem] lg:max-h-[36rem]">
-            {velloreRoutes.map((route) => (
-              <div
-                key={route.title}
-                className="rounded-lg border border-[#E2E8F3] bg-white p-2.5 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md"
-              >
-                <div className="flex flex-wrap items-end justify-between gap-1">
-                  <h3 className="font-heading text-sm font-bold text-[#1E2A6E]">{route.title}</h3>
-                  <p className="text-[10px] text-muted-foreground">{route.meta}</p>
+            {velloreRoutes.map((route) => {
+              const [fromCity, toCity] = route.title.split(" to ");
+
+              return (
+                <div
+                  key={route.title}
+                  className="rounded-lg border border-[#E2E8F3] bg-white p-2.5 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md"
+                >
+                  <div className="flex flex-wrap items-start justify-between gap-2">
+                    <h3 className="grid w-fit grid-cols-[72px_56px_auto] items-center gap-2 font-heading text-sm font-bold text-[#111827]">
+                      <span className="text-right">{fromCity}</span>
+                      <span className="flex flex-col items-center gap-0.5 text-[#0A56C2]" aria-hidden="true">
+                        <ArrowRight className="h-3 w-14" strokeWidth={2} />
+                        <ArrowRight className="h-3 w-14 rotate-180" strokeWidth={2} />
+                      </span>
+                      <span className="text-left">{toCity}</span>
+                    </h3>
+                    <p className="text-[10px] text-muted-foreground">{route.meta}</p>
+                  </div>
+                  <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-3">
+                    {route.fares.map((fare) => (
+                      <div key={fare.label} className="rounded-md border border-[#E6ECF7] bg-[#F7F9FE] px-2.5 py-1.5 text-center">
+                        <p className="text-[10px] font-extrabold uppercase tracking-wide text-[#1E2A6E]">{fare.label}</p>
+                        <p className="mt-0.5 text-xs font-bold text-[#1E2A6E]">{fare.value}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-3">
-                  {route.fares.map((fare) => (
-                    <div key={fare.label} className="rounded-md border border-[#E6ECF7] bg-[#F7F9FE] px-2.5 py-1.5 text-center">
-                      <p className="text-[10px] font-extrabold uppercase tracking-wide text-[#1E2A6E]">{fare.label}</p>
-                      <p className="mt-0.5 text-xs font-bold text-[#1E2A6E]">{fare.value}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
 
@@ -2037,11 +2060,13 @@ function VelloreRoutesSection() {
 
 function VelloreServicesSection() {
   const [showAll, setShowAll] = useState(false);
-  const visibleServices = showAll ? velloreServices : velloreServices.slice(0, 6);
+  const hiddenServiceTitles = new Set(["Auto Rickshaw", "Bike Taxi", "Parcel Delivery"]);
+  const availableServices = velloreServices.filter((service) => !hiddenServiceTitles.has(service.title));
+  const visibleServices = showAll ? availableServices : availableServices.slice(0, 6);
 
   return (
     <section>
-      <h2 className="font-heading text-2xl font-bold mb-3">Explore Our Services</h2>
+      <h2 className="mb-3 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Explore Our Services</h2>
       <p className="mb-6 max-w-none text-sm text-muted-foreground md:whitespace-nowrap md:text-base">
         Explore convenient ride, driver, and delivery services available across Vellore.
       </p>
@@ -2064,7 +2089,7 @@ function VelloreServicesSection() {
           </Link>
         ))}
       </div>
-      {velloreServices.length > 6 && (
+      {availableServices.length > 6 && (
         <div className="mt-6 flex justify-center">
           <Button
             type="button"
