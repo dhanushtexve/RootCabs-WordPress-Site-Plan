@@ -565,6 +565,40 @@ export function ServicePage() {
   const { serviceSlug } = useParams();
   const service = services.find((s) => s.slug === serviceSlug);
 
+  useEffect(() => {
+    if (!service) return;
+
+    const previousTitle = document.title;
+    const head = document.head;
+    const seo = {
+      title: `${service.name} | Root Cabs`,
+      description: service.description,
+      url: `https://rootcabs.com/services/${service.slug}`,
+      image: "https://rootcabs.com/assets/root-cabs-logo.webp",
+    };
+
+    const canonicalSelector = 'link[rel="canonical"]';
+    let canonicalTag = head.querySelector(canonicalSelector) as HTMLLinkElement | null;
+    const canonicalExisted = Boolean(canonicalTag);
+    const previousCanonicalHref = canonicalTag?.getAttribute("href");
+    if (!canonicalTag) {
+      canonicalTag = document.createElement("link");
+      canonicalTag.rel = "canonical";
+      head.appendChild(canonicalTag);
+    }
+    canonicalTag.href = seo.url;
+    document.title = seo.title;
+
+    return () => {
+      document.title = previousTitle;
+      if (canonicalExisted) {
+        if (previousCanonicalHref !== null) canonicalTag?.setAttribute("href", previousCanonicalHref);
+      } else {
+        canonicalTag?.remove();
+      }
+    };
+  }, [service]);
+
   if (!service) {
     return (
       <div className="max-w-screen-md mx-auto px-4 py-20 text-center">

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { MapPin, ArrowRight, Car, Clock, Navigation, ChevronRight, Phone, CheckCircle, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -59,6 +60,76 @@ export function RoutePage() {
         highlights: ["Experienced highway drivers", "Well-maintained AC vehicles", "No surge pricing", "Free cancellation up to 30 min"],
       }
     : null;
+
+  useEffect(() => {
+    if (!route) return;
+
+    const previousTitle = document.title;
+    const head = document.head;
+    const seo = {
+      title: `${route.from} to ${route.to} Taxi | Root Cabs`,
+      description: `Book taxi from ${route.from} to ${route.to}. Distance: ${route.distance}, duration: ${route.duration}.`,
+      url: `https://rootcabs.com/routes/${route.slug}`,
+      image: "https://rootcabs.com/assets/root-cabs-logo.webp",
+    };
+
+    const upsertMeta = (attribute: "name" | "property", key: string, content: string) => {
+      const selector = `meta[${attribute}="${key}"]`;
+      let tag = head.querySelector(selector) as HTMLMetaElement | null;
+      const existed = Boolean(tag);
+      const previousContent = tag?.getAttribute("content");
+
+      if (!tag) {
+        tag = document.createElement("meta");
+        tag.setAttribute(attribute, key);
+        head.appendChild(tag);
+      }
+
+      tag.setAttribute("content", content);
+
+      return () => {
+        if (!tag) return;
+        if (existed) {
+          if (previousContent !== null) tag.setAttribute("content", previousContent);
+        } else {
+          tag.remove();
+        }
+      };
+    };
+
+    const canonicalSelector = 'link[rel="canonical"]';
+    let canonicalTag = head.querySelector(canonicalSelector) as HTMLLinkElement | null;
+    const canonicalExisted = Boolean(canonicalTag);
+    const previousCanonicalHref = canonicalTag?.getAttribute("href");
+    if (!canonicalTag) {
+      canonicalTag = document.createElement("link");
+      canonicalTag.rel = "canonical";
+      head.appendChild(canonicalTag);
+    }
+    canonicalTag.href = seo.url;
+
+    const cleanupMeta = [
+      upsertMeta("name", "description", seo.description),
+      upsertMeta("property", "og:site_name", "Root Cabs"),
+      upsertMeta("property", "og:title", seo.title),
+      upsertMeta("property", "og:description", seo.description),
+      upsertMeta("property", "og:url", seo.url),
+      upsertMeta("property", "og:image", seo.image),
+      upsertMeta("property", "og:type", "website"),
+    ];
+
+    document.title = seo.title;
+
+    return () => {
+      document.title = previousTitle;
+      if (canonicalExisted) {
+        if (previousCanonicalHref !== null) canonicalTag?.setAttribute("href", previousCanonicalHref);
+      } else {
+        canonicalTag?.remove();
+      }
+      cleanupMeta.forEach((cleanup) => cleanup());
+    };
+  }, [route]);
 
   if (!route) {
     return (
@@ -261,6 +332,80 @@ export function RoutePage() {
 export function LandmarkPage() {
   const { landmarkSlug } = useParams();
   const landmark = landmarks.find((l) => l.slug === landmarkSlug);
+
+  useEffect(() => {
+    if (!landmark) return;
+
+    const previousTitle = document.title;
+    const head = document.head;
+    const seo = {
+      title: `${landmark.name} | Root Cabs`,
+      description: landmark.description,
+      url: `https://rootcabs.com/landmarks/${landmark.slug}`,
+      image: "https://rootcabs.com/assets/root-cabs-logo.webp",
+    };
+
+    const upsertMeta = (attribute: "name" | "property", key: string, content: string) => {
+      const selector = `meta[${attribute}="${key}"]`;
+      let tag = head.querySelector(selector) as HTMLMetaElement | null;
+      const existed = Boolean(tag);
+      const previousContent = tag?.getAttribute("content");
+
+      if (!tag) {
+        tag = document.createElement("meta");
+        tag.setAttribute(attribute, key);
+        head.appendChild(tag);
+      }
+
+      tag.setAttribute("content", content);
+
+      return () => {
+        if (!tag) return;
+        if (existed) {
+          if (previousContent !== null) tag.setAttribute("content", previousContent);
+        } else {
+          tag.remove();
+        }
+      };
+    };
+
+    const canonicalSelector = 'link[rel="canonical"]';
+    let canonicalTag = head.querySelector(canonicalSelector) as HTMLLinkElement | null;
+    const canonicalExisted = Boolean(canonicalTag);
+    const previousCanonicalHref = canonicalTag?.getAttribute("href");
+    if (!canonicalTag) {
+      canonicalTag = document.createElement("link");
+      canonicalTag.rel = "canonical";
+      head.appendChild(canonicalTag);
+    }
+    canonicalTag.href = seo.url;
+
+    const cleanupMeta = [
+      upsertMeta("name", "description", seo.description),
+      upsertMeta("property", "og:site_name", "Root Cabs"),
+      upsertMeta("property", "og:title", seo.title),
+      upsertMeta("property", "og:description", seo.description),
+      upsertMeta("property", "og:url", seo.url),
+      upsertMeta("property", "og:image", seo.image),
+      upsertMeta("property", "og:type", "website"),
+      upsertMeta("name", "twitter:card", "summary_large_image"),
+      upsertMeta("name", "twitter:title", seo.title),
+      upsertMeta("name", "twitter:description", seo.description),
+      upsertMeta("name", "twitter:image", seo.image),
+    ];
+
+    document.title = seo.title;
+
+    return () => {
+      document.title = previousTitle;
+      if (canonicalExisted) {
+        if (previousCanonicalHref !== null) canonicalTag?.setAttribute("href", previousCanonicalHref);
+      } else {
+        canonicalTag?.remove();
+      }
+      cleanupMeta.forEach((cleanup) => cleanup());
+    };
+  }, [landmark]);
 
   if (!landmark) {
     return (

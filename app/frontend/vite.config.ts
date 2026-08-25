@@ -108,6 +108,75 @@ type StaticSeoRoute = {
 
 const staticSeoRoutes: StaticSeoRoute[] = importedStaticSeoRoutes as unknown as StaticSeoRoute[];
 
+function createStaticSeoRoute(pathname: string, title: string, description: string): StaticSeoRoute {
+  const normalizedPath = normalizeSitemapPath(pathname);
+
+  return {
+    path: normalizedPath,
+    title,
+    description,
+    canonicalUrl: `https://rootcabs.com${normalizedPath === '/' ? '/' : normalizedPath}`,
+    ogImage: 'https://rootcabs.com/assets/root-cabs-logo.webp',
+    ogType: 'website',
+    siteName: 'Root Cabs',
+  };
+}
+
+function getGeneratedStaticSeoRoutes(): StaticSeoRoute[] {
+  const serviceSlugs = new Set(services.map((service) => service.slug));
+
+  return [
+    ...services.map((service) =>
+      createStaticSeoRoute(
+        `/services/${service.slug}`,
+        `${service.name} | Root Cabs`,
+        service.description,
+      ),
+    ),
+    ...cities.map((city) =>
+      createStaticSeoRoute(
+        `/${city.slug}`,
+        `${city.name} Taxi Service | Root Cabs`,
+        city.description,
+      ),
+    ),
+    ...cities.flatMap((city) =>
+      city.services
+        .filter((serviceSlug) => serviceSlugs.has(serviceSlug))
+        .map((serviceSlug) => {
+          const service = services.find((item) => item.slug === serviceSlug);
+          return createStaticSeoRoute(
+            `/${city.slug}/${serviceSlug}`,
+            `${service?.name ?? 'Taxi Service'} in ${city.name} | Root Cabs`,
+            service?.description ?? city.description,
+          );
+        }),
+    ),
+    ...routes.map((route) =>
+      createStaticSeoRoute(
+        `/routes/${route.slug}`,
+        `${route.from} to ${route.to} Taxi | Root Cabs`,
+        `Book a comfortable taxi from ${route.from} to ${route.to} with Root Cabs. Travel with verified drivers, clear fares and convenient booking.`,
+      ),
+    ),
+    ...landmarks.map((landmark) =>
+      createStaticSeoRoute(
+        `/landmarks/${landmark.slug}`,
+        `${landmark.name} | Root Cabs`,
+        landmark.description,
+      ),
+    ),
+  ];
+}
+
+function getStaticSeoRoutes(): StaticSeoRoute[] {
+  return Array.from(
+    new Map(
+      [...getGeneratedStaticSeoRoutes(), ...staticSeoRoutes].map((route) => [route.path, route]),
+    ).values(),
+  );
+}
+
 function escapeXml(str: string): string {
   return str
     .replace(/&/g, '&amp;')
@@ -147,6 +216,7 @@ function generateSitemapPlugin(siteUrl: string, blogRoutes: string[]): Plugin {
         createRoute('/book-ride', 'daily', '0.9'),
         createRoute('/services', 'weekly', '0.9'),
         createRoute('/cities', 'weekly', '0.9'),
+        createRoute('/chennai', 'weekly', '0.8'),
         createRoute('/taxi-in-chennai', 'weekly', '0.8'),
         createRoute('/drivers', 'weekly', '0.8'),
         createRoute('/business', 'weekly', '0.8'),
@@ -325,7 +395,7 @@ function materializeStaticSeoRoutes(): Plugin {
 
       const rootHtml = fs.readFileSync(rootIndexPath, 'utf8');
 
-      for (const route of staticSeoRoutes) {
+      for (const route of getStaticSeoRoutes()) {
         const html = upsertSchema(applySeo(rootHtml, route), route.path);
         const outputPath =
           route.path === '/'

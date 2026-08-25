@@ -1465,7 +1465,10 @@ function VelloreActingDriverSection() {
 // ============================================================
 // INDIVIDUAL CITY PAGE
 // ============================================================
-export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {}) {
+export function CityPage({
+  citySlugOverride,
+  canonicalUrlOverride,
+}: { citySlugOverride?: string; canonicalUrlOverride?: string } = {}) {
   const { citySlug: routeCitySlug } = useParams();
   const citySlug = citySlugOverride ?? routeCitySlug;
   const city = cities.find((c) => c.slug === citySlug);
@@ -1483,7 +1486,7 @@ export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {
           title: "Taxi Service in Chennai | Cab Booking 24/7 - Root Cabs",
           description:
             "Root Cabs offers the best taxi service in Chennai  reliable cab service, fixed fares from ₹11/km, verified drivers, no surge pricing, 24/7 booking.",
-          url: "https://rootcabs.com/taxi-in-chennai",
+          url: canonicalUrlOverride ?? "https://rootcabs.com/taxi-in-chennai",
           image: "https://rootcabs.com/assets/root-cabs-logo.webp",
         }
       : {
@@ -1700,7 +1703,7 @@ export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {
 
       schema.remove();
     };
-  }, [city, isChennai]);
+  }, [canonicalUrlOverride, city, isChennai]);
 
   if (!city) {
     return (
@@ -2112,6 +2115,39 @@ export function CityServicePage() {
   const { citySlug, serviceSlug } = useParams();
   const city = cities.find((c) => c.slug === citySlug);
   const service = services.find((s) => s.slug === serviceSlug);
+
+  useEffect(() => {
+    if (!city || !service) return;
+
+    const previousTitle = document.title;
+    const head = document.head;
+    const seo = {
+      title: `${service.name} in ${city.name} | Root Cabs`,
+      description: service.description,
+      url: `https://rootcabs.com/${city.slug}/${service.slug}`,
+    };
+
+    const canonicalSelector = 'link[rel="canonical"]';
+    let canonicalTag = head.querySelector(canonicalSelector) as HTMLLinkElement | null;
+    const canonicalExisted = Boolean(canonicalTag);
+    const previousCanonicalHref = canonicalTag?.getAttribute("href");
+    if (!canonicalTag) {
+      canonicalTag = document.createElement("link");
+      canonicalTag.rel = "canonical";
+      head.appendChild(canonicalTag);
+    }
+    canonicalTag.href = seo.url;
+    document.title = seo.title;
+
+    return () => {
+      document.title = previousTitle;
+      if (canonicalExisted) {
+        if (previousCanonicalHref !== null) canonicalTag?.setAttribute("href", previousCanonicalHref);
+      } else {
+        canonicalTag?.remove();
+      }
+    };
+  }, [city, service]);
 
   if (!city || !service) {
     return (

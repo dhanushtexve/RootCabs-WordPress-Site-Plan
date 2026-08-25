@@ -81,6 +81,15 @@ export const staticSeoRoutes = [
     "siteName": "Root Cabs"
   },
   {
+    "path": "/chennai",
+    "title": "Taxi Service in Chennai | Cab Booking 24/7 - Root Cabs",
+    "description": "Root Cabs offers the best taxi service in Chennai  reliable cab service, fixed fares from â‚¹11/km, verified drivers, no surge pricing, 24/7 booking.",
+    "canonicalUrl": "https://rootcabs.com/chennai",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
     "path": "/book-ride",
     "title": "Book a Ride | Local, Airport & Outstation Taxi - Root Cabs",
     "description": "Book your ride online with Root Cabs in seconds local, airport & outstation taxi across Tamil Nadu. Fixed fares, verified drivers, instant confirmation.",
@@ -103,6 +112,195 @@ export const staticSeoRoutes = [
     "title": "Business Solutions | Root Cabs",
     "description": "Explore business and corporate travel options with Root Cabs across Tamil Nadu. Get in touch to learn more about partnering with us.",
     "canonicalUrl": "https://rootcabs.com/business",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/landmarks/taxi-near-central-railway-station",
+    "title": "Taxi Near Chennai Central | Root Cabs",
+    "description": "Get a taxi near Chennai Central Railway Station instantly with Root Cabs for station pickup, airport connections, local trips and city travel.",
+    "canonicalUrl": "https://rootcabs.com/landmarks/taxi-near-central-railway-station",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/landmarks/taxi-near-chennai-airport",
+    "title": "Taxi Near Chennai Airport | Root Cabs",
+    "description": "Book a taxi near Chennai International Airport with Root Cabs for reliable airport pickup and drop service available through the day.",
+    "canonicalUrl": "https://rootcabs.com/landmarks/taxi-near-chennai-airport",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/landmarks/taxi-near-cmc",
+    "title": "Taxi Near CMC Hospital | Root Cabs",
+    "description": "Reliable taxi service near CMC Hospital Vellore for patients, attendants, hospital visits and local or outstation travel.",
+    "canonicalUrl": "https://rootcabs.com/landmarks/taxi-near-cmc",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/landmarks/taxi-near-coimbatore-airport",
+    "title": "Taxi Near Coimbatore Airport | Root Cabs",
+    "description": "Book a reliable taxi at Coimbatore International Airport with Root Cabs for city transfers, business trips and hill station travel.",
+    "canonicalUrl": "https://rootcabs.com/landmarks/taxi-near-coimbatore-airport",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/landmarks/taxi-near-vit",
+    "title": "Taxi Near VIT University | Root Cabs",
+    "description": "Get taxi service near VIT University Vellore for students, parents, campus visitors, railway station transfers and outstation rides.",
+    "canonicalUrl": "https://rootcabs.com/landmarks/taxi-near-vit",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/routes/chennai-to-bangalore",
+    "title": "Chennai to Bangalore Taxi | Root Cabs",
+    "description": "Book a comfortable taxi from Chennai to Bangalore with Root Cabs. Travel with verified drivers, clear fares and convenient booking.",
+    "canonicalUrl": "https://rootcabs.com/routes/chennai-to-bangalore",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/routes/chennai-to-pondicherry",
+    "title": "Chennai to Pondicherry Taxi | Root Cabs",
+    "description": "Book a Chennai to Pondicherry taxi with Root Cabs for a comfortable outstation ride with transparent fares and reliable drivers.",
+    "canonicalUrl": "https://rootcabs.com/routes/chennai-to-pondicherry",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/routes/chennai-to-tirupati",
+    "title": "Chennai to Tirupati Taxi | Root Cabs",
+    "description": "Book a Chennai to Tirupati taxi with Root Cabs for temple travel, family trips and reliable round-trip or one-way rides.",
+    "canonicalUrl": "https://rootcabs.com/routes/chennai-to-tirupati",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/routes/coimbatore-to-ooty",
+    "title": "Coimbatore to Ooty Taxi | Root Cabs",
+    "description": "Book a Coimbatore to Ooty taxi with Root Cabs for comfortable hill station travel and dependable outstation service.",
+    "canonicalUrl": "https://rootcabs.com/routes/coimbatore-to-ooty",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/routes/madurai-to-rameswaram",
+    "title": "Madurai to Rameswaram Taxi | Root Cabs",
+    "description": "Book a Madurai to Rameswaram taxi with Root Cabs for comfortable temple travel, family trips and outstation rides.",
+    "canonicalUrl": "https://rootcabs.com/routes/madurai-to-rameswaram",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/routes/salem-to-yercaud",
+    "title": "Salem to Yercaud Taxi | Root Cabs",
+    "description": "Book a Salem to Yercaud taxi with Root Cabs for a comfortable hill station trip with reliable drivers and clear fares.",
+    "canonicalUrl": "https://rootcabs.com/routes/salem-to-yercaud",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/routes/vellore-to-bangalore",
+    "title": "Vellore to Bangalore Taxi | Root Cabs",
+    "description": "Book a Vellore to Bangalore taxi with Root Cabs for reliable intercity travel, verified drivers and transparent pricing.",
+    "canonicalUrl": "https://rootcabs.com/routes/vellore-to-bangalore",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/routes/vellore-to-chennai",
+    "title": "Vellore to Chennai Taxi | Root Cabs",
+    "description": "Book a Vellore to Chennai taxi with Root Cabs for comfortable intercity travel, airport drops and dependable outstation rides.",
+    "canonicalUrl": "https://rootcabs.com/routes/vellore-to-chennai",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/services/acting-driver",
+    "title": "Acting Driver | Root Cabs",
+    "description": "Hire a verified acting driver through Root Cabs to drive your own car for local trips, events, hospital visits and long journeys.",
+    "canonicalUrl": "https://rootcabs.com/services/acting-driver",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/services/airport-taxi",
+    "title": "Airport Taxi | Root Cabs",
+    "description": "Book airport taxi service with Root Cabs for reliable pickups, drops and comfortable airport transfers across available cities.",
+    "canonicalUrl": "https://rootcabs.com/services/airport-taxi",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/services/auto",
+    "title": "Auto Rickshaw | Root Cabs",
+    "description": "Book auto rickshaw rides with Root Cabs for short-distance city travel, errands and everyday local trips.",
+    "canonicalUrl": "https://rootcabs.com/services/auto",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/services/local-taxi",
+    "title": "Local Taxi | Root Cabs",
+    "description": "Book local taxi service with Root Cabs for city rides, office commutes, shopping, appointments and everyday travel.",
+    "canonicalUrl": "https://rootcabs.com/services/local-taxi",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/services/outstation",
+    "title": "Outstation Taxi | Root Cabs",
+    "description": "Book outstation taxi service with Root Cabs for intercity travel, round trips, weekend plans and family journeys.",
+    "canonicalUrl": "https://rootcabs.com/services/outstation",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/services/parcel-delivery",
+    "title": "Parcel Delivery | Root Cabs",
+    "description": "Send documents, medicines, small packages and essentials through Root Cabs parcel delivery service.",
+    "canonicalUrl": "https://rootcabs.com/services/parcel-delivery",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/taxi-in-chennai/acting-driver",
+    "title": "Acting Driver in Chennai | Root Cabs",
+    "description": "Hire an acting driver in Chennai with Root Cabs for your own car, local trips, events, hospital visits and longer journeys.",
+    "canonicalUrl": "https://rootcabs.com/taxi-in-chennai/acting-driver",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/taxi-in-chennai/airport-taxi",
+    "title": "Airport Taxi in Chennai | Root Cabs",
+    "description": "Book airport taxi in Chennai with Root Cabs for reliable airport pickups, drops and comfortable transfers.",
+    "canonicalUrl": "https://rootcabs.com/taxi-in-chennai/airport-taxi",
     "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
     "ogType": "website",
     "siteName": "Root Cabs"

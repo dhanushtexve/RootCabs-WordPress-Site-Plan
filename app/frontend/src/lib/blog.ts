@@ -182,7 +182,7 @@ function getBlogPost(slug: string) {
 }
 
 function getBlogRoute(slug: string) {
-  return `/blog/${slug}/`.replace(/\/+/g, '/');
+  return `/blog/${slug}`.replace(/\/+/g, '/');
 }
 
 function getSiteDomainUrl() {
@@ -253,7 +253,7 @@ function getPostSeoMeta(post?: BlogPost | null): SeoMeta {
     'Explore Root Cabs stories, travel guides, driver updates and city coverage across Tamil Nadu.';
 
   if (!post) {
-    const fallbackUrl = getAbsoluteUrl('/blog/');
+    const fallbackUrl = getAbsoluteUrl('/blog');
     return {
       title: fallbackTitle,
       description: fallbackDescription,
