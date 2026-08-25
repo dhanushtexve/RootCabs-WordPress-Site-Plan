@@ -921,7 +921,7 @@ function CityFaqSection({ city }: { city: (typeof cities)[number] }) {
 
 function ChennaiContentSection() {
   return (
-    <section className="rounded-[2rem] bg-[#F5F7FB] p-6 md:p-8 lg:p-10">
+    <section className="-mt-8 rounded-[2rem] bg-[#F5F7FB] px-6 pb-6 pt-0 md:-mx-8 md:px-8 md:pb-8 md:pt-0 lg:-mx-10 lg:-mt-10 lg:px-10 lg:pb-10 lg:pt-0">
       <div className="max-w-6xl">
         <h2 className="mb-3 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Getting Around Chennai With Root Cabs</h2>
         <p className="mb-8 max-w-3xl text-base text-[#5D6A90]">A practical guide to choosing the right ride for every trip across the city and beyond.</p>
@@ -1156,7 +1156,7 @@ function ChennaiServicesSection() {
 
   return (
     <section>
-      <h2 className="font-heading text-2xl font-bold mb-3">Explore Our Services</h2>
+      <h2 className="mb-3 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Explore Our Services</h2>
       <p className="mb-6 max-w-none text-sm text-muted-foreground md:whitespace-nowrap md:text-base">
         Find the right service for city rides, long-distance travel, personal driving, and doorstep delivery across Chennai.
       </p>
@@ -1198,7 +1198,7 @@ function ChennaiServicesSection() {
 function ChennaiRoutesSection() {
   return (
     <section>
-      <h2 className="font-heading text-2xl font-bold mb-3">Round Trip Tariff Details</h2>
+      <h2 className="mb-3 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Round Trip Tariff Details</h2>
       <p className="mb-6 max-w-none text-sm text-muted-foreground md:whitespace-nowrap md:text-base">
         Compare fares by vehicle type for Chennai and Vellore round trips.
       </p>
@@ -1803,7 +1803,7 @@ export function CityPage({ citySlugOverride }: { citySlugOverride?: string } = {
         {/* Landmarks */}
         {city.landmarks.length > 0 && (
           <section>
-            <h2 className="font-heading text-2xl font-bold mb-2">Popular Pickup Spots In {city.name}</h2>
+            <h2 className={`font-heading text-2xl font-bold mb-2 ${isChennai ? "text-[#1E2A6E] md:text-3xl" : ""}`}>Popular Pickup Spots In {city.name}</h2>
             {city.name === "Chennai" && (
               <p className="mb-6 max-w-none text-sm leading-6 text-muted-foreground md:whitespace-nowrap md:text-base">
                 Root Cabs makes it easy to arrange a ride from the city's busiest travel hubs, landmarks, and neighbourhoods with a convenient taxi service in Chennai.
