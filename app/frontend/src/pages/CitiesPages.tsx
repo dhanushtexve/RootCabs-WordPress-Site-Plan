@@ -766,7 +766,7 @@ function AppDownloadCard() {
             <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
               GET THE APP
             </span>
-            <h2 className="mt-3 font-heading text-3xl font-bold leading-tight md:text-4xl">Book Every Journey with Root Cabs</h2>
+            <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl">Book Every Journey with Root Cabs</h2>
             <p className="mx-auto mt-2.5 max-w-xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
               Manage local rides, one-way trips and outstation travel through the Root Cabs app with simple booking and all your trip details in one place.
             </p>
@@ -851,7 +851,7 @@ function CityFaqSection({ city }: { city: (typeof cities)[number] }) {
   return (
     <section className="bg-muted/50 rounded-2xl px-4 pb-14 pt-8 md:px-6 md:pb-16 md:pt-10">
       <div className="mx-auto max-w-4xl">
-        <h2 className="font-heading text-center text-3xl font-bold text-[#1E2A6E] md:text-4xl">Frequently Asked Questions</h2>
+        <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl">Frequently Asked Questions</h2>
         <Accordion type="single" collapsible className="mt-10 space-y-3">
         {city.faq.map((item, i) => (
           <AccordionItem key={i} value={`faq-${i}`} className="rounded-xl border border-[#E2E8F3] bg-white px-5 shadow-sm">
@@ -916,7 +916,7 @@ function VelloreAppDownloadCard() {
             <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
               GET THE APP
             </span>
-            <h2 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-[2.6rem]">
+            <h2 className="mt-4 font-heading text-2xl font-bold leading-tight md:text-3xl">
               Book Your Vellore Ride In A Few Simple Steps
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-white/85 md:mx-0 md:text-lg">
@@ -1031,7 +1031,7 @@ function VelloreFaqSection() {
   return (
     <section className="-mt-16 rounded-2xl bg-muted/50 px-4 pb-14 pt-4 md:-mt-20 md:px-6 md:pb-16 md:pt-6">
       <div className="mx-auto max-w-4xl">
-        <h2 className="font-heading text-center text-3xl font-bold text-[#1E2A6E] md:text-4xl">Frequently Asked Questions</h2>
+        <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl">Frequently Asked Questions</h2>
         <Accordion type="single" collapsible className="mt-10 space-y-3">
           {velloreFaqs.map((item, i) => (
             <AccordionItem key={i} value={`vellore-faq-${i}`} className="rounded-xl border border-[#E2E8F3] bg-white px-5 shadow-sm">
@@ -1208,9 +1208,6 @@ function ChennaiRoutesSection() {
               with care. Their focus on timely pickup, courteous service, and smooth driving helps make every trip more
               comfortable.
             </p>
-            <p className="mt-3 text-[11px] leading-5 text-muted-foreground">
-              Note: Additional kilometres and hours will be charged extra. Toll, parking, permit and driver night charges are extra.
-            </p>
           </div>
         </div>
       </div>
@@ -1221,7 +1218,7 @@ function ChennaiRoutesSection() {
 function ChennaiReviewsSection() {
   return (
     <section>
-      <h2 className="font-heading text-2xl font-bold mb-3">Customer Reviews In Chennai</h2>
+      <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3">Customer Reviews In Chennai</h2>
       <p className="mb-6 text-sm text-muted-foreground md:text-base">Real experiences from customers who travel with Root Cabs.</p>
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
         {chennaiReviews.map((review) => (
@@ -1249,7 +1246,7 @@ function ChennaiReviewsSection() {
 function ChennaiTrustSection() {
   return (
     <section className="rounded-2xl bg-muted/50 p-6 md:p-8">
-      <h2 className="font-heading text-2xl font-bold text-[#1E2A6E]">Why Riders Trust Root Cabs?</h2>
+      <h2 className="font-heading text-2xl md:text-3xl font-bold text-[#1E2A6E]">Why Riders Trust Root Cabs?</h2>
       <p className="mt-3 max-w-2xl text-sm text-muted-foreground md:text-base">
         Clear fares, dependable rides, and support whenever you need it.
       </p>
@@ -1317,7 +1314,7 @@ function ChennaiActingDriverSection() {
 function VelloreTrustSection() {
   return (
     <section className="rounded-2xl bg-muted/50 p-6 md:p-8">
-      <h2 className="font-heading text-2xl font-bold text-[#1E2A6E]">Why Riders Trust Root Cabs?</h2>
+      <h2 className="font-heading text-2xl md:text-3xl font-bold text-[#1E2A6E]">Why Riders Trust Root Cabs?</h2>
       <p className="mt-3 max-w-2xl text-sm text-muted-foreground md:text-base">
         Clear fares, dependable rides, and support whenever you need it.
       </p>
@@ -1339,7 +1336,7 @@ function VelloreTrustSection() {
 function VelloreReviewsSection() {
   return (
     <section>
-      <h2 className="font-heading text-2xl font-bold mb-3">Customer Reviews In Vellore</h2>
+      <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3">Customer Reviews In Vellore</h2>
       <p className="mb-6 text-sm text-muted-foreground md:text-base">
         Real feedback from customers who use Root Cabs for local and outstation travel.
       </p>
@@ -1435,7 +1432,7 @@ export function CityPage({
         ? {
           title: "Taxi Service in Chennai | Cab Booking 24/7 - Root Cabs",
           description:
-            "Root Cabs offers the best taxi service in Chennai  reliable cab service, fixed fares from ₹11/km, verified drivers, no surge pricing, 24/7 booking.",
+            "Root Cabs offers the best taxi service in Chennai  reliable cab service, fixed fares from ?11/km, verified drivers, no surge pricing, 24/7 booking.",
           url: canonicalUrlOverride ?? "https://rootcabs.com/taxi-in-chennai",
           image: "https://rootcabs.com/assets/root-cabs-logo.webp",
         }
@@ -1658,7 +1655,7 @@ export function CityPage({
   if (!city) {
     return (
       <div className="max-w-screen-md mx-auto px-4 py-20 text-center">
-        <h1 className="font-heading text-3xl font-bold mb-4">City Not Found</h1>
+        <h1 className="font-heading text-3xl md:text-4xl font-bold mb-4">City Not Found</h1>
         <p className="text-muted-foreground mb-6">We don't operate in this city yet.</p>
         <Link to="/cities"><Button className="cursor-pointer">View All Cities</Button></Link>
       </div>
@@ -1681,7 +1678,7 @@ export function CityPage({
               { label: city.name },
             ]}
           />
-          <h1 className="font-heading text-3xl md:text-5xl font-bold mb-4">
+          <h1 className="font-heading text-3xl md:text-4xl font-bold mb-4">
             {isVellore ? "Your Go-To Taxi Service in Vellore - Whenever You Need a Ride" : city.tagline}
           </h1>
           <p className={`text-gray-300 text-lg ${isChennai || isVellore ? "max-w-5xl" : "max-w-2xl"}`}>
@@ -1715,7 +1712,7 @@ export function CityPage({
           <VelloreServicesSection />
         ) : (
           <section>
-            <h2 className="font-heading text-2xl font-bold mb-6">Services Available in {city.name}</h2>
+            <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6">Services Available in {city.name}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {city.services.map((sSlug) => {
                 const service = services.find((s) => s.slug === sSlug);
@@ -1746,7 +1743,7 @@ export function CityPage({
           <VelloreRoutesSection />
         ) : (
           <section>
-            <h2 className="font-heading text-2xl font-bold mb-6">Popular Routes from {city.name}</h2>
+            <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6">Popular Routes from {city.name}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {city.popularRoutes.map((route) => (
                 <Link
@@ -1840,7 +1837,7 @@ export function CityPage({
           <VelloreReviewsSection />
         ) : cityTestimonials.length > 0 ? (
           <section>
-            <h2 className="font-heading text-2xl font-bold mb-6">Customer Reviews in {city.name}</h2>
+            <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6">Customer Reviews in {city.name}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {cityTestimonials.map((t, i) => (
                 <Card key={i} className="border-border">
@@ -1866,7 +1863,7 @@ export function CityPage({
           <VelloreTrustSection />
         ) : (
           <section className="bg-muted/50 rounded-2xl p-8">
-            <h2 className="font-heading text-2xl font-bold mb-6">Why Choose Root Cabs in {city.name}?</h2>
+            <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6">Why Choose Root Cabs in {city.name}?</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {[
                 { icon: <CheckCircle className="w-5 h-5" />, text: "No surge pricing ever" },
@@ -2102,7 +2099,7 @@ export function CityServicePage() {
   if (!city || !service) {
     return (
       <div className="max-w-screen-md mx-auto px-4 py-20 text-center">
-        <h1 className="font-heading text-3xl font-bold mb-4">Page Not Found</h1>
+        <h1 className="font-heading text-3xl md:text-4xl font-bold mb-4">Page Not Found</h1>
         <p className="text-muted-foreground mb-6">This service may not be available in this city.</p>
         <Link to="/cities"><Button className="cursor-pointer">View All Cities</Button></Link>
       </div>
@@ -2139,7 +2136,7 @@ export function CityServicePage() {
           <div className="lg:col-span-2 space-y-8">
             {/* About */}
             <section>
-              <h2 className="font-heading text-2xl font-bold mb-4">About {service.name} in {city.name}</h2>
+              <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4">About {service.name} in {city.name}</h2>
               <p className="text-muted-foreground leading-relaxed mb-4">
                 Root Cabs provides reliable {service.name.toLowerCase()} service in {city.name} and surrounding areas. 
                 Our verified drivers ensure safe, comfortable rides at transparent prices with no hidden charges.
@@ -2156,7 +2153,7 @@ export function CityServicePage() {
 
             {/* Popular Routes */}
             <section>
-              <h2 className="font-heading text-2xl font-bold mb-4">Popular {service.name} Routes from {city.name}</h2>
+              <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4">Popular {service.name} Routes from {city.name}</h2>
               <div className="space-y-3">
                 {city.popularRoutes.map((route) => (
                   <div key={route.to} className="flex items-center justify-between p-4 rounded-lg border border-border">
@@ -2243,5 +2240,9 @@ export function CityServicePage() {
     </div>
   );
 }
+
+
+
+
 
 

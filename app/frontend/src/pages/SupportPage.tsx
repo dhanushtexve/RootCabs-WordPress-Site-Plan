@@ -8,72 +8,72 @@ import { ArrowRight, CheckCircle, Clock, Mail, MapPin } from "lucide-react";
 
   const faqs = [
   {
-    q: "Can I share my live trip location with a family member?",
+    q: "Can I Share My Live Trip Location With A Family Member?",
     a: "Yes. You can share your live trip details with a family member or friend from the Root Cabs app once the ride begins.",
     category: "riders",
   },
   {
-    q: "I left something in the cab. How can I get it back?",
+    q: "I Left Something In The Cab. How Can I Get It Back?",
     a: "Contact Root Cabs support as soon as possible and share your booking details. Our team will help you connect with the driver and assist with recovering the item.",
     category: "riders",
   },
   {
-    q: "What documents are required for driver onboarding?",
+    q: "What Documents Are Required For Driver Onboarding?",
     a: "For driver onboarding, you need to verify both your personal and vehicle details by submitting your Aadhaar Card, Driving Licence, Live Photo, Vehicle Permit, RC, Insurance, and a recent vehicle photo with the date and time.",
     category: "drivers",
   },
   {
-    q: "Is there any initial registration or onboarding fee that drivers need to pay?",
+    q: "Is There Any Initial Registration Or Onboarding Fee That Drivers Need To Pay?",
     a: "No. Drivers can complete the registration and onboarding process with Root Cabs without paying any initial fee.",
     category: "drivers",
   },
   {
-    q: "What is the commission structure for drivers for each completed trip on Root Cabs?",
+    q: "What Is The Commission Structure For Drivers For Each Completed Trip On Root Cabs?",
     a: "Root Cabs follows a 0% commission structure, allowing drivers to keep the full fare from every completed trip.",
     category: "drivers",
   },
   {
-    q: "What is the average monthly earning potential for drivers on Root Cabs?",
+    q: "What Is The Average Monthly Earning Potential For Drivers On Root Cabs?",
     a: "Drivers can earn around Rs. 40,000 per month on average depending on the number of trips completed, online hours, and the type of rides they choose.",
     category: "drivers",
   },
   {
-    q: "Is there any minimum number of trips guaranteed or required for drivers per month?",
+    q: "Is There Any Minimum Number Of Trips Guaranteed Or Required For Drivers Per Month?",
     a: "No, there is no fixed minimum trip count required per month. Drivers progress through Silver, Gold, and Elite tiers based on the required trip count and online hours. Once the criteria are completed, they can move to the next tier and become eligible for additional bonuses.",
     category: "drivers",
   },
   {
-    q: "Compared to local trips, how frequently do drivers receive outstation trips through Root Cabs?",
+    q: "Compared To Local Trips, How Frequently Do Drivers Receive Outstation Trips Through Root Cabs?",
     a: "Compared to local trips, drivers generally receive more outstation trip opportunities through Root Cabs.",
     category: "drivers",
   },
   {
-    q: "Is there a higher earning opportunity for drivers through outstation trips compared to local trips?",
+    q: "Is There A Higher Earning Opportunity For Drivers Through Outstation Trips Compared To Local Trips?",
     a: "Earning opportunities depend on the driver's preference. Some drivers choose outstation trips, while others prefer local rides and can earn equally by completing more local trips.",
     category: "drivers",
   },
   {
-    q: "How does the driver subscription work on Root Cabs?",
+    q: "How Does The Driver Subscription Work On Root Cabs?",
     a: "Root Cabs offers three subscription plans such as Starter, Best Value and Pro. Drivers can choose a plan based on their preference and continue taking rides until the subscription period ends.",
     category: "drivers",
   },
   {
-    q: "How do I file a complaint about a driver?",
+    q: "How Do I File A Complaint About A Driver?",
     a: "Contact the Root Cabs support team and share your booking ID along with the details of the issue. The team will review the complaint and take the necessary action.",
     category: "riders",
   },
   {
-    q: "I want a refund for a cancelled ride. How long does it take?",
+    q: "I Want A Refund For A Cancelled Ride. How Long Does It Take?",
     a: "Once approved, refunds are usually processed within 24 to 48 hours. The time taken to reflect may vary depending on the payment method.",
     category: "riders",
   },
   {
-    q: "What should I do if my ride is delayed?",
+    q: "What Should I Do If My Ride Is Delayed?",
     a: "Check the driver's location and trip status in the app. You can contact the driver directly or reach Root Cabs support if you need further assistance.",
     category: "riders",
   },
   {
-    q: "How can I update the phone number linked to my account?",
+    q: "How Can I Update The Phone Number Linked To My Account?",
     a: "Contact the Root Cabs support team with your registered details. The team will guide you through the verification and account update process.",
     category: "business",
   },
@@ -265,7 +265,7 @@ export function SupportPage() {
       <section className="mx-auto max-w-screen-xl px-4 py-10 md:py-12">
         <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.9fr)]">
           <div className="mx-auto w-full max-w-3xl lg:max-w-none">
-            <h2 className="mb-2 text-center font-heading text-3xl font-bold text-[#1E2A6E] md:text-4xl">
+            <h2 className="mb-2 text-center font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
               Frequently Asked Questions
             </h2>
             <p className="mb-5 text-center text-sm text-muted-foreground">Filter by who you are, or browse everything below.</p>
@@ -369,7 +369,7 @@ export function SupportPage() {
               <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                 GET THE APP
               </span>
-              <h2 className="mt-4 font-heading text-2xl font-bold leading-tight md:text-4xl lg:whitespace-nowrap">Get Help And Manage Rides In One Place</h2>
+              <h2 className="mt-4 font-heading text-2xl font-bold leading-tight md:text-3xl lg:whitespace-nowrap">Get Help And Manage Rides In One Place</h2>
               <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
                 Use the Root Cabs app to check ride details, reach support and stay updated throughout your journey.
               </p>
@@ -443,7 +443,7 @@ export function SupportPage() {
       <section className="mx-auto mt-8 max-w-screen-xl px-4">
         <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
           <div className="text-center md:text-left">
-            <h2 className="font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">
+            <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
               Drive And Earn With Root Cabs
             </h2>
             <p className="mt-3 mb-5 max-w-2xl text-sm leading-6 text-muted-foreground">
@@ -467,3 +467,6 @@ export function SupportPage() {
     </div>
   );
 }
+
+
+

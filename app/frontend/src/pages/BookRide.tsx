@@ -1022,7 +1022,7 @@ export default function BookRide() {
         <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
           <CheckCircle className="w-10 h-10 text-green-600" />
         </div>
-        <h1 className="font-heading text-3xl font-bold mb-4">Booking Request Received!</h1>
+        <h1 className="font-heading text-3xl md:text-4xl font-bold mb-4">Booking Request Received!</h1>
         <p className="text-muted-foreground mb-6 max-w-md mx-auto">
           Our team will confirm your ride shortly. You'll receive a call/SMS with driver details within 15 minutes.
         </p>
@@ -1072,7 +1072,7 @@ export default function BookRide() {
               { label: "Book Ride" },
             ]}
           />
-          <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Book Your Ride</h1>
+          <h1 className="font-heading text-3xl md:text-4xl font-bold leading-[1.1] tracking-normal mb-3">Book Your Ride</h1>
           <p className="text-gray-300 max-w-none md:whitespace-nowrap">
             Plan your journey with ease and book your ride online for a safe, comfortable and reliable travel experience.
           </p>
@@ -1951,35 +1951,6 @@ export default function BookRide() {
               </CardContent>
             </Card>
 
-            <Card className="border-border">
-              <CardContent className="p-6">
-                <h3 className="font-heading font-semibold mb-3">Fare Rates</h3>
-                <p className="text-sm leading-6 text-muted-foreground mb-4">
-                  Check the starting per-kilometre fares for each vehicle type before you book your ride online.
-                </p>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between items-center py-1 border-b border-border">
-                    <span>Mini</span>
-                    <span className="font-semibold text-primary">₹24/km</span>
-                  </div>
-                  <div className="flex justify-between items-center py-1 border-b border-border">
-                    <span>Sedan</span>
-                    <span className="font-semibold text-primary">₹24/km</span>
-                  </div>
-                  <div className="flex justify-between items-center py-1 border-b border-border">
-                    <span>SUV</span>
-                    <span className="font-semibold text-primary">₹24/km</span>
-                  </div>
-                  <div className="flex justify-between items-center py-1 border-b border-border">
-                    <span>MUV</span>
-                    <span className="font-semibold text-primary">₹29/km</span>
-                  </div>
-                </div>
-                <p className="text-xs text-muted-foreground mt-3">
-                  Base fare, toll charges and other applicable fees may be added separately.
-                </p>
-              </CardContent>
-            </Card>
           </div>
         </div>
 
@@ -2010,7 +1981,7 @@ export default function BookRide() {
               <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                 Book Faster
               </span>
-              <h2 className="mt-3 font-heading text-3xl font-bold leading-tight md:text-4xl">Book Every Ride in One App</h2>
+              <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl">Book Every Ride in One App</h2>
               <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
                 Whether you need a quick city trip, a bike ride or want to book airport transportation, Root Cabs app helps you choose your ride, check the fare and confirm your booking in just a few taps.
               </p>
@@ -2126,7 +2097,7 @@ export default function BookRide() {
       </section>
       <section className="bg-[#F3F5F9] px-4 pb-12 pt-8 md:pb-16 md:pt-10">
         <div className="mx-auto max-w-3xl">
-          <h2 className="font-heading text-center text-3xl font-bold text-[#1E2A6E] md:text-4xl">
+          <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl">
             Frequently Asked Questions
           </h2>
           <Accordion type="single" collapsible className="mt-10 space-y-3">
@@ -2146,4 +2117,7 @@ export default function BookRide() {
     </div>
   );
 }
+
+
+
 

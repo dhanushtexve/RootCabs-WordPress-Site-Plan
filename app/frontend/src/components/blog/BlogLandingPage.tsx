@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
@@ -192,7 +192,7 @@ const BlogLandingPage = () => {
             ]}
           />
           <div className="max-w-4xl">
-            <h1 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-5xl">
+            <h1 className="mt-4 font-heading text-3xl md:text-4xl font-bold leading-tight">
               Blog & Travel Guides
             </h1>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-white/80 md:text-base">
@@ -372,7 +372,7 @@ const BlogLandingPage = () => {
           <aside className="space-y-6 lg:sticky lg:top-6 lg:self-start">
             <Card className="border-slate-200 bg-white shadow-sm">
               <CardContent className="p-5">
-                <h2 className="font-heading text-xl font-bold text-slate-950">Popular Posts</h2>
+                <h2 className="font-heading text-2xl md:text-3xl font-bold text-slate-950">Popular Posts</h2>
                 <div className="mt-4 space-y-3">
                   {popularPosts.map((post, index) => (
                     <Link
@@ -430,7 +430,7 @@ const BlogLandingPage = () => {
               <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                 Book Faster
               </span>
-              <h2 className="mt-3 font-heading text-3xl font-bold leading-tight md:text-4xl">
+              <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl">
                 Download The Root Cabs App
               </h2>
               <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
@@ -517,3 +517,7 @@ const BlogLandingPage = () => {
 };
 
 export default BlogLandingPage;
+
+
+
+

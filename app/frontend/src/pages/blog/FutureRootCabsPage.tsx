@@ -177,7 +177,7 @@ const FutureRootCabsPage = () => {
             <span className="inline-flex rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.22em] text-[#1E2A6E]">
               Future
             </span>
-            <h1 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-5xl">
+            <h1 className="mt-4 font-heading text-3xl md:text-4xl font-bold leading-tight">
               The Future of Root Cabs: Our Vision for Smarter and Safer Travel
             </h1>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-white/80 md:text-base">

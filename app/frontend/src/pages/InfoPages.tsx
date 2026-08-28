@@ -221,7 +221,7 @@ export function BusinessPage() {
               { label: "Business" },
             ]}
           />
-          <h1 className="font-heading text-3xl font-bold leading-tight md:text-5xl">Business Solutions</h1>
+          <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">Business Solutions</h1>
           <p className="mx-auto mt-3 max-w-3xl text-base leading-7 text-white/80 md:text-lg">
             Make employee travel and business transportation easier to manage with Root Cabs. We offer flexible ride solutions for daily office commutes, client travel, airport trips and other company requirements.
           </p>
@@ -235,7 +235,7 @@ export function BusinessPage() {
               <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-4">
                 {solutionIcons[sol.slug]}
               </div>
-              <h2 className="font-heading text-2xl font-bold mb-3">{sol.title}</h2>
+              <h2 className="font-heading text-2xl md:text-3xl font-bold mb-3">{sol.title}</h2>
               <p className="text-muted-foreground mb-6">{sol.description}</p>
               <a href={`tel:${companyInfo.phone}`}>
                 <Button className="bg-[#1E2A6E] hover:bg-[#2E3A8C] text-white font-bold cursor-pointer shadow-sm">
@@ -303,7 +303,7 @@ export function BusinessPage() {
                 <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                   GET THE APP
                 </span>
-                <h2 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-4xl">
+                <h2 className="mt-4 font-heading text-2xl font-bold leading-tight md:text-3xl">
                   Keep Every Business Trip Organised
                 </h2>
                 <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
@@ -380,7 +380,7 @@ export function BusinessPage() {
         <section className="max-w-screen-xl mx-auto px-4 py-2">
           <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
             <div className="text-center md:text-left">
-              <h2 className="font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">
+              <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
                 Drive And Earn With Root Cabs
               </h2>
               <p className="mt-3 mb-5 max-w-2xl text-sm leading-6 text-muted-foreground">
@@ -405,7 +405,7 @@ export function BusinessPage() {
         {/* FAQ */}
         <section className="bg-muted/50 px-4 py-16 md:py-20">
           <div className="mx-auto max-w-3xl">
-            <h2 className="mb-10 text-center font-heading text-3xl font-bold text-[#1E2A6E] md:text-4xl">
+            <h2 className="mb-10 text-center font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
               Frequently Asked Questions
             </h2>
             <Accordion type="single" collapsible className="space-y-3">
@@ -605,7 +605,7 @@ export function BlogPage() {
             <span className="inline-flex rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.22em] text-[#1E2A6E]">
               Root Story
             </span>
-            <h1 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-5xl">The Story Behind Root Cabs: How A Vision Became A Reality</h1>
+            <h1 className="mt-4 font-heading text-3xl md:text-4xl font-bold leading-tight">The Story Behind Root Cabs: How A Vision Became A Reality</h1>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-white/80 md:text-base">
               Root Cabs began with a simple observation. Cab booking apps had made it easier to search for a ride, but many everyday travel problems were still unresolved.
             </p>
@@ -715,7 +715,7 @@ export function BlogPage() {
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
-                        Root Cabs operates as a unit of Texve Innovations. The company’s technology experience supported the development of a platform for customers as well as driver partners.
+                        Root Cabs operates as a unit of Texve Innovations. The company's technology experience supported the development of a platform for customers as well as driver partners.
                       </p>
                       <p>
                         Running a taxi booking platform involves more than displaying nearby vehicles. The system must identify locations, provide fare estimates, connect customers with available drivers and share updates throughout the journey.
@@ -738,10 +738,10 @@ export function BlogPage() {
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
-                        The name Root Cabs reflects the company’s origin and its connection with the places it serves.
+                        The name Root Cabs reflects the company's origin and its connection with the places it serves.
                       </p>
                       <p>
-                        The word “Root” represents a beginning, a strong foundation and the point from which something grows. Root Cabs started in Tamil Nadu with an understanding of local cities, routes and everyday travel habits.
+                        The word "Root" represents a beginning, a strong foundation and the point from which something grows. Root Cabs started in Tamil Nadu with an understanding of local cities, routes and everyday travel habits.
                       </p>
                       <p>
                         It also connects naturally with the idea of a journey. Every trip has a starting point before it moves towards a destination. Root Cabs began in one city in the same way and gradually expanded its services to more locations.
@@ -782,7 +782,7 @@ export function BlogPage() {
                       <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#1E2A6E]">
                         Next step
                       </p>
-                      <h2 className="mt-2 font-heading text-2xl font-bold text-slate-950">
+                      <h2 className="mt-2 font-heading text-2xl md:text-3xl font-bold text-slate-950">
                         Explore More of the Root Cabs Story
                       </h2>
                       <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-600">
@@ -810,7 +810,7 @@ export function BlogPage() {
           <aside className="space-y-6 lg:sticky lg:top-6 lg:self-start">
             <Card className="border-slate-200 shadow-sm">
               <CardContent className="p-5">
-                <h2 className="font-heading text-xl font-bold text-slate-950">On This Page</h2>
+                <h2 className="font-heading text-2xl md:text-3xl font-bold text-slate-950">On This Page</h2>
                 <nav className="mt-4 space-y-2">
                   {onThisPage.map((item, index) => (
                     <a
@@ -830,7 +830,7 @@ export function BlogPage() {
 
             <Card className="border-slate-200 shadow-sm">
               <CardContent className="p-5">
-                <h2 className="font-heading text-xl font-bold text-slate-950">Popular Posts</h2>
+                <h2 className="font-heading text-2xl md:text-3xl font-bold text-slate-950">Popular Posts</h2>
                 <div className="mt-4 space-y-3">
                   {relatedPosts.map((post, index) => (
                     post.href ? (
@@ -881,7 +881,7 @@ export function BlogPage() {
                 <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#FFD700]">
                   Contact Us
                 </p>
-                <h2 className="mt-3 font-heading text-2xl font-bold">Need Help With Root Cabs?</h2>
+                <h2 className="mt-3 font-heading text-2xl md:text-3xl font-bold">Need Help With Root Cabs?</h2>
                 <p className="mt-3 text-sm leading-6 text-white/80">
                   Reach the Root Cabs team for booking support, business travel questions or general assistance.
                 </p>
@@ -1120,7 +1120,7 @@ export function AboutPage() {
               { label: "About" },
             ]}
           />
-          <h1 className="font-heading text-3xl font-bold leading-tight md:text-5xl">About Root Cabs</h1>
+          <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">About Root Cabs</h1>
           <p className="mt-3 max-w-5xl text-base leading-7 text-white/80 md:text-lg">
             Root Cabs operates as a unit of Texve Innovations Pvt. Ltd., offering a unified range of mobility and transport services across Tamil Nadu. Through a single platform, customers can access multiple options for everyday travel, intercity journeys and other transport needs.
           </p>
@@ -1130,7 +1130,7 @@ export function AboutPage() {
       <div className="max-w-screen-xl mx-auto px-4 py-10 space-y-8 md:space-y-10">
         {/* Mission */}
         <section className="rounded-2xl bg-muted/30 px-4 py-6 md:px-8 md:py-8">
-          <h2 className="text-center font-heading text-3xl font-bold leading-tight text-[#1E2A6E] md:text-4xl">
+          <h2 className="text-center font-heading text-2xl font-bold leading-tight text-[#1E2A6E] md:text-3xl">
             Our Mission
           </h2>
           <p className="mx-auto mt-3 max-w-4xl text-center text-sm leading-7 text-muted-foreground md:text-base">
@@ -1158,7 +1158,7 @@ export function AboutPage() {
 
         {/* Values */}
         <section className="pt-1">
-          <h2 className="font-heading text-2xl font-bold mb-4 text-center">Our Values</h2>
+          <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-center">Our Values</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {[
               {
@@ -1323,7 +1323,7 @@ export function AboutPage() {
 
         {/* Company Info */}
         <section className="bg-muted/50 rounded-2xl p-6 md:p-8">
-          <h2 className="font-heading text-2xl font-bold mb-4 md:mb-6">Company Information</h2>
+          <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 md:mb-6">Company Information</h2>
           <div className="grid sm:grid-cols-2 gap-4 text-sm">
             <div className="flex items-start gap-3">
               <Building className="w-5 h-5 text-primary shrink-0 mt-0.5" />
@@ -1383,17 +1383,17 @@ export function AboutPage() {
             {[
               {
                 name: "Karthik Raman",
-                city: "Local Taxi Â· Vellore",
+                city: "Local Taxi · Vellore",
                 text: "Been using Root Cabs since they launched in Vellore back in 2022. Still the most reliable option for VIT trips.",
               },
               {
                 name: "Deepa Suresh",
-                city: "Outstation Taxi Â· Coimbatore",
+                city: "Outstation Taxi · Coimbatore",
                 text: "Fixed fares every single time, even during festival season. That's rare for a cab service in a smaller city.",
               },
               {
                 name: "Arun Vijay",
-                city: "Airport Taxi Â· Chennai",
+                city: "Airport Taxi · Chennai",
                 text: "Drivers are genuinely well-trained and polite. You can tell there's real vetting happening, not just an app.",
               },
             ].map((review) => (
@@ -1437,7 +1437,7 @@ export function AboutPage() {
                 <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                   GET THE APP
                 </span>
-                <h2 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-4xl">
+                <h2 className="mt-4 font-heading text-2xl font-bold leading-tight md:text-3xl">
                   Plan Every Trip with Root Cabs
                 </h2>
                 <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
@@ -1514,7 +1514,7 @@ export function AboutPage() {
         <section className="max-w-screen-xl mx-auto px-4 py-2">
           <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
             <div className="text-center md:text-left">
-              <h2 className="font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">
+              <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
                 Drive And Earn With Root Cabs
               </h2>
               <p className="mt-3 mb-5 max-w-2xl text-sm leading-6 text-muted-foreground">
@@ -1563,7 +1563,7 @@ export function SupportPage() {
     },
     {
       q: "What Should I Do If My Ride Is Delayed?",
-      a: "Check the driverâ€™s location and trip status in the app. You can contact the driver directly or reach Root Cabs support if you need further assistance.",
+      a: "Check the driver’s location and trip status in the app. You can contact the driver directly or reach Root Cabs support if you need further assistance.",
     },
     {
       q: "How Can I Update The Phone Number Linked To My Account?",
@@ -1597,7 +1597,7 @@ export function SupportPage() {
     },
     {
       q: "Is There A Higher Earning Opportunity For Drivers Through Outstation Trips Compared To Local Trips?",
-      a: "Earning opportunities depend on the driver’s preference. Some drivers choose outstation trips, while others prefer local rides and can earn equally by completing more local trips.",
+      a: "Earning opportunities depend on the driver's preference. Some drivers choose outstation trips, while others prefer local rides and can earn equally by completing more local trips.",
     },
     {
       q: "How Does The Driver Subscription Work On Root Cabs?",
@@ -2080,3 +2080,7 @@ export function TermsOfUsePage() {
 export function WalletPolicyPage() {
   return <PolicyDocumentPage policyKey="wallet-policy" />;
 }
+
+
+
+

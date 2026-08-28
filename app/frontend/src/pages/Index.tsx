@@ -417,7 +417,7 @@ export default function Index() {
                 <Star className="h-3 w-3 fill-[#FFD700] text-[#FFD700]" />
                 <span>Top-Rated by Riders Across Tamil Nadu</span>
               </div>
-              <h1 className="font-heading text-3xl font-extrabold leading-[1.1] tracking-normal text-white md:text-4xl lg:text-5xl">
+              <h1 className="font-heading text-3xl md:text-4xl font-bold leading-[1.1] tracking-normal text-white">
                 Tamil Nadu's Trusted Cab Service For Every Journey
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-7 text-white/82 md:text-lg">
@@ -467,7 +467,7 @@ export default function Index() {
             <span className="inline-flex rounded-full bg-[#E9EDFF] px-4 py-1.5 text-sm font-extrabold uppercase tracking-wide text-[#1E2A6E] shadow-sm">
               HOW ROOT CABS WORKS
             </span>
-          <h2 className="mt-4 font-heading text-3xl font-bold text-[#1E2A6E] md:text-4xl">Booking Your Ride Is Quick And Simple</h2>
+          <h2 className="mt-4 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Booking Your Ride Is Quick And Simple</h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-base">
             Use the Root Cabs online cab booking app to plan your trip in just a few steps.
           </p>
@@ -492,7 +492,7 @@ export default function Index() {
               <span className="inline-flex rounded-full bg-[#E9EDFF] px-4 py-1.5 text-sm font-extrabold uppercase tracking-wide text-[#1E2A6E] shadow-sm">
                 Our Services
               </span>
-            <h2 className="mt-4 font-heading text-3xl font-bold text-[#1E2A6E] md:text-4xl">Explore Every Way To Travel With Root Cabs</h2>
+            <h2 className="mt-4 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Explore Every Way To Travel With Root Cabs</h2>
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-base">
               From everyday city rides to long-distance travel, we've got you covered.
             </p>

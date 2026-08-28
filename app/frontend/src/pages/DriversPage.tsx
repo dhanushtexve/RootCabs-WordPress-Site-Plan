@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -465,7 +465,7 @@ export function DriversPage() {
         <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-100">
           <CheckCircle2 className="h-10 w-10 text-green-600" />
         </div>
-        <h1 className="font-heading text-3xl font-bold text-[#1E2A6E]">Application Received</h1>
+        <h1 className="font-heading text-3xl md:text-4xl font-bold text-[#1E2A6E]">Application Received</h1>
         <p className="mx-auto mt-4 max-w-xl text-muted-foreground">
           Thanks {fullName.trim()}. Your mobile number is verified and your driver application has been captured.
           Our onboarding team will contact you soon.
@@ -487,7 +487,7 @@ export function DriversPage() {
                   { label: "Drivers" },
                 ]}
               />
-              <h1 className="font-heading text-2xl font-extrabold leading-[1.1] tracking-tight md:text-3xl lg:whitespace-nowrap lg:text-[2.45rem]">
+              <h1 className="font-heading text-3xl md:text-4xl font-bold leading-[1.1] tracking-tight lg:whitespace-nowrap">
                 Drive And Earn With Root Cabs
               </h1>
               <p className="mt-4 max-w-2xl text-base leading-7 text-white/82 md:text-lg">
@@ -508,7 +508,7 @@ export function DriversPage() {
                 vehicleType === "Acting Driver" ? "lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto" : ""
               }`}
             >
-              <h2 className="font-heading text-2xl font-bold text-[#1E2A6E]">Apply To Drive</h2>
+              <h2 className="font-heading text-2xl md:text-3xl font-bold text-[#1E2A6E]">Apply To Drive</h2>
               <p className="mt-2 text-sm leading-6 text-slate-600">
                 Share your details and choose the service that matches your vehicle. Our onboarding team will contact you and guide you through the next steps.
               </p>
@@ -969,7 +969,7 @@ export function DriversPage() {
 
       <section className="bg-[#F5F7FB] py-8 md:py-10">
         <div className="max-w-screen-xl mx-auto px-4">
-          <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl lg:text-4xl">Driver Benefits</h2>
+          <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl ">Driver Benefits</h2>
           <div className="mt-6 grid auto-rows-fr gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {[
               {
@@ -1029,7 +1029,7 @@ export function DriversPage() {
       <section className="bg-muted/40 py-8 md:py-10">
         <div className="max-w-screen-xl mx-auto px-4">
           <div className="rounded-3xl border border-border bg-white p-5 shadow-sm md:p-7">
-            <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl lg:text-4xl">Earnings Potential</h2>
+            <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl ">Earnings Potential</h2>
             <div className="mt-5 grid gap-3 md:grid-cols-3">
               {[
                 { type: "Part-time", earnings: "₹15,000-20,000/month", hours: "4 hrs/day" },
@@ -1052,7 +1052,7 @@ export function DriversPage() {
 
       <section className="bg-[#F5F7FB] py-8 md:py-10">
         <div className="max-w-screen-xl mx-auto px-4">
-          <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl lg:text-4xl">Requirements To Join</h2>
+          <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl ">Requirements To Join</h2>
           <div className="mt-5 grid gap-2.5 md:grid-cols-2">
             {[
               "Valid driving licence (LMV/Transport)",
@@ -1076,7 +1076,7 @@ export function DriversPage() {
       <section className="bg-muted/40 py-8 md:py-10">
         <div className="max-w-screen-xl mx-auto px-4">
           <div className="rounded-3xl border border-border bg-white px-6 py-7 shadow-sm md:px-8 md:py-8">
-            <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl lg:text-4xl">Referral Program</h2>
+            <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl ">Referral Program</h2>
             <p className="mx-auto mt-3 max-w-3xl text-center text-sm leading-6 text-slate-500 md:text-base">
               Earn extra rewards by introducing new customers and drivers to Root Cabs. Share your referral, help them complete the required activity and receive the reward directly.
             </p>
@@ -1118,7 +1118,7 @@ export function DriversPage() {
                 <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                   GET THE APP
                 </span>
-                <h2 className="mt-5 max-w-[820px] font-heading text-[1.7rem] font-bold leading-tight md:mt-6 md:text-[2.05rem] lg:whitespace-nowrap lg:text-[2.35rem]">
+                <h2 className="mt-5 max-w-[820px] font-heading text-2xl font-bold leading-tight md:mt-6 md:text-3xl lg:whitespace-nowrap ">
                   Drive Smarter With The Root Partner App
                 </h2>
                 <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
@@ -1194,5 +1194,9 @@ export function DriversPage() {
     </div>
   );
 }
+
+
+
+
 
 

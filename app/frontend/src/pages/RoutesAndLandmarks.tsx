@@ -134,7 +134,7 @@ export function RoutePage() {
   if (!route) {
     return (
       <div className="max-w-screen-md mx-auto px-4 py-20 text-center">
-        <h1 className="font-heading text-3xl font-bold mb-4">Route Not Found</h1>
+        <h1 className="font-heading text-3xl md:text-4xl font-bold mb-4">Route Not Found</h1>
         <p className="text-muted-foreground mb-6">This route page is not available yet.</p>
         <Link to="/"><Button className="cursor-pointer">Go Home</Button></Link>
       </div>
@@ -151,7 +151,7 @@ export function RoutePage() {
             <ChevronRight className="w-3 h-3" />
             <span className="text-white">{route.from} to {route.to}</span>
           </div>
-          <h1 className="font-heading text-3xl md:text-5xl font-bold mb-4">
+          <h1 className="font-heading text-3xl md:text-4xl font-bold mb-4">
             {route.from} to {route.to} Taxi
           </h1>
           <p className="text-gray-300 text-lg max-w-2xl">
@@ -410,7 +410,7 @@ export function LandmarkPage() {
   if (!landmark) {
     return (
       <div className="max-w-screen-md mx-auto px-4 py-20 text-center">
-        <h1 className="font-heading text-3xl font-bold mb-4">Landmark Not Found</h1>
+        <h1 className="font-heading text-3xl md:text-4xl font-bold mb-4">Landmark Not Found</h1>
         <p className="text-muted-foreground mb-6">This landmark page is not available.</p>
         <Link to="/"><Button className="cursor-pointer">Go Home</Button></Link>
       </div>

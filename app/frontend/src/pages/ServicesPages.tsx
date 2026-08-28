@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Car, Plane, Navigation, User, Package, Bike, CheckCircle, ArrowRight, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -568,7 +568,7 @@ export function ServicesHub() {
         {/* Cities We Serve */}
         <section className="mt-14">
           <div className="mb-7 text-center">
-            <h2 className="font-heading text-3xl font-bold text-[#1E2A6E] md:text-4xl">Cities We Serve</h2>
+            <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Cities We Serve</h2>
             <p className="mx-auto mt-3 max-w-3xl text-sm leading-6 text-[#4B587C] md:text-base">
               Our affordable taxi service is available across major cities in Tamil Nadu for local, one-way and outstation travel.
             </p>
@@ -608,7 +608,7 @@ export function ServicesHub() {
                 <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                   GET THE APP
                 </span>
-                <h2 className="mt-3 font-heading text-3xl font-bold leading-tight md:text-4xl">
+                <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl">
                   Travel Made Simple with the Root Cabs App
                 </h2>
                 <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
@@ -705,7 +705,7 @@ export function ServicesHub() {
 
         {/* FAQ */}
         <section className="mt-14 rounded-2xl bg-[#F4F6FA] px-4 py-10 md:px-8 md:py-12">
-          <h2 className="font-heading text-center text-3xl font-bold text-[#1E2A6E] md:text-4xl">
+          <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl">
             Frequently Asked Questions
           </h2>
           <Accordion type="single" collapsible className="mx-auto mt-8 max-w-3xl space-y-3">
@@ -770,7 +770,7 @@ export function ServicePage() {
   if (!service) {
     return (
       <div className="max-w-screen-md mx-auto px-4 py-20 text-center">
-        <h1 className="font-heading text-3xl font-bold mb-4">Service Not Found</h1>
+        <h1 className="font-heading text-3xl md:text-4xl font-bold mb-4">Service Not Found</h1>
         <p className="text-muted-foreground mb-6">The service you're looking for doesn't exist.</p>
         <Link to="/services"><Button className="cursor-pointer">View All Services</Button></Link>
       </div>
@@ -796,7 +796,7 @@ export function ServicePage() {
               ]}
             />
             <div className="mb-5 max-w-6xl">
-              <h1 className="font-heading text-3xl font-extrabold leading-tight md:whitespace-nowrap md:text-4xl lg:text-5xl">
+              <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight md:whitespace-nowrap">
                 Local Taxi Service for Everyday Travel
               </h1>
               <p className="mt-3 text-sm font-semibold text-white/78">
@@ -835,7 +835,7 @@ export function ServicePage() {
               ]}
             />
             <div className="mb-5 max-w-6xl">
-              <h1 className="font-heading text-3xl font-extrabold leading-tight md:text-4xl lg:text-5xl">
+              <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
                 Airport Taxi Service for Stress-Free Transfers
               </h1>
               <p className="mt-3 text-sm font-semibold text-white/78">
@@ -904,7 +904,7 @@ export function ServicePage() {
             {/* Features */}
             <div className={isLocalTaxiService || isAirportTaxiService ? "grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start" : ""}>
               <div>
-                <h2 className="font-heading text-2xl font-bold mb-4">
+                <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4">
                   {isLocalTaxiService
                     ? "Benefits Of Our Local Cab Service"
                     : isAirportTaxiService
@@ -926,7 +926,7 @@ export function ServicePage() {
 
                 {isAirportTaxiService && (
                   <div className="mt-10">
-                    <h2 className="font-heading text-2xl font-bold mb-4 text-[#1E2A6E]">
+                    <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
                       Why Root Cabs Is A Better Choice For Airport Rides?
                     </h2>
                     <div className="rounded-xl border border-[#D7DDED] bg-white p-5 text-base leading-7 text-[#26335F] shadow-sm md:p-6 md:text-lg">
@@ -1010,7 +1010,7 @@ export function ServicePage() {
 
             {isLocalTaxiService && (
               <div>
-                <h2 className="font-heading text-2xl font-bold mb-4 text-[#1E2A6E]">
+                <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
                   Why Choose Root Cabs For Your Local Taxi?
                 </h2>
                 <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
@@ -1058,7 +1058,7 @@ export function ServicePage() {
             )}
             {isLocalTaxiService && (
               <div>
-                <h2 className="font-heading text-2xl font-bold mb-5 text-[#1E2A6E]">
+                <h2 className="font-heading text-2xl md:text-3xl font-bold mb-5 text-[#1E2A6E]">
                   How To Book A Local Taxi
                 </h2>
                 <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -1078,7 +1078,7 @@ export function ServicePage() {
             {/* Available Cities */}
             <div className={isLocalTaxiService ? "grid gap-8" : ""}>
               <div>
-                <h2 className="font-heading text-2xl font-bold mb-4">
+                <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4">
                   {isLocalTaxiService
                     ? "Local Taxi Service Available Across Tamil Nadu"
                     : isAirportTaxiService
@@ -1093,11 +1093,11 @@ export function ServicePage() {
                         to={`/${city.slug}/${service.slug}`}
                         className="group overflow-hidden rounded-2xl border border-[#DCE3F1] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
                       >
-                        <div className="overflow-hidden">
+                        <div className="h-[170px] overflow-hidden bg-[#EEF3FF]">
                           <img
                             src={city.image}
                             alt={city.name}
-                            className="h-[132px] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                            className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-[1.03]"
                           />
                         </div>
                         <div className="space-y-3 p-5">
@@ -1166,7 +1166,7 @@ export function ServicePage() {
                   <div className="inline-flex rounded-full bg-[#E9EDFF] px-4 py-1.5 text-xs font-bold uppercase text-[#1E2A6E]">
                     Acting Driver
                   </div>
-                  <h2 className="mt-5 max-w-xl font-heading text-3xl font-bold leading-tight text-[#1E2A6E] md:text-4xl">
+                  <h2 className="mt-5 max-w-xl font-heading text-2xl font-bold leading-tight text-[#1E2A6E] md:text-3xl">
                     Let A Professional Driver Handle Your Airport Trip
                   </h2>
                   <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground md:text-base">
@@ -1206,7 +1206,7 @@ export function ServicePage() {
                   <div className="inline-flex rounded-full bg-[#E9EDFF] px-4 py-1.5 text-xs font-bold uppercase text-[#1E2A6E]">
                     Acting Driver
                   </div>
-                  <h2 className="mt-5 max-w-xl font-heading text-3xl font-bold leading-tight text-[#1E2A6E] md:text-4xl">
+                  <h2 className="mt-5 max-w-xl font-heading text-2xl font-bold leading-tight text-[#1E2A6E] md:text-3xl">
                     Travel In Your Own Car With A Professional Driver
                   </h2>
                   <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground md:text-base">
@@ -1259,7 +1259,7 @@ export function ServicePage() {
                     <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                       GET THE APP
                     </span>
-                    <h2 className="mt-3 font-heading text-3xl font-bold leading-tight md:text-4xl">
+                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl">
                       Your Airport Ride Starts With Root Cabs
                     </h2>
                     <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
@@ -1354,7 +1354,7 @@ export function ServicePage() {
                     <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                       GET THE APP
                     </span>
-                    <h2 className="mt-3 font-heading text-3xl font-bold leading-tight md:text-4xl">
+                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl">
                       Book Local Rides Faster With The Root Cabs App
                     </h2>
                     <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
@@ -1486,7 +1486,7 @@ export function ServicePage() {
 
             {isAirportTaxiService && (
               <section className="rounded-2xl bg-[#F4F6FA] px-4 pt-6 pb-10 md:px-8 md:pt-8 md:pb-12">
-                <h2 className="font-heading text-center text-3xl font-bold text-[#1E2A6E] md:text-4xl">
+                <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl">
                   Frequently Asked Questions
                 </h2>
                 <Accordion type="single" collapsible className="mx-auto mt-8 max-w-4xl space-y-3">
@@ -1506,7 +1506,7 @@ export function ServicePage() {
 
             {isLocalTaxiService && (
               <section className="rounded-2xl bg-[#F4F6FA] px-4 pt-6 pb-10 md:px-8 md:pt-8 md:pb-12">
-                <h2 className="font-heading text-center text-3xl font-bold text-[#1E2A6E] md:text-4xl">
+                <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl">
                   Frequently Asked Questions
                 </h2>
                 <Accordion type="single" collapsible className="mx-auto mt-8 max-w-4xl space-y-3">
@@ -1588,3 +1588,7 @@ export function ServicePage() {
     </div>
   );
 }
+
+
+
+
