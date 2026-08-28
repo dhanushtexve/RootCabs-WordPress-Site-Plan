@@ -788,7 +788,7 @@ export function CitiesHub() {
             <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
               <img
                 src="/assets/homepage-rootpartner-banner.webp"
-                alt="Drive and earn with Root Cabs"
+                alt="Drive And Earn With Root Cabs"
                 className="h-full w-full object-cover object-center"
               />
             </div>
@@ -1068,7 +1068,7 @@ function VellorePartnerSection() {
         <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
           <img
             src="/assets/homepage-rootpartner-banner.webp"
-            alt="Drive and earn with Root Cabs"
+            alt="Drive And Earn With Root Cabs"
             className="h-full w-full object-cover object-center"
           />
         </div>
@@ -1734,7 +1734,7 @@ export function CityPage({
           <h1 className="font-heading text-3xl md:text-5xl font-bold mb-4">
             {isVellore ? "Your Go-To Taxi Service in Vellore - Whenever You Need a Ride" : city.tagline}
           </h1>
-          <p className="text-gray-300 max-w-2xl text-lg">
+          <p className={`text-gray-300 text-lg ${isChennai || isVellore ? "max-w-5xl" : "max-w-2xl"}`}>
             {isVellore
               ? "From CMC appointments and VIT travel to railway station pickups and outstation trips, Root Cabs makes travelling around Vellore easier with clear fares and convenient booking."
               : city.description}
@@ -1963,7 +1963,7 @@ export function CityPage({
                 <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
                   <img
                     src="/assets/homepage-rootpartner-banner.webp"
-                    alt="Drive and earn with Root Cabs"
+                    alt="Drive And Earn With Root Cabs"
                     className="h-full w-full object-cover object-center"
                   />
                 </div>

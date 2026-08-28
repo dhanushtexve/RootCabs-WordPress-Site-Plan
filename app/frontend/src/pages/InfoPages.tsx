@@ -213,7 +213,7 @@ export function BusinessPage() {
   return (
     <div>
       <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] py-8 text-white md:py-10">
-        <div className="max-w-screen-xl mx-auto px-4 text-center">
+        <div className="max-w-screen-xl mx-auto px-4 text-left">
           <PageBreadcrumb
             className="mb-4 text-white/70"
             items={[
@@ -1112,7 +1112,7 @@ export function AboutPage() {
   return (
     <div>
       <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] py-8 text-white md:py-10">
-        <div className="max-w-screen-xl mx-auto px-4 text-center">
+        <div className="max-w-screen-xl mx-auto px-4 text-left">
           <PageBreadcrumb
             className="mb-4 text-white/70"
             items={[
@@ -1121,7 +1121,7 @@ export function AboutPage() {
             ]}
           />
           <h1 className="font-heading text-3xl font-bold leading-tight md:text-5xl">About Root Cabs</h1>
-          <p className="mx-auto mt-3 max-w-4xl text-base leading-7 text-white/80 md:text-lg">
+          <p className="mt-3 max-w-5xl text-base leading-7 text-white/80 md:text-lg">
             Root Cabs operates as a unit of Texve Innovations Pvt. Ltd., offering a unified range of mobility and transport services across Tamil Nadu. Through a single platform, customers can access multiple options for everyday travel, intercity journeys and other transport needs.
           </p>
         </div>

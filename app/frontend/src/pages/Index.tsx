@@ -410,8 +410,7 @@ export default function Index() {
     <div>
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-[#273588] text-white">
-        <div className="absolute inset-0 opacity-10 [background-image:linear-gradient(90deg,_rgba(255,255,255,.4)_1px,_transparent_1px),linear-gradient(180deg,_rgba(255,255,255,.4)_1px,_transparent_1px)] [background-size:64px_64px]" />
-        <div className="max-w-screen-xl mx-auto px-4 py-14 md:py-20 relative z-10">
+        <div className="relative z-10 mx-auto max-w-screen-xl px-4 pb-14 pt-10 md:pb-20 md:pt-12">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.8fr)] lg:items-center">
             <div className="max-w-3xl">
               <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-[11px] font-semibold text-white shadow-sm ring-1 ring-white/10 backdrop-blur-sm">

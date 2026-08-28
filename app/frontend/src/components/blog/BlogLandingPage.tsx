@@ -192,9 +192,6 @@ const BlogLandingPage = () => {
             ]}
           />
           <div className="max-w-4xl">
-            <span className="inline-flex rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.22em] text-[#1E2A6E]">
-              Root Cabs Blog
-            </span>
             <h1 className="mt-4 font-heading text-3xl font-bold leading-tight md:text-5xl">
               Blog & Travel Guides
             </h1>

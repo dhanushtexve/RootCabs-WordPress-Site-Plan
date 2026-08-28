@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { cities } from "@/data/siteData";
 import { FareEstimateData, FareEstimateRequest, getFareEstimate } from "@/lib/fareEstimate";
 import { searchAddressDetailed } from "@/lib/bookRideAuth";
+import { cn } from "@/lib/utils";
 
 const allLocations = [
   ...cities.map((c) => c.name),
@@ -22,6 +23,7 @@ interface FareCalculatorProps {
   defaultTo?: string;
   compact?: boolean;
   showBookNowButton?: boolean;
+  variant?: "default" | "localTaxi";
 }
 
 export default function FareCalculator({
@@ -29,6 +31,7 @@ export default function FareCalculator({
   defaultTo = "",
   compact = false,
   showBookNowButton = false,
+  variant = "default",
 }: FareCalculatorProps) {
   const [from, setFrom] = useState(defaultFrom);
   const [to, setTo] = useState(defaultTo);
@@ -76,16 +79,40 @@ export default function FareCalculator({
     }
   };
 
+  const isLocalTaxiVariant = variant === "localTaxi";
+
   return (
-    <div className={`bg-white rounded-xl border border-border ${compact ? "p-4" : "p-6 shadow-lg"}`}>
+    <div
+      className={cn(
+        "bg-white border border-border",
+        compact ? "p-4" : "p-6 shadow-lg",
+        isLocalTaxiVariant
+          ? "rounded-2xl border-white/70 p-6 shadow-[0_22px_60px_rgba(30,42,110,0.14)] md:p-8"
+          : "rounded-xl"
+      )}
+    >
       <div className="flex items-center gap-2 mb-4">
         <Calculator className="w-5 h-5 text-primary" />
-        <h3 className={`font-heading font-semibold ${compact ? "text-lg" : "text-xl"}`}>Fare Calculator</h3>
+        <h3
+          className={cn(
+            "font-heading font-semibold",
+            compact ? "text-lg" : "text-xl",
+            isLocalTaxiVariant && "text-[#1E2A6E]"
+          )}
+        >
+          Fare Calculator
+        </h3>
       </div>
 
-      <div className={`grid ${compact ? "grid-cols-1 gap-3" : "grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"}`}>
+      <div
+        className={cn(
+          "grid",
+          compact ? "grid-cols-1 gap-3" : "grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4",
+          isLocalTaxiVariant && "items-end md:grid-cols-[1fr_1fr_1fr_auto]"
+        )}
+      >
         <div>
-          <Label className="text-sm font-medium mb-1.5 block">From</Label>
+          <Label className={cn("text-sm font-medium mb-1.5 block", isLocalTaxiVariant && "text-[#4B587C]")}>From</Label>
           <Select value={from} onValueChange={setFrom}>
             <SelectTrigger className="cursor-pointer">
               <SelectValue placeholder="Select pickup" />
@@ -99,7 +126,7 @@ export default function FareCalculator({
         </div>
 
         <div>
-          <Label className="text-sm font-medium mb-1.5 block">To</Label>
+          <Label className={cn("text-sm font-medium mb-1.5 block", isLocalTaxiVariant && "text-[#4B587C]")}>To</Label>
           <Select value={to} onValueChange={setTo}>
             <SelectTrigger className="cursor-pointer">
               <SelectValue placeholder="Select destination" />
@@ -113,7 +140,7 @@ export default function FareCalculator({
         </div>
 
         <div>
-          <Label className="text-sm font-medium mb-1.5 block">Vehicle</Label>
+          <Label className={cn("text-sm font-medium mb-1.5 block", isLocalTaxiVariant && "text-[#4B587C]")}>Vehicle</Label>
           <Select value={vehicle} onValueChange={(value) => setVehicle(value as FareEstimateRequest["cabType"])}>
             <SelectTrigger className="cursor-pointer">
               <SelectValue />
@@ -130,10 +157,15 @@ export default function FareCalculator({
         <div className="flex items-end">
             <Button
               onClick={calculateFare}
-              className="w-full bg-[#1E2A6E] hover:bg-[#2E3A8C] text-white font-bold cursor-pointer shadow-sm"
+              className={cn(
+                "w-full font-bold cursor-pointer shadow-sm",
+                isLocalTaxiVariant
+                  ? "min-w-36 bg-[#FFC800] text-[#111A4D] hover:bg-[#E6B500]"
+                  : "bg-[#1E2A6E] text-white hover:bg-[#2E3A8C]"
+              )}
               disabled={!from || !to || isLoading}
             >
-            {isLoading ? "Calculating..." : "Calculate Fare"}
+            {isLoading ? "Calculating..." : isLocalTaxiVariant ? "Calculate fare" : "Calculate Fare"}
           </Button>
         </div>
       </div>
