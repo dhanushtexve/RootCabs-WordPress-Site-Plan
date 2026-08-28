@@ -249,56 +249,6 @@ const chennaiRoutes = [
       { label: "MUV", value: "\u20B92,411" },
     ],
   },
-  {
-    title: "Vellore to Chennai - Round Trip",
-    meta: "Estimated Distance - 274 km | Base Hours - 9 Hours",
-    fares: [
-      { label: "MINI", value: "\u20B93,350" },
-      { label: "SEDAN", value: "\u20B93,450" },
-      { label: "SUV", value: "\u20B94,667" },
-      { label: "MUV", value: "\u20B95,275" },
-    ],
-  },
-  {
-    title: "Vellore to Bangalore - Round Trip",
-    meta: "Estimated Distance - 424 km | Base Hours - 14 Hours",
-    fares: [
-      { label: "MINI", value: "\u20B95,144" },
-      { label: "SEDAN", value: "\u20B95,244" },
-      { label: "SUV", value: "\u20B97,059" },
-      { label: "MUV", value: "\u20B97,966" },
-    ],
-  },
-  {
-    title: "Vellore to Tirupati - Round Trip",
-    meta: "Estimated Distance - 215 km | Base Hours - 7 Hours",
-    fares: [
-      { label: "MINI", value: "\u20B92,634" },
-      { label: "SEDAN", value: "\u20B92,734" },
-      { label: "SUV", value: "\u20B93,712" },
-      { label: "MUV", value: "\u20B94,201" },
-    ],
-  },
-  {
-    title: "Vellore to Tiruvannamalai - Round Trip",
-    meta: "Estimated Distance - 176 km | Base Hours - 6 Hours",
-    fares: [
-      { label: "MINI", value: "\u20B92,170" },
-      { label: "SEDAN", value: "\u20B92,270" },
-      { label: "SUV", value: "\u20B93,094" },
-      { label: "MUV", value: "\u20B93,506" },
-    ],
-  },
-  {
-    title: "Vellore to Pondicherry - Round Trip",
-    meta: "Estimated Distance - 320 km | Base Hours - 10 Hours",
-    fares: [
-      { label: "MINI", value: "\u20B93,903" },
-      { label: "SEDAN", value: "\u20B94,003" },
-      { label: "SUV", value: "\u20B95,404" },
-      { label: "MUV", value: "\u20B96,105" },
-    ],
-  },
 ] as const;
 
 const velloreServices = [
@@ -1200,7 +1150,7 @@ function ChennaiRoutesSection() {
     <section>
       <h2 className="mb-3 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Round Trip Tariff Details</h2>
       <p className="mb-6 max-w-none text-sm text-muted-foreground md:whitespace-nowrap md:text-base">
-        Compare fares by vehicle type for Chennai and Vellore round trips.
+        Compare fares by vehicle type for popular round trips from Chennai.
       </p>
 
       <div className="grid gap-4 lg:grid-cols-[minmax(0,0.82fr)_minmax(320px,0.38fr)] lg:items-start">
