@@ -67,39 +67,39 @@ const localTaxiActingDriverBenefits = [
 ];
 
 const localTaxiAppBenefits = [
-  "Live ride tracking",
-  "Saved addresses & trip history",
-  "Quick rebooking",
-  "Clear fare details",
+  "On-Time Rides",
+  "No Hidden or Extra Charges",
+  "No Last-Minute Cancellations",
+  "24x7 Customer Support",
 ];
 
 const localTaxiFaqs = [
   {
-    q: "How much does a 2 km taxi cost?",
+    q: "How Much Does A 2 km Taxi Cost?",
     a: "Root Cabs charges a base fare of ₹100 for the first 2 km. After 2 km, the per-kilometre fare varies depending on the vehicle type selected.",
   },
   {
-    q: "Does Root Cabs charge surge pricing during peak hours?",
+    q: "Does Root Cabs Charge Surge Pricing During Peak Hours?",
     a: "Yes. Root Cabs may apply surge pricing during peak hours or periods of high demand. Any fare change will be shown in the app before you confirm the ride.",
   },
   {
-    q: "How fast can I get a local taxi near me with Root Cabs?",
+    q: "How Fast Can I Get A Local Taxi Near Me With Root Cabs?",
     a: "Root Cabs searches for nearby available drivers once you confirm the ride. Pickup time depends on your location and driver availability.",
   },
   {
-    q: "Is local taxi fare charged by distance or by hour?",
+    q: "Is Local Taxi Fare Charged By Distance Or By Hour?",
     a: "Local taxi fares are generally based on distance. Hour-based travel is available separately through the Hourly Package service.",
   },
   {
-    q: "Are Root Cabs drivers verified and familiar with local routes?",
+    q: "Are Root Cabs Drivers Verified And Familiar With Local Routes?",
     a: "Yes. Root Cabs drivers are verified and regularly operate within their service areas, helping them handle local routes and pickup points efficiently.",
   },
   {
-    q: "Can I book a local taxi in advance or only on-demand?",
+    q: "Can I Book A Local Taxi In Advance Or Only On-Demand?",
     a: "You can book for immediate travel or schedule a ride for later through the Root Cabs app.",
   },
   {
-    q: "Are there extra charges if the driver has to wait for me?",
+    q: "Are There Extra Charges If The Driver Has To Wait For Me?",
     a: "A free waiting period is provided after the driver arrives. Any applicable waiting charges are shown in the final fare breakdown.",
   },
 ];
@@ -757,7 +757,7 @@ export function ServicePage() {
 
       {isLocalTaxiService && (
         <div className="relative z-10 mx-auto -mt-12 max-w-screen-xl px-4">
-          <FareCalculator defaultFrom="Madurai" variant="localTaxi" showBookNowButton />
+          <FareCalculator variant="localTaxi" showBookNowButton />
         </div>
       )}
 
@@ -781,22 +781,21 @@ export function ServicePage() {
               </div>
 
               {isLocalTaxiService && (
-                <Card className="border-border">
-                  <CardContent className="p-6">
-                    <h3 className="font-heading font-semibold mb-3">Services We Offer</h3>
-                    <ul className="space-y-2">
-                      {services
-                        .filter((s) => localTaxiServiceOffers.includes(s.name))
-                        .map((s) => (
-                          <li key={s.slug}>
-                            <Link to={`/services/${s.slug}`} className="flex items-center gap-2 text-sm hover:text-primary transition-colors cursor-pointer py-1">
-                              <ArrowRight className="w-3 h-3" /> {s.name}
-                            </Link>
-                          </li>
-                        ))}
-                    </ul>
-                  </CardContent>
-                </Card>
+                <div className="space-y-6">
+                  <Card className="border-border">
+                    <CardContent className="p-6">
+                      <h3 className="font-heading text-2xl font-bold text-[#1E2A6E]">Book Local Taxi Now</h3>
+                      <p className="mt-3 text-sm leading-6 text-[#4B587C]">
+                        Get a nearby cab for work, shopping, hospital visits, station trips, or everyday travel.
+                      </p>
+                      <Button asChild className="mt-6 w-full bg-[#FFD700] text-[#1E2A6E] hover:bg-[#E6C200]">
+                        <Link to="/book-ride">
+                          Book Now <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+                </div>
               )}
             </div>
 
@@ -848,36 +847,57 @@ export function ServicePage() {
             )}
 
             {/* Available Cities */}
-            <div>
-              <h2 className="font-heading text-2xl font-bold mb-4">
-                {isLocalTaxiService ? "Local Taxi Service Available Across Tamil Nadu" : `${service.name} Available In`}
-              </h2>
-              <div className={isLocalTaxiService ? "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" : "grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"}>
-                {(isLocalTaxiService
-                  ? availableCities.filter((city) => localTaxiServiceCities.includes(city.name))
-                  : availableCities
-                ).map((city) => (
-                  <Link
-                    key={city.slug}
-                    to={`/${city.slug}/${service.slug}`}
-                    className={
-                      isLocalTaxiService
-                        ? "group rounded-xl border border-[#E2E8F3] bg-white p-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:shadow-md"
-                        : "flex items-center gap-2 p-3 rounded-lg border border-border hover:border-primary/30 hover:bg-primary/5 transition-all cursor-pointer"
-                    }
-                  >
-                    <img
-                      src="/assets/location-icon.png"
-                      alt=""
-                      aria-hidden="true"
-                      className={isLocalTaxiService ? "mx-auto mb-3 h-7 w-7 object-contain transition-transform group-hover:scale-110" : "h-4 w-4 shrink-0 object-contain"}
-                    />
-                    <span className={isLocalTaxiService ? "block font-heading text-lg font-bold text-[#1E2A6E]" : "text-sm font-medium"}>
-                      {city.name}
-                    </span>
-                  </Link>
-                ))}
+            <div className={isLocalTaxiService ? "grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start" : ""}>
+              <div>
+                <h2 className="font-heading text-2xl font-bold mb-4">
+                  {isLocalTaxiService ? "Local Taxi Service Available Across Tamil Nadu" : `${service.name} Available In`}
+                </h2>
+                <div className={isLocalTaxiService ? "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" : "grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"}>
+                  {(isLocalTaxiService
+                    ? availableCities.filter((city) => localTaxiServiceCities.includes(city.name))
+                    : availableCities
+                  ).map((city) => (
+                    <Link
+                      key={city.slug}
+                      to={`/${city.slug}/${service.slug}`}
+                      className={
+                        isLocalTaxiService
+                          ? "group rounded-xl border border-[#E2E8F3] bg-white p-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:shadow-md"
+                          : "flex items-center gap-2 p-3 rounded-lg border border-border hover:border-primary/30 hover:bg-primary/5 transition-all cursor-pointer"
+                      }
+                    >
+                      <img
+                        src="/assets/location-icon.png"
+                        alt=""
+                        aria-hidden="true"
+                        className={isLocalTaxiService ? "mx-auto mb-3 h-7 w-7 object-contain transition-transform group-hover:scale-110" : "h-4 w-4 shrink-0 object-contain"}
+                      />
+                      <span className={isLocalTaxiService ? "block font-heading text-base font-bold text-[#1E2A6E]" : "text-sm font-medium"}>
+                        {city.name}
+                      </span>
+                    </Link>
+                  ))}
+                </div>
               </div>
+
+              {isLocalTaxiService && (
+                <Card className="border-border">
+                  <CardContent className="p-6">
+                    <h3 className="font-heading font-semibold mb-3">Services We Offer</h3>
+                    <ul className="grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+                      {services
+                        .filter((s) => localTaxiServiceOffers.includes(s.name))
+                        .map((s) => (
+                          <li key={s.slug}>
+                            <Link to={`/services/${s.slug}`} className="flex items-center gap-2 text-sm hover:text-primary transition-colors cursor-pointer py-1">
+                              <ArrowRight className="w-3 h-3" /> {s.name}
+                            </Link>
+                          </li>
+                        ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              )}
             </div>
 
             {isLocalTaxiService && (

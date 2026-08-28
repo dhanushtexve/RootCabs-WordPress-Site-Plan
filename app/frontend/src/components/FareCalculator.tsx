@@ -160,7 +160,7 @@ export default function FareCalculator({
               className={cn(
                 "w-full font-bold cursor-pointer shadow-sm",
                 isLocalTaxiVariant
-                  ? "min-w-36 bg-[#FFC800] text-[#111A4D] hover:bg-[#E6B500]"
+                  ? "min-w-36 bg-[#1E2A6E] text-white hover:bg-[#2E3A8C]"
                   : "bg-[#1E2A6E] text-white hover:bg-[#2E3A8C]"
               )}
               disabled={!from || !to || isLoading}
