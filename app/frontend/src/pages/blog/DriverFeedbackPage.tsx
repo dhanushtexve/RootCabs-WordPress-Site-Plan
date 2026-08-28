@@ -246,11 +246,11 @@ const DriverFeedbackPage = () => {
             <section className="overflow-hidden rounded-[28px] border border-white/70 bg-white shadow-[0_20px_60px_rgba(30,42,110,0.08)]">
               <div className="px-6 py-6 md:px-8 md:py-8">
                 <div className="overflow-hidden rounded-[24px] border border-slate-200 bg-slate-100">
-                  <div className="relative aspect-[16/9] min-h-[280px] md:min-h-[340px]">
+                  <div className="relative md:aspect-[16/9] md:min-h-[340px]">
                     <img
                       src={driverFeedbackHeroImage}
                       alt="Driver partner feedback about Root Cabs"
-                      className="h-full w-full object-cover object-center"
+                      className="h-auto w-full object-contain object-center md:h-full md:object-cover"
                     />
                   </div>
                 </div>
