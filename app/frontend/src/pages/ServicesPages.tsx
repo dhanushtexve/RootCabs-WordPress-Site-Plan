@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Car, Plane, Navigation, User, Package, Bike, CheckCircle, ArrowRight, Phone, Building2, Landmark, Factory, MapPin } from "lucide-react";
+import { Car, Plane, Navigation, User, Package, Bike, CheckCircle, ArrowRight, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -132,32 +132,28 @@ const airportTaxiCities = [
     slug: "taxi-in-chennai",
     description:
       "Travel to or from Chennai Airport with Root Cabs for business trips, family travel, early departures, and late-night arrivals. Our airport rides are planned for smooth city-to-terminal travel.",
-    panelClass: "bg-gradient-to-br from-[#26327E] to-[#1A245B]",
-    icon: <Building2 className="h-10 w-10 text-white/90" />,
+    image: "/assets/cities/chennai.webp",
   },
   {
     name: "Coimbatore",
     slug: "taxi-in-coimbatore",
     description:
       "Root Cabs offers convenient airport cab service for trips to and from Coimbatore Airport. It is a practical choice for business travellers, families, and passengers heading across the city.",
-    panelClass: "bg-gradient-to-br from-[#284E92] to-[#1B2C63]",
-    icon: <Factory className="h-10 w-10 text-white/90" />,
+    image: "/assets/cities/coimbatore.webp",
   },
   {
     name: "Madurai",
     slug: "taxi-in-madurai",
     description:
       "Plan airport travel in Madurai with comfortable cab options for temple visits, family trips, hotel transfers, and onward journeys. Root Cabs helps make airport pickups and drops easier to manage.",
-    panelClass: "bg-gradient-to-br from-[#255D83] to-[#17344D]",
-    icon: <Landmark className="h-10 w-10 text-white/90" />,
+    image: "/assets/cities/madurai.webp",
   },
   {
     name: "Trichy",
     slug: "taxi-in-trichy",
     description:
       "Use Root Cabs for airport travel in Trichy when you need a dependable pickup or drop for work, family travel, or connecting journeys. Clear fare details and multiple cab options make booking simpler.",
-    panelClass: "bg-gradient-to-br from-[#4A257F] to-[#2B144A]",
-    icon: <MapPin className="h-10 w-10 text-white/90" />,
+    image: "/assets/cities/trichy.webp",
   },
 ];
 
@@ -1097,8 +1093,12 @@ export function ServicePage() {
                         to={`/${city.slug}/${service.slug}`}
                         className="group overflow-hidden rounded-2xl border border-[#DCE3F1] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
                       >
-                        <div className={`flex min-h-[132px] items-center justify-center px-6 py-8 ${city.panelClass}`}>
-                          {city.icon}
+                        <div className="overflow-hidden">
+                          <img
+                            src={city.image}
+                            alt={city.name}
+                            className="h-[132px] w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                          />
                         </div>
                         <div className="space-y-3 p-5">
                           <div className="flex items-center gap-2">
