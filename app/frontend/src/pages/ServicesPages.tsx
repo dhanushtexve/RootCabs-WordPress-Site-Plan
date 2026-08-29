@@ -29,8 +29,45 @@ const localTaxiBenefits = [
   "SOS & Trip Sharing",
 ];
 
+const autoServiceBenefits = [
+  "On-Time Rides",
+  "No Hidden or Extra Charges",
+  "No Last-Minute Cancellations",
+  "Verified Drivers",
+  "24×7 Customer Support",
+  "SOS & Trip Sharing",
+];
+
+const autoServiceOffers = ["Local Taxi", "Airport Taxi", "Outstation Taxi", "Acting Driver", "Parcel Delivery"];
+const autoActingDriverBenefits = [
+  "Verified Acting Drivers",
+  "Local & Outstation Travel",
+  "Safe Driving",
+  "Flexible Travel Options",
+];
+
 const localTaxiServiceOffers = ["Airport Taxi", "Outstation Taxi", "Acting Driver", "Parcel Delivery", "Auto Rickshaw"];
 const localTaxiServiceCities = ["Chennai", "Vellore", "Kanchipuram", "Tiruvannamalai"];
+const outstationTaxiServiceCities = [
+  "Chennai",
+  "Vellore",
+  "Coimbatore",
+  "Madurai",
+  "Trichy",
+  "Salem",
+  "Tiruppur",
+  "Kanchipuram",
+  "Tiruvannamalai",
+  "Ranipet",
+];
+const actingDriverServiceCities = [
+  "Chennai",
+  "Vellore",
+  "Kanchipuram",
+  "Tiruvannamalai",
+  "Ranipet",
+];
+const autoServiceCities = ["Chennai", "Vellore", "Kanchipuram", "Tiruvannamalai", "Ranipet"];
 
 const localTaxiBookingSteps = [
   {
@@ -77,6 +114,111 @@ const airportTaxiAppBenefits = [
   "Multiple Cab Options",
   "No Last-Minute Cancellations",
   "24x7 Customer Support",
+];
+const outstationTaxiAppBenefits = [
+  "Clear Fare Details",
+  "Verified Drivers",
+  "No Last-Minute Cancellations",
+  "24x7 Customer Support",
+];
+const autoAppBenefits = [
+  "On-Time Rides",
+  "No Hidden Charges",
+  "Verified Drivers",
+  "24×7 Customer Support",
+];
+
+const autoSafetyFeatures = [
+  {
+    title: "Verified Drivers",
+    description:
+      "Every Root Cabs auto driver is verified before accepting rides, giving you more confidence whenever you travel.",
+  },
+  {
+    title: "Live Tracking",
+    description:
+      "Follow your ride in real time from pickup to drop and stay updated throughout the journey.",
+  },
+  {
+    title: "24×7 Customer Support",
+    description:
+      "Support is available around the clock for ride concerns, booking help, or assistance during your trip.",
+  },
+  {
+    title: "SOS Assistance",
+    description:
+      "Use the SOS option whenever you need urgent help while travelling through the online auto booking app.",
+    highlightedText: "online auto booking app",
+  },
+];
+
+const autoBookingSteps = [
+  {
+    number: "1",
+    title: "Set Pickup & Drop",
+    description:
+      "Select Auto in Root Cabs and enter your pickup and destination. You can use your current location, choose a saved address, or select a point directly from the map.",
+  },
+  {
+    number: "2",
+    title: "Check Fare & Confirm",
+    description:
+      "Review the estimated distance, travel time, and fare before confirming your ride. Root Cabs makes it simple to book auto online without negotiating the fare with the driver.",
+    highlightedText: "book auto online",
+  },
+  {
+    number: "3",
+    title: "Track & Travel",
+    description:
+      "Once a driver accepts the request, view the driver details and track the arrival on the map. Share the Start OTP, follow your trip live, and complete the payment after reaching your destination.",
+  },
+];
+const actingDriverAppBenefits = [
+  "Verified Acting Drivers",
+  "Local & Outstation Travel",
+  "Clear Pricing",
+  "24x7 Customer Support",
+];
+const actingDriverBenefits = [
+  "Drive Your Own Car",
+  "Verified Drivers",
+  "Local & Outstation Trips",
+  "Hourly & Full-Day Options",
+  "Late-Night Support",
+  "Personal & Business Travel",
+];
+const actingDriverReasons = [
+  {
+    title: "Long Highway Drives",
+    description:
+      "Let someone else handle long stretches of driving while you travel comfortably in your own car.",
+  },
+  {
+    title: "After Parties or Functions",
+    description:
+      "Avoid driving back when you are tired after weddings, celebrations, or late-night events.",
+  },
+  {
+    title: "Outstation Trips",
+    description:
+      "Use an acting driver for outstation trip when you want the comfort of your own car without taking on the full drive.",
+    highlightedText: "acting driver for outstation trip",
+  },
+  {
+    title: "Busy Work Schedules",
+    description:
+      "Stay focused on calls, meetings, or work while the driver handles traffic and travel between stops.",
+  },
+  {
+    title: "Need a Driving Break",
+    description:
+      "Choose an acting driver when you want to relax, take calls, or simply avoid driving for a while.",
+  },
+  {
+    title: "Driver Unavailable",
+    description:
+      "Book an acting driver when your regular driver is on leave or unavailable and you still need to use your own vehicle.",
+  },
 ];
 
 const localTaxiFaqs = [
@@ -185,6 +327,213 @@ const airportTaxiFaqs = [
   {
     q: "Can I Book An Airport Taxi For An Early-Morning Or Late-Night Flight?",
     a: "Yes. Root Cabs offers 24x7 airport rides, so you can schedule a pickup or drop for early-morning departures, late-night arrivals, and other travel times.",
+  },
+];
+
+const outstationTaxiFaqs = [
+  {
+    q: "Are Toll And Parking Charges Included In The Fare Shown?",
+    a: "Yes. Applicable toll and parking charges are included in the fare shown for the trip, so you can review the total before confirming the booking.",
+  },
+  {
+    q: "Does Root Cabs Have Outstation Taxi Service From Chennai To Other Cities In Tamil Nadu?",
+    a: "Yes. Root Cabs offers outstation rides from Chennai to major cities and destinations across Tamil Nadu, with convenient car rental outstation with driver options.",
+  },
+  {
+    q: "Can I Book A Multi-City Outstation Itinerary In One Trip?",
+    a: "Multi-city travel depends on the route and booking requirement. For journeys involving several destinations, contact Root Cabs support to check the available options.",
+  },
+  {
+    q: "Are Your Outstation Drivers Experienced With Highway And Night Driving?",
+    a: "Yes. Root Cabs assigns verified drivers for long-distance journeys who are familiar with highway travel and longer outstation routes.",
+  },
+  {
+    q: "Do I Pay Only For The Actual Distance Travelled On A One-Way Trip?",
+    a: "For a one-way trip, you pay the fare applicable to your selected route without paying for an unnecessary return journey. The estimated fare is shown before booking.",
+  },
+  {
+    q: "Can I Schedule An Outstation Cab In Advance?",
+    a: "Yes. Root Cabs allows you to schedule your outstation ride for a later date and time based on your travel plan.",
+  },
+  {
+    q: "Can I Choose The Vehicle Type For My Outstation Trip?",
+    a: "Yes. You can view the available vehicle options and select one based on your group size, luggage, and travel needs.",
+  },
+];
+const actingDriverFaqs = [
+  {
+    q: "What Is The Salary Of An Acting Driver In Tamil Nadu?",
+    a: "Earnings vary based on working hours, trip duration, and the number of rides completed.",
+  },
+  {
+    q: "How To Become An Acting Driver In Root Cabs?",
+    a: "Register with Root Cabs, submit the required documents, and complete the verification process before accepting trips.",
+  },
+  {
+    q: "What Are The Charges For An Acting Driver In Chennai?",
+    a: "Acting driver charges in Chennai may start from ₹200 for 2 hours. The final amount can vary depending on the duration and type of trip.",
+  },
+  {
+    q: "How Do I Hire An Acting Driver Near Me?",
+    a: "To book an acting driver, open the Root Cabs app and select the Acting Driver service, enter your trip details, choose the required option, and confirm the booking.",
+  },
+  {
+    q: "Can I Book An Acting Driver For An Outstation Trip In My Own Car?",
+    a: "Yes. Root Cabs offers outstation driver hire for family trips, business travel, and longer journeys in your own car.",
+  },
+  {
+    q: "Can I Book An Acting Driver For Late-Night Travel?",
+    a: "Yes. Root Cabs acting drivers can be booked for late-night returns, events, and other trips where you prefer not to drive yourself.",
+  },
+  {
+    q: "Can I Hire An Acting Driver For A Few Hours?",
+    a: "Yes. Acting drivers can be booked through hourly packages based on how long you need the service.",
+  },
+];
+const parcelDeliveryBenefits = [
+  "On-Time Delivery",
+  "No Hidden or Extra Charges",
+  "No Last-Minute Cancellations",
+  "Verified Delivery Partners",
+  "24×7 Customer Support",
+  "Track Your Order",
+];
+const parcelDeliveryAppBenefits = [
+  "Quick Pickup",
+  "Track Your Order",
+  "Verified Delivery Partners",
+  "24×7 Customer Support",
+];
+const parcelDeliveryServiceOffers = ["Local Taxi", "Airport Taxi", "Acting Driver", "Outstation Taxi", "Auto Rickshaw"];
+const parcelDeliveryFaqs = [
+  {
+    q: "How Fast Is Parcel Delivery With Root Cabs?",
+    a: "Delivery time depends on the pickup location, destination, traffic, and driver availability. Root Cabs is designed for quick parcel delivery within the city.",
+  },
+  {
+    q: "What Can I Send With Root Cabs Parcel Delivery?",
+    a: "You can send food, medicines, documents, groceries, clothes, gifts, gadgets, and other supported everyday items through Root Cabs.",
+  },
+  {
+    q: "Are My Packages Insured?",
+    a: "Package coverage depends on the applicable parcel terms and conditions. Customers can review the relevant details before confirming the delivery.",
+  },
+  {
+    q: "Can I Track My Parcel In Real Time?",
+    a: "Yes. Once the parcel is picked up, you can follow its delivery progress until it reaches the receiver.",
+  },
+  {
+    q: "Can I Send A Large Item, Not Just Documents Or Small Packages?",
+    a: "It depends on the size and type of item. Root Cabs currently uses Bike and Auto options, so the parcel must be suitable for the selected vehicle.",
+  },
+  {
+    q: "Can Someone Else Receive My Parcel?",
+    a: "Yes. Enter the receiver’s details while placing the order, and the parcel can be delivered directly to that person after the required delivery confirmation.",
+  },
+  {
+    q: "Can I Pay For Parcel Delivery In Cash?",
+    a: "Yes. Root Cabs supports cash payment for parcel deliveries, and online payment options may also be available based on the booking.",
+  },
+  {
+    q: "What Happens If The Receiver Is Unavailable?",
+    a: "The delivery partner can contact the receiver using the details provided in the booking. If delivery cannot be completed, the customer may need to coordinate the next step with support.",
+  },
+];
+const autoFaqs = [
+  {
+    q: "How Is Root Cabs Auto Different From A Regular Street-Hailed Auto?",
+    a: "Root Cabs shows the fare before the ride, assigns a verified driver, and lets you track the trip. It makes online auto booking app travel more predictable than finding an auto on the street.",
+  },
+  {
+    q: "Can I Schedule An Auto Ride For Later?",
+    a: "Yes. Root Cabs allows you to schedule an auto ride for a later time through the app, as long as the selected pickup time meets the advance-booking requirement.",
+  },
+  {
+    q: "Is There A Cancellation Fee If I Cancel After Booking An Auto?",
+    a: "Cancellation charges may apply based on when you cancel the ride. Any applicable fee is shown before the cancellation is confirmed.",
+  },
+  {
+    q: "What Payment Methods Are Accepted For Auto Rides?",
+    a: "You can pay the driver directly using cash or UPI after the ride is completed.",
+  },
+  {
+    q: "How Is The Driver Assigned?",
+    a: "Root Cabs searches for nearby available auto drivers within the service area. Once a driver accepts the request, their details are shown in the app.",
+  },
+  {
+    q: "Can I Track My Auto After The Driver Accepts The Ride?",
+    a: "Yes. Once a driver accepts your request, you can view the driver's details and follow the ride status through the app.",
+  },
+  {
+    q: "Can I Share My Auto Trip Details With Someone Else?",
+    a: "Yes. Root Cabs allows you to share your trip details with family or friends so they can stay informed about your journey.",
+  },
+];
+
+const outstationTaxiBenefits = [
+  "On-Time Pickups",
+  "Experienced Drivers",
+  "Flexible Pickups",
+  "No Last-Minute Cancellations",
+  "Clear Fares",
+  "24x7 Customer Support",
+];
+
+const outstationTaxiServiceOffers = ["Local Taxi", "Airport Taxi", "Acting Driver", "Parcel Delivery", "Auto Rickshaw"];
+const actingDriverServiceOffers = ["Local Taxi", "Outstation Taxi", "Acting Driver", "Parcel Delivery", "Auto Rickshaw"];
+const outstationTaxiActingDriverBenefits = [
+  "Travel in Your Own Car",
+  "Long-Distance Driving Support",
+  "One-Way & Round-Trip Travel",
+  "Safe Driving",
+];
+
+const outstationPopularRoutes = [
+  {
+    title: "Chennai → Vellore",
+    image: assetPath("/assets/cities/vellore.webp"),
+    imagePosition: "object-center",
+    description:
+      "A common route for hospital visits, college travel, business trips, and family journeys. Root Cabs makes ",
+    highlightedText: "Outstation Cab booking",
+    descriptionSuffix: " simple for this frequently travelled stretch.",
+  },
+  {
+    title: "Chennai → Pondicherry",
+    image: assetPath("/assets/chennai-marina.webp"),
+    imagePosition: "object-center",
+    description:
+      "A popular coastal route for weekend breaks, family outings, and short getaways from Chennai. It is a convenient choice for travellers planning an ",
+    highlightedText: "out of station car booking",
+    descriptionSuffix: ".",
+  },
+  {
+    title: "Chennai → Tirupati",
+    image: assetPath("/assets/cities/chennai.webp"),
+    imagePosition: "object-center",
+    description:
+      "Ideal for temple visits, family pilgrimages, and planned day trips from Chennai.",
+  },
+  {
+    title: "Madurai → Rameswaram",
+    image: assetPath("/assets/cities/madurai.webp"),
+    imagePosition: "object-top",
+    description:
+      "A well-travelled route for temple visits, family trips, and spiritual journeys.",
+  },
+  {
+    title: "Coimbatore → Ooty",
+    image: assetPath("/assets/cities/coimbatore.webp"),
+    imagePosition: "object-center",
+    description:
+      "A scenic hill route suited for weekend trips, family holidays, and leisure travel.",
+  },
+  {
+    title: "Trichy → Chennai",
+    image: assetPath("/assets/cities/trichy.webp"),
+    imagePosition: "object-center",
+    description:
+      "A convenient intercity route for business travel, family visits, and regular long-distance journeys.",
   },
 ];
 
@@ -780,6 +1129,10 @@ export function ServicePage() {
   const availableCities = cities.filter((c) => c.services.includes(service.slug));
   const isLocalTaxiService = service.slug === "local-taxi";
   const isAirportTaxiService = service.slug === "airport-taxi";
+  const isOutstationTaxiService = service.slug === "outstation";
+  const isActingDriverService = service.slug === "acting-driver";
+  const isParcelDeliveryService = service.slug === "parcel-delivery";
+  const isAutoService = service.slug === "auto";
 
   return (
     <div>
@@ -862,6 +1215,161 @@ export function ServicePage() {
             </div>
           </div>
         </section>
+      ) : isOutstationTaxiService ? (
+        <section className="bg-[#273588] pb-20 pt-12 text-white md:pb-24 md:pt-14">
+          <div className="mx-auto max-w-screen-xl px-4">
+            <PageBreadcrumb
+              className="mb-5 text-white/70"
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Services", href: "/services" },
+                { label: "Outstation Taxi" },
+              ]}
+            />
+            <div className="mb-5 max-w-6xl">
+              <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
+                Outstation Taxi for Comfortable Long-Distance Travel
+              </h1>
+              <p className="mt-3 text-sm font-semibold text-white/78">
+                Starting at ₹300. Available for long-distance travel across major cities
+              </p>
+            </div>
+            <p className="max-w-5xl text-base leading-7 text-white/82 md:text-lg">
+              Planning a trip outside the city? Root Cabs makes it easy to find <strong>outstation cabs near me</strong>{" "}
+              with clear fares, verified drivers, and vehicle options for family trips, business travel, weekend
+              journeys, and other long-distance plans.
+            </p>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <a href={`tel:${companyInfo.phone.replace(/\s+/g, "")}`}>
+                <Button className="h-12 w-full rounded-lg border border-white/30 bg-transparent px-6 font-bold text-white shadow-sm hover:bg-white/10 sm:w-auto">
+                  <Phone className="mr-2 h-4 w-4" />
+                  Call Us Now
+                </Button>
+              </a>
+              <Link to="/book-ride">
+                <Button className="h-12 w-full rounded-lg bg-[#FFD700] px-6 font-bold text-[#1E2A6E] shadow-lg hover:bg-[#E6C200] sm:w-auto">
+                  Book Outstation Taxi <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+      ) : isActingDriverService ? (
+        <section className="bg-[#273588] pb-20 pt-12 text-white md:pb-24 md:pt-14">
+          <div className="mx-auto max-w-screen-xl px-4">
+            <PageBreadcrumb
+              className="mb-5 text-white/70"
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Services", href: "/services" },
+                { label: "Acting Driver" },
+              ]}
+            />
+            <div className="mb-5 max-w-6xl">
+              <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
+                Professional Acting Driver for Your Own Car
+              </h1>
+              <p className="mt-3 text-sm font-semibold text-white/78">
+                Starting at ₹200. Available for local and outstation travel
+              </p>
+            </div>
+            <p className="max-w-5xl text-base leading-7 text-white/82 md:text-lg">
+              Looking for an <strong>acting driver near me</strong> when you would rather not drive yourself? Root
+              Cabs connects you with verified drivers for late-night returns, family functions, hospital visits,
+              business travel, and longer journeys in your own car.
+            </p>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <a href={`tel:${companyInfo.phone.replace(/\s+/g, "")}`}>
+                <Button className="h-12 w-full rounded-lg border border-white/30 bg-transparent px-6 font-bold text-white shadow-sm hover:bg-white/10 sm:w-auto">
+                  <Phone className="mr-2 h-4 w-4" />
+                  Call Us Now
+                </Button>
+              </a>
+              <Link to="/book-ride">
+                <Button className="h-12 w-full rounded-lg bg-[#FFD700] px-6 font-bold text-[#1E2A6E] shadow-lg hover:bg-[#E6C200] sm:w-auto">
+                  Book Acting Driver <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+      ) : isParcelDeliveryService ? (
+        <section className="bg-[#273588] pb-20 pt-12 text-white md:pb-24 md:pt-14">
+          <div className="mx-auto max-w-screen-xl px-4">
+            <PageBreadcrumb
+              className="mb-5 text-white/70"
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Services", href: "/services" },
+                { label: "Parcel Delivery" },
+              ]}
+            />
+            <div className="mb-5 max-w-6xl">
+              <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
+                Parcel Service for Quick and Easy Deliveries
+              </h1>
+              <p className="mt-3 text-sm font-semibold text-white/78">
+                Starting at ₹45. Available for quick city deliveries
+              </p>
+            </div>
+            <p className="max-w-5xl text-base leading-7 text-white/82 md:text-lg">
+              Need to send documents, medicines, small packages, or everyday essentials across the city? Root Cabs
+              makes it easy to find a <strong>parcel service near me</strong> with convenient pickup, clear charges,
+              and dependable delivery for your day-to-day needs.
+            </p>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <a href={`tel:${companyInfo.phone.replace(/\s+/g, "")}`}>
+                <Button className="h-12 w-full rounded-lg border border-white/30 bg-transparent px-6 font-bold text-white shadow-sm hover:bg-white/10 sm:w-auto">
+                  <Phone className="mr-2 h-4 w-4" />
+                  Call Us Now
+                </Button>
+              </a>
+              <Link to="/book-ride">
+                <Button className="h-12 w-full rounded-lg bg-[#FFD700] px-6 font-bold text-[#1E2A6E] shadow-lg hover:bg-[#E6C200] sm:w-auto">
+                  Send a Parcel <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
+      ) : isAutoService ? (
+        <section className="bg-[#273588] pb-20 pt-12 text-white md:pb-24 md:pt-14">
+          <div className="mx-auto max-w-screen-xl px-4">
+            <PageBreadcrumb
+              className="mb-5 text-white/70"
+              items={[
+                { label: "Home", href: "/" },
+                { label: "Services", href: "/services" },
+                { label: "Auto" },
+              ]}
+            />
+            <div className="mb-5 max-w-6xl">
+              <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
+                Auto Rides for Everyday City Travel
+              </h1>
+              <p className="mt-3 text-sm font-semibold text-white/78">
+                Starting at ₹49 · Available for short city trips
+              </p>
+            </div>
+            <p className="max-w-5xl text-base leading-7 text-white/82 md:text-lg">
+              For work, shopping, station pickups, hospital visits, or nearby travel, Root Cabs makes it easy to
+              find and <strong>book auto near me</strong> with clear fares, verified drivers, and simple booking.
+            </p>
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <a href={`tel:${companyInfo.phone.replace(/\s+/g, "")}`}>
+                <Button className="h-12 w-full rounded-lg border border-white/30 bg-transparent px-6 font-bold text-white shadow-sm hover:bg-white/10 sm:w-auto">
+                  <Phone className="mr-2 h-4 w-4" />
+                  Call Us Now
+                </Button>
+              </a>
+              <Link to="/book-ride">
+                <Button className="h-12 w-full rounded-lg bg-[#FFD700] px-6 font-bold text-[#1E2A6E] shadow-lg hover:bg-[#E6C200] sm:w-auto">
+                  Book Auto <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </section>
       ) : (
         <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12 md:py-16">
           <div className="max-w-screen-xl mx-auto px-4">
@@ -897,32 +1405,212 @@ export function ServicePage() {
           <FareCalculator variant="localTaxi" showBookNowButton />
         </div>
       )}
+      {isOutstationTaxiService && (
+        <div className="relative z-10 mx-auto -mt-12 max-w-screen-xl px-4">
+          <FareCalculator variant="localTaxi" showBookNowButton />
+        </div>
+      )}
 
       <div className="max-w-screen-xl mx-auto px-4 py-10">
-        <div className={isLocalTaxiService || isAirportTaxiService ? "grid gap-8" : "grid lg:grid-cols-3 gap-8"}>
-          <div className={isLocalTaxiService || isAirportTaxiService ? "space-y-10" : "lg:col-span-2 space-y-10"}>
+        <div className={isLocalTaxiService || isAirportTaxiService || isOutstationTaxiService || isActingDriverService || isParcelDeliveryService || isAutoService ? "grid gap-8" : "grid lg:grid-cols-3 gap-8"}>
+          <div className={isLocalTaxiService || isAirportTaxiService || isOutstationTaxiService || isActingDriverService || isParcelDeliveryService || isAutoService ? "space-y-10" : "lg:col-span-2 space-y-10"}>
             {/* Features */}
-            <div className={isLocalTaxiService || isAirportTaxiService ? "grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start" : ""}>
+            <div className={isLocalTaxiService || isAirportTaxiService || isOutstationTaxiService || isActingDriverService || isParcelDeliveryService || isAutoService ? "grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start" : ""}>
               <div>
-                <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4">
-                  {isLocalTaxiService
-                    ? "Benefits Of Our Local Cab Service"
-                    : isAirportTaxiService
-                      ? "Benefits Of Our Airport Transfer Service"
-                      : "Features & Benefits"}
-                </h2>
-                <div className="grid sm:grid-cols-2 gap-3">
-                  {(isLocalTaxiService
-                    ? localTaxiBenefits
-                    : isAirportTaxiService
-                      ? airportTaxiBenefits
-                      : service.features).map((f) => (
-                    <div key={f} className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
-                      <CheckCircle className="w-5 h-5 text-green-600 shrink-0" />
-                      <span className="text-sm font-medium">{f}</span>
+                {!isParcelDeliveryService && !isAutoService && (
+                  <>
+                    <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4">
+                      {isLocalTaxiService
+                        ? "Benefits Of Our Local Cab Service"
+                        : isAirportTaxiService
+                          ? "Benefits Of Our Airport Transfer Service"
+                          : isOutstationTaxiService
+                            ? "Benefits of Our Outstation Cab Service"
+                            : isActingDriverService
+                              ? "Benefits of Our Acting Driver Service"
+                              : "Features & Benefits"}
+                    </h2>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      {(isLocalTaxiService
+                        ? localTaxiBenefits
+                        : isAirportTaxiService
+                          ? airportTaxiBenefits
+                          : isOutstationTaxiService
+                            ? outstationTaxiBenefits
+                            : isActingDriverService
+                              ? actingDriverBenefits
+                              : service.features).map((f) => (
+                        <div key={f} className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
+                          <CheckCircle className="w-5 h-5 text-green-600 shrink-0" />
+                          <span className="text-sm font-medium">{f}</span>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  </>
+                )}
+
+                {isActingDriverService && (
+                  <div className="mt-10">
+                    <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
+                      What Is an Acting Driver?
+                    </h2>
+                    <div className="rounded-xl border border-[#D7DDED] bg-white p-5 text-base leading-7 text-[#26335F] shadow-sm md:p-6 md:text-lg">
+                      <p>
+                        An acting driver is someone you <strong>hire to drive</strong> your own car when you prefer not
+                        to take the wheel. Root Cabs offers this service for late-night returns, family functions,
+                        hospital visits, business travel, and longer journeys, giving you the comfort of travelling in
+                        your own vehicle with an experienced driver.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {isAutoService && (
+                  <div className="space-y-8">
+                    <div>
+                      <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
+                        Why Root Cabs Auto Works Better
+                      </h2>
+                      <div className="rounded-xl border border-[#D7DDED] bg-white p-5 text-base leading-7 text-[#26335F] shadow-sm md:p-6 md:text-lg">
+                        <p>
+                          When you need a quick ride nearby, Root Cabs makes <strong>auto booking near me</strong>{" "}
+                          more predictable with clear fares, verified drivers, and confirmed pickups.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="grid gap-4 md:grid-cols-2">
+                      <div className="rounded-xl border border-[#D7DDED] bg-white p-5 shadow-sm md:p-6">
+                        <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">Street-Hailed Auto</h3>
+                        <div className="mt-4 space-y-3 text-base leading-7 text-[#26335F]">
+                          {[
+                            "Fare may need to be negotiated",
+                            "Driver may refuse the destination",
+                            "Limited trip visibility",
+                            "Pickup depends on roadside availability",
+                          ].map((item) => (
+                            <div key={item} className="flex items-start gap-3">
+                              <span className="mt-0.5 text-base font-semibold text-[#D64545]">✕</span>
+                              <span>{item}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="rounded-xl border border-[#D7DDED] bg-white p-5 shadow-sm md:p-6">
+                        <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">Root Cabs Auto</h3>
+                        <div className="mt-4 space-y-3 text-base leading-7 text-[#26335F]">
+                          {[
+                            "Fare shown before the ride",
+                            "Destination confirmed before pickup",
+                            "Verified driver details",
+                            "Convenient doorstep pickup",
+                          ].map((item) => (
+                            <div key={item} className="flex items-start gap-3">
+                              <span className="mt-0.5 text-base font-semibold text-green-600">✓</span>
+                              <span>{item}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
+                        Benefits of Our Online Auto Booking
+                      </h2>
+                      <div className="grid gap-3 sm:grid-cols-2">
+                        {autoServiceBenefits.map((benefit) => (
+                          <div key={benefit} className="flex items-center gap-3 rounded-lg bg-muted/50 p-3">
+                            <CheckCircle className="h-5 w-5 shrink-0 text-green-600" />
+                            <span className="text-sm font-medium">{benefit}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {isActingDriverService && (
+                  <div className="mt-10">
+                    <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
+                      Why Choose Root Cabs When You Need an Acting Driver?
+                    </h2>
+                    <div className="rounded-xl border border-[#D7DDED] bg-white p-5 text-base leading-7 text-[#26335F] shadow-sm md:p-6 md:text-lg">
+                      <p>
+                        Giving someone else the responsibility of driving your own car should feel straightforward and
+                        dependable. Root Cabs connects you with verified drivers who can handle local travel,
+                        late-night returns, family functions, hospital visits, and longer journeys without you having
+                        to drive.
+                      </p>
+                      <p className="mt-4">
+                        Our acting driver service is available across Chennai, Vellore, Tiruvannamalai, and
+                        Kanchipuram, giving customers a practical option when they need a driver for their own
+                        vehicle. For longer plans, <strong>driver hire for outstation</strong> makes it easier to
+                        travel in your car while an experienced driver manages the journey.
+                      </p>
+                      <p className="mt-4">
+                        With clear booking, flexible travel options, and support when needed, Root Cabs offers a
+                        simple way to get an <strong>acting driver for outstation trip</strong> or everyday travel
+                        without switching to a separate cab service.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {isParcelDeliveryService && (
+                  <div className="mt-10 space-y-8">
+                    <div>
+                      <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
+                        What Is Root Cabs Parcel Delivery ?
+                      </h2>
+                      <div className="rounded-xl border border-[#D7DDED] bg-white p-5 text-base leading-7 text-[#26335F] shadow-sm md:p-6 md:text-lg">
+                        <p>
+                          Root Cabs Parcel Delivery is designed for sending documents, medicines, small packages, and
+                          everyday essentials within the city. If you are looking for a{" "}
+                          <strong>quick parcel delivery</strong> option, Root Cabs helps you arrange pickup and
+                          delivery without needing to travel yourself.
+                        </p>
+                        <p className="mt-4">
+                          The service is suitable for day-to-day local deliveries where speed and convenience matter.
+                          It gives customers a simple way to send items across the city through a dedicated parcel
+                          service.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h3 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
+                        Benefits of Our Parcel Delivery Service
+                      </h3>
+                      <div className="grid gap-3 sm:grid-cols-2">
+                        {parcelDeliveryBenefits.map((benefit) => (
+                          <div key={benefit} className="flex items-center gap-3 rounded-lg bg-muted/50 p-3">
+                            <CheckCircle className="h-5 w-5 shrink-0 text-green-600" />
+                            <span className="text-sm font-medium">{benefit}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="rounded-xl border border-[#D7DDED] bg-white p-5 text-base leading-7 text-[#26335F] shadow-sm md:p-6 md:text-lg">
+                      <h2 className="font-heading text-2xl md:text-3xl font-bold text-[#1E2A6E]">
+                        Send Your Parcel with Root Cabs
+                      </h2>
+                      <p className="mt-4">
+                        Root Cabs makes it simple to <strong>send parcel</strong> items across the city, including
+                        documents, medicines, small packages, and everyday essentials with convenient pickup and
+                        delivery.
+                      </p>
+                      <Button asChild className="mt-6 bg-[#FFD700] text-[#1E2A6E] hover:bg-[#E6C200]">
+                        <Link to="/book-ride">
+                          Book Now <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
+                    </div>
+
+                  </div>
+                )}
 
                 {isAirportTaxiService && (
                   <div className="mt-10">
@@ -950,6 +1638,98 @@ export function ServicePage() {
                     </div>
                   </div>
                 )}
+
+                {isOutstationTaxiService && (
+                  <>
+                    <div className="mt-10">
+                      <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
+                        One-Way vs Round-Trip
+                      </h2>
+                      <div className="grid gap-4 md:grid-cols-2">
+                        <div className="rounded-xl border border-[#D7DDED] bg-white p-5 text-[#26335F] shadow-sm md:p-6">
+                          <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">One-Way Trips</h3>
+                          <p className="mt-3 text-sm leading-7 md:text-base">
+                            Choose a <strong>one-way trip cab</strong> when you only need to travel to the destination
+                            without planning a return ride. It works well for intercity drops, airport transfers,
+                            relocations, and other point-to-point journeys.
+                          </p>
+                        </div>
+                        <div className="rounded-xl border border-[#D7DDED] bg-white p-5 text-[#26335F] shadow-sm md:p-6">
+                          <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">Round Trips</h3>
+                          <p className="mt-3 text-sm leading-7 md:text-base">
+                            <strong>Round-trip cab booking</strong> is better when you plan to return to your starting
+                            city after the visit. It suits family trips, business travel, temple visits, and weekend
+                            journeys where the same cab is needed for both directions.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-10">
+                      <h2 className="font-heading text-2xl md:text-3xl font-bold mb-5 text-[#1E2A6E]">
+                        Popular Outstation Routes with Root Cabs
+                      </h2>
+                      <div className="grid gap-5 md:grid-cols-2">
+                        {outstationPopularRoutes.map((route) => (
+                          <div
+                            key={route.title}
+                            className="overflow-hidden rounded-2xl border border-[#D7DDED] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                          >
+                            <div className="aspect-[16/9] overflow-hidden bg-[#EEF3FF]">
+                              <img
+                                src={route.image}
+                                alt={route.title}
+                                className={`h-full w-full object-cover ${route.imagePosition ?? "object-center"} transition-transform duration-300 hover:scale-[1.03]`}
+                              />
+                            </div>
+                            <div className="p-5 md:p-6">
+                              <div className="flex items-start justify-between gap-4">
+                                <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">
+                                  {route.title}
+                                </h3>
+                                <Link
+                                  to="/book-ride"
+                                  className="shrink-0 text-sm font-semibold text-[#1E2A6E] transition-colors hover:text-[#3045A8]"
+                                >
+                                  Book <ArrowRight className="ml-1 inline h-3.5 w-3.5" />
+                                </Link>
+                              </div>
+                              <p className="mt-3 text-sm leading-7 text-[#4B587C] md:text-base">
+                                {route.description}
+                                {route.highlightedText ? <strong>{route.highlightedText}</strong> : null}
+                                {route.descriptionSuffix ?? null}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="mt-10">
+                      <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
+                        Why Choose Root Cabs for Outstation Travel?
+                      </h2>
+                      <div className="rounded-xl border border-[#D7DDED] bg-white p-5 text-base leading-7 text-[#26335F] shadow-sm md:p-6 md:text-lg">
+                        <p>
+                          Long-distance travel feels easier when the fare, driver details, and journey plan are clear
+                          before you leave. Root Cabs keeps the process simple with verified drivers, transparent
+                          pricing, and convenient <strong>online outstation cab booking</strong> for family trips,
+                          business travel, weekend plans, and intercity journeys.
+                        </p>
+                        <p className="mt-4">
+                          Whether you are travelling from Chennai, Vellore, Kanchipuram, or Tiruvannamalai, Root Cabs
+                          helps you plan the trip with dependable pickups and clear fare details. Drivers are assigned
+                          based on availability and are experienced in handling longer routes beyond regular city travel.
+                        </p>
+                        <p className="mt-4">
+                          With 24x7 support, no last-minute cancellations, and straightforward booking, Root Cabs gives
+                          you a practical way to <strong>book taxi for outstation</strong> travel without unnecessary
+                          confusion before the journey begins.
+                        </p>
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
 
               {isLocalTaxiService && (
@@ -965,6 +1745,77 @@ export function ServicePage() {
                           Book Now <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
                       </Button>
+                    </CardContent>
+                  </Card>
+                </div>
+              )}
+              {isAutoService && (
+                <div className="space-y-6 lg:sticky lg:top-4">
+                  <Card className="border-border">
+                    <CardContent className="p-6">
+                      <h3 className="font-heading text-2xl font-bold text-[#1E2A6E]">Book an Auto with Root Cabs</h3>
+                      <p className="mt-3 text-sm leading-6 text-[#4B587C]">
+                        Complete your <strong>auto cab booking</strong> in a few simple steps and get a convenient
+                        ride for everyday local travel.
+                      </p>
+                      <Button asChild className="mt-6 w-full bg-[#FFD700] text-[#1E2A6E] hover:bg-[#E6C200]">
+                        <Link to="/book-ride">
+                          Book Now <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-border">
+                    <CardContent className="p-6">
+                      <h3 className="font-heading font-semibold mb-3">Services We Offer</h3>
+                      <ul className="space-y-2">
+                        {services
+                          .filter((s) => autoServiceOffers.includes(s.name))
+                          .map((s) => (
+                            <li key={s.slug}>
+                              <Link
+                                to={`/services/${s.slug}`}
+                                className="flex items-center gap-2 py-1 text-sm transition-colors hover:text-primary cursor-pointer"
+                              >
+                                <ArrowRight className="w-3 h-3" />{" "}
+                                {s.name === "Local Taxi"
+                                  ? "Local Rides"
+                                  : s.name === "Outstation Taxi"
+                                    ? "Outstation"
+                                    : s.name}
+                              </Link>
+                            </li>
+                          ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </div>
+              )}
+              {isParcelDeliveryService && (
+                <div className="space-y-6 lg:sticky lg:top-4">
+                  <Card className="border-border">
+                    <CardContent className="p-6">
+                      <h3 className="font-heading font-semibold mb-3">Services We Offer</h3>
+                      <ul className="space-y-2">
+                        {services
+                          .filter((s) => parcelDeliveryServiceOffers.includes(s.name))
+                          .map((s) => (
+                            <li key={s.slug}>
+                              <Link
+                                to={`/services/${s.slug}`}
+                                className="flex items-center gap-2 text-sm hover:text-primary transition-colors cursor-pointer py-1"
+                              >
+                                <ArrowRight className="w-3 h-3" />{" "}
+                                {s.name === "Local Taxi"
+                                  ? "Local Rides"
+                                  : s.name === "Acting Driver"
+                                    ? "Acting Transfer"
+                                    : s.name}
+                              </Link>
+                            </li>
+                          ))}
+                      </ul>
                     </CardContent>
                   </Card>
                 </div>
@@ -1004,6 +1855,94 @@ export function ServicePage() {
                       </CardContent>
                     </Card>
                   </div>
+                </div>
+              )}
+              {isOutstationTaxiService && (
+                <div className="space-y-6 lg:sticky lg:top-4">
+                  <Card className="border-border">
+                    <CardContent className="p-6">
+                      <h3 className="font-heading text-2xl font-bold text-[#1E2A6E]">Book Your Outstation Ride</h3>
+                      <p className="mt-3 text-sm leading-6 text-[#4B587C]">
+                        Plan your trip with easy <strong>car booking for outstation</strong> travel through Root Cabs
+                        and get clear fare details before you confirm.
+                      </p>
+                      <Button asChild className="mt-6 w-full bg-[#FFD700] text-[#1E2A6E] hover:bg-[#E6C200]">
+                        <Link to="/book-ride">
+                          Book Now <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-border">
+                    <CardContent className="p-6">
+                      <h3 className="font-heading font-semibold mb-3">Services We Offer</h3>
+                      <ul className="space-y-2">
+                        {services
+                          .filter((s) => outstationTaxiServiceOffers.includes(s.name))
+                          .map((s) => (
+                            <li key={s.slug}>
+                              <Link
+                                to={`/services/${s.slug}`}
+                                className="flex items-center gap-2 py-1 text-sm transition-colors hover:text-primary cursor-pointer"
+                              >
+                                <ArrowRight className="w-3 h-3" />{" "}
+                                {s.name === "Local Taxi"
+                                  ? "Local Rides"
+                                  : s.name === "Acting Driver"
+                                    ? "Acting Transfer"
+                                    : s.name}
+                              </Link>
+                            </li>
+                          ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
+                </div>
+              )}
+              {isActingDriverService && (
+                <div className="space-y-6 lg:sticky lg:top-4">
+                  <Card className="border-border">
+                    <CardContent className="p-6">
+                      <h3 className="font-heading text-2xl font-bold text-[#1E2A6E]">Book an Acting Driver</h3>
+                      <p className="mt-3 text-sm leading-6 text-[#4B587C]">
+                        Find <strong>personal drivers for hire</strong> through Root Cabs for local travel, events,
+                        late-night returns, and longer journeys in your own car.
+                      </p>
+                      <Button asChild className="mt-6 w-full bg-[#FFD700] text-[#1E2A6E] hover:bg-[#E6C200]">
+                        <Link to="/book-ride">
+                          Book Now <ArrowRight className="ml-2 h-4 w-4" />
+                        </Link>
+                      </Button>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="border-border">
+                    <CardContent className="p-6">
+                      <h3 className="font-heading font-semibold mb-3">Services We Offer</h3>
+                      <ul className="space-y-2">
+                        {services
+                          .filter((s) => actingDriverServiceOffers.includes(s.name))
+                          .map((s) => (
+                            <li key={s.slug}>
+                              <Link
+                                to={`/services/${s.slug}`}
+                                className="flex items-center gap-2 py-1 text-sm transition-colors hover:text-primary cursor-pointer"
+                              >
+                                <ArrowRight className="w-3 h-3" />{" "}
+                                {s.name === "Local Taxi"
+                                  ? "Local Rides"
+                                  : s.name === "Outstation Taxi"
+                                    ? "Outstation"
+                                    : s.name === "Acting Driver"
+                                      ? "Acting Transfer"
+                                      : s.name}
+                              </Link>
+                            </li>
+                          ))}
+                      </ul>
+                    </CardContent>
+                  </Card>
                 </div>
               )}
             </div>
@@ -1074,91 +2013,310 @@ export function ServicePage() {
                 </div>
               </div>
             )}
+            {isAutoService && (
+              <div className="space-y-10">
+                <div>
+                  <h2 className="font-heading text-2xl md:text-3xl font-bold mb-5 text-[#1E2A6E]">
+                    Safety Features for Every Auto Ride
+                  </h2>
+                  <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                    {autoSafetyFeatures.map((feature) => (
+                      <div key={feature.title} className="rounded-xl border border-[#D7DDED] bg-white p-5 shadow-sm">
+                        <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">{feature.title}</h3>
+                        <p className="mt-3 text-base leading-7 text-[#4B587C]">
+                          {feature.highlightedText ? (
+                            <>
+                              {feature.description.split(feature.highlightedText)[0]}
+                              <strong>{feature.highlightedText}</strong>
+                              {feature.description.split(feature.highlightedText)[1]}
+                            </>
+                          ) : (
+                            feature.description
+                          )}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h2 className="font-heading text-2xl md:text-3xl font-bold mb-5 text-[#1E2A6E]">
+                    How Root Cabs Auto Works
+                  </h2>
+                  <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                    {autoBookingSteps.map((step) => (
+                      <div key={step.number} className="rounded-xl border border-[#D7DDED] bg-white p-5 shadow-sm">
+                        <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-[#1E2A6E] font-heading text-lg font-bold text-[#FFD700]">
+                          {step.number}
+                        </div>
+                        <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">{step.title}</h3>
+                        <p className="mt-3 text-base leading-7 text-[#4B587C]">
+                          {step.highlightedText ? (
+                            <>
+                              {step.description.split(step.highlightedText)[0]}
+                              <strong>{step.highlightedText}</strong>
+                              {step.description.split(step.highlightedText)[1]}
+                            </>
+                          ) : (
+                            step.description
+                          )}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {isActingDriverService && (
+              <div>
+                <h2 className="font-heading text-2xl md:text-3xl font-bold mb-5 text-[#1E2A6E]">
+                  Reasons to Book an Acting Driver
+                </h2>
+                <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                  {actingDriverReasons.map((reason) => (
+                    <div key={reason.title} className="rounded-xl border border-[#D7DDED] bg-white p-5 shadow-sm">
+                      <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">{reason.title}</h3>
+                      <p className="mt-3 text-base leading-7 text-[#4B587C]">
+                        {reason.highlightedText ? (
+                          <>
+                            {reason.description.split(reason.highlightedText)[0]}
+                            <strong>{reason.highlightedText}</strong>
+                            {reason.description.split(reason.highlightedText)[1]}
+                          </>
+                        ) : (
+                          reason.description
+                        )}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {isActingDriverService && (
+              <div className="space-y-8">
+                <div>
+                  <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
+                    Acting Driver Charges
+                  </h2>
+                  <div className="rounded-xl border border-[#D7DDED] bg-white p-5 text-base leading-7 text-[#26335F] shadow-sm md:p-6 md:text-lg">
+                    <p>
+                      Root Cabs <strong>acting driver charges</strong> are generally based on hourly packages. For
+                      example, a package may start from <strong>₹200 for 2 hours</strong>, with the final fare
+                      depending on the selected duration and whether the trip is local or outstation.
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
+                    Payment
+                  </h2>
+                  <div className="rounded-xl border border-[#D7DDED] bg-white p-5 text-base leading-7 text-[#26335F] shadow-sm md:p-6 md:text-lg">
+                    <p>
+                      Payment is made directly to the acting driver after the trip. You can pay by cash or UPI,
+                      whichever is convenient.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {/* Available Cities */}
-            <div className={isLocalTaxiService ? "grid gap-8" : ""}>
-              <div>
-                <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4">
-                  {isLocalTaxiService
-                    ? "Local Taxi Service Available Across Tamil Nadu"
-                    : isAirportTaxiService
-                      ? "Airport Taxi Services Available In"
-                      : `${service.name} Available In`}
-                </h2>
-                {isAirportTaxiService ? (
-                  <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-                    {airportTaxiCities.map((city) => (
-                      <Link
-                        key={city.slug}
-                        to={`/${city.slug}/${service.slug}`}
-                        className="group overflow-hidden rounded-2xl border border-[#DCE3F1] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
-                      >
-                        <div className="h-[170px] overflow-hidden bg-[#EEF3FF]">
-                          <img
-                            src={city.image}
-                            alt={city.name}
-                            className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-[1.03]"
-                          />
-                        </div>
-                        <div className="space-y-3 p-5">
-                          <div className="flex items-center gap-2">
+            {!isParcelDeliveryService && (
+              <div className={isLocalTaxiService || isOutstationTaxiService || isActingDriverService || isAutoService ? "grid gap-8" : ""}>
+                <div>
+                  <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4">
+                    {isLocalTaxiService
+                      ? "Local Taxi Service Available Across Tamil Nadu"
+                      : isOutstationTaxiService
+                        ? "Outstation Taxi Service Across Tamil Nadu"
+                      : isAutoService
+                        ? "Auto Service Available Across Tamil Nadu"
+                      : isActingDriverService
+                        ? "Acting Driver Available Across Tamil Nadu"
+                      : isAirportTaxiService
+                        ? "Airport Taxi Services Available In"
+                        : `${service.name} Available In`}
+                  </h2>
+                  {isAirportTaxiService ? (
+                    <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+                      {airportTaxiCities.map((city) => (
+                        <Link
+                          key={city.slug}
+                          to={`/${city.slug}/${service.slug}`}
+                          className="group overflow-hidden rounded-2xl border border-[#DCE3F1] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
+                        >
+                          <div className="h-[170px] overflow-hidden bg-[#EEF3FF]">
+                            <img
+                              src={city.image}
+                              alt={city.name}
+                              className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-[1.03]"
+                            />
+                          </div>
+                          <div className="space-y-3 p-5">
+                            <div className="flex items-center gap-2">
+                              <img
+                                src="/assets/location-icon.png"
+                                alt=""
+                                aria-hidden="true"
+                                className="h-4 w-4 shrink-0 object-contain"
+                              />
+                              <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">{city.name}</h3>
+                            </div>
+                            <p className="text-sm leading-7 text-[#4B587C]">{city.description}</p>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  ) : (
+                    <div
+                      className={
+                        isLocalTaxiService
+                          ? "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+                          : isOutstationTaxiService
+                            ? "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5"
+                            : isAutoService
+                              ? "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5"
+                            : isActingDriverService
+                              ? "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-5"
+                            : "grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"
+                      }
+                    >
+                      {(isLocalTaxiService
+                        ? availableCities.filter((city) => localTaxiServiceCities.includes(city.name))
+                        : isOutstationTaxiService
+                          ? availableCities.filter((city) => outstationTaxiServiceCities.includes(city.name))
+                          : isAutoService
+                            ? cities.filter((city) => autoServiceCities.includes(city.name))
+                          : isActingDriverService
+                            ? cities.filter((city) => actingDriverServiceCities.includes(city.name))
+                            : availableCities
+                      ).map((city) => (
+                        isLocalTaxiService || isOutstationTaxiService || isActingDriverService || isAutoService ? (
+                          <div
+                            key={city.slug}
+                            className="group rounded-xl border border-[#E2E8F3] bg-white p-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:shadow-md"
+                          >
+                            <img
+                              src="/assets/location-icon.png"
+                              alt=""
+                              aria-hidden="true"
+                              className="mx-auto mb-3 h-7 w-7 object-contain transition-transform group-hover:scale-110"
+                            />
+                            <span className="block font-heading text-base font-bold text-[#1E2A6E]">
+                              {city.name}
+                            </span>
+                          </div>
+                        ) : (
+                          <Link
+                            key={city.slug}
+                            to={`/${city.slug}/${service.slug}`}
+                            className="flex items-center gap-2 p-3 rounded-lg border border-border hover:border-primary/30 hover:bg-primary/5 transition-all cursor-pointer"
+                          >
                             <img
                               src="/assets/location-icon.png"
                               alt=""
                               aria-hidden="true"
                               className="h-4 w-4 shrink-0 object-contain"
                             />
-                            <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">{city.name}</h3>
-                          </div>
-                          <p className="text-sm leading-7 text-[#4B587C]">{city.description}</p>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                ) : (
-                  <div className={isLocalTaxiService ? "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" : "grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4"}>
-                    {(isLocalTaxiService
-                      ? availableCities.filter((city) => localTaxiServiceCities.includes(city.name))
-                      : availableCities
-                    ).map((city) => (
-                      isLocalTaxiService ? (
-                        <div
-                          key={city.slug}
-                          className="group rounded-xl border border-[#E2E8F3] bg-white p-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:shadow-md"
-                        >
-                          <img
-                            src="/assets/location-icon.png"
-                            alt=""
-                            aria-hidden="true"
-                            className="mx-auto mb-3 h-7 w-7 object-contain transition-transform group-hover:scale-110"
-                          />
-                          <span className="block font-heading text-base font-bold text-[#1E2A6E]">
-                            {city.name}
-                          </span>
-                        </div>
-                      ) : (
-                        <Link
-                          key={city.slug}
-                          to={`/${city.slug}/${service.slug}`}
-                          className="flex items-center gap-2 p-3 rounded-lg border border-border hover:border-primary/30 hover:bg-primary/5 transition-all cursor-pointer"
-                        >
-                          <img
-                            src="/assets/location-icon.png"
-                            alt=""
-                            aria-hidden="true"
-                            className="h-4 w-4 shrink-0 object-contain"
-                          />
-                          <span className="text-sm font-medium">
-                            {city.name}
-                          </span>
-                        </Link>
-                      )
-                    ))}
-                  </div>
-                )}
-              </div>
+                            <span className="text-sm font-medium">
+                              {city.name}
+                            </span>
+                          </Link>
+                        )
+                      ))}
+                    </div>
+                  )}
+                </div>
 
-            </div>
+              </div>
+            )}
+
+            {isParcelDeliveryService && (
+              <div className="space-y-10">
+                <div>
+                  <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
+                    Items You Can Send with Our Parcel Delivery Service
+                  </h2>
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                    {["Food", "Medicines", "Gadgets", "Documents", "Groceries", "Clothes", "Gifts", "Forgotten Items"].map(
+                      (item) => (
+                        <div key={item} className="rounded-lg bg-muted/50 p-3 text-sm font-medium text-[#26335F]">
+                          {item}
+                        </div>
+                      )
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                  <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
+                    How Root Cabs Parcel Delivery Works
+                  </h2>
+                  <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                    <div className="rounded-xl border border-[#D7DDED] bg-white p-5 shadow-sm">
+                      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-[#1E2A6E] font-heading text-lg font-bold text-[#FFD700]">
+                        1
+                      </div>
+                      <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">Choose Send or Receive</h3>
+                      <p className="mt-3 text-base leading-7 text-[#4B587C]">
+                        Open the Parcel service in Root Cabs and choose whether you want to send an item or receive one
+                        from another person.
+                      </p>
+                    </div>
+                    <div className="rounded-xl border border-[#D7DDED] bg-white p-5 shadow-sm">
+                      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-[#1E2A6E] font-heading text-lg font-bold text-[#FFD700]">
+                        2
+                      </div>
+                      <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">Add Pickup &amp; Delivery Details</h3>
+                      <p className="mt-3 text-base leading-7 text-[#4B587C]">
+                        Enter the pickup and drop locations along with the receiver information. This helps Root Cabs
+                        organize the <strong>parcel courier</strong> request correctly before moving to the next step.
+                      </p>
+                    </div>
+                    <div className="rounded-xl border border-[#D7DDED] bg-white p-5 shadow-sm">
+                      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-[#1E2A6E] font-heading text-lg font-bold text-[#FFD700]">
+                        3
+                      </div>
+                      <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">Choose Vehicle &amp; Parcel Type</h3>
+                      <p className="mt-3 text-base leading-7 text-[#4B587C]">
+                        Select Bike or Auto based on availability, choose the right parcel category, and review the
+                        details before placing the order.
+                      </p>
+                    </div>
+                    <div className="rounded-xl border border-[#D7DDED] bg-white p-5 shadow-sm">
+                      <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-[#1E2A6E] font-heading text-lg font-bold text-[#FFD700]">
+                        4
+                      </div>
+                      <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">Track Until Delivery</h3>
+                      <p className="mt-3 text-base leading-7 text-[#4B587C]">
+                        Once a driver accepts the request, you can follow the parcel status from pickup to delivery. The
+                        receiver completes the delivery using the OTP, after which payment and feedback are completed.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
+                    Our Parcel Delivery Service Is Available Across
+                  </h2>
+                  <div className="grid grid-cols-1 gap-4 sm:max-w-sm">
+                    <div className="group rounded-xl border border-[#E2E8F3] bg-white p-5 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:shadow-md">
+                      <img
+                        src="/assets/location-icon.png"
+                        alt=""
+                        aria-hidden="true"
+                        className="mx-auto mb-3 h-7 w-7 object-contain transition-transform group-hover:scale-110"
+                      />
+                      <span className="block font-heading text-base font-bold text-[#1E2A6E]">Chennai</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {isAirportTaxiService && (
               <div className="grid items-center gap-8 rounded-xl border border-border bg-[#F4F6FF] p-6 md:grid-cols-[1fr_0.95fr] md:p-10">
@@ -1220,6 +2378,175 @@ export function ServicePage() {
                   </p>
                   <div className="mt-6 space-y-3 text-sm text-[#24305E]">
                     {localTaxiActingDriverBenefits.map((item) => (
+                      <div key={item} className="flex items-start gap-3">
+                        <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-8">
+                    <Link to="/services/acting-driver">
+                      <Button size="lg" className="bg-[#1E2A6E] px-7 font-bold text-white hover:bg-[#2E3A8C]">
+                        Book an Acting Driver <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+                <div className="overflow-hidden rounded-xl bg-[#E9EDFF] min-h-[260px] md:min-h-[300px]">
+                  <img
+                    src="/assets/home-acting-driver.png"
+                    alt="Acting driver service"
+                    className="h-full min-h-[260px] w-full object-cover md:min-h-[300px]"
+                  />
+                </div>
+              </div>
+            )}
+
+            {isOutstationTaxiService && (
+              <div className="grid items-center gap-8 rounded-xl border border-border bg-[#F4F6FF] p-6 md:grid-cols-[1fr_0.95fr] md:p-10">
+                <div>
+                  <div className="inline-flex rounded-full bg-[#E9EDFF] px-4 py-1.5 text-xs font-bold uppercase text-[#1E2A6E]">
+                    Acting Driver
+                  </div>
+                  <h2 className="mt-5 max-w-xl font-heading text-2xl font-bold leading-tight text-[#1E2A6E] md:text-3xl">
+                    Let an Acting Driver Handle the Long Drive
+                  </h2>
+                  <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground md:text-base">
+                    Planning an outstation journey in your own car? Root Cabs lets you{" "}
+                    <strong>hire driver for outstation</strong> travel so you can relax while an experienced acting
+                    driver manages the road, traffic, and longer highway stretches.
+                  </p>
+                  <div className="mt-6 space-y-3 text-sm text-[#24305E]">
+                    {outstationTaxiActingDriverBenefits.map((item) => (
+                      <div key={item} className="flex items-start gap-3">
+                        <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-8">
+                    <Link to="/services/acting-driver">
+                      <Button size="lg" className="bg-[#1E2A6E] px-7 font-bold text-white hover:bg-[#2E3A8C]">
+                        Book an Acting Driver <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+                <div className="overflow-hidden rounded-xl bg-[#E9EDFF] min-h-[260px] md:min-h-[300px]">
+                  <img
+                    src="/assets/home-acting-driver.png"
+                    alt="Acting driver service"
+                    className="h-full min-h-[260px] w-full object-cover md:min-h-[300px]"
+                  />
+                </div>
+              </div>
+            )}
+
+            {isActingDriverService && (
+              <div className="grid items-center gap-8 rounded-xl border border-border bg-[#F4F6FF] p-6 md:grid-cols-[1fr_0.95fr] md:p-10">
+                <div>
+                  <div className="inline-flex rounded-full bg-[#E9EDFF] px-4 py-1.5 text-xs font-bold uppercase text-[#1E2A6E]">
+                    Acting Driver
+                  </div>
+                  <h2 className="mt-5 max-w-xl font-heading text-2xl font-bold leading-tight text-[#1E2A6E] md:text-3xl">
+                    Let an Acting Driver Take the Wheel
+                  </h2>
+                  <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground md:text-base">
+                    Travelling in your own car but prefer not to drive? Root Cabs helps you get a driver for
+                    outstation trip plans, late-night returns, family functions, business travel, and other journeys
+                    where you want someone else to handle the road.
+                  </p>
+                  <div className="mt-6 space-y-3 text-sm text-[#24305E]">
+                    {[
+                      "Drive your own car",
+                      "Verified acting drivers",
+                      "Local & outstation travel",
+                      "Safe driving",
+                    ].map((item) => (
+                      <div key={item} className="flex items-start gap-3">
+                        <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-8">
+                    <Link to="/book-ride">
+                      <Button size="lg" className="bg-[#1E2A6E] px-7 font-bold text-white hover:bg-[#2E3A8C]">
+                        Book an Acting Driver <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+                <div className="overflow-hidden rounded-xl bg-[#E9EDFF] min-h-[260px] md:min-h-[300px]">
+                  <img
+                    src="/assets/home-acting-driver.png"
+                    alt="Acting driver service"
+                    className="h-full min-h-[260px] w-full object-cover md:min-h-[300px]"
+                  />
+                </div>
+              </div>
+            )}
+
+            {isParcelDeliveryService && (
+              <div className="grid items-center gap-8 rounded-xl border border-border bg-[#F4F6FF] p-6 md:grid-cols-[1fr_0.95fr] md:p-10">
+                <div>
+                  <div className="inline-flex rounded-full bg-[#E9EDFF] px-4 py-1.5 text-xs font-bold uppercase text-[#1E2A6E]">
+                    Acting Driver
+                  </div>
+                  <h2 className="mt-5 max-w-xl font-heading text-2xl font-bold leading-tight text-[#1E2A6E] md:text-3xl">
+                    Travel in Your Own Car with a Trusted Driver
+                  </h2>
+                  <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground md:text-base">
+                    For long drives, family trips, late-night returns, or days when you simply prefer not to drive,
+                    Root Cabs gives you an easy way to get an experienced acting driver for your own car.
+                  </p>
+                  <div className="mt-6 space-y-3 text-sm text-[#24305E]">
+                    {[
+                      "Verified Acting Drivers",
+                      "Local & Outstation Travel",
+                      "Safe Driving",
+                      "Flexible Trip Options",
+                    ].map((item) => (
+                      <div key={item} className="flex items-start gap-3">
+                        <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-8">
+                    <Link to="/services/acting-driver">
+                      <Button size="lg" className="bg-[#1E2A6E] px-7 font-bold text-white hover:bg-[#2E3A8C]">
+                        Book an Acting Driver <ArrowRight className="w-4 h-4 ml-2" />
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+                <div className="overflow-hidden rounded-xl bg-[#E9EDFF] min-h-[260px] md:min-h-[300px]">
+                  <img
+                    src="/assets/home-acting-driver.png"
+                    alt="Acting driver service"
+                    className="h-full min-h-[260px] w-full object-cover md:min-h-[300px]"
+                  />
+                </div>
+              </div>
+            )}
+
+            {isAutoService && (
+              <div className="grid items-center gap-8 rounded-xl border border-border bg-[#F4F6FF] p-6 md:grid-cols-[1fr_0.95fr] md:p-10">
+                <div>
+                  <div className="inline-flex rounded-full bg-[#E9EDFF] px-4 py-1.5 text-xs font-bold uppercase text-[#1E2A6E]">
+                    Acting Driver
+                  </div>
+                  <h2 className="mt-5 max-w-xl font-heading text-2xl font-bold leading-tight text-[#1E2A6E] md:text-3xl">
+                    Use Your Own Car Without Taking the Wheel
+                  </h2>
+                  <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground md:text-base">
+                    Root Cabs lets you travel in your own car while an experienced acting driver handles the driving.
+                    It works well for late-night returns, family functions, business travel, longer journeys, or any
+                    time you simply prefer not to drive yourself.
+                  </p>
+                  <div className="mt-6 space-y-3 text-sm text-[#24305E]">
+                    {autoActingDriverBenefits.map((item) => (
                       <div key={item} className="flex items-start gap-3">
                         <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
                         <span>{item}</span>
@@ -1434,6 +2761,385 @@ export function ServicePage() {
               </div>
             )}
 
+            {isOutstationTaxiService && (
+              <div className="relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
+                <img
+                  src="/assets/home-download-car-bg.webp"
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.14] saturate-75"
+                />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.16),transparent_32%),radial-gradient(circle_at_82%_28%,rgba(255,255,255,0.1),transparent_28%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.08),transparent_32%)]" />
+                <div className="absolute inset-0 bg-[#273588]/62" />
+                <div className="relative z-10 grid items-center gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.78fr)]">
+                  <div className="text-center md:text-left md:pl-2 lg:pl-4">
+                    <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
+                      GET THE APP
+                    </span>
+                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl">
+                      Make Every Ride Easier with Root Cabs
+                    </h2>
+                    <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
+                      Use Root Cabs to check fares, choose your ride, and confirm your booking in just a few steps.
+                      Everything is kept simple so you can plan your travel without an unnecessary hassle.
+                    </p>
+                    <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-semibold text-white/85 md:justify-start">
+                      {outstationTaxiAppBenefits.map((item) => (
+                        <span key={item} className="flex items-center gap-1.5">
+                          <CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> {item}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-5 grid max-w-[470px] grid-cols-1 justify-items-center gap-3 sm:grid-cols-2">
+                      <div className="flex w-[170px] flex-col items-center">
+                        <a
+                          href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                          aria-label="App Store"
+                        >
+                          <img src="/assets/app-store-badge.png" alt="App Store" className="h-10 w-auto object-contain" />
+                        </a>
+                        <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                          <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">
+                            Scan to Download
+                          </p>
+                          <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                            <img
+                              src="/assets/app-download-qr-app-store-cropped.png"
+                              alt="App Store QR code"
+                              className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                            />
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="flex w-[170px] flex-col items-center">
+                        <a
+                          href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                          aria-label="Google Play"
+                        >
+                          <img src="/assets/play-store.png" alt="Google Play" className="h-10 w-auto object-contain" />
+                        </a>
+                        <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                          <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">
+                            Scan to Download
+                          </p>
+                          <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                            <img
+                              src="/assets/app-download-qr-google-play-cropped.png"
+                              alt="Google Play QR code"
+                              className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                            />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="relative mx-auto w-full max-w-[380px]">
+                    <div>
+                      <img
+                        src="/assets/plan-trip-root-cabs.png"
+                        alt="Plan every trip with Root Cabs"
+                        className="h-[470px] w-full rounded-[20px] object-contain md:h-[430px] lg:h-[400px]"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {isParcelDeliveryService && (
+              <div className="relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
+                <img
+                  src="/assets/home-download-car-bg.webp"
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.14] saturate-75"
+                />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.16),transparent_32%),radial-gradient(circle_at_82%_28%,rgba(255,255,255,0.1),transparent_28%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.08),transparent_32%)]" />
+                <div className="absolute inset-0 bg-[#273588]/62" />
+                <div className="relative z-10 grid items-center gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.78fr)]">
+                  <div className="text-center md:text-left md:pl-2 lg:pl-4">
+                    <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
+                      GET THE APP
+                    </span>
+                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl">
+                      Send Your Parcel Easily with Root Cabs
+                    </h2>
+                    <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
+                      From documents and medicines to groceries, gifts, and everyday essentials, Root Cabs makes{" "}
+                      <strong>parcel shipping</strong> within the city simple. Add the pickup and delivery details,
+                      choose the parcel type, and place your request in a few steps.
+                    </p>
+                    <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-semibold text-white/85 md:justify-start">
+                      {parcelDeliveryAppBenefits.map((item) => (
+                        <span key={item} className="flex items-center gap-1.5">
+                          <CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> {item}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-5 grid max-w-[470px] grid-cols-1 justify-items-center gap-3 sm:grid-cols-2">
+                      <div className="flex w-[170px] flex-col items-center">
+                        <a
+                          href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                          aria-label="App Store"
+                        >
+                          <img src="/assets/app-store-badge.png" alt="App Store" className="h-10 w-auto object-contain" />
+                        </a>
+                        <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                          <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">
+                            Scan to Download
+                          </p>
+                          <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                            <img
+                              src="/assets/app-download-qr-app-store-cropped.png"
+                              alt="App Store QR code"
+                              className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                            />
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="flex w-[170px] flex-col items-center">
+                        <a
+                          href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                          aria-label="Google Play"
+                        >
+                          <img src="/assets/play-store.png" alt="Google Play" className="h-10 w-auto object-contain" />
+                        </a>
+                        <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                          <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">
+                            Scan to Download
+                          </p>
+                          <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                            <img
+                              src="/assets/app-download-qr-google-play-cropped.png"
+                              alt="Google Play QR code"
+                              className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                            />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="relative mx-auto w-full max-w-[380px]">
+                    <div>
+                      <img
+                        src="/assets/plan-trip-root-cabs.png"
+                        alt="Send parcels with Root Cabs"
+                        className="h-[470px] w-full rounded-[20px] object-contain md:h-[430px] lg:h-[400px]"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {isAutoService && (
+              <div className="relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
+                <img
+                  src="/assets/home-download-car-bg.webp"
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.14] saturate-75"
+                />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.16),transparent_32%),radial-gradient(circle_at_82%_28%,rgba(255,255,255,0.1),transparent_28%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.08),transparent_32%)]" />
+                <div className="absolute inset-0 bg-[#273588]/62" />
+                <div className="relative z-10 grid items-center gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.78fr)]">
+                  <div className="text-center md:text-left md:pl-2 lg:pl-4">
+                    <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
+                      GET THE APP
+                    </span>
+                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl">
+                      Book Your Auto Ride with Root Cabs
+                    </h2>
+                    <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
+                      Use Root Cabs for simple <strong>online auto booking</strong> whenever you need a quick local
+                      ride. Enter your pickup and drop, check the fare, confirm the ride, and track your driver from
+                      pickup to destination.
+                    </p>
+                    <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-semibold text-white/85 md:justify-start">
+                      {autoAppBenefits.map((item) => (
+                        <span key={item} className="flex items-center gap-1.5">
+                          <CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> {item}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-5 grid max-w-[470px] grid-cols-1 justify-items-center gap-3 sm:grid-cols-2">
+                      <div className="flex w-[170px] flex-col items-center">
+                        <a
+                          href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                          aria-label="App Store"
+                        >
+                          <img src="/assets/app-store-badge.png" alt="App Store" className="h-10 w-auto object-contain" />
+                        </a>
+                        <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                          <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">
+                            Scan to Download
+                          </p>
+                          <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                            <img
+                              src="/assets/app-download-qr-app-store-cropped.png"
+                              alt="App Store QR code"
+                              className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                            />
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="flex w-[170px] flex-col items-center">
+                        <a
+                          href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                          aria-label="Google Play"
+                        >
+                          <img src="/assets/play-store.png" alt="Google Play" className="h-10 w-auto object-contain" />
+                        </a>
+                        <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                          <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">
+                            Scan to Download
+                          </p>
+                          <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                            <img
+                              src="/assets/app-download-qr-google-play-cropped.png"
+                              alt="Google Play QR code"
+                              className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                            />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="relative mx-auto w-full max-w-[380px]">
+                    <div>
+                      <img
+                        src="/assets/plan-trip-root-cabs.png"
+                        alt="Plan every trip with Root Cabs"
+                        className="h-[470px] w-full rounded-[20px] object-contain md:h-[430px] lg:h-[400px]"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {isActingDriverService && (
+              <div className="relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
+                <img
+                  src="/assets/home-download-car-bg.webp"
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.14] saturate-75"
+                />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.16),transparent_32%),radial-gradient(circle_at_82%_28%,rgba(255,255,255,0.1),transparent_28%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.08),transparent_32%)]" />
+                <div className="absolute inset-0 bg-[#273588]/62" />
+                <div className="relative z-10 grid items-center gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.78fr)]">
+                  <div className="text-center md:text-left md:pl-2 lg:pl-4">
+                    <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
+                      GET THE APP
+                    </span>
+                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl">
+                      Book Your Acting Driver with Root Cabs
+                    </h2>
+                    <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
+                      Need someone to drive your own car? Root Cabs helps you find a <strong>acting driver</strong>{" "}
+                      for local trips, late-night travel, functions, or longer journeys. Share your trip details,
+                      choose the suitable option, and confirm your driver in a few simple steps.
+                    </p>
+                    <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-semibold text-white/85 md:justify-start">
+                      {actingDriverAppBenefits.map((item) => (
+                        <span key={item} className="flex items-center gap-1.5">
+                          <CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> {item}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="mt-5 grid max-w-[470px] grid-cols-1 justify-items-center gap-3 sm:grid-cols-2">
+                      <div className="flex w-[170px] flex-col items-center">
+                        <a
+                          href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                          aria-label="Google Play"
+                        >
+                          <img src="/assets/play-store.png" alt="Google Play" className="h-10 w-auto object-contain" />
+                        </a>
+                        <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                          <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">
+                            Scan to Download
+                          </p>
+                          <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                            <img
+                              src="/assets/app-download-qr-google-play-cropped.png"
+                              alt="Google Play QR code"
+                              className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                            />
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="flex w-[170px] flex-col items-center">
+                        <a
+                          href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                          aria-label="App Store"
+                        >
+                          <img src="/assets/app-store-badge.png" alt="App Store" className="h-10 w-auto object-contain" />
+                        </a>
+                        <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                          <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">
+                            Scan to Download
+                          </p>
+                          <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                            <img
+                              src="/assets/app-download-qr-app-store-cropped.png"
+                              alt="App Store QR code"
+                              className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                            />
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="relative mx-auto w-full max-w-[380px]">
+                    <div>
+                      <img
+                        src="/assets/plan-trip-root-cabs.png"
+                        alt="Plan every trip with Root Cabs"
+                        className="h-[470px] w-full rounded-[20px] object-contain md:h-[430px] lg:h-[400px]"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
             {isLocalTaxiService && (
               <section className="grid items-center gap-6 rounded-2xl border border-[#D7DDED] bg-white px-6 py-7 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
                 <div className="text-center md:text-left">
@@ -1460,6 +3166,106 @@ export function ServicePage() {
             )}
 
             {isAirportTaxiService && (
+              <section className="grid items-center gap-6 rounded-2xl border border-[#D7DDED] bg-white px-6 py-7 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
+                <div className="text-center md:text-left">
+                  <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+                    Drive and Earn with Root Cabs
+                  </h2>
+                  <p className="mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-[0.92rem] lg:text-[0.98rem]">
+                    Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+                  </p>
+                  <Button asChild className="mt-6 bg-[#1E2A6E] text-white hover:bg-[#17225E]">
+                    <Link to="/drivers">
+                      Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+                <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
+                  <img
+                    src="/assets/homepage-rootpartner-banner.webp"
+                    alt="Drive and earn with Root Cabs"
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
+              </section>
+            )}
+
+            {isOutstationTaxiService && (
+              <section className="grid items-center gap-6 rounded-2xl border border-[#D7DDED] bg-white px-6 py-7 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
+                <div className="text-center md:text-left">
+                  <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+                    Drive and Earn with Root Cabs
+                  </h2>
+                  <p className="mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-[0.92rem] lg:text-[0.98rem]">
+                    Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+                  </p>
+                  <Button asChild className="mt-6 bg-[#1E2A6E] text-white hover:bg-[#17225E]">
+                    <Link to="/drivers">
+                      Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+                <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
+                  <img
+                    src="/assets/homepage-rootpartner-banner.webp"
+                    alt="Drive and earn with Root Cabs"
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
+              </section>
+            )}
+
+            {isActingDriverService && (
+              <section className="grid items-center gap-6 rounded-2xl border border-[#D7DDED] bg-white px-6 py-7 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
+                <div className="text-center md:text-left">
+                  <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+                    Drive and Earn with Root Cabs
+                  </h2>
+                  <p className="mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-[0.92rem] lg:text-[0.98rem]">
+                    Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+                  </p>
+                  <Button asChild className="mt-6 bg-[#1E2A6E] text-white hover:bg-[#17225E]">
+                    <Link to="/drivers">
+                      Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+                <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
+                  <img
+                    src="/assets/homepage-rootpartner-banner.webp"
+                    alt="Drive and earn with Root Cabs"
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
+              </section>
+            )}
+
+            {isParcelDeliveryService && (
+              <section className="grid items-center gap-6 rounded-2xl border border-[#D7DDED] bg-white px-6 py-7 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
+                <div className="text-center md:text-left">
+                  <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+                    Drive and Earn with Root Cabs
+                  </h2>
+                  <p className="mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-[0.92rem] lg:text-[0.98rem]">
+                    Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+                  </p>
+                  <Button asChild className="mt-6 bg-[#1E2A6E] text-white hover:bg-[#17225E]">
+                    <Link to="/drivers">
+                      Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
+                    </Link>
+                  </Button>
+                </div>
+                <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
+                  <img
+                    src="/assets/homepage-rootpartner-banner.webp"
+                    alt="Drive and earn with Root Cabs"
+                    className="h-full w-full object-cover object-center"
+                  />
+                </div>
+              </section>
+            )}
+
+            {isAutoService && (
               <section className="grid items-center gap-6 rounded-2xl border border-[#D7DDED] bg-white px-6 py-7 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
                 <div className="text-center md:text-left">
                   <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
@@ -1524,13 +3330,103 @@ export function ServicePage() {
               </section>
             )}
 
+            {isOutstationTaxiService && (
+              <section className="rounded-2xl bg-[#F4F6FA] px-4 pt-6 pb-10 md:px-8 md:pt-8 md:pb-12">
+                <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+                  Frequently Asked Questions
+                </h2>
+                <Accordion type="single" collapsible className="mx-auto mt-8 max-w-4xl space-y-3">
+                  {outstationTaxiFaqs.map((faq, index) => (
+                    <AccordionItem key={faq.q} value={`outstation-taxi-faq-${index}`} className="border-0">
+                      <AccordionTrigger className="rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline">
+                        {faq.q}
+                      </AccordionTrigger>
+                      <AccordionContent className="rounded-b-lg bg-white px-5 pb-5 text-sm leading-6 text-[#4B587C] shadow-sm">
+                        {faq.a}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </section>
+            )}
+
+            {isActingDriverService && (
+              <section className="rounded-2xl bg-[#F4F6FA] px-4 pt-6 pb-10 md:px-8 md:pt-8 md:pb-12">
+                <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+                  Frequently Asked Questions
+                </h2>
+                <Accordion type="single" collapsible className="mx-auto mt-8 max-w-4xl space-y-3">
+                  {actingDriverFaqs.map((faq, index) => (
+                    <AccordionItem key={faq.q} value={`acting-driver-faq-${index}`} className="border-0">
+                      <AccordionTrigger className="rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline">
+                        {faq.q}
+                      </AccordionTrigger>
+                      <AccordionContent className="rounded-b-lg bg-white px-5 pb-5 text-sm leading-6 text-[#4B587C] shadow-sm">
+                        {faq.a}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </section>
+            )}
+
+            {isParcelDeliveryService && (
+              <section className="rounded-2xl bg-[#F4F6FA] px-4 pt-6 pb-10 md:px-8 md:pt-8 md:pb-12">
+                <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+                  Frequently Asked Questions
+                </h2>
+                <Accordion type="single" collapsible className="mx-auto mt-8 max-w-4xl space-y-3">
+                  {parcelDeliveryFaqs.map((faq, index) => (
+                    <AccordionItem key={faq.q} value={`parcel-delivery-faq-${index}`} className="border-0">
+                      <AccordionTrigger className="rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline">
+                        {faq.q}
+                      </AccordionTrigger>
+                      <AccordionContent className="rounded-b-lg bg-white px-5 pb-5 text-sm leading-6 text-[#4B587C] shadow-sm">
+                        {faq.a}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </section>
+            )}
+
+            {isAutoService && (
+              <section className="rounded-2xl bg-[#F4F6FA] px-4 pt-6 pb-10 md:px-8 md:pt-8 md:pb-12">
+                <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+                  Frequently Asked Questions
+                </h2>
+                <Accordion type="single" collapsible className="mx-auto mt-8 max-w-4xl space-y-3">
+                  {autoFaqs.map((faq, index) => (
+                    <AccordionItem key={faq.q} value={`auto-faq-${index}`} className="border-0">
+                      <AccordionTrigger className="rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline">
+                        {faq.q}
+                      </AccordionTrigger>
+                      <AccordionContent className="rounded-b-lg bg-white px-5 pb-5 text-sm leading-6 text-[#4B587C] shadow-sm">
+                        {faq.a}
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </section>
+            )}
+
             {/* Fare Calculator */}
-            {!isLocalTaxiService && !isAirportTaxiService && <FareCalculator />}
+            {!isLocalTaxiService &&
+              !isAirportTaxiService &&
+              !isOutstationTaxiService &&
+              !isActingDriverService &&
+              !isParcelDeliveryService &&
+              !isAutoService && <FareCalculator />}
           </div>
 
           {/* Sidebar */}
-          <div className={isLocalTaxiService || isAirportTaxiService ? "space-y-6 lg:max-w-sm" : "space-y-6"}>
-            {!isLocalTaxiService && !isAirportTaxiService && (
+          <div className={isLocalTaxiService || isAirportTaxiService || isOutstationTaxiService ? "space-y-6 lg:max-w-sm" : "space-y-6"}>
+            {!isLocalTaxiService &&
+              !isAirportTaxiService &&
+              !isOutstationTaxiService &&
+              !isActingDriverService &&
+              !isParcelDeliveryService &&
+              !isAutoService && (
               <Card className="border-primary/20 bg-primary/5">
                 <CardContent className="p-6">
                   <h3 className="font-heading font-semibold mb-3">Book {service.name} Now</h3>
@@ -1548,7 +3444,12 @@ export function ServicePage() {
               </Card>
             )}
 
-            {!isLocalTaxiService && !isAirportTaxiService && (
+            {!isLocalTaxiService &&
+              !isAirportTaxiService &&
+              !isOutstationTaxiService &&
+              !isActingDriverService &&
+              !isParcelDeliveryService &&
+              !isAutoService && (
               <Card className="border-border">
                 <CardContent className="p-6">
                   <h3 className="font-heading font-semibold mb-3">Other Services</h3>
