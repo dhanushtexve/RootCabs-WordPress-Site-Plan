@@ -10,6 +10,8 @@ import FareCalculator from "@/components/FareCalculator";
 
 const ASSET_VERSION = "20260806";
 const assetPath = (path: string) => `${path}?v=${ASSET_VERSION}`;
+const serviceBenefitPath = (group: string, file: string) =>
+  assetPath(`/assets/service-benefits/${group}/${encodeURIComponent(file)}`);
 
 const iconMap: Record<string, React.ReactNode> = {
   Car: <Car className="w-8 h-8" />,
@@ -187,6 +189,54 @@ const actingDriverBenefits = [
   "Late-Night Support",
   "Personal & Business Travel",
 ];
+const actingDriverBenefitIcons: Record<string, string> = {
+  "Drive Your Own Car": serviceBenefitPath("acting-driver", "drive-your-own-car.webp"),
+  "Verified Drivers": serviceBenefitPath("shared", "Verified Drivers.webp"),
+  "Local & Outstation Trips": serviceBenefitPath("acting-driver", "local-outstation-trips.webp"),
+  "Hourly & Full-Day Options": serviceBenefitPath("acting-driver", "hourly-full-day-options.webp"),
+  "Late-Night Support": serviceBenefitPath("acting-driver", "late-night-support.webp"),
+  "Personal & Business Travel": serviceBenefitPath("acting-driver", "personal-business-travel.webp"),
+};
+const autoBenefitIcons: Record<string, string> = {
+  "On-Time Rides": serviceBenefitPath("auto", "on-time-rides.webp"),
+  "No Hidden or Extra Charges": serviceBenefitPath("auto", "no-hidden-extra-charges.webp"),
+  "No Last-Minute Cancellations": serviceBenefitPath("shared", "No Last-Minute Cancellations.webp"),
+  "Verified Drivers": serviceBenefitPath("shared", "Verified Drivers.webp"),
+  "24×7 Customer Support": serviceBenefitPath("shared", "24×7 Customer Support.webp"),
+  "SOS & Trip Sharing": serviceBenefitPath("auto", "sos-trip-sharing.webp"),
+};
+const localTaxiBenefitIcons: Record<string, string> = {
+  "On-Time Rides": serviceBenefitPath("shared", "On-Time Rides .webp"),
+  "No Hidden or Extra Charges": serviceBenefitPath("auto", "no-hidden-extra-charges.webp"),
+  "No Last-Minute Cancellations": serviceBenefitPath("shared", "No Last-Minute Cancellations.webp"),
+  "Verified Drivers": serviceBenefitPath("shared", "Verified Drivers.webp"),
+  "24×7 Customer Support": serviceBenefitPath("shared", "24×7 Customer Support.webp"),
+  "SOS & Trip Sharing": serviceBenefitPath("auto", "sos-trip-sharing.webp"),
+};
+const airportBenefitIcons: Record<string, string> = {
+  "On-Time Airport Pickups & Drops": serviceBenefitPath("shared", "On-Time Rides .webp"),
+  "Luggage-Friendly Rides": serviceBenefitPath("shared", "Multiple Cab Options.webp"),
+  "Verified Drivers": serviceBenefitPath("shared", "Verified Drivers.webp"),
+  "No Last-Minute Cancellations": serviceBenefitPath("shared", "No Last-Minute Cancellations.webp"),
+  "24x7 Customer Support": serviceBenefitPath("shared", "24×7 Customer Support.webp"),
+  "Multiple Cab Options": serviceBenefitPath("shared", "Multiple Cab Options.webp"),
+};
+const outstationBenefitIcons: Record<string, string> = {
+  "On-Time Pickups": serviceBenefitPath("shared", "On-Time Rides .webp"),
+  "Experienced Drivers": serviceBenefitPath("shared", "Verified Drivers.webp"),
+  "Flexible Pickups": serviceBenefitPath("outstation", "Flexible Pickups.webp"),
+  "No Last-Minute Cancellations": serviceBenefitPath("outstation", "No Last-Minute Cancellations.webp"),
+  "Clear Fares": serviceBenefitPath("outstation", "Clear Fares.webp"),
+  "24x7 Customer Support": serviceBenefitPath("shared", "24×7 Customer Support.webp"),
+};
+const parcelBenefitIcons: Record<string, string> = {
+  "On-Time Delivery": serviceBenefitPath("shared", "On-Time Rides .webp"),
+  "No Hidden or Extra Charges": serviceBenefitPath("parcel", "no-hidden-extra-charges.webp"),
+  "No Last-Minute Cancellations": serviceBenefitPath("shared", "No Last-Minute Cancellations.webp"),
+  "Verified Delivery Partners": serviceBenefitPath("shared", "Verified Drivers.webp"),
+  "24×7 Customer Support": serviceBenefitPath("shared", "24×7 Customer Support.webp"),
+  "Track Your Order": serviceBenefitPath("parcel", "track-your-order.webp"),
+};
 const actingDriverReasons = [
   {
     title: "Long Highway Drives",
@@ -1419,7 +1469,7 @@ export function ServicePage() {
               <div>
                 {!isParcelDeliveryService && !isAutoService && (
                   <>
-                    <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4">
+                    <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
                       {isLocalTaxiService
                         ? "Benefits Of Our Local Cab Service"
                         : isAirportTaxiService
@@ -1439,9 +1489,48 @@ export function ServicePage() {
                             ? outstationTaxiBenefits
                             : isActingDriverService
                               ? actingDriverBenefits
+                              : isAutoService
+                                ? autoServiceBenefits
                               : service.features).map((f) => (
                         <div key={f} className="flex items-center gap-3 p-3 rounded-lg bg-muted/50">
-                          <CheckCircle className="w-5 h-5 text-green-600 shrink-0" />
+                          {isLocalTaxiService ? (
+                            <img
+                              src={localTaxiBenefitIcons[f]}
+                              alt=""
+                              aria-hidden="true"
+                              className="h-10 w-10 shrink-0 object-contain"
+                            />
+                          ) : isAirportTaxiService ? (
+                            <img
+                              src={airportBenefitIcons[f]}
+                              alt=""
+                              aria-hidden="true"
+                              className="h-10 w-10 shrink-0 object-contain"
+                            />
+                          ) : isActingDriverService ? (
+                            <img
+                              src={actingDriverBenefitIcons[f]}
+                              alt=""
+                              aria-hidden="true"
+                              className="h-10 w-10 shrink-0 object-contain"
+                            />
+                          ) : isOutstationTaxiService ? (
+                            <img
+                              src={outstationBenefitIcons[f]}
+                              alt=""
+                              aria-hidden="true"
+                              className="h-10 w-10 shrink-0 object-contain"
+                            />
+                          ) : isAutoService ? (
+                            <img
+                              src={autoBenefitIcons[f]}
+                              alt=""
+                              aria-hidden="true"
+                              className="h-10 w-10 shrink-0 object-contain"
+                            />
+                          ) : (
+                            <CheckCircle className="w-5 h-5 text-green-600 shrink-0" />
+                          )}
                           <span className="text-sm font-medium">{f}</span>
                         </div>
                       ))}
@@ -1522,7 +1611,12 @@ export function ServicePage() {
                       <div className="grid gap-3 sm:grid-cols-2">
                         {autoServiceBenefits.map((benefit) => (
                           <div key={benefit} className="flex items-center gap-3 rounded-lg bg-muted/50 p-3">
-                            <CheckCircle className="h-5 w-5 shrink-0 text-green-600" />
+                            <img
+                              src={autoBenefitIcons[benefit]}
+                              alt=""
+                              aria-hidden="true"
+                              className="h-10 w-10 shrink-0 object-contain"
+                            />
                             <span className="text-sm font-medium">{benefit}</span>
                           </div>
                         ))}
@@ -1586,7 +1680,12 @@ export function ServicePage() {
                       <div className="grid gap-3 sm:grid-cols-2">
                         {parcelDeliveryBenefits.map((benefit) => (
                           <div key={benefit} className="flex items-center gap-3 rounded-lg bg-muted/50 p-3">
-                            <CheckCircle className="h-5 w-5 shrink-0 text-green-600" />
+                            <img
+                              src={parcelBenefitIcons[benefit]}
+                              alt=""
+                              aria-hidden="true"
+                              className="h-10 w-10 shrink-0 object-contain"
+                            />
                             <span className="text-sm font-medium">{benefit}</span>
                           </div>
                         ))}
@@ -2127,7 +2226,7 @@ export function ServicePage() {
             {!isParcelDeliveryService && (
               <div className={isLocalTaxiService || isOutstationTaxiService || isActingDriverService || isAutoService ? "grid gap-8" : ""}>
                 <div>
-                  <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4">
+                  <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
                     {isLocalTaxiService
                       ? "Local Taxi Service Available Across Tamil Nadu"
                       : isOutstationTaxiService
