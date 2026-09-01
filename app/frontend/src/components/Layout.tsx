@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, Phone, Mail, ChevronDown, MapPin, Car, Plane, Navigation, User, Package, Bike, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cities, services, companyInfo } from "@/data/siteData";
-import RootCabsAnimatedLogo from "@/components/RootCabsAnimatedLogo";
 
 const serviceIcons: Record<string, React.ReactNode> = {
   "local-taxi": <Car className="w-4 h-4" />,
@@ -51,7 +50,11 @@ function Navbar() {
         <div className="max-w-screen-xl mx-auto px-4 flex items-center justify-between h-24">
           {/* Logo */}
           <Link to="/" className="flex items-center cursor-pointer">
-            <RootCabsAnimatedLogo />
+            <img
+              src="/assets/root-cabs-logo-animation.gif"
+              alt="Root Cabs"
+              className="h-14 w-auto max-w-[150px] object-contain"
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -189,7 +192,7 @@ function Footer() {
         <div>
           <div className="flex items-center gap-2 mb-4">
             <img
-              src="/assets/root-cabs-logo.webp"
+              src="/assets/root-cabs-logo-animation.gif"
               alt="Root Cabs"
               className="h-12 w-auto max-w-[130px] object-contain"
             />
