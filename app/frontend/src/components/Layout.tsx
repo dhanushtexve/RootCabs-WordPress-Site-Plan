@@ -30,7 +30,7 @@ function Navbar() {
     {
       label: "Services",
       path: "/services",
-      children: services.map((s) => ({ label: s.name, path: `/services/${s.slug}` })),
+      children: services.map((s) => ({ label: s.slug === "auto" ? "Auto" : s.name, path: `/services/${s.slug}` })),
     },
     {
       label: "Cities",

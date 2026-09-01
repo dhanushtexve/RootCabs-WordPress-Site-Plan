@@ -93,15 +93,15 @@ export default function FareCalculator({
     >
       <div className="flex items-center gap-2 mb-4">
         <Calculator className="w-5 h-5 text-primary" />
-        <h3
+        <h2
           className={cn(
             "font-heading font-semibold",
-            compact ? "text-lg" : "text-xl",
+            "text-2xl md:text-3xl",
             isLocalTaxiVariant && "text-[#1E2A6E]"
           )}
         >
           Fare Calculator
-        </h3>
+        </h2>
       </div>
 
       <div
