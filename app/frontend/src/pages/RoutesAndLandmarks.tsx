@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+﻿import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { MapPin, ArrowRight, Car, Clock, Navigation, ChevronRight, Phone, CheckCircle, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -144,8 +144,14 @@ export function RoutePage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12 md:py-16">
-        <div className="max-w-screen-xl mx-auto px-4">
+      <section className="relative overflow-hidden text-white py-12 md:py-16" style={{
+        backgroundImage: "url('/assets/banner-root-cabs.png')",
+        backgroundSize: "100% auto",
+        backgroundPosition: "center top",
+        backgroundRepeat: "no-repeat",
+      }}>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 max-w-screen-xl mx-auto px-4">
           <div className="flex items-center gap-2 text-sm text-gray-400 mb-4">
             <Link to="/" className="hover:text-white cursor-pointer">Home</Link>
             <ChevronRight className="w-3 h-3" />
@@ -420,8 +426,14 @@ export function LandmarkPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12">
-        <div className="max-w-screen-xl mx-auto px-4">
+      <section className="relative overflow-hidden text-white py-12" style={{
+        backgroundImage: "url('/assets/banner-root-cabs.png')",
+        backgroundSize: "100% auto",
+        backgroundPosition: "center top",
+        backgroundRepeat: "no-repeat",
+      }}>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 max-w-screen-xl mx-auto px-4">
           <div className="flex items-center gap-2 text-sm text-gray-400 mb-4">
             <Link to="/" className="hover:text-white cursor-pointer">Home</Link>
             <ChevronRight className="w-3 h-3" />

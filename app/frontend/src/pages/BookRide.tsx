@@ -1063,8 +1063,14 @@ export default function BookRide() {
   return (
     <div>
       {/* Header */}
-      <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] py-8 text-white md:py-10">
-        <div className="max-w-screen-xl mx-auto px-4">
+      <section className="relative min-h-[260px] overflow-hidden py-8 text-white md:min-h-[320px] md:py-10" style={{
+        backgroundImage: "url('/assets/banner-root-cabs.png')",
+        backgroundSize: "100% auto",
+        backgroundPosition: "center top",
+        backgroundRepeat: "no-repeat",
+      }}>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 max-w-screen-xl mx-auto px-4">
           <PageBreadcrumb
             className="mb-4 text-white/70"
             items={[
@@ -2117,6 +2123,7 @@ export default function BookRide() {
     </div>
   );
 }
+
 
 
 

@@ -47,7 +47,7 @@ const cityCardSummaryMap: Record<string, string> = {
 };
 
 const cityImageMap: Record<string, string> = {
-  Chennai: "/assets/cities/chennai.webp",
+  Chennai: "/assets/chennai-1.webp",
   Vellore: "/assets/cities/vellore.webp",
   Coimbatore: "/assets/cities/coimbatore.webp",
   Madurai: "/assets/cities/madurai.webp",
@@ -61,7 +61,7 @@ const cityImageMap: Record<string, string> = {
 
 const chennaiPickupImages: Record<string, string> = {
   "Chennai Airport": "/assets/chennai-airport.webp",
-  "Chennai Central Railway Station": "/assets/chennai-central.webp",
+  "Chennai Central Railway Station": "/assets/chennai-1.webp",
   "Marina Beach": "/assets/chennai-marina.webp",
   "T. Nagar": "/assets/chennai-t-nagar.webp",
   "Koyambedu": "/assets/chennai-koyambedu.webp",
@@ -642,8 +642,14 @@ export function CitiesHub() {
 
   return (
     <div>
-      <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] py-8 text-white md:py-10">
-        <div className="max-w-screen-xl mx-auto px-4">
+      <section className="relative min-h-[280px] overflow-hidden py-8 text-white md:min-h-[360px] md:py-10" style={{
+        backgroundImage: "url('/assets/banner-root-cabs.png')",
+        backgroundSize: "100% auto",
+        backgroundPosition: "center top",
+        backgroundRepeat: "no-repeat",
+      }}>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 max-w-screen-xl mx-auto px-4">
           <PageBreadcrumb
             className="mb-4 text-white/70"
             items={[
@@ -652,7 +658,7 @@ export function CitiesHub() {
             ]}
           />
           <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Cities We Serve</h1>
-          <p className="text-gray-300 max-w-none md:whitespace-nowrap">
+          <p className="max-w-3xl text-gray-300">
             Root Cabs brings dependable taxi services to 10+ cities across Tamil Nadu, making local, one-way and outstation travel easier to book.
           </p>
         </div>
@@ -1432,7 +1438,7 @@ export function CityPage({
         ? {
           title: "Taxi Service in Chennai | Cab Booking 24/7 - Root Cabs",
           description:
-            "Root Cabs offers the best taxi service in Chennai  reliable cab service, fixed fares from ?11/km, verified drivers, no surge pricing, 24/7 booking.",
+            "Root Cabs offers the best taxi service in Chennai  reliable cab service, fixed fares from ₹11/km, verified drivers, no surge pricing, 24/7 booking.",
           url: canonicalUrlOverride ?? "https://rootcabs.com/taxi-in-chennai",
           image: "https://rootcabs.com/assets/root-cabs-logo.webp",
         }
@@ -1668,8 +1674,14 @@ export function CityPage({
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12 md:py-16">
-        <div className="max-w-screen-xl mx-auto px-4">
+      <section className="relative min-h-[360px] overflow-hidden py-8 text-white md:min-h-[440px] md:py-10" style={{
+        backgroundImage: "url('/assets/banner-root-cabs.png')",
+        backgroundSize: "100% auto",
+        backgroundPosition: "center top",
+        backgroundRepeat: "no-repeat",
+      }}>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 max-w-screen-xl mx-auto px-4">
           <PageBreadcrumb
             className="mb-4 text-white/70"
             items={[
@@ -1681,7 +1693,7 @@ export function CityPage({
           <h1 className="font-heading text-3xl md:text-4xl font-bold mb-4">
             {isVellore ? "Your Go-To Taxi Service in Vellore - Whenever You Need a Ride" : city.tagline}
           </h1>
-          <p className={`text-gray-300 text-lg ${isChennai || isVellore ? "max-w-5xl" : "max-w-2xl"}`}>
+          <p className="max-w-3xl text-lg text-gray-300">
             {isVellore
               ? "From CMC appointments and VIT travel to railway station pickups and outstation trips, Root Cabs makes travelling around Vellore easier with clear fares and convenient booking."
               : city.description}
@@ -1703,7 +1715,9 @@ export function CityPage({
 
       <div className="max-w-screen-xl mx-auto px-4 py-10 space-y-12">
         {/* Fare Calculator */}
-        <FareCalculator defaultFrom={city.name} showBookNowButton={isChennai || isVellore} />
+        <section className={isChennai || isVellore ? "relative z-20 -mt-20 md:-mt-24" : ""}>
+          <FareCalculator defaultFrom={city.name} showBookNowButton={isChennai || isVellore} />
+        </section>
 
         {/* Services */}
         {isChennai ? (
@@ -2109,8 +2123,14 @@ export function CityServicePage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12">
-        <div className="max-w-screen-xl mx-auto px-4">
+      <section className="relative min-h-[360px] overflow-hidden py-8 text-white md:min-h-[440px] md:py-10" style={{
+        backgroundImage: "url('/assets/banner-root-cabs.png')",
+        backgroundSize: "100% auto",
+        backgroundPosition: "center top",
+        backgroundRepeat: "no-repeat",
+      }}>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 max-w-screen-xl mx-auto px-4">
           <PageBreadcrumb
             className="mb-4 text-white/70"
             items={[
@@ -2240,6 +2260,7 @@ export function CityServicePage() {
     </div>
   );
 }
+
 
 
 

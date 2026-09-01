@@ -246,8 +246,14 @@ export function SupportPage() {
 
   return (
     <div>
-      <section className="bg-[#1E2A6E] py-8 text-white md:py-10">
-        <div className="mx-auto max-w-screen-xl px-4">
+      <section className="relative min-h-[280px] overflow-hidden py-8 text-white md:min-h-[360px] md:py-10" style={{
+        backgroundImage: "url('/assets/banner-root-cabs.png')",
+        backgroundSize: "100% auto",
+        backgroundPosition: "center top",
+        backgroundRepeat: "no-repeat",
+      }}>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 mx-auto max-w-screen-xl px-4">
           <PageBreadcrumb
             className="mb-4 text-white/70"
             items={[
@@ -256,7 +262,7 @@ export function SupportPage() {
             ]}
           />
           <h1 className="mb-2 font-heading text-3xl font-bold md:text-4xl">Support & Help Centre</h1>
-          <p className="max-w-4xl text-sm leading-relaxed text-white/80 md:text-base">
+          <p className="max-w-3xl text-sm leading-relaxed text-white/80 md:text-base">
             Need help with a booking, payment, ride update or service request? Find quick answers here or contact the Root Cabs support team for assistance.
           </p>
         </div>
@@ -467,6 +473,7 @@ export function SupportPage() {
     </div>
   );
 }
+
 
 
 

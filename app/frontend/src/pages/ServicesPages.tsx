@@ -843,7 +843,7 @@ export function ServicesHub() {
       name: "Local Taxi",
       description: "A reliable local taxi service for daily travel within the city.",
       features: ["Quick ride confirmation", "Verified drivers", "Comfortable vehicles"],
-      price: "From ₹ 90/2 Km",
+      price: "From ₹90/2 Km",
       iconSrc: assetPath("/assets/home-service-local.webp"),
       href: "/services/local-taxi",
     },
@@ -851,7 +851,7 @@ export function ServicesHub() {
       name: "Outstation Taxi",
       description: "Comfortable round-trip travel for business, family visits and holidays.",
       features: ["Multiple vehicle options", "Experienced drivers", "Suitable for long journeys"],
-      price: "From ₹ 300/20 Km",
+      price: "From ₹300/20 Km",
       iconSrc: assetPath("/assets/home-service-outstation.webp"),
       href: "/services/outstation",
     },
@@ -859,7 +859,7 @@ export function ServicesHub() {
       name: "Acting Driver",
       description: "Book a professional car rental with driver service for your own vehicle.",
       features: ["Trained and verified drivers", "Local and outstation trips", "Available for events and parties"],
-      price: "From ₹ 500/100 Km",
+      price: "From ₹500/100 Km",
       iconSrc: assetPath("/assets/home-service-acting-driver.webp"),
       href: "/services/acting-driver",
     },
@@ -867,7 +867,7 @@ export function ServicesHub() {
       name: "One-Way Taxi",
       description: "Travel to your destination without paying return charges.",
       features: ["Pay only for one way", "Comfortable long-distance travel", "Clear fare details"],
-      price: "From ₹ 300/20 Km",
+      price: "From ₹300/20 Km",
       iconSrc: assetPath("/assets/home-service-one-way.webp"),
       href: "/book-ride",
     },
@@ -875,7 +875,7 @@ export function ServicesHub() {
       name: "Auto Rickshaw",
       description: "Convenient auto rides for short trips and everyday commuting.",
       features: ["Easy booking", "App fare is the final fare", "No bargaining with drivers"],
-      price: "From ₹ 100/ 2 Km",
+      price: "From ₹100/2 Km",
       iconSrc: assetPath("/assets/home-service-auto.webp"),
       href: "/services/auto",
     },
@@ -883,7 +883,7 @@ export function ServicesHub() {
       name: "Bike Taxi",
       description: "A quick and practical option for solo city travel.",
       features: ["Ideal for short distances", "Easy pickup", "Affordable daily rides"],
-      price: "From ₹ 25/2km",
+      price: "From ₹25/2km",
       iconSrc: assetPath("/assets/home-service-bike-taxi.webp"),
       href: "/book-ride",
     },
@@ -891,7 +891,7 @@ export function ServicesHub() {
       name: "Hourly Package",
       description: "Keep a cab and driver with you for multiple stops within a selected time.",
       features: ["Flexible travel hours", "Multiple stops allowed", "Suitable for errands and meetings"],
-      price: "From ₹ 100/3 Km",
+      price: "From ₹100/3 Km",
       iconSrc: assetPath("/assets/chennai-service-hourly-package.webp"),
       href: "/book-ride",
     },
@@ -899,7 +899,7 @@ export function ServicesHub() {
       name: "Parcel Delivery",
       description: "Send documents and small packages safely across the city.",
       features: ["Doorstep pickup", "Live delivery updates", "Quick and secure service"],
-      price: "From ₹ 50/1km",
+      price: "From ₹50/1km",
       iconSrc: assetPath("/assets/chennai-service-parcel.webp"),
       href: "/services/parcel-delivery",
     },
@@ -908,8 +908,14 @@ export function ServicesHub() {
 
   return (
     <div>
-      <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] py-8 text-white md:py-10">
-        <div className="max-w-screen-xl mx-auto px-4">
+      <section className="relative min-h-[260px] overflow-hidden py-8 text-white md:min-h-[320px] md:py-10" style={{
+        backgroundImage: "url('/assets/banner-root-cabs.png')",
+        backgroundSize: "100% auto",
+        backgroundPosition: "center top",
+        backgroundRepeat: "no-repeat",
+      }}>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 max-w-screen-xl mx-auto px-4">
           <PageBreadcrumb
             className="mb-4 text-white/70"
             items={[
@@ -1207,8 +1213,14 @@ export function ServicePage() {
     <div>
       {/* Hero */}
       {isLocalTaxiService ? (
-        <section className="bg-[#273588] pb-20 pt-12 text-white md:pb-24 md:pt-14">
-          <div className="mx-auto max-w-screen-xl px-4">
+        <section className="relative min-h-[360px] overflow-hidden py-8 text-white md:min-h-[440px] md:py-10" style={{
+          backgroundImage: "url('/assets/banner-root-cabs.png')",
+          backgroundSize: "100% auto",
+          backgroundPosition: "center top",
+          backgroundRepeat: "no-repeat",
+        }}>
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="relative z-10 mx-auto max-w-screen-xl px-4">
             <PageBreadcrumb
               className="mb-5 text-white/70"
               items={[
@@ -1217,15 +1229,15 @@ export function ServicePage() {
                 { label: "Local Taxi Service" },
               ]}
             />
-            <div className="mb-5 max-w-6xl">
-              <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight md:whitespace-nowrap">
+            <div className="mb-5 max-w-3xl">
+              <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
                 Local Taxi Service for Everyday Travel
               </h1>
               <p className="mt-3 text-sm font-semibold text-white/78">
-                Starting at ₹ 100 · Available across multiple cities in Tamil Nadu
+                Starting at ₹100 · Available across multiple cities in Tamil Nadu
               </p>
             </div>
-            <p className="max-w-5xl text-base leading-7 text-white/82 md:text-lg">
+            <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
               Need a comfortable ride for work, shopping, hospital visits, railway station pickups, or other everyday
               trips? Root Cabs makes it easy to find a local taxi near me with clear fares, verified
               drivers, and simple booking.
@@ -1246,8 +1258,14 @@ export function ServicePage() {
           </div>
         </section>
       ) : isAirportTaxiService ? (
-        <section className="bg-[#273588] pb-20 pt-12 text-white md:pb-24 md:pt-14">
-          <div className="mx-auto max-w-screen-xl px-4">
+        <section className="relative min-h-[360px] overflow-hidden py-8 text-white md:min-h-[440px] md:py-10" style={{
+          backgroundImage: "url('/assets/banner-root-cabs.png')",
+          backgroundSize: "100% auto",
+          backgroundPosition: "center top",
+          backgroundRepeat: "no-repeat",
+        }}>
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="relative z-10 mx-auto max-w-screen-xl px-4">
             <PageBreadcrumb
               className="mb-5 text-white/70"
               items={[
@@ -1256,7 +1274,7 @@ export function ServicePage() {
                 { label: "Airport Taxi" },
               ]}
             />
-            <div className="mb-5 max-w-6xl">
+            <div className="mb-5 max-w-3xl">
               <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
                 Airport Taxi Service for Stress-Free Transfers
               </h1>
@@ -1264,7 +1282,7 @@ export function ServicePage() {
                 Starting at ₹499. Available for airport pickups and drop-offs
               </p>
             </div>
-            <p className="max-w-5xl text-base leading-7 text-white/82 md:text-lg">
+            <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
               Heading to the airport or arriving after a long flight? Root Cabs makes it easy to find an{" "}
               airport taxi near me with convenient pickups, clear fares, and dependable rides for your
               airport journey.
@@ -1285,8 +1303,14 @@ export function ServicePage() {
           </div>
         </section>
       ) : isOutstationTaxiService ? (
-        <section className="bg-[#273588] pb-20 pt-12 text-white md:pb-24 md:pt-14">
-          <div className="mx-auto max-w-screen-xl px-4">
+        <section className="relative min-h-[360px] overflow-hidden py-8 text-white md:min-h-[440px] md:py-10" style={{
+          backgroundImage: "url('/assets/banner-root-cabs.png')",
+          backgroundSize: "100% auto",
+          backgroundPosition: "center top",
+          backgroundRepeat: "no-repeat",
+        }}>
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="relative z-10 mx-auto max-w-screen-xl px-4">
             <PageBreadcrumb
               className="mb-5 text-white/70"
               items={[
@@ -1295,7 +1319,7 @@ export function ServicePage() {
                 { label: "Outstation Taxi" },
               ]}
             />
-            <div className="mb-5 max-w-6xl">
+            <div className="mb-5 max-w-3xl">
               <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
                 Outstation Taxi for Comfortable Long-Distance Travel
               </h1>
@@ -1303,7 +1327,7 @@ export function ServicePage() {
                 Starting at ₹300. Available for long-distance travel across major cities
               </p>
             </div>
-            <p className="max-w-5xl text-base leading-7 text-white/82 md:text-lg">
+            <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
               Planning a trip outside the city? Root Cabs makes it easy to find outstation cabs near me{" "}
               with clear fares, verified drivers, and vehicle options for family trips, business travel, weekend
               journeys, and other long-distance plans.
@@ -1324,8 +1348,14 @@ export function ServicePage() {
           </div>
         </section>
       ) : isActingDriverService ? (
-        <section className="bg-[#273588] pb-20 pt-12 text-white md:pb-24 md:pt-14">
-          <div className="mx-auto max-w-screen-xl px-4">
+        <section className="relative min-h-[360px] overflow-hidden py-8 text-white md:min-h-[440px] md:py-10" style={{
+          backgroundImage: "url('/assets/banner-root-cabs.png')",
+          backgroundSize: "100% auto",
+          backgroundPosition: "center top",
+          backgroundRepeat: "no-repeat",
+        }}>
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="relative z-10 mx-auto max-w-screen-xl px-4">
             <PageBreadcrumb
               className="mb-5 text-white/70"
               items={[
@@ -1334,7 +1364,7 @@ export function ServicePage() {
                 { label: "Acting Driver" },
               ]}
             />
-            <div className="mb-5 max-w-6xl">
+            <div className="mb-5 max-w-3xl">
               <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
                 Professional Acting Driver for Your Own Car
               </h1>
@@ -1342,7 +1372,7 @@ export function ServicePage() {
                 Starting at ₹200. Available for local and outstation travel
               </p>
             </div>
-            <p className="max-w-5xl text-base leading-7 text-white/82 md:text-lg">
+            <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
               Looking for an acting driver near me when you would rather not drive yourself? Root
               Cabs connects you with verified drivers for late-night returns, family functions, hospital visits,
               business travel, and longer journeys in your own car.
@@ -1363,8 +1393,14 @@ export function ServicePage() {
           </div>
         </section>
       ) : isParcelDeliveryService ? (
-        <section className="bg-[#273588] pb-20 pt-12 text-white md:pb-24 md:pt-14">
-          <div className="mx-auto max-w-screen-xl px-4">
+        <section className="relative min-h-[360px] overflow-hidden py-8 text-white md:min-h-[440px] md:py-10" style={{
+          backgroundImage: "url('/assets/banner-root-cabs.png')",
+          backgroundSize: "100% auto",
+          backgroundPosition: "center top",
+          backgroundRepeat: "no-repeat",
+        }}>
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="relative z-10 mx-auto max-w-screen-xl px-4">
             <PageBreadcrumb
               className="mb-5 text-white/70"
               items={[
@@ -1373,7 +1409,7 @@ export function ServicePage() {
                 { label: "Parcel Delivery" },
               ]}
             />
-            <div className="mb-5 max-w-6xl">
+            <div className="mb-5 max-w-3xl">
               <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
                 Parcel Service for Quick and Easy Deliveries
               </h1>
@@ -1381,7 +1417,7 @@ export function ServicePage() {
                 Starting at ₹45. Available for quick city deliveries
               </p>
             </div>
-            <p className="max-w-5xl text-base leading-7 text-white/82 md:text-lg">
+            <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
               Need to send documents, medicines, small packages, or everyday essentials across the city? Root Cabs
               makes it easy to find a parcel service near me with convenient pickup, clear charges,
               and dependable delivery for your day-to-day needs.
@@ -1402,8 +1438,14 @@ export function ServicePage() {
           </div>
         </section>
       ) : isAutoService ? (
-        <section className="bg-[#273588] pb-20 pt-12 text-white md:pb-24 md:pt-14">
-          <div className="mx-auto max-w-screen-xl px-4">
+        <section className="relative min-h-[360px] overflow-hidden py-8 text-white md:min-h-[440px] md:py-10" style={{
+          backgroundImage: "url('/assets/banner-root-cabs.png')",
+          backgroundSize: "100% auto",
+          backgroundPosition: "center top",
+          backgroundRepeat: "no-repeat",
+        }}>
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="relative z-10 mx-auto max-w-screen-xl px-4">
             <PageBreadcrumb
               className="mb-5 text-white/70"
               items={[
@@ -1412,7 +1454,7 @@ export function ServicePage() {
                 { label: "Auto" },
               ]}
             />
-            <div className="mb-5 max-w-6xl">
+            <div className="mb-5 max-w-3xl">
               <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
                 Auto Rides for Everyday City Travel
               </h1>
@@ -1420,7 +1462,7 @@ export function ServicePage() {
                 Starting at ₹49 · Available for short city trips
               </p>
             </div>
-            <p className="max-w-5xl text-base leading-7 text-white/82 md:text-lg">
+            <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
               For work, shopping, station pickups, hospital visits, or nearby travel, Root Cabs makes it easy to
               find and book auto near me with clear fares, verified drivers, and simple booking.
             </p>
@@ -1440,8 +1482,14 @@ export function ServicePage() {
           </div>
         </section>
       ) : (
-        <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12 md:py-16">
-          <div className="max-w-screen-xl mx-auto px-4">
+        <section className="relative min-h-[360px] overflow-hidden py-8 text-white md:min-h-[440px] md:py-10" style={{
+          backgroundImage: "url('/assets/banner-root-cabs.png')",
+          backgroundSize: "100% auto",
+          backgroundPosition: "center top",
+          backgroundRepeat: "no-repeat",
+        }}>
+          <div className="absolute inset-0 bg-black/40" />
+          <div className="relative z-10 max-w-screen-xl mx-auto px-4">
             <PageBreadcrumb
               className="mb-4 text-white/70"
               items={[
@@ -1598,7 +1646,7 @@ export function ServicePage() {
                             "Pickup depends on roadside availability",
                           ].map((item) => (
                             <div key={item} className="flex items-start gap-3">
-                              <span className="mt-0.5 text-base font-semibold text-[#D64545]">✕</span>
+                              <span className="mt-0.5 text-base font-semibold text-[#D64545]">×</span>
                               <span>{item}</span>
                             </div>
                           ))}
@@ -3634,13 +3682,14 @@ export function ServicePage() {
             description: service.description,
             provider: { "@type": "Organization", name: "Root Cabs" },
             areaServed: availableCities.map((c) => ({ "@type": "City", name: c.name })),
-            offers: { "@type": "Offer", price: service.startingPrice.replace("₹", ""), priceCurrency: "INR" },
+            offers: { "@type": "Offer", price: service.startingPrice.replace("?", ""), priceCurrency: "INR" },
           }),
         }}
       />
     </div>
   );
 }
+
 
 
 

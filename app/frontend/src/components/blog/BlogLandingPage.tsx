@@ -182,8 +182,14 @@ const BlogLandingPage = () => {
 
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(30,42,110,0.12),_transparent_30%),linear-gradient(180deg,_#f8fafc_0%,_#eef2ff_100%)] text-slate-900">
-      <section className="bg-gradient-to-br from-[#1E2A6E] via-[#23347d] to-[#2E3A8C] text-white">
-        <div className="mx-auto max-w-screen-xl px-4 py-8 md:py-10">
+      <section className="relative min-h-[280px] overflow-hidden text-white md:min-h-[360px]" style={{
+        backgroundImage: "url('/assets/banner-root-cabs.png')",
+        backgroundSize: "100% auto",
+        backgroundPosition: "center top",
+        backgroundRepeat: "no-repeat",
+      }}>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 mx-auto max-w-screen-xl px-4 py-8 md:py-10">
           <PageBreadcrumb
             className="mb-4 text-white/70"
             items={[

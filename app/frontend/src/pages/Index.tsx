@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Car, MapPin, Star, Shield, Clock, Phone, CheckCircle, ArrowRight, Users, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -409,7 +409,13 @@ export default function Index() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-[#273588] text-white">
+      <section className="relative overflow-hidden text-white" style={{
+        backgroundImage: "url('/assets/banner-root-cabs.png')",
+        backgroundSize: "100% auto",
+        backgroundPosition: "center top",
+        backgroundRepeat: "no-repeat",
+      }}>
+        <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 mx-auto max-w-screen-xl px-4 pb-14 pt-10 md:pb-20 md:pt-12">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.8fr)] lg:items-center">
             <div className="max-w-3xl">

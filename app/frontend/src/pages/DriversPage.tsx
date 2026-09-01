@@ -476,8 +476,14 @@ export function DriversPage() {
 
   return (
     <div>
-      <section className="bg-gradient-to-br from-[#1E2A6E] to-[#24377F] text-white">
-        <div className="max-w-screen-xl mx-auto px-4 py-8 md:py-10">
+      <section className="relative overflow-hidden text-white" style={{
+        backgroundImage: "url('/assets/banner-root-cabs.png')",
+        backgroundSize: "100% auto",
+        backgroundPosition: "center top",
+        backgroundRepeat: "no-repeat",
+      }}>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 max-w-screen-xl mx-auto px-4 py-8 md:py-10">
           <div className="grid gap-8 lg:grid-cols-[1.2fr_.8fr] lg:items-stretch lg:gap-4">
             <div className="max-w-2xl">
               <PageBreadcrumb
@@ -1194,6 +1200,7 @@ export function DriversPage() {
     </div>
   );
 }
+
 
 
 

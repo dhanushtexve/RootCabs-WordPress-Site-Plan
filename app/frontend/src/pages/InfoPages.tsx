@@ -212,8 +212,14 @@ export function BusinessPage() {
 
   return (
     <div>
-      <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] py-8 text-white md:py-10">
-        <div className="max-w-screen-xl mx-auto px-4 text-left">
+      <section className="relative min-h-[280px] overflow-hidden py-8 text-white md:min-h-[360px] md:py-10" style={{
+        backgroundImage: "url('/assets/banner-root-cabs.png')",
+        backgroundSize: "100% auto",
+        backgroundPosition: "center top",
+        backgroundRepeat: "no-repeat",
+      }}>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 max-w-screen-xl mx-auto px-4 text-left">
           <PageBreadcrumb
             className="mb-4 text-white/70"
             items={[
@@ -592,8 +598,14 @@ export function BlogPage() {
 
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(30,42,110,0.08),_transparent_36%),linear-gradient(180deg,_#f8fafc_0%,_#eef2ff_100%)] text-slate-900">
-      <section className="bg-gradient-to-br from-[#1E2A6E] via-[#25357f] to-[#2E3A8C] text-white">
-        <div className="mx-auto max-w-screen-xl px-4 py-8 md:py-10">
+      <section className="relative overflow-hidden text-white" style={{
+        backgroundImage: "url('/assets/banner-root-cabs.png')",
+        backgroundSize: "100% auto",
+        backgroundPosition: "center top",
+        backgroundRepeat: "no-repeat",
+      }}>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 mx-auto max-w-screen-xl px-4 py-8 md:py-10">
           <PageBreadcrumb
             className="mb-4 text-white/70"
             items={[
@@ -1111,8 +1123,14 @@ export function AboutPage() {
 
   return (
     <div>
-      <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] py-8 text-white md:py-10">
-        <div className="max-w-screen-xl mx-auto px-4 text-left">
+      <section className="relative min-h-[280px] overflow-hidden py-8 text-white md:min-h-[360px] md:py-10" style={{
+        backgroundImage: "url('/assets/banner-root-cabs.png')",
+        backgroundSize: "100% auto",
+        backgroundPosition: "center top",
+        backgroundRepeat: "no-repeat",
+      }}>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 max-w-screen-xl mx-auto px-4 text-left">
           <PageBreadcrumb
             className="mb-4 text-white/70"
             items={[
@@ -1121,7 +1139,7 @@ export function AboutPage() {
             ]}
           />
           <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">About Root Cabs</h1>
-          <p className="mt-3 max-w-5xl text-base leading-7 text-white/80 md:text-lg">
+          <p className="mt-3 max-w-3xl text-base leading-7 text-white/80 md:text-lg">
             Root Cabs operates as a unit of Texve Innovations Pvt. Ltd., offering a unified range of mobility and transport services across Tamil Nadu. Through a single platform, customers can access multiple options for everyday travel, intercity journeys and other transport needs.
           </p>
         </div>
@@ -2007,8 +2025,14 @@ function PolicyDocumentPage({ policyKey }: { policyKey: string }) {
 
   return (
     <div>
-      <section className="bg-gradient-to-br from-[#1E2A6E] to-[#2E3A8C] text-white py-12">
-        <div className="max-w-screen-xl mx-auto px-4">
+      <section className="relative overflow-hidden text-white py-12" style={{
+        backgroundImage: "url('/assets/banner-root-cabs.png')",
+        backgroundSize: "100% auto",
+        backgroundPosition: "center top",
+        backgroundRepeat: "no-repeat",
+      }}>
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 max-w-screen-xl mx-auto px-4">
           <PageBreadcrumb
             className="mb-4 text-white/70"
             items={[
@@ -2080,6 +2104,7 @@ export function TermsOfUsePage() {
 export function WalletPolicyPage() {
   return <PolicyDocumentPage policyKey="wallet-policy" />;
 }
+
 
 
 
