@@ -34,7 +34,7 @@ const localTaxiBenefits = [
 const autoServiceBenefits = [
   "On-Time Rides",
   "No Hidden or Extra Charges",
-  "No Last-Minute Cancellations",
+  "Luggage-friendly rides",
   "Advance booking",
   "Doorstep pickup",
   "Quick & easy booking",
@@ -212,10 +212,10 @@ const actingDriverBenefitIcons: Record<string, string> = {
 const autoBenefitIcons: Record<string, string> = {
   "On-Time Rides": serviceBenefitPath("auto", "on-time-rides.webp"),
   "No Hidden or Extra Charges": serviceBenefitPath("auto", "no-hidden-extra-charges.webp"),
-  "No Last-Minute Cancellations": serviceBenefitPath("shared", "No Last-Minute Cancellations.webp"),
-  "Advance booking": serviceBenefitPath("shared", "Verified Drivers.webp"),
-  "Doorstep pickup": serviceBenefitPath("auto", "on-time-rides.webp"),
-  "Quick & easy booking": serviceBenefitPath("auto", "sos-trip-sharing.webp"),
+  "Luggage-friendly rides": serviceBenefitPath("auto", "luggage.webp"),
+  "Advance booking": serviceBenefitPath("auto", "advance-booking.webp"),
+  "Doorstep pickup": serviceBenefitPath("auto", "doorstep-pickup.webp"),
+  "Quick & easy booking": serviceBenefitPath("auto", "quick-easy-booking.webp"),
 };
 const localTaxiBenefitIcons: Record<string, string> = {
   "On-Time Rides": serviceBenefitPath("shared", "On-Time Rides .webp"),

@@ -525,8 +525,7 @@ export default function Index() {
           </p>
           <div className="mt-4 text-center">
             <Button
-              variant="outline"
-              className="rounded-full px-8 font-semibold text-[#1E2A6E]"
+              className="rounded-full bg-[#1E2A6E] px-8 font-semibold text-white shadow-sm hover:bg-[#2E3A8C]"
               onClick={() => setShowAllServices((current) => !current)}
             >
               {showAllServices ? "Show Less" : "See More"}
