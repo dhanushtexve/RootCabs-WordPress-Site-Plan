@@ -246,10 +246,10 @@ export function SupportPage() {
 
   return (
     <div>
-      <section className="relative min-h-[280px] overflow-hidden py-8 text-white md:min-h-[360px] md:py-10" style={{
-        backgroundImage: "url('/assets/banner-root-cabs.png')",
-        backgroundSize: "100% auto",
-        backgroundPosition: "center top",
+      <section className="relative min-h-[330px] overflow-hidden py-7 text-white md:min-h-[400px] md:py-9" style={{
+        backgroundImage: "url('/assets/rootcabs-banner-home.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center bottom",
         backgroundRepeat: "no-repeat",
       }}>
         <div className="absolute inset-0 bg-black/40" />
@@ -262,7 +262,7 @@ export function SupportPage() {
             ]}
           />
           <h1 className="mb-2 font-heading text-3xl font-bold md:text-4xl">Support & Help Centre</h1>
-          <p className="max-w-3xl text-sm leading-relaxed text-white/80 md:text-base">
+          <p className="max-w-none text-sm leading-relaxed text-white/80 md:text-base">
             Need help with a booking, payment, ride update or service request? Find quick answers here or contact the Root Cabs support team for assistance.
           </p>
         </div>
@@ -270,12 +270,12 @@ export function SupportPage() {
 
       <section className="mx-auto max-w-screen-xl px-4 py-10 md:py-12">
         <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.7fr)_minmax(320px,0.9fr)]">
-          <div className="mx-auto w-full max-w-3xl lg:max-w-none">
-            <h2 className="mb-2 text-center font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+          <div className="w-full max-w-3xl lg:max-w-none">
+            <h2 className="mb-2 text-left font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
               Frequently Asked Questions
             </h2>
-            <p className="mb-5 text-center text-sm text-muted-foreground">Filter by who you are, or browse everything below.</p>
-            <div className="mb-5 flex flex-wrap justify-center gap-3">
+            <p className="mb-5 text-left text-sm text-muted-foreground">Filter by who you are, or browse everything below.</p>
+            <div className="mb-5 flex flex-wrap justify-start gap-3">
               {[
                 { value: "all", label: "All" },
                 { value: "riders", label: "For Riders" },
@@ -473,6 +473,8 @@ export function SupportPage() {
     </div>
   );
 }
+
+
 
 
 

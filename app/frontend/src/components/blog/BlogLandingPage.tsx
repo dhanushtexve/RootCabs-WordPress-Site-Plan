@@ -182,10 +182,10 @@ const BlogLandingPage = () => {
 
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(30,42,110,0.12),_transparent_30%),linear-gradient(180deg,_#f8fafc_0%,_#eef2ff_100%)] text-slate-900">
-      <section className="relative min-h-[280px] overflow-hidden text-white md:min-h-[360px]" style={{
-        backgroundImage: "url('/assets/banner-root-cabs.png')",
-        backgroundSize: "100% auto",
-        backgroundPosition: "center top",
+      <section className="relative min-h-[330px] overflow-hidden text-white md:min-h-[400px]" style={{
+        backgroundImage: "url('/assets/rootcabs-banner-home.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center bottom",
         backgroundRepeat: "no-repeat",
       }}>
         <div className="absolute inset-0 bg-black/40" />
@@ -197,11 +197,11 @@ const BlogLandingPage = () => {
               { label: 'Blog' },
             ]}
           />
-          <div className="max-w-4xl">
+          <div className="max-w-none">
             <h1 className="mt-4 font-heading text-3xl md:text-4xl font-bold leading-tight">
               Blog & Travel Guides
             </h1>
-            <p className="mt-4 max-w-3xl text-sm leading-7 text-white/80 md:text-base">
+            <p className="mt-4 max-w-none text-sm leading-7 text-white/80 md:text-base">
               Tips, guides and stories about Root Cabs, travel across Tamil Nadu, and the people who use the service every day.
             </p>
             <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-white/80">
@@ -523,6 +523,8 @@ const BlogLandingPage = () => {
 };
 
 export default BlogLandingPage;
+
+
 
 
 

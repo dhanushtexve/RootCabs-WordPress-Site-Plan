@@ -46,8 +46,10 @@ const cityCardSummaryMap: Record<string, string> = {
   Ranipet: "Choose convenient rides across Ranipet for local travel, industrial visits and nearby outstation journeys.",
 };
 
+const chennaiCardImage = "/assets/chennai-1.webp";
+
 const cityImageMap: Record<string, string> = {
-  Chennai: "/assets/chennai-1.webp",
+  Chennai: chennaiCardImage,
   Vellore: "/assets/cities/vellore.webp",
   Coimbatore: "/assets/cities/coimbatore.webp",
   Madurai: "/assets/cities/madurai.webp",
@@ -61,7 +63,7 @@ const cityImageMap: Record<string, string> = {
 
 const chennaiPickupImages: Record<string, string> = {
   "Chennai Airport": "/assets/chennai-airport.webp",
-  "Chennai Central Railway Station": "/assets/chennai-1.webp",
+  "Chennai Central Railway Station": chennaiCardImage,
   "Marina Beach": "/assets/chennai-marina.webp",
   "T. Nagar": "/assets/chennai-t-nagar.webp",
   "Koyambedu": "/assets/chennai-koyambedu.webp",
@@ -642,10 +644,10 @@ export function CitiesHub() {
 
   return (
     <div>
-      <section className="relative min-h-[280px] overflow-hidden py-8 text-white md:min-h-[360px] md:py-10" style={{
-        backgroundImage: "url('/assets/banner-root-cabs.png')",
-        backgroundSize: "100% auto",
-        backgroundPosition: "center top",
+      <section className="relative min-h-[330px] overflow-hidden py-7 text-white md:min-h-[400px] md:py-9" style={{
+        backgroundImage: "url('/assets/rootcabs-banner-home.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center bottom",
         backgroundRepeat: "no-repeat",
       }}>
         <div className="absolute inset-0 bg-black/40" />
@@ -658,7 +660,7 @@ export function CitiesHub() {
             ]}
           />
           <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Cities We Serve</h1>
-          <p className="max-w-3xl text-gray-300">
+          <p className="max-w-none text-gray-300">
             Root Cabs brings dependable taxi services to 10+ cities across Tamil Nadu, making local, one-way and outstation travel easier to book.
           </p>
         </div>
@@ -1674,10 +1676,10 @@ export function CityPage({
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[360px] overflow-hidden py-8 text-white md:min-h-[440px] md:py-10" style={{
-        backgroundImage: "url('/assets/banner-root-cabs.png')",
-        backgroundSize: "100% auto",
-        backgroundPosition: "center top",
+      <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
+        backgroundImage: "url('/assets/rootcabs-banner-home.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
       }}>
         <div className="absolute inset-0 bg-black/40" />
@@ -1693,7 +1695,7 @@ export function CityPage({
           <h1 className="font-heading text-3xl md:text-4xl font-bold mb-4">
             {isVellore ? "Your Go-To Taxi Service in Vellore - Whenever You Need a Ride" : city.tagline}
           </h1>
-          <p className="max-w-3xl text-lg text-gray-300">
+          <p className="max-w-none text-lg text-gray-300">
             {isVellore
               ? "From CMC appointments and VIT travel to railway station pickups and outstation trips, Root Cabs makes travelling around Vellore easier with clear fares and convenient booking."
               : city.description}

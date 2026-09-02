@@ -908,10 +908,10 @@ export function ServicesHub() {
 
   return (
     <div>
-      <section className="relative min-h-[260px] overflow-hidden py-8 text-white md:min-h-[320px] md:py-10" style={{
-        backgroundImage: "url('/assets/banner-root-cabs.png')",
-        backgroundSize: "100% auto",
-        backgroundPosition: "center top",
+      <section className="relative min-h-[330px] overflow-hidden py-7 text-white md:min-h-[400px] md:py-9" style={{
+        backgroundImage: "url('/assets/rootcabs-banner-home.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center bottom",
         backgroundRepeat: "no-repeat",
       }}>
         <div className="absolute inset-0 bg-black/40" />
@@ -980,8 +980,7 @@ export function ServicesHub() {
           <div className="mt-8 flex justify-center">
             <Button
               type="button"
-              variant="outline"
-              className="min-w-[132px] rounded-full border-[#D7DDED] bg-white font-semibold text-[#1E2A6E] hover:border-[#1E2A6E] hover:bg-[#EEF2FF]"
+              className="min-w-[132px] rounded-full bg-[#1E2A6E] font-semibold text-white shadow-sm hover:bg-[#2E3A8C]"
               onClick={() => setShowAllServices((current) => !current)}
             >
               {showAllServices ? "Show Less" : "See More"}
@@ -1213,10 +1212,10 @@ export function ServicePage() {
     <div>
       {/* Hero */}
       {isLocalTaxiService ? (
-        <section className="relative min-h-[360px] overflow-hidden py-8 text-white md:min-h-[440px] md:py-10" style={{
-          backgroundImage: "url('/assets/banner-root-cabs.png')",
-          backgroundSize: "100% auto",
-          backgroundPosition: "center top",
+        <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
+          backgroundImage: "url('/assets/rootcabs-banner-home.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
         }}>
           <div className="absolute inset-0 bg-black/40" />
@@ -1237,7 +1236,7 @@ export function ServicePage() {
                 Starting at ₹100 · Available across multiple cities in Tamil Nadu
               </p>
             </div>
-            <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
+            <p className="max-w-none text-base leading-7 text-white/82 md:text-lg">
               Need a comfortable ride for work, shopping, hospital visits, railway station pickups, or other everyday
               trips? Root Cabs makes it easy to find a local taxi near me with clear fares, verified
               drivers, and simple booking.
@@ -1258,10 +1257,10 @@ export function ServicePage() {
           </div>
         </section>
       ) : isAirportTaxiService ? (
-        <section className="relative min-h-[360px] overflow-hidden py-8 text-white md:min-h-[440px] md:py-10" style={{
-          backgroundImage: "url('/assets/banner-root-cabs.png')",
-          backgroundSize: "100% auto",
-          backgroundPosition: "center top",
+        <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
+          backgroundImage: "url('/assets/rootcabs-banner-home.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
         }}>
           <div className="absolute inset-0 bg-black/40" />
@@ -1282,7 +1281,7 @@ export function ServicePage() {
                 Starting at ₹499. Available for airport pickups and drop-offs
               </p>
             </div>
-            <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
+            <p className="max-w-none text-base leading-7 text-white/82 md:text-lg">
               Heading to the airport or arriving after a long flight? Root Cabs makes it easy to find an{" "}
               airport taxi near me with convenient pickups, clear fares, and dependable rides for your
               airport journey.
@@ -1303,10 +1302,10 @@ export function ServicePage() {
           </div>
         </section>
       ) : isOutstationTaxiService ? (
-        <section className="relative min-h-[360px] overflow-hidden py-8 text-white md:min-h-[440px] md:py-10" style={{
-          backgroundImage: "url('/assets/banner-root-cabs.png')",
-          backgroundSize: "100% auto",
-          backgroundPosition: "center top",
+        <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
+          backgroundImage: "url('/assets/rootcabs-banner-home.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
         }}>
           <div className="absolute inset-0 bg-black/40" />
@@ -1327,7 +1326,7 @@ export function ServicePage() {
                 Starting at ₹300. Available for long-distance travel across major cities
               </p>
             </div>
-            <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
+            <p className="max-w-none text-base leading-7 text-white/82 md:text-lg">
               Planning a trip outside the city? Root Cabs makes it easy to find outstation cabs near me{" "}
               with clear fares, verified drivers, and vehicle options for family trips, business travel, weekend
               journeys, and other long-distance plans.
@@ -1348,10 +1347,10 @@ export function ServicePage() {
           </div>
         </section>
       ) : isActingDriverService ? (
-        <section className="relative min-h-[360px] overflow-hidden py-8 text-white md:min-h-[440px] md:py-10" style={{
-          backgroundImage: "url('/assets/banner-root-cabs.png')",
-          backgroundSize: "100% auto",
-          backgroundPosition: "center top",
+        <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
+          backgroundImage: "url('/assets/rootcabs-banner-home.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
         }}>
           <div className="absolute inset-0 bg-black/40" />
@@ -1372,7 +1371,7 @@ export function ServicePage() {
                 Starting at ₹200. Available for local and outstation travel
               </p>
             </div>
-            <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
+            <p className="max-w-none text-base leading-7 text-white/82 md:text-lg">
               Looking for an acting driver near me when you would rather not drive yourself? Root
               Cabs connects you with verified drivers for late-night returns, family functions, hospital visits,
               business travel, and longer journeys in your own car.
@@ -1393,10 +1392,10 @@ export function ServicePage() {
           </div>
         </section>
       ) : isParcelDeliveryService ? (
-        <section className="relative min-h-[360px] overflow-hidden py-8 text-white md:min-h-[440px] md:py-10" style={{
-          backgroundImage: "url('/assets/banner-root-cabs.png')",
-          backgroundSize: "100% auto",
-          backgroundPosition: "center top",
+        <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
+          backgroundImage: "url('/assets/rootcabs-banner-home.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
         }}>
           <div className="absolute inset-0 bg-black/40" />
@@ -1417,7 +1416,7 @@ export function ServicePage() {
                 Starting at ₹45. Available for quick city deliveries
               </p>
             </div>
-            <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
+            <p className="max-w-none text-base leading-7 text-white/82 md:text-lg">
               Need to send documents, medicines, small packages, or everyday essentials across the city? Root Cabs
               makes it easy to find a parcel service near me with convenient pickup, clear charges,
               and dependable delivery for your day-to-day needs.
@@ -1438,10 +1437,10 @@ export function ServicePage() {
           </div>
         </section>
       ) : isAutoService ? (
-        <section className="relative min-h-[360px] overflow-hidden py-8 text-white md:min-h-[440px] md:py-10" style={{
-          backgroundImage: "url('/assets/banner-root-cabs.png')",
-          backgroundSize: "100% auto",
-          backgroundPosition: "center top",
+        <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
+          backgroundImage: "url('/assets/rootcabs-banner-home.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
         }}>
           <div className="absolute inset-0 bg-black/40" />
@@ -1462,7 +1461,7 @@ export function ServicePage() {
                 Starting at ₹49 · Available for short city trips
               </p>
             </div>
-            <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
+            <p className="max-w-none text-base leading-7 text-white/82 md:text-lg">
               For work, shopping, station pickups, hospital visits, or nearby travel, Root Cabs makes it easy to
               find and book auto near me with clear fares, verified drivers, and simple booking.
             </p>
@@ -1482,10 +1481,10 @@ export function ServicePage() {
           </div>
         </section>
       ) : (
-        <section className="relative min-h-[360px] overflow-hidden py-8 text-white md:min-h-[440px] md:py-10" style={{
-          backgroundImage: "url('/assets/banner-root-cabs.png')",
-          backgroundSize: "100% auto",
-          backgroundPosition: "center top",
+        <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
+          backgroundImage: "url('/assets/rootcabs-banner-home.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
         }}>
           <div className="absolute inset-0 bg-black/40" />
@@ -3689,6 +3688,9 @@ export function ServicePage() {
     </div>
   );
 }
+
+
+
 
 
 

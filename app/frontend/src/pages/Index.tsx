@@ -409,10 +409,10 @@ export default function Index() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative overflow-hidden text-white" style={{
-        backgroundImage: "url('/assets/banner-root-cabs.png')",
-        backgroundSize: "100% auto",
-        backgroundPosition: "center top",
+      <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
+        backgroundImage: "url('/assets/rootcabs-banner-home.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
       }}>
         <div className="absolute inset-0 bg-black/40" />

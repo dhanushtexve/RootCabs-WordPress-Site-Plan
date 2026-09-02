@@ -1063,10 +1063,10 @@ export default function BookRide() {
   return (
     <div>
       {/* Header */}
-      <section className="relative min-h-[260px] overflow-hidden py-8 text-white md:min-h-[320px] md:py-10" style={{
-        backgroundImage: "url('/assets/banner-root-cabs.png')",
-        backgroundSize: "100% auto",
-        backgroundPosition: "center top",
+      <section className="relative min-h-[330px] overflow-hidden py-7 text-white md:min-h-[400px] md:py-9" style={{
+        backgroundImage: "url('/assets/rootcabs-banner-home.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center bottom",
         backgroundRepeat: "no-repeat",
       }}>
         <div className="absolute inset-0 bg-black/40" />
