@@ -197,11 +197,11 @@ const BlogLandingPage = () => {
               { label: 'Blog' },
             ]}
           />
-          <div className="max-w-none">
+          <div className="max-w-4xl">
             <h1 className="mt-4 font-heading text-3xl md:text-4xl font-bold leading-tight">
               Blog & Travel Guides
             </h1>
-            <p className="mt-4 max-w-none text-sm leading-7 text-white/80 md:text-base">
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-white/80 md:text-base">
               Tips, guides and stories about Root Cabs, travel across Tamil Nadu, and the people who use the service every day.
             </p>
             <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-white/80">
@@ -523,6 +523,7 @@ const BlogLandingPage = () => {
 };
 
 export default BlogLandingPage;
+
 
 
 

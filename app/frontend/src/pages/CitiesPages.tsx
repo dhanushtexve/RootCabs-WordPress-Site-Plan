@@ -660,7 +660,7 @@ export function CitiesHub() {
             ]}
           />
           <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Cities We Serve</h1>
-          <p className="max-w-none text-gray-300">
+          <p className="max-w-3xl text-gray-300">
             Root Cabs brings dependable taxi services to 10+ cities across Tamil Nadu, making local, one-way and outstation travel easier to book.
           </p>
         </div>
@@ -1695,7 +1695,7 @@ export function CityPage({
           <h1 className="font-heading text-3xl md:text-4xl font-bold mb-4">
             {isVellore ? "Your Go-To Taxi Service in Vellore - Whenever You Need a Ride" : city.tagline}
           </h1>
-          <p className="max-w-none text-lg text-gray-300">
+          <p className="max-w-3xl text-lg text-gray-300">
             {isVellore
               ? "From CMC appointments and VIT travel to railway station pickups and outstation trips, Root Cabs makes travelling around Vellore easier with clear fares and convenient booking."
               : city.description}
@@ -2262,6 +2262,7 @@ export function CityServicePage() {
     </div>
   );
 }
+
 
 
 

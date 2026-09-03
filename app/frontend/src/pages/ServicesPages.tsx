@@ -951,7 +951,7 @@ export function ServicesHub() {
             ]}
           />
           <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Our Services</h1>
-          <p className="max-w-none text-sm leading-6 text-gray-300 md:whitespace-nowrap md:text-base">
+          <p className="max-w-3xl text-sm leading-6 text-gray-300 md:text-base">
             Explore our reliable Taxi Services in Tamil Nadu for local travel, outstation trips and everyday commuting.
           </p>
           <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-300">
@@ -1263,7 +1263,7 @@ export function ServicePage() {
                 Starting at ₹100 · Available across multiple cities in Tamil Nadu
               </p>
             </div>
-            <p className="max-w-none text-base leading-7 text-white/82 md:text-lg">
+            <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
               Need a comfortable ride for work, shopping, hospital visits, railway station pickups, or other everyday
               trips? Root Cabs makes it easy to find a local taxi near me with clear fares, verified
               drivers, and simple booking.
@@ -1308,7 +1308,7 @@ export function ServicePage() {
                 Starting at ₹499. Available for airport pickups and drop-offs
               </p>
             </div>
-            <p className="max-w-none text-base leading-7 text-white/82 md:text-lg">
+            <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
               Heading to the airport or arriving after a long flight? Root Cabs makes it easy to find an{" "}
               airport taxi near me with convenient pickups, clear fares, and dependable rides for your
               airport journey.
@@ -1353,7 +1353,7 @@ export function ServicePage() {
                 Starting at ₹300. Available for long-distance travel across major cities
               </p>
             </div>
-            <p className="max-w-none text-base leading-7 text-white/82 md:text-lg">
+            <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
               Planning a trip outside the city? Root Cabs makes it easy to find outstation cabs near me{" "}
               with clear fares, verified drivers, and vehicle options for family trips, business travel, weekend
               journeys, and other long-distance plans.
@@ -1398,7 +1398,7 @@ export function ServicePage() {
                 Starting at ₹200. Available for local and outstation travel
               </p>
             </div>
-            <p className="max-w-none text-base leading-7 text-white/82 md:text-lg">
+            <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
               Looking for an acting driver near me when you would rather not drive yourself? Root
               Cabs connects you with verified drivers for late-night returns, family functions, hospital visits,
               business travel, and longer journeys in your own car.
@@ -1443,7 +1443,7 @@ export function ServicePage() {
                 Starting at ₹45. Available for quick city deliveries
               </p>
             </div>
-            <p className="max-w-none text-base leading-7 text-white/82 md:text-lg">
+            <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
               Need to send documents, medicines, small packages, or everyday essentials across the city? Root Cabs
               makes it easy to find a parcel service near me with convenient pickup, clear charges,
               and dependable delivery for your day-to-day needs.
@@ -1488,7 +1488,7 @@ export function ServicePage() {
                 Starting at ₹49 · Available for short city trips
               </p>
             </div>
-            <p className="max-w-none text-base leading-7 text-white/82 md:text-lg">
+            <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
               For work, shopping, station pickups, hospital visits, or nearby travel, Root Cabs makes it easy to
               find and book auto near me with clear fares, verified drivers, and simple booking.
             </p>
@@ -3739,6 +3739,8 @@ export function ServicePage() {
     </div>
   );
 }
+
+
 
 
 

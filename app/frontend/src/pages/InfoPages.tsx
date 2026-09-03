@@ -228,7 +228,7 @@ export function BusinessPage() {
             ]}
           />
           <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">Business Solutions</h1>
-          <p className="mt-3 max-w-none text-base leading-7 text-white/80 md:text-lg">
+          <p className="mt-3 max-w-3xl text-base leading-7 text-white/80 md:text-lg">
             Make employee travel and business transportation easier to manage with Root Cabs. We offer flexible ride solutions for daily office commutes, client travel, airport trips and other company requirements.
           </p>
         </div>
@@ -613,12 +613,12 @@ export function BlogPage() {
               { label: "Blog" },
             ]}
           />
-          <div className="max-w-none">
+          <div className="max-w-4xl">
             <span className="inline-flex rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold uppercase tracking-[0.22em] text-[#1E2A6E]">
               Root Story
             </span>
             <h1 className="mt-4 font-heading text-3xl md:text-4xl font-bold leading-tight">The Story Behind Root Cabs: How A Vision Became A Reality</h1>
-            <p className="mt-4 max-w-none text-sm leading-7 text-white/80 md:text-base">
+            <p className="mt-4 max-w-3xl text-sm leading-7 text-white/80 md:text-base">
               Root Cabs began with a simple observation. Cab booking apps had made it easier to search for a ride, but many everyday travel problems were still unresolved.
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
@@ -1139,7 +1139,7 @@ export function AboutPage() {
             ]}
           />
           <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">About Root Cabs</h1>
-          <p className="mt-3 max-w-none text-base leading-7 text-white/80 md:text-lg">
+          <p className="mt-3 max-w-3xl text-base leading-7 text-white/80 md:text-lg">
             Root Cabs operates as a unit of Texve Innovations Pvt. Ltd., offering a unified range of mobility and transport services across Tamil Nadu. Through a single platform, customers can access multiple options for everyday travel, intercity journeys and other transport needs.
           </p>
         </div>
@@ -1747,7 +1747,7 @@ export function SupportPage() {
       <section className="bg-[#1E2A6E] text-white py-14 md:py-16">
         <div className="max-w-screen-xl mx-auto px-4">
           <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Support & Help Centre</h1>
-          <p className="max-w-none text-sm leading-relaxed text-white/80 md:text-base">
+          <p className="max-w-3xl text-sm leading-relaxed text-white/80 md:text-base">
             Need help with a booking, payment, ride update or service request? Find quick answers here or contact the Root Cabs support team for assistance.
           </p>
         </div>
@@ -2104,6 +2104,7 @@ export function TermsOfUsePage() {
 export function WalletPolicyPage() {
   return <PolicyDocumentPage policyKey="wallet-policy" />;
 }
+
 
 
 
