@@ -252,6 +252,7 @@ const parcelBenefitIcons: Record<string, string> = {
 type ActingDriverReason = {
   title: string;
   description: string;
+  image: string;
   highlightedText?: string;
 };
 
@@ -260,31 +261,37 @@ const actingDriverReasons: ActingDriverReason[] = [
     title: "Long Highway Drives",
     description:
       "Let someone else handle long stretches of driving while you travel comfortably in your own car.",
+    image: assetPath("/assets/service-benefits/acting-driver-reasons/long-highway-drives.webp"),
   },
   {
     title: "After Parties or Functions",
     description:
       "Avoid driving back when you are tired after weddings, celebrations, or late-night events.",
+    image: assetPath("/assets/service-benefits/acting-driver-reasons/after-parties-functions.webp"),
   },
   {
     title: "Outstation Trips",
     description:
       "Use an acting driver for outstation trip when you want the comfort of your own car without taking on the full drive.",
+    image: assetPath("/assets/service-benefits/acting-driver-reasons/outstation-trips.webp"),
   },
   {
     title: "Busy Work Schedules",
     description:
       "Stay focused on calls, meetings, or work while the driver handles traffic and travel between stops.",
+    image: assetPath("/assets/service-benefits/acting-driver-reasons/busy-work-schedules.webp"),
   },
   {
     title: "Need a Driving Break",
     description:
       "Choose an acting driver when you want to relax, take calls, or simply avoid driving for a while.",
+    image: assetPath("/assets/service-benefits/acting-driver-reasons/need-driving-break.webp"),
   },
   {
     title: "Driver Unavailable",
     description:
       "Book an acting driver when your regular driver is on leave or unavailable and you still need to use your own vehicle.",
+    image: assetPath("/assets/service-benefits/acting-driver-reasons/driver-unavailable.webp"),
   },
 ];
 
@@ -341,7 +348,7 @@ const airportTaxiCities = [
     slug: "taxi-in-chennai",
     description:
       "Travel to or from Chennai Airport with Root Cabs for business trips, family travel, early departures, and late-night arrivals. Our airport rides are planned for smooth city-to-terminal travel.",
-    image: "/assets/cities/chennai.webp",
+    image: "/assets/chennai-1.webp",
   },
   {
     name: "Coimbatore",
@@ -364,6 +371,17 @@ const airportTaxiCities = [
       "Use Root Cabs for airport travel in Trichy when you need a dependable pickup or drop for work, family travel, or connecting journeys. Clear fare details and multiple cab options make booking simpler.",
     image: "/assets/cities/trichy.webp",
   },
+];
+
+const parcelDeliveryItems = [
+  { label: "Food", image: assetPath("/assets/service-benefits/parcel-items/food.webp") },
+  { label: "Medicines", image: assetPath("/assets/service-benefits/parcel-items/medicines.webp") },
+  { label: "Gadgets", image: assetPath("/assets/service-benefits/parcel-items/gadgets.webp") },
+  { label: "Documents", image: assetPath("/assets/service-benefits/parcel-items/documents.webp") },
+  { label: "Groceries", image: assetPath("/assets/service-benefits/parcel-items/groceries.webp") },
+  { label: "Clothes", image: assetPath("/assets/service-benefits/parcel-items/clothes.webp") },
+  { label: "Gifts", image: assetPath("/assets/service-benefits/parcel-items/gifts.webp") },
+  { label: "Forgotten Items", image: assetPath("/assets/service-benefits/parcel-items/forgotten-items.webp") },
 ];
 
 const airportTaxiFaqs = [
@@ -609,6 +627,15 @@ const outstationPopularRoutes = [
 // ============================================================
 // SERVICES HUB
 // ============================================================
+const servicePageSeoTitles: Record<string, string> = {
+  "local-taxi": "Local Taxi Service in Tamil Nadu | Root Cabs",
+  "airport-taxi": "Chennai Airport Taxi - Pickup & Drop | Root Cabs",
+  outstation: "Outstation Taxi Services in Tamil Nadu | Root Cabs",
+  "acting-driver": "Acting Driver Service in Tamil Nadu | Root Cabs",
+  "parcel-delivery": "Parcel Delivery Service - Same City | Root Cabs",
+  auto: "Book Affordable Auto Online for Rides | Root Cabs",
+};
+
 export function ServicesHub() {
   const [showAllServices, setShowAllServices] = useState(false);
   const serviceStats = [
@@ -1162,7 +1189,7 @@ export function ServicePage() {
     const previousTitle = document.title;
     const head = document.head;
     const seo = {
-      title: `${service.name} | Root Cabs`,
+      title: servicePageSeoTitles[service.slug] ?? `${service.name} | Root Cabs`,
       description: service.description,
       url: `https://rootcabs.com/services/${service.slug}`,
       image: "https://rootcabs.com/assets/root-cabs-logo.webp",
@@ -2272,21 +2299,34 @@ export function ServicePage() {
                 <h2 className="font-heading text-2xl md:text-3xl font-bold mb-5 text-[#1E2A6E]">
                   Reasons to Book an Acting Driver
                 </h2>
-                <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
                   {actingDriverReasons.map((reason) => (
-                    <div key={reason.title} className="rounded-xl border border-[#D7DDED] bg-white p-5 shadow-sm">
-                      <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">{reason.title}</h3>
-                      <p className="mt-3 text-base leading-7 text-[#4B587C]">
-                        {reason.highlightedText ? (
-                          <>
-                            {reason.description.split(reason.highlightedText)[0]}
-                            <strong>{reason.highlightedText}</strong>
-                            {reason.description.split(reason.highlightedText)[1]}
-                          </>
-                        ) : (
-                          reason.description
-                        )}
-                      </p>
+                    <div
+                      key={reason.title}
+                      className="group overflow-hidden rounded-xl border border-[#D7DDED] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:shadow-md"
+                    >
+                      <div className="flex aspect-[12/5] items-center justify-center bg-[#F5F8FF] p-2.5">
+                        <img
+                          src={reason.image}
+                          alt={`${reason.title} acting driver`}
+                          className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.04]"
+                          loading="lazy"
+                        />
+                      </div>
+                      <div className="p-3.5">
+                        <h3 className="font-heading text-base font-bold text-[#1E2A6E]">{reason.title}</h3>
+                        <p className="mt-1.5 text-sm leading-5 text-[#4B587C]">
+                          {reason.highlightedText ? (
+                            <>
+                              {reason.description.split(reason.highlightedText)[0]}
+                              <strong>{reason.highlightedText}</strong>
+                              {reason.description.split(reason.highlightedText)[1]}
+                            </>
+                          ) : (
+                            reason.description
+                          )}
+                        </p>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -2440,13 +2480,24 @@ export function ServicePage() {
                     Items You Can Send with Our Parcel Delivery Service
                   </h2>
                   <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-                    {["Food", "Medicines", "Gadgets", "Documents", "Groceries", "Clothes", "Gifts", "Forgotten Items"].map(
-                      (item) => (
-                        <div key={item} className="rounded-lg bg-muted/50 p-3 text-sm font-medium text-[#26335F]">
-                          {item}
+                    {parcelDeliveryItems.map((item) => (
+                      <div
+                        key={item.label}
+                        className="group overflow-hidden rounded-xl border border-[#D7DDED] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:shadow-md"
+                      >
+                        <div className="flex aspect-[5/3] items-center justify-center bg-[#F5F8FF] p-3">
+                          <img
+                            src={item.image}
+                            alt={`${item.label} parcel delivery`}
+                            className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.04]"
+                            loading="lazy"
+                          />
                         </div>
-                      )
-                    )}
+                        <div className="border-t border-[#E6ECF8] px-3 py-2.5">
+                          <p className="text-sm font-bold text-[#1E2A6E]">{item.label}</p>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
 

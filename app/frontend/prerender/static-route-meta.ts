@@ -271,7 +271,7 @@ export const staticSeoRoutes = [
   },
   {
     "path": "/services/outstation",
-    "title": "Outstation Taxi  Services in Tamil Nadu | Root Cabs",
+    "title": "Outstation Taxi Services in Tamil Nadu | Root Cabs",
     "description": "Outstation taxi service by Root Cabs for intercity trips, weekend getaways and family journeys across Tamil Nadu. Reserve your cab online today.",
     "canonicalUrl": "https://rootcabs.com/services/outstation",
     "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
