@@ -2303,17 +2303,9 @@ export function ServicePage() {
                   {actingDriverReasons.map((reason) => (
                     <div
                       key={reason.title}
-                      className="group overflow-hidden rounded-xl border border-[#D7DDED] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:shadow-md"
+                      className="group flex min-h-[122px] overflow-hidden rounded-lg border border-[#D7DDED] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:shadow-md"
                     >
-                      <div className="flex aspect-[12/5] items-center justify-center bg-[#F5F8FF] p-2.5">
-                        <img
-                          src={reason.image}
-                          alt={`${reason.title} acting driver`}
-                          className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-[1.04]"
-                          loading="lazy"
-                        />
-                      </div>
-                      <div className="p-3.5">
+                      <div className="min-w-0 flex-1 p-3.5 pr-2">
                         <h3 className="font-heading text-base font-bold text-[#1E2A6E]">{reason.title}</h3>
                         <p className="mt-1.5 text-sm leading-5 text-[#4B587C]">
                           {reason.highlightedText ? (
@@ -2326,6 +2318,14 @@ export function ServicePage() {
                             reason.description
                           )}
                         </p>
+                      </div>
+                      <div className="flex w-24 shrink-0 items-start justify-end bg-[#F5F8FF] p-2.5 sm:w-28">
+                        <img
+                          src={reason.image}
+                          alt={`${reason.title} acting driver`}
+                          className="h-20 w-20 object-contain transition-transform duration-300 group-hover:scale-[1.04] sm:h-24 sm:w-24"
+                          loading="lazy"
+                        />
                       </div>
                     </div>
                   ))}
@@ -2483,9 +2483,9 @@ export function ServicePage() {
                     {parcelDeliveryItems.map((item) => (
                       <div
                         key={item.label}
-                        className="group overflow-hidden rounded-xl border border-[#D7DDED] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:shadow-md"
+                        className="group relative mt-3 flex min-h-[88px] items-center overflow-visible rounded-xl border border-[#D7DDED] bg-white p-4 pr-16 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:shadow-md"
                       >
-                        <div className="flex aspect-[5/3] items-center justify-center bg-[#F5F8FF] p-3">
+                        <div className="absolute -right-3 -top-4 flex h-14 w-14 items-center justify-center rounded-lg border border-[#E6ECF8] bg-[#F5F8FF] p-1.5 shadow-sm">
                           <img
                             src={item.image}
                             alt={`${item.label} parcel delivery`}
@@ -2493,9 +2493,9 @@ export function ServicePage() {
                             loading="lazy"
                           />
                         </div>
-                        <div className="border-t border-[#E6ECF8] px-3 py-2.5">
-                          <p className="text-sm font-bold text-[#1E2A6E]">{item.label}</p>
-                        </div>
+                        <p className="w-full text-center font-heading text-lg font-bold leading-tight text-[#1E2A6E]">
+                          {item.label}
+                        </p>
                       </div>
                     ))}
                   </div>
