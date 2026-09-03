@@ -1080,7 +1080,7 @@ export default function BookRide() {
           />
           <h1 className="font-heading text-3xl md:text-4xl font-bold leading-[1.1] tracking-normal mb-3">Book Your Ride</h1>
           <p className="max-w-3xl text-gray-300">
-            Plan your journey with ease and book your ride online for a safe, comfortable and reliable travel experience.
+            Plan your journey with ease and book your ride online for a safe,<br />comfortable and reliable travel experience.
           </p>
         </div>
       </section>

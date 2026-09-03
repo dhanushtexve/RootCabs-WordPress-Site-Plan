@@ -263,7 +263,7 @@ export function SupportPage() {
           />
           <h1 className="mb-2 font-heading text-3xl font-bold md:text-4xl">Support & Help Centre</h1>
           <p className="max-w-3xl text-sm leading-relaxed text-white/80 md:text-base">
-            Need help with a booking, payment, ride update or service request? Find quick answers here or contact the Root Cabs support team for assistance.
+            Need help with a booking, payment, ride update or service request?<br />Find quick answers here or contact the Root Cabs support team for assistance.
           </p>
         </div>
       </section>

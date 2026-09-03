@@ -661,7 +661,7 @@ export function CitiesHub() {
           />
           <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Cities We Serve</h1>
           <p className="max-w-3xl text-gray-300">
-            Root Cabs brings dependable taxi services to 10+ cities across Tamil Nadu, making local, one-way and outstation travel easier to book.
+            Root Cabs brings dependable taxi services to 10+ cities across Tamil Nadu,<br />making local, one-way and outstation travel easier to book.
           </p>
         </div>
       </section>
@@ -1685,7 +1685,7 @@ export function CityPage({
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 max-w-screen-xl mx-auto px-4">
           <PageBreadcrumb
-            className="mb-4 text-white/70"
+            className={`${isChennai || isVellore ? "pt-8 md:pt-10" : ""} mb-4 text-white/70`}
             items={[
               { label: "Home", href: "/" },
               { label: "Cities", href: "/cities" },
@@ -1700,7 +1700,7 @@ export function CityPage({
               ? "From CMC appointments and VIT travel to railway station pickups and outstation trips, Root Cabs makes travelling around Vellore easier with clear fares and convenient booking."
               : city.description}
           </p>
-          <div className="flex flex-wrap gap-4 mt-6">
+          <div className={`${isChennai || isVellore ? "mt-12 md:mt-16" : "mt-6"} flex flex-wrap gap-4`}>
             <Link to="/book-ride">
               <Button size="lg" className="bg-[#FFD700] hover:bg-[#E6C200] text-[#2E3A8C] font-bold cursor-pointer shadow-sm">
                 {isChennai ? "Book a Ride in Chennai" : isVellore ? "Book Ride in Vellore" : `Book Ride in ${city.name}`} <ArrowRight className="w-4 h-4 ml-2" />

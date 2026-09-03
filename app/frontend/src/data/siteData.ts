@@ -120,7 +120,7 @@ export const cities: City[] = [
     name: "Chennai",
     state: "Tamil Nadu",
     tagline: "Reliable Cab Services In Chennai For Every Ride",
-    description: "Travel across Chennai with convenient local rides, airport transfers, and long-distance cab services. Root Cabs stays available 24/7, helping you reach your destination comfortably with clear fares and easy booking.",
+    description: "Travel across Chennai with convenient local rides, airport transfers,and long-distance cab services. Root Cabs stays available 24/7, helping you reach your destination comfortably with clear fares and easy booking.",
     services: ["local-taxi", "airport-taxi", "outstation", "acting-driver", "parcel-delivery", "auto"],
     popularRoutes: [
       { to: "Bangalore", distance: "350 km", fare: "₹4,200" },

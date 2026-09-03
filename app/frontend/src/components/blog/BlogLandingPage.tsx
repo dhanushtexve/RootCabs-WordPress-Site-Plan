@@ -202,7 +202,7 @@ const BlogLandingPage = () => {
               Blog & Travel Guides
             </h1>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-white/80 md:text-base">
-              Tips, guides and stories about Root Cabs, travel across Tamil Nadu, and the people who use the service every day.
+              Tips, guides and stories about Root Cabs, travel across Tamil Nadu,<br />and the people who use the service every day.
             </p>
             <div className="mt-4 flex flex-wrap items-center gap-4 text-sm text-white/80">
               <span className="inline-flex items-center gap-2">

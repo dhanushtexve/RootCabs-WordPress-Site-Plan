@@ -952,7 +952,7 @@ export function ServicesHub() {
           />
           <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Our Services</h1>
           <p className="max-w-3xl text-sm leading-6 text-gray-300 md:text-base">
-            Explore our reliable Taxi Services in Tamil Nadu for local travel, outstation trips and everyday commuting.
+            Explore our reliable Taxi Services in Tamil Nadu for local travel,<br />outstation trips and everyday commuting.
           </p>
           <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-300">
             {serviceStats.map((stat) => (
@@ -1248,7 +1248,7 @@ export function ServicePage() {
           <div className="absolute inset-0 bg-black/40" />
           <div className="relative z-10 mx-auto max-w-screen-xl px-4">
             <PageBreadcrumb
-              className="mb-5 text-white/70"
+              className="mb-5 pt-8 text-white/70 md:pt-10"
               items={[
                 { label: "Home", href: "/" },
                 { label: "Services", href: "/services" },
@@ -1264,22 +1264,22 @@ export function ServicePage() {
               </p>
             </div>
             <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
-              Need a comfortable ride for work, shopping, hospital visits, railway station pickups, or other everyday
-              trips? Root Cabs makes it easy to find a local taxi near me with clear fares, verified
+              Need a comfortable ride for work, shopping, hospital visits, railway station <br />pickups, or other everyday
+              trips? Root Cabs makes it easy to find a local taxi<br />near me with clear fares, verified
               drivers, and simple booking.
             </p>
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-12 flex flex-col gap-3 sm:flex-row md:mt-16">
+              <Link to="/book-ride">
+                <Button className="h-12 w-full rounded-lg bg-[#FFD700] px-6 font-bold text-[#1E2A6E] shadow-lg hover:bg-[#E6C200] sm:w-auto">
+                  Book Local Taxi <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
               <a href={`tel:${companyInfo.phone.replace(/\s+/g, "")}`}>
                 <Button className="h-12 w-full rounded-lg border border-white/30 bg-transparent px-6 font-bold text-white shadow-sm hover:bg-white/10 sm:w-auto">
                   <Phone className="mr-2 h-4 w-4" />
                   Call Us Now
                 </Button>
               </a>
-              <Link to="/book-ride">
-                <Button className="h-12 w-full rounded-lg bg-[#FFD700] px-6 font-bold text-[#1E2A6E] shadow-lg hover:bg-[#E6C200] sm:w-auto">
-                  Book Local Taxi <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
             </div>
           </div>
         </section>
@@ -1293,7 +1293,7 @@ export function ServicePage() {
           <div className="absolute inset-0 bg-black/40" />
           <div className="relative z-10 mx-auto max-w-screen-xl px-4">
             <PageBreadcrumb
-              className="mb-5 text-white/70"
+              className="mb-5 pt-8 text-white/70 md:pt-10"
               items={[
                 { label: "Home", href: "/" },
                 { label: "Services", href: "/services" },
@@ -1309,22 +1309,22 @@ export function ServicePage() {
               </p>
             </div>
             <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
-              Heading to the airport or arriving after a long flight? Root Cabs makes it easy to find an{" "}
-              airport taxi near me with convenient pickups, clear fares, and dependable rides for your
+              Heading to the airport or arriving after a long flight? Root Cabs makes it<br /> easy to find an{" "}
+              airport taxi near me with convenient pickups, clear fares,<br /> and dependable rides for your
               airport journey.
             </p>
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-12 flex flex-col gap-3 sm:flex-row md:mt-16">
+              <Link to="/book-ride">
+                <Button className="h-12 w-full rounded-lg bg-[#FFD700] px-6 font-bold text-[#1E2A6E] shadow-lg hover:bg-[#E6C200] sm:w-auto">
+                  Book Airport Taxi <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
               <a href={`tel:${companyInfo.phone.replace(/\s+/g, "")}`}>
                 <Button className="h-12 w-full rounded-lg border border-white/30 bg-transparent px-6 font-bold text-white shadow-sm hover:bg-white/10 sm:w-auto">
                   <Phone className="mr-2 h-4 w-4" />
                   Call Us Now
                 </Button>
               </a>
-              <Link to="/book-ride">
-                <Button className="h-12 w-full rounded-lg bg-[#FFD700] px-6 font-bold text-[#1E2A6E] shadow-lg hover:bg-[#E6C200] sm:w-auto">
-                  Book Airport Taxi <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
             </div>
           </div>
         </section>
@@ -1338,7 +1338,7 @@ export function ServicePage() {
           <div className="absolute inset-0 bg-black/40" />
           <div className="relative z-10 mx-auto max-w-screen-xl px-4">
             <PageBreadcrumb
-              className="mb-5 text-white/70"
+              className="mb-5 pt-8 text-white/70 md:pt-10"
               items={[
                 { label: "Home", href: "/" },
                 { label: "Services", href: "/services" },
@@ -1347,29 +1347,29 @@ export function ServicePage() {
             />
             <div className="mb-5 max-w-3xl">
               <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
-                Outstation Taxi for Comfortable Long-Distance Travel
+                Outstation Taxi for Comfortable<br /> Long-Distance Travel
               </h1>
               <p className="mt-3 text-sm font-semibold text-white/78">
                 Starting at ₹300. Available for long-distance travel across major cities
               </p>
             </div>
             <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
-              Planning a trip outside the city? Root Cabs makes it easy to find outstation cabs near me{" "}
-              with clear fares, verified drivers, and vehicle options for family trips, business travel, weekend
+              Planning a trip outside the city? Root Cabs makes it easy to find outstation <br /> cabs near me{" "}
+              with clear fares, verified drivers, and vehicle options<br /> for family trips, business travel, weekend
               journeys, and other long-distance plans.
             </p>
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-12 flex flex-col gap-3 sm:flex-row md:mt-16">
+              <Link to="/book-ride">
+                <Button className="h-12 w-full rounded-lg bg-[#FFD700] px-6 font-bold text-[#1E2A6E] shadow-lg hover:bg-[#E6C200] sm:w-auto">
+                  Book Outstation Taxi <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
               <a href={`tel:${companyInfo.phone.replace(/\s+/g, "")}`}>
                 <Button className="h-12 w-full rounded-lg border border-white/30 bg-transparent px-6 font-bold text-white shadow-sm hover:bg-white/10 sm:w-auto">
                   <Phone className="mr-2 h-4 w-4" />
                   Call Us Now
                 </Button>
               </a>
-              <Link to="/book-ride">
-                <Button className="h-12 w-full rounded-lg bg-[#FFD700] px-6 font-bold text-[#1E2A6E] shadow-lg hover:bg-[#E6C200] sm:w-auto">
-                  Book Outstation Taxi <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
             </div>
           </div>
         </section>
@@ -1383,7 +1383,7 @@ export function ServicePage() {
           <div className="absolute inset-0 bg-black/40" />
           <div className="relative z-10 mx-auto max-w-screen-xl px-4">
             <PageBreadcrumb
-              className="mb-5 text-white/70"
+              className="mb-5 pt-8 text-white/70 md:pt-10"
               items={[
                 { label: "Home", href: "/" },
                 { label: "Services", href: "/services" },
@@ -1392,29 +1392,29 @@ export function ServicePage() {
             />
             <div className="mb-5 max-w-3xl">
               <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
-                Professional Acting Driver for Your Own Car
+                Professional Acting Driver for <br />Your Own Car
               </h1>
               <p className="mt-3 text-sm font-semibold text-white/78">
                 Starting at ₹200. Available for local and outstation travel
               </p>
             </div>
             <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
-              Looking for an acting driver near me when you would rather not drive yourself? Root
-              Cabs connects you with verified drivers for late-night returns, family functions, hospital visits,
+              Looking for an acting driver near me when you would rather not drive <br /> yourself?Root
+              Cabs connects you with verified drivers for late-night returns,<br />family functions, hospital visits,
               business travel, and longer journeys in your own car.
             </p>
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-12 flex flex-col gap-3 sm:flex-row md:mt-16">
+              <Link to="/book-ride">
+                <Button className="h-12 w-full rounded-lg bg-[#FFD700] px-6 font-bold text-[#1E2A6E] shadow-lg hover:bg-[#E6C200] sm:w-auto">
+                  Book Acting Driver <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
               <a href={`tel:${companyInfo.phone.replace(/\s+/g, "")}`}>
                 <Button className="h-12 w-full rounded-lg border border-white/30 bg-transparent px-6 font-bold text-white shadow-sm hover:bg-white/10 sm:w-auto">
                   <Phone className="mr-2 h-4 w-4" />
                   Call Us Now
                 </Button>
               </a>
-              <Link to="/book-ride">
-                <Button className="h-12 w-full rounded-lg bg-[#FFD700] px-6 font-bold text-[#1E2A6E] shadow-lg hover:bg-[#E6C200] sm:w-auto">
-                  Book Acting Driver <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
             </div>
           </div>
         </section>
@@ -1428,7 +1428,7 @@ export function ServicePage() {
           <div className="absolute inset-0 bg-black/40" />
           <div className="relative z-10 mx-auto max-w-screen-xl px-4">
             <PageBreadcrumb
-              className="mb-5 text-white/70"
+              className="mb-5 pt-8 text-white/70 md:pt-10"
               items={[
                 { label: "Home", href: "/" },
                 { label: "Services", href: "/services" },
@@ -1444,22 +1444,22 @@ export function ServicePage() {
               </p>
             </div>
             <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
-              Need to send documents, medicines, small packages, or everyday essentials across the city? Root Cabs
-              makes it easy to find a parcel service near me with convenient pickup, clear charges,
+              Need to send documents, medicines, small packages, or everyday <br />essentials acrossthe city? Root Cabs
+              makes it easy to find a parcel <br />service near me with convenient pickup, clear charges,<br />
               and dependable delivery for your day-to-day needs.
             </p>
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-12 flex flex-col gap-3 sm:flex-row md:mt-16">
+              <Link to="/book-ride">
+                <Button className="h-12 w-full rounded-lg bg-[#FFD700] px-6 font-bold text-[#1E2A6E] shadow-lg hover:bg-[#E6C200] sm:w-auto">
+                  Send a Parcel <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
               <a href={`tel:${companyInfo.phone.replace(/\s+/g, "")}`}>
                 <Button className="h-12 w-full rounded-lg border border-white/30 bg-transparent px-6 font-bold text-white shadow-sm hover:bg-white/10 sm:w-auto">
                   <Phone className="mr-2 h-4 w-4" />
                   Call Us Now
                 </Button>
               </a>
-              <Link to="/book-ride">
-                <Button className="h-12 w-full rounded-lg bg-[#FFD700] px-6 font-bold text-[#1E2A6E] shadow-lg hover:bg-[#E6C200] sm:w-auto">
-                  Send a Parcel <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
             </div>
           </div>
         </section>
@@ -1473,7 +1473,7 @@ export function ServicePage() {
           <div className="absolute inset-0 bg-black/40" />
           <div className="relative z-10 mx-auto max-w-screen-xl px-4">
             <PageBreadcrumb
-              className="mb-5 text-white/70"
+              className="mb-5 pt-8 text-white/70 md:pt-10"
               items={[
                 { label: "Home", href: "/" },
                 { label: "Services", href: "/services" },
@@ -1489,21 +1489,21 @@ export function ServicePage() {
               </p>
             </div>
             <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
-              For work, shopping, station pickups, hospital visits, or nearby travel, Root Cabs makes it easy to
-              find and book auto near me with clear fares, verified drivers, and simple booking.
+              For work, shopping, station pickups, hospital visits, or nearby travel,<br />Root Cabs makes it easy to
+              find and book auto near me with clear fares,<br />verified drivers, and simple booking.
             </p>
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-12 flex flex-col gap-3 sm:flex-row md:mt-16">
+              <Link to="/book-ride">
+                <Button className="h-12 w-full rounded-lg bg-[#FFD700] px-6 font-bold text-[#1E2A6E] shadow-lg hover:bg-[#E6C200] sm:w-auto">
+                  Book Auto <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
               <a href={`tel:${companyInfo.phone.replace(/\s+/g, "")}`}>
                 <Button className="h-12 w-full rounded-lg border border-white/30 bg-transparent px-6 font-bold text-white shadow-sm hover:bg-white/10 sm:w-auto">
                   <Phone className="mr-2 h-4 w-4" />
                   Call Us Now
                 </Button>
               </a>
-              <Link to="/book-ride">
-                <Button className="h-12 w-full rounded-lg bg-[#FFD700] px-6 font-bold text-[#1E2A6E] shadow-lg hover:bg-[#E6C200] sm:w-auto">
-                  Book Auto <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
             </div>
           </div>
         </section>
