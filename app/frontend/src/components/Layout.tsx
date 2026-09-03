@@ -332,11 +332,6 @@ function Footer() {
               closes: "23:59",
             },
             priceRange: "₹₹",
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: companyInfo.rating,
-              reviewCount: "5000",
-            },
           }),
         }}
       />
