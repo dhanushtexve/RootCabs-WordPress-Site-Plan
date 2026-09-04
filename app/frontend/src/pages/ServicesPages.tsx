@@ -12,6 +12,8 @@ const ASSET_VERSION = "20260806";
 const assetPath = (path: string) => `${path}?v=${ASSET_VERSION}`;
 const serviceBenefitPath = (group: string, file: string) =>
   assetPath(`/assets/service-benefits/${group}/${encodeURIComponent(file)}`);
+const serviceBannerPath = (slug: string) => assetPath(`/assets/service-banners/${slug}.webp`);
+const serviceBannerUrl = (slug: string) => `https://rootcabs.com/assets/service-banners/${slug}.webp`;
 
 const iconMap: Record<string, React.ReactNode> = {
   Car: <Car className="w-8 h-8" />,
@@ -1192,7 +1194,31 @@ export function ServicePage() {
       title: servicePageSeoTitles[service.slug] ?? `${service.name} | Root Cabs`,
       description: service.description,
       url: `https://rootcabs.com/services/${service.slug}`,
-      image: "https://rootcabs.com/assets/root-cabs-logo.webp",
+      image: serviceBannerUrl(service.slug),
+    };
+
+    const upsertMeta = (attribute: "name" | "property", key: string, content: string) => {
+      const selector = `meta[${attribute}="${key}"]`;
+      let tag = head.querySelector(selector) as HTMLMetaElement | null;
+      const existed = Boolean(tag);
+      const previousContent = tag?.getAttribute("content");
+
+      if (!tag) {
+        tag = document.createElement("meta");
+        tag.setAttribute(attribute, key);
+        head.appendChild(tag);
+      }
+
+      tag.setAttribute("content", content);
+
+      return () => {
+        if (!tag) return;
+        if (existed) {
+          if (previousContent !== null) tag.setAttribute("content", previousContent);
+        } else {
+          tag.remove();
+        }
+      };
     };
 
     const canonicalSelector = 'link[rel="canonical"]';
@@ -1207,8 +1233,23 @@ export function ServicePage() {
     canonicalTag.href = seo.url;
     document.title = seo.title;
 
+    const cleanupMeta = [
+      upsertMeta("name", "description", seo.description),
+      upsertMeta("property", "og:site_name", "Root Cabs"),
+      upsertMeta("property", "og:title", seo.title),
+      upsertMeta("property", "og:description", seo.description),
+      upsertMeta("property", "og:url", seo.url),
+      upsertMeta("property", "og:image", seo.image),
+      upsertMeta("property", "og:type", "website"),
+      upsertMeta("name", "twitter:card", "summary_large_image"),
+      upsertMeta("name", "twitter:title", seo.title),
+      upsertMeta("name", "twitter:description", seo.description),
+      upsertMeta("name", "twitter:image", seo.image),
+    ];
+
     return () => {
       document.title = previousTitle;
+      cleanupMeta.forEach((cleanup) => cleanup());
       if (canonicalExisted) {
         if (previousCanonicalHref !== null) canonicalTag?.setAttribute("href", previousCanonicalHref);
       } else {
@@ -1234,13 +1275,14 @@ export function ServicePage() {
   const isActingDriverService = service.slug === "acting-driver";
   const isParcelDeliveryService = service.slug === "parcel-delivery";
   const isAutoService = service.slug === "auto";
+  const currentServiceBanner = serviceBannerPath(service.slug);
 
   return (
     <div>
       {/* Hero */}
       {isLocalTaxiService ? (
         <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
-          backgroundImage: "url('/assets/rootcabs-banner-home.png')",
+          backgroundImage: `url('${currentServiceBanner}')`,
           backgroundSize: "cover",
           backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
@@ -1285,7 +1327,7 @@ export function ServicePage() {
         </section>
       ) : isAirportTaxiService ? (
         <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
-          backgroundImage: "url('/assets/rootcabs-banner-home.png')",
+          backgroundImage: `url('${currentServiceBanner}')`,
           backgroundSize: "cover",
           backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
@@ -1330,7 +1372,7 @@ export function ServicePage() {
         </section>
       ) : isOutstationTaxiService ? (
         <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
-          backgroundImage: "url('/assets/rootcabs-banner-home.png')",
+          backgroundImage: `url('${currentServiceBanner}')`,
           backgroundSize: "cover",
           backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
@@ -1375,9 +1417,9 @@ export function ServicePage() {
         </section>
       ) : isActingDriverService ? (
         <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
-          backgroundImage: "url('/assets/rootcabs-banner-home.png')",
+          backgroundImage: `url('${currentServiceBanner}')`,
           backgroundSize: "cover",
-          backgroundPosition: "center center",
+          backgroundPosition: "center top",
           backgroundRepeat: "no-repeat",
         }}>
           <div className="absolute inset-0 bg-black/40" />
@@ -1420,7 +1462,7 @@ export function ServicePage() {
         </section>
       ) : isParcelDeliveryService ? (
         <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
-          backgroundImage: "url('/assets/rootcabs-banner-home.png')",
+          backgroundImage: `url('${currentServiceBanner}')`,
           backgroundSize: "cover",
           backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
@@ -1465,7 +1507,7 @@ export function ServicePage() {
         </section>
       ) : isAutoService ? (
         <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
-          backgroundImage: "url('/assets/rootcabs-banner-home.png')",
+          backgroundImage: `url('${currentServiceBanner}')`,
           backgroundSize: "cover",
           backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",

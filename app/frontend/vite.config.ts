@@ -108,7 +108,12 @@ type StaticSeoRoute = {
 
 const staticSeoRoutes: StaticSeoRoute[] = importedStaticSeoRoutes as unknown as StaticSeoRoute[];
 
-function createStaticSeoRoute(pathname: string, title: string, description: string): StaticSeoRoute {
+function createStaticSeoRoute(
+  pathname: string,
+  title: string,
+  description: string,
+  ogImage = 'https://rootcabs.com/assets/root-cabs-logo.webp',
+): StaticSeoRoute {
   const normalizedPath = normalizeSitemapPath(pathname);
 
   return {
@@ -116,10 +121,14 @@ function createStaticSeoRoute(pathname: string, title: string, description: stri
     title,
     description,
     canonicalUrl: `https://rootcabs.com${normalizedPath === '/' ? '/' : normalizedPath}`,
-    ogImage: 'https://rootcabs.com/assets/root-cabs-logo.webp',
+    ogImage,
     ogType: 'website',
     siteName: 'Root Cabs',
   };
+}
+
+function getServiceBannerUrl(serviceSlug: string): string {
+  return `https://rootcabs.com/assets/service-banners/${serviceSlug}.webp`;
 }
 
 function getGeneratedStaticSeoRoutes(): StaticSeoRoute[] {
@@ -131,6 +140,7 @@ function getGeneratedStaticSeoRoutes(): StaticSeoRoute[] {
         `/services/${service.slug}`,
         `${service.name} | Root Cabs`,
         service.description,
+        getServiceBannerUrl(service.slug),
       ),
     ),
     ...cities.map((city) =>
@@ -149,6 +159,7 @@ function getGeneratedStaticSeoRoutes(): StaticSeoRoute[] {
             `/${city.slug}/${serviceSlug}`,
             `${service?.name ?? 'Taxi Service'} in ${city.name} | Root Cabs`,
             service?.description ?? city.description,
+            service ? getServiceBannerUrl(service.slug) : undefined,
           );
         }),
     ),

@@ -238,7 +238,7 @@ export const staticSeoRoutes = [
     "title": "Acting Driver Service in Tamil Nadu | Root Cabs",
     "description": "Hire a verified acting driver with Root Cabs, Tamil Nadu's only combined cab and acting driver app. Safe, trained drivers for local and outstation trips.",
     "canonicalUrl": "https://rootcabs.com/services/acting-driver",
-    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogImage": "https://rootcabs.com/assets/service-banners/acting-driver.webp",
     "ogType": "website",
     "siteName": "Root Cabs"
   },
@@ -247,7 +247,7 @@ export const staticSeoRoutes = [
     "title": "Chennai Airport Taxi - Pickup & Drop | Root Cabs",
     "description": "Root Cabs offers Chennai Airport taxi service pickup and drop with on-time, hassle-free transfers - book your ride online in minutes.",
     "canonicalUrl": "https://rootcabs.com/services/airport-taxi",
-    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogImage": "https://rootcabs.com/assets/service-banners/airport-taxi.webp",
     "ogType": "website",
     "siteName": "Root Cabs"
   },
@@ -256,7 +256,7 @@ export const staticSeoRoutes = [
     "title": "Book Affordable Auto Online for Rides | Root Cabs",
     "description": "No more haggling or destination refusals. Book affordable auto rickshaw rides with Root Cabs at a fixed, upfront fare for short trips and errands.",
     "canonicalUrl": "https://rootcabs.com/services/auto",
-    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogImage": "https://rootcabs.com/assets/service-banners/auto.webp",
     "ogType": "website",
     "siteName": "Root Cabs"
   },
@@ -265,7 +265,7 @@ export const staticSeoRoutes = [
     "title": "Local Taxi Service in Tamil Nadu | Root Cabs",
     "description": "Book local taxi service with Root Cabs across 10+ Tamil Nadu cities for office commutes, shopping, appointments and everyday city travel. Book online now.",
     "canonicalUrl": "https://rootcabs.com/services/local-taxi",
-    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogImage": "https://rootcabs.com/assets/service-banners/local-taxi.webp",
     "ogType": "website",
     "siteName": "Root Cabs"
   },
@@ -274,7 +274,7 @@ export const staticSeoRoutes = [
     "title": "Outstation Taxi Services in Tamil Nadu | Root Cabs",
     "description": "Outstation taxi service by Root Cabs for intercity trips, weekend getaways and family journeys across Tamil Nadu. Reserve your cab online today.",
     "canonicalUrl": "https://rootcabs.com/services/outstation",
-    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogImage": "https://rootcabs.com/assets/service-banners/outstation.webp",
     "ogType": "website",
     "siteName": "Root Cabs"
   },
@@ -283,7 +283,7 @@ export const staticSeoRoutes = [
     "title": "Parcel Delivery Service - Same City | Root Cabs",
     "description": "Send documents, medicines and small packages same-day within your city with Root Cabs parcel delivery. Quick pickup and drop, booked online in minutes.",
     "canonicalUrl": "https://rootcabs.com/services/parcel-delivery",
-    "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogImage": "https://rootcabs.com/assets/service-banners/parcel-delivery.webp",
     "ogType": "website",
     "siteName": "Root Cabs"
   },
