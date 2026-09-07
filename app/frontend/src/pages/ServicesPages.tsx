@@ -1,6 +1,6 @@
 ﻿import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Car, Plane, Navigation, User, Package, Bike, CheckCircle, ArrowRight, Phone } from "lucide-react";
+import { Car, Plane, Navigation, User, Package, Bike, CheckCircle, ArrowRight, Phone, MapPinned, ShieldAlert, Headphones } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -136,26 +136,31 @@ type AutoSafetyFeature = {
   title: string;
   description: string;
   highlightedText?: string;
+  icon: React.ReactNode;
 };
 
 const autoSafetyFeatures: AutoSafetyFeature[] = [
   {
     title: "Verified Drivers",
+    icon: <User className="h-6 w-6" />,
     description:
       "Every Root Cabs auto driver is verified before accepting rides, giving you more confidence whenever you travel.",
   },
   {
     title: "Live Tracking",
+    icon: <MapPinned className="h-6 w-6" />,
     description:
       "Follow your ride in real time from pickup to drop and stay updated throughout the journey.",
   },
   {
     title: "24×7 Customer Support",
+    icon: <Headphones className="h-6 w-6" />,
     description:
       "Support is available around the clock for ride concerns, booking help, or assistance during your trip.",
   },
   {
     title: "SOS Assistance",
+    icon: <ShieldAlert className="h-6 w-6" />,
     description:
       "Use the SOS option whenever you need urgent help while travelling through the online auto booking app.",
   },
@@ -598,7 +603,7 @@ const outstationPopularRoutes = [
   },
   {
     title: "Chennai → Tirupati",
-    image: assetPath("/assets/cities/chennai.webp"),
+    image: assetPath("/assets/chennai-1.webp"),
     imagePosition: "object-center",
     description:
       "Ideal for temple visits, family pilgrimages, and planned day trips from Chennai.",
@@ -644,7 +649,7 @@ export function ServicesHub() {
     { value: "400+", label: "Verified Drivers" },
     { value: "8+", label: "Services" },
     { value: "10+", label: "Cities" },
-    { value: "4.7", label: "Average rating" },
+    { value: "4.2", label: "Average rating" },
   ];
   const serviceFaqs = [
     {
@@ -1328,8 +1333,8 @@ export function ServicePage() {
       ) : isAirportTaxiService ? (
         <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
           backgroundImage: `url('${currentServiceBanner}')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center center",
+          backgroundSize: "100% 100%",
+          backgroundPosition: "right top",
           backgroundRepeat: "no-repeat",
         }}>
           <div className="absolute inset-0 bg-black/40" />
@@ -1773,13 +1778,24 @@ export function ServicePage() {
                         to drive.
                       </p>
                       <p className="mt-4">
-                        Our acting driver service is available across Chennai, Vellore, Tiruvannamalai, and
-                        Kanchipuram, giving customers a practical option when they need a driver for their own
+                        Our acting driver service is available across{" "}
+                        <Link to="/taxi-in-chennai" className="font-bold transition-colors hover:text-primary">
+                          Chennai
+                        </Link>
+                        ,{" "}
+                        <Link to="/taxi-in-vellore" className="font-bold transition-colors hover:text-primary">
+                          Vellore
+                        </Link>
+                        , Tiruvannamalai, and Kanchipuram, giving customers a practical option when they need a driver for their own
                         vehicle. For longer plans, driver hire for outstation makes it easier to
                         travel in your car while an experienced driver manages the journey.
                       </p>
                       <p className="mt-4">
-                        With clear booking, flexible travel options, and support when needed, Root Cabs offers a
+                        With clear booking, flexible travel options, and{" "}
+                        <Link to="/support" className="font-bold transition-colors hover:text-primary">
+                          support
+                        </Link>{" "}
+                        when needed, Root Cabs offers a
                         simple way to get an{" "}
                         <Link to="/book-ride" className="transition-colors hover:text-primary">
                           acting driver for outstation trip
@@ -1837,7 +1853,7 @@ export function ServicePage() {
                 {isAirportTaxiService && (
                   <div className="mt-10">
                     <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
-                      Why Root Cabs Is A Better Choice For Airport Rides?
+                      Why Root Cabs Is A Better Choice For Airport Taxi?
                     </h2>
                     <div className="rounded-xl border border-[#D7DDED] bg-white p-5 text-base leading-7 text-[#26335F] shadow-sm md:p-6 md:text-lg">
                       <p>
@@ -1848,11 +1864,11 @@ export function ServicePage() {
                       </p>
                       <p className="mt-4">
                         Our airport rides are available across{" "}
-                        <Link to="/taxi-in-chennai" className="transition-colors hover:text-primary">
+                        <Link to="/taxi-in-chennai" className="font-bold transition-colors hover:text-primary">
                           Chennai
                         </Link>
                         ,{" "}
-                        <Link to="/taxi-in-vellore" className="transition-colors hover:text-primary">
+                        <Link to="/taxi-in-vellore" className="font-bold transition-colors hover:text-primary">
                           Vellore
                         </Link>
                         ,{" "}
@@ -1869,7 +1885,11 @@ export function ServicePage() {
                         the moment the ride begins.
                       </p>
                       <p className="mt-4">
-                        With verified drivers, dependable pickups, multiple cab options, and 24x7 support, Root Cabs
+                        With verified drivers, dependable pickups, multiple cab options, and 24x7{" "}
+                        <Link to="/support" className="font-bold transition-colors hover:text-primary">
+                          support
+                        </Link>
+                        , Root Cabs
                         offers a practical airport pickup service for customers who want a more
                         comfortable and predictable way to travel to or from the airport.
                       </p>
@@ -1961,12 +1981,24 @@ export function ServicePage() {
                           business travel, weekend plans, and intercity journeys.
                         </p>
                         <p className="mt-4">
-                          Whether you are travelling from Chennai, Vellore, Kanchipuram, or Tiruvannamalai, Root Cabs
+                          Whether you are travelling from{" "}
+                          <Link to="/taxi-in-chennai" className="font-bold transition-colors hover:text-primary">
+                            Chennai
+                          </Link>
+                          ,{" "}
+                          <Link to="/taxi-in-vellore" className="font-bold transition-colors hover:text-primary">
+                            Vellore
+                          </Link>
+                          , Kanchipuram, or Tiruvannamalai, Root Cabs
                           helps you plan the trip with dependable pickups and clear fare details. Drivers are assigned
                           based on availability and are experienced in handling longer routes beyond regular city travel.
                         </p>
                         <p className="mt-4">
-                          With 24x7 support, no last-minute cancellations, and straightforward booking, Root Cabs gives
+                          With 24x7{" "}
+                          <Link to="/support" className="font-bold transition-colors hover:text-primary">
+                            support
+                          </Link>
+                          , no last-minute cancellations, and straightforward booking, Root Cabs gives
                           you a practical way to{" "}
                           <Link to="/book-ride" className="transition-colors hover:text-primary">
                             book taxi for outstation
@@ -2077,7 +2109,9 @@ export function ServicePage() {
                                   ? "Local Rides"
                                   : s.name === "Acting Driver"
                                     ? "Acting Transfer"
-                                    : s.name}
+                                    : s.name === "Auto Rickshaw"
+                                      ? "Auto"
+                                      : s.name}
                               </Link>
                             </li>
                           ))}
@@ -2112,7 +2146,7 @@ export function ServicePage() {
                             .map((s) => (
                               <li key={s.slug}>
                                 <Link to={`/services/${s.slug}`} className="flex items-center gap-2 text-sm hover:text-primary transition-colors cursor-pointer py-1">
-                                  <ArrowRight className="w-3 h-3" /> {s.name === "Local Taxi" ? "Local Rides" : s.name === "Outstation Taxi" ? "Outstation" : s.name}
+                                  <ArrowRight className="w-3 h-3" /> {s.name === "Local Taxi" ? "Local Rides" : s.name === "Outstation Taxi" ? "Outstation" : s.name === "Auto Rickshaw" ? "Auto" : s.name}
                                 </Link>
                               </li>
                             ))}
@@ -2156,7 +2190,9 @@ export function ServicePage() {
                                   ? "Local Rides"
                                   : s.name === "Acting Driver"
                                     ? "Acting Transfer"
-                                    : s.name}
+                                    : s.name === "Auto Rickshaw"
+                                      ? "Auto"
+                                      : s.name}
                               </Link>
                             </li>
                           ))}
@@ -2201,7 +2237,9 @@ export function ServicePage() {
                                     ? "Outstation"
                                     : s.name === "Acting Driver"
                                       ? "Acting Transfer"
-                                      : s.name}
+                                      : s.name === "Auto Rickshaw"
+                                        ? "Auto"
+                                        : s.name}
                               </Link>
                             </li>
                           ))}
@@ -2223,14 +2261,22 @@ export function ServicePage() {
                     When you need a cab for everyday travel, convenience matters as much as price. Root Cabs keeps local
                     trips simple with nearby drivers, clear fares, and easy booking for office commutes, hospital visits,
                     shopping, station pickups, and other short-distance journeys. For customers looking to{" "}
-                    <Link to="/book-ride" className="transition-colors hover:text-primary">
+                    <Link to="/book-ride" className="font-bold transition-colors hover:text-primary">
                       book a local taxi
                     </Link>
                     , the focus is on getting a ride without unnecessary waiting or
                     confusion.
                   </p>
                   <p className="mt-4">
-                    Our local rides are available across Chennai, Vellore, Kanchipuram, and Tiruvannamalai. A driver
+                    Our local rides are available across{" "}
+                    <Link to="/taxi-in-chennai" className="font-bold transition-colors hover:text-primary">
+                      Chennai
+                    </Link>
+                    ,{" "}
+                    <Link to="/taxi-in-vellore" className="font-bold transition-colors hover:text-primary">
+                      Vellore
+                    </Link>
+                    , Kanchipuram, and Tiruvannamalai. A driver
                     familiar with Vellore’s hospital areas, Chennai’s busy city roads, or Kanchipuram’s local streets can
                     make a noticeable difference when it comes to pickup points, route choices, and reaching the
                     destination smoothly.
@@ -2251,8 +2297,11 @@ export function ServicePage() {
                           .filter((s) => localTaxiServiceOffers.includes(s.name))
                           .map((s) => (
                             <li key={s.slug}>
-                              <Link to={`/services/${s.slug}`} className="flex items-center gap-2 text-sm hover:text-primary transition-colors cursor-pointer py-1">
-                                <ArrowRight className="w-3 h-3" /> {s.name}
+                              <Link
+                                to={s.name === "Auto Rickshaw" ? "/services/local-taxi" : `/services/${s.slug}`}
+                                className="flex items-center gap-2 text-sm hover:text-primary transition-colors cursor-pointer py-1"
+                              >
+                                <ArrowRight className="w-3 h-3" /> {s.name === "Auto Rickshaw" ? "Auto" : s.name}
                               </Link>
                             </li>
                           ))}
@@ -2290,6 +2339,9 @@ export function ServicePage() {
                   <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
                     {autoSafetyFeatures.map((feature) => (
                       <div key={feature.title} className="rounded-xl border border-[#D7DDED] bg-white p-5 shadow-sm">
+                        <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-[#1E2A6E] text-[#FFD700]">
+                          {feature.icon}
+                        </div>
                         <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">{feature.title}</h3>
                         <p className="mt-3 text-base leading-7 text-[#4B587C]">
                           {feature.highlightedText ? (

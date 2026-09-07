@@ -530,6 +530,12 @@ const chennaiReviews = [
 // ============================================================
 export function CitiesHub() {
   const [showAllCities, setShowAllCities] = useState(false);
+  const cityStats = [
+    { value: "400+", label: "Verified Drivers" },
+    { value: "8+", label: "Services" },
+    { value: "10+", label: "Cities" },
+    { value: "4.2", label: "Average rating" },
+  ];
 
   useEffect(() => {
     const previousTitle = document.title;
@@ -663,6 +669,14 @@ export function CitiesHub() {
           <p className="max-w-3xl text-gray-300">
             Root Cabs brings dependable taxi services to 10+ cities across Tamil Nadu,<br />making local, one-way and outstation travel easier to book.
           </p>
+          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-300">
+            {cityStats.map((stat) => (
+              <div key={stat.label} className="flex items-center gap-1.5">
+                <span className="font-heading font-extrabold text-[#FFD700]">{stat.value}</span>
+                <span>{stat.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -681,15 +695,17 @@ export function CitiesHub() {
                     />
                   </div>
                   <div className="p-5 md:p-6">
-                    <div className="flex flex-col items-center text-center">
+                    <div className="flex -translate-x-4 items-start justify-center gap-3">
                       <img
                         src="/assets/cities-live-ride-tracking.png"
                         alt=""
                         aria-hidden="true"
-                        className="mb-3 h-7 w-7 object-contain transition-transform group-hover:scale-110"
+                        className="mt-0.5 h-7 w-7 shrink-0 object-contain transition-transform group-hover:scale-110"
                       />
-                      <h3 className="font-heading text-lg font-bold text-[#1E2A6E]">{city.name}</h3>
-                      <p className="mt-1 text-xs text-muted-foreground">{city.state}</p>
+                      <div className="text-center">
+                        <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">{city.name}</h3>
+                        <p className="mt-1 text-sm text-muted-foreground">{city.state}</p>
+                      </div>
                     </div>
                     <p className="mt-4 text-sm leading-6 text-muted-foreground">
                       {cityCardSummaryMap[city.name] ?? city.tagline}
@@ -719,7 +735,7 @@ export function CitiesHub() {
             <button
               type="button"
               onClick={() => setShowAllCities((current) => !current)}
-              className="inline-flex items-center rounded-full border border-[#C9D2EA] bg-white px-6 py-3 text-sm font-semibold text-[#1E2A6E] shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md"
+              className="inline-flex items-center rounded-full border border-[#1E2A6E] bg-[#1E2A6E] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:border-[#273588] hover:bg-[#273588] hover:shadow-md"
             >
               {showAllCities ? "Show Less" : "See More"}
             </button>
@@ -1120,9 +1136,8 @@ function ChennaiServicesSection() {
       </p>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {visibleServices.map((service) => (
-          <Link
+          <div
             key={service.title}
-            to={service.href}
             className="group relative overflow-visible rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] p-5 pr-20 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md"
           >
             <div className={`pointer-events-none absolute right-4 top-4 flex h-14 w-16 items-center justify-center rounded-xl border border-white/70 shadow-sm transition-all duration-300 group-hover:-right-3 group-hover:-top-3 group-hover:scale-105 ${service.iconWrapClass}`}>
@@ -1130,19 +1145,17 @@ function ChennaiServicesSection() {
                 {service.icon}
               </div>
             </div>
-            <ArrowRight className="absolute bottom-5 right-5 h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary" />
             <h3 className="font-heading text-xl font-bold text-[#111827]">{service.title}</h3>
             <p className="mt-1 text-sm font-medium text-primary">{service.fare}</p>
             <p className="mt-3 text-sm leading-6 text-muted-foreground">{service.description}</p>
-          </Link>
+          </div>
         ))}
       </div>
       {chennaiServices.length > 6 && (
         <div className="mt-6 flex justify-center">
           <Button
             type="button"
-            variant="outline"
-            className="rounded-full px-6 font-semibold text-[#1E2A6E]"
+            className="rounded-full bg-[#1E2A6E] px-6 font-semibold text-white hover:bg-[#273588]"
             onClick={() => setShowAll((current) => !current)}
           >
             {showAll ? "Show Less" : "See More"}
@@ -1707,7 +1720,7 @@ export function CityPage({
               </Button>
             </Link>
             <a href={`tel:${isChennai ? "8608606474" : companyInfo.phone}`}>
-              <Button size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 cursor-pointer !bg-transparent">
+              <Button size="lg" className="border border-white/30 bg-white/10 text-white hover:bg-white/15 cursor-pointer shadow-sm">
                 <Phone className="w-4 h-4 mr-2" /> {isVellore ? "Call us" : "Call now"}
               </Button>
             </a>
@@ -2038,9 +2051,8 @@ function VelloreServicesSection() {
       </p>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {visibleServices.map((service) => (
-          <Link
+          <div
             key={service.title}
-            to={service.href}
             className="group relative overflow-visible rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] p-5 pr-20 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md"
           >
             <div className={`pointer-events-none absolute right-4 top-4 flex h-14 w-16 items-center justify-center rounded-xl border border-white/70 shadow-sm transition-all duration-300 group-hover:-right-3 group-hover:-top-3 group-hover:scale-105 ${service.iconWrapClass}`}>
@@ -2048,19 +2060,17 @@ function VelloreServicesSection() {
                 {service.icon}
               </div>
             </div>
-            <ArrowRight className="absolute bottom-5 right-5 h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1 group-hover:text-primary" />
             <h3 className="font-heading text-xl font-bold text-[#111827]">{service.title}</h3>
             <p className="mt-1 text-sm font-medium text-primary">{service.fare}</p>
             <p className="mt-3 text-sm leading-6 text-muted-foreground">{service.description}</p>
-          </Link>
+          </div>
         ))}
       </div>
       {availableServices.length > 6 && (
         <div className="mt-6 flex justify-center">
           <Button
             type="button"
-            variant="outline"
-            className="rounded-full px-6 font-semibold text-[#1E2A6E]"
+            className="rounded-full bg-[#1E2A6E] px-6 font-semibold text-white hover:bg-[#273588]"
             onClick={() => setShowAll((current) => !current)}
           >
             {showAll ? "Show Less" : "See More"}
