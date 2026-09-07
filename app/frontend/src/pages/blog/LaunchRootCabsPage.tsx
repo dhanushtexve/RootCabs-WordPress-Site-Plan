@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import {
   Calendar,
   CheckCircle,
-  Clock,
-  HelpCircle,
   MessageSquare,
   Mail,
   Phone,
@@ -63,7 +61,7 @@ const LaunchRootCabsPage = () => {
     const head = document.head;
 
     const seo = {
-      title: 'The Launch Of Root Cabs: A New Chapter In Tamil Naduâ€™s Taxi Industry | Root Cabs',
+      title: "The Launch Of Root Cabs: A New Chapter In Tamil Nadu's Taxi Industry | Root Cabs",
       description:
         'Read how Root Cabs launched in Vellore, why the city was chosen first, and how the service expanded across Tamil Nadu with local, outstation and acting driver options.',
       keywords:
@@ -106,7 +104,7 @@ const LaunchRootCabsPage = () => {
     schema.text = JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'BlogPosting',
-      headline: 'The Launch Of Root Cabs: A New Chapter In Tamil Naduâ€™s Taxi Industry',
+      headline: "The Launch Of Root Cabs: A New Chapter In Tamil Nadu's Taxi Industry",
       description: seo.description,
       datePublished: '2025-06-05',
       dateModified: '2025-06-06',
@@ -166,7 +164,7 @@ const LaunchRootCabsPage = () => {
               Launch Story
             </span>
             <h1 className="mt-4 font-heading text-3xl md:text-4xl font-bold leading-tight">
-              The Launch Of Root Cabs: A New Chapter In Tamil Naduâ€™s Taxi Industry
+              The Launch Of Root Cabs: A New Chapter In Tamil Nadu's Taxi Industry
             </h1>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-white/80 md:text-base">
               Every business begins with an idea, and Root Cabs began with a clear one. The aim was to make everyday travel more affordable, reliable and convenient for people across Tamil Nadu.
@@ -179,10 +177,6 @@ const LaunchRootCabsPage = () => {
               <span className="inline-flex items-center gap-2">
                 <MessageSquare className="h-4 w-4 text-[#FFD700]" />
                 Business
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <HelpCircle className="h-4 w-4 text-[#FFD700]" />
-                8 min read
               </span>
             </div>
           </div>

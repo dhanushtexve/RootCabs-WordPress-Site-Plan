@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import {
   Calendar,
   CheckCircle,
-  Clock,
   Mail,
   MessageSquare,
   Phone,
@@ -236,10 +235,6 @@ const DriverFeedbackPage = () => {
               <span className="inline-flex items-center gap-2">
                 <MessageSquare className="h-4 w-4 text-[#FFD700]" />
                 Driver feedback
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <Clock className="h-4 w-4 text-[#FFD700]" />
-                9 min read
               </span>
             </div>
           </div>

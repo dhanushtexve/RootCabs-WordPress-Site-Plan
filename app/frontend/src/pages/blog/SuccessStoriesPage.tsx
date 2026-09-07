@@ -1,6 +1,6 @@
 ﻿import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, CheckCircle, Clock, MessageSquare, Users } from 'lucide-react';
+import { Calendar, CheckCircle, MessageSquare, Users } from 'lucide-react';
 import { Mail, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -184,10 +184,6 @@ const SuccessStoriesPage = () => {
               <span className="inline-flex items-center gap-2">
                 <MessageSquare className="h-4 w-4 text-[#FFD700]" />
                 Driver stories
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <Clock className="h-4 w-4 text-[#FFD700]" />
-                8 min read
               </span>
             </div>
           </div>

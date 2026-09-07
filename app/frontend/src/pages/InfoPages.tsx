@@ -638,10 +638,6 @@ export function BlogPage() {
                 <MessageSquare className="h-4 w-4 text-[#FFD700]" />
                 Brand story
               </span>
-              <span className="inline-flex items-center gap-2">
-                <HelpCircle className="h-4 w-4 text-[#FFD700]" />
-                8 min read
-              </span>
             </div>
           </div>
         </div>

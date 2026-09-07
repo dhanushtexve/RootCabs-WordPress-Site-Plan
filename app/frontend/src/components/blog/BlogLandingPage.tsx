@@ -322,7 +322,7 @@ const BlogLandingPage = () => {
                         <span className="rounded-full bg-[#1E2A6E]/10 px-2.5 py-1 text-[#1E2A6E]">
                           {post.category}
                         </span>
-                        <span>{post.readTime}</span>
+                        {post.readTime && <span>{post.readTime}</span>}
                       </div>
                       <h3 className="mt-4 font-heading text-lg font-bold leading-snug text-slate-950 group-hover:text-[#1E2A6E]">
                         {post.title}
