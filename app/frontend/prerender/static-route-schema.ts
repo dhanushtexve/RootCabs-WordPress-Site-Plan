@@ -1,10 +1,7 @@
 export const staticRouteSchemas: Record<string, unknown> = {
   "/": {
     "@context": "https://schema.org",
-    "@type": [
-      "WebPage",
-      "FAQPage"
-    ],
+    "@type": "WebPage",
     "url": "https://rootcabs.com/",
     "name": "Taxi, Drop Taxi & Outstation Cab Service in Tamil Nadu",
     "description": "Book Root Cabs for local, airport and outstation taxi services across Tamil Nadu. Enjoy fixed fares, verified drivers and 24/7 booking. Call 8608606474.",
@@ -15,11 +12,8 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo.webp",
-        "contentUrl": "https://rootcabs.com/assets/root-cabs-logo.webp",
-        "caption": "Root Cabs Logo"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
       },
-      "image": "https://rootcabs.com/assets/root-cabs-logo.webp",
       "description": "Root Cabs is an online taxi booking service offering local rides, airport transfers, one-way taxis, outstation trips, hourly packages, auto rides, bike taxis and acting driver services across Tamil Nadu.",
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -46,12 +40,6 @@ export const staticRouteSchemas: Record<string, unknown> = {
         "https://www.facebook.com/people/Root-Cabs/61575197818182/"
       ]
     },
-    "primaryImageOfPage": {
-      "@type": "ImageObject",
-      "url": "https://rootcabs.com/assets/root-cabs-logo.webp",
-      "contentUrl": "https://rootcabs.com/assets/root-cabs-logo.webp",
-      "caption": "Root Cabs Logo"
-    },
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -63,48 +51,51 @@ export const staticRouteSchemas: Record<string, unknown> = {
         }
       ]
     },
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How can I book a taxi online with Root Cabs?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "You can book a taxi online through the Root Cabs app by entering your pickup and drop locations, choosing a vehicle and confirming the ride."
+    "mainEntity": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How can I book a taxi online with Root Cabs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can book a taxi online through the Root Cabs app by entering your pickup and drop locations, choosing a vehicle and confirming the ride."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What types of cab services does Root Cabs offer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Root Cabs offers local rides, airport transfers, one-way taxis, outstation trips, hourly packages, autos, bike taxis and acting driver services."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I schedule a cab for a future date?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. You can pre-book a taxi for a future date and time, making it easier to plan airport transfers, office trips and outstation journeys."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is the cab fare calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The fare is estimated based on the trip distance, vehicle type and service selected. You can view the estimated fare before confirming the booking."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are Root Cabs drivers verified?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Drivers are verified through document checks and an approval process before they are allowed to accept rides."
+          }
         }
-      },
-      {
-        "@type": "Question",
-        "name": "What types of cab services does Root Cabs offer?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Root Cabs offers local rides, airport transfers, one-way taxis, outstation trips, hourly packages, autos, bike taxis and acting driver services."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I schedule a cab for a future date?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. You can pre-book a taxi for a future date and time, making it easier to plan airport transfers, office trips and outstation journeys."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How is the cab fare calculated?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The fare is estimated based on the trip distance, vehicle type and service selected. You can view the estimated fare before confirming the booking."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Are Root Cabs drivers verified?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Drivers are verified through document checks and an approval process before they are allowed to accept rides."
-        }
-      }
-    ]
+      ]
+    }
   },
   "/taxi-in-chennai": {
     "@context": "https://schema.org",
@@ -119,11 +110,8 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo.webp",
-        "contentUrl": "https://rootcabs.com/assets/root-cabs-logo.webp",
-        "caption": "Root Cabs Logo"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
       },
-      "image": "https://rootcabs.com/assets/root-cabs-logo.webp",
       "description": "Root Cabs provides local, airport and outstation taxi services with verified drivers, transparent fares and 24/7 cab booking in Chennai and across Tamil Nadu.",
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -152,11 +140,6 @@ export const staticRouteSchemas: Record<string, unknown> = {
         "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
       ]
     },
-    "primaryImageOfPage": {
-      "@type": "ImageObject",
-      "url": "https://rootcabs.com/assets/root-cabs-logo.webp",
-      "caption": "Root Cabs Logo"
-    },
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -173,6 +156,67 @@ export const staticRouteSchemas: Record<string, unknown> = {
           "item": "https://rootcabs.com/taxi-in-chennai"
         }
       ]
+    },
+    "mainEntity": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which Is The Best Cab Service In Chennai?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The best cab service in Chennai should provide clear fares, verified drivers, dependable pickups, and responsive support. Root Cabs offers these benefits for local, airport, and outstation rides."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Is The Cheapest Way To Book An Outstation Cab From Chennai?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The cheapest way is to compare round-trip fares and choose a vehicle that fits your group size. Root Cabs lets you review the available options and select an outstation cab from Chennai that suits your budget."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Is The Best Cab Service In Chennai For Outstation Trips?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The best cab service in Chennai for outstation trips should offer clear round-trip fares, suitable vehicle choices, verified drivers, and dependable support. Root Cabs provides these options for comfortable journeys from Chennai."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How Much Does Root Cabs Charge Per km In Chennai?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Root Cabs fares in Chennai start from a base fare of ₹90 for the first 3 km. Both the base fare and the per-kilometre rate vary depending on the vehicle type selected."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does The Outstation Fare Include Tolls And Taxes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Outstation fares include applicable taxes, but toll charges are not included. Any tolls incurred during the trip must be paid separately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Is Root Cabs' Cancellation And Refund Policy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can cancel a Root Cabs booking within 8 minutes of confirmation. Refund requests are reviewed through support tickets, and eligible cases are usually resolved within 24-48 hours."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Payment Modes Does Root Cabs Accept?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Root Cabs accepts UPI and cash payments. The fare is paid directly to the driver after completing the ride."
+          }
+        }
+      ]
     }
   },
   "/book-ride": {
@@ -180,7 +224,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
     "@type": "WebPage",
     "url": "https://rootcabs.com/book-ride",
     "name": "Book a Ride | Local, Airport & Outstation Taxi - Root Cabs",
-    "description": "Book your ride online with Root Cabs in seconds for local, airport and outstation taxi services across Tamil Nadu. Fixed fares, verified drivers and instant confirmation.",
+    "description": "Book your ride online with Root Cabs in seconds local, airport & outstation taxi across Tamil Nadu. Fixed fares, verified drivers, instant confirmation.",
     "inLanguage": "en-IN",
     "about": {
       "@type": "Organization",
@@ -188,11 +232,8 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo.webp",
-        "contentUrl": "https://rootcabs.com/assets/root-cabs-logo.webp",
-        "caption": "Root Cabs Logo"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
       },
-      "image": "https://rootcabs.com/assets/root-cabs-logo.webp",
       "description": "Root Cabs provides local, airport and outstation taxi services with verified drivers, transparent fares and 24/7 online booking across Tamil Nadu.",
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -221,11 +262,6 @@ export const staticRouteSchemas: Record<string, unknown> = {
         "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
       ]
     },
-    "primaryImageOfPage": {
-      "@type": "ImageObject",
-      "url": "https://rootcabs.com/assets/root-cabs-logo.webp",
-      "caption": "Root Cabs Logo"
-    },
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -240,6 +276,75 @@ export const staticRouteSchemas: Record<string, unknown> = {
           "position": 2,
           "name": "Book Your Ride",
           "item": "https://rootcabs.com/book-ride"
+        }
+      ]
+    },
+    "mainEntity": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How Can I Book My Ride With Root Cabs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You can book your ride online through the Root Cabs app by selecting your pickup location, destination and preferred vehicle. Review the fare details and confirm your booking."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I Book A Ride For Later With Root Cabs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Root Cabs allows you to schedule your trip in advance by selecting your preferred pickup date and time during the online ride booking process."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Ride Options Are Available With Root Cabs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Root Cabs offers Auto, Cab and Bike Taxi services for city travel. You can also book local taxis, one-way drop taxis, round trips, hourly rentals and parcel delivery."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I Book A Transfer From The Airport Through Root Cabs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. You can book a transfer from the airport or arrange an airport drop through the Root Cabs app. Add the correct terminal, pickup details and travel time while confirming your ride."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will The Driver Ask For An Amount Above The App Fare?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. With Root Cabs, there is no bargaining with drivers. The fare shown in the app is the final ride fare, excluding applicable tolls, parking fees and other charges shown separately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I Cancel My Ride After Booking?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. You can cancel your Root Cabs ride through the app before the trip begins. Cancellation charges may apply based on the booking stage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I Book A Ride For Someone Else?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. You can book a Root Cabs ride for a family member or friend by entering their pickup and drop details along with the correct contact number."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What Should I Do If I Need Help With My Booking?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Call the Root Cabs support team at +91 86080 66474 for help with pickup details, ride changes, cancellations or other booking-related questions."
+          }
         }
       ]
     }
@@ -257,11 +362,8 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo.webp",
-        "contentUrl": "https://rootcabs.com/assets/root-cabs-logo.webp",
-        "caption": "Root Cabs Logo"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
       },
-      "image": "https://rootcabs.com/assets/root-cabs-logo.webp",
       "description": "Root Cabs provides local, airport and outstation taxi services, acting driver services, parcel delivery, auto rickshaw rides and other mobility services across Tamil Nadu.",
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -289,12 +391,6 @@ export const staticRouteSchemas: Record<string, unknown> = {
         "https://play.google.com/store/apps/details?id=com.nativecustomer",
         "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
       ]
-    },
-    "primaryImageOfPage": {
-      "@type": "ImageObject",
-      "url": "https://rootcabs.com/assets/root-cabs-logo.webp",
-      "contentUrl": "https://rootcabs.com/assets/root-cabs-logo.webp",
-      "caption": "Root Cabs Logo"
     },
     "breadcrumb": {
       "@type": "BreadcrumbList",
@@ -372,7 +468,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo.webp"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
       },
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -382,7 +478,9 @@ export const staticRouteSchemas: Record<string, unknown> = {
       },
       "sameAs": [
         "https://www.instagram.com/rootcabs/",
-        "https://www.facebook.com/people/Root-Cabs/61575197818182/"
+        "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+        "https://play.google.com/store/apps/details?id=com.nativecustomer",
+        "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
       ]
     },
     "breadcrumb": {
@@ -405,6 +503,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
     "mainEntity": {
       "@type": "ItemList",
       "name": "Root Cabs Service Cities in Tamil Nadu",
+      "itemListOrder": "https://schema.org/ItemListUnordered",
       "numberOfItems": 10,
       "itemListElement": [
         {
@@ -509,9 +608,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo.webp",
-        "contentUrl": "https://rootcabs.com/assets/root-cabs-logo.webp",
-        "caption": "Root Cabs Logo"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
       },
       "description": "Root Cabs provides taxi and mobility services across Tamil Nadu and offers earning opportunities for cab, auto, bike taxi and acting driver partners.",
       "email": "support@rootcabs.com",
@@ -530,9 +627,15 @@ export const staticRouteSchemas: Record<string, unknown> = {
           "Tamil"
         ]
       },
+      "areaServed": {
+        "@type": "State",
+        "name": "Tamil Nadu"
+      },
       "sameAs": [
         "https://www.instagram.com/rootcabs/",
-        "https://www.facebook.com/people/Root-Cabs/61575197818182/"
+        "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+        "https://play.google.com/store/apps/details?id=com.nativecustomer",
+        "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
       ]
     },
     "about": {
@@ -600,11 +703,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
   },
   "/support": {
     "@context": "https://schema.org",
-    "@type": [
-      "WebPage",
-      "ContactPage",
-      "FAQPage"
-    ],
+    "@type": "WebPage",
     "url": "https://rootcabs.com/support",
     "name": "Support & Help Center | Root Cabs",
     "description": "Get answers to common Root Cabs questions on bookings, payments, and safety, or reach our 24/7 support team by phone or email. Call +91 8608606474.",
@@ -615,11 +714,8 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo.webp",
-        "contentUrl": "https://rootcabs.com/assets/root-cabs-logo.webp",
-        "caption": "Root Cabs Logo"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
       },
-      "image": "https://rootcabs.com/assets/root-cabs-logo.webp",
       "description": "Root Cabs provides local, airport and outstation taxi services, auto rides, bike taxis, acting driver services and parcel delivery across Tamil Nadu.",
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -646,12 +742,6 @@ export const staticRouteSchemas: Record<string, unknown> = {
         "https://www.facebook.com/people/Root-Cabs/61575197818182/"
       ]
     },
-    "primaryImageOfPage": {
-      "@type": "ImageObject",
-      "url": "https://rootcabs.com/assets/root-cabs-logo.webp",
-      "contentUrl": "https://rootcabs.com/assets/root-cabs-logo.webp",
-      "caption": "Root Cabs Logo"
-    },
     "breadcrumb": {
       "@type": "BreadcrumbList",
       "itemListElement": [
@@ -669,7 +759,9 @@ export const staticRouteSchemas: Record<string, unknown> = {
         }
       ]
     },
-    "mainEntity": [
+    "mainEntity": {
+      "@type": "FAQPage",
+      "mainEntity": [
       {
         "@type": "Question",
         "name": "Can I share my live trip location with a family member?",
@@ -734,7 +826,8 @@ export const staticRouteSchemas: Record<string, unknown> = {
           "text": "Contact the Root Cabs support team with your registered details. The team will guide you through the verification and account update process."
         }
       }
-    ]
+      ]
+    }
   },
   "/terms-of-use": {
     "@context": "https://schema.org",
@@ -749,10 +842,16 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo.webp"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
       },
       "email": "support@rootcabs.com",
-      "telephone": "+91-8608606474"
+      "telephone": "+91-8608606474",
+      "sameAs": [
+        "https://www.instagram.com/rootcabs/",
+        "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+        "https://play.google.com/store/apps/details?id=com.nativecustomer",
+        "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
+      ]
     },
     "breadcrumb": {
       "@type": "BreadcrumbList",
@@ -785,10 +884,16 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo.webp"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
       },
       "email": "support@rootcabs.com",
-      "telephone": "+91-8608606474"
+      "telephone": "+91-8608606474",
+      "sameAs": [
+        "https://www.instagram.com/rootcabs/",
+        "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+        "https://play.google.com/store/apps/details?id=com.nativecustomer",
+        "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
+      ]
     },
     "breadcrumb": {
       "@type": "BreadcrumbList",
@@ -920,7 +1025,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
     "@type": "AboutPage",
     "url": "https://rootcabs.com/about",
     "name": "About Root Cabs | Our Mission, Values & Journey",
-    "description": "Root Cabs, a unit of Texve Innovations, connects Tamil Nadu with organised, fair mobility services. 10+ cities, 2,000+ driver partners, 4.8/5 rating.",
+    "description": "Root Cabs, a unit of Texve Innovations, connects Tamil Nadu with organised, fair mobility services. 10+ cities, 2,000+ driver partners, 4.2/5 rating.",
     "inLanguage": "en-IN",
     "publisher": {
       "@type": "Organization",
@@ -928,21 +1033,11 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo.webp",
-        "contentUrl": "https://rootcabs.com/assets/root-cabs-logo.webp",
-        "caption": "Root Cabs Logo"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
       },
       "description": "Root Cabs, a unit of Texve Innovations, provides organised and fair mobility services across Tamil Nadu.",
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "REPLACE WITH ROOT CABS VELLORE STREET ADDRESS",
-        "addressLocality": "Vellore",
-        "addressRegion": "Tamil Nadu",
-        "postalCode": "REPLACE WITH PIN CODE",
-        "addressCountry": "IN"
-      },
       "parentOrganization": {
         "@type": "Organization",
         "name": "Texve Innovations"
@@ -967,7 +1062,9 @@ export const staticRouteSchemas: Record<string, unknown> = {
       },
       "sameAs": [
         "https://www.instagram.com/rootcabs/",
-        "https://www.facebook.com/people/Root-Cabs/61575197818182/"
+        "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+        "https://play.google.com/store/apps/details?id=com.nativecustomer",
+        "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
       ]
     },
     "about": {
@@ -1010,7 +1107,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo.webp"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
       },
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -1028,9 +1125,15 @@ export const staticRouteSchemas: Record<string, unknown> = {
           "Tamil"
         ]
       },
+      "areaServed": {
+        "@type": "State",
+        "name": "Tamil Nadu"
+      },
       "sameAs": [
         "https://www.instagram.com/rootcabs/",
-        "https://www.facebook.com/people/Root-Cabs/61575197818182/"
+        "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+        "https://play.google.com/store/apps/details?id=com.nativecustomer",
+        "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
       ]
     },
     "breadcrumb": {
@@ -1131,7 +1234,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo.webp"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
       },
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -1155,7 +1258,9 @@ export const staticRouteSchemas: Record<string, unknown> = {
       },
       "sameAs": [
         "https://www.instagram.com/rootcabs/",
-        "https://www.facebook.com/people/Root-Cabs/61575197818182/"
+        "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+        "https://play.google.com/store/apps/details?id=com.nativecustomer",
+        "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
       ]
     },
     "breadcrumb": {
@@ -1256,7 +1361,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo.webp"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
       },
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -1280,7 +1385,9 @@ export const staticRouteSchemas: Record<string, unknown> = {
       },
       "sameAs": [
         "https://www.instagram.com/rootcabs/",
-        "https://www.facebook.com/people/Root-Cabs/61575197818182/"
+        "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+        "https://play.google.com/store/apps/details?id=com.nativecustomer",
+        "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
       ]
     },
     "breadcrumb": {
@@ -1381,7 +1488,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo.webp"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
       },
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -1405,7 +1512,9 @@ export const staticRouteSchemas: Record<string, unknown> = {
       },
       "sameAs": [
         "https://www.instagram.com/rootcabs/",
-        "https://www.facebook.com/people/Root-Cabs/61575197818182/"
+        "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+        "https://play.google.com/store/apps/details?id=com.nativecustomer",
+        "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
       ]
     },
     "breadcrumb": {
@@ -1506,7 +1615,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo.webp"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
       },
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -1530,7 +1639,9 @@ export const staticRouteSchemas: Record<string, unknown> = {
       },
       "sameAs": [
         "https://www.instagram.com/rootcabs/",
-        "https://www.facebook.com/people/Root-Cabs/61575197818182/"
+        "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+        "https://play.google.com/store/apps/details?id=com.nativecustomer",
+        "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
       ]
     },
     "breadcrumb": {
@@ -1626,6 +1737,67 @@ export const staticRouteSchemas: Record<string, unknown> = {
       ]
     }
   },
+  "/taxi-in-vellore": {
+    "@context": "https://schema.org", "@type": "WebPage", "url": "https://rootcabs.com/taxi-in-vellore", "name": "Taxi Service in Vellore | Cab Booking 24/7 - Root Cabs", "description": "Book reliable taxi service in Vellore with Root Cabs for local rides, airport transfers and outstation travel. Verified drivers, transparent fares and 24/7 booking.", "inLanguage": "en-IN",
+    "about": {"@type":"Organization","name":"Root Cabs","url":"https://rootcabs.com/","logo":{"@type":"ImageObject","url":"https://rootcabs.com/assets/root-cabs-logo-animation.gif"},"description":"Root Cabs provides local, airport and outstation taxi services with verified drivers, transparent fares and 24/7 cab booking in Vellore and across Tamil Nadu.","email":"support@rootcabs.com","telephone":"+91-8608606474","contactPoint":{"@type":"ContactPoint","telephone":"+91-8608606474","email":"support@rootcabs.com","contactType":"customer support","areaServed":{"@type":"City","name":"Vellore"},"availableLanguage":["English","Tamil"]},"areaServed":{"@type":"City","name":"Vellore"},"sameAs":["https://www.instagram.com/rootcabs/","https://www.facebook.com/people/Root-Cabs/61575197818182/","https://play.google.com/store/apps/details?id=com.nativecustomer","https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"]},
+    "breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootcabs.com/"},{"@type":"ListItem","position":2,"name":"Taxi Service in Vellore","item":"https://rootcabs.com/taxi-in-vellore"}]},
+    "mainEntity":{"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"Which Is The Best Taxi Service In Vellore?","acceptedAnswer":{"@type":"Answer","text":"The best taxi service in Vellore should offer clear fares, verified drivers, dependable pickups, and responsive support. Root Cabs provides these benefits for local, hospital, station, and outstation travel."}},
+      {"@type":"Question","name":"How Do I Book A Taxi In Vellore With Root Cabs?","acceptedAnswer":{"@type":"Answer","text":"Enter your pickup point and destination in the Root Cabs app, choose the required service, and confirm your ride. You can also contact the Root Cabs support team to book a cab over the phone."}},
+      {"@type":"Question","name":"Are Root Cabs Available 24x7 In Vellore, Even During Festivals?","acceptedAnswer":{"@type":"Answer","text":"Yes, Root Cabs is available 24/7 in Vellore, including weekends and festival days. You can book a ride whenever you need to travel."}},
+      {"@type":"Question","name":"Which App Should I Use To Book A Cab In Vellore?","acceptedAnswer":{"@type":"Answer","text":"Use the Root Cabs app to view ride options, check fares, and confirm your pickup. It provides a convenient alternative to searching for a call taxi in Vellore."}},
+      {"@type":"Question","name":"Are Root Cabs Available Near Vellore Junction, VIT University, Or CMC Hospital?","acceptedAnswer":{"@type":"Answer","text":"Yes, Root Cabs serves Vellore Junction, VIT University, CMC Hospital, and nearby neighbourhoods."}},
+      {"@type":"Question","name":"Are Root Cabs Drivers Verified And Background-Checked In Vellore?","acceptedAnswer":{"@type":"Answer","text":"Yes, drivers must complete the required verification process before accepting rides through Root Cabs. This helps customers travel with greater confidence across Vellore and on longer journeys."}},
+      {"@type":"Question","name":"What Should I Do If I Can't Find My Driver At The Pickup Point?","acceptedAnswer":{"@type":"Answer","text":"Call the driver using the contact option in the Root Cabs app and confirm the exact pickup point. For further assistance, contact customer support with your booking details."}},
+      {"@type":"Question","name":"Is There A Safer Ride Option For Women Traveling Alone In Vellore?","acceptedAnswer":{"@type":"Answer","text":"Root Cabs supports safer travel through verified drivers, live ride tracking, and the option to share trip details with family or friends. If you need assistance before or during the ride, customer support is available to help."}}
+    ]}
+  },
+  "/blog": {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "url": "https://rootcabs.com/blog",
+    "name": "Tamil Nadu Travel Guides & Tips | Root Cabs",
+    "description": "Travel guides, taxi tips and route guides for exploring Tamil Nadu with Root Cabs - city travel, outstation trips and destination tips in one place.",
+    "inLanguage": "en-IN",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Root Cabs",
+      "url": "https://rootcabs.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
+      },
+      "email": "support@rootcabs.com",
+      "telephone": "+91-8608606474",
+      "areaServed": {
+        "@type": "State",
+        "name": "Tamil Nadu"
+      },
+      "sameAs": [
+        "https://www.instagram.com/rootcabs/",
+        "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+        "https://play.google.com/store/apps/details?id=com.nativecustomer",
+        "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
+      ]
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rootcabs.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://rootcabs.com/blog"
+        }
+      ]
+    }
+  },
   "/services/auto": {
     "@context": "https://schema.org",
     "@type": "WebPage",
@@ -1639,7 +1811,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo.webp"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
       },
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -1663,7 +1835,9 @@ export const staticRouteSchemas: Record<string, unknown> = {
       },
       "sameAs": [
         "https://www.instagram.com/rootcabs/",
-        "https://www.facebook.com/people/Root-Cabs/61575197818182/"
+        "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+        "https://play.google.com/store/apps/details?id=com.nativecustomer",
+        "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
       ]
     },
     "breadcrumb": {

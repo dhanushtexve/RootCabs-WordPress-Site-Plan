@@ -56,9 +56,9 @@ const BlogLandingPage = () => {
     const previousLang = document.documentElement.lang;
     const head = document.head;
     const seo = {
-      title: 'Blog & Travel Guides | Root Cabs',
+      title: 'Tamil Nadu Travel Guides & Tips | Root Cabs',
       description:
-        'Explore Root Cabs stories, travel guides, driver updates and city coverage across Tamil Nadu.',
+        'Travel guides, taxi tips and route guides for exploring Tamil Nadu with Root Cabs - city travel, outstation trips and destination tips in one place.',
       keywords:
         'Root Cabs blog, travel guides, Root Cabs stories, driver updates, Tamil Nadu travel, local rides, outstation travel, support articles',
       url: 'https://rootcabs.com/blog',
@@ -122,29 +122,36 @@ const BlogLandingPage = () => {
     schema.type = 'application/ld+json';
     schema.text = JSON.stringify({
       '@context': 'https://schema.org',
-      '@type': 'Blog',
+      '@type': 'CollectionPage',
+      url: seo.url,
       name: seo.title,
       description: seo.description,
-      url: seo.url,
+      inLanguage: 'en-IN',
       publisher: {
         '@type': 'Organization',
         name: 'Root Cabs',
+        url: 'https://rootcabs.com/',
         logo: {
           '@type': 'ImageObject',
-          url: seo.image,
+          url: 'https://rootcabs.com/assets/root-cabs-logo-animation.gif',
         },
+        email: 'support@rootcabs.com',
+        telephone: '+91-8608606474',
+        areaServed: { '@type': 'State', name: 'Tamil Nadu' },
+        sameAs: [
+          'https://www.instagram.com/rootcabs/',
+          'https://www.facebook.com/people/Root-Cabs/61575197818182/',
+          'https://play.google.com/store/apps/details?id=com.nativecustomer',
+          'https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062',
+        ],
       },
-      blogPost: blogLandingPosts.map((post) => ({
-        '@type': 'BlogPosting',
-        headline: post.title,
-        description: post.description,
-        datePublished: post.publishedAt,
-        author: {
-          '@type': 'Organization',
-          name: post.author,
-        },
-        url: `${seo.url.replace(/\/$/, '')}${post.href.replace('/blog', '')}`,
-      })),
+      breadcrumb: {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://rootcabs.com/' },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: seo.url },
+        ],
+      },
     });
     head.appendChild(schema);
 

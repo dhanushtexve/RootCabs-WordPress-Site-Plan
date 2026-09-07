@@ -9,6 +9,15 @@ export const staticSeoRoutes = [
     "siteName": "Root Cabs"
   },
   {
+    "path": "/blog",
+    "title": "Tamil Nadu Travel Guides & Tips | Root Cabs",
+    "description": "Travel guides, taxi tips and route guides for exploring Tamil Nadu with Root Cabs - city travel, outstation trips and destination tips in one place.",
+    "canonicalUrl": "https://rootcabs.com/blog",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo-animation.gif",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
     "path": "/about",
     "title": "About Root Cabs - Our Story and Values",
     "description": "Root Cabs, Tamil Nadu's fastest-growing taxi aggregator. Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto Rickshaw across 10+ cities.",
@@ -23,6 +32,15 @@ export const staticSeoRoutes = [
     "description": "Root Cabs operates in 10+ cities across Tamil Nadu covering Chennai, Coimbatore, Vellore, Madurai, Trichy, Salem & more. Find local, airport & outstation taxi near you.",
     "canonicalUrl": "https://rootcabs.com/cities",
     "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
+    "path": "/taxi-in-vellore",
+    "title": "Taxi Service in Vellore | Cab Booking 24/7 - Root Cabs",
+    "description": "Book reliable taxi service in Vellore with Root Cabs for local rides, airport transfers and outstation travel. Verified drivers, transparent fares and 24/7 booking.",
+    "canonicalUrl": "https://rootcabs.com/taxi-in-vellore",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo-animation.gif",
     "ogType": "website",
     "siteName": "Root Cabs"
   },
