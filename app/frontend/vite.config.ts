@@ -11,6 +11,19 @@ import { staticRouteSchemas } from './prerender/static-route-schema.js';
 import { staticSeoRoutes as importedStaticSeoRoutes } from './prerender/static-route-meta.js';
 import { cities, landmarks, routes, services } from './src/data/siteData';
 
+// These pages receive complete HTML from vite-prerender-plugin. Do not replace
+// that HTML later with the generic SEO-only shell.
+const prerenderedStaticRoutes = new Set([
+  '/blog',
+  '/services',
+  '/services/local-taxi',
+  '/services/airport-taxi',
+  '/services/outstation',
+  '/services/acting-driver',
+  '/services/parcel-delivery',
+  '/services/auto',
+]);
+
 function escapeHtmlAttr(str: string): string {
   return str
     .replace(/&/g, '&amp;')
@@ -407,6 +420,8 @@ function materializeStaticSeoRoutes(): Plugin {
       const rootHtml = fs.readFileSync(rootIndexPath, 'utf8');
 
       for (const route of getStaticSeoRoutes()) {
+        if (prerenderedStaticRoutes.has(route.path)) continue;
+
         const html = upsertSchema(applySeo(rootHtml, route), route.path);
         const outputPath =
           route.path === '/'
@@ -429,6 +444,18 @@ function removeBrowserOriginHeaders(proxyReq: { removeHeader: (header: string) =
 export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   const blogPrerenderRoutes = command === 'build' ? getBlogRoutes() : [];
+  const servicePrerenderRoutes = command === 'build'
+    ? [
+        '/services/',
+        '/services/local-taxi/',
+        '/services/airport-taxi/',
+        '/services/outstation/',
+        '/services/acting-driver/',
+        '/services/parcel-delivery/',
+        '/services/auto/',
+      ]
+    : [];
+  const prerenderRoutes = [...new Set([...blogPrerenderRoutes, ...servicePrerenderRoutes])];
   const apiProxyTarget = env.VITE_API_BASE_URL || `http://localhost:${env.BACKEND_PORT || '8000'}`;
   const bookingApiProxyTarget =
     env.VITE_BOOKING_API_BASE_URL || 'https://perihelial-ariella-unserious.ngrok-free.dev';
@@ -445,11 +472,11 @@ export default defineConfig(({ command, mode }) => {
       sanitizePrerenderedBlogMeta(),
       materializeStaticSeoRoutes(),
       generateSitemapPlugin(siteUrl, blogPrerenderRoutes),
-      ...(blogPrerenderRoutes.length > 0
+      ...(prerenderRoutes.length > 0
         ? vitePrerenderPlugin({
             renderTarget: '#root',
             prerenderScript: path.resolve(__dirname, 'prerender/blog.js'),
-            additionalPrerenderRoutes: blogPrerenderRoutes,
+            additionalPrerenderRoutes: prerenderRoutes,
           })
         : []),
     ],

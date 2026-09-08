@@ -4,6 +4,54 @@ import { Route, Routes } from 'react-router-dom';
 import { StaticRouter } from 'react-router-dom/server';
 import BlogRoutes from '../src/blog-routes';
 import { getBlogPost, getPostSeoMeta } from '../src/lib/blog';
+import Layout from '../src/components/Layout';
+import { ServicesHub, ServicePage } from '../src/pages/ServicesPages';
+import { services } from '../src/data/siteData';
+
+const servicePageSeoTitles = {
+  'local-taxi': 'Local Taxi Service in Tamil Nadu | Root Cabs',
+  'airport-taxi': 'Chennai Airport Taxi - Pickup & Drop | Root Cabs',
+  outstation: 'Outstation Taxi Services in Tamil Nadu | Root Cabs',
+  'acting-driver': 'Acting Driver Service in Tamil Nadu | Root Cabs',
+  'parcel-delivery': 'Parcel Delivery Service - Same City | Root Cabs',
+  auto: 'Book Affordable Auto Online for Rides | Root Cabs',
+};
+
+function getServiceHeadElements(url) {
+  const slug = url.replace(/^\/services\/?/, '').replace(/\/+$/, '');
+  const service = slug ? services.find((item) => item.slug === slug) : null;
+  const title = service
+    ? servicePageSeoTitles[service.slug] ?? `${service.name} | Root Cabs`
+    : 'Our Services | Local, Airport & Outstation Taxi - Root Cabs';
+  const description = service
+    ? service.description
+    : 'Root Cabs offers Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto Rickshaw across Tamil Nadu. Fixed fares, verified drivers, 10+ cities.';
+  const canonicalUrl = `https://rootcabs.com/services${slug ? `/${slug}` : ''}`;
+  const image = service
+    ? `https://rootcabs.com/assets/service-banners/${service.slug}.webp`
+    : 'https://rootcabs.com/assets/root-cabs-logo.webp';
+  const meta = (attribute, key, content) => ({ type: 'meta', props: { [attribute]: key, content } });
+
+  return {
+    title,
+    lang: 'en-IN',
+    elements: new Set([
+      meta('name', 'prerender-static-page', 'service'),
+      meta('name', 'description', description),
+      { type: 'link', props: { rel: 'canonical', href: canonicalUrl } },
+      meta('property', 'og:site_name', 'Root Cabs'),
+      meta('property', 'og:title', title),
+      meta('property', 'og:description', description),
+      meta('property', 'og:url', canonicalUrl),
+      meta('property', 'og:image', image),
+      meta('property', 'og:type', 'website'),
+      meta('name', 'twitter:card', 'summary_large_image'),
+      meta('name', 'twitter:title', title),
+      meta('name', 'twitter:description', description),
+      meta('name', 'twitter:image', image),
+    ]),
+  };
+}
 
 function getStoryBehindRootCabsSeo() {
   return {
@@ -304,6 +352,10 @@ function getSpecialBlogPost(slug) {
 }
 
 function getHeadElements(url) {
+  if (url.startsWith('/services')) {
+    return getServiceHeadElements(url);
+  }
+
   if (!url.startsWith('/blog')) {
     return undefined;
   }
@@ -528,6 +580,7 @@ function getHeadElements(url) {
 }
 
 export async function prerender({ url }) {
+  const isServiceRoute = url.startsWith('/services');
   const html = renderToString(
     React.createElement(
       StaticRouter,
@@ -535,10 +588,27 @@ export async function prerender({ url }) {
       React.createElement(
         Routes,
         null,
-        React.createElement(
-          Route,
-          { path: '/blog/*', element: React.createElement(BlogRoutes) },
-        ),
+        isServiceRoute
+          ? React.createElement(
+              Route,
+              {
+                path: '/services/*',
+                element: React.createElement(
+                  Layout,
+                  null,
+                  React.createElement(
+                    Routes,
+                    null,
+                    React.createElement(Route, { index: true, element: React.createElement(ServicesHub) }),
+                    React.createElement(Route, { path: ':serviceSlug', element: React.createElement(ServicePage) }),
+                  ),
+                ),
+              },
+            )
+          : React.createElement(
+              Route,
+              { path: '/blog/*', element: React.createElement(BlogRoutes) },
+            ),
       ),
     ),
   );
@@ -547,7 +617,7 @@ export async function prerender({ url }) {
     .replace(/^\/blog\/?/, '')
     .replace(/\/+$/, '')
     .replace(/^\/+/, '');
-  const is404 = slug && !getBlogPost(slug) && !getSpecialBlogPost(slug);
+  const is404 = !isServiceRoute && slug && !getBlogPost(slug) && !getSpecialBlogPost(slug);
 
   return {
     html,
