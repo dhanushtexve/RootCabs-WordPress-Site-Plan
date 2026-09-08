@@ -2,6 +2,7 @@
 import { MapPin, ArrowRight, Car, Phone, Shield, Clock, CheckCircle, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Card, CardContent } from "@/components/ui/card";
@@ -739,6 +740,13 @@ export default function BookRide() {
 
   const handlePhoneNumberChange = (value: string) => {
     const digitsOnly = value.replace(/\D/g, "").slice(0, 10);
+    if (digitsOnly !== phoneNumber && (otpSent || phoneVerified)) {
+      setOtpSent(false);
+      setPhoneVerified(false);
+      setOtp("");
+      setOtpError("");
+      setOtpStatus("Phone number changed. Send a new OTP to verify this number.");
+    }
     setPhoneNumber(digitsOnly);
   };
 
@@ -986,7 +994,9 @@ export default function BookRide() {
     try {
       await sendBookingOtp(phoneNumber.trim());
       setOtpSent(true);
-      setOtpStatus("OTP sent successfully. Enter the OTP to verify.");
+      setPhoneVerified(false);
+      setOtp("");
+      setOtpStatus("OTP sent to your phone number.");
     } catch (error) {
       setOtpError(error instanceof Error ? error.message : "Unable to send OTP. Please try again.");
     } finally {
@@ -1008,7 +1018,7 @@ export default function BookRide() {
     try {
       await verifyBookingOtp(otp.trim(), BOOKING_DEVICE_TOKEN);
       setPhoneVerified(true);
-      setOtpStatus("Phone number verified successfully.");
+      setOtpStatus("Phone number and OTP verified successfully.");
     } catch (error) {
       setOtpError(error instanceof Error ? error.message : "Unable to verify OTP. Please try again.");
     } finally {
@@ -1560,56 +1570,41 @@ export default function BookRide() {
                       placeholder="Enter your name"
                     />
                   </div>
-                  <div>
+                  <div className={otpSent && !phoneVerified ? "md:col-span-2" : undefined}>
                     <div className="mb-1.5 flex items-center justify-between gap-3">
                       <Label className="text-sm font-medium block">Phone Number</Label>
-                      {phoneVerified && <span className="text-xs font-semibold text-green-700">Verified</span>}
                     </div>
 
-                    {!otpSent ? (
-                      <div className="flex gap-2">
-                        <div className="flex flex-1 items-center rounded-md border border-input bg-background px-3">
-                          <span className="shrink-0 text-sm font-medium text-muted-foreground">+91</span>
-                          <Input
-                            value={phoneNumber}
-                            onChange={(e) => handlePhoneNumberChange(e.target.value)}
-                            placeholder="Enter 10-digit number"
-                            type="tel"
-                            inputMode="numeric"
-                            maxLength={10}
-                            className="border-0 px-2 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
-                          />
-                        </div>
-                        <Button
-                          type="button"
-                          onClick={handleSendOtp}
-                          disabled={isSendingOtp || phoneNumber.length !== 10}
-                          className="shrink-0 bg-primary hover:bg-primary/90"
-                        >
+                    <div className={otpSent && !phoneVerified ? "grid gap-2 md:grid-cols-3" : "flex gap-2"}>
+                      <div className="flex min-w-0 flex-1 items-center rounded-md border border-input bg-background px-3">
+                        <span className="shrink-0 text-sm font-medium text-muted-foreground">+91</span>
+                        <Input
+                          value={phoneNumber}
+                          onChange={(e) => handlePhoneNumberChange(e.target.value)}
+                          placeholder="Enter 10-digit number"
+                          type="tel"
+                          inputMode="numeric"
+                          maxLength={10}
+                          className="border-0 px-2 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                        />
+                      </div>
+                      {!otpSent ? (
+                        <Button type="button" onClick={handleSendOtp} disabled={isSendingOtp || phoneNumber.length !== 10} className="shrink-0 bg-primary hover:bg-primary/90">
                           {isSendingOtp ? "Sending..." : "Send OTP"}
                         </Button>
-                      </div>
-                    ) : (
-                      <div className="space-y-2">
-                        <div className="flex gap-2">
-                          <Input
-                            value={otp}
-                            onChange={(e) => setOtp(e.target.value)}
-                            placeholder="Enter OTP"
-                            inputMode="numeric"
-                            disabled={phoneVerified}
-                          />
-                          <Button
-                            type="button"
-                            onClick={handleVerifyOtp}
-                            disabled={isVerifyingOtp || phoneVerified}
-                            className="shrink-0 bg-primary hover:bg-primary/90"
-                          >
-                            {phoneVerified ? "Verified" : isVerifyingOtp ? "Verifying..." : "Verify"}
+                      ) : !phoneVerified ? (
+                        <>
+                          <InputOTP maxLength={4} value={otp} onChange={setOtp} inputMode="numeric" containerClassName="min-w-0 justify-center">
+                            <InputOTPGroup><InputOTPSlot index={0} /><InputOTPSlot index={1} /><InputOTPSlot index={2} /><InputOTPSlot index={3} /></InputOTPGroup>
+                          </InputOTP>
+                          <Button type="button" onClick={handleVerifyOtp} disabled={isVerifyingOtp || !otp} className="bg-primary hover:bg-primary/90">
+                            {isVerifyingOtp ? "Verifying..." : "Verify OTP"}
                           </Button>
-                        </div>
-                      </div>
-                    )}
+                        </>
+                      ) : (
+                        <span className="flex items-center px-3 text-sm font-semibold text-green-700">Verified</span>
+                      )}
+                    </div>
 
                     {otpStatus && <p className="mt-2 text-xs font-medium text-green-700">{otpStatus}</p>}
                     {otpError && <p className="mt-2 text-xs font-medium text-red-700">{otpError}</p>}
@@ -1633,60 +1628,30 @@ export default function BookRide() {
                       <div>
                         <div className="mb-1.5 flex items-center justify-between gap-3">
                           <Label className="text-sm font-medium block">Sender Phone Number</Label>
-                          {phoneVerified && <span className="text-xs font-semibold text-green-700">Verified</span>}
                         </div>
 
-                        {!otpSent ? (
-                          <div className="flex gap-2">
-                            <div className="flex flex-1 items-center rounded-md border border-input bg-background px-3">
-                              <span className="shrink-0 text-sm font-medium text-muted-foreground">+91</span>
-                              <Input
-                                value={phoneNumber}
-                                onChange={(e) => handlePhoneNumberChange(e.target.value)}
-                                placeholder="Enter 10-digit number"
-                                type="tel"
-                                inputMode="numeric"
-                                maxLength={10}
-                                className="border-0 px-2 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
-                              />
-                            </div>
-                            <Button
-                              type="button"
-                              onClick={handleSendOtp}
-                              disabled={isSendingOtp || phoneNumber.length !== 10}
-                              className="shrink-0 bg-primary hover:bg-primary/90"
-                            >
+                        <div className={otpSent && !phoneVerified ? "grid gap-2 md:grid-cols-3" : "flex gap-2"}>
+                          <div className="flex min-w-0 flex-1 items-center rounded-md border border-input bg-background px-3">
+                            <span className="shrink-0 text-sm font-medium text-muted-foreground">+91</span>
+                            <Input value={phoneNumber} onChange={(e) => handlePhoneNumberChange(e.target.value)} placeholder="Enter 10-digit number" type="tel" inputMode="numeric" maxLength={10} className="border-0 px-2 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0" />
+                          </div>
+                          {!otpSent ? (
+                            <Button type="button" onClick={handleSendOtp} disabled={isSendingOtp || phoneNumber.length !== 10} className="shrink-0 bg-primary hover:bg-primary/90">
                               {isSendingOtp ? "Sending..." : "Send OTP"}
                             </Button>
-                          </div>
-                        ) : (
-                          <div className="space-y-2">
-                            <div className="flex gap-2">
-                              <Input
-                                value={otp}
-                                onChange={(e) => setOtp(e.target.value)}
-                                placeholder="Enter OTP"
-                                inputMode="numeric"
-                                disabled={phoneVerified}
-                                onKeyDown={(event) => {
-                                  if (event.key !== "Enter") return;
-                                  event.preventDefault();
-                                  if (!phoneVerified) {
-                                    void handleVerifyOtp();
-                                  }
-                                }}
-                              />
-                              <Button
-                                type="button"
-                                onClick={handleVerifyOtp}
-                                disabled={isVerifyingOtp || phoneVerified}
-                                className="shrink-0 bg-primary hover:bg-primary/90"
-                              >
-                                {phoneVerified ? "Verified" : isVerifyingOtp ? "Verifying..." : "Verify"}
+                          ) : !phoneVerified ? (
+                            <>
+                              <InputOTP maxLength={4} value={otp} onChange={setOtp} inputMode="numeric" containerClassName="justify-center">
+                                <InputOTPGroup><InputOTPSlot index={0} /><InputOTPSlot index={1} /><InputOTPSlot index={2} /><InputOTPSlot index={3} /></InputOTPGroup>
+                              </InputOTP>
+                              <Button type="button" onClick={handleVerifyOtp} disabled={isVerifyingOtp || !otp} className="bg-primary hover:bg-primary/90">
+                                {isVerifyingOtp ? "Verifying..." : "Verify OTP"}
                               </Button>
-                            </div>
-                          </div>
-                        )}
+                            </>
+                          ) : (
+                            <span className="flex items-center px-3 text-sm font-semibold text-green-700">Verified</span>
+                          )}
+                        </div>
 
                         {otpStatus && <p className="mt-2 text-xs font-medium text-green-700">{otpStatus}</p>}
                         {otpError && <p className="mt-2 text-xs font-medium text-red-700">{otpError}</p>}
