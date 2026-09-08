@@ -5,6 +5,34 @@ import { StaticRouter } from 'react-router-dom/server';
 import BlogRoutes from '../src/blog-routes';
 import { getBlogPost, getPostSeoMeta } from '../src/lib/blog';
 
+function getStoryBehindRootCabsSeo() {
+  return {
+    title: 'The Story Behind Root Cabs: How A Vision Became A Reality | Root Cabs',
+    description:
+      'Read how Root Cabs began from a simple observation, launched in Vellore, and grew into a mobility platform built for everyday travel across Tamil Nadu.',
+    keywords:
+      'Root Cabs blog, Root Cabs story, Root Cabs origin, Vellore taxi launch, Tamil Nadu mobility platform, Root Cabs founders, everyday travel Tamil Nadu',
+    url: 'https://rootcabs.com/blog/the-story-behind-root-cabs',
+    siteName: 'Root Cabs',
+    ogTitle: 'The Story Behind Root Cabs: How A Vision Became A Reality | Root Cabs',
+    ogDescription:
+      'Read how Root Cabs began from a simple observation, launched in Vellore, and grew into a mobility platform built for everyday travel across Tamil Nadu.',
+    ogImage: 'https://rootcabs.com/assets/story-behind-root-cabs.avif',
+    ogImageAlt: 'Root Cabs brand story visual',
+    ogType: 'article',
+    twitterCard: 'summary_large_image',
+    twitterSite: '@rootcabs',
+    twitterCreator: '@rootcabs',
+    twitterTitle: 'The Story Behind Root Cabs: How A Vision Became A Reality | Root Cabs',
+    twitterDescription:
+      'Read how Root Cabs began from a simple observation, launched in Vellore, and grew into a mobility platform built for everyday travel across Tamil Nadu.',
+    twitterImage: 'https://rootcabs.com/assets/story-behind-root-cabs.avif',
+    twitterImageAlt: 'Root Cabs brand story visual',
+    publishedTime: '2025-06-05',
+    tags: ['Root Story', 'Brand Story'],
+  };
+}
+
 function getSpecialBlogSeo() {
   return {
     title: "The Launch of Root Cabs: A New Chapter in Tamil Nadu's Taxi Industry | Root Cabs",
@@ -174,6 +202,20 @@ function getFutureRootCabsSeo() {
 }
 
 function getSpecialBlogPost(slug) {
+  if (slug === 'the-story-behind-root-cabs') {
+    return {
+      slug,
+      title: 'The Story Behind Root Cabs: How A Vision Became A Reality',
+      description:
+        'Every business begins with an idea, and Root Cabs began with a clear one. The aim was to make everyday travel more affordable, reliable and convenient for people across Tamil Nadu.',
+      markdown: '',
+      frontmatter: {
+        date: '2025-06-05',
+        tags: ['Root Story', 'Brand Story'],
+      },
+    };
+  }
+
   if (slug === 'launch-of-root-cabs') {
     return {
       slug,
@@ -298,6 +340,8 @@ function getHeadElements(url) {
   const specialSeo =
     !slug
       ? blogLandingSeo
+      : slug === 'the-story-behind-root-cabs'
+      ? getStoryBehindRootCabsSeo()
       : slug === 'launch-of-root-cabs'
       ? getSpecialBlogSeo()
       : slug === 'root-cabs-success-stories'

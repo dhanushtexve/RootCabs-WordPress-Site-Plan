@@ -136,6 +136,7 @@ type AutoSafetyFeature = {
   title: string;
   description: string;
   highlightedText?: string;
+  highlightHref?: string;
   icon: React.ReactNode;
 };
 
@@ -156,7 +157,9 @@ const autoSafetyFeatures: AutoSafetyFeature[] = [
     title: "24×7 Customer Support",
     icon: <Headphones className="h-6 w-6" />,
     description:
-      "Support is available around the clock for ride concerns, booking help, or assistance during your trip.",
+      "24×7 Support is available for ride concerns, booking help, or assistance during your trip.",
+    highlightedText: "24×7 Support",
+    highlightHref: "/support",
   },
   {
     title: "SOS Assistance",
@@ -573,6 +576,7 @@ const outstationTaxiBenefits = [
 
 const outstationTaxiServiceOffers = ["Local Taxi", "Airport Taxi", "Acting Driver", "Parcel Delivery", "Auto Rickshaw"];
 const actingDriverServiceOffers = ["Local Taxi", "Outstation Taxi", "Acting Driver", "Parcel Delivery", "Auto Rickshaw"];
+const serviceOfferLabel = (serviceName: string) => (serviceName === "Auto Rickshaw" ? "Auto" : serviceName);
 const outstationTaxiActingDriverBenefits = [
   "Travel in Your Own Car",
   "Long-Distance Driving Support",
@@ -1446,7 +1450,7 @@ export function ServicePage() {
               </p>
             </div>
             <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
-              Looking for an acting driver near me when you would rather not drive <br /> yourself?Root
+              Looking for an acting driver near me when you would rather not drive <br /> yourself? Root
               Cabs connects you with verified drivers for late-night returns,<br />family functions, hospital visits,
               business travel, and longer journeys in your own car.
             </p>
@@ -1796,11 +1800,7 @@ export function ServicePage() {
                           support
                         </Link>{" "}
                         when needed, Root Cabs offers a
-                        simple way to get an{" "}
-                        <Link to="/book-ride" className="transition-colors hover:text-primary">
-                          acting driver for outstation trip
-                        </Link>{" "}
-                        or everyday travel
+                        simple way to get an acting driver for outstation trip or everyday travel
                         without switching to a separate cab service.
                       </p>
                     </div>
@@ -2059,11 +2059,7 @@ export function ServicePage() {
                                 className="flex items-center gap-2 py-1 text-sm transition-colors hover:text-primary cursor-pointer"
                               >
                                 <ArrowRight className="w-3 h-3" />{" "}
-                                {s.name === "Local Taxi"
-                                  ? "Local Rides"
-                                  : s.name === "Outstation Taxi"
-                                    ? "Outstation"
-                                    : s.name}
+                                {serviceOfferLabel(s.name)}
                               </Link>
                             </li>
                           ))}
@@ -2105,13 +2101,7 @@ export function ServicePage() {
                                 className="flex items-center gap-2 text-sm hover:text-primary transition-colors cursor-pointer py-1"
                               >
                                 <ArrowRight className="w-3 h-3" />{" "}
-                                {s.name === "Local Taxi"
-                                  ? "Local Rides"
-                                  : s.name === "Acting Driver"
-                                    ? "Acting Transfer"
-                                    : s.name === "Auto Rickshaw"
-                                      ? "Auto"
-                                      : s.name}
+                                {serviceOfferLabel(s.name)}
                               </Link>
                             </li>
                           ))}
@@ -2146,7 +2136,7 @@ export function ServicePage() {
                             .map((s) => (
                               <li key={s.slug}>
                                 <Link to={`/services/${s.slug}`} className="flex items-center gap-2 text-sm hover:text-primary transition-colors cursor-pointer py-1">
-                                  <ArrowRight className="w-3 h-3" /> {s.name === "Local Taxi" ? "Local Rides" : s.name === "Outstation Taxi" ? "Outstation" : s.name === "Auto Rickshaw" ? "Auto" : s.name}
+                                  <ArrowRight className="w-3 h-3" /> {serviceOfferLabel(s.name)}
                                 </Link>
                               </li>
                             ))}
@@ -2186,13 +2176,7 @@ export function ServicePage() {
                                 className="flex items-center gap-2 py-1 text-sm transition-colors hover:text-primary cursor-pointer"
                               >
                                 <ArrowRight className="w-3 h-3" />{" "}
-                                {s.name === "Local Taxi"
-                                  ? "Local Rides"
-                                  : s.name === "Acting Driver"
-                                    ? "Acting Transfer"
-                                    : s.name === "Auto Rickshaw"
-                                      ? "Auto"
-                                      : s.name}
+                                {serviceOfferLabel(s.name)}
                               </Link>
                             </li>
                           ))}
@@ -2231,15 +2215,7 @@ export function ServicePage() {
                                 className="flex items-center gap-2 py-1 text-sm transition-colors hover:text-primary cursor-pointer"
                               >
                                 <ArrowRight className="w-3 h-3" />{" "}
-                                {s.name === "Local Taxi"
-                                  ? "Local Rides"
-                                  : s.name === "Outstation Taxi"
-                                    ? "Outstation"
-                                    : s.name === "Acting Driver"
-                                      ? "Acting Transfer"
-                                      : s.name === "Auto Rickshaw"
-                                        ? "Auto"
-                                        : s.name}
+                                {serviceOfferLabel(s.name)}
                               </Link>
                             </li>
                           ))}
@@ -2298,10 +2274,10 @@ export function ServicePage() {
                           .map((s) => (
                             <li key={s.slug}>
                               <Link
-                                to={s.name === "Auto Rickshaw" ? "/services/local-taxi" : `/services/${s.slug}`}
+                                to={`/services/${s.slug}`}
                                 className="flex items-center gap-2 text-sm hover:text-primary transition-colors cursor-pointer py-1"
                               >
-                                <ArrowRight className="w-3 h-3" /> {s.name === "Auto Rickshaw" ? "Auto" : s.name}
+                                <ArrowRight className="w-3 h-3" /> {serviceOfferLabel(s.name)}
                               </Link>
                             </li>
                           ))}
@@ -2347,7 +2323,13 @@ export function ServicePage() {
                           {feature.highlightedText ? (
                             <>
                               {feature.description.split(feature.highlightedText)[0]}
-                              <strong>{feature.highlightedText}</strong>
+                              {feature.highlightHref ? (
+                                <Link to={feature.highlightHref} className="font-bold transition-colors hover:text-primary">
+                                  {feature.highlightedText}
+                                </Link>
+                              ) : (
+                                <strong>{feature.highlightedText}</strong>
+                              )}
                               {feature.description.split(feature.highlightedText)[1]}
                             </>
                           ) : (
@@ -2796,8 +2778,11 @@ export function ServicePage() {
                     Let an Acting Driver Take the Wheel
                   </h2>
                   <p className="mt-4 max-w-2xl text-sm leading-7 text-muted-foreground md:text-base">
-                    Travelling in your own car but prefer not to drive? Root Cabs helps you get a driver for
-                    outstation trip plans, late-night returns, family functions, business travel, and other journeys
+                    Travelling in your own car but prefer not to drive? Root Cabs helps you get a driver for{" "}
+                    <Link to="/services/outstation" className="font-bold transition-colors hover:text-primary">
+                      outstation trip
+                    </Link>{" "}
+                    plans, late-night returns, family functions, business travel, and other journeys
                     where you want someone else to handle the road.
                   </p>
                   <div className="mt-6 space-y-3 text-sm text-[#24305E]">

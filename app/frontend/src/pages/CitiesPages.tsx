@@ -902,19 +902,38 @@ function ChennaiContentSection() {
         <div className="grid gap-6 lg:grid-cols-3">
           <article className="rounded-[2.25rem] border border-[#E4EAF5] bg-white p-6 text-base leading-8 text-[#111827] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:bg-[#1E2A6E] hover:text-white hover:shadow-lg md:p-7">
             Chennai's travel needs can change from one trip to the next. For daily office commutes, shopping,
-            hospital visits, or short city journeys, our Local Taxi and Auto services offer convenient options
+            hospital visits, or short city journeys, our{" "}
+            <Link to="/services/local-taxi" className="font-bold underline-offset-4 hover:underline">
+              Local Taxi
+            </Link>{" "}
+            and{" "}
+            <Link to="/services/auto" className="font-bold underline-offset-4 hover:underline">
+              Auto
+            </Link>{" "}
+            services offer convenient options
             across major neighbourhoods. Customers looking for quick travel through busy routes can also choose
             a Bike Taxi through our online cab booking in Chennai platform.
           </article>
           <article className="rounded-[2.25rem] border border-[#E4EAF5] bg-white p-6 text-base leading-8 text-[#111827] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:bg-[#1E2A6E] hover:text-white hover:shadow-lg md:p-7">
-            For longer journeys, Root Cabs offers Outstation Taxi and One-Way Taxi services from Chennai to
+            For longer journeys, Root Cabs offers{" "}
+            <Link to="/services/outstation" className="font-bold underline-offset-4 hover:underline">
+              Outstation Taxi
+            </Link>{" "}
+            and One-Way Taxi services from Chennai to
             nearby towns and popular destinations. A one-way ride is ideal when you do not need a return cab,
             while an outstation taxi works well for family trips, business travel, and weekend plans.
           </article>
           <article className="rounded-[2.25rem] border border-[#E4EAF5] bg-white p-6 text-base leading-8 text-[#111827] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:bg-[#1E2A6E] hover:text-white hover:shadow-lg md:p-7">
             Planning several stops within the city? Our Hourly Package lets you keep the cab for a selected
-            duration without making separate bookings. Customers travelling in their own vehicle can choose an
-            Acting Driver, while important documents and small packages can be sent through Parcel Delivery.
+            duration without making separate bookings. Customers travelling in their own vehicle can choose an{" "}
+            <Link to="/services/acting-driver" className="font-bold underline-offset-4 hover:underline">
+              Acting Driver
+            </Link>
+            , while important documents and small packages can be sent through{" "}
+            <Link to="/services/parcel-delivery" className="font-bold underline-offset-4 hover:underline">
+              Parcel Delivery
+            </Link>
+            .
             With Root Cabs, you can book a taxi in Chennai based on the service that best suits your journey.
           </article>
         </div>
@@ -1081,13 +1100,33 @@ function VelloreContentSection() {
         <p className="mb-8 max-w-3xl text-base text-[#5D6A90]">A practical guide to choosing the right ride for every trip across the city and beyond.</p>
         <div className="grid gap-6 lg:grid-cols-3">
           <article className="rounded-[2.25rem] border border-[#E4EAF5] bg-white p-6 text-base leading-8 text-[#111827] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:bg-[#1E2A6E] hover:text-white hover:shadow-lg md:p-7">
-            Travel needs in Vellore can vary throughout the day. For office commutes, hospital visits, college travel, shopping, and short local trips, Root Cabs offers Local Taxi, Auto Rickshaw, and Bike Taxi options. Customers can also use online cab booking in Vellore to plan rides in advance and avoid last-minute travel stress.
+            Travel needs in Vellore can vary throughout the day. For office commutes, hospital visits, college travel, shopping, and short local trips, Root Cabs offers{" "}
+            <Link to="/services/local-taxi" className="font-bold underline-offset-4 hover:underline">
+              Local Taxi
+            </Link>
+            ,{" "}
+            <Link to="/services/auto" className="font-bold underline-offset-4 hover:underline">
+              Auto
+            </Link>
+            , and Bike Taxi options. Customers can also use online cab booking in Vellore to plan rides in advance and avoid last-minute travel stress.
           </article>
           <article className="rounded-[2.25rem] border border-[#E4EAF5] bg-white p-6 text-base leading-8 text-[#111827] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:bg-[#1E2A6E] hover:text-white hover:shadow-lg md:p-7">
-            For intercity journeys, Outstation Taxi and One-Way Taxi services make travel from Vellore to nearby cities more convenient. Round-trip options work well for family visits, business travel, and weekend plans, while one-way rides are suitable when a return journey is not required.
+            For intercity journeys,{" "}
+            <Link to="/services/outstation" className="font-bold underline-offset-4 hover:underline">
+              Outstation Taxi
+            </Link>{" "}
+            and One-Way Taxi services make travel from Vellore to nearby cities more convenient. Round-trip options work well for family visits, business travel, and weekend plans, while one-way rides are suitable when a return journey is not required.
           </article>
           <article className="rounded-[2.25rem] border border-[#E4EAF5] bg-white p-6 text-base leading-8 text-[#111827] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:bg-[#1E2A6E] hover:text-white hover:shadow-lg md:p-7">
-            Customers with several stops can choose an Hourly Package for meetings, appointments, shopping, or local visits. Acting Driver services are available for those who prefer to travel in their own car, while Parcel Delivery helps move medicines, documents, and small packages across Vellore.
+            Customers with several stops can choose an Hourly Package for meetings, appointments, shopping, or local visits.{" "}
+            <Link to="/services/acting-driver" className="font-bold underline-offset-4 hover:underline">
+              Acting Driver
+            </Link>{" "}
+            services are available for those who prefer to travel in their own car, while{" "}
+            <Link to="/services/parcel-delivery" className="font-bold underline-offset-4 hover:underline">
+              Parcel Delivery
+            </Link>{" "}
+            helps move medicines, documents, and small packages across Vellore.
           </article>
         </div>
       </div>

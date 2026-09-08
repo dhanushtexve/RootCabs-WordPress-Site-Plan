@@ -239,6 +239,13 @@ function hasPackagePeriod(
 }
 
 export default function BookRide() {
+  const bookingStats = [
+    { value: "400+", label: "Verified Drivers" },
+    { value: "8+", label: "Services" },
+    { value: "10+", label: "Cities" },
+    { value: "4.2", label: "Average rating" },
+  ];
+
   const [from, setFrom] = useState("");
   const [to, setTo] = useState("");
   const [selectedPickup, setSelectedPickup] = useState<AddressSuggestion | null>(null);
@@ -1092,6 +1099,14 @@ export default function BookRide() {
           <p className="max-w-3xl text-gray-300">
             Plan your journey with ease and book your ride online for a safe,<br />comfortable and reliable travel experience.
           </p>
+          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-300">
+            {bookingStats.map((stat) => (
+              <div key={stat.label} className="flex items-center gap-1.5">
+                <span className="font-heading font-extrabold text-[#FFD700]">{stat.value}</span>
+                <span>{stat.label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

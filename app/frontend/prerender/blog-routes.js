@@ -4,6 +4,7 @@ import { seoContentDir, normalizeRouteFromMarkdown, collectMarkdownFiles } from 
 export function getBlogRoutes() {
   const routes = new Set([
     '/blog/',
+    '/blog/the-story-behind-root-cabs/',
     '/blog/launch-of-root-cabs/',
     '/blog/root-cabs-success-stories/',
     '/blog/how-root-cabs-helps-drivers-earn-up/',
