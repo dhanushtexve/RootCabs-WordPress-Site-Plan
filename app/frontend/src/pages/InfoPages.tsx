@@ -1436,7 +1436,7 @@ export function AboutPage() {
         </section>
 
         {/* App CTA */}
-        <section className="max-w-screen-xl mx-auto px-0 py-1 md:py-2">
+        <section className="max-w-[1024px] mx-auto px-0 py-1 md:py-2">
           <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
             <img
               src="/assets/home-download-car-bg.webp"

@@ -781,7 +781,7 @@ export function CitiesHub() {
 
 function AppDownloadCard() {
   return (
-    <section className="max-w-screen-xl mx-auto">
+    <section className="max-w-[1024px] mx-auto">
       <div className="relative overflow-hidden rounded-2xl bg-[#273588] px-6 py-8 text-white shadow-xl md:px-10 lg:px-12">
         <img
           src="/assets/home-download-car-bg.webp"
@@ -947,7 +947,7 @@ function ChennaiContentSection() {
 
 function VelloreAppDownloadCard() {
   return (
-    <section className="max-w-screen-xl mx-auto">
+    <section className="max-w-[1024px] mx-auto">
       <div className="relative overflow-hidden rounded-[2rem] bg-gradient-to-r from-[#5569d4] via-[#34479f] to-[#273588] px-6 py-8 text-white shadow-[0_20px_60px_rgba(39,53,136,0.24)] md:px-10 md:py-10 lg:px-14 lg:py-12">
         <img
           src="/assets/home-download-car-bg.webp"

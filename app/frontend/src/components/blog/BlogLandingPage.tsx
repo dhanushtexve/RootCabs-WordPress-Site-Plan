@@ -430,7 +430,7 @@ const BlogLandingPage = () => {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 pb-16 md:pb-20">
+      <section className="mx-auto max-w-[1056px] px-4 pb-16 md:pb-20">
         <div className="relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
           <img
             src="/assets/home-download-car-bg.webp"

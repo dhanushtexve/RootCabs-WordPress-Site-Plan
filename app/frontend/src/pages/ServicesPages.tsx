@@ -1054,7 +1054,7 @@ export function ServicesHub() {
         </section>
 
         {/* App Download CTA */}
-        <section className="mt-14">
+        <section className="mx-auto mt-14 max-w-[1024px]">
           <div className="relative overflow-hidden rounded-2xl bg-[#273588] px-6 py-8 text-white shadow-xl md:px-10 lg:px-12">
             <img
               src="/assets/home-download-car-bg.webp"
@@ -2898,7 +2898,7 @@ export function ServicePage() {
             )}
 
             {isAirportTaxiService && (
-              <div className="relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
+              <div className="mx-auto w-full max-w-[1024px] relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
                 <img
                   src="/assets/home-download-car-bg.webp"
                   alt=""
@@ -2991,7 +2991,7 @@ export function ServicePage() {
             )}
 
             {isLocalTaxiService && (
-              <div className="relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
+              <div className="mx-auto w-full max-w-[1024px] relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
                 <img
                   src="/assets/home-download-car-bg.webp"
                   alt=""
@@ -3084,7 +3084,7 @@ export function ServicePage() {
             )}
 
             {isOutstationTaxiService && (
-              <div className="relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
+              <div className="mx-auto w-full max-w-[1024px] relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
                 <img
                   src="/assets/home-download-car-bg.webp"
                   alt=""
@@ -3176,7 +3176,7 @@ export function ServicePage() {
             )}
 
             {isParcelDeliveryService && (
-              <div className="relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
+              <div className="mx-auto w-full max-w-[1024px] relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
                 <img
                   src="/assets/home-download-car-bg.webp"
                   alt=""
@@ -3269,7 +3269,7 @@ export function ServicePage() {
             )}
 
             {isAutoService && (
-              <div className="relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
+              <div className="mx-auto w-full max-w-[1024px] relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
                 <img
                   src="/assets/home-download-car-bg.webp"
                   alt=""
@@ -3362,7 +3362,7 @@ export function ServicePage() {
             )}
 
             {isActingDriverService && (
-              <div className="relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
+              <div className="mx-auto w-full max-w-[1024px] relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
                 <img
                   src="/assets/home-download-car-bg.webp"
                   alt=""
