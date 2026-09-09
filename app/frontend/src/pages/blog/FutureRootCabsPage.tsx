@@ -80,9 +80,9 @@ const FutureRootCabsPage = () => {
     const head = document.head;
 
     const seo = {
-      title: 'The Future of Root Cabs: Our Vision for Smarter and Safer Travel | Root Cabs',
+      title: 'The Future of Root Cabs - Our Vision | Root Cabs',
       description:
-        'Root Cabs has grown from Vellore to over ten cities in Tamil Nadu. Read how the company plans to improve travel, safety and the booking experience.',
+        'Root Cabs has grown to 2,000+ driver partners and 50,000+ rides across Tamil Nadu. See our plans for smarter matching, safer trips and local expansion.',
       keywords:
         'Root Cabs future, smarter travel, safer travel, Tamil Nadu taxi service, Root Cabs vision, driver support, booking experience, app improvements',
       url: 'https://rootcabs.com/blog/future-of-root-cabs',

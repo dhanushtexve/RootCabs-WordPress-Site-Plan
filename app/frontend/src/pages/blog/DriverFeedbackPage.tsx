@@ -119,9 +119,9 @@ const DriverFeedbackPage = () => {
     const head = document.head;
 
     const seo = {
-      title: 'What Our Driver Partners Say About Root Cabs | Root Cabs',
+      title: 'Driver Jobs Flexible Hours, Real Reviews - Root Cabs',
       description:
-        'Drivers are an important part of every Root Cabs journey. Read what driver partners say about earnings, support, working hours and the overall experience.',
+        'Real Root Cabs driver partners from Chennai, Coimbatore, Vellore and Trichy share their experience with earnings, flexible hours and driver support.',
       keywords:
         'Root Cabs driver feedback, driver partners, cab driver support, flexible working hours, driver earnings, Tamil Nadu drivers, Root Partner app',
       url: 'https://rootcabs.com/blog/what-our-driver-partners-say-about-root-cabs',

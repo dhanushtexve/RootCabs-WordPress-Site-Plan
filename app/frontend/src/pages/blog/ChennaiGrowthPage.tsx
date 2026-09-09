@@ -82,9 +82,9 @@ const ChennaiGrowthPage = () => {
     const head = document.head;
 
     const seo = {
-      title: 'The Growth of Root Cabs in Chennai: Building Better Travel Every Day | Root Cabs',
+      title: 'Getting Around Chennai - A Neighbourhood Travel Guide',
       description:
-        'Getting around Chennai can be unpredictable. Read how Root Cabs is building a dependable service for local rides, airport trips and outstation travel across the city.',
+        'A practical guide to getting around Chennai - from Tambaram and OMR to Mylapore and Anna Nagar - with local, airport and outstation travel options.',
       keywords:
         'Root Cabs Chennai, Chennai taxi service, airport taxi Chennai, outstation taxi Chennai, local rides Chennai, Root Cabs blog, Tamil Nadu taxi service',
       url: 'https://rootcabs.com/blog/growth-of-root-cabs-in-chennai',

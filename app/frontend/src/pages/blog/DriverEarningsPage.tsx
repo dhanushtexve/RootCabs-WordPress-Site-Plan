@@ -82,9 +82,9 @@ const DriverEarningsPage = () => {
     const head = document.head;
 
     const seo = {
-      title: 'How Root Cabs Helps Drivers Earn Up to Rs. 40,000 Extra Every Month | Root Cabs',
+      title: 'Root Cabs Driver Earnings - Up to Rs. 40,000/Month',
       description:
-        'Learn how Root Cabs helps cab, auto, bike and acting drivers earn through flexible working hours, subscription plans and trips available in their city.',
+        'Cab, auto, bike and acting driver partners earn up to Rs. 40,000 monthly with Root Cabs - flexible hours and daily fares paid directly, no weekly wait.',
       keywords:
         'Root Cabs driver earnings, earn 40000 extra monthly, cab driver income, auto driver income, bike driver income, acting driver, Root Partner app, flexible working hours',
       url: 'https://rootcabs.com/blog/how-root-cabs-helps-drivers-earn-up',

@@ -68,9 +68,9 @@ const SuccessStoriesPage = () => {
     const head = document.head;
 
     const seo = {
-      title: 'Root Cabs Success Stories: Inspiring Journeys of Our Driver Partners | Root Cabs',
+      title: '3 Real Root Cabs Driver Success Stories',
       description:
-        'Read sample Root Cabs driver partner journeys about starting fresh, moving from part-time to full-time driving, and finding more time for family.',
+        'Real Root Cabs driver stories from Tamil Nadu starting over after job loss, growing a side income into full-time work, and finding more time for family.',
       keywords:
         'Root Cabs success stories, driver partner stories, Root Partner app, acting driver, part time driver, full time driver, Tamil Nadu drivers, flexible income',
       url: 'https://rootcabs.com/blog/root-cabs-success-stories',

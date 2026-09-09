@@ -248,9 +248,9 @@ function getPostSeoMeta(post?: BlogPost | null): SeoMeta {
   const siteName = getSiteName();
   const twitterSiteHandle = getTwitterSiteHandle();
   const twitterCreatorHandle = getTwitterCreatorHandle();
-  const fallbackTitle = `Blog & Travel Guides | ${siteName}`;
+  const fallbackTitle = `Tamil Nadu Travel Guides & Tips | ${siteName}`;
   const fallbackDescription =
-    'Explore Root Cabs stories, travel guides, driver updates and city coverage across Tamil Nadu.';
+    'Travel guides, taxi tips and route guides for exploring Tamil Nadu with Root Cabs - city travel, outstation trips and destination tips in one place.';
 
   if (!post) {
     const fallbackUrl = getAbsoluteUrl('/blog');

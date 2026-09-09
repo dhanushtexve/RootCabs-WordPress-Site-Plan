@@ -445,9 +445,9 @@ export function BlogPage() {
     const head = document.head;
 
     const seo = {
-      title: "The Story Behind Root Cabs: How A Vision Became A Reality | Root Cabs",
+      title: "The Story Behind Root Cabs - Our Founding Vision",
       description:
-        "Read how Root Cabs began from a simple observation, launched in Vellore, and grew into a mobility platform built for everyday travel across Tamil Nadu.",
+        "The story behind Root Cabs - from a founding vision in Vellore to a growing mobility platform serving 10+ Tamil Nadu cities today.",
       keywords:
         "Root Cabs blog, Root Cabs story, Root Cabs origin, Vellore taxi launch, Tamil Nadu mobility platform, Root Cabs founders, everyday travel Tamil Nadu",
       url: "https://rootcabs.com/blog/the-story-behind-root-cabs",

@@ -61,9 +61,9 @@ const LaunchRootCabsPage = () => {
     const head = document.head;
 
     const seo = {
-      title: "The Launch Of Root Cabs: A New Chapter In Tamil Nadu's Taxi Industry | Root Cabs",
+      title: 'Root Cabs Launch Story - From Vellore, June 2025',
       description:
-        'Read how Root Cabs launched in Vellore, why the city was chosen first, and how the service expanded across Tamil Nadu with local, outstation and acting driver options.',
+        'Root Cabs launched in Vellore on June 5, 2025, and has since grown to 10+ Tamil Nadu cities. Read the story behind its launch and early services.',
       keywords:
         'Root Cabs launch, Vellore taxi service, Tamil Nadu taxi industry, Root Cabs blog, local rides, outstation taxi, one way taxi, acting driver, auto taxi',
       url: 'https://rootcabs.com/blog/launch-of-root-cabs',
