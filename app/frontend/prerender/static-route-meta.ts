@@ -10,7 +10,7 @@ export const staticSeoRoutes = [
   },
   {
     "path": "/blog",
-    "title": "Tamil Nadu Travel Guides & Tips | Root Cabs",
+    "title": "Blog & Travel Guides | Root Cabs",
     "description": "Travel guides, taxi tips and route guides for exploring Tamil Nadu with Root Cabs - city travel, outstation trips and destination tips in one place.",
     "canonicalUrl": "https://rootcabs.com/blog",
     "ogImage": "https://rootcabs.com/assets/root-cabs-logo-animation.gif",

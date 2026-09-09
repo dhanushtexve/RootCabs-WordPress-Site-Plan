@@ -56,7 +56,7 @@ const BlogLandingPage = () => {
     const previousLang = document.documentElement.lang;
     const head = document.head;
     const seo = {
-      title: 'Tamil Nadu Travel Guides & Tips | Root Cabs',
+      title: 'Blog & Travel Guides | Root Cabs',
       description:
         'Travel guides, taxi tips and route guides for exploring Tamil Nadu with Root Cabs - city travel, outstation trips and destination tips in one place.',
       keywords:
@@ -124,8 +124,9 @@ const BlogLandingPage = () => {
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
       url: seo.url,
-      name: seo.title,
-      description: seo.description,
+      name: 'Tamil Nadu Travel Guides & Tips | Root Cabs',
+      description:
+        'Travel guides, taxi tips and route guides for exploring Tamil Nadu with Root Cabs - city travel, outstation trips and destination tips in one place.',
       inLanguage: 'en-IN',
       publisher: {
         '@type': 'Organization',

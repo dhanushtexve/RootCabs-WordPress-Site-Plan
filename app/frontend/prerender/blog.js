@@ -249,6 +249,167 @@ function getFutureRootCabsSeo() {
   };
 }
 
+function getBlogSchemaElements(slug) {
+  if (!slug) {
+    const blogLandingSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      url: 'https://rootcabs.com/blog',
+      name: 'Tamil Nadu Travel Guides & Tips | Root Cabs',
+      description:
+        'Travel guides, taxi tips and route guides for exploring Tamil Nadu with Root Cabs - city travel, outstation trips and destination tips in one place.',
+      inLanguage: 'en-IN',
+      publisher: {
+        '@type': 'Organization',
+        name: 'Root Cabs',
+        url: 'https://rootcabs.com/',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://rootcabs.com/assets/root-cabs-logo-animation.gif',
+        },
+        email: 'support@rootcabs.com',
+        telephone: '+91-8608606474',
+        areaServed: { '@type': 'State', name: 'Tamil Nadu' },
+        sameAs: [
+          'https://www.instagram.com/rootcabs/',
+          'https://www.facebook.com/people/Root-Cabs/61575197818182/',
+          'https://play.google.com/store/apps/details?id=com.nativecustomer',
+          'https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062',
+        ],
+      },
+      breadcrumb: {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://rootcabs.com/' },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://rootcabs.com/blog' },
+        ],
+      },
+    };
+
+    return [
+      {
+        type: 'script',
+        props: {
+          type: 'application/ld+json',
+          'data-blog-schema': 'blog-collection-page',
+          children: JSON.stringify(blogLandingSchema),
+        },
+      },
+    ];
+  }
+
+  const articleConfig = {
+    'future-of-root-cabs': {
+      headline: 'The Future of Root Cabs - Our Vision | Root Cabs',
+      description:
+        'Root Cabs has grown to 2,000+ driver partners and 50,000+ rides across Tamil Nadu. See our plans for smarter matching, safer trips and local expansion.',
+      breadcrumbName: 'The Future of Root Cabs - Our Vision',
+    },
+    'what-our-driver-partners-say-about-root-cabs': {
+      headline: 'Driver Jobs Flexible Hours, Real Reviews - Root Cabs',
+      description:
+        'Real Root Cabs driver partners from Chennai, Coimbatore, Vellore and Trichy share their experience with earnings, flexible hours and driver support.',
+      breadcrumbName: 'Driver Jobs Flexible Hours, Real Reviews',
+    },
+    'growth-of-root-cabs-in-chennai': {
+      headline: 'Getting Around Chennai - A Neighbourhood Travel Guide',
+      description:
+        'A practical guide to getting around Chennai - from Tambaram and OMR to Mylapore and Anna Nagar - with local, airport and outstation travel options.',
+      breadcrumbName: 'Getting Around Chennai - A Neighbourhood Travel Guide',
+    },
+    'how-root-cabs-helps-drivers-earn-up': {
+      headline: 'Root Cabs Driver Earnings - Up to Rs. 40,000/Month',
+      description:
+        'Cab, auto, bike and acting driver partners earn up to Rs. 40,000 monthly with Root Cabs - flexible hours and daily fares paid directly, no weekly wait.',
+      breadcrumbName: 'Root Cabs Driver Earnings - Up to Rs. 40,000/Month',
+    },
+    'root-cabs-success-stories': {
+      headline: '3 Real Root Cabs Driver Success Stories',
+      description:
+        'Real Root Cabs driver stories from Tamil Nadu starting over after job loss, growing a side income into full-time work, and finding more time for family.',
+      breadcrumbName: '3 Real Root Cabs Driver Success Stories',
+    },
+    'launch-of-root-cabs': {
+      headline: 'Root Cabs Launch Story - From Vellore, June 2025',
+      description:
+        'Root Cabs launched in Vellore on June 5, 2025, and has since grown to 10+ Tamil Nadu cities. Read the story behind its launch and early services.',
+      breadcrumbName: 'Root Cabs Launch Story - From Vellore, June 2025',
+    },
+    'the-story-behind-root-cabs': {
+      headline: 'The Story Behind Root Cabs - Our Founding Vision',
+      description:
+        'The story behind Root Cabs - from a founding vision in Vellore to a growing mobility platform serving 10+ Tamil Nadu cities today.',
+      breadcrumbName: 'The Story Behind Root Cabs - Our Founding Vision',
+    },
+  }[slug];
+
+  if (!articleConfig) return [];
+  const url = `https://rootcabs.com/blog/${slug}`;
+
+  const publisher = {
+    '@type': 'Organization',
+    name: 'Root Cabs',
+    url: 'https://rootcabs.com/',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://rootcabs.com/assets/root-cabs-logo-animation.gif',
+    },
+    email: 'support@rootcabs.com',
+    telephone: '+91-8608606474',
+    sameAs: [
+      'https://www.instagram.com/rootcabs/',
+      'https://www.facebook.com/people/Root-Cabs/61575197818182/',
+      'https://play.google.com/store/apps/details?id=com.nativecustomer',
+      'https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062',
+    ],
+  };
+
+  const article = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    url,
+    headline: articleConfig.headline,
+    description: articleConfig.description,
+    inLanguage: 'en-IN',
+    author: {
+      '@type': 'Person',
+      name: 'Akalya',
+      jobTitle: 'Content Writer',
+      worksFor: {
+        '@type': 'Organization',
+        name: 'Root Cabs',
+        url: 'https://rootcabs.com/',
+      },
+      description: 'Akalya writes travel guides, taxi tips and mobility-related content for Root Cabs.',
+    },
+    publisher,
+  };
+
+  const breadcrumb = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://rootcabs.com/' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://rootcabs.com/blog' },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: articleConfig.breadcrumbName,
+        item: url,
+      },
+    ],
+  };
+
+  return [article, breadcrumb].map((schema, index) => ({
+    type: 'script',
+    props: {
+      type: 'application/ld+json',
+      'data-blog-schema': `${slug}-${index + 1}`,
+      children: JSON.stringify(schema),
+    },
+  }));
+}
+
 function getSpecialBlogPost(slug) {
   if (slug === 'the-story-behind-root-cabs') {
     return {
@@ -366,14 +527,14 @@ function getHeadElements(url) {
     .replace(/^\/+/, '');
 
   const blogLandingSeo = {
-    title: 'Tamil Nadu Travel Guides & Tips | Root Cabs',
+    title: 'Blog & Travel Guides | Root Cabs',
     description:
       'Travel guides, taxi tips and route guides for exploring Tamil Nadu with Root Cabs - city travel, outstation trips and destination tips in one place.',
     keywords:
       'Root Cabs blog, travel guides, Root Cabs stories, driver updates, Tamil Nadu travel, local rides, outstation travel, support articles',
     url: 'https://rootcabs.com/blog',
     siteName: 'Root Cabs',
-    ogTitle: 'Tamil Nadu Travel Guides & Tips | Root Cabs',
+    ogTitle: 'Blog & Travel Guides | Root Cabs',
     ogDescription:
       'Travel guides, taxi tips and route guides for exploring Tamil Nadu with Root Cabs - city travel, outstation trips and destination tips in one place.',
     ogImage: 'https://rootcabs.com/assets/story-behind-root-cabs.avif',
@@ -382,7 +543,7 @@ function getHeadElements(url) {
     twitterCard: 'summary_large_image',
     twitterSite: '@rootcabs',
     twitterCreator: '@rootcabs',
-    twitterTitle: 'Tamil Nadu Travel Guides & Tips | Root Cabs',
+    twitterTitle: 'Blog & Travel Guides | Root Cabs',
     twitterDescription:
       'Travel guides, taxi tips and route guides for exploring Tamil Nadu with Root Cabs - city travel, outstation trips and destination tips in one place.',
     twitterImage: 'https://rootcabs.com/assets/story-behind-root-cabs.avif',
@@ -570,6 +731,7 @@ function getHeadElements(url) {
         content: tag,
       },
     })),
+    ...getBlogSchemaElements(slug),
   ].filter(Boolean);
 
   return {

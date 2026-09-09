@@ -1497,8 +1497,14 @@ export function CityPage({
           image: "https://rootcabs.com/assets/root-cabs-logo.webp",
         }
       : {
-          title: `${city.name} Taxi Service | Root Cabs`,
-          description: city.description,
+          title:
+            city.name === "Vellore"
+              ? "Taxi Service in Vellore | Cab Booking 24/7 - Root Cabs"
+              : `${city.name} Taxi Service | Root Cabs`,
+          description:
+            city.name === "Vellore"
+              ? "Book reliable taxi service in Vellore with Root Cabs for local rides, airport transfers and outstation travel. Verified drivers, transparent fares and 24/7 booking."
+              : city.description,
           url: `https://rootcabs.com/${city.slug}`,
           image: "https://rootcabs.com/assets/root-cabs-logo.webp",
         };
