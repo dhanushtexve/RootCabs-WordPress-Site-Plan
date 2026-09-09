@@ -811,14 +811,12 @@ export default function Index() {
                 </div>
               </div>
             </div>
-            <div className="relative mx-auto w-full max-w-[380px]">
-              <div>
-                <img
-                  src="/assets/plan-trip-root-cabs.png"
-                  alt="Plan every trip with Root Cabs"
-                  className="h-[470px] w-full rounded-[20px] object-contain md:h-[430px] lg:h-[400px]"
-                />
-              </div>
+            <div className="relative mx-auto flex w-full max-w-[380px] justify-center lg:absolute lg:bottom-0 lg:right-0 lg:mx-0 lg:translate-x-12 lg:translate-y-8 lg:justify-end">
+              <img
+                src="/assets/app-download-mobile-screen.png"
+                alt="Root Cabs app shown on a mobile phone"
+                className="h-[440px] w-auto max-w-full object-contain md:h-[430px] lg:h-[420px]"
+              />
             </div>
           </div>
         </div>

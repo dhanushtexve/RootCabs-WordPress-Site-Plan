@@ -790,7 +790,6 @@ function AppDownloadCard() {
           className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.14] saturate-75"
         />
         <div className="absolute inset-0 bg-[#273588]/62" />
-        <div className="absolute inset-0 opacity-10 [background-image:linear-gradient(90deg,_rgba(255,255,255,.35)_1px,_transparent_1px),linear-gradient(180deg,_rgba(255,255,255,.35)_1px,_transparent_1px)] [background-size:56px_56px]" />
         <div className="relative z-10 grid items-center gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.78fr)]">
           <div className="text-center md:text-left md:pl-2 lg:pl-4">
             <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
@@ -860,14 +859,12 @@ function AppDownloadCard() {
               </div>
             </div>
           </div>
-          <div className="relative mx-auto w-full max-w-[380px]">
-            <div>
-              <img
-                src="/assets/plan-trip-root-cabs.png"
-                alt="Plan every trip with Root Cabs"
-                className="h-[470px] w-full rounded-[20px] object-contain md:h-[430px] lg:h-[400px]"
-              />
-            </div>
+          <div className="relative mx-auto flex w-full max-w-[380px] justify-center lg:absolute lg:bottom-0 lg:right-0 lg:mx-0 lg:translate-x-12 lg:translate-y-8 lg:justify-end">
+            <img
+              src="/assets/app-download-mobile-screen.png"
+              alt="Root Cabs app shown on a mobile phone"
+              className="h-[440px] w-auto max-w-full object-contain md:h-[430px] lg:h-[420px]"
+            />
           </div>
         </div>
       </div>
@@ -1031,15 +1028,12 @@ function VelloreAppDownloadCard() {
               </div>
             </div>
           </div>
-          <div className="relative mx-auto flex w-full max-w-[420px] items-end justify-center">
-            <div className="pointer-events-none absolute inset-x-10 bottom-2 h-16 rounded-full bg-black/35 blur-3xl" />
-            <div className="relative">
-              <img
-                src="/assets/plan-trip-root-cabs.png"
-                alt="Root Cabs app preview"
-                className="h-auto w-full max-w-[360px] object-contain drop-shadow-[0_22px_40px_rgba(0,0,0,0.35)]"
-              />
-            </div>
+          <div className="relative mx-auto flex w-full max-w-[380px] justify-center lg:absolute lg:bottom-0 lg:right-0 lg:mx-0 lg:translate-x-[60px] lg:translate-y-12 lg:justify-end">
+            <img
+              src="/assets/app-download-mobile-screen.png"
+              alt="Root Cabs app shown on a mobile phone"
+              className="h-[440px] w-auto max-w-full object-contain md:h-[430px] lg:h-[420px]"
+            />
           </div>
         </div>
       </div>
