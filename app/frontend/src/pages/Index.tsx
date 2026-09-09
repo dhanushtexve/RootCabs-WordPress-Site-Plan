@@ -731,7 +731,7 @@ export default function Index() {
       </section>
 
       {/* App Download CTA */}
-      <section className="mx-auto max-w-6xl px-4 py-8 md:py-10">
+      <section className="mx-auto max-w-[1056px] px-4 py-8 md:py-10">
         <div className="relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
           <img
             src="/assets/home-download-car-bg.webp"

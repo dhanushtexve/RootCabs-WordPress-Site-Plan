@@ -1952,7 +1952,7 @@ export default function BookRide() {
         </Card>
       </div>
 
-      <section className="max-w-screen-xl mx-auto px-4 pb-12 md:pb-14">
+      <section className="max-w-[1056px] mx-auto px-4 pb-12 md:pb-14">
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
           <img
             src="/assets/home-download-car-bg.webp"
