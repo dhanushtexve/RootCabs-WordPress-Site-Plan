@@ -61,6 +61,12 @@ const cityImageMap: Record<string, string> = {
   Ranipet: "/assets/cities/ranipet.webp",
 };
 
+const cityBannerMap: Record<string, string> = {
+  "taxi-in-chennai": "/assets/city-banners/chennai.webp",
+  "taxi-in-vellore": "/assets/city-banners/vellore.webp",
+  "taxi-in-coimbatore": "/assets/city-banners/coimbatore.webp",
+};
+
 const chennaiPickupImages: Record<string, string> = {
   "Chennai Airport": "/assets/chennai-airport.webp",
   "Chennai Central Railway Station": chennaiCardImage,
@@ -1724,15 +1730,22 @@ export function CityPage({
 
   const cityTestimonials = testimonials.filter((t) => t.city === city.name);
   const isVellore = city?.name === "Vellore";
+  const cityBannerImage = cityBannerMap[city.slug];
+  const heroBackgroundImage = cityBannerImage ?? "/assets/rootcabs-banner-home.png";
 
   return (
     <div>
       {/* Hero */}
-      <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
-        backgroundImage: "url('/assets/rootcabs-banner-home.png')",
-        backgroundSize: "cover",
+      <section
+        className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]"
+        style={{
+        backgroundImage: `url('${assetPath(heroBackgroundImage)}')`,
+        // City banners fill a shorter hero. This preserves the entire banner
+        // with no gutters; their proportions are scaled slightly to fit.
+        backgroundSize: cityBannerImage ? "100% 100%" : "cover",
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
+        backgroundColor: cityBannerImage ? "#172aab" : undefined,
       }}>
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 max-w-screen-xl mx-auto px-4">
