@@ -1068,7 +1068,7 @@ export function ServicesHub() {
                 <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                   GET THE APP
                 </span>
-                <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl">
+                <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl lg:whitespace-nowrap">
                   Travel Made Simple with the Root Cabs App
                 </h2>
                 <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
@@ -2912,7 +2912,7 @@ export function ServicePage() {
                     <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                       GET THE APP
                     </span>
-                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl">
+                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl lg:whitespace-nowrap">
                       Your Airport Ride Starts With Root Cabs
                     </h2>
                     <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
@@ -3005,7 +3005,7 @@ export function ServicePage() {
                     <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                       GET THE APP
                     </span>
-                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl">
+                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl lg:whitespace-nowrap">
                       Book Local Rides Faster With The Root Cabs App
                     </h2>
                     <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
@@ -3098,7 +3098,7 @@ export function ServicePage() {
                     <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                       GET THE APP
                     </span>
-                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl">
+                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl lg:whitespace-nowrap">
                       Make Every Ride Easier with Root Cabs
                     </h2>
                     <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
@@ -3190,7 +3190,7 @@ export function ServicePage() {
                     <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                       GET THE APP
                     </span>
-                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl">
+                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl lg:whitespace-nowrap">
                       Send Your Parcel Easily with Root Cabs
                     </h2>
                     <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
@@ -3283,7 +3283,7 @@ export function ServicePage() {
                     <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                       GET THE APP
                     </span>
-                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl">
+                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl lg:whitespace-nowrap">
                       Book Your Auto Ride with Root Cabs
                     </h2>
                     <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
@@ -3376,7 +3376,7 @@ export function ServicePage() {
                     <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                       GET THE APP
                     </span>
-                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl">
+                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl lg:whitespace-nowrap">
                       Book Your Acting Driver with Root Cabs
                     </h2>
                     <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">

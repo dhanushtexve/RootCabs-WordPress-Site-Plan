@@ -795,7 +795,7 @@ function AppDownloadCard() {
             <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
               GET THE APP
             </span>
-            <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl">Book Every Journey with Root Cabs</h2>
+            <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl lg:whitespace-nowrap">Book Every Journey with Root Cabs</h2>
             <p className="mx-auto mt-2.5 max-w-xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
               Manage local rides, one-way trips and outstation travel through the Root Cabs app with simple booking and all your trip details in one place.
             </p>
@@ -962,7 +962,7 @@ function VelloreAppDownloadCard() {
             <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
               GET THE APP
             </span>
-            <h2 className="mt-4 font-heading text-2xl font-bold leading-tight md:text-3xl">
+            <h2 className="mt-4 font-heading text-2xl font-bold leading-tight md:text-3xl lg:whitespace-nowrap">
               Book Your Vellore Ride In A Few Simple Steps
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-sm leading-6 text-white/85 md:mx-0 md:text-lg">
