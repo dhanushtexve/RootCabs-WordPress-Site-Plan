@@ -1,0 +1,19 @@
+Re-optimizing dependencies because lockfile has changed
+
+  VITE v5.4.21  ready in 695 ms
+
+  ➜  Local:   http://127.0.0.1:3010/
+11:49:55 am [vite] hmr update /src/pages/Index.tsx, /src/index.css
+12:01:52 pm [vite] hmr update /src/pages/CitiesPages.tsx, /src/index.css
+12:01:59 pm [vite] hmr update /src/pages/CitiesPages.tsx, /src/index.css
+12:38:26 pm [vite] hmr update /src/pages/CitiesPages.tsx, /src/index.css
+12:40:42 pm [vite] hmr update /src/pages/CitiesPages.tsx, /src/index.css
+12:42:38 pm [vite] hmr update /src/pages/CitiesPages.tsx, /src/index.css
+12:44:22 pm [vite] hmr update /src/pages/CitiesPages.tsx, /src/index.css
+12:46:24 pm [vite] hmr update /src/pages/CitiesPages.tsx, /src/index.css
+12:47:59 pm [vite] hmr update /src/pages/CitiesPages.tsx, /src/index.css
+12:49:20 pm [vite] hmr update /src/pages/CitiesPages.tsx, /src/index.css
+12:50:49 pm [vite] hmr update /src/pages/CitiesPages.tsx, /src/index.css
+2:41:47 pm [vite] hmr update /src/pages/Index.tsx, /src/index.css
+2:41:47 pm [vite] vite.config.ts changed, restarting server...
+2:41:48 pm [vite] server restarted.

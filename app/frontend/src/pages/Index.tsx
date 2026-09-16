@@ -409,12 +409,16 @@ export default function Index() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
-        backgroundImage: "url('/assets/rootcabs-banner-home.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center center",
-        backgroundRepeat: "no-repeat",
-      }}>
+      <section className="relative min-h-[420px] overflow-hidden bg-black text-white md:min-h-[500px]">
+          <video
+            className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+            src="/assets/home-banner-road-move.webm"
+            autoPlay
+            muted
+            loop
+            playsInline
+            aria-hidden="true"
+          />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 mx-auto max-w-screen-xl px-4 pb-14 pt-10 md:pb-20 md:pt-12">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.8fr)] lg:items-center">

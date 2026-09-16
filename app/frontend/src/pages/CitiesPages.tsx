@@ -1730,6 +1730,8 @@ export function CityPage({
 
   const cityTestimonials = testimonials.filter((t) => t.city === city.name);
   const isVellore = city?.name === "Vellore";
+  const isCoimbatore = city?.name === "Coimbatore";
+  const usesExpandedCityHero = isChennai || isVellore || isCoimbatore;
   const cityBannerImage = cityBannerMap[city.slug];
   const heroBackgroundImage = cityBannerImage ?? "/assets/rootcabs-banner-home.png";
 
@@ -1750,30 +1752,39 @@ export function CityPage({
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 max-w-screen-xl mx-auto px-4">
           <PageBreadcrumb
-            className={`${isChennai || isVellore ? "pt-8 md:pt-10" : ""} mb-4 text-white/70`}
+            className={`${usesExpandedCityHero ? "pt-8 md:pt-10" : ""} mb-4 text-white/70`}
             items={[
               { label: "Home", href: "/" },
               { label: "Cities", href: "/cities" },
               { label: city.name },
             ]}
           />
-          <h1 className="font-heading text-3xl md:text-4xl font-bold mb-4">
-            {isVellore ? "Your Go-To Taxi Service in Vellore - Whenever You Need a Ride" : city.tagline}
+          <div className={usesExpandedCityHero ? "text-left lg:w-[40%]" : undefined}>
+          <h1 className={`font-heading text-3xl md:text-4xl font-bold mb-4 ${isVellore || isCoimbatore ? "lg:w-[700px]" : ""}`}>
+            {isVellore || isCoimbatore ? (
+              <>
+                <span className="block">{isVellore ? "Your Go-To Taxi Service in Vellore" : "Reliable Taxi Service in"}</span>{" "}
+                <span className="block">{isVellore ? "- Whenever You Need a Ride" : "Coimbatore - Airport & City Rides"}</span>
+              </>
+            ) : isChennai ? "Reliable Cab Services In Chennai For Every Ride" : city.tagline}
           </h1>
           <p className="max-w-3xl text-lg text-gray-300">
-            {isVellore
+            {isChennai
+              ? "Travel across Chennai with convenient local rides, airport transfers,and long-distance cab services. Root Cabs stays available 24/7, helping you reach your destination comfortably with clear fares and easy booking."
+              : isVellore
               ? "From CMC appointments and VIT travel to railway station pickups and outstation trips, Root Cabs makes travelling around Vellore easier with clear fares and convenient booking."
               : city.description}
           </p>
-          <div className={`${isChennai || isVellore ? "mt-12 md:mt-16" : "mt-6"} flex flex-wrap gap-4`}>
+          </div>
+          <div className={`${usesExpandedCityHero ? "mt-12 md:mt-16" : "mt-6"} flex flex-wrap gap-4`}>
             <Link to="/book-ride">
               <Button size="lg" className="bg-[#FFD700] hover:bg-[#E6C200] text-[#2E3A8C] font-bold cursor-pointer shadow-sm">
-                {isChennai ? "Book a Ride in Chennai" : isVellore ? "Book Ride in Vellore" : `Book Ride in ${city.name}`} <ArrowRight className="w-4 h-4 ml-2" />
+                {isChennai ? "Book a Ride in Chennai" : `Book Ride in ${city.name}`} <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
             <a href={`tel:${isChennai ? "8608606474" : companyInfo.phone}`}>
               <Button size="lg" className="border border-white/30 bg-white/10 text-white hover:bg-white/15 cursor-pointer shadow-sm">
-                <Phone className="w-4 h-4 mr-2" /> {isVellore ? "Call us" : "Call now"}
+                <Phone className="w-4 h-4 mr-2" /> {isVellore || isCoimbatore ? "Call us" : "Call now"}
               </Button>
             </a>
           </div>
@@ -1782,8 +1793,8 @@ export function CityPage({
 
       <div className="max-w-screen-xl mx-auto px-4 py-10 space-y-12">
         {/* Fare Calculator */}
-        <section className={isChennai || isVellore ? "relative z-20 -mt-20 md:-mt-24" : ""}>
-          <FareCalculator defaultFrom={city.name} showBookNowButton={isChennai || isVellore} />
+        <section className={usesExpandedCityHero ? "relative z-20 -mt-20 md:-mt-24" : ""}>
+          <FareCalculator defaultFrom={city.name} showBookNowButton={usesExpandedCityHero} />
         </section>
 
         {/* Services */}
