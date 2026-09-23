@@ -45,6 +45,7 @@ const relatedPosts = [
 ];
 
 const driverEarningsHeroImage = '/assets/driver-earnings-root-cabs.avif';
+const articleLinkClass = 'font-semibold text-[#1E2A6E] hover:text-[#0A56C2]';
 
 function upsertMeta(
   head: HTMLHeadElement,
@@ -240,10 +241,10 @@ const DriverEarningsPage = () => {
                         Root Cabs driver partners earn by completing trips received through the Root Partner app. The fare depends on the selected service, distance, journey time and vehicle category.
                       </p>
                       <p>
-                        Local rides may be shorter, but drivers can sometimes complete several trips during active hours. Outstation, one way and hourly bookings usually take more time, though the value of each trip may be higher.
+                        <Link to="/services/local-taxi" className={articleLinkClass}>Local rides</Link> may be shorter, but drivers can sometimes complete several trips during active hours. Outstation, one way and hourly bookings usually take more time, though the value of each trip may be higher.
                       </p>
                       <p>
-                        Auto and bike partners often focus on shorter journeys within the city. Cab partners can receive local, hourly, one way and outstation bookings. Acting Driver partners can earn through their driving experience without owning a vehicle, since they drive the customer's own car.
+                        Auto and bike partners often focus on shorter journeys within the city. Cab partners can receive local, hourly, one way and <Link to="/services/outstation" className={articleLinkClass}>outstation bookings</Link>. Acting Driver partners can earn through their driving experience without owning a vehicle, since they drive the customer's own car.
                       </p>
                       <p>
                         There is no single earning pattern that works for every driver. One partner may prefer morning station drops, while another may receive more requests near offices or shopping areas in the evening. Drivers gradually understand which locations and working hours suit them best.
@@ -363,11 +364,14 @@ const DriverEarningsPage = () => {
                         Partners who work consistently and understand their city usually have a better chance of building a useful routine. They learn which hours are active, which locations receive more bookings and which services work best for them.
                       </p>
                       <p>
-                        For one person, Root Cabs may provide additional evening income. For another, it may become full-time work. Acting Driver partners may use their skills without investing in a vehicle, while cab, auto and bike owners can use vehicles they already have to earn. Root Cabs gives driver partners the freedom to choose how they work, retain their trip fare under applicable zero-commission plans and receive payments directly from customers.
+                        For one person, Root Cabs may provide additional evening income. For another, it may become full-time work. Acting Driver partners may use their skills without investing in a vehicle, while cab, auto and bike owners can use vehicles they already have to earn. Passengers can <Link to="/book-ride" className={articleLinkClass}>book a ride</Link> based on their needs, while driver partners have the freedom to choose how they work, retain their trip fare under applicable zero-commission plans and receive payments directly from customers.
                       </p>
-                      <p className="rounded-2xl border border-[#1E2A6E]/10 bg-[#1E2A6E]/5 px-4 py-3 font-semibold text-[#1E2A6E]">
+                      <Link
+                        to="/drivers"
+                        className="block rounded-2xl border border-[#1E2A6E]/10 bg-[#1E2A6E]/5 px-4 py-3 font-semibold text-[#1E2A6E] transition-colors hover:bg-[#1E2A6E]/10"
+                      >
                         Join as a Driver
-                      </p>
+                      </Link>
                     </div>
                   </section>
                 </div>

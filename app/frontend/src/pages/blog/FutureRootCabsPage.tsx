@@ -43,6 +43,7 @@ const relatedPosts = [
 ];
 
 const futureRootCabsHeroImage = '/assets/future-of-root-cabs.avif';
+const articleLinkClass = 'font-semibold text-[#1E2A6E] hover:text-[#0A56C2]';
 
 function upsertMeta(
   head: HTMLHeadElement,
@@ -235,7 +236,7 @@ const FutureRootCabsPage = () => {
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
-                        Root Cabs now serves more than ten cities through one platform. Customers can choose from Local Rides, Outstation Taxi, One Way Taxi, Hourly Package, Acting Driver, Auto, Bike Taxi and Parcel Delivery in supported locations.
+                        Root Cabs now serves more than ten cities through one platform. Customers can choose from Local Rides, <Link to="/services/outstation" className={articleLinkClass}>Outstation Taxi</Link>, One Way Taxi, Hourly Package, Acting Driver, Auto, Bike Taxi and <Link to="/services/parcel-delivery" className={articleLinkClass}>Parcel Delivery</Link> in supported locations.
                       </p>
                       <p>
                         Each city has taught the team something different. Vellore brought regular hospital, college and railway station travel. Chennai introduced larger distances, heavier traffic and more airport demand. Other cities have their own routes, peak hours and customer habits.
@@ -261,7 +262,7 @@ const FutureRootCabsPage = () => {
                         Faster driver matching is another important area. Waiting time often depends on location, traffic and nearby driver availability. Better matching can help connect customers with drivers who are realistically able to reach the pickup point.
                       </p>
                       <p>
-                        The goal is not to assign the nearest vehicle only by distance. Chennai traffic, road closures and difficult pickup locations can make a nearby driver take longer than expected. Smarter matching should consider real road conditions and the driver's ability to reach the customer.
+                        The goal is not to assign the nearest vehicle only by distance. <Link to="/taxi-in-chennai" className={articleLinkClass}>Chennai</Link> traffic, road closures and difficult pickup locations can make a nearby driver take longer than expected. Smarter matching should consider real road conditions and the driver's ability to reach the customer.
                       </p>
                       <p>
                         Future app updates may also improve booking reminders, trip communication, payment clarity and access to support. These changes may appear small, but they can make a noticeable difference during an actual journey.
@@ -275,13 +276,13 @@ const FutureRootCabsPage = () => {
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
-                        Root Cabs plans to continue reaching more cities across Tamil Nadu. However, expansion cannot be handled by copying the same service plan from one place to another. Every city travels differently. A location with high hospital demand may need stronger early morning availability. Another city may receive more outstation bookings or shorter trips through auto and bike services.
+                        Root Cabs plans to continue reaching more cities across Tamil Nadu. However, expansion cannot be handled by copying the same service plan from one place to another. Every city travels differently. A location with high hospital demand may need stronger early morning availability. Another city may receive more <Link to="/services/outstation" className={articleLinkClass}>outstation bookings</Link> or shorter trips through auto and bike services.
                       </p>
                       <p>
                         Before strengthening a new location, the team needs to understand common routes, customer demand and driver availability. This local approach may take more time, but it can build a service that is more useful after launch.
                       </p>
                       <p>
-                        Growth is also needed within cities where Root Cabs is already present. Adding more driver partners, improving availability during busy hours and strengthening services such as airport rides, parcel delivery and Acting Driver bookings are part of that work. The future of Root Cabs is therefore not only about a longer city list. It is also about making the existing service more dependable in the places where customers already use it.
+                        Growth is also needed within cities where Root Cabs is already present. Adding more driver partners, improving availability during busy hours and strengthening services such as airport rides, <Link to="/services/parcel-delivery" className={articleLinkClass}>parcel delivery</Link> and <Link to="/services/acting-driver" className={articleLinkClass}>Acting Driver bookings</Link> are part of that work. The future of Root Cabs is therefore not only about a longer city list. It is also about making the existing service more dependable in the places where customers already use it.
                       </p>
                     </div>
                   </section>
@@ -295,7 +296,7 @@ const FutureRootCabsPage = () => {
                         Driver verification is an important first step, but safer travel cannot stop with document checks. The next stage of driver vetting can include stronger document validation, regular profile reviews and closer attention to customer complaints. Driver partners may also need guidance on safe driving, professional communication and handling difficult situations during a trip.
                       </p>
                       <p>
-                        In-app safety features will continue to matter as well. SOS support, emergency contacts and live trip information give customers more control when something feels wrong. Future improvements may make it easier to share trip details, reach support quickly and report a concern without moving through several screens. The aim is to make safety features easy to find, especially during moments when a customer may already feel stressed.
+                        In-app safety features will continue to matter as well. SOS support, emergency contacts and live trip information give customers more control when something feels wrong. Future improvements may make it easier to share trip details, reach <Link to="/support" className={articleLinkClass}>support</Link> quickly and report a concern without moving through several screens. The aim is to make safety features easy to find, especially during moments when a customer may already feel stressed.
                       </p>
                       <p>
                         Safety also depends on everyday behaviour. Reaching the correct pickup point, following the app fare and communicating properly can prevent many problems before they become serious.
@@ -309,7 +310,7 @@ const FutureRootCabsPage = () => {
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
-                        As Root Cabs grows, some parts of the service must remain consistent. Customers should continue to receive clear fare information before booking. They should not face unnecessary confusion over the trip amount. Driver partners should also have an earning model that is transparent and practical.
+                        As Root Cabs grows, some parts of the service must remain consistent. Customers should continue to receive clear fare information before <Link to="/book-ride" className={articleLinkClass}>booking</Link>. They should not face unnecessary confusion over the trip amount. Driver partners should also have an earning model that is transparent and practical.
                       </p>
                       <p>
                         Root Cabs follows a subscription-based model with zero commission under applicable driver plans. This driver-focused approach will remain an important part of the company's direction as the network expands.

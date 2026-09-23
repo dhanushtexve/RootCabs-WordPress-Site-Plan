@@ -45,6 +45,7 @@ const relatedPosts = [
 ];
 
 const chennaiGrowthHeroImage = '/assets/growth-of-root-cabs-in-chennai.avif';
+const articleLinkClass = 'font-semibold text-[#1E2A6E] hover:text-[#0A56C2]';
 
 function upsertMeta(
   head: HTMLHeadElement,
@@ -243,7 +244,7 @@ const ChennaiGrowthPage = () => {
                         Mylapore and Adyar have a regular mix of residential and local travel. Porur sees hospital and office movement, while Anna Nagar has its own busy roads and commonly used routes. Travel needs can change considerably from one neighbourhood to another.
                       </p>
                       <p>
-                        A person travelling a few kilometres within Mylapore may need a simple local cab. Someone leaving from Tambaram for Chennai Airport may need an early pickup and enough space for luggage. Another customer may be planning a family journey from Chennai to Vellore or Pondicherry.
+                        A person travelling a few kilometres within Mylapore may need a simple <Link to="/services/local-taxi" className={articleLinkClass}>local cab</Link>. Someone leaving from Tambaram for <Link to="/services/airport-taxi" className={articleLinkClass}>Chennai Airport</Link> may need an early pickup and enough space for luggage. Another customer may be planning a family journey from Chennai to Vellore or Pondicherry.
                       </p>
                       <p>
                         Root Cabs has been growing by understanding these different requirements instead of treating every booking in the same way.
@@ -277,7 +278,7 @@ const ChennaiGrowthPage = () => {
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
-                        Many Chennai rides are connected to ordinary plans. Customers travel to offices, colleges, railway stations, hospitals, markets and family homes.
+                        Many <Link to="/taxi-in-chennai" className={articleLinkClass}>Chennai</Link> rides are connected to ordinary plans. Customers travel to offices, colleges, railway stations, hospitals, markets and family homes.
                       </p>
                       <p>
                         The journey may be routine, but timing is often important. Someone travelling to a medical appointment cannot afford a long delay. A passenger with a train to catch needs the cab to arrive with enough time to manage traffic and luggage. Employees returning from work late in the evening also need a practical way to reach home.
@@ -314,13 +315,13 @@ const ChennaiGrowthPage = () => {
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
-                        The city is also the starting point for many road journeys across Tamil Nadu and nearby states. People regularly travel from Chennai to Vellore, Kanchipuram, Tiruvannamalai, Pondicherry and Tirupati. Some journeys are planned for hospital visits or business meetings, while others are for temple trips, family functions and short holidays.
+                        The city is also the starting point for many road journeys across Tamil Nadu and nearby states. People regularly travel from Chennai to <Link to="/taxi-in-vellore" className={articleLinkClass}>Vellore</Link>, Kanchipuram, Tiruvannamalai, Pondicherry and Tirupati. Some journeys are planned for hospital visits or business meetings, while others are for temple trips, family functions and short holidays.
                       </p>
                       <p>
-                        Root Cabs offers Outstation Taxi services for customers who need a round trip. One Way Taxi is available for passengers who only require a drop at their destination. Hourly packages can be used for meetings, shopping or plans involving several stops within Chennai. Customers who prefer travelling in their own car can hire an Acting Driver for local or outstation trips.
+                        Root Cabs offers Outstation Taxi services for customers who need a round trip. One Way Taxi is available for passengers who only require a drop at their destination. Hourly packages can be used for meetings, shopping or plans involving several stops within Chennai. Customers who prefer travelling in their own car can <Link to="/services/acting-driver" className={articleLinkClass}>hire an Acting Driver</Link> for local or outstation trips.
                       </p>
                       <p>
-                        These choices allow passengers to select a service based on their travel plan rather than adjusting every journey to a regular point-to-point booking.
+                        These choices allow passengers to select a service based on their travel plan rather than limiting every journey to a regular point-to-point trip through <Link to="/book-ride" className={articleLinkClass}>Book a Ride</Link>.
                       </p>
                     </div>
                   </section>
@@ -348,7 +349,7 @@ const ChennaiGrowthPage = () => {
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
-                        Root Cabs is still developing its presence across the city. Some areas need more driver partners, while others require better availability during specific hours. The next stage of growth will focus on improving existing coverage and gradually reaching more Chennai neighbourhoods. Work on app performance, communication, safety and customer support will also continue as the number of bookings grows.
+                        Root Cabs is still developing its presence across the city. Some areas need more driver partners, while others require better availability during specific hours. The next stage of growth will focus on improving existing coverage and gradually reaching more Chennai neighbourhoods. Work on app performance, communication, safety and <Link to="/support" className={articleLinkClass}>customer support</Link> will also continue as the number of bookings grows.
                       </p>
                       <p>
                         Chennai presents different challenges every day, but those challenges also help Root Cabs learn. Every completed ride gives the team a better understanding of how the city moves and what needs to improve. Root Cabs will continue building its Chennai service area by area, with the aim of making local, airport and outstation travel easier to arrange.

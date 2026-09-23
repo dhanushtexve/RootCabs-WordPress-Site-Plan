@@ -31,6 +31,7 @@ const relatedPosts = [
 ];
 
 const successStoriesHeroImage = '/assets/success-stories-root-cabs.webp';
+const articleLinkClass = 'font-semibold text-[#1E2A6E] hover:text-[#0A56C2]';
 
 function upsertMeta(
   head: HTMLHeadElement,
@@ -208,7 +209,7 @@ const SuccessStoriesPage = () => {
                 <div className="mt-8">
                   <div className="space-y-6 text-[1.04rem] leading-8 text-slate-700">
                     <p>
-                      Behind every Root Cabs ride is a driver working towards a personal goal. Some join to build a full-time income, while others begin with part-time driving. A few are looking for work that gives them more control over their time and family responsibilities.
+                      Behind every Root Cabs ride is a <Link to="/drivers" className={articleLinkClass}>Root Cabs driver</Link> working towards a personal goal. Some join to build a full-time income, while others begin with part-time driving. A few are looking for work that gives them more control over their time and family responsibilities.
                     </p>
                     <p>
                       Every driver partner has a different journey, but progress often begins in the same way. They complete a few trips, understand the platform and gradually build a routine that works for them.
@@ -226,7 +227,7 @@ const SuccessStoriesPage = () => {
                         Aravind had worked at an automobile spare parts shop for several years. His salary was regular, but managing rent, school fees and household expenses was becoming difficult. He owned a sedan that remained parked for much of the day. To earn extra income, he joined Root Cabs and began taking evening trips after work.
                       </p>
                       <p>
-                        The first few weeks were about learning the Root Partner app and understanding pickup locations. Over time, he noticed that morning station drops, evening office rides and weekend outstation bookings worked well for him.
+                        The first few weeks were about learning the Root Partner app and understanding pickup locations. Over time, he noticed that morning station drops, evening office rides and weekend <Link to="/services/outstation" className={articleLinkClass}>outstation bookings</Link> worked well for him.
                       </p>
                       <p>
                         A few months later, the shop reduced its workforce and Aravind lost his job. Since he already had experience as a Root Cabs driver partner, he chose to drive full time instead of waiting for another similar job.
@@ -246,7 +247,7 @@ const SuccessStoriesPage = () => {
                         Dinesh worked at a hardware store during the day and drove an auto in the evenings. He joined Root Cabs to earn extra money and had no plan to leave his regular job.
                       </p>
                       <p>
-                        During the first few weeks, he went online for two or three hours each evening. Most bookings were short city rides near residential areas, shopping streets and railway stations. The additional income helped him manage fuel costs and household bills.
+                        During the first few weeks, he went online for two or three hours each evening. Some customers who had <Link to="/services/outstation" className={articleLinkClass}>booked a cab</Link> through Root Cabs also used the platform for other local travel needs, including short auto rides near residential areas, shopping streets and railway stations. The additional income helped him manage fuel costs and household bills.
                       </p>
                       <p>
                         Dinesh soon noticed that early mornings were useful for office travel and station drops, while evenings were busier when people returned home. He changed his routine around these patterns. On weekdays, he drove during busy morning and evening hours. On weekends, he stayed online longer.
@@ -269,7 +270,7 @@ const SuccessStoriesPage = () => {
                         Murugan had several years of experience as a private driver and knew local and outstation routes well. However, his schedule was difficult to manage. His employer often informed him about trips at the last minute. Some journeys began early, while others ended late at night. The salary was fixed, but his hours were unpredictable.
                       </p>
                       <p>
-                        Murugan wanted more time for his family. He joined Root Cabs as an Acting Driver partner and initially accepted selected bookings while continuing his private driving job. He began with local trips and later accepted longer journeys when his schedule allowed. Since he drove the customer's vehicle, he could earn through his experience without owning a cab.
+                        Murugan wanted more time for his family. He joined Root Cabs as an <Link to="/services/acting-driver" className={articleLinkClass}>Acting Driver partner</Link> and initially accepted selected bookings while continuing his private driving job. He began with local trips and later accepted longer journeys when his schedule allowed. Since he drove the customer's vehicle, he could earn through his experience without owning a cab.
                       </p>
                       <p>
                         The turning point came when a family member became unwell. In his earlier job, taking time away would have been difficult. As a driver partner, he could remain offline, care for his family and return when the situation improved.
@@ -306,10 +307,10 @@ const SuccessStoriesPage = () => {
                         A driver success story is not built in one day. There can be busy weeks and quieter periods. Demand may change depending on location, time, weather and local events. Drivers who make steady progress learn from experience. They understand busy hours, choose suitable areas and create a routine that works for them.
                       </p>
                       <p>
-                        Some may prefer Local Rides, while others focus on Outstation, One Way or Hourly Package bookings. Acting Driver partners can use their driving skills without owning a vehicle. Success can mean regular income, better control over working hours or the ability to support family expenses.
+                        Some may prefer <Link to="/services/local-taxi" className={articleLinkClass}>Local Taxi Rides</Link>, while others focus on Outstation, One Way or Hourly Package bookings. Acting Driver partners can use their driving skills without owning a vehicle. Success can mean regular income, better control over working hours or the ability to support family expenses.
                       </p>
                       <p>
-                        Root Cabs continues to grow across Tamil Nadu with the support of its driver partners. Every journey begins differently, but each one starts with a first trip. Visit the Drivers page to learn about the joining process, required documents and available service categories.
+                        Root Cabs continues to grow across Tamil Nadu with the support of its driver partners. Every journey begins differently, but each one starts with a first trip. <Link to="/drivers" className={articleLinkClass}>Visit the Drivers page</Link> to learn about the joining process, required documents and available service categories.
                       </p>
                       <p className="rounded-2xl border border-[#1E2A6E]/10 bg-[#1E2A6E]/5 px-4 py-3 font-semibold text-[#1E2A6E]">
                         Become a Root Cabs driver partner and begin your own success story.

@@ -24,6 +24,7 @@ const onThisPage = [
 
 const launchHeroImage = '/assets/launch-of-root-cabs.webp';
 const velloreWhyImage = '/assets/launch-vellore-why-image.webp';
+const articleLinkClass = 'font-semibold text-[#1E2A6E] hover:text-[#0A56C2]';
 
 function upsertMeta(
   head: HTMLHeadElement,
@@ -204,10 +205,10 @@ const LaunchRootCabsPage = () => {
                       Every business begins with an idea, and Root Cabs began with a clear one. The aim was to make everyday travel more affordable, reliable and convenient for people across Tamil Nadu. That idea became a reality in Vellore on June 5, 2025, when Root Cabs was officially inaugurated by A.P. Nandakumar, who was then the Anaikattu MLA and a prominent DMK district leader.
                     </p>
                     <p>
-                      The occasion marked the public introduction of Root Cabs and the beginning of its journey in Tamil Nadu. Since then, what began as a local taxi service in one city has grown into a mobility platform serving more than ten cities across the state.
+                      The occasion marked the public introduction of Root Cabs and the beginning of its journey in Tamil Nadu. Since then, what began as a <Link to="/services/local-taxi" className={articleLinkClass}>local taxi service</Link> in one city has grown into a mobility platform serving more than ten cities across the state.
                     </p>
                     <p>
-                      Root Cabs was not created to be just another cab booking app. It was built around the way people actually travel in Tamil Nadu. Some need a ride to work or college, while others may be heading to a hospital, railway station, family event or another city. Root Cabs was developed with these everyday journeys in mind.
+                      Root Cabs was not created to be just another <Link to="/taxi-in-vellore" className={articleLinkClass}>vellore cab booking</Link> app. It was built around the way people actually travel in Tamil Nadu. Some need a ride to work or college, while others may be heading to a hospital, railway station, family event or another city. Root Cabs was developed with these everyday journeys in mind.
                     </p>
                   </div>
                 </div>
@@ -243,7 +244,7 @@ const LaunchRootCabsPage = () => {
                         Vellore was chosen as the first city because travel needs here are varied. Every day, residents move between hospitals, colleges, offices, railway stations, shopping areas and nearby towns. Places such as CMC Vellore, VIT and Katpadi Railway Station bring in passengers from different parts of the district.
                       </p>
                       <p>
-                        Travel outside the city is also common. Many people regularly journey from Vellore to Chennai, Bengaluru, Tiruvannamalai, Kanchipuram and other destinations. Before app based taxi booking became easier, arranging a cab often meant calling several drivers, asking each one for a fare and then hoping a vehicle would be available.
+                        Travel outside the city is also common. Many people regularly journey from <Link to="/taxi-in-vellore" className={articleLinkClass}>Vellore to Chennai</Link>, Bengaluru, Tiruvannamalai, Kanchipuram and other destinations. Before app based taxi booking became easier, arranging a cab often meant calling several drivers, asking each one for a fare and then hoping a vehicle would be available.
                       </p>
                       <p>
                         Early morning and late night travel could be especially difficult. Starting in Vellore helped Root Cabs understand these concerns closely and build the service around real travel needs rather than assumptions.
@@ -260,7 +261,7 @@ const LaunchRootCabsPage = () => {
                         Root Cabs began its operations in Vellore with Local Rides, Outstation Taxi, One Way Taxi, Hourly Package, Auto and Acting Driver services. These options gave customers different ways to travel based on the nature of their journey.
                       </p>
                       <p>
-                        Someone travelling within the city could choose a local ride, while passengers heading to another destination could book an outstation or one way taxi. Hourly packages were available for journeys with several stops, and customers using their own car could book an Acting Driver. Auto rides were also available for shorter trips within the city.
+                        Someone travelling within the city could <Link to="/services/local-taxi" className={articleLinkClass}>choose a local ride</Link>, while passengers heading to another destination could <Link to="/services/outstation" className={articleLinkClass}>book an outstation</Link> or one way taxi. Hourly packages were available for journeys with several stops, and customers using their own car could <Link to="/services/acting-driver" className={articleLinkClass}>book an Acting Driver</Link>. <Link to="/services/auto" className={articleLinkClass}>Auto rides</Link> were also available for shorter trips within the city.
                       </p>
                       <p>
                         The services introduced at launch were selected around common travel needs in and around Vellore. The intention was to give customers useful choices without making the booking process difficult.
@@ -277,7 +278,7 @@ const LaunchRootCabsPage = () => {
                         Clear pricing was an important part of Root Cabs from the beginning. Customers could view the estimated fare before confirming their ride, which gave them a better idea of the likely cost in advance. This removed the need to contact several drivers and compare fares separately.
                       </p>
                       <p>
-                        Safety was also considered from the initial launch. Root Cabs works with verified driver partners and provides SOS and emergency contact features through the app. Customer support is available to assist passengers with bookings and ongoing rides.
+                        Safety was also considered from the initial launch. Root Cabs works with verified driver partners and provides SOS and emergency contact features through the app. <Link to="/support" className={articleLinkClass}>Customer support</Link> is available to assist passengers with bookings and ongoing rides.
                       </p>
                       <p>
                         This support matters because travel is not always planned during convenient hours. Some journeys begin early in the morning. Others happen late at night. Root Cabs was created to make these situations easier to manage through a simple booking experience.
@@ -300,7 +301,7 @@ const LaunchRootCabsPage = () => {
                         Even as the network has grown, the original purpose has stayed the same. Root Cabs continues to focus on making travel affordable, dependable and easier to arrange.
                       </p>
                       <p>
-                        The progress of the company can be viewed through the Our Journey timeline on the About page. Customers can also visit the Cities We Serve page to check where Root Cabs is currently available.
+                        The progress of the company can be viewed through the Our Journey timeline on the About page. Customers can also visit the Cities We Serve page to check where <Link to="/" className={articleLinkClass}>Root Cabs</Link> is currently available.
                       </p>
                     </div>
                   </section>
@@ -311,7 +312,7 @@ const LaunchRootCabsPage = () => {
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
-                        As Root Cabs expanded, Bike Taxi and Parcel Delivery were added to the platform. Bike Taxi offered customers another practical option for short city trips, while Parcel Delivery made it easier to send and receive smaller items in supported areas.
+                        As Root Cabs expanded, Bike Taxi and <Link to="/services/parcel-delivery" className={articleLinkClass}>Parcel Delivery</Link> were added to the platform. Bike Taxi offered customers another practical option for short city trips, while Parcel Delivery made it easier to send and receive smaller items in supported areas.
                       </p>
                       <p>
                         These services allowed Root Cabs to move beyond regular passenger travel and support more everyday needs. At the same time, the platform continued to offer the services introduced during its first launch in Vellore.
@@ -331,7 +332,7 @@ const LaunchRootCabsPage = () => {
                         Root Cabs continues to improve its app, strengthen its driver network and expand into more cities. The goal is not simply to grow as a business. It is to create a service that people feel comfortable choosing for both daily and long distance journeys.
                       </p>
                       <p>
-                        Root Cabs began in Vellore on June 5, 2025, and the journey has continued across Tamil Nadu ever since. Visit the Cities We Serve page to check whether Root Cabs is available in your location, or explore our services to find the right option for your next ride.
+                        Root Cabs began in Vellore on June 5, 2025, and the journey has continued across Tamil Nadu ever since. Visit the Cities We Serve page to check whether Root Cabs is available in your location, or <Link to="/services" className={articleLinkClass}>explore our services</Link> to find the right option for your next ride.
                       </p>
                     </div>
                   </section>
