@@ -498,14 +498,6 @@ const ChennaiGrowthPage = () => {
                     </Button>
                   </a>
                 </div>
-                <div className="mt-4 space-y-2 text-sm leading-6 text-white/80">
-                  <p>
-                    <span className="font-semibold text-white">Phone:</span> {companyInfo.phone}
-                  </p>
-                  <p>
-                    <span className="font-semibold text-white">Email:</span> {companyInfo.email}
-                  </p>
-                </div>
               </CardContent>
             </Card>
           </aside>
