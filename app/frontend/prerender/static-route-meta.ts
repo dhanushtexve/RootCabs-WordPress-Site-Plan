@@ -119,7 +119,7 @@ export const staticSeoRoutes = [
   {
     "path": "/services",
     "title": "Our Services | Local, Airport & Outstation Taxi - Root Cabs",
-    "description": "Root Cabs offers Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto Rickshaw across Tamil Nadu. Fixed fares, verified drivers, 10+ cities.",
+    "description": "Root Cabs offers Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto rides across Tamil Nadu. Fixed fares, verified drivers, 10+ cities.",
     "canonicalUrl": "https://rootcabs.com/services",
     "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
     "ogType": "website",
@@ -272,7 +272,7 @@ export const staticSeoRoutes = [
   {
     "path": "/services/auto",
     "title": "Book Affordable Auto Online for Rides | Root Cabs",
-    "description": "No more haggling or destination refusals. Book affordable auto rickshaw rides with Root Cabs at a fixed, upfront fare for short trips and errands.",
+    "description": "No more haggling or destination refusals. Book affordable auto rides with Root Cabs at a fixed, upfront fare for short trips and errands.",
     "canonicalUrl": "https://rootcabs.com/services/auto",
     "ogImage": "https://rootcabs.com/assets/service-banners/auto.webp",
     "ogType": "website",

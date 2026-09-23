@@ -55,7 +55,7 @@ function ensureBuildOutDir(): Plugin {
   };
 }
 
-function sanitizePrerenderedBlogMeta(): Plugin {
+function sanitizePrerenderedMeta(): Plugin {
   let outDir = path.resolve(__dirname, 'dist');
 
   const blogTemplateMetaPatterns = [
@@ -80,14 +80,35 @@ function sanitizePrerenderedBlogMeta(): Plugin {
     });
   }
 
+  function upsertStaticSchema(html: string, filePath: string) {
+    const relativePath = path.relative(outDir, filePath).replace(/\\/g, '/');
+    if (!relativePath.startsWith('services/')) return html;
+
+    const routePath = `/${path.posix.dirname(relativePath)}`;
+    const schema = staticRouteSchemas[routePath];
+    if (!schema) return html;
+
+    const escapedRoutePath = routePath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const schemaPattern = new RegExp(
+      `<script[^>]*data-static-schema="${escapedRoutePath}"[^>]*>[\\s\\S]*?<\\/script>\\s*`,
+      'i',
+    );
+    const schemaTag = `    <script type="application/ld+json" data-static-schema="${routePath}">${JSON.stringify(schema)}</script>`;
+    const withoutExistingSchema = html.replace(schemaPattern, '');
+
+    return withoutExistingSchema.replace('</head>', `${schemaTag}\n  </head>`);
+  }
+
   return {
-    name: 'sanitize-prerendered-blog-meta',
+    name: 'sanitize-prerendered-meta',
     configResolved(config: ResolvedConfig) {
       outDir = path.resolve(config.root, config.build.outDir);
     },
     writeBundle() {
-      const blogDir = path.join(outDir, 'blog');
-      const htmlFiles = collectHtmlFiles(blogDir);
+      const htmlFiles = [
+        ...collectHtmlFiles(path.join(outDir, 'blog')),
+        ...collectHtmlFiles(path.join(outDir, 'services')),
+      ];
 
       for (const filePath of htmlFiles) {
         let html = fs.readFileSync(filePath, 'utf8');
@@ -95,6 +116,8 @@ function sanitizePrerenderedBlogMeta(): Plugin {
         for (const pattern of blogTemplateMetaPatterns) {
           html = html.replace(pattern, '');
         }
+
+        html = upsertStaticSchema(html, filePath);
 
         fs.writeFileSync(filePath, html, 'utf8');
       }
@@ -469,7 +492,7 @@ export default defineConfig(({ command, mode }) => {
       react(),
       atoms(),
       ensureBuildOutDir(),
-      sanitizePrerenderedBlogMeta(),
+      sanitizePrerenderedMeta(),
       materializeStaticSeoRoutes(),
       generateSitemapPlugin(siteUrl, blogPrerenderRoutes),
       ...(prerenderRoutes.length > 0

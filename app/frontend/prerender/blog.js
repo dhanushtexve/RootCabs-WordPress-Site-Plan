@@ -17,6 +17,21 @@ const servicePageSeoTitles = {
   auto: 'Book Affordable Auto Online for Rides | Root Cabs',
 };
 
+const servicePageSeoDescriptions = {
+  'local-taxi':
+    'Book local taxi service with Root Cabs across 10+ Tamil Nadu cities for office commutes, shopping, appointments and everyday city travel. Book online now.',
+  'airport-taxi':
+    'Root Cabs offers Chennai Airport taxi service pickup and drop with on-time, hassle-free transfers - book your ride online in minutes.',
+  outstation:
+    'Outstation taxi service by Root Cabs for intercity trips, weekend getaways and family journeys across Tamil Nadu. Reserve your cab online today.',
+  'acting-driver':
+    "Hire a verified acting driver with Root Cabs, Tamil Nadu's only combined cab and acting driver app. Safe, trained drivers for local and outstation trips.",
+  'parcel-delivery':
+    'Send documents, medicines and small packages same-day within your city with Root Cabs parcel delivery. Quick pickup and drop, booked online in minutes.',
+  auto:
+    'No more haggling or destination refusals. Book affordable auto rides with Root Cabs at a fixed, upfront fare for short trips and errands.',
+};
+
 function getServiceHeadElements(url) {
   const slug = url.replace(/^\/services\/?/, '').replace(/\/+$/, '');
   const service = slug ? services.find((item) => item.slug === slug) : null;
@@ -24,8 +39,8 @@ function getServiceHeadElements(url) {
     ? servicePageSeoTitles[service.slug] ?? `${service.name} | Root Cabs`
     : 'Our Services | Local, Airport & Outstation Taxi - Root Cabs';
   const description = service
-    ? service.description
-    : 'Root Cabs offers Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto Rickshaw across Tamil Nadu. Fixed fares, verified drivers, 10+ cities.';
+    ? servicePageSeoDescriptions[service.slug] ?? service.description
+    : 'Root Cabs offers Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto rides across Tamil Nadu. Fixed fares, verified drivers, 10+ cities.';
   const canonicalUrl = `https://rootcabs.com/services${slug ? `/${slug}` : ''}`;
   const image = service
     ? `https://rootcabs.com/assets/service-banners/${service.slug}.webp`

@@ -647,6 +647,21 @@ const servicePageSeoTitles: Record<string, string> = {
   auto: "Book Affordable Auto Online for Rides | Root Cabs",
 };
 
+const servicePageSeoDescriptions: Record<string, string> = {
+  "local-taxi":
+    "Book local taxi service with Root Cabs across 10+ Tamil Nadu cities for office commutes, shopping, appointments and everyday city travel. Book online now.",
+  "airport-taxi":
+    "Root Cabs offers Chennai Airport taxi service pickup and drop with on-time, hassle-free transfers - book your ride online in minutes.",
+  outstation:
+    "Outstation taxi service by Root Cabs for intercity trips, weekend getaways and family journeys across Tamil Nadu. Reserve your cab online today.",
+  "acting-driver":
+    "Hire a verified acting driver with Root Cabs, Tamil Nadu's only combined cab and acting driver app. Safe, trained drivers for local and outstation trips.",
+  "parcel-delivery":
+    "Send documents, medicines and small packages same-day within your city with Root Cabs parcel delivery. Quick pickup and drop, booked online in minutes.",
+  auto:
+    "No more haggling or destination refusals. Book affordable auto rides with Root Cabs at a fixed, upfront fare for short trips and errands.",
+};
+
 export function ServicesHub() {
   const [showAllServices, setShowAllServices] = useState(false);
   const serviceStats = [
@@ -686,7 +701,7 @@ export function ServicesHub() {
     const seo = {
       title: "Our Services | Local, Airport & Outstation Taxi - Root Cabs",
       description:
-        "Root Cabs offers Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto Rickshaw across Tamil Nadu. Fixed fares, verified drivers, 10+ cities.",
+        "Root Cabs offers Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto rides across Tamil Nadu. Fixed fares, verified drivers, 10+ cities.",
       url: "https://rootcabs.com/services",
       image: "https://rootcabs.com/assets/root-cabs-logo.webp",
     };
@@ -751,7 +766,7 @@ export function ServicesHub() {
       url: "https://rootcabs.com/services",
       name: "Our Services | Local, Airport & Outstation Taxi - Root Cabs",
       description:
-        "Root Cabs offers Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto Rickshaw across Tamil Nadu. Fixed fares, verified drivers, 10+ cities.",
+        "Root Cabs offers Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto rides across Tamil Nadu. Fixed fares, verified drivers, 10+ cities.",
       inLanguage: "en-IN",
       about: {
         "@type": "Organization",
@@ -1198,7 +1213,7 @@ export function ServicePage() {
     const head = document.head;
     const seo = {
       title: servicePageSeoTitles[service.slug] ?? `${service.name} | Root Cabs`,
-      description: service.description,
+      description: servicePageSeoDescriptions[service.slug] ?? service.description,
       url: `https://rootcabs.com/services/${service.slug}`,
       image: serviceBannerUrl(service.slug),
     };
