@@ -18,6 +18,8 @@ const benefitIcons: Record<string, React.ReactNode> = {
   Users: <Users className="w-6 h-6" />,
 };
 
+const blogArticleLinkClass = "font-semibold text-[#1E2A6E] hover:text-[#0A56C2]";
+
 // ============================================================
 // BUSINESS PAGE
 // ============================================================
@@ -700,7 +702,7 @@ export function BlogPage() {
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
-                        Vellore was chosen as the first city because it has a strong mix of local and long-distance travel needs.
+                        <Link to="/taxi-in-vellore" className={blogArticleLinkClass}>Vellore</Link> was chosen as the first city because it has a strong mix of local and long-distance travel needs.
                       </p>
                       <p>
                         Residents travel every day to hospitals, colleges, offices, railway stations, shopping areas and nearby towns. Places such as CMC Vellore, VIT and Katpadi Railway Station receive passengers from different parts of the district and neighbouring locations.
@@ -709,10 +711,10 @@ export function BlogPage() {
                         Travel outside Vellore is also common. People regularly visit Chennai, Bengaluru, Kanchipuram, Tiruvannamalai and other destinations for work, education, medical treatment and family needs.
                       </p>
                       <p>
-                        This made Vellore a suitable place to understand what customers expected from a local taxi platform. It also gave the Root Cabs team an opportunity to work closely with driver partners and learn from actual bookings.
+                        This made Vellore a suitable place to understand what customers expected from a local taxi platform. It also gave the Root Cabs team an opportunity to work closely with <Link to="/drivers" className={blogArticleLinkClass}>driver partners</Link> and learn from actual bookings.
                       </p>
                       <p>
-                        Root Cabs officially began its journey in Vellore on June 5, 2025. At the time of launch, customers could book Local Rides, Outstation Taxi, One Way Taxi, Hourly Package, Auto and Acting Driver services. Offering several options from the beginning helped Root Cabs support different travel needs without limiting customers to regular cab bookings alone.
+                        Root Cabs officially began its journey in Vellore on June 5, 2025. At the time of launch, customers could book Local Rides, <Link to="/services/outstation" className={blogArticleLinkClass}>Outstation Taxi</Link>, One Way Taxi, Hourly Package, <Link to="/services/auto" className={blogArticleLinkClass}>Auto</Link> and <Link to="/services/acting-driver" className={blogArticleLinkClass}>Acting Driver services</Link>. Offering several options from the beginning helped Root Cabs support different travel needs without limiting customers to regular cab bookings alone.
                       </p>
                     </div>
                   </section>
@@ -732,7 +734,7 @@ export function BlogPage() {
                         The Root Cabs customer app was developed to keep ride booking straightforward. Customers can enter their pickup and destination, view available vehicle options and check the estimated fare before confirming the ride.
                       </p>
                       <p>
-                        The Root Partner app helps drivers manage trip requests, availability and their daily work. The platform also includes safety and support features for situations that may arise during a journey.
+                        The Root Partner app helps drivers manage trip requests, availability and their daily work. The platform also includes safety and <Link to="/support" className={blogArticleLinkClass}>support</Link> features for situations that may arise during a journey.
                       </p>
                       <p>
                         The technology was built around practical use. It needed to remain simple for customers making a quick booking and for drivers using the app throughout the day.
@@ -746,7 +748,7 @@ export function BlogPage() {
                     </h2>
                     <div className="mt-4 space-y-4 text-[1.04rem] leading-8 text-slate-700">
                       <p>
-                        The name Root Cabs reflects the company's origin and its connection with the places it serves.
+                        The name <Link to="/" className={blogArticleLinkClass}>Root Cabs</Link> reflects the company's origin and its connection with the places it serves.
                       </p>
                       <p>
                         The word "Root" represents a beginning, a strong foundation and the point from which something grows. Root Cabs started in Tamil Nadu with an understanding of local cities, routes and everyday travel habits.
@@ -769,16 +771,16 @@ export function BlogPage() {
                         Root Cabs has grown beyond its first city and is now expanding across more than ten cities in Tamil Nadu.
                       </p>
                       <p>
-                        The platform has also added Bike Taxi and Parcel Delivery since its launch. Bike Taxi gives customers another option for shorter city journeys, while Parcel Delivery helps people send and receive smaller items within supported areas.
+                        The platform has also added Bike Taxi and <Link to="/services/parcel-delivery" className={blogArticleLinkClass}>Parcel Delivery</Link> since its launch. Bike Taxi gives customers another option for shorter city journeys, while Parcel Delivery helps people send and receive smaller items within supported areas.
                       </p>
                       <p>
-                        Every new city brings different routes, traffic patterns and customer expectations. A service that works well in Vellore may need to be adjusted when introduced in Chennai, Coimbatore, Kanchipuram or Tiruvannamalai.
+                        Every new city brings different routes, traffic patterns and customer expectations. A service that works well in Vellore may need to be adjusted when introduced in <Link to="/taxi-in-chennai" className={blogArticleLinkClass}>Chennai</Link>, Coimbatore, Kanchipuram or Tiruvannamalai.
                       </p>
                       <p>
                         The team continues to learn from customers and driver partners while improving the apps and strengthening the service network in each location.
                       </p>
                       <p>
-                        What began as an idea to solve familiar transport problems has developed into a growing mobility platform. Root Cabs continues to move forward with the same purpose it had at the beginning. The aim is to keep fares clear, make booking easier and build a service that customers and driver partners can depend on.
+                        What began as an idea to solve familiar transport problems has developed into a growing mobility platform. Root Cabs continues to move forward with the same purpose it had at the beginning. The aim is to keep fares clear, make booking easier and build a service that customers and <Link to="/drivers" className={blogArticleLinkClass}>driver partners</Link> can depend on.
                       </p>
                     </div>
                   </section>
