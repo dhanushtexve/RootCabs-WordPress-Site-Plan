@@ -20,7 +20,7 @@ export const staticSeoRoutes = [
   {
     "path": "/about",
     "title": "About Root Cabs - Our Story and Values",
-    "description": "Root Cabs, Tamil Nadu's fastest-growing taxi aggregator. Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto Rickshaw across 10+ cities.",
+    "description": "Root Cabs, Tamil Nadu's fastest-growing taxi aggregator. Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto across 10+ cities.",
     "canonicalUrl": "https://rootcabs.com/about",
     "ogImage": "https://rootcabs.com/assets/root-cabs-logo.webp",
     "ogType": "website",

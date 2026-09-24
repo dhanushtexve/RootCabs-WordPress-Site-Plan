@@ -173,12 +173,12 @@ const chennaiServices = [
     icon: <img src={assetPath("/assets/chennai-service-one-way.webp")} alt="One-Way Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
-    title: "Auto Rickshaw",
+    title: "Auto",
     description: "Travel easily through Chennai's busy streets, shopping areas, railway stations, and nearby neighbourhoods. Book an auto for everyday errands, short trips, and quick local travel across the city.",
     fare: "Starting at \u20B940/1Km",
     href: "/taxi-in-chennai/auto",
     iconWrapClass: "bg-white",
-    icon: <img src={assetPath("/assets/chennai-service-auto.webp")} alt="Auto Rickshaw service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src={assetPath("/assets/chennai-service-auto.webp")} alt="Auto service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Bike Taxi",
@@ -297,13 +297,13 @@ const velloreServices = [
     icon: <img src={assetPath("/assets/chennai-service-one-way.webp")} alt="One-Way Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
-    title: "Auto Rickshaw",
+    title: "Auto",
     description:
       "Quick auto rides for Vellore's markets, hospitals, railway stations, colleges, residential areas, and nearby destinations. It is a practical option for short trips, everyday errands, and local travel through busy streets.",
     fare: "Starting at \u20B9 100/2 Km",
     href: "/taxi-in-vellore/auto",
     iconWrapClass: "bg-white",
-    icon: <img src={assetPath("/assets/chennai-service-auto.webp")} alt="Auto Rickshaw service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src={assetPath("/assets/chennai-service-auto.webp")} alt="Auto service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Bike Taxi",
@@ -1750,7 +1750,7 @@ export function CityPage({
         backgroundColor: cityBannerImage ? "#172aab" : undefined,
       }}>
         <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 max-w-screen-xl mx-auto px-4">
+        <div className={`relative z-10 max-w-screen-xl mx-auto px-4 ${usesExpandedCityHero ? "pb-24 md:pb-28" : ""}`}>
           <PageBreadcrumb
             className={`${usesExpandedCityHero ? "pt-8 md:pt-10" : ""} mb-4 text-white/70`}
             items={[
@@ -1764,7 +1764,7 @@ export function CityPage({
             {isVellore || isCoimbatore ? (
               <>
                 <span className="block">{isVellore ? "Your Go-To Taxi Service in Vellore" : "Reliable Taxi Service in"}</span>{" "}
-                <span className="block">{isVellore ? "- Whenever You Need a Ride" : "Coimbatore - Airport & City Rides"}</span>
+                <span className="block">{isVellore ? "Whenever You Need a Ride" : "Coimbatore - Airport & City Rides"}</span>
               </>
             ) : isChennai ? "Reliable Cab Services In Chennai For Every Ride" : city.tagline}
           </h1>
@@ -1776,7 +1776,7 @@ export function CityPage({
               : city.description}
           </p>
           </div>
-          <div className={`${usesExpandedCityHero ? "mt-12 md:mt-16" : "mt-6"} flex flex-wrap gap-4`}>
+          <div className={`${usesExpandedCityHero ? "mt-8 md:mt-10" : "mt-6"} flex flex-wrap gap-4`}>
             <Link to="/book-ride">
               <Button size="lg" className="bg-[#FFD700] hover:bg-[#E6C200] text-[#2E3A8C] font-bold cursor-pointer shadow-sm">
                 {isChennai ? "Book a Ride in Chennai" : `Book Ride in ${city.name}`} <ArrowRight className="w-4 h-4 ml-2" />
@@ -2102,7 +2102,7 @@ function VelloreRoutesSection() {
 
 function VelloreServicesSection() {
   const [showAll, setShowAll] = useState(false);
-  const hiddenServiceTitles = new Set(["Auto Rickshaw", "Bike Taxi", "Parcel Delivery"]);
+  const hiddenServiceTitles = new Set(["Auto", "Bike Taxi", "Parcel Delivery"]);
   const availableServices = velloreServices.filter((service) => !hiddenServiceTitles.has(service.title));
   const visibleServices = showAll ? availableServices : availableServices.slice(0, 6);
 

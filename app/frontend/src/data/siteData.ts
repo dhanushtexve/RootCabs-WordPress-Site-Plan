@@ -102,10 +102,10 @@ export const services: Service[] = [
   },
   {
     slug: "auto",
-    name: "Auto Rickshaw",
+    name: "Auto",
     icon: "Bike",
     shortDesc: "Quick auto rides for short distances",
-    description: "Book an auto rickshaw instantly with Root Cabs. Perfect for short-distance travel within the city with meter-based transparent pricing and no haggling required.",
+    description: "Book an auto instantly with Root Cabs. Perfect for short-distance travel within the city with meter-based transparent pricing and no haggling required.",
     features: ["Instant booking", "Meter-based pricing", "No haggling", "Short distance specialist", "Eco-friendly option", "Available in all cities"],
     startingPrice: "₹30",
   },

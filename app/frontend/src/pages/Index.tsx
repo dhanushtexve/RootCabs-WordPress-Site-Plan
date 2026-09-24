@@ -41,11 +41,11 @@ const homepageServices = [
     icon: <img src={assetPath("/assets/home-service-one-way.webp")} alt="One-Way Taxi service" className="h-12 w-12 object-contain" />,
   },
   {
-    name: "Auto Rickshaw",
+    name: "Auto",
     description: "Quick and affordable rides for short-distance travel around the city.",
     fare: "Starting at Rs. 100/2km",
     href: "/services/auto",
-    icon: <img src={assetPath("/assets/home-service-auto.webp")} alt="Auto Rickshaw service" className="h-12 w-12 object-contain" />,
+    icon: <img src={assetPath("/assets/home-service-auto.webp")} alt="Auto service" className="h-12 w-12 object-contain" />,
   },
   {
     name: "Bike Taxi",

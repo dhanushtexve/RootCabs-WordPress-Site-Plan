@@ -50,7 +50,7 @@ const autoActingDriverBenefits = [
   "Flexible Travel Options",
 ];
 
-const localTaxiServiceOffers = ["Airport Taxi", "Outstation Taxi", "Acting Driver", "Parcel Delivery", "Auto Rickshaw"];
+const localTaxiServiceOffers = ["Airport Taxi", "Outstation Taxi", "Acting Driver", "Parcel Delivery", "Auto"];
 const localTaxiServiceCities = ["Chennai", "Vellore", "Kanchipuram", "Tiruvannamalai"];
 const outstationTaxiServiceCities = [
   "Chennai",
@@ -345,7 +345,7 @@ const airportTaxiBenefits = [
   "Multiple Cab Options",
 ];
 
-const airportTaxiServiceOffers = ["Local Taxi", "Outstation Taxi", "Acting Driver", "Parcel Delivery", "Auto Rickshaw"];
+const airportTaxiServiceOffers = ["Local Taxi", "Outstation Taxi", "Acting Driver", "Parcel Delivery", "Auto"];
 const airportTaxiActingDriverBenefits = [
   "Airport Drop & Pickup Support",
   "Early-Morning & Late-Night Availability",
@@ -499,7 +499,7 @@ const parcelDeliveryAppBenefits = [
   "Verified Delivery Partners",
   "24×7 Customer Support",
 ];
-const parcelDeliveryServiceOffers = ["Local Taxi", "Airport Taxi", "Acting Driver", "Outstation Taxi", "Auto Rickshaw"];
+const parcelDeliveryServiceOffers = ["Local Taxi", "Airport Taxi", "Acting Driver", "Outstation Taxi", "Auto"];
 const parcelDeliveryFaqs = [
   {
     q: "How Fast Is Parcel Delivery With Root Cabs?",
@@ -574,9 +574,9 @@ const outstationTaxiBenefits = [
   "24x7 Customer Support",
 ];
 
-const outstationTaxiServiceOffers = ["Local Taxi", "Airport Taxi", "Acting Driver", "Parcel Delivery", "Auto Rickshaw"];
-const actingDriverServiceOffers = ["Local Taxi", "Outstation Taxi", "Acting Driver", "Parcel Delivery", "Auto Rickshaw"];
-const serviceOfferLabel = (serviceName: string) => (serviceName === "Auto Rickshaw" ? "Auto" : serviceName);
+const outstationTaxiServiceOffers = ["Local Taxi", "Airport Taxi", "Acting Driver", "Parcel Delivery", "Auto"];
+const actingDriverServiceOffers = ["Local Taxi", "Outstation Taxi", "Acting Driver", "Parcel Delivery", "Auto"];
+const serviceOfferLabel = (serviceName: string) => serviceName;
 const outstationTaxiActingDriverBenefits = [
   "Travel in Your Own Car",
   "Long-Distance Driving Support",
@@ -780,7 +780,7 @@ export function ServicesHub() {
         },
         image: "https://rootcabs.com/assets/root-cabs-logo.webp",
         description:
-          "Root Cabs provides local, airport and outstation taxi services, acting driver services, parcel delivery, auto rickshaw rides and other mobility services across Tamil Nadu.",
+          "Root Cabs provides local, airport and outstation taxi services, acting driver services, parcel delivery, auto rides and other mobility services across Tamil Nadu.",
         email: "support@rootcabs.com",
         telephone: "+91-8608606474",
         contactPoint: {
@@ -925,7 +925,7 @@ export function ServicesHub() {
       href: "/book-ride",
     },
     {
-      name: "Auto Rickshaw",
+      name: "Auto",
       description: "Convenient auto rides for short trips and everyday commuting.",
       features: ["Easy booking", "App fare is the final fare", "No bargaining with drivers"],
       price: "From ₹100/2 Km",
@@ -1062,7 +1062,7 @@ export function ServicesHub() {
                   aria-hidden="true"
                   className="mx-auto mb-3 h-7 w-7 object-contain transition-transform group-hover:scale-110"
                 />
-                <span className="text-sm font-semibold text-[#1E2A6E]">{city.name}</span>
+                <h3 className="font-heading text-sm font-bold text-[#1E2A6E]">{city.name}</h3>
               </Link>
             ))}
           </div>

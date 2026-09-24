@@ -364,7 +364,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
         "@type": "ImageObject",
         "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
       },
-      "description": "Root Cabs provides local, airport and outstation taxi services, acting driver services, parcel delivery, auto rickshaw rides and other mobility services across Tamil Nadu.",
+      "description": "Root Cabs provides local, airport and outstation taxi services, acting driver services, parcel delivery, auto rides and other mobility services across Tamil Nadu.",
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
       "contactPoint": {
@@ -1858,7 +1858,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Auto Rickshaw",
+          "name": "Auto",
           "item": "https://rootcabs.com/services/auto"
         }
       ]

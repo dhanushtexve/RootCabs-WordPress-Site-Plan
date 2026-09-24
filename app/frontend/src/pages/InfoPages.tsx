@@ -930,7 +930,7 @@ export function AboutPage() {
     const seo = {
       title: "About Root Cabs - Our Story and Values",
       description:
-        "Root Cabs, Tamil Nadu's fastest-growing taxi aggregator. Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto Rickshaw across 10+ cities.",
+        "Root Cabs, Tamil Nadu's fastest-growing taxi aggregator. Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto across 10+ cities.",
       keywords:
         "about root cabs, root cabs tamil nadu, texve innovations pvt ltd, taxi services tamil nadu, mobility services tamil nadu, transport services tamil nadu",
       url: "https://rootcabs.com/about",
