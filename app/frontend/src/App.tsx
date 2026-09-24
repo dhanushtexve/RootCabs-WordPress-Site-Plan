@@ -6,7 +6,7 @@ import BookRide from "@/pages/BookRide";
 import BlogRoutes from "@/blog-routes";
 import BlogLandingPage from "@/components/blog/BlogLandingPage";
 import { ServicesHub, ServicePage } from "@/pages/ServicesPages";
-import { CitiesHub, CityPage, CityServicePage } from "@/pages/CitiesPages";
+import { CitiesHub, CityPage, CityServicePage, KumbakonamPage } from "@/pages/CitiesPages";
 import { RoutePage, LandmarkPage } from "@/pages/RoutesAndLandmarks";
 import { DriversPage } from "@/pages/DriversPage";
 import { SupportPage } from "@/pages/SupportPage";
@@ -44,6 +44,7 @@ function App() {
 
           {/* Cities */}
           <Route path="/cities" element={<CitiesHub />} />
+          <Route path="/cities/taxi-in-kumbakonam" element={<KumbakonamPage />} />
           <Route path="/chennai" element={<CityPage citySlugOverride="taxi-in-chennai" canonicalUrlOverride="https://rootcabs.com/chennai" />} />
           <Route path="/taxi-in-chennai" element={<CityPage citySlugOverride="taxi-in-chennai" />} />
 

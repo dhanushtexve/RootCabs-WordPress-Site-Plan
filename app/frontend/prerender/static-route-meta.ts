@@ -54,6 +54,15 @@ export const staticSeoRoutes = [
     "siteName": "Root Cabs"
   },
   {
+    "path": "/cities/taxi-in-kumbakonam",
+    "title": "Best Taxi Service in Kumbakonam | Root Cabs",
+    "description": "From temple visits and railway station pickups to local errands and outstation journeys, Root Cabs makes getting around Kumbakonam simpler with clear fares and easy booking.",
+    "canonicalUrl": "https://rootcabs.com/cities/taxi-in-kumbakonam",
+    "ogImage": "https://rootcabs.com/assets/rootcabs-banner-home.png",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
     "path": "/drivers",
     "title": "Drive with Root Cabs | Become a Driver Partner",
     "description": "Earn up to ₹40,000+ monthly as a Root Cabs driver partner. Low commission, flexible hours, daily payouts, and free training. Apply now.",

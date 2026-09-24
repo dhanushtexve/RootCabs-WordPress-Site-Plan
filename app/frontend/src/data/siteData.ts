@@ -264,6 +264,17 @@ export const cities: City[] = [
     ],
   },
   {
+    slug: "cities/taxi-in-kumbakonam",
+    name: "Kumbakonam",
+    state: "Tamil Nadu",
+    tagline: "Best Taxi Service in Kumbakonam for Local and Outstation Travel",
+    description: "From temple visits and railway station pickups to local errands and outstation journeys, Root Cabs makes getting around Kumbakonam simpler with clear fares and easy booking.",
+    services: [],
+    popularRoutes: [],
+    landmarks: [],
+    faq: [],
+  },
+  {
     slug: "taxi-in-tiruppur",
     name: "Tiruppur",
     state: "Tamil Nadu",

@@ -290,7 +290,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Which taxi is best in Salem?",
+          "name": "Which Taxi Is Best In Salem?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Root Cabs is the best taxi service in Salem for simple booking, verified drivers, local rides, one-way trips, outstation travel, hourly packages, and other travel needs."
@@ -298,7 +298,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
         },
         {
           "@type": "Question",
-          "name": "How is the fare calculated for a taxi in Salem?",
+          "name": "How Is The Fare Calculated For A Taxi In Salem?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Taxi fares in Salem depend on the service you choose, trip distance, pickup and drop location, and vehicle type. The fare may differ for each booking."
@@ -306,7 +306,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
         },
         {
           "@type": "Question",
-          "name": "How can I book a cab in Salem?",
+          "name": "How Can I Book A Cab In Salem?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "For cab booking in Salem, open the Root Cabs app, enter your pickup and destination, choose the service you need, and confirm your ride."
@@ -314,7 +314,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
         },
         {
           "@type": "Question",
-          "name": "Does Salem have call taxi service at night?",
+          "name": "Does Salem Have Call Taxi Service At Night?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Yes. Root Cabs provides call taxi in Salem for night travel too. You can book for station trips, work travel, family plans, or other rides based on driver availability."
@@ -322,12 +322,31 @@ export const staticRouteSchemas: Record<string, unknown> = {
         },
         {
           "@type": "Question",
-          "name": "Is there a minimum distance for outstation taxi in Salem?",
+          "name": "Is There A Minimum Distance For An Outstation Taxi In Salem?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "No. Root Cabs does not have a minimum distance for outstation bookings. You can book outstation cabs in Salem based on the destination and trip you are planning."
           }
         }
+      ]
+    }
+  },
+  "/cities/taxi-in-kumbakonam": {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "url": "https://rootcabs.com/cities/taxi-in-kumbakonam",
+    "name": "Best Taxi Service in Kumbakonam for Local and Outstation Travel",
+    "description": "From temple visits and railway station pickups to local errands and outstation journeys, Root Cabs makes getting around Kumbakonam simpler with clear fares and easy booking.",
+    "inLanguage": "en-IN",
+    "mainEntity": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "How Do I Book A Kumbakonam Taxi Online?", "acceptedAnswer": { "@type": "Answer", "text": "You can book through the Root Cabs app by entering your pickup point, destination, and preferred ride type. Your trip details will be shown before you confirm the booking." } },
+        { "@type": "Question", "name": "Is Taxi Service Available 24 Hours In Kumbakonam?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Root Cabs accepts bookings throughout the day for early-morning pickups, late-night travel, railway station trips, and planned journeys outside the city." } },
+        { "@type": "Question", "name": "Can I Book A One-Way Taxi From Kumbakonam?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. One-way rides are available from Kumbakonam to places such as Thanjavur, Trichy, Chennai, Mayiladuthurai, and other destinations based on service availability." } },
+        { "@type": "Question", "name": "Can I Schedule A Taxi In Advance In Kumbakonam?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Advance booking works well for temple visits, railway station pickups, family functions, and other trips where your travel time is already planned." } },
+        { "@type": "Question", "name": "What Kumbakonam Taxi Packages Are Available?", "acceptedAnswer": { "@type": "Answer", "text": "Kumbakonam taxi packages can be chosen based on the type of journey, including hourly travel, temple visits, local trips, and outstation travel." } },
+        { "@type": "Question", "name": "How Does The Kumbakonam Cabs Tariff Work?", "acceptedAnswer": { "@type": "Answer", "text": "The Kumbakonam cabs tariff depends on factors such as distance, vehicle type, and the journey selected. The applicable fare is shown during booking before you confirm the ride." } }
       ]
     }
   },

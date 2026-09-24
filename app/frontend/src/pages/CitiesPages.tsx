@@ -43,6 +43,7 @@ const cityCardSummaryMap: Record<string, string> = {
   Madurai: "Enjoy comfortable rides across Madurai for temple visits, family trips and everyday travel.",
   Trichy: "Find suitable ride options across Trichy for local commutes, scheduled trips and longer journeys.",
   Salem: "Book reliable transport across Salem for daily travel, multiple stops and outstation trips.",
+  Kumbakonam: "Book rides for temple visits, railway station pickups and outstation journeys in Kumbakonam.",
   Tiruppur: "Plan your rides across Tiruppur for work, shopping, local travel and long-distance journeys.",
   Kanchipuram: "Explore Kanchipuram with dependable options for temple visits, city rides and intercity travel.",
   Tiruvannamalai: "Reach local destinations and nearby towns comfortably with reliable ride options.",
@@ -58,6 +59,7 @@ const cityImageMap: Record<string, string> = {
   Madurai: "/assets/cities/madurai.webp",
   Trichy: "/assets/cities/trichy.webp",
   Salem: "/assets/cities/salem.webp",
+  Kumbakonam: "/assets/rootcabs-banner-home.png",
   Tiruppur: "/assets/cities/tiruppur.webp",
   Kanchipuram: "/assets/cities/kanchipuram.webp",
   Tiruvannamalai: "/assets/cities/tiruvannamalai.webp",
@@ -147,6 +149,184 @@ const salemServiceAssetIconMap: Record<(typeof salemServices)[number]["slug"], R
   "bike-taxi": <img src={assetPath("/assets/service-icons/bike-taxi.webp")} alt="Bike Taxi service icon" className="h-8 w-8 object-contain" />,
   "parcel-delivery": <img src={assetPath("/assets/service-icons/parcel.webp")} alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
 };
+
+const kumbakonamServices = [
+  {
+    title: "Local Taxi",
+    icon: "local.webp",
+    description: <>Move around Kumbakonam for work, shopping, appointments, railway station trips, or everyday errands. Our <strong>cab service in Kumbakonam</strong> makes it easier to arrange short city rides without depending on last-minute transport.</>,
+  },
+  {
+    title: "Auto Rickshaw",
+    icon: "auto.webp",
+    description: "For quick trips across nearby streets and busy parts of Kumbakonam, choose an auto rickshaw. It works well for shopping runs, station travel, market visits, and other short-distance journeys around town.",
+  },
+  {
+    title: "Drop Taxi",
+    icon: "one-way.webp",
+    description: <>Travelling to another city without planning a return ride? Choose a <strong>Kumbakonam one way drop taxi</strong> for direct point-to-point travel, with clear trip details and fare shown before you confirm the booking.</>,
+  },
+  {
+    title: "Outstation Taxi",
+    icon: "outstation.webp",
+    description: "Plan trips from Kumbakonam to nearby towns or longer destinations with a cab suited to your journey. One-way and round-trip options make family visits, functions, and weekend travel easier to arrange.",
+  },
+  {
+    title: "Hourly Packages",
+    icon: "hourly-package.webp",
+    description: "Have several places to cover in the same day? Keep a cab for selected hours and move between temple visits, shopping, meetings, and other stops without booking a new ride each time.",
+  },
+  {
+    title: "Acting Driver",
+    icon: "acting-driver.webp",
+    description: "When you prefer travelling in your own car without taking the wheel, book an acting driver. It is useful for family functions, longer drives, and late journeys, when you simply need a driver.",
+  },
+  {
+    title: "Bike Taxi",
+    icon: "bike-taxi.webp",
+    description: "Travelling alone for a short distance? A bike taxi is a handy choice for everyday trips around Kumbakonam, especially when you want a simple ride for work, errands, or nearby appointments.",
+  },
+  {
+    title: "Parcel Delivery",
+    icon: "parcel.webp",
+    description: "Send documents, small packages, and everyday items across the service area without making the trip yourself. Parcel delivery gives you a convenient way to move items from one location to another.",
+  },
+];
+
+const kumbakonamOutstationRoutes = [
+  { to: "Thanjavur", tag: "HERITAGE CITY" },
+  { to: "Trichy", tag: "MAJOR CITY" },
+  { to: "Chennai", tag: "MAJOR CITY" },
+  { to: "Puducherry", tag: "COASTAL CITY" },
+  { to: "Chidambaram", tag: "TEMPLE TOWN" },
+  { to: "Mayiladuthurai", tag: "NEARBY CITY" },
+  { to: "Darasuram", tag: "HERITAGE SITE" },
+  { to: "Gangaikonda Cholapuram", tag: "HERITAGE SITE" },
+  { to: "Vaitheeswaran Koil", tag: "TEMPLE TOWN" },
+];
+
+const kumbakonamPickupSpots = [
+  {
+    title: "Adi Kumbeswarar Temple",
+    description: "Temple visits often involve more than one stop, so pickups here are useful for travelling to nearby temples, hotels, homes, or places outside Kumbakonam.",
+  },
+  {
+    title: "Sarangapani Temple",
+    description: "After visiting Sarangapani Temple, passengers can continue their day with a cab to the railway station, nearby streets, or another place on their itinerary.",
+  },
+  {
+    title: "Mahamaham Tank",
+    description: "With several important places located around this part of town, Mahamaham Tank works well as a pickup point for local travel, sightseeing, and festival-day trips.",
+  },
+  {
+    title: "Kumbakonam Railway Station",
+    description: <>Passengers arriving by train can use a <strong>call taxi service in Kumbakonam</strong> to reach hotels, homes, temples, or nearby towns without arranging another mode of transport.</>,
+  },
+];
+
+const kumbakonamNavagrahaStops = [
+  {
+    title: "Thirunageswaram – Rahu Temple",
+    description: <>Thirunageswaram is one of the nearest Navagraha temples to Kumbakonam and is often included early in a temple circuit. A <strong>Kumbakonam call taxi service</strong> makes it easier to continue to other nearby temples without arranging transport at every stop.</>,
+    button: "Book a Cab to Thirunageswaram",
+  },
+  {
+    title: "Suryanar Kovil – Sun Temple",
+    description: "Suryanar Kovil is dedicated to Surya and is one of the well-known temples on the Navagraha route. Travellers often combine it with Kanjanur and other nearby shrines when planning a full day of temple visits.",
+    button: "Book a Cab to Suryanar Kovil",
+  },
+  {
+    title: "Vaitheeswaran Koil – Mars Temple",
+    description: "Vaitheeswaran Koil is associated with Angaraka, or Mars, and is one of the longer drives from Kumbakonam. It fits well into a planned temple route when several stops need to be covered in the same day.",
+    button: "Book a Cab to Vaitheeswaran Koil",
+  },
+];
+
+const kumbakonamCholaTemples = [
+  {
+    title: "Airavatesvara Temple, Darasuram",
+    description: "Darasuram is only a short drive from Kumbakonam, making Airavatesvara Temple easy to include in a local sightseeing plan. The temple is especially known for its detailed stone carvings and Chola architecture.",
+    button: "Book a Cab to Darasuram",
+  },
+  {
+    title: "Brihadisvara Temple, Thanjavur",
+    description: <>A visit to Thanjavur can include the Brihadisvara Temple along with other places around the city. A <strong>Kumbakonam one way taxi</strong> also works well for travellers who plan to continue their journey from Thanjavur instead of returning the same day.</>,
+    button: "Book a Cab to Thanjavur",
+  },
+  {
+    title: "Gangaikonda cholapuram",
+    description: "Gangaikondacholapuram is another important Chola heritage destination within driving distance of Kumbakonam. It can be paired with nearby temple visits for travellers who want to spend the day exploring the region's history.",
+    button: "Book a Cab to Gangaikonda cholapuram",
+  },
+];
+
+const kumbakonamReviews = [
+  {
+    name: "Madhavan R",
+    trip: "Local Ride • Thirunageswaram",
+    text: "Booked a cab for a Navagraha temple trip with my parents. The driver reached on time, knew the route well, and gave us enough time at each temple without making the day feel rushed.",
+  },
+  {
+    name: "Janani Subramaniam",
+    trip: "One Way Taxi • Kumbakonam to Thanjavur",
+    text: <>I used a <strong>one way drop taxi from Kumbakonam</strong> for a morning trip. The cab was neat, the pickup was on time, and the fare details were clear before we started.</>,
+  },
+  {
+    name: "Naveen Balaji",
+    trip: "Local Ride • Kumbakonam Railway Station",
+    text: <>We booked after arriving at Kumbakonam Railway Station. Getting a <strong>call taxi at Kumbakonam</strong> was simple, and the driver reached us quickly. The overall journey was smooth and comfortable.</>,
+  },
+];
+
+const kumbakonamTrustItems = [
+  {
+    title: "Verified Drivers",
+    icon: <CheckCircle className="h-5 w-5" />,
+    description: "Every driver is verified before taking trips, giving passengers more confidence whether the ride is within Kumbakonam or to another city.",
+  },
+  {
+    title: "Reliable Pickups",
+    icon: <MapPin className="h-5 w-5" />,
+    description: "Root Cabs focuses on timely pickups, helping reduce unexpected delays when you are travelling for work, appointments, family plans, or longer journeys.",
+  },
+  {
+    title: "Live Ride Sharing",
+    icon: <Navigation className="h-5 w-5" />,
+    description: "Share your trip details with family or friends so they can follow your ride and stay updated until you reach your destination.",
+  },
+  {
+    title: "24/7 Customer Support",
+    icon: <Phone className="h-5 w-5" />,
+    description: "Support is available throughout the day to help with bookings, trip updates, payment questions, and other concerns that may come up.",
+  },
+];
+
+const kumbakonamFaqs = [
+  {
+    q: "How Do I Book A Kumbakonam Taxi Online?",
+    a: "You can book through the Root Cabs app by entering your pickup point, destination, and preferred ride type. Your trip details will be shown before you confirm the booking.",
+  },
+  {
+    q: "Is Taxi Service Available 24 Hours In Kumbakonam?",
+    a: "Yes. Root Cabs accepts bookings throughout the day for early-morning pickups, late-night travel, railway station trips, and planned journeys outside the city.",
+  },
+  {
+    q: "Can I Book A One-Way Taxi From Kumbakonam?",
+    a: "Yes. One-way rides are available from Kumbakonam to places such as Thanjavur, Trichy, Chennai, Mayiladuthurai, and other destinations based on service availability.",
+  },
+  {
+    q: "Can I Schedule A Taxi In Advance In Kumbakonam?",
+    a: "Yes. Advance booking works well for temple visits, railway station pickups, family functions, and other trips where your travel time is already planned.",
+  },
+  {
+    q: "What Kumbakonam Taxi Packages Are Available?",
+    a: <><strong>Kumbakonam taxi packages</strong> can be chosen based on the type of journey, including hourly travel, temple visits, local trips, and outstation travel.</>,
+  },
+  {
+    q: "How Does The Kumbakonam Cabs Tariff Work?",
+    a: <>The <strong>Kumbakonam cabs tariff</strong> depends on factors such as distance, vehicle type, and the journey selected. The applicable fare is shown during booking before you confirm the ride.</>,
+  },
+];
 
 const salemOutstationRoutes = [
   { to: "Yercaud", meta: "__ km | Sedan from ₹__", tag: "POPULAR HILL ROUTE" },
@@ -254,23 +434,23 @@ const salemTrustItems = [
 
 const salemFaqs = [
   {
-    q: "Which taxi is best in Salem?",
+    q: "Which Taxi Is Best In Salem?",
     a: "Root Cabs is the best taxi service in Salem for simple booking, verified drivers, local rides, one-way trips, outstation travel, hourly packages, and other travel needs.",
   },
   {
-    q: "How is the fare calculated for a taxi in Salem?",
+    q: "How Is The Fare Calculated For A Taxi In Salem?",
     a: "Taxi fares in Salem depend on the service you choose, trip distance, pickup and drop location, and vehicle type. The fare may differ for each booking.",
   },
   {
-    q: "How can I book a cab in Salem?",
+    q: "How Can I Book A Cab In Salem?",
     a: "For cab booking in Salem, open the Root Cabs app, enter your pickup and destination, choose the service you need, and confirm your ride.",
   },
   {
-    q: "Does Salem have call taxi service at night?",
+    q: "Does Salem Have Call Taxi Service At Night?",
     a: "Yes. Root Cabs provides call taxi in Salem for night travel too. You can book for station trips, work travel, family plans, or other rides based on driver availability.",
   },
   {
-    q: "Is there a minimum distance for an outstation taxi in Salem?",
+    q: "Is There A Minimum Distance For An Outstation Taxi In Salem?",
     a: "No. Root Cabs does not have a minimum distance for outstation bookings. You can book outstation cabs in Salem based on the destination and trip you are planning.",
   },
 ] as const;
@@ -1622,7 +1802,9 @@ function SalemDriverSection() {
   );
 }
 
-function SalemAppDownloadCard() {
+function CityAppDownloadCard({ city }: { city: "Salem" | "Kumbakonam" }) {
+  const isKumbakonam = city === "Kumbakonam";
+
   return (
     <section className="mx-auto max-w-[1056px]">
       <div className="relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
@@ -1639,13 +1821,22 @@ function SalemAppDownloadCard() {
             <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
               GET THE APP
             </span>
-            <h2 className="mt-3 font-heading text-3xl font-bold leading-tight md:text-4xl">Book Your Ride in Salem with Root Cabs</h2>
+            <h2 className={`mt-3 font-heading font-bold leading-tight ${isKumbakonam ? "text-2xl md:text-3xl lg:whitespace-nowrap lg:text-[1.75rem]" : "text-2xl md:text-3xl lg:whitespace-nowrap lg:text-[1.6rem]"}`}>
+              {isKumbakonam ? "Travel Made Simple with Root Cabs" : "Book Your Ride in Salem with Root Cabs"}
+            </h2>
             <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
-              Use the Root Cabs app to book local rides, outstation trips, or an hourly package in Salem. Choose the service you need and manage your trip from one place.
+              {isKumbakonam ? (
+                <>Book local trips, temple visits, and a <strong>one way drop taxi in Kumbakonam</strong> through the Root Cabs app, with all your trip details easy to access.</>
+              ) : (
+                "Use the Root Cabs app to book local rides, outstation trips, or an hourly package in Salem. Choose the service you need and manage your trip from one place."
+              )}
             </p>
-            <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-semibold text-white/85 md:justify-start">
-              {["Simple ride booking", "Verified drivers", "Live trip updates", "24/7 customer support"].map((item) => (
-                <span key={item} className="flex items-center gap-1.5">
+            <div className={`mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-semibold text-white/85 md:justify-start ${isKumbakonam ? "lg:flex-nowrap lg:gap-x-2 lg:text-[11px]" : ""}`}>
+              {(isKumbakonam
+                ? ["Quick App Booking", "Verified Drivers", "Live Ride Tracking", "24/7 Customer Support"]
+                : ["Simple ride booking", "Verified drivers", "Live trip updates", "24/7 customer support"]
+              ).map((item) => (
+                <span key={item} className={`flex items-center gap-1.5 ${isKumbakonam ? "whitespace-nowrap" : ""}`}>
                   <CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> {item}
                 </span>
               ))}
@@ -1871,6 +2062,275 @@ function VelloreActingDriverSection() {
         />
       </div>
     </section>
+  );
+}
+
+export function KumbakonamPage() {
+  const [showAllServices, setShowAllServices] = useState(false);
+
+  useEffect(() => {
+    const previousTitle = document.title;
+    document.title = "Best Taxi Service in Kumbakonam | Root Cabs";
+    return () => { document.title = previousTitle; };
+  }, []);
+
+  return (
+    <div>
+      <section
+        className="relative min-h-[380px] overflow-hidden bg-[#22236F] text-white md:min-h-[440px]"
+        style={{
+          backgroundImage: "url('/assets/rootcabs-banner-home.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center bottom",
+        }}
+      >
+        <div className="absolute inset-0 bg-black/40" />
+        <div className="relative z-10 mx-auto max-w-screen-xl px-4 pb-24 md:pb-28">
+          <PageBreadcrumb
+            className="mb-4 pt-8 text-white/70 md:pt-10"
+            items={[
+              { label: "Home", href: "/" },
+              { label: "Cities", href: "/cities" },
+              { label: "Kumbakonam" },
+            ]}
+          />
+          <h1 className="max-w-4xl font-heading text-3xl font-bold md:text-4xl">
+            <strong>Best Taxi Service in Kumbakonam</strong> for Local and Outstation Travel
+          </h1>
+          <p className="mt-5 max-w-3xl text-base leading-7 text-white/90 md:text-lg">
+            From temple visits and railway station pickups to local errands and outstation journeys, Root Cabs makes getting around Kumbakonam simpler with clear fares and easy booking.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link to="/book-ride">
+              <Button size="lg" className="bg-[#FFD700] font-bold text-[#2E3A8C] hover:bg-[#E6C200]">
+                Book a Ride in Kumbakonam <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+            <a href="tel:8608606474">
+              <Button size="lg" className="border border-white/30 bg-white/10 text-white hover:bg-white/15">
+                <Phone className="mr-2 h-4 w-4" /> Call 8608606474
+              </Button>
+            </a>
+          </div>
+        </div>
+      </section>
+      <div className="relative z-20 mx-auto max-w-screen-xl px-4 pb-10">
+        <section className="-mt-20 md:-mt-24">
+          <FareCalculator defaultFrom="Kumbakonam" showBookNowButton />
+        </section>
+        <section className="mt-12">
+          <p className="text-sm font-semibold text-primary">Services Available in Kumbakonam</p>
+          <h2 className="mt-2 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Explore Our Services</h2>
+          <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+            A simpler way to plan everyday travel around Kumbakonam.
+          </p>
+          <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {(showAllServices ? kumbakonamServices : kumbakonamServices.slice(0, 6)).map((service) => (
+              <Link key={service.title} to="/book-ride" className="group block h-full">
+                <div className="relative flex h-full flex-col overflow-visible rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] p-5 pr-20 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md">
+                  <div className="pointer-events-none absolute right-4 top-4 flex h-14 w-16 items-center justify-center rounded-xl border border-white/70 bg-white shadow-sm transition-all duration-300 group-hover:-right-3 group-hover:-top-3 group-hover:scale-105">
+                    <img src={assetPath(`/assets/service-icons/${service.icon}`)} alt="" className="h-12 w-12 object-contain opacity-90" />
+                  </div>
+                  <span className="font-heading text-xl font-bold text-[#111827]">{service.title}</span>
+                  <p className="mt-1 text-sm font-medium text-primary">Starting at ₹</p>
+                  <p className="mt-3 flex-1 text-sm leading-6 text-muted-foreground">{service.description}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="mt-6 flex justify-center">
+            <Button
+              type="button"
+              className="rounded-full bg-[#1E2A6E] px-6 font-semibold text-white hover:bg-[#273588]"
+              onClick={() => setShowAllServices((current) => !current)}
+            >
+              {showAllServices ? "Show Less" : "See More"}
+            </Button>
+          </div>
+        </section>
+        <section className="mt-12">
+          <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+            Popular Routes from Kumbakonam
+          </h2>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground md:text-base">
+            Planning a trip beyond the city? Choose a <strong className="text-[#1E2A6E]">Kumbakonam one way taxi</strong> or round trip for nearby towns, temple visits, family travel, and longer journeys.
+          </p>
+          <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {kumbakonamOutstationRoutes.map((route) => (
+              <Link
+                key={route.to}
+                to="/book-ride"
+                className="group flex min-h-28 items-center justify-between gap-3 rounded-lg border border-[#E2E8F3] bg-white p-5 shadow-sm transition-all hover:border-[#1E2A6E] hover:bg-[#F8FAFF] hover:shadow-md"
+              >
+                <div className="min-w-0">
+                  <span className="font-heading text-base font-bold text-[#1E2A6E]">Kumbakonam to {route.to}</span>
+                  <p className="mt-2 text-sm text-[#4B587C]">__ km | Sedan from ₹__</p>
+                  <span className="mt-3 inline-flex rounded-full bg-[#FFF3D8] px-3 py-1 text-[11px] font-extrabold text-[#B45F00]">
+                    {route.tag}
+                  </span>
+                </div>
+                <ArrowRight className="h-4 w-4 shrink-0 text-[#1E2A6E] transition-transform group-hover:translate-x-1" />
+              </Link>
+            ))}
+          </div>
+        </section>
+        <section className="mt-12">
+          <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+            Popular Pickup Spots in Kumbakonam
+          </h2>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground md:text-base">
+            Need a <strong className="text-[#1E2A6E]">taxi in Kumbakonam</strong>? Pickups are available from well-known temples, transport points, and busy areas across the city.
+          </p>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {kumbakonamPickupSpots.map((spot) => (
+              <div key={spot.title} className="rounded-lg border border-[#E2E8F3] bg-white p-5 shadow-sm">
+                <div className="flex items-start gap-2 text-[#1E2A6E]">
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
+                  <span className="font-heading text-sm font-bold leading-5">{spot.title}</span>
+                </div>
+                <p className="mt-3 text-sm leading-6 text-[#4B587C]">{spot.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className="mt-12">
+          <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+            Navagraha Temple Trips from Kumbakonam
+          </h2>
+          <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+            Plan the Navagraha circuit at your own pace with convenient travel options for families and groups.
+          </p>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {kumbakonamNavagrahaStops.map((stop) => (
+              <div key={stop.title} className="flex flex-col rounded-lg border border-[#E2E8F3] bg-white p-5 shadow-sm">
+                <h3 className="font-heading text-lg font-bold text-[#1E2A6E]">{stop.title}</h3>
+                <p className="mt-3 flex-1 text-sm leading-6 text-[#4B587C]">{stop.description}</p>
+                <Link to="/book-ride" className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-[#1E2A6E] hover:underline">
+                  {stop.button} <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className="mt-12">
+          <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+            Explore the Great Living Chola Temples from Kumbakonam
+          </h2>
+          <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+            Visit Darasuram, Thanjavur and Gangaikondacholapuram at a comfortable pace while planning each stop around your day.
+          </p>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {kumbakonamCholaTemples.map((temple) => (
+              <div key={temple.title} className="flex flex-col rounded-lg border border-[#E2E8F3] bg-white p-5 shadow-sm">
+                <h3 className="font-heading text-lg font-bold text-[#1E2A6E]">{temple.title}</h3>
+                <p className="mt-3 flex-1 text-sm leading-6 text-[#4B587C]">{temple.description}</p>
+                <Link to="/book-ride" className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-[#1E2A6E] hover:underline">
+                  {temple.button} <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className="mt-12">
+          <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+            Customer Reviews in Kumbakonam
+          </h2>
+          <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+            Real experiences from customers travelling with Root Cabs in Kumbakonam.
+          </p>
+          <div className="mt-6 grid gap-4 lg:grid-cols-3">
+            {kumbakonamReviews.map((review) => (
+              <div key={review.name} className="flex h-full flex-col rounded-lg border border-[#E2E8F3] bg-white p-5 shadow-sm">
+                <div className="mb-4 flex items-center justify-between gap-4">
+                  <div className="flex gap-1 text-[#E0A800]" aria-label="5 out of 5 stars">
+                    {Array.from({ length: 5 }).map((_, index) => (
+                      <Star key={index} className="h-4 w-4 fill-current" />
+                    ))}
+                  </div>
+                  <GoogleReviewBadge />
+                </div>
+                <p className="flex-1 text-sm leading-7 text-[#33406F]">{review.text}</p>
+                <div className="mt-5">
+                  <p className="font-heading text-sm font-bold text-[#1E2A6E]">{review.name}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">{review.trip}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className="mt-8 rounded-2xl bg-[#F3F5FA] p-6 md:p-8">
+          <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+            Why Choose Root Cabs in Kumbakonam?
+          </h2>
+          <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground md:text-base">
+            Choosing a <strong className="text-[#1E2A6E]">taxi in Kumbakonam</strong> is easier with verified drivers, reliable pickups, and support throughout the ride.
+          </p>
+          <div className="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {kumbakonamTrustItems.map((item) => (
+              <div key={item.title} className="rounded-lg border border-[#E2E8F3] bg-white p-5 shadow-sm">
+                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#EEF3FF] text-[#1E2A6E]">
+                  {item.icon}
+                </div>
+                <h3 className="mt-4 font-heading text-base font-bold text-[#1E2A6E]">{item.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-[#4B587C]">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+        <section className="mt-3 rounded-2xl bg-[#F3F5FA] px-6 pb-6 pt-3 md:px-8 md:pb-8 md:pt-4">
+          <h2 className="text-center font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+            Driving With Root Cabs in Kumbakonam
+          </h2>
+          <div className="mt-4 grid gap-4 md:grid-cols-2">
+            <div className="flex min-w-0 flex-col overflow-hidden rounded-lg bg-white">
+              <img src="/assets/homepage-rootpartner-banner.webp" alt="Root Cabs driver partner" className="aspect-video w-full object-cover object-center" />
+              <div className="flex flex-1 flex-col items-start p-5 md:p-6">
+                <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">Become a Driver Partner</h3>
+                <p className="mt-3 flex-1 text-sm leading-6 text-[#4B587C]">
+                  Drive and Earn with Root Cabs. Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+                </p>
+                <Link to="/drivers" className="mt-5">
+                  <Button className="bg-[#1E2A6E] text-white hover:bg-[#17225E]">
+                    Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+            <Link to="/services/acting-driver" className="flex min-w-0 flex-col overflow-hidden rounded-lg bg-white">
+              <img src="/assets/vellore-city-page/Acting Driver.png" alt="Acting driver handing car keys to a customer" className="aspect-video w-full object-cover object-top" />
+              <div className="flex flex-1 flex-col items-start p-5 md:p-6">
+                <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">Need an Acting Driver?</h3>
+                <p className="mt-3 text-sm leading-6 text-[#4B587C]">
+                  Heading to a function, planning a long trip, or returning late? Book a verified acting driver and travel in your own car while someone else handles the driving.
+                </p>
+              </div>
+            </Link>
+          </div>
+        </section>
+        <div className="mt-12">
+          <CityAppDownloadCard city="Kumbakonam" />
+        </div>
+        <section className="mt-12 rounded-2xl bg-[#F3F5FA] px-4 pb-14 pt-8 md:px-6 md:pb-16 md:pt-10">
+          <div className="mx-auto max-w-4xl">
+            <h2 className="text-center font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+              Frequently Asked Questions
+            </h2>
+            <Accordion type="single" collapsible className="mt-8 space-y-3">
+              {kumbakonamFaqs.map((item, index) => (
+                <AccordionItem key={item.q} value={`kumbakonam-faq-${index}`} className="rounded-lg border border-[#E2E8F3] bg-white px-5 shadow-sm">
+                  <AccordionTrigger className="cursor-pointer text-left text-sm font-semibold text-[#1E2A6E] hover:no-underline md:text-base">
+                    {item.q}
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-5 text-sm leading-7 text-muted-foreground">
+                    {item.a}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </section>
+      </div>
+    </div>
   );
 }
 
@@ -2517,7 +2977,7 @@ export function CityPage({
           </>
         )}
 
-        {isSalem && <SalemAppDownloadCard />}
+        {isSalem && <CityAppDownloadCard city="Salem" />}
 
         {isVellore ? (
           <VelloreFaqSection />
