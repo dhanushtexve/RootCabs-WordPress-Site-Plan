@@ -219,6 +219,118 @@ export const staticRouteSchemas: Record<string, unknown> = {
       ]
     }
   },
+  "/taxi-in-salem": {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "url": "https://rootcabs.com/taxi-in-salem",
+    "name": "Taxi Service in Salem - Steel City & Yercaud Hill Station Gateway",
+    "description": "From daily city rides to trips outside Salem, Root Cabs taxi service in Salem makes it simple to book a ride and plan your travel comfortably.",
+    "inLanguage": "en-IN",
+    "about": {
+      "@type": "Organization",
+      "name": "Root Cabs",
+      "url": "https://rootcabs.com/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
+      },
+      "description": "Root Cabs provides local, one-way, outstation, hourly, auto, bike taxi, parcel delivery and acting driver services in Salem and across Tamil Nadu.",
+      "email": "support@rootcabs.com",
+      "telephone": "+91-8608606474",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91-8608606474",
+        "email": "support@rootcabs.com",
+        "contactType": "customer support",
+        "areaServed": {
+          "@type": "City",
+          "name": "Salem"
+        },
+        "availableLanguage": [
+          "English",
+          "Tamil"
+        ]
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Salem"
+      },
+      "sameAs": [
+        "https://www.instagram.com/rootcabs/",
+        "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+        "https://play.google.com/store/apps/details?id=com.nativecustomer",
+        "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
+      ]
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://rootcabs.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Cities",
+          "item": "https://rootcabs.com/cities"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Taxi Service in Salem",
+          "item": "https://rootcabs.com/taxi-in-salem"
+        }
+      ]
+    },
+    "mainEntity": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which taxi is best in Salem?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Root Cabs is the best taxi service in Salem for simple booking, verified drivers, local rides, one-way trips, outstation travel, hourly packages, and other travel needs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is the fare calculated for a taxi in Salem?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Taxi fares in Salem depend on the service you choose, trip distance, pickup and drop location, and vehicle type. The fare may differ for each booking."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How can I book a cab in Salem?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For cab booking in Salem, open the Root Cabs app, enter your pickup and destination, choose the service you need, and confirm your ride."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Salem have call taxi service at night?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Root Cabs provides call taxi in Salem for night travel too. You can book for station trips, work travel, family plans, or other rides based on driver availability."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a minimum distance for outstation taxi in Salem?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Root Cabs does not have a minimum distance for outstation bookings. You can book outstation cabs in Salem based on the destination and trip you are planning."
+          }
+        }
+      ]
+    }
+  },
   "/book-ride": {
     "@context": "https://schema.org",
     "@type": "WebPage",

@@ -19,6 +19,9 @@ const serviceIconMap: Record<string, React.ReactNode> = {
   "acting-driver": <User className="w-5 h-5" />,
   "parcel-delivery": <Package className="w-5 h-5" />,
   "auto": <Bike className="w-5 h-5" />,
+  "one-way-taxi": <Navigation className="w-5 h-5" />,
+  "hourly-package": <Car className="w-5 h-5" />,
+  "bike-taxi": <Bike className="w-5 h-5" />,
 };
 
 const serviceLabelMap: Record<string, string> = {
@@ -66,6 +69,196 @@ const cityBannerMap: Record<string, string> = {
   "taxi-in-vellore": "/assets/city-banners/vellore.webp",
   "taxi-in-coimbatore": "/assets/city-banners/coimbatore.webp",
 };
+
+const salemServices = [
+  {
+    slug: "local-taxi",
+    title: "Local Taxi",
+    description:
+      "Book a local cab for office trips, shopping, hospital visits, railway station drops, or other rides within the city. Our taxi service in Salem helps you travel from one place to another without making things complicated.",
+    fare: "Starting at ₹",
+    href: "/taxi-in-salem/local-taxi",
+  },
+  {
+    slug: "auto",
+    title: "Auto Rickshaw",
+    description:
+      "Book an Auto ride in Salem for short trips, including markets, bus stands, shops, and nearby areas. It is a good choice when you only need to travel a short distance.",
+    fare: "Starting at ₹",
+    href: "/taxi-in-salem/auto",
+  },
+  {
+    slug: "one-way-taxi",
+    title: "One Way Taxi",
+    description:
+      "Travelling outside Salem without a return trip? A one-way taxi in Salem lets you book only the journey you need for work, family visits, or travel to another city.",
+    fare: "Starting at ₹",
+    href: "/book-ride",
+  },
+  {
+    slug: "outstation",
+    title: "Outstation Taxi",
+    description:
+      "Book an outstation cabs in Salem for trips to nearby towns and other cities. From family functions to weekend travel or a Salem to Yercaud cab, you can choose a ride based on your plan.",
+    fare: "Starting at ₹",
+    href: "/taxi-in-salem/outstation",
+  },
+  {
+    slug: "hourly-package",
+    title: "Hourly Packages",
+    description:
+      "Have more than one place to visit in a day? With an hourly package, you can keep the same cab for a set time and cover different stops in Salem.",
+    fare: "Starting at ₹",
+    href: "/book-ride",
+  },
+  {
+    slug: "acting-driver",
+    title: "Acting Driver",
+    description:
+      "Travel in your own car while a professional acting driver drives for you. It is useful for family functions, late-night trips, long drives, or days when you prefer not to drive.",
+    fare: "Starting at ₹",
+    href: "/taxi-in-salem/acting-driver",
+  },
+  {
+    slug: "bike-taxi",
+    title: "Bike Taxi",
+    description:
+      "Choose a bike taxi for short solo trips in Salem. It works well for office travel, college, appointments, shopping, or other nearby trips.",
+    fare: "Starting at ₹",
+    href: "/book-ride",
+  },
+  {
+    slug: "parcel-delivery",
+    title: "Parcel Delivery",
+    description:
+      "Send documents, small packages, and other items within the available service area. It is useful when you need to send something without going to the location yourself.",
+    fare: "Starting at ₹",
+    href: "/book-ride",
+  },
+] as const;
+
+const salemOutstationRoutes = [
+  { to: "Yercaud", meta: "__ km | Sedan from ₹__", tag: "POPULAR HILL ROUTE" },
+  { to: "Erode", meta: "__ km | Sedan from ₹__", tag: "NEARBY CITY" },
+  { to: "Namakkal", meta: "__ km | Sedan from ₹__", tag: "POPULAR ROUTE" },
+  { to: "Coimbatore", meta: "__ km | Sedan from ₹__", tag: "MAJOR CITY" },
+  { to: "Bengaluru", meta: "__ km | Sedan from ₹__", tag: "INTERSTATE ROUTE" },
+  { to: "Chennai", meta: "__ km | Sedan from ₹__", tag: "MAJOR CITY" },
+  { to: "Dharmapuri", meta: "__ km | Sedan from ₹__", tag: "NEARBY CITY" },
+  { to: "Trichy", meta: "__ km | Sedan from ₹__", tag: "MAJOR CITY" },
+  { to: "Mettur", meta: "__ km | Sedan from ₹__", tag: "POPULAR GETAWAY" },
+  { to: "Ooty", meta: "__ km | Sedan from ₹__", tag: "HILL STATION" },
+  { to: "Kodaikanal", meta: "__ km | Sedan from ₹__", tag: "HILL STATION" },
+  { to: "Hogenakkal", meta: "__ km | Sedan from ₹__", tag: "WEEKEND GETAWAY" },
+] as const;
+
+const salemPickupSpots = [
+  {
+    title: "Salem Junction",
+    description:
+      "Salem Junction is a common pickup point for cab booking in Salem. You can book a ride from here to your home, hotel, office, or another place in or outside the city.",
+  },
+  {
+    title: "Kottai Mariamman Temple",
+    description:
+      "After your temple visit, you can book a cab to nearby shopping areas, hotels, homes, other temples, or any other place in Salem.",
+  },
+  {
+    title: "Salem New Bus Stand",
+    description:
+      "Travelling to Yercaud after reaching the bus stand? You can book a cab from here for the hill trip. Many travellers also search for the Salem to Yercaud taxi fare while planning this route.",
+  },
+  {
+    title: "Salem Steel Plant Area",
+    description:
+      "You can book a pickup from the Salem Steel Plant area for office travel, station trips, family visits, or trips to other places from Salem.",
+  },
+] as const;
+
+const salemYercaudStops = [
+  {
+    title: "Yercaud Lake",
+    description:
+      "Yercaud Lake is a nice place to spend some quiet time with family or friends. You can enjoy boating, take a short walk, or relax near the lake. There are also small shops nearby if you want to stop for a while.",
+    cta: "Book a Cab to Yercaud Lake",
+  },
+  {
+    title: "Kiliyur Falls",
+    description:
+      "Kiliyur Falls is a popular place to visit for people who enjoy nature. You need to walk a short distance to reach the falls, and the view is especially good after good rainfall. It is a nice stop to add to your Yercaud trip.",
+    cta: "Book a Cab to Kiliyur Falls",
+  },
+  {
+    title: "Lady's Seat",
+    description:
+      "Lady's Seat is a popular viewpoint with wide views of the hills and plains below. Many visitors come here in the evening to enjoy the cooler weather and scenery. It is a peaceful place to spend some time before heading back.",
+    cta: "Book a Cab to Lady's Seat",
+  },
+] as const;
+
+const salemReviews = [
+  {
+    text: "I booked an outstation cab to Yercaud with my family. The driver came on time, the car was clean, and the hill drive felt smooth. We reached without any trouble, and the overall trip was very comfortable from start to finish.",
+    name: "Hariharan M",
+    meta: "Outstation Taxi",
+  },
+  {
+    text: "Booked a local cab from Salem Junction to my home. The driver arrived on time, the ride was smooth, and the fare was clear before we left. I reached without any delay, and the whole booking process felt very simple.",
+    name: "Nivetha Suresh",
+    meta: "Local Taxi",
+  },
+  {
+    text: "Booked an acting driver for a family function at night. The driver came at the right time, drove carefully, and got us home safely. I did not want to drive back late, so the service was really useful that day.",
+    name: "Pradeep Kumar",
+    meta: "Acting Driver",
+  },
+] as const;
+
+const salemTrustItems = [
+  {
+    title: "24/7 Customer Support",
+    text: "Our support team is available any time of the day to help with bookings, trip updates, payments, or other ride-related questions.",
+    icon: <Phone className="h-5 w-5" />,
+  },
+  {
+    title: "No Last-Minute Cancellations",
+    text: "We work to reduce sudden ride cancellations, helping you travel with fewer changes to your plan.",
+    icon: <CheckCircle className="h-5 w-5" />,
+  },
+  {
+    title: "SOS Safety Support",
+    text: "Use the SOS option during your trip if you need quick help or extra support while travelling.",
+    icon: <Star className="h-5 w-5" />,
+  },
+  {
+    title: "Easy Ride Booking",
+    text: "Choose the service you need, enter your pickup and drop location, and book your ride in a few simple steps.",
+    icon: <Car className="h-5 w-5" />,
+  },
+] as const;
+
+const salemFaqs = [
+  {
+    q: "Which taxi is best in Salem?",
+    a: "Root Cabs is the best taxi service in Salem for simple booking, verified drivers, local rides, one-way trips, outstation travel, hourly packages, and other travel needs.",
+  },
+  {
+    q: "How is the fare calculated for a taxi in Salem?",
+    a: "Taxi fares in Salem depend on the service you choose, trip distance, pickup and drop location, and vehicle type. The fare may differ for each booking.",
+  },
+  {
+    q: "How can I book a cab in Salem?",
+    a: "For cab booking in Salem, open the Root Cabs app, enter your pickup and destination, choose the service you need, and confirm your ride.",
+  },
+  {
+    q: "Does Salem have call taxi service at night?",
+    a: "Yes. Root Cabs provides call taxi in Salem for night travel too. You can book for station trips, work travel, family plans, or other rides based on driver availability.",
+  },
+  {
+    q: "Is there a minimum distance for an outstation taxi in Salem?",
+    a: "No. Root Cabs does not have a minimum distance for outstation bookings. You can book outstation cabs in Salem based on the destination and trip you are planning.",
+  },
+] as const;
 
 const chennaiPickupImages: Record<string, string> = {
   "Chennai Airport": "/assets/chennai-airport.webp",
@@ -896,6 +1089,28 @@ function CityFaqSection({ city }: { city: (typeof cities)[number] }) {
   );
 }
 
+function SalemFaqSection() {
+  return (
+    <section className="bg-muted/50 rounded-2xl px-4 pb-14 pt-8 md:px-6 md:pb-16 md:pt-10">
+      <div className="mx-auto max-w-4xl">
+        <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl">Frequently Asked Questions</h2>
+        <Accordion type="single" collapsible className="mt-10 space-y-3">
+          {salemFaqs.map((item, i) => (
+            <AccordionItem key={item.q} value={`salem-faq-${i}`} className="rounded-xl border border-[#E2E8F3] bg-white px-5 shadow-sm">
+              <AccordionTrigger className="text-left text-sm font-semibold text-[#1E2A6E] cursor-pointer hover:no-underline md:text-base">
+                {i + 1}. {item.q}
+              </AccordionTrigger>
+              <AccordionContent className="pb-5 text-sm leading-7 text-muted-foreground">
+                {item.a}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+    </section>
+  );
+}
+
 function ChennaiContentSection() {
   return (
     <section className="-mt-8 rounded-[2rem] bg-[#F5F7FB] px-6 pb-6 pt-0 md:-mx-8 md:px-8 md:pb-8 md:pt-0 lg:-mx-10 lg:-mt-10 lg:px-10 lg:pb-10 lg:pt-0">
@@ -1298,6 +1513,185 @@ function ChennaiReviewsSection() {
             </div>
           </div>
         ))}
+      </div>
+    </section>
+  );
+}
+
+function SalemReviewsSection() {
+  return (
+    <section>
+      <h2 className="mb-6 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+        Customer Reviews in Salem
+      </h2>
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+        {salemReviews.map((review) => (
+          <div key={review.name} className="flex h-full flex-col rounded-2xl border border-[#E2E8F3] bg-white p-5 shadow-sm">
+            <div className="mb-3 flex gap-1 text-[#E0A800]">
+              {Array.from({ length: 5 }).map((_, index) => (
+                <Star key={index} className="h-4 w-4 fill-current" />
+              ))}
+            </div>
+            <p className="flex-1 text-sm leading-7 text-[#33406F]">{review.text}</p>
+            <div className="mt-5">
+              <p className="font-heading text-sm font-bold text-[#1E2A6E]">{review.name}</p>
+              <p className="text-xs text-muted-foreground">{review.meta}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function SalemTrustSection() {
+  return (
+    <section className="rounded-2xl bg-muted/50 p-6 md:p-8">
+      <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+        Why Riders Trust Root Cabs?
+      </h2>
+      <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground md:text-base">
+        With our <strong className="font-bold text-[#1E2A6E]">Salem cab service</strong>, you get verified drivers, On-time pickups, live tracking, and support throughout your ride.
+      </p>
+      <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+        {salemTrustItems.map((item) => (
+          <div key={item.title} className="rounded-xl border border-[#E2E8F3] bg-white p-5 shadow-sm">
+            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#EEF3FF] text-primary">
+              {item.icon}
+            </div>
+            <h3 className="mt-4 font-heading text-base font-bold text-[#1E2A6E]">{item.title}</h3>
+            <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function SalemDriverSection() {
+  return (
+    <section className="rounded-2xl bg-muted/50 p-6 md:p-8">
+      <div className="text-center">
+        <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+          Driving with Root Cabs in Salem
+        </h2>
+      </div>
+      <div className="mt-8 grid gap-4 md:grid-cols-2">
+        <div className="rounded-xl border border-[#FFD700] bg-white p-6 text-center shadow-sm">
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-[#EEF3FF] text-primary">
+            <Car className="h-5 w-5" />
+          </div>
+          <h3 className="mt-5 font-heading text-lg font-bold text-[#1E2A6E]">Drive and Earn with Root Cabs</h3>
+          <p className="mx-auto mt-3 max-w-md text-sm leading-7 text-muted-foreground">
+            Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+          </p>
+          <div className="mt-6">
+            <Link to="/drivers">
+              <Button className="bg-[#1E2A6E] px-7 font-bold text-white hover:bg-[#2E3A8C]">
+                Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+        <div className="rounded-xl border border-[#E2E8F3] bg-white p-6 text-center shadow-sm">
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-[#EEF3FF] text-primary">
+            <User className="h-5 w-5" />
+          </div>
+          <div className="mt-4 inline-flex rounded-full bg-[#EEE8FF] px-3 py-1 text-[11px] font-extrabold uppercase text-[#6D55C8]">
+            Acting Driver
+          </div>
+          <h3 className="mt-4 font-heading text-lg font-bold text-[#1E2A6E]">Book an Acting Driver in Salem</h3>
+          <p className="mx-auto mt-3 max-w-md text-sm leading-7 text-muted-foreground">
+            Going to a function, taking a long trip, or coming home late? Book a verified{" "}
+            <strong className="font-bold text-[#1E2A6E]">acting driver in Salem</strong> and travel in your own car while the driver takes care of the drive.
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SalemAppDownloadCard() {
+  return (
+    <section className="mx-auto max-w-[1056px]">
+      <div className="relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
+        <img
+          src="/assets/home-download-car-bg.webp"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.14] saturate-75"
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.16),transparent_32%),radial-gradient(circle_at_82%_28%,rgba(255,255,255,0.1),transparent_28%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.08),transparent_32%)]" />
+        <div className="absolute inset-0 bg-[#273588]/62" />
+        <div className="relative z-10 grid items-center gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.78fr)]">
+          <div className="text-center md:text-left md:pl-2 lg:pl-4">
+            <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
+              GET THE APP
+            </span>
+            <h2 className="mt-3 font-heading text-3xl font-bold leading-tight md:text-4xl">Book Your Ride in Salem with Root Cabs</h2>
+            <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
+              Use the Root Cabs app to book local rides, outstation trips, or an hourly package in Salem. Choose the service you need and manage your trip from one place.
+            </p>
+            <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-semibold text-white/85 md:justify-start">
+              {["Simple ride booking", "Verified drivers", "Live trip updates", "24/7 customer support"].map((item) => (
+                <span key={item} className="flex items-center gap-1.5">
+                  <CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> {item}
+                </span>
+              ))}
+            </div>
+            <div className="mt-5 grid max-w-[470px] grid-cols-1 justify-items-center gap-3 sm:grid-cols-2">
+              <div className="flex w-[170px] flex-col items-center">
+                <a
+                  href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                  aria-label="App Store"
+                >
+                  <img src="/assets/app-store-badge.png" alt="Download on the App Store" className="h-10 w-auto object-contain" />
+                </a>
+                <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                  <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">Scan to Download</p>
+                  <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                    <img
+                      src="/assets/app-download-qr-app-store-cropped.png"
+                      alt="App Store QR code"
+                      className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                    />
+                  </span>
+                </div>
+              </div>
+              <div className="flex w-[170px] flex-col items-center">
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
+                  aria-label="Google play"
+                >
+                  <img src="/assets/play-store.png" alt="Get it on Google Play" className="h-10 w-auto object-contain" />
+                </a>
+                <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
+                  <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">Scan to Download</p>
+                  <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
+                    <img
+                      src="/assets/app-download-qr-google-play-cropped.png"
+                      alt="Google Play QR code"
+                      className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
+                    />
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="relative mx-auto flex w-full max-w-[380px] justify-center lg:absolute lg:bottom-0 lg:right-0 lg:mx-0 lg:translate-x-12 lg:translate-y-8 lg:justify-end">
+            <img
+              src="/assets/app-download-mobile-screen.png"
+              alt="Root Cabs app shown on a mobile phone"
+              className="h-[440px] w-auto max-w-full object-contain md:h-[430px] lg:h-[420px]"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -1731,7 +2125,8 @@ export function CityPage({
   const cityTestimonials = testimonials.filter((t) => t.city === city.name);
   const isVellore = city?.name === "Vellore";
   const isCoimbatore = city?.name === "Coimbatore";
-  const usesExpandedCityHero = isChennai || isVellore || isCoimbatore;
+  const isSalem = city?.name === "Salem";
+  const usesExpandedCityHero = isChennai || isVellore || isCoimbatore || isSalem;
   const cityBannerImage = cityBannerMap[city.slug];
   const heroBackgroundImage = cityBannerImage ?? "/assets/rootcabs-banner-home.png";
 
@@ -1739,17 +2134,17 @@ export function CityPage({
     <div>
       {/* Hero */}
       <section
-        className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]"
+        className={`relative overflow-hidden text-white ${isSalem ? "min-h-[360px] bg-[#22236F] md:min-h-[430px]" : "min-h-[420px] md:min-h-[500px]"}`}
         style={{
-        backgroundImage: `url('${assetPath(heroBackgroundImage)}')`,
+        backgroundImage: isSalem ? undefined : `url('${assetPath(heroBackgroundImage)}')`,
         // City banners fill a shorter hero. This preserves the entire banner
         // with no gutters; their proportions are scaled slightly to fit.
         backgroundSize: cityBannerImage ? "100% 100%" : "cover",
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
-        backgroundColor: cityBannerImage ? "#172aab" : undefined,
+        backgroundColor: isSalem ? "#22236F" : cityBannerImage ? "#172aab" : undefined,
       }}>
-        <div className="absolute inset-0 bg-black/40" />
+        {!isSalem && <div className="absolute inset-0 bg-black/40" />}
         <div className={`relative z-10 max-w-screen-xl mx-auto px-4 ${usesExpandedCityHero ? "pb-24 md:pb-28" : ""}`}>
           <PageBreadcrumb
             className={`${usesExpandedCityHero ? "pt-8 md:pt-10" : ""} mb-4 text-white/70`}
@@ -1759,17 +2154,26 @@ export function CityPage({
               { label: city.name },
             ]}
           />
-          <div className={usesExpandedCityHero ? "text-left lg:w-[40%]" : undefined}>
-          <h1 className={`font-heading text-3xl md:text-4xl font-bold mb-4 ${isVellore || isCoimbatore ? "lg:w-[700px]" : ""}`}>
-            {isVellore || isCoimbatore ? (
+          <div className={usesExpandedCityHero ? `text-left ${isSalem ? "max-w-4xl" : "lg:w-[40%]"}` : undefined}>
+          <h1 className={`font-heading text-3xl md:text-4xl font-bold mb-4 ${isVellore || isCoimbatore || isSalem ? "lg:w-[760px]" : ""}`}>
+            {isSalem ? (
+              <>
+                Book a <strong>Taxi in Salem</strong>
+              </>
+            ) : isVellore || isCoimbatore ? (
               <>
                 <span className="block">{isVellore ? "Your Go-To Taxi Service in Vellore" : "Reliable Taxi Service in"}</span>{" "}
                 <span className="block">{isVellore ? "Whenever You Need a Ride" : "Coimbatore - Airport & City Rides"}</span>
               </>
             ) : isChennai ? "Reliable Cab Services In Chennai For Every Ride" : city.tagline}
           </h1>
-          <p className="max-w-3xl text-lg text-gray-300">
-            {isChennai
+          <p className={`${isSalem ? "max-w-3xl text-base leading-7 text-white/80 md:text-lg" : "max-w-3xl text-lg text-gray-300"}`}>
+            {isSalem ? (
+              <>
+                From daily city rides to trips outside Salem, our{" "}
+                <strong className="font-bold text-[#FFD700]">taxi service in Salem</strong> makes it simple to book a ride and plan your travel comfortably.
+              </>
+            ) : isChennai
               ? "Travel across Chennai with convenient local rides, airport transfers,and long-distance cab services. Root Cabs stays available 24/7, helping you reach your destination comfortably with clear fares and easy booking."
               : isVellore
               ? "From CMC appointments and VIT travel to railway station pickups and outstation trips, Root Cabs makes travelling around Vellore easier with clear fares and convenient booking."
@@ -1779,10 +2183,10 @@ export function CityPage({
           <div className={`${usesExpandedCityHero ? "mt-8 md:mt-10" : "mt-6"} flex flex-wrap gap-4`}>
             <Link to="/book-ride">
               <Button size="lg" className="bg-[#FFD700] hover:bg-[#E6C200] text-[#2E3A8C] font-bold cursor-pointer shadow-sm">
-                {isChennai ? "Book a Ride in Chennai" : `Book Ride in ${city.name}`} <ArrowRight className="w-4 h-4 ml-2" />
+                {isChennai || isSalem ? `Book a Ride in ${city.name}` : `Book Ride in ${city.name}`} <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
-            <a href={`tel:${isChennai ? "8608606474" : companyInfo.phone}`}>
+            <a href={`tel:${isChennai || isSalem ? "8608606474" : companyInfo.phone}`}>
               <Button size="lg" className="border border-white/30 bg-white/10 text-white hover:bg-white/15 cursor-pointer shadow-sm">
                 <Phone className="w-4 h-4 mr-2" /> {isVellore || isCoimbatore ? "Call us" : "Call now"}
               </Button>
@@ -1802,6 +2206,33 @@ export function CityPage({
           <ChennaiServicesSection />
         ) : isVellore ? (
           <VelloreServicesSection />
+        ) : isSalem ? (
+          <section>
+            <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+              Services We Offer in Salem
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+              Explore our services and choose the ride that suits your travel needs.
+            </p>
+            <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
+              {salemServices.map((service, index) => (
+                <Link key={service.slug} to={service.href} className="group cursor-pointer">
+                  <div className="flex h-full gap-4 rounded-xl border border-border bg-white p-5 transition-all hover:border-primary/30 hover:bg-primary/5">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-white">
+                      {serviceIconMap[service.slug]}
+                    </div>
+                    <div className="min-w-0">
+                      <h3 className="font-heading text-base font-bold text-[#1E2A6E]">
+                        {index + 1}. {service.title}
+                      </h3>
+                      <p className="mt-2 text-sm leading-6 text-[#4B587C]">{service.description}</p>
+                      <p className="mt-3 text-sm font-bold text-[#1E2A6E]">{service.fare}</p>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
         ) : (
           <section>
             <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6">Services Available in {city.name}</h2>
@@ -1833,6 +2264,33 @@ export function CityPage({
           <ChennaiRoutesSection />
         ) : isVellore ? (
           <VelloreRoutesSection />
+        ) : isSalem ? (
+          <section>
+            <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+              Popular Outstation Routes from Salem
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+              Choose a <strong className="font-bold text-[#1E2A6E]">one-way taxi in Salem</strong> or round trip for nearby towns, hill stations, and longer journeys.
+            </p>
+            <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+              {salemOutstationRoutes.map((route) => (
+                <Link
+                  key={route.to}
+                  to={`/routes/salem-to-${route.to.toLowerCase().replace(/\s+/g, "-")}`}
+                  className="group flex min-h-24 items-center justify-between rounded-xl border border-border bg-white p-5 transition-all hover:border-primary/30 hover:bg-primary/5"
+                >
+                  <div className="min-w-0">
+                    <h3 className="font-heading text-base font-bold text-[#1E2A6E]">Salem to {route.to}</h3>
+                    <p className="mt-2 text-sm text-[#4B587C]">{route.meta}</p>
+                    <span className="mt-3 inline-flex rounded-full bg-[#FFF3D8] px-3 py-1 text-[11px] font-extrabold uppercase text-[#B45F00]">
+                      {route.tag}
+                    </span>
+                  </div>
+                  <ArrowRight className="ml-4 h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
+                </Link>
+              ))}
+            </div>
+          </section>
         ) : (
           <section>
             <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6">Popular Routes from {city.name}</h2>
@@ -1855,7 +2313,27 @@ export function CityPage({
         )}
 
         {/* Landmarks */}
-        {city.landmarks.length > 0 && (
+        {isSalem ? (
+          <section>
+            <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+              Popular Pickup Spots in Salem
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+              Pickups are available from railway stations, temples, shopping areas, and other busy places across Salem.
+            </p>
+            <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {salemPickupSpots.map((spot) => (
+                <div key={spot.title} className="rounded-xl border border-border bg-white p-5 shadow-sm">
+                  <div className="flex items-start gap-2 text-sm font-bold text-[#1E2A6E]">
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                    <h3>{spot.title}</h3>
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-[#4B587C]">{spot.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : city.landmarks.length > 0 && (
           <section>
             <h2 className={`font-heading text-2xl font-bold mb-2 ${isChennai || isVellore ? "text-[#1E2A6E] md:text-3xl" : ""}`}>Popular Pickup Spots In {city.name}</h2>
             {city.name === "Chennai" && (
@@ -1908,6 +2386,29 @@ export function CityPage({
           </section>
         )}
 
+        {isSalem && (
+          <section>
+            <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+              Plan Your Yercaud Trip from Salem
+            </h2>
+            <p className="mt-3 max-w-4xl text-sm leading-6 text-muted-foreground md:text-base">
+              Yercaud is a good choice for a short day trip or weekend break from Salem. A{" "}
+              <strong className="font-bold text-[#1E2A6E]">call taxi in Salem</strong> makes it easy to plan your trip at a time that suits you.
+            </p>
+            <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+              {salemYercaudStops.map((stop) => (
+                <div key={stop.title} className="rounded-xl border border-border bg-white p-5 shadow-sm">
+                  <h3 className="font-heading text-base font-bold text-[#1E2A6E]">{stop.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-[#4B587C]">{stop.description}</p>
+                  <Link to="/book-ride" className="mt-4 inline-flex items-center text-sm font-bold text-[#1E2A6E] hover:text-primary">
+                    {stop.cta} <ArrowRight className="ml-1 h-4 w-4" />
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {city.name === "Chennai" && (
           <>
             <ChennaiContentSection />
@@ -1927,6 +2428,8 @@ export function CityPage({
           <ChennaiReviewsSection />
         ) : isVellore ? (
           <VelloreReviewsSection />
+        ) : isSalem ? (
+          <SalemReviewsSection />
         ) : cityTestimonials.length > 0 ? (
           <section>
             <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6">Customer Reviews in {city.name}</h2>
@@ -1953,6 +2456,11 @@ export function CityPage({
           <ChennaiTrustSection />
         ) : isVellore ? (
           <VelloreTrustSection />
+        ) : isSalem ? (
+          <>
+            <SalemTrustSection />
+            <SalemDriverSection />
+          </>
         ) : (
           <section className="bg-muted/50 rounded-2xl p-8">
             <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6">Why Choose Root Cabs in {city.name}?</h2>
@@ -1979,7 +2487,15 @@ export function CityPage({
           </>
         )}
 
-        {isVellore ? <VelloreFaqSection /> : city.name !== "Chennai" && <CityFaqSection city={city} />}
+        {isSalem && <SalemAppDownloadCard />}
+
+        {isVellore ? (
+          <VelloreFaqSection />
+        ) : isSalem ? (
+          <SalemFaqSection />
+        ) : city.name !== "Chennai" && (
+          <CityFaqSection city={city} />
+        )}
 
         {city.name === "Chennai" && (
           <>
@@ -2011,22 +2527,6 @@ export function CityPage({
           </>
         )}
 
-        {/* Driver CTA */}
-        {!isChennai && !isVellore && (
-          <section className="py-8 text-center">
-            <h3 className="mb-2 font-heading text-xl font-bold">
-              {`Drive with Root Cabs in ${city.name}`}
-            </h3>
-            <p className="mb-4 text-sm text-muted-foreground">
-              Earn up to \u20B940,000/month with flexible hours and low commission.
-            </p>
-            <Link to="/drivers">
-              <Button className="cursor-pointer bg-primary hover:bg-primary/90">
-                Join as Driver <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
-          </section>
-        )}
       </div>
 
     </div>

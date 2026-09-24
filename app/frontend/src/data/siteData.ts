@@ -248,8 +248,8 @@ export const cities: City[] = [
     slug: "taxi-in-salem",
     name: "Salem",
     state: "Tamil Nadu",
-    tagline: "Trusted Cab Service in Salem - Steel City Rides",
-    description: "Root Cabs serves Salem with reliable taxi services. From Yercaud hill station trips to intercity travel, we provide comfortable rides at competitive rates.",
+    tagline: "Book a Taxi in Salem",
+    description: "From daily city rides to trips outside Salem, our taxi service in Salem makes it simple to book a ride and plan your travel comfortably.",
     services: ["local-taxi", "outstation", "acting-driver", "auto"],
     popularRoutes: [
       { to: "Yercaud", distance: "35 km", fare: "₹525" },

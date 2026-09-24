@@ -45,6 +45,15 @@ export const staticSeoRoutes = [
     "siteName": "Root Cabs"
   },
   {
+    "path": "/taxi-in-salem",
+    "title": "Taxi Service in Salem - Steel City & Yercaud Hill Station Gateway",
+    "description": "From daily city rides to trips outside Salem, Root Cabs taxi service in Salem makes it simple to book a ride and plan your travel comfortably.",
+    "canonicalUrl": "https://rootcabs.com/taxi-in-salem",
+    "ogImage": "https://rootcabs.com/assets/root-cabs-logo-animation.gif",
+    "ogType": "website",
+    "siteName": "Root Cabs"
+  },
+  {
     "path": "/drivers",
     "title": "Drive with Root Cabs | Become a Driver Partner",
     "description": "Earn up to ₹40,000+ monthly as a Root Cabs driver partner. Low commission, flexible hours, daily payouts, and free training. Apply now.",
