@@ -331,10 +331,10 @@ export const staticRouteSchemas: Record<string, unknown> = {
       ]
     }
   },
-  "/cities/taxi-in-kumbakonam": {
+  "/taxi-in-kumbakonam": {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "url": "https://rootcabs.com/cities/taxi-in-kumbakonam",
+    "url": "https://rootcabs.com/taxi-in-kumbakonam",
     "name": "Best Taxi Service in Kumbakonam for Local and Outstation Travel",
     "description": "From temple visits and railway station pickups to local errands and outstation journeys, Root Cabs makes getting around Kumbakonam simpler with clear fares and easy booking.",
     "inLanguage": "en-IN",

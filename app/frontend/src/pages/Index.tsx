@@ -412,7 +412,7 @@ export default function Index() {
       <section className="relative min-h-[420px] overflow-hidden bg-black text-white md:min-h-[500px]">
           <video
             className="absolute inset-0 h-full w-full object-cover pointer-events-none"
-            src="/assets/home-banner-road-move.webm"
+            src="/assets/home-banner-animation-2.webm"
             autoPlay
             muted
             loop

@@ -54,10 +54,10 @@ export const staticSeoRoutes = [
     "siteName": "Root Cabs"
   },
   {
-    "path": "/cities/taxi-in-kumbakonam",
+    "path": "/taxi-in-kumbakonam",
     "title": "Best Taxi Service in Kumbakonam | Root Cabs",
     "description": "From temple visits and railway station pickups to local errands and outstation journeys, Root Cabs makes getting around Kumbakonam simpler with clear fares and easy booking.",
-    "canonicalUrl": "https://rootcabs.com/cities/taxi-in-kumbakonam",
+    "canonicalUrl": "https://rootcabs.com/taxi-in-kumbakonam",
     "ogImage": "https://rootcabs.com/assets/rootcabs-banner-home.png",
     "ogType": "website",
     "siteName": "Root Cabs"

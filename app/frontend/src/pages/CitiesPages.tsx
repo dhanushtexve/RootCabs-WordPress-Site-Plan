@@ -154,7 +154,7 @@ const kumbakonamServices = [
   {
     title: "Local Taxi",
     icon: "local.webp",
-    description: <>Move around Kumbakonam for work, shopping, appointments, railway station trips, or everyday errands. Our <strong>cab service in Kumbakonam</strong> makes it easier to arrange short city rides without depending on last-minute transport.</>,
+    description: "Move around Kumbakonam for work, shopping, appointments, railway station trips, or everyday errands. Our cab service in Kumbakonam makes it easier to arrange short city rides without depending on last-minute transport.",
   },
   {
     title: "Auto Rickshaw",
@@ -164,7 +164,7 @@ const kumbakonamServices = [
   {
     title: "Drop Taxi",
     icon: "one-way.webp",
-    description: <>Travelling to another city without planning a return ride? Choose a <strong>Kumbakonam one way drop taxi</strong> for direct point-to-point travel, with clear trip details and fare shown before you confirm the booking.</>,
+    description: "Travelling to another city without planning a return ride? Choose a Kumbakonam one way drop taxi for direct point-to-point travel, with clear trip details and fare shown before you confirm the booking.",
   },
   {
     title: "Outstation Taxi",
@@ -220,7 +220,7 @@ const kumbakonamPickupSpots = [
   },
   {
     title: "Kumbakonam Railway Station",
-    description: <>Passengers arriving by train can use a <strong>call taxi service in Kumbakonam</strong> to reach hotels, homes, temples, or nearby towns without arranging another mode of transport.</>,
+    description: "Passengers arriving by train can use a call taxi service in Kumbakonam to reach hotels, homes, temples, or nearby towns without arranging another mode of transport.",
   },
 ];
 
@@ -250,7 +250,7 @@ const kumbakonamCholaTemples = [
   },
   {
     title: "Brihadisvara Temple, Thanjavur",
-    description: <>A visit to Thanjavur can include the Brihadisvara Temple along with other places around the city. A <strong>Kumbakonam one way taxi</strong> also works well for travellers who plan to continue their journey from Thanjavur instead of returning the same day.</>,
+    description: "A visit to Thanjavur can include the Brihadisvara Temple along with other places around the city. A Kumbakonam one way taxi also works well for travellers who plan to continue their journey from Thanjavur instead of returning the same day.",
     button: "Book a Cab to Thanjavur",
   },
   {
@@ -269,12 +269,12 @@ const kumbakonamReviews = [
   {
     name: "Janani Subramaniam",
     trip: "One Way Taxi • Kumbakonam to Thanjavur",
-    text: <>I used a <strong>one way drop taxi from Kumbakonam</strong> for a morning trip. The cab was neat, the pickup was on time, and the fare details were clear before we started.</>,
+    text: "I used a one way drop taxi from Kumbakonam for a morning trip. The cab was neat, the pickup was on time, and the fare details were clear before we started.",
   },
   {
     name: "Naveen Balaji",
     trip: "Local Ride • Kumbakonam Railway Station",
-    text: <>We booked after arriving at Kumbakonam Railway Station. Getting a <strong>call taxi at Kumbakonam</strong> was simple, and the driver reached us quickly. The overall journey was smooth and comfortable.</>,
+    text: "We booked after arriving at Kumbakonam Railway Station. Getting a call taxi at Kumbakonam was simple, and the driver reached us quickly. The overall journey was smooth and comfortable.",
   },
 ];
 
@@ -1748,8 +1748,8 @@ function SalemTrustSection() {
       <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
         Why Riders Trust Root Cabs?
       </h2>
-      <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground md:text-base">
-        With our <strong className="font-bold text-[#1E2A6E]">Salem cab service</strong>, you get verified drivers, On-time pickups, live tracking, and support throughout your ride.
+      <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+        With our Salem cab service, you get verified drivers, On-time pickups, live tracking, and support throughout your ride.
       </p>
       <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {salemTrustItems.map((item) => (
@@ -1768,34 +1768,34 @@ function SalemTrustSection() {
 
 function SalemDriverSection() {
   return (
-    <section className="rounded-2xl bg-[#F3F5FA] px-5 py-8 md:px-8 md:py-10">
+    <section className="rounded-2xl bg-[#F3F5FA] px-5 pb-6 pt-3 md:px-8 md:pb-8 md:pt-4">
       <h2 className="text-center font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
         Driving With Root Cabs in Salem
       </h2>
-      <div className="mt-7 grid gap-5 lg:grid-cols-2">
-        <div className="flex min-w-0 flex-col overflow-hidden rounded-lg border border-[#D7DDED] bg-white">
-          <img src="/assets/homepage-rootpartner-banner.webp" alt="Root Cabs driver partner" className="aspect-video w-full object-cover object-center" />
-          <div className="flex flex-1 flex-col items-start p-5 md:p-6">
-            <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">Drive And Earn With Root Cabs</h3>
-            <p className="mt-3 flex-1 text-sm leading-6 text-[#4B587C]">
+      <div className="mt-4 rounded-lg border border-[#D7DDED] bg-white p-5 md:p-6">
+        <div className="grid gap-6 lg:grid-cols-2">
+          <div className="min-w-0">
+            <img src="/assets/homepage-rootpartner-banner.webp" alt="Root Cabs driver partner" className="h-52 w-full rounded-lg object-cover object-center sm:h-56 lg:h-64" />
+            <h3 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E]">Drive And Earn With Root Cabs</h3>
+            <p className="mt-3 text-sm leading-6 text-[#4B587C]">
               Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
             </p>
-            <Link to="/drivers" className="mt-5">
-              <Button className="bg-[#1E2A6E] text-white hover:bg-[#17225E]">
-                Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
           </div>
-        </div>
-        <div className="flex min-w-0 flex-col overflow-hidden rounded-lg border border-[#D7DDED] bg-white">
-          <img src="/assets/vellore-city-page/Acting Driver.png" alt="Acting driver handing car keys to a customer" className="aspect-video w-full object-cover object-top" />
-          <div className="flex flex-1 flex-col items-start p-5 md:p-6">
-            <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">Book an Acting Driver in Salem</h3>
+          <div className="min-w-0">
+            <img src="/assets/vellore-city-page/Acting Driver.png" alt="Acting driver handing car keys to a customer" className="h-52 w-full rounded-lg object-cover object-[center_20%] sm:h-56 lg:h-64" />
+            <h3 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E]">Book an Acting Driver in Salem</h3>
             <p className="mt-3 text-sm leading-6 text-[#4B587C]">
               Going to a function, taking a long trip, or coming home late? Book a verified{" "}
               <strong className="font-bold text-[#1E2A6E]">acting driver in Salem</strong> and travel in your own car while the driver takes care of the drive.
             </p>
           </div>
+        </div>
+        <div className="mt-6 flex justify-center">
+          <Link to="/drivers">
+            <Button className="bg-[#1E2A6E] text-white hover:bg-[#17225E]">
+              Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
@@ -2119,7 +2119,6 @@ export function KumbakonamPage() {
           <FareCalculator defaultFrom="Kumbakonam" showBookNowButton />
         </section>
         <section className="mt-12">
-          <p className="text-sm font-semibold text-primary">Services Available in Kumbakonam</p>
           <h2 className="mt-2 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Explore Our Services</h2>
           <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
             A simpler way to plan everyday travel around Kumbakonam.
@@ -2152,8 +2151,8 @@ export function KumbakonamPage() {
           <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
             Popular Routes from Kumbakonam
           </h2>
-          <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground md:text-base">
-            Planning a trip beyond the city? Choose a <strong className="text-[#1E2A6E]">Kumbakonam one way taxi</strong> or round trip for nearby towns, temple visits, family travel, and longer journeys.
+          <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+            Planning a trip beyond the city? Choose a Kumbakonam one way taxi or round trip for nearby towns, temple visits, family travel, and longer journeys.
           </p>
           <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {kumbakonamOutstationRoutes.map((route) => (
@@ -2178,8 +2177,8 @@ export function KumbakonamPage() {
           <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
             Popular Pickup Spots in Kumbakonam
           </h2>
-          <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground md:text-base">
-            Need a <strong className="text-[#1E2A6E]">taxi in Kumbakonam</strong>? Pickups are available from well-known temples, transport points, and busy areas across the city.
+          <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+            Need a taxi in Kumbakonam? Pickups are available from well-known temples, transport points, and busy areas across the city.
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {kumbakonamPickupSpots.map((spot) => (
@@ -2262,8 +2261,8 @@ export function KumbakonamPage() {
           <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
             Why Choose Root Cabs in Kumbakonam?
           </h2>
-          <p className="mt-3 max-w-3xl text-sm leading-6 text-muted-foreground md:text-base">
-            Choosing a <strong className="text-[#1E2A6E]">taxi in Kumbakonam</strong> is easier with verified drivers, reliable pickups, and support throughout the ride.
+          <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+            Choosing a taxi in Kumbakonam is easier with verified drivers, reliable pickups, and support throughout the ride.
           </p>
           <div className="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {kumbakonamTrustItems.map((item) => (
@@ -2277,34 +2276,34 @@ export function KumbakonamPage() {
             ))}
           </div>
         </section>
-        <section className="mt-3 rounded-2xl bg-[#F3F5FA] px-6 pb-6 pt-3 md:px-8 md:pb-8 md:pt-4">
+        <section className="mt-3 rounded-2xl bg-[#F3F5FA] px-5 pb-6 pt-3 md:px-8 md:pb-8 md:pt-4">
           <h2 className="text-center font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
             Driving With Root Cabs in Kumbakonam
           </h2>
-          <div className="mt-4 grid gap-4 md:grid-cols-2">
-            <div className="flex min-w-0 flex-col overflow-hidden rounded-lg bg-white">
-              <img src="/assets/homepage-rootpartner-banner.webp" alt="Root Cabs driver partner" className="aspect-video w-full object-cover object-center" />
-              <div className="flex flex-1 flex-col items-start p-5 md:p-6">
-                <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">Become a Driver Partner</h3>
-                <p className="mt-3 flex-1 text-sm leading-6 text-[#4B587C]">
+          <div className="mt-4 rounded-lg border border-[#D7DDED] bg-white p-5 md:p-6">
+            <div className="grid gap-6 lg:grid-cols-2">
+              <div className="min-w-0">
+                <img src="/assets/homepage-rootpartner-banner.webp" alt="Root Cabs driver partner" className="h-52 w-full rounded-lg object-cover object-center sm:h-56 lg:h-64" />
+                <h3 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E]">Become a Driver Partner</h3>
+                <p className="mt-3 text-sm leading-6 text-[#4B587C]">
                   Drive and Earn with Root Cabs. Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
                 </p>
-                <Link to="/drivers" className="mt-5">
-                  <Button className="bg-[#1E2A6E] text-white hover:bg-[#17225E]">
-                    Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
               </div>
-            </div>
-            <Link to="/services/acting-driver" className="flex min-w-0 flex-col overflow-hidden rounded-lg bg-white">
-              <img src="/assets/vellore-city-page/Acting Driver.png" alt="Acting driver handing car keys to a customer" className="aspect-video w-full object-cover object-top" />
-              <div className="flex flex-1 flex-col items-start p-5 md:p-6">
-                <h3 className="font-heading text-xl font-bold text-[#1E2A6E]">Need an Acting Driver?</h3>
+              <Link to="/services/acting-driver" className="min-w-0">
+                <img src="/assets/vellore-city-page/Acting Driver.png" alt="Acting driver handing car keys to a customer" className="h-52 w-full rounded-lg object-cover object-[center_20%] sm:h-56 lg:h-64" />
+                <h3 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E]">Need an Acting Driver?</h3>
                 <p className="mt-3 text-sm leading-6 text-[#4B587C]">
                   Heading to a function, planning a long trip, or returning late? Book a verified acting driver and travel in your own car while someone else handles the driving.
                 </p>
-              </div>
-            </Link>
+              </Link>
+            </div>
+            <div className="mt-6 flex justify-center">
+              <Link to="/drivers">
+                <Button className="bg-[#1E2A6E] text-white hover:bg-[#17225E]">
+                  Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </section>
         <div className="mt-12">
@@ -2753,7 +2752,7 @@ export function CityPage({
               Popular Outstation Routes from Salem
             </h2>
             <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
-              Choose a <strong className="font-bold text-[#1E2A6E]">one-way taxi in Salem</strong> or round trip for nearby towns, hill stations, and longer journeys.
+              Choose a one-way taxi in Salem or round trip for nearby towns, hill stations, and longer journeys.
             </p>
             <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
               {salemOutstationRoutes.map((route) => (
@@ -2881,9 +2880,8 @@ export function CityPage({
             <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
               Plan Your Yercaud Trip from Salem
             </h2>
-            <p className="mt-3 max-w-4xl text-sm leading-6 text-muted-foreground md:text-base">
-              Yercaud is a good choice for a short day trip or weekend break from Salem. A{" "}
-              <strong className="font-bold text-[#1E2A6E]">call taxi in Salem</strong> makes it easy to plan your trip at a time that suits you.
+            <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+              Yercaud is a good choice for a short day trip or weekend break from Salem. A call taxi in Salem makes it easy to plan your trip at a time that suits you.
             </p>
             <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
               {salemYercaudStops.map((stop) => (

@@ -264,7 +264,7 @@ export const cities: City[] = [
     ],
   },
   {
-    slug: "cities/taxi-in-kumbakonam",
+    slug: "taxi-in-kumbakonam",
     name: "Kumbakonam",
     state: "Tamil Nadu",
     tagline: "Best Taxi Service in Kumbakonam for Local and Outstation Travel",

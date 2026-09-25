@@ -1040,9 +1040,12 @@ export default function BookRide() {
           <CheckCircle className="w-10 h-10 text-green-600" />
         </div>
         <h1 className="font-heading text-3xl md:text-4xl font-bold mb-4">Booking Request Received!</h1>
-        <p className="text-muted-foreground mb-6 max-w-md mx-auto">
-          Our team will confirm your ride shortly. You'll receive a call/SMS with driver details within 15 minutes.
-        </p>
+        <div className="mb-6 mx-auto max-w-md space-y-2 text-muted-foreground">
+          <p>Our drivers are currently busy. Please contact our support team to confirm your ride.</p>
+          <a href={`tel:${companyInfo.phone}`} className="inline-flex items-center gap-2 font-semibold text-primary hover:underline">
+            <Phone className="h-4 w-4" /> Call Support: {companyInfo.phone}
+          </a>
+        </div>
         <div className="bg-muted rounded-xl p-6 text-left max-w-sm mx-auto mb-8">
             <div className="space-y-3 text-sm">
             {bookingId && <div className="flex justify-between gap-4"><span className="text-muted-foreground">Booking ID:</span><span className="text-right font-semibold text-primary">{bookingId}</span></div>}
@@ -1064,11 +1067,14 @@ export default function BookRide() {
           </div>
         </div>
         <div className="flex flex-wrap justify-center gap-4">
-          <a href={`tel:${companyInfo.phone}`}>
-            <Button className="bg-primary hover:bg-primary/90 cursor-pointer">
-              <Phone className="w-4 h-4 mr-2" /> Call to Confirm
-            </Button>
-          </a>
+          <div className="flex flex-col items-center gap-2">
+            <a href={`tel:${companyInfo.phone}`}>
+              <Button className="bg-primary hover:bg-primary/90 cursor-pointer">
+                <Phone className="w-4 h-4 mr-2" /> Call Support
+              </Button>
+            </a>
+            <span className="text-sm font-semibold text-primary">{companyInfo.phone}</span>
+          </div>
           <Button variant="outline" onClick={() => setSubmitted(false)} className="cursor-pointer">
             Book Another Ride
           </Button>
