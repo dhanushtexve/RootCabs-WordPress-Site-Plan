@@ -1145,11 +1145,6 @@ export function CitiesHub() {
                 <p className="mt-3 text-sm leading-6 text-[#4B587C]">
                   Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
                 </p>
-                <Link to="/drivers" className="mt-auto self-start pt-5">
-                  <Button className="bg-[#1E2A6E] text-white hover:bg-[#17225E]">
-                    Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
               </div>
               <div className="flex min-w-0 flex-col">
                 <img src="/assets/home-acting-driver.png" alt="Acting driver service" className="h-52 w-full rounded-lg object-cover object-top sm:h-56 lg:h-64" />
@@ -1158,9 +1153,11 @@ export function CitiesHub() {
                   Hire a professional driver through Root Cabs for hospital visits, family functions, late-night returns,
                   business travel, and long-distance journeys.
                 </p>
-                <Link to="/services/acting-driver" className="mt-auto self-start pt-5">
-                  <Button size="lg" className="bg-[#1E2A6E] px-7 font-bold text-white hover:bg-[#2E3A8C]">
-                    Hire an Acting Driver <ArrowRight className="ml-2 h-4 w-4" />
+              </div>
+              <div className="flex justify-center lg:col-span-2">
+                <Link to="/drivers" className="pt-2">
+                  <Button className="bg-[#1E2A6E] text-white hover:bg-[#17225E]">
+                    Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
               </div>
@@ -1908,11 +1905,6 @@ function ChennaiActingDriverSection() {
           <p className="mt-3 text-sm leading-6 text-muted-foreground">
             Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
           </p>
-          <Link to="/services/acting-driver" className="mt-auto self-start pt-5">
-            <Button className="cursor-pointer bg-primary hover:bg-primary/90">
-              Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
         </div>
         <div className="flex min-w-0 flex-col">
           <img src="/assets/chennai-acting-driver.png" alt="Acting driver service in Chennai" className="h-52 w-full rounded-lg object-cover object-top sm:h-56 lg:h-64" />
@@ -1921,9 +1913,11 @@ function ChennaiActingDriverSection() {
             Need someone to take the wheel of your car? Hire a driver in Chennai through Root Cabs for hospital
             visits, family functions, late-night returns, business travel, and long-distance journeys.
           </p>
-          <Link to="/services/acting-driver" className="mt-auto self-start pt-5">
-            <Button size="lg" className="bg-[#1E2A6E] px-7 font-bold text-white hover:bg-[#2E3A8C]">
-              Hire an Acting Driver <ArrowRight className="ml-2 h-4 w-4" />
+        </div>
+        <div className="flex justify-center lg:col-span-2">
+          <Link to="/drivers" className="pt-2">
+            <Button className="cursor-pointer bg-primary hover:bg-primary/90">
+              Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
         </div>
@@ -1994,11 +1988,6 @@ function VelloreActingDriverSection() {
           <p className="mt-3 text-sm leading-6 text-muted-foreground">
             Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
           </p>
-          <Link to="/drivers" className="mt-auto self-start pt-5">
-            <Button className="cursor-pointer bg-primary hover:bg-primary/90">
-              Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
         </div>
         <div className="flex min-w-0 flex-col">
           <img src={assetPath("/assets/vellore-city-page/Acting Driver.png")} alt="Acting driver at the wheel of a customer's own car in Vellore" className="h-52 w-full rounded-lg object-cover object-top sm:h-56 lg:h-64" />
@@ -2007,9 +1996,11 @@ function VelloreActingDriverSection() {
             Need someone to take the wheel of your car? Hire a driver in Vellore through Root Cabs for hospital
             visits, family functions, late-night returns, business travel, and long-distance journeys.
           </p>
-          <Link to="/services/acting-driver" className="mt-auto self-start pt-5">
-            <Button size="lg" className="bg-[#1E2A6E] px-7 font-bold text-white hover:bg-[#2E3A8C]">
-              Hire an Acting Driver <ArrowRight className="ml-2 h-4 w-4" />
+        </div>
+        <div className="flex justify-center lg:col-span-2">
+          <Link to="/drivers" className="pt-2">
+            <Button className="cursor-pointer bg-primary hover:bg-primary/90">
+              Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
         </div>
@@ -2061,7 +2052,7 @@ export function KumbakonamPage() {
             </Link>
             <a href="tel:8608606474">
               <Button size="lg" className="border border-white/30 bg-white/10 text-white hover:bg-white/15">
-                <Phone className="mr-2 h-4 w-4" /> Call 8608606474
+                <Phone className="mr-2 h-4 w-4" /> Call Us
               </Button>
             </a>
           </div>

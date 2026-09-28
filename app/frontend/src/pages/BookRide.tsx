@@ -1967,11 +1967,6 @@ export default function BookRide() {
               <p className="mt-3 text-sm leading-6 text-muted-foreground">
                 Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
               </p>
-              <a href="/drivers" className="mt-auto self-start pt-5">
-                <Button className="cursor-pointer bg-primary hover:bg-primary/90">
-                  Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </a>
             </div>
             <div className="flex min-w-0 flex-col">
               <img src="/assets/home-acting-driver.png" alt="Acting driver service" className="h-52 w-full rounded-lg object-cover object-top sm:h-56 lg:h-64" />
@@ -1980,9 +1975,11 @@ export default function BookRide() {
                 Hire a professional driver through Root Cabs for hospital visits, family functions, late-night returns,
                 business travel, and long-distance journeys.
               </p>
-              <a href="/services/acting-driver" className="mt-auto self-start pt-5">
-                <Button size="lg" className="bg-[#1E2A6E] px-7 font-bold text-white hover:bg-[#2E3A8C]">
-                  Hire an Acting Driver <ArrowRight className="ml-2 h-4 w-4" />
+            </div>
+            <div className="flex justify-center lg:col-span-2">
+              <a href="/drivers" className="pt-2">
+                <Button className="cursor-pointer bg-primary hover:bg-primary/90">
+                  Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </a>
             </div>
