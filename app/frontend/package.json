@@ -3,9 +3,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev:uat": "vite --mode uat",
+    "dev:prod": "vite --mode production",
     "build": "vite build",
+    "build:uat": "vite build --mode uat",
+    "build:prod": "vite build --mode production",
     "lint": "eslint --quiet ./src",
     "preview": "vite preview",
+    "preview:uat": "vite preview --mode uat",
+    "preview:prod": "vite preview --mode production",
     "postinstall": "echo 'Dependencies installed successfully'"
   },
   "dependencies": {
