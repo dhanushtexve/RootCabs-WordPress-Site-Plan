@@ -809,7 +809,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo.webp"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
       },
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474"
@@ -1057,11 +1057,11 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo.webp",
-        "contentUrl": "https://rootcabs.com/assets/root-cabs-logo.webp",
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif",
+        "contentUrl": "https://rootcabs.com/assets/root-cabs-logo-animation.gif",
         "caption": "Root Cabs Logo"
       },
-      "image": "https://rootcabs.com/assets/root-cabs-logo.webp",
+      "image": "https://rootcabs.com/assets/root-cabs-logo-animation.gif",
       "description": "Root Cabs provides business and corporate travel solutions along with local, airport and outstation taxi services across Tamil Nadu.",
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
