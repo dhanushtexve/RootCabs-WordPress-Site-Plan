@@ -360,6 +360,38 @@ export function SupportPage() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-screen-xl px-4 py-8 md:py-10">
+        <div className="rounded-2xl bg-[#F3F5FA] p-5 md:p-8">
+          <div className="grid gap-6 rounded-lg border border-[#D7DDED] bg-white p-5 md:p-6 lg:grid-cols-2">
+            <div className="flex min-w-0 flex-col">
+              <img src="/assets/homepage-rootpartner-banner.webp" alt="Drive and earn with Root Cabs" className="h-52 w-full rounded-lg object-cover object-center sm:h-56 lg:h-64" />
+              <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Drive And Earn With Root Cabs</h2>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+              </p>
+              <Link to="/drivers" className="mt-auto self-start pt-5">
+                <Button className="cursor-pointer bg-primary hover:bg-primary/90">
+                  Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+            <div className="flex min-w-0 flex-col">
+              <img src="/assets/home-acting-driver.png" alt="Acting driver service" className="h-52 w-full rounded-lg object-cover object-top sm:h-56 lg:h-64" />
+              <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Need Someone To Take The Wheel Of Your Car?</h2>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                Hire a professional driver through Root Cabs for hospital visits, family functions, late-night returns,
+                business travel, and long-distance journeys.
+              </p>
+              <Link to="/services/acting-driver" className="mt-auto self-start pt-5">
+                <Button size="lg" className="bg-[#1E2A6E] px-7 font-bold text-white hover:bg-[#2E3A8C]">
+                  Hire an Acting Driver <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="mx-auto max-w-[1056px] px-4 py-2 md:py-4">
         <div className="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
           <img
@@ -444,30 +476,6 @@ export function SupportPage() {
         </div>
       </section>
 
-      <section className="mx-auto mt-8 max-w-screen-xl px-4">
-        <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
-          <div className="text-center md:text-left">
-            <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
-              Drive And Earn With Root Cabs
-            </h2>
-            <p className="mt-3 mb-5 max-w-2xl text-sm leading-6 text-muted-foreground">
-              Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
-            </p>
-            <Link to="/drivers">
-              <Button className="cursor-pointer bg-primary hover:bg-primary/90">
-                Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-          </div>
-          <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
-            <img
-              src="/assets/homepage-rootpartner-banner.webp"
-              alt="Drive and earn with Root Cabs"
-              className="h-full w-full object-cover object-center"
-            />
-          </div>
-        </div>
-      </section>
     </div>
   );
 }

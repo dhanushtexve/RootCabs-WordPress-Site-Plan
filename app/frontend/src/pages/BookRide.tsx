@@ -1943,20 +1943,52 @@ export default function BookRide() {
               </CardContent>
             </Card>
 
+            <Card className="border-border bg-white">
+              <CardContent className="p-6">
+                <h4 className="font-heading text-lg font-semibold tracking-wide text-foreground">
+                  Terms & Conditions
+                </h4>
+                <p className="mt-3 text-sm leading-7 text-muted-foreground">
+                  The fares shown are indicative starting rates and may vary based on the selected vehicle, pickup location, drop location, travel distance and current road conditions. The final fare will be displayed in the app before your booking is confirmed. Toll charges, parking fees, waiting charges and other applicable expenses are not included in the per-kilometre rate and will be charged separately.
+                </p>
+              </CardContent>
+            </Card>
+
           </div>
         </div>
-
-        <Card className="mt-8 w-full border-border">
-          <CardContent className="px-6 py-8 text-center md:px-10 lg:px-14">
-            <h4 className="font-heading text-lg font-semibold tracking-wide text-foreground">
-              Terms & Conditions
-            </h4>
-            <p className="mx-auto mt-3 max-w-5xl text-sm leading-7 text-muted-foreground">
-              The fares shown are indicative starting rates and may vary based on the selected vehicle, pickup location, drop location, travel distance and current road conditions. The final fare will be displayed in the app before your booking is confirmed. Toll charges, parking fees, waiting charges and other applicable expenses are not included in the per-kilometre rate and will be charged separately.
-            </p>
-          </CardContent>
-        </Card>
       </div>
+
+      <section className="mx-auto max-w-screen-xl px-4 pb-12 md:pb-14">
+        <div className="rounded-2xl bg-[#F3F5FA] p-5 md:p-8">
+          <div className="grid gap-6 rounded-lg border border-[#D7DDED] bg-white p-5 md:p-6 lg:grid-cols-2">
+            <div className="flex min-w-0 flex-col">
+              <img src="/assets/homepage-rootpartner-banner.webp" alt="Drive and earn with Root Cabs" className="h-52 w-full rounded-lg object-cover object-center sm:h-56 lg:h-64" />
+              <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Drive And Earn With Root Cabs</h2>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+              </p>
+              <a href="/drivers" className="mt-auto self-start pt-5">
+                <Button className="cursor-pointer bg-primary hover:bg-primary/90">
+                  Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </a>
+            </div>
+            <div className="flex min-w-0 flex-col">
+              <img src="/assets/home-acting-driver.png" alt="Acting driver service" className="h-52 w-full rounded-lg object-cover object-top sm:h-56 lg:h-64" />
+              <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Need Someone To Take The Wheel Of Your Car?</h2>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                Hire a professional driver through Root Cabs for hospital visits, family functions, late-night returns,
+                business travel, and long-distance journeys.
+              </p>
+              <a href="/services/acting-driver" className="mt-auto self-start pt-5">
+                <Button size="lg" className="bg-[#1E2A6E] px-7 font-bold text-white hover:bg-[#2E3A8C]">
+                  Hire an Acting Driver <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="max-w-[1056px] mx-auto px-4 pb-12 md:pb-14">
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
@@ -2061,30 +2093,6 @@ export default function BookRide() {
         </div>
       </section>
 
-      <section className="max-w-screen-xl mx-auto px-4 pb-12 md:pb-14">
-        <Card className="border-border">
-          <CardContent className="grid items-center gap-6 p-6 md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:p-8">
-            <div className="text-center md:text-left">
-              <h2 className="font-heading text-2xl font-bold md:text-3xl">Drive And Earn With Root Cabs</h2>
-              <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground md:text-base">
-                Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
-              </p>
-              <a href="/drivers" className="mt-6 inline-block">
-                <Button className="bg-primary hover:bg-primary/90 cursor-pointer">
-                  Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </a>
-            </div>
-            <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
-              <img
-                src="/assets/homepage-rootpartner-banner.webp"
-                alt="Drive and earn with Root Cabs"
-                className="h-full w-full object-cover object-center"
-              />
-            </div>
-          </CardContent>
-        </Card>
-      </section>
       <section className="bg-[#F3F5F9] px-4 pb-12 pt-8 md:pb-16 md:pt-10">
         <div className="mx-auto max-w-3xl">
           <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl">

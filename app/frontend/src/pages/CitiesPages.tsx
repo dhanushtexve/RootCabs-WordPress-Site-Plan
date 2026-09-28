@@ -1137,30 +1137,36 @@ export function CitiesHub() {
         )}
 
         <div className="mt-14 space-y-8">
-          <AppDownloadCard />
-
-          <section className="grid items-center gap-6 rounded-2xl border border-[#D7DDED] bg-white px-6 py-7 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
-            <div className="text-center md:text-left">
-              <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
-                Drive And Earn With Root Cabs
-              </h2>
-              <p className="mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-[0.92rem] lg:text-[0.98rem]">
-                Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
-              </p>
-              <Button asChild className="mt-6 bg-[#1E2A6E] text-white hover:bg-[#17225E]">
-                <Link to="/drivers">
-                  Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
+          <section className="rounded-2xl bg-[#F3F5FA] p-5 md:p-8">
+            <div className="grid gap-6 rounded-lg border border-[#D7DDED] bg-white p-5 md:p-6 lg:grid-cols-2">
+              <div className="flex min-w-0 flex-col">
+                <img src="/assets/homepage-rootpartner-banner.webp" alt="Drive And Earn With Root Cabs" className="h-52 w-full rounded-lg object-cover object-center sm:h-56 lg:h-64" />
+                <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Drive And Earn With Root Cabs</h2>
+                <p className="mt-3 text-sm leading-6 text-[#4B587C]">
+                  Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+                </p>
+                <Link to="/drivers" className="mt-auto self-start pt-5">
+                  <Button className="bg-[#1E2A6E] text-white hover:bg-[#17225E]">
+                    Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
                 </Link>
-              </Button>
-            </div>
-            <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
-              <img
-                src="/assets/homepage-rootpartner-banner.webp"
-                alt="Drive And Earn With Root Cabs"
-                className="h-full w-full object-cover object-center"
-              />
+              </div>
+              <div className="flex min-w-0 flex-col">
+                <img src="/assets/home-acting-driver.png" alt="Acting driver service" className="h-52 w-full rounded-lg object-cover object-top sm:h-56 lg:h-64" />
+                <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Need Someone To Take The Wheel Of Your Car?</h2>
+                <p className="mt-3 text-sm leading-6 text-[#4B587C]">
+                  Hire a professional driver through Root Cabs for hospital visits, family functions, late-night returns,
+                  business travel, and long-distance journeys.
+                </p>
+                <Link to="/services/acting-driver" className="mt-auto self-start pt-5">
+                  <Button size="lg" className="bg-[#1E2A6E] px-7 font-bold text-white hover:bg-[#2E3A8C]">
+                    Hire an Acting Driver <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
             </div>
           </section>
+          <AppDownloadCard />
         </div>
       </div>
     </div>
@@ -1445,35 +1451,6 @@ function VelloreAppDownloadCard() {
               className="h-[440px] w-auto max-w-full object-contain md:h-[430px] lg:h-[420px]"
             />
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function VellorePartnerSection() {
-  return (
-    <section className="py-2">
-      <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
-        <div className="text-center md:text-left">
-          <h3 className="mb-2 font-heading text-xl font-bold">
-            Drive and Earn with Root Cabs
-          </h3>
-          <p className="mb-4 text-sm text-muted-foreground">
-            Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
-          </p>
-          <Link to="/drivers">
-            <Button className="cursor-pointer bg-primary hover:bg-primary/90">
-              Join as Root Partner <ArrowRight className="ml-2 w-4 h-4" />
-            </Button>
-          </Link>
-        </div>
-        <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
-          <img
-            src="/assets/homepage-rootpartner-banner.webp"
-            alt="Drive And Earn With Root Cabs"
-            className="h-full w-full object-cover object-center"
-          />
         </div>
       </div>
     </section>
@@ -1923,46 +1900,34 @@ function ChennaiTrustSection() {
 
 function ChennaiActingDriverSection() {
   return (
-    <section className="grid items-center gap-8 rounded-2xl border border-border bg-[#F4F6FF] p-6 md:grid-cols-[1fr_0.95fr] md:p-8">
-      <div>
-        <div className="inline-flex rounded-full bg-[#E9EDFF] px-4 py-1.5 text-xs font-bold uppercase text-[#1E2A6E]">
-          Acting Driver
+    <section className="rounded-2xl bg-[#F3F5FA] p-5 md:p-8">
+      <div className="grid gap-6 rounded-lg border border-[#D7DDED] bg-white p-5 md:p-6 lg:grid-cols-2">
+        <div className="flex min-w-0 flex-col">
+          <img src="/assets/homepage-rootpartner-banner.webp" alt="Drive And Earn With Root Cabs" className="h-52 w-full rounded-lg object-cover object-center sm:h-56 lg:h-64" />
+          <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Drive And Earn With Root Cabs</h2>
+          <p className="mt-3 text-sm leading-6 text-muted-foreground">
+            Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+          </p>
+          <Link to="/services/acting-driver" className="mt-auto self-start pt-5">
+            <Button className="cursor-pointer bg-primary hover:bg-primary/90">
+              Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
         </div>
-        <h2 className="mt-5 max-w-xl font-heading text-2xl font-bold leading-tight text-[#1E2A6E] md:text-3xl">
-          Make Every Trip Easier With An Acting Driver
-        </h2>
-        <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground md:text-base">
-          Need someone to take the wheel of your car? Hire a driver in Chennai through Root Cabs for hospital
-          visits, family functions, late-night returns, business travel, and long-distance journeys.
-        </p>
-        <div className="mt-6 space-y-3 text-sm text-[#24305E]">
-          {[
-            "Verified and experienced acting drivers",
-            "Available for local and outstation travel",
-            "Flexible hourly and full-day options",
-            "Suitable for regular and premium cars",
-          ].map((item) => (
-            <div key={item} className="flex items-start gap-3">
-              <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
-              <span>{item}</span>
-            </div>
-          ))}
-        </div>
-        <div className="mt-8">
-          <Link to="/services/acting-driver">
+        <div className="flex min-w-0 flex-col">
+          <img src="/assets/chennai-acting-driver.png" alt="Acting driver service in Chennai" className="h-52 w-full rounded-lg object-cover object-top sm:h-56 lg:h-64" />
+          <h2 className="mt-5 font-heading text-xl font-bold leading-tight text-[#1E2A6E] md:text-2xl">Make Every Trip Easier With An Acting Driver</h2>
+          <p className="mt-3 text-sm leading-6 text-muted-foreground">
+            Need someone to take the wheel of your car? Hire a driver in Chennai through Root Cabs for hospital
+            visits, family functions, late-night returns, business travel, and long-distance journeys.
+          </p>
+          <Link to="/services/acting-driver" className="mt-auto self-start pt-5">
             <Button size="lg" className="bg-[#1E2A6E] px-7 font-bold text-white hover:bg-[#2E3A8C]">
-              Hire an Acting Driver <ArrowRight className="w-4 h-4 ml-2" />
+              Hire an Acting Driver <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
         </div>
       </div>
-        <div className="overflow-hidden rounded-xl bg-[#E9EDFF] min-h-[260px] md:min-h-[300px]">
-          <img
-            src="/assets/chennai-acting-driver.png"
-            alt="Acting driver service in Chennai"
-            className="h-full min-h-[260px] w-full object-cover md:min-h-[300px]"
-          />
-        </div>
     </section>
   );
 }
@@ -2021,45 +1986,33 @@ function VelloreReviewsSection() {
 
 function VelloreActingDriverSection() {
   return (
-    <section className="grid items-center gap-8 rounded-2xl border border-border bg-[#F4F6FF] p-6 md:grid-cols-[1fr_0.95fr] md:p-8">
-      <div>
-        <div className="inline-flex rounded-full bg-[#E9EDFF] px-4 py-1.5 text-xs font-bold uppercase text-[#1E2A6E]">
-          Acting Driver
-        </div>
-        <h2 className="mt-5 max-w-xl font-heading text-2xl font-bold leading-tight text-[#1E2A6E] md:text-3xl">
-          Make Every Trip Easier with An Acting Driver
-        </h2>
-        <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground md:text-base">
-          Need someone to take the wheel of your car? Hire a driver in Vellore through Root Cabs for hospital
-          visits, family functions, late-night returns, business travel, and long-distance journeys.
-        </p>
-        <div className="mt-6 space-y-3 text-sm text-[#24305E]">
-          {[
-            "Verified and experienced acting drivers",
-            "Available for local and outstation travel",
-            "Flexible hourly and full-day options",
-            "Suitable for regular and premium cars",
-          ].map((item) => (
-            <div key={item} className="flex items-start gap-3">
-              <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
-              <span>{item}</span>
-            </div>
-          ))}
-        </div>
-        <div className="mt-8">
-          <Link to="/services/acting-driver">
-            <Button size="lg" className="bg-[#1E2A6E] px-7 font-bold text-white hover:bg-[#2E3A8C]">
-              Hire an Acting Driver <ArrowRight className="w-4 h-4 ml-2" />
+    <section className="rounded-2xl bg-[#F3F5FA] p-5 md:p-8">
+      <div className="grid gap-6 rounded-lg border border-[#D7DDED] bg-white p-5 md:p-6 lg:grid-cols-2">
+        <div className="flex min-w-0 flex-col">
+          <img src="/assets/homepage-rootpartner-banner.webp" alt="Drive And Earn With Root Cabs" className="h-52 w-full rounded-lg object-cover object-center sm:h-56 lg:h-64" />
+          <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Drive and Earn with Root Cabs</h2>
+          <p className="mt-3 text-sm leading-6 text-muted-foreground">
+            Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+          </p>
+          <Link to="/drivers" className="mt-auto self-start pt-5">
+            <Button className="cursor-pointer bg-primary hover:bg-primary/90">
+              Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
         </div>
-      </div>
-      <div className="overflow-hidden rounded-xl bg-[#E9EDFF] min-h-[260px] md:min-h-[300px]">
-        <img
-          src={assetPath("/assets/vellore-city-page/Acting Driver.png")}
-          alt="Acting driver at the wheel of a customer's own car in Vellore"
-          className="h-full min-h-[260px] w-full object-cover md:min-h-[300px]"
-        />
+        <div className="flex min-w-0 flex-col">
+          <img src={assetPath("/assets/vellore-city-page/Acting Driver.png")} alt="Acting driver at the wheel of a customer's own car in Vellore" className="h-52 w-full rounded-lg object-cover object-top sm:h-56 lg:h-64" />
+          <h2 className="mt-5 font-heading text-xl font-bold leading-tight text-[#1E2A6E] md:text-2xl">Make Every Trip Easier with An Acting Driver</h2>
+          <p className="mt-3 text-sm leading-6 text-muted-foreground">
+            Need someone to take the wheel of your car? Hire a driver in Vellore through Root Cabs for hospital
+            visits, family functions, late-night returns, business travel, and long-distance journeys.
+          </p>
+          <Link to="/services/acting-driver" className="mt-auto self-start pt-5">
+            <Button size="lg" className="bg-[#1E2A6E] px-7 font-bold text-white hover:bg-[#2E3A8C]">
+              Hire an Acting Driver <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
+        </div>
       </div>
     </section>
   );
@@ -2971,7 +2924,6 @@ export function CityPage({
         {isVellore && (
           <>
             <VelloreAppDownloadCard />
-            <VellorePartnerSection />
           </>
         )}
 
@@ -2988,30 +2940,7 @@ export function CityPage({
         {city.name === "Chennai" && (
           <>
             <AppDownloadCard />
-            <section className="py-2">
-              <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
-                <div className="text-center md:text-left">
-                  <h3 className="mb-2 font-heading text-xl font-bold">
-                    Drive And Earn With Root Cabs
-                  </h3>
-                  <p className="mb-4 text-sm text-muted-foreground">
-                    Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
-                  </p>
-                  <Link to="/services/acting-driver">
-                    <Button className="cursor-pointer bg-primary hover:bg-primary/90">
-                      Join as Root Partner <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
-                  </Link>
-                </div>
-                <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
-                  <img
-                    src="/assets/homepage-rootpartner-banner.webp"
-                    alt="Drive And Earn With Root Cabs"
-                    className="h-full w-full object-cover object-center"
-                  />
-                </div>
-              </div>
-            </section>            <CityFaqSection city={city} />
+            <CityFaqSection city={city} />
           </>
         )}
 

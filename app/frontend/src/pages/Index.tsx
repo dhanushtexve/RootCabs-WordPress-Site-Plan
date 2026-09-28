@@ -578,48 +578,6 @@ export default function Index() {
 
       {/* Featured Service Blocks */}
       <section className="max-w-screen-xl mx-auto px-4 pb-6 pt-4 md:pb-8 md:pt-6 space-y-8">
-        <div className="grid items-center gap-8 rounded-xl border border-border bg-[#F4F6FF] p-6 md:grid-cols-[1fr_0.95fr] md:p-10">
-          <div>
-            <div className="inline-flex rounded-full bg-[#E9EDFF] px-4 py-1.5 text-xs font-bold uppercase text-[#1E2A6E]">
-              Acting Driver
-            </div>
-            <h2 className="mt-5 max-w-xl font-heading text-3xl font-bold leading-tight text-[#1E2A6E] md:text-4xl">
-              Need Someone To Take The Wheel Of Your Car?
-            </h2>
-            <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground md:text-base">
-              Hire a professional driver through Root Cabs for hospital visits, family functions, late-night returns,
-              business travel, and long-distance journeys.
-            </p>
-            <div className="mt-6 space-y-3 text-sm text-[#24305E]">
-              {[
-                "Verified and experienced acting drivers",
-                "Available for local and outstation travel",
-                "Flexible hourly and full-day options",
-                "Suitable for regular and premium cars",
-              ].map((item) => (
-                <div key={item} className="flex items-start gap-3">
-                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-green-600" />
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
-            <div className="mt-8">
-              <Link to="/services/acting-driver">
-                <Button size="lg" className="bg-[#1E2A6E] px-7 font-bold text-white hover:bg-[#2E3A8C]">
-                  Hire an Acting Driver <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-          <div className="overflow-hidden rounded-xl bg-[#E9EDFF] min-h-[260px] md:min-h-[300px]">
-              <img
-                src="/assets/home-acting-driver.png"
-                alt="Acting driver service"
-                className="h-full min-h-[260px] w-full object-cover md:min-h-[300px]"
-              />
-          </div>
-        </div>
-
         <div className="grid items-center gap-8 rounded-xl border border-border bg-[#F4F6FF] p-6 md:grid-cols-[0.95fr_1fr] md:p-10">
           <div className="overflow-hidden rounded-xl bg-[#E9EDFF] min-h-[260px] md:min-h-[300px]">
               <img
@@ -734,6 +692,38 @@ export default function Index() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-screen-xl px-4 py-8 md:py-10">
+        <div className="rounded-2xl bg-[#F3F5FA] p-5 md:p-8">
+          <div className="grid gap-6 rounded-lg border border-[#D7DDED] bg-white p-5 lg:grid-cols-2 md:p-6">
+            <div className="flex min-w-0 flex-col">
+              <img src="/assets/homepage-rootpartner-banner.webp" alt="Drive and earn with Root Cabs" className="h-52 w-full rounded-lg object-cover object-center sm:h-56 lg:h-64" />
+              <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Drive And Earn With Root Cabs</h2>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+              </p>
+              <Link to="/drivers" className="mt-auto self-start pt-5">
+                <Button className="cursor-pointer bg-primary hover:bg-primary/90">
+                  Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+            <div className="flex min-w-0 flex-col">
+              <img src="/assets/home-acting-driver.png" alt="Acting driver service" className="h-52 w-full rounded-lg object-cover object-top sm:h-56 lg:h-64" />
+              <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Need Someone To Take The Wheel Of Your Car?</h2>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                Hire a professional driver through Root Cabs for hospital visits, family functions, late-night returns,
+                business travel, and long-distance journeys.
+              </p>
+              <Link to="/services/acting-driver" className="mt-auto self-start pt-5">
+                <Button size="lg" className="bg-[#1E2A6E] px-7 font-bold text-white hover:bg-[#2E3A8C]">
+                  Hire an Acting Driver <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* App Download CTA */}
       <section className="mx-auto max-w-[1056px] px-4 py-8 md:py-10">
         <div className="relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
@@ -822,30 +812,6 @@ export default function Index() {
                 className="h-[440px] w-auto max-w-full object-contain md:h-[430px] lg:h-[420px]"
               />
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Driver CTA */}
-      <section className="max-w-screen-xl mx-auto px-4 py-2">
-        <div className="grid items-center gap-6 rounded-xl border border-border bg-white px-5 py-6 shadow-sm md:grid-cols-[minmax(0,0.95fr)_minmax(340px,1.05fr)] md:px-8">
-          <div className="text-center md:text-left">
-            <h2 className="font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Drive And Earn With Root Cabs</h2>
-            <p className="mt-3 mb-5 max-w-2xl text-sm leading-6 text-muted-foreground md:mx-0">
-              Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
-            </p>
-            <Link to="/drivers">
-              <Button className="cursor-pointer bg-primary hover:bg-primary/90">
-                Join as Root Partner <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
-          </div>
-          <div className="mx-auto flex h-[200px] w-full max-w-[500px] items-center justify-center overflow-hidden rounded-lg bg-muted md:h-[230px] lg:h-[250px]">
-            <img
-              src="/assets/homepage-rootpartner-banner.webp"
-              alt="Drive and earn with Root Cabs"
-              className="h-full w-full object-cover object-center"
-            />
           </div>
         </div>
       </section>
