@@ -12,7 +12,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animate.gif"
       },
       "description": "Root Cabs is an online taxi booking service offering local rides, airport transfers, one-way taxis, outstation trips, hourly packages, auto rides, bike taxis and acting driver services across Tamil Nadu.",
       "email": "support@rootcabs.com",
@@ -110,7 +110,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animate.gif"
       },
       "description": "Root Cabs provides local, airport and outstation taxi services with verified drivers, transparent fares and 24/7 cab booking in Chennai and across Tamil Nadu.",
       "email": "support@rootcabs.com",
@@ -232,7 +232,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animate.gif"
       },
       "description": "Root Cabs provides local, one-way, outstation, hourly, auto, bike taxi, parcel delivery and acting driver services in Salem and across Tamil Nadu.",
       "email": "support@rootcabs.com",
@@ -363,7 +363,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animate.gif"
       },
       "description": "Root Cabs provides local, airport and outstation taxi services with verified drivers, transparent fares and 24/7 online booking across Tamil Nadu.",
       "email": "support@rootcabs.com",
@@ -493,7 +493,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animate.gif"
       },
       "description": "Root Cabs provides local, airport and outstation taxi services, acting driver services, parcel delivery, auto rides and other mobility services across Tamil Nadu.",
       "email": "support@rootcabs.com",
@@ -599,7 +599,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animate.gif"
       },
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -739,7 +739,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animate.gif"
       },
       "description": "Root Cabs provides taxi and mobility services across Tamil Nadu and offers earning opportunities for cab, auto, bike taxi and acting driver partners.",
       "email": "support@rootcabs.com",
@@ -809,7 +809,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animate.gif"
       },
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474"
@@ -845,7 +845,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animate.gif"
       },
       "description": "Root Cabs provides local, airport and outstation taxi services, auto rides, bike taxis, acting driver services and parcel delivery across Tamil Nadu.",
       "email": "support@rootcabs.com",
@@ -973,7 +973,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animate.gif"
       },
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -1015,7 +1015,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animate.gif"
       },
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -1057,11 +1057,11 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif",
-        "contentUrl": "https://rootcabs.com/assets/root-cabs-logo-animation.gif",
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animate.gif",
+        "contentUrl": "https://rootcabs.com/assets/root-cabs-logo-animate.gif",
         "caption": "Root Cabs Logo"
       },
-      "image": "https://rootcabs.com/assets/root-cabs-logo-animation.gif",
+      "image": "https://rootcabs.com/assets/root-cabs-logo-animate.gif",
       "description": "Root Cabs provides business and corporate travel solutions along with local, airport and outstation taxi services across Tamil Nadu.",
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -1164,7 +1164,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animate.gif"
       },
       "description": "Root Cabs, a unit of Texve Innovations, provides organised and fair mobility services across Tamil Nadu.",
       "email": "support@rootcabs.com",
@@ -1238,7 +1238,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animate.gif"
       },
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -1365,7 +1365,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animate.gif"
       },
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -1492,7 +1492,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animate.gif"
       },
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -1619,7 +1619,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animate.gif"
       },
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -1746,7 +1746,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animate.gif"
       },
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -1870,7 +1870,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
   },
   "/taxi-in-vellore": {
     "@context": "https://schema.org", "@type": "WebPage", "url": "https://rootcabs.com/taxi-in-vellore", "name": "Taxi Service in Vellore - CMC & VIT | Root Cabs", "description": "Root Cabs offers taxi service in Vellore to CMC Hospital, VIT University and beyond - local rides, airport transfers, outstation trips. Verified, 24/7.", "inLanguage": "en-IN",
-    "about": {"@type":"Organization","name":"Root Cabs","url":"https://rootcabs.com/","logo":{"@type":"ImageObject","url":"https://rootcabs.com/assets/root-cabs-logo-animation.gif"},"description":"Root Cabs provides local, airport and outstation taxi services with verified drivers, transparent fares and 24/7 cab booking in Vellore and across Tamil Nadu.","email":"support@rootcabs.com","telephone":"+91-8608606474","contactPoint":{"@type":"ContactPoint","telephone":"+91-8608606474","email":"support@rootcabs.com","contactType":"customer support","areaServed":{"@type":"City","name":"Vellore"},"availableLanguage":["English","Tamil"]},"areaServed":{"@type":"City","name":"Vellore"},"sameAs":["https://www.instagram.com/rootcabs/","https://www.facebook.com/people/Root-Cabs/61575197818182/","https://play.google.com/store/apps/details?id=com.nativecustomer","https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"]},
+    "about": {"@type":"Organization","name":"Root Cabs","url":"https://rootcabs.com/","logo":{"@type":"ImageObject","url":"https://rootcabs.com/assets/root-cabs-logo-animate.gif"},"description":"Root Cabs provides local, airport and outstation taxi services with verified drivers, transparent fares and 24/7 cab booking in Vellore and across Tamil Nadu.","email":"support@rootcabs.com","telephone":"+91-8608606474","contactPoint":{"@type":"ContactPoint","telephone":"+91-8608606474","email":"support@rootcabs.com","contactType":"customer support","areaServed":{"@type":"City","name":"Vellore"},"availableLanguage":["English","Tamil"]},"areaServed":{"@type":"City","name":"Vellore"},"sameAs":["https://www.instagram.com/rootcabs/","https://www.facebook.com/people/Root-Cabs/61575197818182/","https://play.google.com/store/apps/details?id=com.nativecustomer","https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"]},
     "breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://rootcabs.com/"},{"@type":"ListItem","position":2,"name":"Taxi Service in Vellore","item":"https://rootcabs.com/taxi-in-vellore"}]},
     "mainEntity":{"@type":"FAQPage","mainEntity":[
       {"@type":"Question","name":"Which Is The Best Taxi Service In Vellore?","acceptedAnswer":{"@type":"Answer","text":"The best taxi service in Vellore should offer clear fares, verified drivers, dependable pickups, and responsive support. Root Cabs provides these benefits for local, hospital, station, and outstation travel."}},
@@ -1896,7 +1896,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animate.gif"
       },
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",
@@ -1942,7 +1942,7 @@ export const staticRouteSchemas: Record<string, unknown> = {
       "url": "https://rootcabs.com/",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://rootcabs.com/assets/root-cabs-logo-animation.gif"
+        "url": "https://rootcabs.com/assets/root-cabs-logo-animate.gif"
       },
       "email": "support@rootcabs.com",
       "telephone": "+91-8608606474",

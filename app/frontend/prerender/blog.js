@@ -44,7 +44,7 @@ function getServiceHeadElements(url) {
   const canonicalUrl = `https://rootcabs.com/services${slug ? `/${slug}` : ''}`;
   const image = service
     ? `https://rootcabs.com/assets/service-banners/${service.slug}.webp`
-    : 'https://rootcabs.com/assets/root-cabs-logo-animation.gif';
+    : 'https://rootcabs.com/assets/root-cabs-logo-animate.gif';
   const meta = (attribute, key, content) => ({ type: 'meta', props: { [attribute]: key, content } });
 
   return {
@@ -108,7 +108,7 @@ function getSpecialBlogSeo() {
     ogTitle: 'Root Cabs Launch Story - From Vellore, June 2025',
     ogDescription:
       'Root Cabs launched in Vellore on June 5, 2025, and has since grown to 10+ Tamil Nadu cities. Read the story behind its launch and early services.',
-    ogImage: 'https://rootcabs.com/assets/root-cabs-logo-animation.gif',
+    ogImage: 'https://rootcabs.com/assets/root-cabs-logo-animate.gif',
     ogImageAlt: 'Root Cabs logo',
     ogType: 'article',
     twitterCard: 'summary_large_image',
@@ -117,7 +117,7 @@ function getSpecialBlogSeo() {
     twitterTitle: 'Root Cabs Launch Story - From Vellore, June 2025',
     twitterDescription:
       'Root Cabs launched in Vellore on June 5, 2025, and has since grown to 10+ Tamil Nadu cities. Read the story behind its launch and early services.',
-    twitterImage: 'https://rootcabs.com/assets/root-cabs-logo-animation.gif',
+    twitterImage: 'https://rootcabs.com/assets/root-cabs-logo-animate.gif',
     twitterImageAlt: 'Root Cabs logo',
     publishedTime: '2025-06-05',
     tags: ['Launch Story', 'Business'],
@@ -136,7 +136,7 @@ function getSuccessStoriesSeo() {
     ogTitle: '3 Real Root Cabs Driver Success Stories',
     ogDescription:
       'Real Root Cabs driver stories from Tamil Nadu starting over after job loss, growing a side income into full-time work, and finding more time for family.',
-    ogImage: 'https://rootcabs.com/assets/root-cabs-logo-animation.gif',
+    ogImage: 'https://rootcabs.com/assets/root-cabs-logo-animate.gif',
     ogImageAlt: 'Root Cabs logo',
     ogType: 'article',
     twitterCard: 'summary_large_image',
@@ -145,7 +145,7 @@ function getSuccessStoriesSeo() {
     twitterTitle: '3 Real Root Cabs Driver Success Stories',
     twitterDescription:
       'Real Root Cabs driver stories from Tamil Nadu starting over after job loss, growing a side income into full-time work, and finding more time for family.',
-    twitterImage: 'https://rootcabs.com/assets/root-cabs-logo-animation.gif',
+    twitterImage: 'https://rootcabs.com/assets/root-cabs-logo-animate.gif',
     twitterImageAlt: 'Root Cabs logo',
     publishedTime: '2025-06-12',
     tags: ['Drivers', 'Success Stories'],
@@ -164,7 +164,7 @@ function getDriverEarningsSeo() {
     ogTitle: 'Root Cabs Driver Earnings - Up to Rs. 40,000/Month',
     ogDescription:
       'Cab, auto, bike and acting driver partners earn up to Rs. 40,000 monthly with Root Cabs - flexible hours and daily fares paid directly, no weekly wait.',
-    ogImage: 'https://rootcabs.com/assets/root-cabs-logo-animation.gif',
+    ogImage: 'https://rootcabs.com/assets/root-cabs-logo-animate.gif',
     ogImageAlt: 'Root Cabs logo',
     ogType: 'article',
     twitterCard: 'summary_large_image',
@@ -173,7 +173,7 @@ function getDriverEarningsSeo() {
     twitterTitle: 'Root Cabs Driver Earnings - Up to Rs. 40,000/Month',
     twitterDescription:
       'Cab, auto, bike and acting driver partners earn up to Rs. 40,000 monthly with Root Cabs - flexible hours and daily fares paid directly, no weekly wait.',
-    twitterImage: 'https://rootcabs.com/assets/root-cabs-logo-animation.gif',
+    twitterImage: 'https://rootcabs.com/assets/root-cabs-logo-animate.gif',
     twitterImageAlt: 'Root Cabs logo',
     publishedTime: '2025-06-18',
     tags: ['Drivers', 'Earnings'],
@@ -192,7 +192,7 @@ function getChennaiGrowthSeo() {
     ogTitle: 'Getting Around Chennai - A Neighbourhood Travel Guide',
     ogDescription:
       'A practical guide to getting around Chennai - from Tambaram and OMR to Mylapore and Anna Nagar - with local, airport and outstation travel options.',
-    ogImage: 'https://rootcabs.com/assets/root-cabs-logo-animation.gif',
+    ogImage: 'https://rootcabs.com/assets/root-cabs-logo-animate.gif',
     ogImageAlt: 'Root Cabs logo',
     ogType: 'article',
     twitterCard: 'summary_large_image',
@@ -201,7 +201,7 @@ function getChennaiGrowthSeo() {
     twitterTitle: 'Getting Around Chennai - A Neighbourhood Travel Guide',
     twitterDescription:
       'A practical guide to getting around Chennai - from Tambaram and OMR to Mylapore and Anna Nagar - with local, airport and outstation travel options.',
-    twitterImage: 'https://rootcabs.com/assets/root-cabs-logo-animation.gif',
+    twitterImage: 'https://rootcabs.com/assets/root-cabs-logo-animate.gif',
     twitterImageAlt: 'Root Cabs logo',
     publishedTime: '2025-06-25',
     tags: ['Chennai', 'Growth'],
@@ -220,7 +220,7 @@ function getDriverFeedbackSeo() {
     ogTitle: 'Driver Jobs Flexible Hours, Real Reviews - Root Cabs',
     ogDescription:
       'Real Root Cabs driver partners from Chennai, Coimbatore, Vellore and Trichy share their experience with earnings, flexible hours and driver support.',
-    ogImage: 'https://rootcabs.com/assets/root-cabs-logo-animation.gif',
+    ogImage: 'https://rootcabs.com/assets/root-cabs-logo-animate.gif',
     ogImageAlt: 'Root Cabs logo',
     ogType: 'article',
     twitterCard: 'summary_large_image',
@@ -229,7 +229,7 @@ function getDriverFeedbackSeo() {
     twitterTitle: 'Driver Jobs Flexible Hours, Real Reviews - Root Cabs',
     twitterDescription:
       'Real Root Cabs driver partners from Chennai, Coimbatore, Vellore and Trichy share their experience with earnings, flexible hours and driver support.',
-    twitterImage: 'https://rootcabs.com/assets/root-cabs-logo-animation.gif',
+    twitterImage: 'https://rootcabs.com/assets/root-cabs-logo-animate.gif',
     twitterImageAlt: 'Root Cabs logo',
     publishedTime: '2025-07-02',
     tags: ['Drivers', 'Feedback'],
@@ -248,7 +248,7 @@ function getFutureRootCabsSeo() {
     ogTitle: 'The Future of Root Cabs - Our Vision | Root Cabs',
     ogDescription:
       'Root Cabs has grown to 2,000+ driver partners and 50,000+ rides across Tamil Nadu. See our plans for smarter matching, safer trips and local expansion.',
-    ogImage: 'https://rootcabs.com/assets/root-cabs-logo-animation.gif',
+    ogImage: 'https://rootcabs.com/assets/root-cabs-logo-animate.gif',
     ogImageAlt: 'Root Cabs logo',
     ogType: 'article',
     twitterCard: 'summary_large_image',
@@ -257,7 +257,7 @@ function getFutureRootCabsSeo() {
     twitterTitle: 'The Future of Root Cabs - Our Vision | Root Cabs',
     twitterDescription:
       'Root Cabs has grown to 2,000+ driver partners and 50,000+ rides across Tamil Nadu. See our plans for smarter matching, safer trips and local expansion.',
-    twitterImage: 'https://rootcabs.com/assets/root-cabs-logo-animation.gif',
+    twitterImage: 'https://rootcabs.com/assets/root-cabs-logo-animate.gif',
     twitterImageAlt: 'Root Cabs logo',
     publishedTime: '2025-07-10',
     tags: ['Future', 'Vision'],
@@ -280,7 +280,7 @@ function getBlogSchemaElements(slug) {
         url: 'https://rootcabs.com/',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://rootcabs.com/assets/root-cabs-logo-animation.gif',
+          url: 'https://rootcabs.com/assets/root-cabs-logo-animate.gif',
         },
         email: 'support@rootcabs.com',
         telephone: '+91-8608606474',
@@ -367,7 +367,7 @@ function getBlogSchemaElements(slug) {
     url: 'https://rootcabs.com/',
     logo: {
       '@type': 'ImageObject',
-      url: 'https://rootcabs.com/assets/root-cabs-logo-animation.gif',
+      url: 'https://rootcabs.com/assets/root-cabs-logo-animate.gif',
     },
     email: 'support@rootcabs.com',
     telephone: '+91-8608606474',

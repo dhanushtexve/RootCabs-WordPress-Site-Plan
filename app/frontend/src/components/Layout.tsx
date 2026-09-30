@@ -51,7 +51,7 @@ function Navbar() {
           {/* Logo */}
           <Link to="/" className="flex items-center cursor-pointer">
             <img
-              src="/assets/root-cabs-logo-animation.gif"
+              src="/assets/root-cabs-logo-animate.gif"
               alt="Root Cabs"
               className="h-14 w-auto max-w-[150px] object-contain"
             />
@@ -192,7 +192,7 @@ function Footer() {
         <div>
           <div className="flex items-center gap-2 mb-4">
             <img
-              src="/assets/root-cabs-logo-animation.gif"
+              src="/assets/root-cabs-logo-animate.gif"
               alt="Root Cabs"
               className="h-12 w-auto max-w-[130px] object-contain"
             />

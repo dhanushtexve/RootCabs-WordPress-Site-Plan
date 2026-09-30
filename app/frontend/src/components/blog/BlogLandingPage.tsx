@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowRight,
@@ -134,7 +134,7 @@ const BlogLandingPage = () => {
         url: 'https://rootcabs.com/',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://rootcabs.com/assets/root-cabs-logo-animation.gif',
+          url: 'https://rootcabs.com/assets/root-cabs-logo-animate.gif',
         },
         email: 'support@rootcabs.com',
         telephone: '+91-8608606474',

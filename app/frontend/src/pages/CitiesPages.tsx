@@ -67,9 +67,12 @@ const cityImageMap: Record<string, string> = {
 };
 
 const cityBannerMap: Record<string, string> = {
-  "taxi-in-chennai": "/assets/city-banners/chennai.webp",
+  "taxi-in-chennai": "/assets/city-banners/chennai-home.webp",
   "taxi-in-vellore": "/assets/city-banners/vellore.webp",
   "taxi-in-coimbatore": "/assets/city-banners/coimbatore.webp",
+  "taxi-in-trichy": "/assets/city-banners/trichy-home.webp",
+  "taxi-in-salem": "/assets/city-banners/salem-home.webp",
+  "taxi-in-tiruppur": "/assets/city-banners/tiruppur-home.webp",
 };
 
 const salemServices = [
@@ -329,42 +332,42 @@ const kumbakonamFaqs = [
 ];
 
 const salemOutstationRoutes = [
-  { to: "Yercaud", meta: "__ km | Sedan from ₹__", tag: "POPULAR HILL ROUTE" },
-  { to: "Erode", meta: "__ km | Sedan from ₹__", tag: "NEARBY CITY" },
-  { to: "Namakkal", meta: "__ km | Sedan from ₹__", tag: "POPULAR ROUTE" },
-  { to: "Coimbatore", meta: "__ km | Sedan from ₹__", tag: "MAJOR CITY" },
-  { to: "Bengaluru", meta: "__ km | Sedan from ₹__", tag: "INTERSTATE ROUTE" },
-  { to: "Chennai", meta: "__ km | Sedan from ₹__", tag: "MAJOR CITY" },
-  { to: "Dharmapuri", meta: "__ km | Sedan from ₹__", tag: "NEARBY CITY" },
-  { to: "Trichy", meta: "__ km | Sedan from ₹__", tag: "MAJOR CITY" },
-  { to: "Mettur", meta: "__ km | Sedan from ₹__", tag: "POPULAR GETAWAY" },
-  { to: "Ooty", meta: "__ km | Sedan from ₹__", tag: "HILL STATION" },
-  { to: "Kodaikanal", meta: "__ km | Sedan from ₹__", tag: "HILL STATION" },
-  { to: "Hogenakkal", meta: "__ km | Sedan from ₹__", tag: "WEEKEND GETAWAY" },
+  { to: "Yercaud", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/yercaud.webp" },
+  { to: "Erode", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/erode.webp" },
+  { to: "Namakkal", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/namakkal.webp" },
+  { to: "Coimbatore", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/coimbatore.webp" },
+  { to: "Bengaluru", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/bengaluru.webp" },
+  { to: "Chennai", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/chennai.webp" },
+  { to: "Dharmapuri", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/dharmapuri.webp" },
+  { to: "Trichy", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/trichy.webp" },
+  { to: "Mettur", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/mettur.webp" },
+  { to: "Ooty", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/ooty.webp" },
+  { to: "Kodaikanal", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/kodaikanal.webp" },
+  { to: "Hogenakkal", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/hogenakkal.webp" },
 ] as const;
 
 const salemPickupSpots = [
   {
     title: "Salem Junction",
-    image: "/assets/cities/salem.webp",
+    image: "/assets/salem-pickup-spots/salem-junction.webp",
     description:
       "Salem Junction is a common pickup point for cab booking in Salem. You can book a ride from here to your home, hotel, office, or another place in or outside the city.",
   },
   {
     title: "Kottai Mariamman Temple",
-    image: "/assets/cities/salem.webp",
+    image: "/assets/salem-pickup-spots/kottai-mariamman-temple.webp",
     description:
       "After your temple visit, you can book a cab to nearby shopping areas, hotels, homes, other temples, or any other place in Salem.",
   },
   {
     title: "Salem New Bus Stand",
-    image: "/assets/cities/salem.webp",
+    image: "/assets/salem-pickup-spots/salem-new-bus-stand.webp",
     description:
       "Travelling to Yercaud after reaching the bus stand? You can book a cab from here for the hill trip. Many travellers also search for the Salem to Yercaud taxi fare while planning this route.",
   },
   {
     title: "Salem Steel Plant Area",
-    image: "/assets/cities/salem.webp",
+    image: "/assets/salem-pickup-spots/salem-steel-plant.webp",
     description:
       "You can book a pickup from the Salem Steel Plant area for office travel, station trips, family visits, or trips to other places from Salem.",
   },
@@ -373,18 +376,21 @@ const salemPickupSpots = [
 const salemYercaudStops = [
   {
     title: "Yercaud Lake",
+    image: "/assets/salem-yercaud/yercaud-lake.webp",
     description:
       "Yercaud Lake is a nice place to spend some quiet time with family or friends. You can enjoy boating, take a short walk, or relax near the lake. There are also small shops nearby if you want to stop for a while.",
     cta: "Book a Cab to Yercaud Lake",
   },
   {
     title: "Kiliyur Falls",
+    image: "/assets/salem-yercaud/kiliyur-falls.webp",
     description:
       "Kiliyur Falls is a popular place to visit for people who enjoy nature. You need to walk a short distance to reach the falls, and the view is especially good after good rainfall. It is a nice stop to add to your Yercaud trip.",
     cta: "Book a Cab to Kiliyur Falls",
   },
   {
     title: "Lady's Seat",
+    image: "/assets/salem-yercaud/ladys-seat.webp",
     description:
       "Lady's Seat is a popular viewpoint with wide views of the hills and plains below. Many visitors come here in the evening to enjoy the cooler weather and scenery. It is a peaceful place to spend some time before heading back.",
     cta: "Book a Cab to Lady's Seat",
@@ -413,22 +419,22 @@ const salemTrustItems = [
   {
     title: "24/7 Customer Support",
     text: "Our support team is available any time of the day to help with bookings, trip updates, payments, or other ride-related questions.",
-    icon: <Phone className="h-5 w-5" />,
+    iconSrc: "/assets/service-benefits/shared/24×7 Customer Support.webp",
   },
   {
     title: "No Last-Minute Cancellations",
     text: "We work to reduce sudden ride cancellations, helping you travel with fewer changes to your plan.",
-    icon: <CheckCircle className="h-5 w-5" />,
+    iconSrc: "/assets/service-benefits/shared/No Last-Minute Cancellations.webp",
   },
   {
     title: "SOS Safety Support",
     text: "Use the SOS option during your trip if you need quick help or extra support while travelling.",
-    icon: <Star className="h-5 w-5" />,
+    iconSrc: "/assets/home-why-choose/sos-support.webp",
   },
   {
     title: "Easy Ride Booking",
     text: "Choose the service you need, enter your pickup and drop location, and book your ride in a few simple steps.",
-    icon: <Car className="h-5 w-5" />,
+    iconSrc: "/assets/home-why-choose/easy-ride-scheduling.webp",
   },
 ] as const;
 
@@ -1728,8 +1734,8 @@ function SalemTrustSection() {
       <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {salemTrustItems.map((item) => (
           <div key={item.title} className="rounded-xl border border-[#E2E8F3] bg-white p-5 shadow-sm">
-            <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-[#EEF3FF] text-primary">
-              {item.icon}
+            <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-xl bg-[#EEF3FF]">
+              <img src={assetPath(item.iconSrc)} alt="" className="h-9 w-9 object-contain" />
             </div>
             <h3 className="mt-4 font-heading text-base font-bold text-[#1E2A6E]">{item.title}</h3>
             <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.text}</p>
@@ -2021,14 +2027,13 @@ export function KumbakonamPage() {
   return (
     <div>
       <section
-        className="relative min-h-[380px] overflow-hidden bg-[#22236F] text-white md:min-h-[440px]"
-        style={{
-          backgroundImage: "url('/assets/rootcabs-banner-home.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center bottom",
-        }}
+        className="relative min-h-[420px] overflow-hidden bg-[#22236F] text-white md:min-h-[500px]"
       >
-        <div className="absolute inset-0 bg-black/40" />
+        <div
+          className="absolute inset-0 hidden bg-[length:100%_100%] bg-center bg-no-repeat lg:block"
+          style={{ backgroundImage: `url('${assetPath("/assets/city-banners/kumbakonam-home.webp")}')` }}
+        />
+        <div className="absolute inset-0 hidden bg-black/40 lg:block" />
         <div className="relative z-10 mx-auto max-w-screen-xl px-4 pb-24 md:pb-28">
           <PageBreadcrumb
             className="mb-4 pt-8 text-white/70 md:pt-10"
@@ -2038,28 +2043,35 @@ export function KumbakonamPage() {
               { label: "Kumbakonam" },
             ]}
           />
-          <h1 className="max-w-4xl font-heading text-3xl font-bold md:text-4xl">
-            <strong>Best Taxi Service in Kumbakonam</strong> for Local and Outstation Travel
-          </h1>
-          <p className="mt-5 max-w-3xl text-base leading-7 text-white/90 md:text-lg">
-            From temple visits and railway station pickups to local errands and outstation journeys, Root Cabs makes getting around Kumbakonam simpler with clear fares and easy booking.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link to="/book-ride">
-              <Button size="lg" className="bg-[#FFD700] font-bold text-[#2E3A8C] hover:bg-[#E6C200]">
-                Book a Ride in Kumbakonam <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-            <a href="tel:8608606474">
-              <Button size="lg" className="border border-white/30 bg-white/10 text-white hover:bg-white/15">
-                <Phone className="mr-2 h-4 w-4" /> Call Us
-              </Button>
-            </a>
+          <div className="lg:w-[46%]">
+            <h1 className="font-heading text-3xl font-bold md:text-4xl">
+              <strong>Best Taxi Service in Kumbakonam</strong> for Local and Outstation Travel
+            </h1>
+            <p className="mt-5 text-base leading-7 text-white/90 md:text-lg">
+              From temple visits and railway station pickups to local errands and outstation journeys, Root Cabs makes getting around Kumbakonam simpler with clear fares and easy booking.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link to="/book-ride">
+                <Button size="lg" className="bg-[#FFD700] font-bold text-[#2E3A8C] hover:bg-[#E6C200]">
+                  Book a Ride in Kumbakonam <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              <a href="tel:8608606474">
+                <Button size="lg" className="border border-white/30 bg-white/10 text-white hover:bg-white/15">
+                  <Phone className="mr-2 h-4 w-4" /> Call Us
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
+        <img
+          src={assetPath("/assets/city-banners/kumbakonam-home.webp")}
+          alt=""
+          className="relative z-10 h-52 w-full object-cover object-right lg:hidden"
+        />
       </section>
       <div className="relative z-20 mx-auto max-w-screen-xl px-4 pb-10">
-        <section className="-mt-20 md:-mt-24">
+        <section className="mt-0 lg:-mt-24">
           <FareCalculator defaultFrom="Kumbakonam" showBookNowButton />
         </section>
         <section className="mt-12">
@@ -2570,7 +2582,7 @@ export function CityPage({
               { label: city.name },
             ]}
           />
-          <div className={usesExpandedCityHero ? `text-left ${isSalem ? "max-w-4xl" : "lg:w-[40%]"}` : undefined}>
+          <div className={usesExpandedCityHero ? `text-left ${isSalem ? "max-w-4xl" : isChennai ? "lg:w-[48%]" : "lg:w-[40%]"}` : undefined}>
           <h1 className={`font-heading text-3xl md:text-4xl font-bold mb-4 ${isVellore || isCoimbatore || isSalem ? "lg:w-[760px]" : ""}`}>
             {isSalem ? (
               <>
@@ -2581,7 +2593,12 @@ export function CityPage({
                 <span className="block">{isVellore ? "Your Go-To Taxi Service in Vellore" : "Reliable Taxi Service in"}</span>{" "}
                 <span className="block">{isVellore ? "Whenever You Need a Ride" : "Coimbatore - Airport & City Rides"}</span>
               </>
-            ) : isChennai ? "Reliable Cab Services In Chennai For Every Ride" : city.tagline}
+            ) : isChennai ? (
+              <>
+                <span className="block lg:whitespace-nowrap">Reliable Cab Services In</span>
+                <span className="block lg:whitespace-nowrap">Chennai For Every Ride</span>
+              </>
+            ) : city.tagline}
           </h1>
           <p className={`${isSalem ? "max-w-3xl text-base leading-7 text-white/80 md:text-lg" : "max-w-3xl text-lg text-gray-300"}`}>
             {isSalem ? (
@@ -2698,21 +2715,27 @@ export function CityPage({
             <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
               Choose a one-way taxi in Salem or round trip for nearby towns, hill stations, and longer journeys.
             </p>
-            <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-6 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
               {salemOutstationRoutes.map((route) => (
                 <Link
                   key={route.to}
                   to={`/routes/salem-to-${route.to.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="group flex min-h-24 items-center justify-between rounded-xl border border-border bg-white p-5 transition-all hover:border-primary/30 hover:bg-primary/5"
+                  className="group relative flex aspect-[1151/512] min-h-[170px] items-center overflow-hidden rounded-xl border border-border bg-white transition-all hover:border-primary/30 hover:shadow-md lg:aspect-auto lg:h-40 lg:min-h-0"
                 >
-                  <div className="min-w-0">
-                    <h3 className="font-heading text-base font-bold text-[#1E2A6E]">Salem to {route.to}</h3>
-                    <p className="mt-2 text-sm text-[#4B587C]">{route.meta}</p>
-                    <span className="mt-3 inline-flex rounded-full bg-[#FFF3D8] px-3 py-1 text-[11px] font-extrabold uppercase text-[#B45F00]">
-                      {route.tag}
+                  <div className="pointer-events-none absolute inset-y-0 right-0 aspect-[559/663] overflow-hidden">
+                    <img
+                      src={assetPath(route.image)}
+                      alt=""
+                      className="absolute -right-[3%] -top-[5%] h-[105%] w-auto max-w-none"
+                    />
+                  </div>
+                  <div className="relative z-10 flex w-[64%] min-w-0 flex-col items-start justify-center px-4 py-3 sm:px-5 lg:w-[60%]">
+                    <h3 className="font-heading text-lg font-bold leading-tight text-[#111827] sm:text-xl">Salem to {route.to}</h3>
+                    <p className="mt-3 text-sm text-[#111827]">{route.meta}</p>
+                    <span className="mt-4 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors group-hover:bg-[#E6C200]">
+                      Book Now <ArrowRight className="h-3.5 w-3.5" />
                     </span>
                   </div>
-                  <ArrowRight className="ml-4 h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-primary" />
                 </Link>
               ))}
             </div>
@@ -2829,10 +2852,19 @@ export function CityPage({
             </p>
             <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
               {salemYercaudStops.map((stop) => (
-                <div key={stop.title} className="rounded-xl border border-border bg-white p-5 shadow-sm">
-                  <h3 className="font-heading text-base font-bold text-[#1E2A6E]">{stop.title}</h3>
+                <div key={stop.title} className="flex h-full flex-col rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] p-5 shadow-sm transition-colors hover:border-[#1E2A6E]">
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="min-w-0 font-heading text-base font-bold text-[#1E2A6E]">{stop.title}</h3>
+                    <div className="-mr-8 -mt-8 h-12 w-16 shrink-0 overflow-hidden rounded-xl bg-white shadow-sm">
+                      <img
+                        src={assetPath(stop.image)}
+                        alt={stop.title}
+                        className="h-full w-full object-cover"
+                      />
+                    </div>
+                  </div>
                   <p className="mt-3 text-sm leading-6 text-[#4B587C]">{stop.description}</p>
-                  <Link to="/book-ride" className="mt-4 inline-flex items-center text-sm font-bold text-[#1E2A6E] hover:text-primary">
+                  <Link to="/book-ride" className="mt-auto inline-flex items-center pt-4 text-sm font-bold text-[#1E2A6E] hover:text-primary">
                     {stop.cta} <ArrowRight className="ml-1 h-4 w-4" />
                   </Link>
                 </div>
