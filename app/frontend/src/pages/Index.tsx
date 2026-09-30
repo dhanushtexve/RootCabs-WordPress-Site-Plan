@@ -820,10 +820,10 @@ export default function Index() {
           <Accordion type="single" collapsible className="space-y-3">
             {homepageFaqs.map((faq, index) => (
               <AccordionItem key={faq.q} value={`homepage-faq-${index}`} className="border-0">
-                <AccordionTrigger className="rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline">
+                <AccordionTrigger className="rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline data-[state=open]:rounded-b-none data-[state=open]:bg-[#EEF3FF]">
                   {faq.q}
                 </AccordionTrigger>
-                <AccordionContent className="rounded-b-lg bg-white px-5 pb-5 text-sm leading-6 text-muted-foreground shadow-sm">
+                <AccordionContent className="rounded-b-lg bg-white px-5 pb-5 text-sm font-bold leading-6 text-muted-foreground shadow-sm">
                   {faq.a}
                 </AccordionContent>
               </AccordionItem>
