@@ -67,9 +67,12 @@ const cityImageMap: Record<string, string> = {
 };
 
 const cityBannerMap: Record<string, string> = {
-  "taxi-in-chennai": "/assets/city-banners/chennai.webp",
+  "taxi-in-chennai": "/assets/city-banners/chennai-home.webp",
   "taxi-in-vellore": "/assets/city-banners/vellore.webp",
   "taxi-in-coimbatore": "/assets/city-banners/coimbatore.webp",
+  "taxi-in-trichy": "/assets/city-banners/trichy-home.webp",
+  "taxi-in-salem": "/assets/city-banners/salem-home.webp",
+  "taxi-in-tiruppur": "/assets/city-banners/tiruppur-home.webp",
 };
 
 const salemServices = [
@@ -2021,14 +2024,13 @@ export function KumbakonamPage() {
   return (
     <div>
       <section
-        className="relative min-h-[380px] overflow-hidden bg-[#22236F] text-white md:min-h-[440px]"
-        style={{
-          backgroundImage: "url('/assets/rootcabs-banner-home.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center bottom",
-        }}
+        className="relative min-h-[420px] overflow-hidden bg-[#22236F] text-white md:min-h-[500px]"
       >
-        <div className="absolute inset-0 bg-black/40" />
+        <div
+          className="absolute inset-0 hidden bg-[length:100%_100%] bg-center bg-no-repeat lg:block"
+          style={{ backgroundImage: `url('${assetPath("/assets/city-banners/kumbakonam-home.webp")}')` }}
+        />
+        <div className="absolute inset-0 hidden bg-black/40 lg:block" />
         <div className="relative z-10 mx-auto max-w-screen-xl px-4 pb-24 md:pb-28">
           <PageBreadcrumb
             className="mb-4 pt-8 text-white/70 md:pt-10"
@@ -2038,28 +2040,35 @@ export function KumbakonamPage() {
               { label: "Kumbakonam" },
             ]}
           />
-          <h1 className="max-w-4xl font-heading text-3xl font-bold md:text-4xl">
-            <strong>Best Taxi Service in Kumbakonam</strong> for Local and Outstation Travel
-          </h1>
-          <p className="mt-5 max-w-3xl text-base leading-7 text-white/90 md:text-lg">
-            From temple visits and railway station pickups to local errands and outstation journeys, Root Cabs makes getting around Kumbakonam simpler with clear fares and easy booking.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-4">
-            <Link to="/book-ride">
-              <Button size="lg" className="bg-[#FFD700] font-bold text-[#2E3A8C] hover:bg-[#E6C200]">
-                Book a Ride in Kumbakonam <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-            <a href="tel:8608606474">
-              <Button size="lg" className="border border-white/30 bg-white/10 text-white hover:bg-white/15">
-                <Phone className="mr-2 h-4 w-4" /> Call Us
-              </Button>
-            </a>
+          <div className="lg:w-[46%]">
+            <h1 className="font-heading text-3xl font-bold md:text-4xl">
+              <strong>Best Taxi Service in Kumbakonam</strong> for Local and Outstation Travel
+            </h1>
+            <p className="mt-5 text-base leading-7 text-white/90 md:text-lg">
+              From temple visits and railway station pickups to local errands and outstation journeys, Root Cabs makes getting around Kumbakonam simpler with clear fares and easy booking.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-4">
+              <Link to="/book-ride">
+                <Button size="lg" className="bg-[#FFD700] font-bold text-[#2E3A8C] hover:bg-[#E6C200]">
+                  Book a Ride in Kumbakonam <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+              <a href="tel:8608606474">
+                <Button size="lg" className="border border-white/30 bg-white/10 text-white hover:bg-white/15">
+                  <Phone className="mr-2 h-4 w-4" /> Call Us
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
+        <img
+          src={assetPath("/assets/city-banners/kumbakonam-home.webp")}
+          alt=""
+          className="relative z-10 h-52 w-full object-cover object-right lg:hidden"
+        />
       </section>
       <div className="relative z-20 mx-auto max-w-screen-xl px-4 pb-10">
-        <section className="-mt-20 md:-mt-24">
+        <section className="mt-0 lg:-mt-24">
           <FareCalculator defaultFrom="Kumbakonam" showBookNowButton />
         </section>
         <section className="mt-12">
@@ -2570,7 +2579,7 @@ export function CityPage({
               { label: city.name },
             ]}
           />
-          <div className={usesExpandedCityHero ? `text-left ${isSalem ? "max-w-4xl" : "lg:w-[40%]"}` : undefined}>
+          <div className={usesExpandedCityHero ? `text-left ${isSalem ? "max-w-4xl" : isChennai ? "lg:w-[48%]" : "lg:w-[40%]"}` : undefined}>
           <h1 className={`font-heading text-3xl md:text-4xl font-bold mb-4 ${isVellore || isCoimbatore || isSalem ? "lg:w-[760px]" : ""}`}>
             {isSalem ? (
               <>
@@ -2581,7 +2590,12 @@ export function CityPage({
                 <span className="block">{isVellore ? "Your Go-To Taxi Service in Vellore" : "Reliable Taxi Service in"}</span>{" "}
                 <span className="block">{isVellore ? "Whenever You Need a Ride" : "Coimbatore - Airport & City Rides"}</span>
               </>
-            ) : isChennai ? "Reliable Cab Services In Chennai For Every Ride" : city.tagline}
+            ) : isChennai ? (
+              <>
+                <span className="block lg:whitespace-nowrap">Reliable Cab Services In</span>
+                <span className="block lg:whitespace-nowrap">Chennai For Every Ride</span>
+              </>
+            ) : city.tagline}
           </h1>
           <p className={`${isSalem ? "max-w-3xl text-base leading-7 text-white/80 md:text-lg" : "max-w-3xl text-lg text-gray-300"}`}>
             {isSalem ? (
