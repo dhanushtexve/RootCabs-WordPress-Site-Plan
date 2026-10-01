@@ -1102,6 +1102,7 @@ export default function BookRide() {
             ]}
           />
           <h1 className="font-heading text-3xl md:text-4xl font-bold leading-[1.1] tracking-normal mb-3">Book Your Ride</h1>
+          <p className="mb-3 font-heading text-xl font-semibold text-white md:text-2xl">Your Ride, Our Responsibility</p>
           <p className="max-w-3xl text-gray-300">
             Plan your journey with ease and book your ride online for a safe,<br />comfortable and reliable travel experience.
           </p>
@@ -1872,7 +1873,7 @@ export default function BookRide() {
 
               <Card className="border-border">
                 <CardContent className="p-6">
-                  <h3 className="font-heading font-semibold mb-2">Why Book Your Ride With Root Cabs?</h3>
+                  <h3 className="font-heading font-semibold mb-2">Book Your Ride With Root Cabs</h3>
                   <p className="text-sm leading-6 text-muted-foreground mb-4">
                     From quick city rides to airport travel, Root Cabs makes it easy to book your ride with clear fares and dependable service.
                   </p>
@@ -1963,7 +1964,7 @@ export default function BookRide() {
           <div className="grid gap-6 rounded-lg border border-[#D7DDED] bg-white p-5 md:p-6 lg:grid-cols-2">
             <div className="flex min-w-0 flex-col">
               <img src="/assets/homepage-rootpartner-banner.webp" alt="Drive and earn with Root Cabs" className="h-52 w-full rounded-lg object-cover object-center sm:h-56 lg:h-64" />
-              <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Drive And Earn With Root Cabs</h2>
+              <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Drive More and Earn More</h2>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">
                 Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
               </p>

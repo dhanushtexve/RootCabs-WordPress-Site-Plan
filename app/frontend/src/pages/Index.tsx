@@ -428,7 +428,7 @@ export default function Index() {
                 <span>Top-Rated by Riders Across Tamil Nadu</span>
               </div>
               <h1 className="font-heading text-3xl md:text-4xl font-bold leading-[1.1] tracking-normal text-white">
-                Tamil Nadu's Trusted Cab Service For Every Journey
+                Tamil Nadu’s Trusted Cab Service for Your Travel
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-7 text-white/82 md:text-lg">
                 Book local rides, airport transfers and outstation trips through a reliable online taxi booking service across 10+ cities. Travel with verified drivers, transparent fares and dependable support.
@@ -477,7 +477,7 @@ export default function Index() {
             <span className="inline-flex rounded-full bg-[#E9EDFF] px-4 py-1.5 text-sm font-extrabold uppercase tracking-wide text-[#1E2A6E] shadow-sm">
               HOW ROOT CABS WORKS
             </span>
-          <h2 className="mt-4 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Booking Your Ride Is Quick And Simple</h2>
+          <h2 className="mt-4 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Book Your Ride in Simple Steps</h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-base">
             Use the Root Cabs online cab booking app to plan your trip in just a few steps.
           </p>
@@ -502,7 +502,7 @@ export default function Index() {
               <span className="inline-flex rounded-full bg-[#E9EDFF] px-4 py-1.5 text-sm font-extrabold uppercase tracking-wide text-[#1E2A6E] shadow-sm">
                 Our Services
               </span>
-            <h2 className="mt-4 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Explore Every Way To Travel With Root Cabs</h2>
+            <h2 className="mt-4 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Our Services for You</h2>
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-[#4B587C] md:text-base">
               From everyday city rides to long-distance travel, we've got you covered.
             </p>
@@ -591,7 +591,7 @@ export default function Index() {
               AIRPORT TRANSFERS
             </div>
             <h2 className="mt-5 max-w-xl font-heading text-3xl font-bold leading-tight text-[#1E2A6E] md:text-4xl">
-              Airport Rides Without The Last Minute Stress
+              We Made your Airport Travel Easier
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground md:text-base">
               Pre-book reliable airport pickups and drops with verified drivers and clear fares.
@@ -697,17 +697,17 @@ export default function Index() {
           <div className="grid gap-6 rounded-lg border border-[#D7DDED] bg-white p-5 lg:grid-cols-2 md:p-6">
             <div className="flex min-w-0 flex-col">
               <img src="/assets/homepage-rootpartner-banner.webp" alt="Drive and earn with Root Cabs" className="h-52 w-full rounded-lg object-cover object-center sm:h-56 lg:h-64" />
-              <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Drive And Earn With Root Cabs</h2>
+              <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Drive and Earn More With Us</h2>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">
                 Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
               </p>
             </div>
             <div className="flex min-w-0 flex-col">
               <img src="/assets/home-acting-driver.png" alt="Acting driver service" className="h-52 w-full rounded-lg object-cover object-top sm:h-56 lg:h-64" />
-              <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Need Someone To Take The Wheel Of Your Car?</h2>
+              <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Need an Acting Driver for Your Car?</h2>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                Hire a professional driver through Root Cabs for hospital visits, family functions, late-night returns,
-                business travel, and long-distance journeys.
+                Whether it’s a family function, hospital visit, late-night return, business trip, or a long drive,
+                book a professional acting driver and travel comfortably in your own car
               </p>
             </div>
             <div className="flex justify-center lg:col-span-2">

@@ -197,15 +197,15 @@ const kumbakonamServices = [
 ];
 
 const kumbakonamOutstationRoutes = [
-  { to: "Thanjavur", tag: "HERITAGE CITY" },
-  { to: "Trichy", tag: "MAJOR CITY" },
-  { to: "Chennai", tag: "MAJOR CITY" },
-  { to: "Puducherry", tag: "COASTAL CITY" },
-  { to: "Chidambaram", tag: "TEMPLE TOWN" },
-  { to: "Mayiladuthurai", tag: "NEARBY CITY" },
-  { to: "Darasuram", tag: "HERITAGE SITE" },
-  { to: "Gangaikonda Cholapuram", tag: "HERITAGE SITE" },
-  { to: "Vaitheeswaran Koil", tag: "TEMPLE TOWN" },
+  { to: "Thanjavur", distance: 42, price: "994", tag: "HERITAGE CITY" },
+  { to: "Trichy", distance: 98, price: "2506", tag: "MAJOR CITY" },
+  { to: "Chennai", distance: 279, price: "7393", tag: "MAJOR CITY" },
+  { to: "Puducherry", distance: 69, price: "1723", tag: "COASTAL CITY" },
+  { to: "Chidambaram", distance: 72, price: "1804", tag: "TEMPLE TOWN" },
+  { to: "Mayiladuthurai", distance: 35, price: "805", tag: "NEARBY CITY" },
+  { to: "Darasuram", distance: 4, price: "Not valid", tag: "HERITAGE SITE" },
+  { to: "Gangaikonda Cholapuram", distance: 35, price: "805", tag: "HERITAGE SITE" },
+  { to: "Vaitheeswaran Koil", distance: 48, price: "1156", tag: "TEMPLE TOWN" },
 ];
 
 const kumbakonamPickupSpots = [
@@ -332,18 +332,18 @@ const kumbakonamFaqs = [
 ];
 
 const salemOutstationRoutes = [
-  { to: "Yercaud", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/yercaud.webp" },
-  { to: "Erode", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/erode.webp" },
-  { to: "Namakkal", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/namakkal.webp" },
-  { to: "Coimbatore", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/coimbatore.webp" },
-  { to: "Bengaluru", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/bengaluru.webp" },
-  { to: "Chennai", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/chennai.webp" },
-  { to: "Dharmapuri", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/dharmapuri.webp" },
-  { to: "Trichy", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/trichy.webp" },
-  { to: "Mettur", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/mettur.webp" },
-  { to: "Ooty", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/ooty.webp" },
-  { to: "Kodaikanal", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/kodaikanal.webp" },
-  { to: "Hogenakkal", meta: "__ km | Sedan from ₹__", image: "/assets/salem-routes/hogenakkal.webp" },
+  { to: "Yercaud", meta: "31 km | Sedan from ₹697", image: "/assets/salem-routes/yercaud.webp" },
+  { to: "Erode", meta: "65 km | Sedan from ₹1,615", image: "/assets/salem-routes/erode.webp" },
+  { to: "Namakkal", meta: "55 km | Sedan from ₹1,345", image: "/assets/salem-routes/namakkal.webp" },
+  { to: "Coimbatore", meta: "167 km | Sedan from ₹4,369", image: "/assets/salem-routes/coimbatore.webp" },
+  { to: "Bengaluru", meta: "117 km | Sedan from ₹3,019", image: "/assets/salem-routes/bengaluru.webp" },
+  { to: "Chennai", meta: "348 km | Sedan from ₹9,256", image: "/assets/salem-routes/chennai.webp" },
+  { to: "Dharmapuri", meta: "63 km | Sedan from ₹1,561", image: "/assets/salem-routes/dharmapuri.webp" },
+  { to: "Trichy", meta: "145 km | Sedan from ₹3,775", image: "/assets/salem-routes/trichy.webp" },
+  { to: "Mettur", meta: "52 km | Sedan from ₹1,264", image: "/assets/salem-routes/mettur.webp" },
+  { to: "Ooty", meta: "217 km | Sedan from ₹5,719", image: "/assets/salem-routes/ooty.webp" },
+  { to: "Kodaikanal", meta: "266 km | Sedan from ₹7,042", image: "/assets/salem-routes/kodaikanal.webp" },
+  { to: "Hogenakkal", meta: "90 km | Sedan from ₹2,290", image: "/assets/salem-routes/hogenakkal.webp" },
 ] as const;
 
 const salemPickupSpots = [
@@ -635,18 +635,18 @@ const chennaiServices = [
 ] as const;
 
 const tiruppurOutstationRoutes = [
-  { from: "Coimbatore Airport", to: "Tiruppur", image: "/assets/salem-routes/coimbatore.webp" },
-  { from: "Tiruppur", to: "Coimbatore", image: "/assets/salem-routes/coimbatore.webp" },
-  { from: "Tiruppur", to: "Erode", image: "/assets/salem-routes/erode.webp" },
-  { from: "Tiruppur", to: "Pollachi", image: "/assets/salem-routes/coimbatore.webp" },
-  { from: "Tiruppur", to: "Salem", image: "/assets/salem-routes/trichy.webp" },
-  { from: "Tiruppur", to: "Mettupalayam", image: "/assets/salem-routes/ooty.webp" },
-  { from: "Tiruppur", to: "Chennai", image: "/assets/salem-routes/chennai.webp" },
-  { from: "Tiruppur", to: "Ooty", image: "/assets/salem-routes/ooty.webp" },
-  { from: "Tiruppur", to: "Palani", image: "/assets/salem-routes/coimbatore.webp" },
-  { from: "Tiruppur", to: "Madurai", image: "/assets/cities/madurai.webp" },
-  { from: "Tiruppur", to: "Trichy", image: "/assets/salem-routes/trichy.webp" },
-  { from: "Tiruppur", to: "Karur", image: "/assets/cities/trichy.webp" },
+  { from: "Tiruppur", to: "Coimbatore Airport", distance: 46, price: 1102, image: "/assets/salem-routes/coimbatore.webp" },
+  { from: "Tiruppur", to: "Coimbatore", distance: 55, price: 1345, image: "/assets/salem-routes/coimbatore.webp" },
+  { from: "Tiruppur", to: "Erode", distance: 54, price: 1318, image: "/assets/salem-routes/erode.webp" },
+  { from: "Tiruppur", to: "Pollachi", distance: 66, price: 1642, image: "/assets/salem-routes/coimbatore.webp" },
+  { from: "Tiruppur", to: "Salem", distance: 120, price: 3100, image: "/assets/salem-routes/trichy.webp" },
+  { from: "Tiruppur", to: "Mettupalayam", distance: 54, price: 1318, image: "/assets/salem-routes/ooty.webp" },
+  { from: "Tiruppur", to: "Chennai", distance: 459, price: 12253, image: "/assets/salem-routes/chennai.webp" },
+  { from: "Tiruppur", to: "Ooty", distance: 105, price: 2695, image: "/assets/salem-routes/ooty.webp" },
+  { from: "Tiruppur", to: "Palani", distance: 84, price: 2128, image: "/assets/salem-routes/coimbatore.webp" },
+  { from: "Tiruppur", to: "Madurai", distance: 180, price: 4720, image: "/assets/cities/madurai.webp" },
+  { from: "Tiruppur", to: "Trichy", distance: 174, price: 4558, image: "/assets/salem-routes/trichy.webp" },
+  { from: "Tiruppur", to: "Karur", distance: 88, price: 2236, image: "/assets/cities/trichy.webp" },
 ] as const;
 
 const tiruppurServices = [
@@ -1629,7 +1629,7 @@ function VelloreContentSection() {
   return (
     <section className="-mt-8 rounded-[2rem] bg-[#F5F7FB] px-6 pb-6 pt-0 md:-mx-8 md:px-8 md:pb-8 md:pt-0 lg:-mx-10 lg:-mt-10 lg:px-10 lg:pb-10 lg:pt-0">
       <div className="max-w-6xl">
-        <h2 className="mb-3 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Getting Around Vellore with Root Cabs</h2>
+        <h2 className="mb-3 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Make Every Trip Around Vellore Easy</h2>
         <p className="mb-8 max-w-3xl text-base text-[#5D6A90]">A practical guide to choosing the right ride for every trip across the city and beyond.</p>
         <div className="grid gap-6 lg:grid-cols-3">
           <article className="rounded-[2.25rem] border border-[#E4EAF5] bg-white p-6 text-base leading-8 text-[#111827] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1E2A6E] hover:bg-[#1E2A6E] hover:text-white hover:shadow-lg md:p-7">
@@ -1739,6 +1739,9 @@ function ChennaiServicesSection() {
 }
 
 function TiruppurServicesSection() {
+  const [showAll, setShowAll] = useState(false);
+  const visibleServices = showAll ? tiruppurServices : tiruppurServices.slice(0, 6);
+
   return (
     <section>
       <h2 className="mb-3 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
@@ -1748,7 +1751,7 @@ function TiruppurServicesSection() {
         Root Cabs helps you choose the right service for everyday travel, longer trips and other transport needs across Tiruppur.
       </p>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {tiruppurServices.map((service) => (
+        {visibleServices.map((service) => (
           <div
             key={service.title}
             className="group relative overflow-visible rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] p-5 pr-20 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md"
@@ -1761,6 +1764,17 @@ function TiruppurServicesSection() {
           </div>
         ))}
       </div>
+      {tiruppurServices.length > 6 && (
+        <div className="mt-6 flex justify-center">
+          <Button
+            type="button"
+            className="rounded-full bg-[#1E2A6E] px-6 font-semibold text-white hover:bg-[#273588]"
+            onClick={() => setShowAll((current) => !current)}
+          >
+            {showAll ? "See Less" : "See More"}
+          </Button>
+        </div>
+      )}
     </section>
   );
 }
@@ -2269,7 +2283,7 @@ function VelloreActingDriverSection() {
         </div>
         <div className="flex min-w-0 flex-col">
           <img src={assetPath("/assets/vellore-city-page/Acting Driver.png")} alt="Acting driver at the wheel of a customer's own car in Vellore" className="h-52 w-full rounded-lg object-cover object-top sm:h-56 lg:h-64" />
-          <h2 className="mt-5 font-heading text-xl font-bold leading-tight text-[#1E2A6E] md:text-2xl">Make Every Trip Easier with An Acting Driver</h2>
+          <h2 className="mt-5 font-heading text-xl font-bold leading-tight text-[#1E2A6E] md:text-2xl">Let an Acting Driver Make Your Travel Easy</h2>
           <p className="mt-3 text-sm leading-6 text-muted-foreground">
             Need someone to take the wheel of your car? Hire a driver in Vellore through Root Cabs for hospital
             visits, family functions, late-night returns, business travel, and long-distance journeys.
@@ -2391,7 +2405,9 @@ export function KumbakonamPage() {
               >
                 <div className="min-w-0">
                   <span className="font-heading text-base font-bold text-[#1E2A6E]">Kumbakonam to {route.to}</span>
-                  <p className="mt-2 text-sm text-[#4B587C]">__ km | Sedan from ₹__</p>
+                  <p className="mt-2 text-sm text-[#4B587C]">
+                    {route.distance} km | {route.price === "Not valid" ? "Not valid" : `₹${route.price}`}
+                  </p>
                   <span className="mt-3 inline-flex rounded-full bg-[#FFF3D8] px-3 py-1 text-[11px] font-extrabold text-[#B45F00]">
                     {route.tag}
                   </span>
@@ -2855,30 +2871,31 @@ export function CityPage({
               { label: city.name },
             ]}
           />
-          <div className={isTiruppur ? "my-auto max-w-2xl text-left" : usesExpandedCityHero ? `text-left ${isSalem ? "max-w-4xl" : isChennai ? "lg:w-[48%]" : "lg:w-[40%]"}` : undefined}>
-          <h1 className={`font-heading text-3xl md:text-4xl font-bold mb-4 ${isVellore || isCoimbatore || isSalem ? "lg:w-[760px]" : ""}`}>
+          <div className={isTiruppur ? "my-auto max-w-[660px] text-left" : usesExpandedCityHero ? `text-left ${isSalem ? "max-w-4xl" : isChennai ? "mt-6 md:mt-8 lg:w-[48%]" : isVellore ? "mt-6 md:mt-8 lg:w-[40%]" : "lg:w-[40%]"}` : undefined}>
+          <h1 className={`font-heading text-3xl font-bold leading-tight md:text-4xl ${isTiruppur ? "mb-5" : "mb-4"} ${isVellore || isCoimbatore || isSalem ? "lg:w-[760px]" : ""}`}>
             {isSalem ? (
               <>
                 Book a <strong>Taxi in Salem</strong>
               </>
-            ) : isVellore || isCoimbatore ? (
+            ) : isVellore ? (
+              "Trusted Taxi Service in Vellore"
+            ) : isCoimbatore ? (
               <>
-                <span className="block">{isVellore ? "Your Go-To Taxi Service in Vellore" : "Reliable Taxi Service in"}</span>{" "}
-                <span className="block">{isVellore ? "Whenever You Need a Ride" : "Coimbatore - Airport & City Rides"}</span>
+                <span className="block">Reliable Taxi Service in</span>{" "}
+                <span className="block">Coimbatore - Airport & City Rides</span>
               </>
             ) : isTiruppur ? (
               "Taxi Service in Tiruppur"
             ) : isChennai ? (
               <>
-                <span className="block lg:whitespace-nowrap">Reliable Cab Services In</span>
-                <span className="block lg:whitespace-nowrap">Chennai For Every Ride</span>
+                <span className="block lg:whitespace-nowrap">Your Trusted Cab Service in Chennai</span>
               </>
             ) : city.tagline}
           </h1>
-          <p className={`${isSalem ? "max-w-3xl text-base leading-7 text-white/80 md:text-lg" : "max-w-3xl text-lg text-gray-300"}`}>
+          <p className={`${isTiruppur ? "max-w-[640px] text-base leading-8 text-white md:text-lg" : isSalem ? "max-w-3xl text-base leading-7 text-white/80 md:text-lg" : "max-w-3xl text-lg text-gray-300"}`}>
             {isTiruppur ? (
               <>
-                We’re here to make your travel around Tiruppur simple and comfortable. With Root Cabs, you can easily find a <strong>taxi in Tiruppur</strong> for work, shopping, station drops, family visits, and your everyday travel.
+                We’re here to make your travel around Tiruppur simple and comfortable. With Root Cabs, you can easily find a taxi in Tiruppur for work, shopping, station drops, family visits, and your everyday travel.
               </>
             ) : isSalem ? (
               <>
@@ -2890,7 +2907,6 @@ export function CityPage({
               ? "From CMC appointments and VIT travel to railway station pickups and outstation trips, Root Cabs makes travelling around Vellore easier with clear fares and convenient booking."
               : city.description}
           </p>
-          </div>
           <div className={`${usesExpandedCityHero ? "mt-8 md:mt-10" : isTiruppur ? "mb-auto mt-8" : "mt-6"} flex flex-wrap gap-4`}>
             <Link to="/book-ride">
               <Button size="lg" className="bg-[#FFD700] hover:bg-[#E6C200] text-[#2E3A8C] font-bold cursor-pointer shadow-sm">
@@ -2902,6 +2918,7 @@ export function CityPage({
                 <Phone className="w-4 h-4 mr-2" /> {isTiruppur ? "Call 8608606474" : isVellore || isCoimbatore ? "Call us" : "Call now"}
               </Button>
             </a>
+          </div>
           </div>
         </div>
       </section>
@@ -3045,7 +3062,7 @@ export function CityPage({
                   </div>
                   <div className="relative z-10 flex w-[64%] min-w-0 flex-col items-start justify-center px-4 py-3 sm:px-5 lg:w-[60%]">
                     <h3 className="font-heading text-lg font-bold leading-tight text-[#111827] sm:text-xl">{route.from} to {route.to}</h3>
-                    <p className="mt-3 text-sm text-[#111827]">__ km | Sedan from ₹__</p>
+                    <p className="mt-3 text-sm text-[#111827]">{route.distance} km | Sedan from ₹{route.price.toLocaleString("en-IN")}</p>
                     <span className="mt-3 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors group-hover:bg-[#E6C200]">
                       Book Now <ArrowRight className="h-3.5 w-3.5" />
                     </span>

@@ -1045,7 +1045,7 @@ export function ServicesHub() {
           <div className="grid gap-6 rounded-lg border border-[#D7DDED] bg-white p-5 md:p-6 lg:grid-cols-2">
             <div className="flex min-w-0 flex-col">
               <img src="/assets/homepage-rootpartner-banner.webp" alt="Drive and earn with Root Cabs" className="h-52 w-full rounded-lg object-cover object-center sm:h-56 lg:h-64" />
-              <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Drive And Earn With Root Cabs</h2>
+              <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Drive With Us and Earn More</h2>
               <p className="mt-3 text-sm leading-6 text-[#4B587C]">
                 Earn up to {"\u20B9"}40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
               </p>
@@ -1084,7 +1084,7 @@ export function ServicesHub() {
                   GET THE APP
                 </span>
                 <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl lg:whitespace-nowrap">
-                  Travel Made Simple with the Root Cabs App
+                  Book Your Ride Anytime with Root Cabs
                 </h2>
                 <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
                   Book local, one-way and outstation rides, choose your preferred vehicle and manage every trip from one place.
@@ -1296,7 +1296,7 @@ export function ServicePage() {
             />
             <div className="mb-5 max-w-3xl">
               <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
-                Local Taxi Service for Everyday Travel
+                Local Taxi Service for Your Daily Needs
               </h1>
               <p className="mt-3 text-sm font-semibold text-white/78">
                 Starting at ₹100 · Available across multiple cities in Tamil Nadu
@@ -1341,16 +1341,15 @@ export function ServicePage() {
             />
             <div className="mb-5 max-w-3xl">
               <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
-                Airport Taxi Service for Stress-Free Transfers
+                Airport Taxi Service for Easy Pickup and Drop
               </h1>
               <p className="mt-3 text-sm font-semibold text-white/78">
                 Starting at ₹499. Available for airport pickups and drop-offs
               </p>
             </div>
             <p className="max-w-3xl text-base leading-7 text-white/82 md:text-lg">
-              Heading to the airport or arriving after a long flight? Root Cabs makes it<br /> easy to find an{" "}
-              airport taxi near me with convenient pickups, clear fares,<br /> and dependable rides for your
-              airport journey.
+              Your airport travel should be simple and on time. Our airport taxi service offers reliable pickups and
+              drops, clear fares, and comfortable rides whenever you’re travelling to or from the airport.
             </p>
             <div className="mt-12 flex flex-col gap-3 sm:flex-row md:mt-16">
               <Link to="/book-ride">
@@ -1386,7 +1385,7 @@ export function ServicePage() {
             />
             <div className="mb-5 max-w-3xl">
               <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
-                Outstation Taxi for Comfortable<br /> Long-Distance Travel
+                Outstation Taxi for Your Travel Plans
               </h1>
               <p className="mt-3 text-sm font-semibold text-white/78">
                 Starting at ₹300. Available for long-distance travel across major cities
@@ -1431,7 +1430,7 @@ export function ServicePage() {
             />
             <div className="mb-5 max-w-3xl">
               <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
-                Professional Acting Driver for <br />Your Own Car
+                Acting Driver to Drive Your Car
               </h1>
               <p className="mt-3 text-sm font-semibold text-white/78">
                 Starting at ₹200. Available for local and outstation travel
@@ -1476,7 +1475,7 @@ export function ServicePage() {
             />
             <div className="mb-5 max-w-3xl">
               <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
-                Parcel Service for Quick and Easy Deliveries
+                Parcel Service for Your Door-to-Door Deliveries
               </h1>
               <p className="mt-3 text-sm font-semibold text-white/78">
                 Starting at ₹45. Available for quick city deliveries
@@ -1521,7 +1520,7 @@ export function ServicePage() {
             />
             <div className="mb-5 max-w-3xl">
               <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
-                Auto Rides for Everyday City Travel
+                Auto Rides for Your Daily Plans
               </h1>
               <p className="mt-3 text-sm font-semibold text-white/78">
                 Starting at ₹49 · Available for short city trips
@@ -1738,7 +1737,7 @@ export function ServicePage() {
 
                     <div>
                       <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
-                        Benefits of Our Online Auto Booking with Root Cabs
+                        Benefits of Online Auto Booking With Us
                       </h2>
                       <div className="grid gap-3 sm:grid-cols-2">
                         {autoServiceBenefits.map((benefit) => (
@@ -1760,7 +1759,7 @@ export function ServicePage() {
                 {isActingDriverService && (
                   <div className="mt-10">
                     <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
-                      Why Choose Root Cabs When You Need an Acting Driver?
+                      Why Choose Our Acting Driver Service?
                     </h2>
                     <div className="rounded-xl border border-[#D7DDED] bg-white p-5 text-base leading-7 text-[#26335F] shadow-sm md:p-6 md:text-lg">
                       <p>
@@ -1841,7 +1840,7 @@ export function ServicePage() {
                 {isAirportTaxiService && (
                   <div className="mt-10">
                     <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
-                      Why Root Cabs Is A Better Choice For Airport Taxi?
+                      Why Root Cabs Is A Better Option For Airport Taxi?
                     </h2>
                     <div className="rounded-xl border border-[#D7DDED] bg-white p-5 text-base leading-7 text-[#26335F] shadow-sm md:p-6 md:text-lg">
                       <p>
@@ -2217,7 +2216,7 @@ export function ServicePage() {
             {isLocalTaxiService && (
               <div>
                 <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
-                  Why Choose Root Cabs For Your Local Taxi?
+                  Why Choose Root Cabs For Your Local Rides?
                 </h2>
                 <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
                   <div className="rounded-xl border border-[#D7DDED] bg-white p-5 text-base leading-7 text-[#26335F] shadow-sm md:p-6 md:text-lg">
@@ -2331,7 +2330,7 @@ export function ServicePage() {
 
                 <div>
                   <h2 className="font-heading text-2xl md:text-3xl font-bold mb-5 text-[#1E2A6E]">
-                    How Root Cabs Auto Works?
+                    How Our Online Auto Booking Works
                   </h2>
                   <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                     {autoBookingSteps.map((step) => (
@@ -2414,7 +2413,7 @@ export function ServicePage() {
 
                 <div>
                   <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
-                    Payment
+                    Payment Method
                   </h2>
                   <div className="rounded-xl border border-[#D7DDED] bg-white p-5 text-base leading-7 text-[#26335F] shadow-sm md:p-6 md:text-lg">
                     <p>
@@ -2637,7 +2636,7 @@ export function ServicePage() {
                 <div className="grid gap-6 rounded-lg border border-[#D7DDED] bg-white p-5 md:p-6 lg:grid-cols-2">
                   <div className="flex min-w-0 flex-col">
                     <img src="/assets/homepage-rootpartner-banner.webp" alt="Drive and earn with Root Cabs" className="h-52 w-full rounded-lg object-cover object-center sm:h-56 lg:h-64" />
-                    <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Drive and Earn with Root Cabs</h2>
+                    <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Drive and Earn with Every Trip</h2>
                     <p className="mt-3 text-sm leading-6 text-[#4B587C]">
                       Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
                     </p>
@@ -2645,7 +2644,7 @@ export function ServicePage() {
                   <div className="flex min-w-0 flex-col">
                     <img src="/assets/home-acting-driver.png" alt="Acting driver service" className="h-52 w-full rounded-lg object-cover object-top sm:h-56 lg:h-64" />
                     <h2 className="mt-5 font-heading text-xl font-bold leading-tight text-[#1E2A6E] md:text-2xl">
-                    Let A Professional Driver Handle Your Airport Trip
+                    Let an Acting Driver Take You to the Airport
                     </h2>
                     <p className="mt-3 text-sm leading-6 text-muted-foreground">
                     Heading to the airport in your own car can be easier when someone else takes the wheel. Root Cabs
@@ -2677,7 +2676,7 @@ export function ServicePage() {
                   <div className="flex min-w-0 flex-col">
                     <img src="/assets/home-acting-driver.png" alt="Acting driver service" className="h-52 w-full rounded-lg object-cover object-top sm:h-56 lg:h-64" />
                     <h2 className="mt-5 font-heading text-xl font-bold leading-tight text-[#1E2A6E] md:text-2xl">
-                    Let an Acting Driver Handle the Long Drive
+                    Let an Acting Driver Handle Your Family Trip
                     </h2>
                     <p className="mt-3 text-sm leading-6 text-muted-foreground">
                     Planning an outstation journey in your own car? Root Cabs lets you{" "}
@@ -2709,7 +2708,7 @@ export function ServicePage() {
                   <div className="flex min-w-0 flex-col">
                     <img src="/assets/home-acting-driver.png" alt="Acting driver service" className="h-52 w-full rounded-lg object-cover object-top sm:h-56 lg:h-64" />
                     <h2 className="mt-5 font-heading text-xl font-bold leading-tight text-[#1E2A6E] md:text-2xl">
-                    Let an Acting Driver Take the Wheel
+                    Your Car, Our Acting Driver
                     </h2>
                     <p className="mt-3 text-sm leading-6 text-muted-foreground">
                     Travelling in your own car but prefer not to drive? Root Cabs helps you get a driver for{" "}
@@ -2744,7 +2743,7 @@ export function ServicePage() {
                   <div className="flex min-w-0 flex-col">
                     <img src="/assets/home-acting-driver.png" alt="Acting driver service" className="h-52 w-full rounded-lg object-cover object-top sm:h-56 lg:h-64" />
                     <h2 className="mt-5 font-heading text-xl font-bold leading-tight text-[#1E2A6E] md:text-2xl">
-                    Travel in Your Own Car with a Trusted Driver
+                    Travel Stress-Free with Our Acting Driver
                     </h2>
                     <p className="mt-3 text-sm leading-6 text-muted-foreground">
                     For long drives, family trips, late-night returns, or days when you simply prefer not to drive,
@@ -2775,7 +2774,7 @@ export function ServicePage() {
                   <div className="flex min-w-0 flex-col">
                     <img src="/assets/home-acting-driver.png" alt="Acting driver service" className="h-52 w-full rounded-lg object-cover object-top sm:h-56 lg:h-64" />
                     <h2 className="mt-5 font-heading text-xl font-bold leading-tight text-[#1E2A6E] md:text-2xl">
-                    Use Your Own Car Without Taking the Wheel
+                    Make Your Travel Easier with Our Acting Driver
                     </h2>
                     <p className="mt-3 text-sm leading-6 text-muted-foreground">
                     Root Cabs lets you travel in your own car while an experienced acting driver handles the driving.
@@ -2899,11 +2898,10 @@ export function ServicePage() {
                   </div>
                   <div className="flex min-w-0 flex-col">
                     <img src="/assets/home-acting-driver.png" alt="Acting driver service" className="h-52 w-full rounded-lg object-cover object-top sm:h-56 lg:h-64" />
-                    <h2 className="mt-5 font-heading text-xl font-bold leading-tight text-[#1E2A6E] md:text-2xl">Travel In Your Own Car With A Professional Driver</h2>
+                    <h2 className="mt-5 font-heading text-xl font-bold leading-tight text-[#1E2A6E] md:text-2xl">Book an Acting Driver for Your Car</h2>
                     <p className="mt-3 text-sm leading-6 text-muted-foreground">
-                      Prefer travelling in your own car without taking the wheel? Root Cabs gives you the option to hire
-                      an experienced acting driver for late-night returns, hospital visits, family functions, business
-                      travel, and longer journeys. It also works well for{" "}
+                      Root Cabs gives you the option to hire an experienced acting driver for late-night returns,
+                      hospital visits, family functions, business travel, and longer journeys. It also works well for{" "}
                       <Link to="/services/airport-taxi" className="font-semibold text-[#1E2A6E] hover:underline">
                         local airport transfers
                       </Link>{" "}
