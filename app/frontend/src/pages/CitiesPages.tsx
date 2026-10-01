@@ -2518,14 +2518,14 @@ export function KumbakonamPage() {
         <div className="absolute inset-0 hidden bg-black/40 lg:block" />
         <div className="relative z-10 mx-auto max-w-screen-xl px-4 pb-24 md:pb-28">
           <PageBreadcrumb
-            className="mb-4 pt-8 text-white/70 md:pt-10"
+            className="pt-8 md:pt-10"
             items={[
               { label: "Home", href: "/" },
               { label: "Cities", href: "/cities" },
               { label: "Kumbakonam" },
             ]}
           />
-          <div className="lg:w-[46%]">
+          <div className="mt-6 lg:w-[46%] md:mt-8">
             <h1 className="font-heading text-3xl font-bold md:text-4xl">
               <strong>Best Taxi Service in Kumbakonam</strong> for Local and Outstation Travel
             </h1>
@@ -2539,7 +2539,7 @@ export function KumbakonamPage() {
                 </Button>
               </Link>
               <a href="tel:8608606474">
-                <Button size="lg" className="border border-white/30 bg-white/10 text-white hover:bg-white/15">
+                <Button size="lg" className="border border-white !bg-white !text-black hover:!bg-gray-100 hover:!text-black">
                   <Phone className="mr-2 h-4 w-4" /> Call Us
                 </Button>
               </a>
@@ -3063,15 +3063,15 @@ export function CityPage({
         <div className="absolute inset-0 bg-black/40" />
         <div className={`relative z-10 max-w-screen-xl mx-auto px-4 ${usesExpandedCityHero ? "pb-24 md:pb-28" : ""} ${isTiruppur ? "flex min-h-[420px] flex-col md:min-h-[500px]" : ""}`}>
           <PageBreadcrumb
-            className={`${usesExpandedCityHero ? "pt-8 md:pt-10" : "mb-4 text-white/70"} ${isTiruppur ? "mb-8" : ""}`}
+            className="pt-8 md:pt-10"
             items={[
               { label: "Home", href: "/" },
               { label: "Cities", href: "/cities" },
               { label: city.name },
             ]}
           />
-          <div className={isTiruppur ? "my-auto max-w-[660px] text-left" : usesExpandedCityHero ? `text-left ${isSalem ? "max-w-4xl" : isChennai ? "mt-6 md:mt-8 lg:w-[48%]" : isVellore ? "mt-6 md:mt-8 lg:w-[40%]" : "lg:w-[40%]"}` : undefined}>
-          <h1 className={`font-heading text-3xl font-bold leading-tight md:text-4xl ${isTiruppur ? "mb-5" : "mb-4"} ${isVellore || isCoimbatore || isSalem ? "lg:w-[760px]" : ""}`}>
+          <div className={isTiruppur ? "my-auto max-w-[660px] text-left" : usesExpandedCityHero ? `text-left ${isSalem ? "mt-6 max-w-4xl md:mt-8" : isChennai ? "mt-6 md:mt-8 lg:w-[48%]" : isVellore ? "mt-6 md:mt-8 lg:w-[40%]" : isTrichy ? "mt-6 md:mt-8 lg:w-full" : "lg:w-[40%]"}` : undefined}>
+          <h1 className={`font-heading text-3xl font-bold leading-tight md:text-4xl ${isTiruppur ? "mb-5" : "mb-4"} ${isVellore || isCoimbatore || isSalem ? "lg:w-[760px]" : isTrichy ? "md:whitespace-nowrap" : ""}`}>
             {isSalem ? (
               <>
                 Book a <strong>Taxi in Salem</strong>
@@ -3089,7 +3089,7 @@ export function CityPage({
               "Best Taxi Service in Trichy"
             ) : isChennai ? (
               <>
-                <span className="block lg:whitespace-nowrap">Your Trusted Cab Service in Chennai</span>
+                <span className="block lg:whitespace-nowrap">Your Trusted Cab Service <br />in Chennai</span>
               </>
             ) : city.tagline}
           </h1>
@@ -3100,7 +3100,7 @@ export function CityPage({
               </>
             ) : isTrichy ? (
               <>
-                Choose Root Cabs when you need a Trichy cab service for your daily travel. We keep every ride simple with verified drivers, fair app fares and 24/7 support, so you can travel around Trichy or plan a longer trip with confidence.
+                Choose Root Cabs when you need a Trichy cab service for your daily travel.<br /> keep every ride simple with verified drivers, fair app fares and 24/7 support,<br /> you can travel around Trichy or plan a longer trip with confidence.
               </>
             ) : isSalem ? (
               <>
@@ -3119,8 +3119,8 @@ export function CityPage({
               </Button>
             </Link>
             <a href={`tel:${isChennai || isSalem || isTiruppur || isTrichy ? "8608606474" : companyInfo.phone}`}>
-              <Button size="lg" className="border border-white/30 bg-white/10 text-white hover:bg-white/15 cursor-pointer shadow-sm">
-                <Phone className="w-4 h-4 mr-2" /> {isTiruppur || isTrichy ? "Call 8608606474" : isVellore || isCoimbatore ? "Call us" : "Call now"}
+              <Button size="lg" className="border border-white !bg-white !text-black hover:!bg-gray-100 hover:!text-black cursor-pointer shadow-sm">
+                <Phone className="w-4 h-4 mr-2" /> Call Us
               </Button>
             </a>
           </div>

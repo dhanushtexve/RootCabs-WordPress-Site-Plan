@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Phone, Mail, MapPin, Clock, Shield, Star, Users, Percent, Wallet, GraduationCap, Car, CheckCircle, Building, Hotel, Briefcase, Calendar, MessageSquare, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -272,8 +272,8 @@ export function BusinessPage() {
               </p>
               <div className="mt-6 flex flex-wrap justify-center gap-3">
                 <a href={`tel:${companyInfo.phone}`}>
-                  <Button className="min-w-[160px] bg-[#1E2A6E] px-5 py-3 font-semibold text-white hover:bg-[#2A3A8A] cursor-pointer">
-                    Call Now
+                  <Button className="min-w-[160px] !bg-white px-5 py-3 font-semibold !text-black hover:!bg-gray-100 hover:!text-black cursor-pointer">
+                    Call Us
                   </Button>
                 </a>
                 <a href={`mailto:${companyInfo.email}`}>
@@ -897,7 +897,7 @@ export function BlogPage() {
                 </p>
                 <div className="mt-5 grid gap-3">
                   <a href={`tel:${companyInfo.phone}`}>
-                    <Button className="w-full justify-start bg-[#FFD700] text-[#1E2A6E] hover:bg-[#ffe14d]">
+                    <Button className="w-full justify-start !bg-white !text-black hover:!bg-gray-100 hover:!text-black">
                       <Phone className="mr-2 h-4 w-4" />
                       Call Us
                     </Button>

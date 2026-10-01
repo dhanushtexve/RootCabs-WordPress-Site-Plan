@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Car, Plane, Navigation, User, Package, Bike, CheckCircle, ArrowRight, Phone, MapPinned, ShieldAlert, Headphones } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -1314,9 +1314,9 @@ export function ServicePage() {
                 </Button>
               </Link>
               <a href={`tel:${companyInfo.phone.replace(/\s+/g, "")}`}>
-                <Button className="h-12 w-full rounded-lg border border-white/30 bg-transparent px-6 font-bold text-white shadow-sm hover:bg-white/10 sm:w-auto">
+                <Button className="h-12 w-full rounded-lg border border-white !bg-white px-6 font-bold !text-black shadow-sm hover:!bg-gray-100 sm:w-auto">
                   <Phone className="mr-2 h-4 w-4" />
-                  Call Us Now
+                  Call Us
                 </Button>
               </a>
             </div>
@@ -1358,9 +1358,9 @@ export function ServicePage() {
                 </Button>
               </Link>
               <a href={`tel:${companyInfo.phone.replace(/\s+/g, "")}`}>
-                <Button className="h-12 w-full rounded-lg border border-white/30 bg-transparent px-6 font-bold text-white shadow-sm hover:bg-white/10 sm:w-auto">
+                <Button className="h-12 w-full rounded-lg border border-white !bg-white px-6 font-bold !text-black shadow-sm hover:!bg-gray-100 sm:w-auto">
                   <Phone className="mr-2 h-4 w-4" />
-                  Call Us Now
+                  Call Us
                 </Button>
               </a>
             </div>
@@ -1403,9 +1403,9 @@ export function ServicePage() {
                 </Button>
               </Link>
               <a href={`tel:${companyInfo.phone.replace(/\s+/g, "")}`}>
-                <Button className="h-12 w-full rounded-lg border border-white/30 bg-transparent px-6 font-bold text-white shadow-sm hover:bg-white/10 sm:w-auto">
+                <Button className="h-12 w-full rounded-lg border border-white !bg-white px-6 font-bold !text-black shadow-sm hover:!bg-gray-100 sm:w-auto">
                   <Phone className="mr-2 h-4 w-4" />
-                  Call Us Now
+                  Call Us
                 </Button>
               </a>
             </div>
@@ -1448,9 +1448,9 @@ export function ServicePage() {
                 </Button>
               </Link>
               <a href={`tel:${companyInfo.phone.replace(/\s+/g, "")}`}>
-                <Button className="h-12 w-full rounded-lg border border-white/30 bg-transparent px-6 font-bold text-white shadow-sm hover:bg-white/10 sm:w-auto">
+                <Button className="h-12 w-full rounded-lg border border-white !bg-white px-6 font-bold !text-black shadow-sm hover:!bg-gray-100 sm:w-auto">
                   <Phone className="mr-2 h-4 w-4" />
-                  Call Us Now
+                  Call Us
                 </Button>
               </a>
             </div>
@@ -1493,9 +1493,9 @@ export function ServicePage() {
                 </Button>
               </Link>
               <a href={`tel:${companyInfo.phone.replace(/\s+/g, "")}`}>
-                <Button className="h-12 w-full rounded-lg border border-white/30 bg-transparent px-6 font-bold text-white shadow-sm hover:bg-white/10 sm:w-auto">
+                <Button className="h-12 w-full rounded-lg border border-white !bg-white px-6 font-bold !text-black shadow-sm hover:!bg-gray-100 sm:w-auto">
                   <Phone className="mr-2 h-4 w-4" />
-                  Call Us Now
+                  Call Us
                 </Button>
               </a>
             </div>
@@ -1537,9 +1537,9 @@ export function ServicePage() {
                 </Button>
               </Link>
               <a href={`tel:${companyInfo.phone.replace(/\s+/g, "")}`}>
-                <Button className="h-12 w-full rounded-lg border border-white/30 bg-transparent px-6 font-bold text-white shadow-sm hover:bg-white/10 sm:w-auto">
+                <Button className="h-12 w-full rounded-lg border border-white !bg-white px-6 font-bold !text-black shadow-sm hover:!bg-gray-100 sm:w-auto">
                   <Phone className="mr-2 h-4 w-4" />
-                  Call Us Now
+                  Call Us
                 </Button>
               </a>
             </div>
@@ -3582,8 +3582,6 @@ export function ServicePage() {
     </div>
   );
 }
-
-
 
 
 

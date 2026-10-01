@@ -501,7 +501,7 @@ const DriverEarningsPage = () => {
                 </p>
                 <div className="mt-5 grid gap-3">
                   <a href={`tel:${companyInfo.phone}`}>
-                    <Button className="w-full justify-start bg-[#FFD700] text-[#1E2A6E] hover:bg-[#ffe14d]">
+                    <Button className="w-full justify-start !bg-white !text-black hover:!bg-gray-100 hover:!text-black">
                       <Phone className="mr-2 h-4 w-4" />
                       Call Us
                     </Button>

@@ -440,8 +440,8 @@ export default function Index() {
                   </Button>
                 </Link>
                 <a href={`tel:${companyInfo.phone}`}>
-                  <Button size="lg" variant="outline" className="h-12 rounded-lg border-white/30 px-7 text-base font-semibold text-white hover:bg-white/10 !bg-transparent">
-                    <Phone className="w-4 h-4 mr-2" /> Call Now
+                  <Button size="lg" variant="outline" className="h-12 rounded-lg border-white !bg-white px-7 text-base font-semibold !text-black hover:!bg-gray-100 hover:!text-black">
+                    <Phone className="w-4 h-4 mr-2" /> Call Us
                   </Button>
                 </a>
               </div>
