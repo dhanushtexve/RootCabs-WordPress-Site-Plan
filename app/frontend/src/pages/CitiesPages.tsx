@@ -36,6 +36,57 @@ const serviceLabelMap: Record<string, string> = {
   "bike-taxi": "Bike Taxi",
 };
 
+const trichyServices = [
+  {
+    slug: "local-taxi",
+    title: "Local Taxi",
+    description: "Travel comfortably for office, shopping, hospital visits, station pickups, family outings, or other trips around Trichy. Our taxi in Trichy service gives you a simple way to reach places across the city.",
+    icon: <img src={assetPath("/assets/service-icons/local.webp")} alt="Local Taxi service icon" className="h-8 w-8 object-contain" />,
+  },
+  {
+    slug: "outstation",
+    title: "Outstation Taxi",
+    description: "Plan your journey outside the city for holidays, family visits, business travel, temple trips, or weekend plans. Our outstation service gives you a comfortable cab for travelling to destinations beyond Trichy.",
+    icon: <img src={assetPath("/assets/service-icons/outstation.webp")} alt="Outstation Taxi service icon" className="h-8 w-8 object-contain" />,
+  },
+  {
+    slug: "one-way-taxi",
+    title: "One-Way Taxi",
+    description: "Our one way taxi Trichy service lets you book only the trip you need, making it convenient for airport transfers, family visits, and long journeys.",
+    icon: <img src={assetPath("/assets/service-icons/one-way.webp")} alt="One-Way Taxi service icon" className="h-8 w-8 object-contain" />,
+  },
+  {
+    slug: "hourly-package",
+    title: "Hourly Package",
+    description: "Keep a cab available when your day includes several stops around Trichy. Choose an hourly package for meetings, shopping, family plans, appointments, or city visits without booking a separate ride each time.",
+    icon: <img src={assetPath("/assets/service-icons/hourly-package.webp")} alt="Hourly Package service icon" className="h-8 w-8 object-contain" />,
+  },
+  {
+    slug: "acting-driver",
+    title: "Acting Driver",
+    description: "Enjoy travelling in your own car while a professional driver takes care of the driving. This service works well for functions, long drives, late-night travel, family occasions, or whenever you need a driver.",
+    icon: <img src={assetPath("/assets/service-icons/acting-driver.webp")} alt="Acting Driver service icon" className="h-8 w-8 object-contain" />,
+  },
+  {
+    slug: "auto",
+    title: "Auto Rickshaw",
+    description: "Choose an auto for short rides around Trichy, including market visits, station trips, shopping, work, or nearby travel. It is an easy option when you need to get around the city for everyday plans.",
+    icon: <img src={assetPath("/assets/service-icons/auto.webp")} alt="Auto Rickshaw service icon" className="h-8 w-8 object-contain" />,
+  },
+  {
+    slug: "bike-taxi",
+    title: "Bike Taxi",
+    description: "Book a bike taxi for short trips to work, college, shops, stations, or nearby places. It gives you a convenient option when you need a ride around Trichy.",
+    icon: <img src={assetPath("/assets/service-icons/bike-taxi.webp")} alt="Bike Taxi service icon" className="h-8 w-8 object-contain" />,
+  },
+  {
+    slug: "parcel-delivery",
+    title: "Parcel Delivery",
+    description: "Send documents, packages, gifts, or other small items to someone across Trichy without travelling there yourself. Our parcel delivery service helps you send what you need while you carry on with your day.",
+    icon: <img src={assetPath("/assets/service-icons/parcel.webp")} alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
+  },
+];
+
 const cityCardSummaryMap: Record<string, string> = {
   Chennai: "Move around Chennai easily for work, shopping, daily commutes and outstation journeys.",
   Vellore: "Get dependable rides across Vellore for local trips, hospital visits and long-distance travel.",
@@ -152,6 +203,21 @@ const salemServiceAssetIconMap: Record<(typeof salemServices)[number]["slug"], R
   "bike-taxi": <img src={assetPath("/assets/service-icons/bike-taxi.webp")} alt="Bike Taxi service icon" className="h-8 w-8 object-contain" />,
   "parcel-delivery": <img src={assetPath("/assets/service-icons/parcel.webp")} alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
 };
+
+const trichyOutstationRoutes = [
+  { to: "Chennai", distance: 326, price: 8662, tag: "Most Searched" },
+  { to: "Kumbakonam", distance: 96, price: 2452, tag: "TEMPLE CITY" },
+  { to: "Thanjavur", distance: 57, price: 1399, tag: "NEARBY CITY" },
+  { to: "Madurai", distance: 131, price: 3397, tag: "POPULAR ROUTE" },
+  { to: "Pondicherry", distance: 134, price: 3478, tag: "COASTAL ROUTE" },
+  { to: "Salem", distance: 144, price: 3748, tag: "CITY ROUTE" },
+  { to: "Coimbatore", distance: 216, price: 5692, tag: "MAJOR CITY" },
+  { to: "Vellore", distance: 271, price: 7177, tag: "LONG-DISTANCE ROUTE" },
+  { to: "Tiruvannamalai", distance: 185, price: 4855, tag: "TEMPLE CITY" },
+  { to: "Rameswaram", distance: 235, price: 6205, tag: "TEMPLE ROUTE" },
+  { to: "Bengaluru", distance: 325, price: 8635, tag: "INTERSTATE ROUTE" },
+  { to: "Palani", distance: 164, price: 4288, tag: "TEMPLE ROUTE" },
+];
 
 const kumbakonamServices = [
   {
@@ -1385,6 +1451,49 @@ function CityFaqSection({ city }: { city: (typeof cities)[number] }) {
   );
 }
 
+function TrichyFaqSection() {
+  const faqs = [
+    {
+      q: "Which is the best taxi service in Trichy?",
+      a: <>Root Cabs is a convenient choice for customers looking for a <strong>taxi service in Trichy</strong>. You can book local and outstation rides with verified drivers, on-time pickups, no extra fare and 24/7 customer support.</>,
+    },
+    {
+      q: "Are cabs available 24/7 in Trichy?",
+      a: "Yes. Root Cabs is available 24 hours a day in Trichy. You can book a cab for early-morning travel, late-night rides, railway station drops, airport trips and everyday travel.",
+    },
+    {
+      q: "How do I book a cab in Trichy?",
+      a: <>You can book through the Root Cabs app or directly from our website. Enter your pickup and destination, choose the service and vehicle you need, and confirm your <strong>cab booking in Trichy</strong> in a few simple steps.</>,
+    },
+    {
+      q: "What vehicle types are available for outstation trips from Trichy?",
+      a: "You can choose from Mini, Sedan, SUV and MUV for outstation trips. Pick a vehicle based on how many people are travelling, your luggage and the space you need for the journey.",
+    },
+    {
+      q: "Can I book a one-way cab from Trichy to another city?",
+      a: "Yes. You can book a one-way cab from Trichy to Chennai and other available destinations without booking a return journey. This works well when you only need travel in one direction.",
+    },
+  ];
+
+  return (
+    <section className="rounded-2xl bg-muted/50 px-4 pb-14 pt-8 md:px-6 md:pb-16 md:pt-10">
+      <div className="mx-auto max-w-4xl">
+        <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl">Frequently Asked Questions</h2>
+        <Accordion type="single" collapsible className="mt-10 space-y-3">
+          {faqs.map((item, index) => (
+            <AccordionItem key={item.q} value={`trichy-faq-${index}`} className="rounded-xl border border-[#E2E8F3] bg-white px-5 shadow-sm">
+              <AccordionTrigger className="cursor-pointer text-left text-sm font-semibold text-[#1E2A6E] hover:no-underline md:text-base">
+                {item.q}
+              </AccordionTrigger>
+              <AccordionContent className="pb-5 text-sm leading-7 text-muted-foreground">{item.a}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+    </section>
+  );
+}
+
 function TiruppurFaqSection() {
   const faqs = [
     {
@@ -1992,6 +2101,53 @@ function SalemTrustSection() {
   );
 }
 
+function TrichyTrustSection() {
+  const trustItems = [
+    {
+      title: "On-Time Pickup",
+      text: "Your time matters to us. Drivers are expected to reach your pickup point on time, so you can start your journey as planned.",
+      iconSrc: "/assets/service-benefits/shared/On-Time Rides .webp",
+    },
+    {
+      title: "No Extra Fare",
+      text: "Pay only the fare for your booked ride. Our drivers will not ask you for extra fare during or after your journey.",
+      iconSrc: "/assets/service-benefits/outstation/Clear Fares.webp",
+    },
+    {
+      title: "No Last-Minute Cancellations",
+      text: "A confirmed ride should stay confirmed. We work to avoid last-minute cancellations that can leave you waiting when it is time to travel.",
+      iconSrc: "/assets/service-benefits/shared/No Last-Minute Cancellations.webp",
+    },
+    {
+      title: "Verified Drivers",
+      text: "Drivers are verified before they start taking bookings, giving you more confidence when travelling for work, with family, or during late hours.",
+      iconSrc: "/assets/service-benefits/shared/Verified Drivers.webp",
+    },
+  ];
+
+  return (
+    <section className="rounded-2xl bg-muted/50 p-6 md:p-8">
+      <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+        Why Customers Choose Root Cabs in Trichy?
+      </h2>
+      <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+        Our <strong>taxi service in Trichy</strong> is focused on giving you a dependable ride, with drivers who value your time and make your journey comfortable.
+      </p>
+      <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        {trustItems.map((item) => (
+          <div key={item.title} className="rounded-xl border border-[#E2E8F3] bg-white p-5 shadow-sm">
+            <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-xl bg-[#EEF3FF]">
+              <img src={assetPath(item.iconSrc)} alt="" className="h-9 w-9 object-contain" />
+            </div>
+            <h3 className="mt-4 font-heading text-base font-bold text-[#1E2A6E]">{item.title}</h3>
+            <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function SalemDriverSection() {
   return (
     <section className="rounded-2xl bg-[#F3F5FA] px-5 pb-6 pt-3 md:px-8 md:pb-8 md:pt-4">
@@ -2015,6 +2171,41 @@ function SalemDriverSection() {
               <strong className="font-bold text-[#1E2A6E]">acting driver in Salem</strong> and travel in your own car while the driver takes care of the drive.
             </p>
           </div>
+        </div>
+        <div className="mt-6 flex justify-center">
+          <Link to="/drivers">
+            <Button className="bg-[#1E2A6E] text-white hover:bg-[#17225E]">
+              Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TrichyDriverSection() {
+  return (
+    <section className="rounded-2xl bg-[#F3F5FA] px-5 pb-6 pt-3 md:px-8 md:pb-8 md:pt-4">
+      <h2 className="text-center font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+        Driving with Root Cabs in Trichy
+      </h2>
+      <div className="mt-4 rounded-lg border border-[#D7DDED] bg-white p-5 md:p-6">
+        <div className="grid gap-6 lg:grid-cols-2">
+          <div className="min-w-0">
+            <img src="/assets/homepage-rootpartner-banner.webp" alt="Root Cabs driver partner" className="h-52 w-full rounded-lg object-cover object-center sm:h-56 lg:h-64" />
+            <h3 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E]">Drive and Earn with Root Cabs</h3>
+            <p className="mt-3 text-sm leading-6 text-[#4B587C]">
+              Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+            </p>
+          </div>
+          <Link to="/services/acting-driver" className="min-w-0">
+            <img src="/assets/vellore-city-page/Acting Driver.png" alt="Acting driver handing car keys to a customer" className="h-52 w-full rounded-lg object-cover object-[center_20%] sm:h-56 lg:h-64" />
+            <h3 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E]">Need an Acting Driver?</h3>
+            <p className="mt-3 text-sm leading-6 text-[#4B587C]">
+              Travel in your own car without having to drive. Our <strong>acting driver in Trichy</strong> service is useful for family functions, long journeys, late-night travel, or whenever you want someone else to take the wheel.
+            </p>
+          </Link>
         </div>
         <div className="mt-6 flex justify-center">
           <Link to="/drivers">
@@ -2063,9 +2254,10 @@ function TiruppurDriverSection() {
   );
 }
 
-function CityAppDownloadCard({ city }: { city: "Salem" | "Kumbakonam" | "Tiruppur" }) {
+function CityAppDownloadCard({ city }: { city: "Salem" | "Kumbakonam" | "Tiruppur" | "Trichy" }) {
   const isKumbakonam = city === "Kumbakonam";
   const isTiruppur = city === "Tiruppur";
+  const isTrichy = city === "Trichy";
 
   return (
     <section className="mx-auto max-w-[1056px]">
@@ -2084,10 +2276,12 @@ function CityAppDownloadCard({ city }: { city: "Salem" | "Kumbakonam" | "Tiruppu
               GET THE APP
             </span>
             <h2 className={`mt-3 font-heading font-bold leading-tight ${isKumbakonam ? "text-2xl md:text-3xl lg:whitespace-nowrap lg:text-[1.75rem]" : "text-2xl md:text-3xl lg:whitespace-nowrap lg:text-[1.6rem]"}`}>
-              {isKumbakonam ? "Travel Made Simple with Root Cabs" : isTiruppur ? "Book Rides Easily in Tiruppur" : "Book Your Ride in Salem with Root Cabs"}
+              {isKumbakonam ? "Travel Made Simple with Root Cabs" : isTiruppur ? "Book Rides Easily in Tiruppur" : isTrichy ? "Travel Trichy with Root Cabs" : "Book Your Ride in Salem with Root Cabs"}
             </h2>
             <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
-              {isTiruppur ? (
+              {isTrichy ? (
+                <>Plan city rides, one-way trips and outstation journeys with Root Cabs. Use the app for <strong>cab booking in Trichy</strong> and choose the ride that works for your day.</>
+              ) : isTiruppur ? (
                 <>Plan your trips through the Root Cabs app with options for local travel, one-way rides, outstation trips and more. For anyone looking for a <strong>taxi in Tiruppur</strong>, the app makes it simple to choose a service, enter the trip details and book your ride.</>
               ) : isKumbakonam ? (
                 <>Book local trips, temple visits, and a <strong>one way drop taxi in Kumbakonam</strong> through the Root Cabs app, with all your trip details easy to access.</>
@@ -2096,7 +2290,9 @@ function CityAppDownloadCard({ city }: { city: "Salem" | "Kumbakonam" | "Tiruppu
               )}
             </p>
             <div className={`mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-semibold text-white/85 md:justify-start ${isKumbakonam ? "lg:flex-nowrap lg:gap-x-2 lg:text-[11px]" : ""}`}>
-              {(isTiruppur
+              {(isTrichy
+                ? ["Verified drivers", "On-time pickups", "No extra fare", "24/7 customer support"]
+                : isTiruppur
                 ? ["Verified Drivers", "Easy Scheduling", "Quick Booking", "24/7 Support"]
                 : isKumbakonam
                 ? ["Quick App Booking", "Verified Drivers", "Live Ride Tracking", "24/7 Customer Support"]
@@ -2588,7 +2784,9 @@ export function CityPage({
   const citySlug = citySlugOverride ?? routeCitySlug;
   const city = cities.find((c) => c.slug === citySlug);
   const [showAllSalemServices, setShowAllSalemServices] = useState(false);
+  const [showAllTrichyServices, setShowAllTrichyServices] = useState(false);
   const isChennai = city?.name === "Chennai";
+  const isTrichy = city?.name === "Trichy";
 
   useEffect(() => {
     if (!city) return;
@@ -2842,10 +3040,11 @@ export function CityPage({
   const isCoimbatore = city?.name === "Coimbatore";
   const isSalem = city?.name === "Salem";
   const isTiruppur = city?.name === "Tiruppur";
-  const usesExpandedCityHero = isChennai || isVellore || isCoimbatore || isSalem || isTiruppur;
+  const usesExpandedCityHero = isChennai || isVellore || isCoimbatore || isSalem || isTiruppur || isTrichy;
   const cityBannerImage = cityBannerMap[city.slug];
   const heroBackgroundImage = cityBannerImage ?? "/assets/rootcabs-banner-home.png";
   const visibleSalemServices = showAllSalemServices ? salemServices : salemServices.slice(0, 6);
+  const visibleTrichyServices = showAllTrichyServices ? trichyServices : trichyServices.slice(0, 6);
 
   return (
     <div>
@@ -2886,6 +3085,8 @@ export function CityPage({
               </>
             ) : isTiruppur ? (
               "Taxi Service in Tiruppur"
+            ) : isTrichy ? (
+              "Best Taxi Service in Trichy"
             ) : isChennai ? (
               <>
                 <span className="block lg:whitespace-nowrap">Your Trusted Cab Service in Chennai</span>
@@ -2896,6 +3097,10 @@ export function CityPage({
             {isTiruppur ? (
               <>
                 We’re here to make your travel around Tiruppur simple and comfortable. With Root Cabs, you can easily find a taxi in Tiruppur for work, shopping, station drops, family visits, and your everyday travel.
+              </>
+            ) : isTrichy ? (
+              <>
+                Choose Root Cabs when you need a Trichy cab service for your daily travel. We keep every ride simple with verified drivers, fair app fares and 24/7 support, so you can travel around Trichy or plan a longer trip with confidence.
               </>
             ) : isSalem ? (
               <>
@@ -2913,9 +3118,9 @@ export function CityPage({
                 {isChennai || isSalem || isTiruppur ? `Book a Ride in ${city.name}` : `Book Ride in ${city.name}`} <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
-            <a href={`tel:${isChennai || isSalem || isTiruppur ? "8608606474" : companyInfo.phone}`}>
+            <a href={`tel:${isChennai || isSalem || isTiruppur || isTrichy ? "8608606474" : companyInfo.phone}`}>
               <Button size="lg" className="border border-white/30 bg-white/10 text-white hover:bg-white/15 cursor-pointer shadow-sm">
-                <Phone className="w-4 h-4 mr-2" /> {isTiruppur ? "Call 8608606474" : isVellore || isCoimbatore ? "Call us" : "Call now"}
+                <Phone className="w-4 h-4 mr-2" /> {isTiruppur || isTrichy ? "Call 8608606474" : isVellore || isCoimbatore ? "Call us" : "Call now"}
               </Button>
             </a>
           </div>
@@ -2934,6 +3139,39 @@ export function CityPage({
           <ChennaiServicesSection />
         ) : isTiruppur ? (
           <TiruppurServicesSection />
+        ) : isTrichy ? (
+          <section>
+            <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+              Services We Offer in Trichy
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+              Explore different ride options with Root Cabs and choose what suits your travel. Our <strong>Trichy cab service</strong> is here for everyday rides, longer trips and more.
+            </p>
+            <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {visibleTrichyServices.map((service, index) => (
+                <Link key={service.slug} to={`/${city.slug}/${service.slug}`} className="group cursor-pointer">
+                  <div className="relative h-full overflow-visible rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] p-5 pr-20 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md">
+                    <div className="pointer-events-none absolute right-4 top-4 flex h-14 w-16 items-center justify-center rounded-xl border border-white/70 bg-white shadow-sm transition-all duration-300 group-hover:-right-3 group-hover:-top-3 group-hover:scale-105">
+                      <div className="scale-150 opacity-90">{service.icon}</div>
+                    </div>
+                    <h3 className="font-heading text-xl font-bold text-[#111827]">{index + 1}. {service.title}</h3>
+                    <p className="mt-3 text-sm leading-6 text-muted-foreground">{service.description}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            {trichyServices.length > 6 && (
+              <div className="mt-6 flex justify-center">
+                <Button
+                  type="button"
+                  className="rounded-full bg-[#1E2A6E] px-6 font-semibold text-white hover:bg-[#273588]"
+                  onClick={() => setShowAllTrichyServices((current) => !current)}
+                >
+                  {showAllTrichyServices ? "See Less" : "See More"}
+                </Button>
+              </div>
+            )}
+          </section>
         ) : isVellore ? (
           <VelloreServicesSection />
         ) : isSalem ? (
@@ -3003,6 +3241,33 @@ export function CityPage({
         {/* Popular Routes */}
         {isChennai ? (
           <ChennaiRoutesSection />
+        ) : isTrichy ? (
+          <section>
+            <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+              Popular Routes from Trichy
+            </h2>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground md:text-base">
+              Fares below are provisional placeholders — to be confirmed against the live rate card before publishing.
+            </p>
+            <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+              {trichyOutstationRoutes.map((route) => (
+                <Link
+                  key={route.to}
+                  to={`/routes/trichy-to-${route.to.toLowerCase().replace(/\s+/g, "-")}`}
+                  className={`group flex min-h-[64px] items-center justify-between gap-3 rounded-xl border px-4 py-3 transition-colors hover:border-primary/40 hover:shadow-sm ${route.to === "Chennai" ? "border-[#FFD34E] bg-[#FFFCEF]" : "border-[#E6E8ED] bg-white"}`}
+                >
+                  <div className="min-w-0">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="font-heading text-sm font-bold text-[#111827]">Trichy to {route.to}</h3>
+                      {route.tag === "Most Searched" && <span className="rounded-full bg-[#FFF2C2] px-2 py-0.5 text-[9px] font-bold text-[#8A6900]">Most Searched</span>}
+                    </div>
+                    <p className="mt-1 text-xs text-[#758096]">{route.distance} km | Sedan from ₹{route.price.toLocaleString("en-IN")} <span className="ml-2 rounded-full bg-[#FFF0DD] px-2 py-0.5 text-[9px] font-semibold text-[#B75D00]">Provisional</span></p>
+                  </div>
+                  <ArrowRight className="h-4 w-4 shrink-0 text-[#758096] transition-transform group-hover:translate-x-0.5" />
+                </Link>
+              ))}
+            </div>
+          </section>
         ) : isVellore ? (
           <VelloreRoutesSection />
         ) : isSalem ? (
@@ -3137,6 +3402,43 @@ export function CityPage({
               </div>
             </section>
           </>
+        ) : isTrichy ? (
+          <section>
+            <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+              Popular Pickup Spots in Trichy
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+              Need a ride from a busy place in the city? <strong>Cab booking in Trichy</strong> is simple with Root Cabs for pickups from temples, stations, airports and other popular spots.
+            </p>
+            <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                {
+                  title: "Rock Fort Temple",
+                  description: "After visiting Rock Fort Temple, book a cab for your next journey around Trichy. Travel comfortably to your home, hotel, railway station, shopping area, or any other place you plan to visit.",
+                },
+                {
+                  title: "Srirangam Ranganathaswamy Temple",
+                  description: "Temple visits with family can be easier when your return ride is ready. Book a cab near Srirangam for travel to your hotel, home, railway station, or another location across Trichy.",
+                },
+                {
+                  title: "Trichy Junction",
+                  description: <>Your ride can be ready when you arrive at Trichy Junction. Book a <strong>call taxi in Trichy</strong> for travel to your home, hotel, office, airport, or another location in the city.</>,
+                },
+                {
+                  title: "Tiruchirappalli International Airport (TRZ)",
+                  description: <>Airport travel becomes simpler with a ride planned for your arrival or departure. Book a <strong>Trichy airport taxi</strong> for comfortable travel between the airport and your home, hotel, station, or other places in Trichy.</>,
+                },
+              ].map((spot) => (
+                <div key={spot.title} className="rounded-xl border border-border bg-white p-4 shadow-sm">
+                  <div className="flex items-start gap-2 text-[#1E2A6E]">
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                    <h3 className="text-sm font-bold leading-5">{spot.title}</h3>
+                  </div>
+                  <p className="mt-3 text-xs font-medium leading-6 text-[#33406F]">{spot.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
         ) : isSalem ? (
           <section>
             <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
@@ -3217,6 +3519,44 @@ export function CityPage({
           </section>
         )}
 
+        {isTrichy && (
+          <section>
+            <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+              Rock Fort &amp; Srirangam — Trichy’s Landmark Temples
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+              Plan your temple visits around Trichy comfortably <strong>with our taxi service in Trichy</strong>, giving you an easy way to travel with family and enjoy your day.
+            </p>
+            <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+              {[
+                {
+                  title: "Rock Fort (Uchi Pillayar Temple)",
+                  description: <>Rock Fort is one of the city’s best-known places and a popular stop during a Trichy visit. With <strong>cab booking in Trichy</strong>, you can visit the temple and continue to other places around the city comfortably.</>,
+                  cta: "Book a Cab to Rock Fort",
+                },
+                {
+                  title: "Ranganathaswamy Temple, Srirangam",
+                  description: <>Ranganatha Swamy Temple is a popular choice for families planning a temple visit in Trichy. A <strong>call taxi service in Trichy</strong> makes it easy to reach Srirangam and continue your day after the visit.</>,
+                  cta: "Book a Cab to Ranganatha Swamy Temple",
+                },
+                {
+                  title: "Jambukeswarar Temple, Thiruvanaikaval",
+                  description: "Jambukeswarar Temple is another well-known place to include in your Trichy temple trip. Spend time at the temple with your family and continue to Srirangam or other nearby places at your own pace.",
+                  cta: "Book a Cab to Jambukeswarar Temple",
+                },
+              ].map((place) => (
+                <div key={place.title} className="flex h-full flex-col rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] p-5 shadow-sm transition-colors hover:border-[#1E2A6E]">
+                  <h3 className="font-heading text-base font-bold text-[#1E2A6E]">{place.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-[#4B587C]">{place.description}</p>
+                  <Link to="/book-ride" className="mt-auto inline-flex items-center pt-4 text-sm font-bold text-[#1E2A6E] hover:text-primary">
+                    {place.cta} <ArrowRight className="ml-1 h-4 w-4" />
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
         {isSalem && (
           <section>
             <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
@@ -3271,6 +3611,52 @@ export function CityPage({
           <VelloreReviewsSection />
         ) : isSalem ? (
           <SalemReviewsSection />
+        ) : isTrichy ? (
+          <section>
+            <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+              Reviews from Our Trichy Customers
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+              Real experiences from customers who choose <strong>Root Cabs</strong> for city rides, outstation trips and other travel needs in Trichy.
+            </p>
+            <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
+              {[
+                {
+                  text: "I booked Root Cabs for a morning ride to the railway station. The driver came on time, and the car was clean. Reached the station without any delay.",
+                  name: "Suresh Kumar",
+                  trip: "Local Rides",
+                },
+                {
+                  text: "We booked a cab to Chennai for a family trip. The driver was polite and drove safely throughout. We had a comfortable journey and reached on time.",
+                  name: "Meena R",
+                  trip: "Outstation",
+                },
+                {
+                  text: "I booked a cab for an early morning airport drop. The driver arrived a little before the pickup time, helped with my luggage, and the ride was comfortable all the way.",
+                  name: "Vignesh S",
+                  trip: "Airport Taxi",
+                },
+              ].map((review) => (
+                <Card key={review.name} className="border-[#E2E8F3] bg-white shadow-sm">
+                  <CardContent className="p-5">
+                    <div className="mb-3 flex items-center justify-between gap-4">
+                      <div className="flex gap-1 text-[#E0A800]" aria-label="5 out of 5 stars">
+                        {Array.from({ length: 5 }).map((_, index) => (
+                          <Star key={index} className="h-4 w-4 fill-current" />
+                        ))}
+                      </div>
+                      <GoogleReviewBadge />
+                    </div>
+                    <p className="text-sm leading-6 text-[#33406F]">“{review.text}”</p>
+                    <div className="mt-4 flex items-center justify-between gap-3 border-t border-[#E8ECF4] pt-3">
+                      <p className="text-sm font-bold text-[#1E2A6E]">{review.name}</p>
+                      <span className="text-xs font-medium text-muted-foreground">{review.trip}</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </section>
         ) : cityTestimonials.length > 0 ? (
           <section>
             <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6">Customer Reviews in {city.name}</h2>
@@ -3307,6 +3693,11 @@ export function CityPage({
             <SalemTrustSection />
             <SalemDriverSection />
           </>
+        ) : isTrichy ? (
+          <>
+            <TrichyTrustSection />
+            <TrichyDriverSection />
+          </>
         ) : (
           <section className="bg-muted/50 rounded-2xl p-8">
             <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6">Why Choose Root Cabs in {city.name}?</h2>
@@ -3334,6 +3725,7 @@ export function CityPage({
 
         {isSalem && <CityAppDownloadCard city="Salem" />}
         {isTiruppur && <CityAppDownloadCard city="Tiruppur" />}
+        {isTrichy && <CityAppDownloadCard city="Trichy" />}
 
         {isVellore ? (
           <VelloreFaqSection />
@@ -3341,6 +3733,8 @@ export function CityPage({
           <TiruppurFaqSection />
         ) : isSalem ? (
           <SalemFaqSection />
+        ) : isTrichy ? (
+          <TrichyFaqSection />
         ) : city.name !== "Chennai" && (
           <CityFaqSection city={city} />
         )}
