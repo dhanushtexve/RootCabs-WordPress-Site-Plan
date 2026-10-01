@@ -1690,7 +1690,7 @@ export function ServicePage() {
                   <div className="space-y-8">
                     <div>
                       <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
-                        Why Root Cabs Auto Works Better
+                        Why Root Cabs Auto Works Better?
                       </h2>
                       <div className="rounded-xl border border-[#D7DDED] bg-white p-5 text-base leading-7 text-[#26335F] shadow-sm md:p-6 md:text-lg">
                         <p>
@@ -1817,9 +1817,9 @@ export function ServicePage() {
                     </div>
 
                     <div>
-                      <h3 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
+                      <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
                         Benefits of Our Parcel Delivery Service
-                      </h3>
+                      </h2>
                       <div className="grid gap-3 sm:grid-cols-2">
                         {parcelDeliveryBenefits.map((benefit) => (
                           <div key={benefit} className="flex items-center gap-3 rounded-lg bg-muted/50 p-3">
@@ -2279,7 +2279,7 @@ export function ServicePage() {
             {isLocalTaxiService && (
               <div>
                 <h2 className="font-heading text-2xl md:text-3xl font-bold mb-5 text-[#1E2A6E]">
-                  How To Book A Local Taxi
+                  How To Book A Local Taxi?
                 </h2>
                 <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
                   {localTaxiBookingSteps.map((step) => (
@@ -2331,7 +2331,7 @@ export function ServicePage() {
 
                 <div>
                   <h2 className="font-heading text-2xl md:text-3xl font-bold mb-5 text-[#1E2A6E]">
-                    How Root Cabs Auto Works
+                    How Root Cabs Auto Works?
                   </h2>
                   <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
                     {autoBookingSteps.map((step) => (
@@ -2567,7 +2567,7 @@ export function ServicePage() {
 
                 <div>
                   <h2 className="font-heading text-2xl md:text-3xl font-bold mb-4 text-[#1E2A6E]">
-                    How Root Cabs Parcel Delivery Works
+                    How Root Cabs Parcel Delivery Works?
                   </h2>
                   <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
                     <div className="rounded-xl border border-[#D7DDED] bg-white p-5 shadow-sm">
@@ -3584,7 +3584,6 @@ export function ServicePage() {
     </div>
   );
 }
-
 
 
 
