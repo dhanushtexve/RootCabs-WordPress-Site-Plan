@@ -373,6 +373,40 @@ const salemPickupSpots = [
   },
 ] as const;
 
+const tiruppurPickupSpots = [
+  {
+    title: "Tiruppur Railway Station",
+    description: <>Tiruppur Railway Station is a common pickup point for <strong>cab booking in Tirupur</strong>. You can book a ride from here to your home, hotel, office, bus stand, or another place in or outside the city.</>,
+  },
+  {
+    title: "Kumaran Kundu Temple",
+    description: "After your temple visit, you can book a cab to nearby shopping areas, hotels, homes, other temples, or any other place you need to reach in Tiruppur.",
+  },
+  {
+    title: "Tiruppur Bus Stand",
+    description: <>Your ride from the bus stand should be simple and comfortable. Book a cab for your home, hotel, office, or railway station. Our <strong>call taxi in Tiruppur</strong> helps you continue your journey without any difficulty.</>,
+  },
+  {
+    title: "Avinashi Road Textile Belt",
+    description: "You can book a pickup from the Avinashi Road textile area for office travel, business visits, station trips, shopping, or travel to other parts of Tiruppur.",
+  },
+] as const;
+
+const tiruppurAttractions = [
+  {
+    title: "Avinashi Lingeswarar Temple",
+    description: "Travelling with family for a temple visit? Avinashi Lingeswarar Temple is an easy trip from Tiruppur. You can leave at a comfortable time, spend as long as you need at the temple and plan your return without rushing.",
+  },
+  {
+    title: "Thirumoorthy Dam",
+    description: "Thirumoorthy Dam is a good option when you want a quiet day away from the city. You can enjoy the views, spend time with family or friends and return to Tiruppur when it suits your plan.",
+  },
+  {
+    title: "Sivanmalai",
+    description: "Sivanmalai is a convenient choice for a short temple trip from Tiruppur. You can visit the Murugan temple, spend some time around the hill and arrange your return ride without depending on separate transport.",
+  },
+] as const;
+
 const salemYercaudStops = [
   {
     title: "Yercaud Lake",
@@ -596,6 +630,64 @@ const chennaiServices = [
     fare: "Starting at \u20B950/1km",
     href: "/taxi-in-chennai/parcel-delivery",
     iconWrapClass: "bg-white",
+    icon: <img src={assetPath("/assets/chennai-service-parcel.webp")} alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
+  },
+] as const;
+
+const tiruppurOutstationRoutes = [
+  { from: "Coimbatore Airport", to: "Tiruppur", image: "/assets/salem-routes/coimbatore.webp" },
+  { from: "Tiruppur", to: "Coimbatore", image: "/assets/salem-routes/coimbatore.webp" },
+  { from: "Tiruppur", to: "Erode", image: "/assets/salem-routes/erode.webp" },
+  { from: "Tiruppur", to: "Pollachi", image: "/assets/salem-routes/coimbatore.webp" },
+  { from: "Tiruppur", to: "Salem", image: "/assets/salem-routes/trichy.webp" },
+  { from: "Tiruppur", to: "Mettupalayam", image: "/assets/salem-routes/ooty.webp" },
+  { from: "Tiruppur", to: "Chennai", image: "/assets/salem-routes/chennai.webp" },
+  { from: "Tiruppur", to: "Ooty", image: "/assets/salem-routes/ooty.webp" },
+  { from: "Tiruppur", to: "Palani", image: "/assets/salem-routes/coimbatore.webp" },
+  { from: "Tiruppur", to: "Madurai", image: "/assets/cities/madurai.webp" },
+  { from: "Tiruppur", to: "Trichy", image: "/assets/salem-routes/trichy.webp" },
+  { from: "Tiruppur", to: "Karur", image: "/assets/cities/trichy.webp" },
+] as const;
+
+const tiruppurServices = [
+  {
+    title: "Local Taxi",
+    description: "Book a local cab for office trips, shopping, hospital visits, railway station drops, or other rides within the city. Our taxi service in Tiruppur helps you travel from one place to another without making things complicated.",
+    icon: <img src={assetPath("/assets/chennai-service-local.webp")} alt="Local Taxi service icon" className="h-8 w-8 object-contain" />,
+  },
+  {
+    title: "One Way Taxi",
+    description: "One-way travel is easier when the ride fits your plan. Our one way drop taxi Tirupur service is ideal for airport drops, business trips, family visits, and travel to another city without booking a return ride.",
+    icon: <img src={assetPath("/assets/chennai-service-one-way.webp")} alt="One Way Taxi service icon" className="h-8 w-8 object-contain" />,
+  },
+  {
+    title: "Outstation Taxi",
+    description: "Plan longer trips from Tiruppur with a cab that suits your travel plans. Choose a one-way or round trip for family visits, weekend trips, business travel, or journeys to nearby cities and towns.",
+    icon: <img src={assetPath("/assets/chennai-service-outstation.webp")} alt="Outstation Taxi service icon" className="h-8 w-8 object-contain" />,
+  },
+  {
+    title: "Auto Rickshaw",
+    description: "Book an auto for short trips to markets, shops, offices, railway stations, or nearby areas. It is a convenient choice when you need a simple ride for getting around Tiruppur during the day.",
+    icon: <img src={assetPath("/assets/chennai-service-auto.webp")} alt="Auto Rickshaw service icon" className="h-8 w-8 object-contain" />,
+  },
+  {
+    title: "Bike Taxi",
+    description: "Choose a bike taxi when you are travelling alone and want a quick ride across the city. It works well for office commutes, short errands, appointments, and other everyday trips around Tiruppur.",
+    icon: <img src={assetPath("/assets/chennai-service-bike-taxi.webp")} alt="Bike Taxi service icon" className="h-8 w-8 object-contain" />,
+  },
+  {
+    title: "Acting Driver",
+    description: "Travel in your own car while a professional driver takes care of the driving. This service is useful for family functions, long journeys, late-night trips, or days when you simply prefer not to drive.",
+    icon: <img src={assetPath("/assets/chennai-service-acting-driver.webp")} alt="Acting Driver service icon" className="h-8 w-8 object-contain" />,
+  },
+  {
+    title: "Hourly Packages",
+    description: "Keep a cab with you for a few hours when you have several places to visit. Hourly packages are useful for shopping, meetings, appointments, family visits, and other plans with multiple stops.",
+    icon: <img src={assetPath("/assets/chennai-service-hourly-package.webp")} alt="Hourly Package service icon" className="h-8 w-8 object-contain" />,
+  },
+  {
+    title: "Parcel Delivery",
+    description: "Send documents, packages, or small items across Tiruppur without making the trip yourself. Parcel delivery is useful when you need something picked up and delivered to another location within the city.",
     icon: <img src={assetPath("/assets/chennai-service-parcel.webp")} alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
   },
 ] as const;
@@ -1293,6 +1385,57 @@ function CityFaqSection({ city }: { city: (typeof cities)[number] }) {
   );
 }
 
+function TiruppurFaqSection() {
+  const faqs = [
+    {
+      q: "Is there a minimum distance for a one way drop taxi in Tiruppur?",
+      a: <>Yes. The minimum distance for a <strong>one way drop taxi Tirupur</strong> is 300 km. You can check the available route and ride options in the Root Cabs app before booking.</>,
+    },
+    {
+      q: "What is the fare for Tiruppur to Ooty taxi?",
+      a: "The fare depends on the vehicle type, travel distance and applicable trip charges. Enter Tiruppur and Ooty in the app to check the current fare before confirming your ride.",
+    },
+    {
+      q: "Can I schedule a taxi in advance in Tiruppur?",
+      a: <>Yes. You can select a future pickup date and time while making your <strong>cab booking in Tirupur</strong>. This is useful for planned trips, station drops, airport travel and outstation journeys.</>,
+    },
+    {
+      q: "Is Root Cabs available in Tiruppur 24 hours a day?",
+      a: <>Yes. Root Cabs is available <strong>24 hours a day in Tiruppur</strong> for local rides, outstation trips, airport travel and other booking needs. Our customer support team is also available 24/7 whenever you need help with your ride.</>,
+    },
+    {
+      q: "What vehicle types are available for outstation trips from Tiruppur?",
+      a: "Vehicle options such as sedans, Mini, SUVs and MUV cars may be available depending on your route and booking time. The available options will be shown in the app before you confirm the trip.",
+    },
+    {
+      q: "What is the cheapest taxi fare in Tirupur?",
+      a: "The cheapest fare usually applies to shorter local trips and depends on the distance and vehicle you choose. Enter your pickup and drop in the Root Cabs app to see the fare available for your exact trip before you book.",
+    },
+    {
+      q: "Which is the best taxi in Tirupur?",
+      a: <>A good <strong>taxi service in Tiruppur</strong> should offer simple booking, verified drivers, reliable support and clear ride details. Root Cabs provides these features for both city and longer-distance travel.</>,
+    },
+  ];
+
+  return (
+    <section className="bg-muted/50 rounded-2xl px-4 pb-14 pt-8 md:px-6 md:pb-16 md:pt-10">
+      <div className="mx-auto max-w-4xl">
+        <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl">Frequently Asked Questions</h2>
+        <Accordion type="single" collapsible className="mt-10 space-y-3">
+          {faqs.map((item, index) => (
+            <AccordionItem key={item.q} value={`tiruppur-faq-${index}`} className="rounded-xl border border-[#E2E8F3] bg-white px-5 shadow-sm">
+              <AccordionTrigger className="text-left text-sm font-semibold text-[#1E2A6E] cursor-pointer hover:no-underline md:text-base">
+                {item.q}
+              </AccordionTrigger>
+              <AccordionContent className="pb-5 text-sm leading-7 text-muted-foreground">{item.a}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </div>
+    </section>
+  );
+}
+
 function SalemFaqSection() {
   return (
     <section className="bg-muted/50 rounded-2xl px-4 pb-14 pt-8 md:px-6 md:pb-16 md:pt-10">
@@ -1595,6 +1738,33 @@ function ChennaiServicesSection() {
   );
 }
 
+function TiruppurServicesSection() {
+  return (
+    <section>
+      <h2 className="mb-3 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+        Explore Our Services in Tiruppur
+      </h2>
+      <p className="mb-6 text-sm text-muted-foreground md:text-base">
+        Root Cabs helps you choose the right service for everyday travel, longer trips and other transport needs across Tiruppur.
+      </p>
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+        {tiruppurServices.map((service) => (
+          <div
+            key={service.title}
+            className="group relative overflow-visible rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] p-5 pr-20 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md"
+          >
+            <div className="pointer-events-none absolute right-4 top-4 flex h-14 w-16 items-center justify-center rounded-xl border border-white/70 bg-white shadow-sm transition-all duration-300 group-hover:-right-3 group-hover:-top-3 group-hover:scale-105">
+              <div className="scale-150 opacity-90">{service.icon}</div>
+            </div>
+            <h3 className="font-heading text-xl font-bold text-[#111827]">{service.title}</h3>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground">{service.description}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function ChennaiRoutesSection() {
   return (
     <section>
@@ -1722,6 +1892,68 @@ function SalemReviewsSection() {
   );
 }
 
+const tiruppurReviews = [
+  { text: "I booked a cab from Tiruppur to Coimbatore Airport for an early morning flight. The driver arrived on time, and the ride was comfortable from the start.", name: "Harish M", meta: "Airport Taxi" },
+  { text: "I used Root Cabs for shopping and a few stops within Tiruppur. Booking was easy, and the driver was polite throughout the trip.", name: "Keerthana R", meta: "Local Ride" },
+  { text: "We booked a cab for a family trip outside Tiruppur. The fare was clear before the ride, and the journey was smooth and comfortable.", name: "Sathish Kumar", meta: "Outstation" },
+] as const;
+
+function TiruppurReviewsSection() {
+  return (
+    <section>
+      <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Customer Reviews in Tiruppur</h2>
+      <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+        See what customers say about travelling with Root Cabs for different ride needs in and around Tiruppur.
+      </p>
+      <div className="mt-6 grid grid-cols-1 gap-4 lg:grid-cols-3">
+        {tiruppurReviews.map((review) => (
+          <div key={review.name} className="flex h-full flex-col rounded-2xl border border-[#E2E8F3] bg-white p-5 shadow-sm">
+            <div className="mb-3 flex items-center justify-between gap-4">
+              <div className="flex gap-1 text-[#E0A800]">
+                {Array.from({ length: 5 }).map((_, index) => <Star key={index} className="h-4 w-4 fill-current" />)}
+              </div>
+              <GoogleReviewBadge />
+            </div>
+            <p className="flex-1 text-sm leading-7 text-[#33406F]">{review.text}</p>
+            <div className="mt-5">
+              <p className="font-heading text-sm font-bold text-[#1E2A6E]">{review.name}</p>
+              <p className="text-xs text-muted-foreground">{review.meta}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function TiruppurTrustSection() {
+  const trustItems = [
+    { icon: <CheckCircle className="h-6 w-6" />, title: "Verified Drivers", text: "Every driver is verified before taking rides, helping you feel more confident whether you travel alone, with family, or at night." },
+    { icon: <Navigation className="h-6 w-6" />, title: "Ride Tracking", text: "Let your family or friends follow your trip while you travel, giving them better visibility of your ride in real time." },
+    { icon: <Car className="h-6 w-6" />, title: "Clear Fare", text: "See the fare in the app before booking, so you know what to expect without worrying about hidden charges." },
+    { icon: <Phone className="h-6 w-6" />, title: "24/7 Support", text: "Our support team is available throughout the day to help with bookings, trip concerns, payments, or other ride-related questions." },
+  ];
+
+  return (
+    <section className="rounded-2xl bg-muted/50 p-6 md:p-8">
+      <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Why Choose Root Cabs in Tiruppur?</h2>
+      <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+        With our <strong>taxi service in Tiruppur</strong>, you get verified drivers, clear fares, live ride tracking, and support whenever you need help during your trip.
+      </p>
+      <h3 className="mt-5 font-heading text-lg font-bold text-[#1E2A6E]">Your Safety, Our Priority</h3>
+      <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        {trustItems.map((item) => (
+          <div key={item.title} className="rounded-xl border border-[#E2E8F3] bg-white p-5 shadow-sm">
+            <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#EEF3FF] text-[#1E2A6E]">{item.icon}</div>
+            <h4 className="mt-4 font-heading text-base font-bold text-[#1E2A6E]">{item.title}</h4>
+            <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function SalemTrustSection() {
   return (
     <section className="rounded-2xl bg-muted/50 p-6 md:p-8">
@@ -1782,8 +2014,44 @@ function SalemDriverSection() {
   );
 }
 
-function CityAppDownloadCard({ city }: { city: "Salem" | "Kumbakonam" }) {
+function TiruppurDriverSection() {
+  return (
+    <section className="rounded-2xl bg-[#F3F5FA] px-5 pb-6 pt-3 md:px-8 md:pb-8 md:pt-4">
+      <h2 className="text-center font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+        Driving with Root Cabs in Tiruppur
+      </h2>
+      <div className="mt-4 rounded-lg border border-[#D7DDED] bg-white p-5 md:p-6">
+        <div className="grid gap-6 lg:grid-cols-2">
+          <div className="min-w-0">
+            <img src="/assets/homepage-rootpartner-banner.webp" alt="Root Cabs driver partner" className="h-52 w-full rounded-lg object-cover object-center sm:h-56 lg:h-64" />
+            <h3 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E]">Drive and Earn with Root Cabs</h3>
+            <p className="mt-3 text-sm leading-6 text-[#4B587C]">
+              <span className="font-semibold">Your Drive. Your Earnings.</span> Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
+            </p>
+          </div>
+          <div className="min-w-0">
+            <img src="/assets/vellore-city-page/Acting Driver.png" alt="Acting driver handing car keys to a customer" className="h-52 w-full rounded-lg object-cover object-[center_20%] sm:h-56 lg:h-64" />
+            <h3 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E]">Acting Driver Service in Tiruppur</h3>
+            <p className="mt-3 text-sm leading-6 text-[#4B587C]">
+              Book an Acting Driver when you need someone to drive your car for a family function, long trip, hospital visit, or late-night return. Travel comfortably in your own car while our driver takes care of driving.
+            </p>
+          </div>
+        </div>
+        <div className="mt-6 flex justify-center">
+          <Link to="/drivers">
+            <Button className="bg-[#1E2A6E] text-white hover:bg-[#17225E]">
+              Join as Root Partner <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function CityAppDownloadCard({ city }: { city: "Salem" | "Kumbakonam" | "Tiruppur" }) {
   const isKumbakonam = city === "Kumbakonam";
+  const isTiruppur = city === "Tiruppur";
 
   return (
     <section className="mx-auto max-w-[1056px]">
@@ -1802,17 +2070,21 @@ function CityAppDownloadCard({ city }: { city: "Salem" | "Kumbakonam" }) {
               GET THE APP
             </span>
             <h2 className={`mt-3 font-heading font-bold leading-tight ${isKumbakonam ? "text-2xl md:text-3xl lg:whitespace-nowrap lg:text-[1.75rem]" : "text-2xl md:text-3xl lg:whitespace-nowrap lg:text-[1.6rem]"}`}>
-              {isKumbakonam ? "Travel Made Simple with Root Cabs" : "Book Your Ride in Salem with Root Cabs"}
+              {isKumbakonam ? "Travel Made Simple with Root Cabs" : isTiruppur ? "Book Rides Easily in Tiruppur" : "Book Your Ride in Salem with Root Cabs"}
             </h2>
             <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
-              {isKumbakonam ? (
+              {isTiruppur ? (
+                <>Plan your trips through the Root Cabs app with options for local travel, one-way rides, outstation trips and more. For anyone looking for a <strong>taxi in Tiruppur</strong>, the app makes it simple to choose a service, enter the trip details and book your ride.</>
+              ) : isKumbakonam ? (
                 <>Book local trips, temple visits, and a <strong>one way drop taxi in Kumbakonam</strong> through the Root Cabs app, with all your trip details easy to access.</>
               ) : (
                 "Use the Root Cabs app to book local rides, outstation trips, or an hourly package in Salem. Choose the service you need and manage your trip from one place."
               )}
             </p>
             <div className={`mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-semibold text-white/85 md:justify-start ${isKumbakonam ? "lg:flex-nowrap lg:gap-x-2 lg:text-[11px]" : ""}`}>
-              {(isKumbakonam
+              {(isTiruppur
+                ? ["Verified Drivers", "Easy Scheduling", "Quick Booking", "24/7 Support"]
+                : isKumbakonam
                 ? ["Quick App Booking", "Verified Drivers", "Live Ride Tracking", "24/7 Customer Support"]
                 : ["Simple ride booking", "Verified drivers", "Live trip updates", "24/7 customer support"]
               ).map((item) => (
@@ -2553,7 +2825,8 @@ export function CityPage({
   const isVellore = city?.name === "Vellore";
   const isCoimbatore = city?.name === "Coimbatore";
   const isSalem = city?.name === "Salem";
-  const usesExpandedCityHero = isChennai || isVellore || isCoimbatore || isSalem;
+  const isTiruppur = city?.name === "Tiruppur";
+  const usesExpandedCityHero = isChennai || isVellore || isCoimbatore || isSalem || isTiruppur;
   const cityBannerImage = cityBannerMap[city.slug];
   const heroBackgroundImage = cityBannerImage ?? "/assets/rootcabs-banner-home.png";
   const visibleSalemServices = showAllSalemServices ? salemServices : salemServices.slice(0, 6);
@@ -2573,16 +2846,16 @@ export function CityPage({
         backgroundColor: isSalem ? "#22236F" : cityBannerImage ? "#172aab" : undefined,
       }}>
         <div className="absolute inset-0 bg-black/40" />
-        <div className={`relative z-10 max-w-screen-xl mx-auto px-4 ${usesExpandedCityHero ? "pb-24 md:pb-28" : ""}`}>
+        <div className={`relative z-10 max-w-screen-xl mx-auto px-4 ${usesExpandedCityHero ? "pb-24 md:pb-28" : ""} ${isTiruppur ? "flex min-h-[420px] flex-col md:min-h-[500px]" : ""}`}>
           <PageBreadcrumb
-            className={`${usesExpandedCityHero ? "pt-8 md:pt-10" : ""} mb-4 text-white/70`}
+            className={`${usesExpandedCityHero ? "pt-8 md:pt-10" : "mb-4 text-white/70"} ${isTiruppur ? "mb-8" : ""}`}
             items={[
               { label: "Home", href: "/" },
               { label: "Cities", href: "/cities" },
               { label: city.name },
             ]}
           />
-          <div className={usesExpandedCityHero ? `text-left ${isSalem ? "max-w-4xl" : isChennai ? "lg:w-[48%]" : "lg:w-[40%]"}` : undefined}>
+          <div className={isTiruppur ? "my-auto max-w-2xl text-left" : usesExpandedCityHero ? `text-left ${isSalem ? "max-w-4xl" : isChennai ? "lg:w-[48%]" : "lg:w-[40%]"}` : undefined}>
           <h1 className={`font-heading text-3xl md:text-4xl font-bold mb-4 ${isVellore || isCoimbatore || isSalem ? "lg:w-[760px]" : ""}`}>
             {isSalem ? (
               <>
@@ -2593,6 +2866,8 @@ export function CityPage({
                 <span className="block">{isVellore ? "Your Go-To Taxi Service in Vellore" : "Reliable Taxi Service in"}</span>{" "}
                 <span className="block">{isVellore ? "Whenever You Need a Ride" : "Coimbatore - Airport & City Rides"}</span>
               </>
+            ) : isTiruppur ? (
+              "Taxi Service in Tiruppur"
             ) : isChennai ? (
               <>
                 <span className="block lg:whitespace-nowrap">Reliable Cab Services In</span>
@@ -2601,7 +2876,11 @@ export function CityPage({
             ) : city.tagline}
           </h1>
           <p className={`${isSalem ? "max-w-3xl text-base leading-7 text-white/80 md:text-lg" : "max-w-3xl text-lg text-gray-300"}`}>
-            {isSalem ? (
+            {isTiruppur ? (
+              <>
+                We’re here to make your travel around Tiruppur simple and comfortable. With Root Cabs, you can easily find a <strong>taxi in Tiruppur</strong> for work, shopping, station drops, family visits, and your everyday travel.
+              </>
+            ) : isSalem ? (
               <>
                 From daily city rides to trips outside Salem, our taxi service in Salem makes it simple to book a ride and plan your travel comfortably.
               </>
@@ -2612,15 +2891,15 @@ export function CityPage({
               : city.description}
           </p>
           </div>
-          <div className={`${usesExpandedCityHero ? "mt-8 md:mt-10" : "mt-6"} flex flex-wrap gap-4`}>
+          <div className={`${usesExpandedCityHero ? "mt-8 md:mt-10" : isTiruppur ? "mb-auto mt-8" : "mt-6"} flex flex-wrap gap-4`}>
             <Link to="/book-ride">
               <Button size="lg" className="bg-[#FFD700] hover:bg-[#E6C200] text-[#2E3A8C] font-bold cursor-pointer shadow-sm">
-                {isChennai || isSalem ? `Book a Ride in ${city.name}` : `Book Ride in ${city.name}`} <ArrowRight className="w-4 h-4 ml-2" />
+                {isChennai || isSalem || isTiruppur ? `Book a Ride in ${city.name}` : `Book Ride in ${city.name}`} <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </Link>
-            <a href={`tel:${isChennai || isSalem ? "8608606474" : companyInfo.phone}`}>
+            <a href={`tel:${isChennai || isSalem || isTiruppur ? "8608606474" : companyInfo.phone}`}>
               <Button size="lg" className="border border-white/30 bg-white/10 text-white hover:bg-white/15 cursor-pointer shadow-sm">
-                <Phone className="w-4 h-4 mr-2" /> {isVellore || isCoimbatore ? "Call us" : "Call now"}
+                <Phone className="w-4 h-4 mr-2" /> {isTiruppur ? "Call 8608606474" : isVellore || isCoimbatore ? "Call us" : "Call now"}
               </Button>
             </a>
           </div>
@@ -2636,6 +2915,8 @@ export function CityPage({
         {/* Services */}
         {isChennai ? (
           <ChennaiServicesSection />
+        ) : isTiruppur ? (
+          <TiruppurServicesSection />
         ) : isVellore ? (
           <VelloreServicesSection />
         ) : isSalem ? (
@@ -2740,6 +3021,39 @@ export function CityPage({
               ))}
             </div>
           </section>
+        ) : isTiruppur ? (
+          <section>
+            <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+              Popular Outstation Routes from Tiruppur
+            </h2>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+              Travel from Tiruppur to nearby cities, hill stations, airports, and other destinations with one-way and round-trip cab options.
+            </p>
+            <div className="mt-6 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+              {tiruppurOutstationRoutes.map((route) => (
+                <Link
+                  key={`${route.from}-${route.to}`}
+                  to={`/routes/${route.from.toLowerCase().replace(/\s+/g, "-")}-to-${route.to.toLowerCase().replace(/\s+/g, "-")}`}
+                  className="group relative flex aspect-[1151/512] min-h-[170px] items-center overflow-hidden rounded-xl border border-border bg-white transition-all hover:border-primary/30 hover:shadow-md lg:aspect-auto lg:h-40 lg:min-h-0"
+                >
+                  <div className="pointer-events-none absolute inset-y-0 right-0 aspect-[559/663] overflow-hidden">
+                    <img
+                      src={assetPath(route.image)}
+                      alt=""
+                      className="absolute -right-[3%] -top-[5%] h-[105%] w-auto max-w-none"
+                    />
+                  </div>
+                  <div className="relative z-10 flex w-[64%] min-w-0 flex-col items-start justify-center px-4 py-3 sm:px-5 lg:w-[60%]">
+                    <h3 className="font-heading text-lg font-bold leading-tight text-[#111827] sm:text-xl">{route.from} to {route.to}</h3>
+                    <p className="mt-3 text-sm text-[#111827]">__ km | Sedan from ₹__</p>
+                    <span className="mt-3 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors group-hover:bg-[#E6C200]">
+                      Book Now <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </section>
         ) : (
           <section>
             <h2 className="font-heading text-2xl md:text-3xl font-bold mb-6">Popular Routes from {city.name}</h2>
@@ -2762,7 +3076,51 @@ export function CityPage({
         )}
 
         {/* Landmarks */}
-        {isSalem ? (
+        {isTiruppur ? (
+          <>
+            <section>
+              <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+                Popular Pickup Spots in Tiruppur
+              </h2>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+                Root Cabs makes it easy to book a <strong>taxi in Tiruppur</strong> from some of the city’s busiest travel, shopping, temple, and business areas.
+              </p>
+              <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                {tiruppurPickupSpots.map((spot) => (
+                  <div key={spot.title} className="rounded-xl border border-border bg-white p-4 shadow-sm">
+                    <div className="flex items-start gap-2 text-[#1E2A6E]">
+                      <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                      <h3 className="text-sm font-bold leading-5">{spot.title}</h3>
+                    </div>
+                    <p className="mt-3 text-xs font-medium leading-6 text-[#33406F]">{spot.description}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+            <section>
+              <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
+                Places to Visit Near Tiruppur
+              </h2>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+                Explore popular temples, scenic spots, and other places around Tiruppur at your own pace. By providing a reliable <strong>taxi service in Tiruppur</strong>, Root Cabs makes it easy to plan your visit based on your time and travel needs.
+              </p>
+              <h3 className="mt-6 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">
+                Tiruppur - India’s Banian City &amp; Knitwear Capital
+              </h3>
+              <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
+                {tiruppurAttractions.map((place) => (
+                  <div key={place.title} className="flex h-full flex-col rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] p-5 shadow-sm transition-colors hover:border-[#1E2A6E]">
+                    <h4 className="font-heading text-base font-bold text-[#1E2A6E]">{place.title}</h4>
+                    <p className="mt-3 text-sm leading-6 text-[#4B587C]">{place.description}</p>
+                    <Link to="/book-ride" className="mt-auto inline-flex items-center pt-4 text-sm font-bold text-[#1E2A6E] hover:text-primary">
+                      Book a Cab to {place.title} <ArrowRight className="ml-1 h-4 w-4" />
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </>
+        ) : isSalem ? (
           <section>
             <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
               Popular Pickup Spots in Salem
@@ -2890,6 +3248,8 @@ export function CityPage({
         {/* Reviews */}
         {isChennai ? (
           <ChennaiReviewsSection />
+        ) : isTiruppur ? (
+          <TiruppurReviewsSection />
         ) : isVellore ? (
           <VelloreReviewsSection />
         ) : isSalem ? (
@@ -2918,6 +3278,11 @@ export function CityPage({
         {/* Why Root Cabs */}
         {isChennai ? (
           <ChennaiTrustSection />
+        ) : isTiruppur ? (
+          <>
+            <TiruppurTrustSection />
+            <TiruppurDriverSection />
+          </>
         ) : isVellore ? (
           <VelloreTrustSection />
         ) : isSalem ? (
@@ -2951,9 +3316,12 @@ export function CityPage({
         )}
 
         {isSalem && <CityAppDownloadCard city="Salem" />}
+        {isTiruppur && <CityAppDownloadCard city="Tiruppur" />}
 
         {isVellore ? (
           <VelloreFaqSection />
+        ) : isTiruppur ? (
+          <TiruppurFaqSection />
         ) : isSalem ? (
           <SalemFaqSection />
         ) : city.name !== "Chennai" && (
