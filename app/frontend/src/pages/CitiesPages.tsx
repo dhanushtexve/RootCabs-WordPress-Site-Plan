@@ -263,32 +263,36 @@ const kumbakonamServices = [
 ];
 
 const kumbakonamOutstationRoutes = [
-  { to: "Thanjavur", distance: 42, price: "994", tag: "HERITAGE CITY" },
-  { to: "Trichy", distance: 98, price: "2506", tag: "MAJOR CITY" },
-  { to: "Chennai", distance: 279, price: "7393", tag: "MAJOR CITY" },
-  { to: "Puducherry", distance: 69, price: "1723", tag: "COASTAL CITY" },
-  { to: "Chidambaram", distance: 72, price: "1804", tag: "TEMPLE TOWN" },
-  { to: "Mayiladuthurai", distance: 35, price: "805", tag: "NEARBY CITY" },
-  { to: "Darasuram", distance: 4, price: "Not valid", tag: "HERITAGE SITE" },
-  { to: "Gangaikonda Cholapuram", distance: 35, price: "805", tag: "HERITAGE SITE" },
-  { to: "Vaitheeswaran Koil", distance: 48, price: "1156", tag: "TEMPLE TOWN" },
+  { to: "Thanjavur", distance: 42, price: "994", tag: "HERITAGE CITY", image: "/assets/kumbakonam-routes/Tanjore.webp" },
+  { to: "Trichy", distance: 98, price: "2506", tag: "MAJOR CITY", image: "/assets/kumbakonam-routes/Trichy.webp" },
+  { to: "Chennai", distance: 279, price: "7393", tag: "MAJOR CITY", image: "/assets/kumbakonam-routes/Chennai.webp" },
+  { to: "Puducherry", distance: 69, price: "1723", tag: "COASTAL CITY", image: "/assets/kumbakonam-routes/Pudhuchery.webp" },
+  { to: "Chidambaram", distance: 72, price: "1804", tag: "TEMPLE TOWN", image: "/assets/kumbakonam-routes/Chithamabaram.webp" },
+  { to: "Mayiladuthurai", distance: 35, price: "805", tag: "NEARBY CITY", image: "/assets/kumbakonam-routes/Mayiladudhirai.webp" },
+  { to: "Darasuram", distance: 4, price: "Not valid", tag: "HERITAGE SITE", image: "/assets/kumbakonam-routes/Darasuram.webp" },
+  { to: "Gangaikonda Cholapuram", distance: 35, price: "805", tag: "HERITAGE SITE", image: "/assets/kumbakonam-routes/Kangai konda chozha puram.webp" },
+  { to: "Vaitheeswaran Koil", distance: 48, price: "1156", tag: "TEMPLE TOWN", image: "/assets/kumbakonam-routes/vaitheeswarar temple.webp" },
 ];
 
 const kumbakonamPickupSpots = [
   {
     title: "Adi Kumbeswarar Temple",
+    image: "/assets/kumbakonam-pickup-spots/Adi Kumbeswarar Temple.webp",
     description: "Temple visits often involve more than one stop, so pickups here are useful for travelling to nearby temples, hotels, homes, or places outside Kumbakonam.",
   },
   {
     title: "Sarangapani Temple",
+    image: "/assets/kumbakonam-pickup-spots/Sarangapani Temple.webp",
     description: "After visiting Sarangapani Temple, passengers can continue their day with a cab to the railway station, nearby streets, or another place on their itinerary.",
   },
   {
     title: "Mahamaham Tank",
+    image: "/assets/kumbakonam-pickup-spots/Mahamaham tank.webp",
     description: "With several important places located around this part of town, Mahamaham Tank works well as a pickup point for local travel, sightseeing, and festival-day trips.",
   },
   {
     title: "Kumbakonam Railway Station",
+    image: "/assets/kumbakonam-pickup-spots/Kumbakonam Railway station.webp",
     description: "Passengers arriving by train can use a call taxi service in Kumbakonam to reach hotels, homes, temples, or nearby towns without arranging another mode of transport.",
   },
 ];
@@ -314,16 +318,19 @@ const kumbakonamNavagrahaStops = [
 const kumbakonamCholaTemples = [
   {
     title: "Airavatesvara Temple, Darasuram",
+    image: "/assets/kumbakonam-chola-temples/Airavatesvara Temple, Darasuram.webp",
     description: "Darasuram is only a short drive from Kumbakonam, making Airavatesvara Temple easy to include in a local sightseeing plan. The temple is especially known for its detailed stone carvings and Chola architecture.",
     button: "Book a Cab to Darasuram",
   },
   {
     title: "Brihadisvara Temple, Thanjavur",
+    image: "/assets/kumbakonam-chola-temples/Brihadisvara Temple, Thanjavur.webp",
     description: "A visit to Thanjavur can include the Brihadisvara Temple along with other places around the city. A Kumbakonam one way taxi also works well for travellers who plan to continue their journey from Thanjavur instead of returning the same day.",
     button: "Book a Cab to Thanjavur",
   },
   {
     title: "Gangaikonda cholapuram",
+    image: "/assets/kumbakonam-chola-temples/Gangaikonda cholapuram.webp",
     description: "Gangaikondacholapuram is another important Chola heritage destination within driving distance of Kumbakonam. It can be paired with nearby temple visits for travellers who want to spend the day exploring the region's history.",
     button: "Book a Cab to Gangaikonda cholapuram",
   },
@@ -442,18 +449,22 @@ const salemPickupSpots = [
 const tiruppurPickupSpots = [
   {
     title: "Tiruppur Railway Station",
+    image: "/assets/tiruppur-pickup-spots/Tiruppur Railway Station.webp",
     description: <>Tiruppur Railway Station is a common pickup point for <strong>cab booking in Tirupur</strong>. You can book a ride from here to your home, hotel, office, bus stand, or another place in or outside the city.</>,
   },
   {
     title: "Kumaran Kundu Temple",
+    image: "/assets/tiruppur-pickup-spots/Kumaran Kundu Temple.webp",
     description: "After your temple visit, you can book a cab to nearby shopping areas, hotels, homes, other temples, or any other place you need to reach in Tiruppur.",
   },
   {
     title: "Tiruppur Bus Stand",
+    image: "/assets/tiruppur-pickup-spots/Tiruppur Bus stand.webp",
     description: <>Your ride from the bus stand should be simple and comfortable. Book a cab for your home, hotel, office, or railway station. Our <strong>call taxi in Tiruppur</strong> helps you continue your journey without any difficulty.</>,
   },
   {
     title: "Avinashi Road Textile Belt",
+    image: "/assets/tiruppur-pickup-spots/Avinashi Textile belt.webp",
     description: "You can book a pickup from the Avinashi Road textile area for office travel, business visits, station trips, shopping, or travel to other parts of Tiruppur.",
   },
 ] as const;
@@ -461,14 +472,17 @@ const tiruppurPickupSpots = [
 const tiruppurAttractions = [
   {
     title: "Avinashi Lingeswarar Temple",
+    image: "/assets/tiruppur-attractions/Avinashi Lingeswarar Temple.webp",
     description: "Travelling with family for a temple visit? Avinashi Lingeswarar Temple is an easy trip from Tiruppur. You can leave at a comfortable time, spend as long as you need at the temple and plan your return without rushing.",
   },
   {
     title: "Thirumoorthy Dam",
+    image: "/assets/tiruppur-attractions/Thirumoorthy Dam.webp",
     description: "Thirumoorthy Dam is a good option when you want a quiet day away from the city. You can enjoy the views, spend time with family or friends and return to Tiruppur when it suits your plan.",
   },
   {
     title: "Sivanmalai",
+    image: "/assets/tiruppur-attractions/Sivanmalai.webp",
     description: "Sivanmalai is a convenient choice for a short temple trip from Tiruppur. You can visit the Murugan temple, spend some time around the hill and arrange your return ride without depending on separate transport.",
   },
 ] as const;
@@ -701,18 +715,18 @@ const chennaiServices = [
 ] as const;
 
 const tiruppurOutstationRoutes = [
-  { from: "Tiruppur", to: "Coimbatore Airport", distance: 46, price: 1102, image: "/assets/salem-routes/coimbatore.webp" },
-  { from: "Tiruppur", to: "Coimbatore", distance: 55, price: 1345, image: "/assets/salem-routes/coimbatore.webp" },
-  { from: "Tiruppur", to: "Erode", distance: 54, price: 1318, image: "/assets/salem-routes/erode.webp" },
-  { from: "Tiruppur", to: "Pollachi", distance: 66, price: 1642, image: "/assets/salem-routes/coimbatore.webp" },
+  { from: "Tiruppur", to: "Coimbatore Airport", distance: 46, price: 1102, image: "/assets/tiruppur-routes/Coimbatore Airport.webp" },
+  { from: "Tiruppur", to: "Coimbatore", distance: 55, price: 1345, image: "/assets/tiruppur-routes/Coimbatore (1).webp" },
+  { from: "Tiruppur", to: "Erode", distance: 54, price: 1318, image: "/assets/tiruppur-routes/Erode (1).webp" },
+  { from: "Tiruppur", to: "Pollachi", distance: 66, price: 1642, image: "/assets/tiruppur-routes/Pollachi.webp" },
   { from: "Tiruppur", to: "Salem", distance: 120, price: 3100, image: "/assets/salem-routes/trichy.webp" },
-  { from: "Tiruppur", to: "Mettupalayam", distance: 54, price: 1318, image: "/assets/salem-routes/ooty.webp" },
-  { from: "Tiruppur", to: "Chennai", distance: 459, price: 12253, image: "/assets/salem-routes/chennai.webp" },
-  { from: "Tiruppur", to: "Ooty", distance: 105, price: 2695, image: "/assets/salem-routes/ooty.webp" },
-  { from: "Tiruppur", to: "Palani", distance: 84, price: 2128, image: "/assets/salem-routes/coimbatore.webp" },
-  { from: "Tiruppur", to: "Madurai", distance: 180, price: 4720, image: "/assets/cities/madurai.webp" },
-  { from: "Tiruppur", to: "Trichy", distance: 174, price: 4558, image: "/assets/salem-routes/trichy.webp" },
-  { from: "Tiruppur", to: "Karur", distance: 88, price: 2236, image: "/assets/cities/trichy.webp" },
+  { from: "Tiruppur", to: "Mettupalayam", distance: 54, price: 1318, image: "/assets/tiruppur-routes/Mettupalayam.webp" },
+  { from: "Tiruppur", to: "Chennai", distance: 459, price: 12253, image: "/assets/tiruppur-routes/Chennai (1).webp" },
+  { from: "Tiruppur", to: "Ooty", distance: 105, price: 2695, image: "/assets/tiruppur-routes/Ooty (1).webp" },
+  { from: "Tiruppur", to: "Palani", distance: 84, price: 2128, image: "/assets/tiruppur-routes/Palani.webp" },
+  { from: "Tiruppur", to: "Madurai", distance: 180, price: 4720, image: "/assets/tiruppur-routes/Madurai.webp" },
+  { from: "Tiruppur", to: "Trichy", distance: 174, price: 4558, image: "/assets/tiruppur-routes/Trichy (1).webp" },
+  { from: "Tiruppur", to: "Karur", distance: 88, price: 2236, image: "/assets/tiruppur-routes/Karur.webp" },
 ] as const;
 
 const tiruppurServices = [
@@ -2592,23 +2606,29 @@ export function KumbakonamPage() {
           <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
             Planning a trip beyond the city? Choose a Kumbakonam one way taxi or round trip for nearby towns, temple visits, family travel, and longer journeys.
           </p>
-          <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-6 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
             {kumbakonamOutstationRoutes.map((route) => (
               <Link
                 key={route.to}
                 to="/book-ride"
-                className="group flex min-h-28 items-center justify-between gap-3 rounded-lg border border-[#E2E8F3] bg-white p-5 shadow-sm transition-all hover:border-[#1E2A6E] hover:bg-[#F8FAFF] hover:shadow-md"
+                className="group relative flex aspect-[1151/512] min-h-[190px] items-center overflow-hidden rounded-xl border border-border bg-white transition-all hover:border-primary/30 hover:shadow-md lg:aspect-auto lg:h-48 lg:min-h-0"
               >
-                <div className="min-w-0">
-                  <span className="font-heading text-base font-bold text-[#1E2A6E]">Kumbakonam to {route.to}</span>
-                  <p className="mt-2 text-sm text-[#4B587C]">
-                    {route.distance} km | {route.price === "Not valid" ? "Not valid" : `₹${route.price}`}
+                <div className="pointer-events-none absolute inset-y-0 right-0 aspect-[559/663] overflow-hidden">
+                  <img
+                    src={assetPath(route.image)}
+                    alt=""
+                    className="absolute -right-[3%] -top-[5%] h-[105%] w-auto max-w-none"
+                  />
+                </div>
+                <div className="relative z-10 flex w-[64%] min-w-0 flex-col items-start justify-center px-4 py-3 sm:px-5 lg:w-[60%]">
+                  <h3 className="font-heading text-lg font-bold leading-tight text-[#111827] sm:text-xl">Kumbakonam to {route.to}</h3>
+                  <p className="mt-3 text-sm text-[#111827]">
+                      {route.distance} km | {route.price === "Not valid" ? "Not valid" : `₹${route.price}`}
                   </p>
-                  <span className="mt-3 inline-flex rounded-full bg-[#FFF3D8] px-3 py-1 text-[11px] font-extrabold text-[#B45F00]">
-                    {route.tag}
+                  <span className="mt-4 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors group-hover:bg-[#E6C200]">
+                    Book Now <ArrowRight className="h-3.5 w-3.5" />
                   </span>
                 </div>
-                <ArrowRight className="h-4 w-4 shrink-0 text-[#1E2A6E] transition-transform group-hover:translate-x-1" />
               </Link>
             ))}
           </div>
@@ -2622,12 +2642,17 @@ export function KumbakonamPage() {
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {kumbakonamPickupSpots.map((spot) => (
-              <div key={spot.title} className="rounded-lg border border-[#E2E8F3] bg-white p-5 shadow-sm">
-                <div className="flex items-start gap-2 text-[#1E2A6E]">
-                  <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
-                  <span className="font-heading text-sm font-bold leading-5">{spot.title}</span>
+              <div key={spot.title} className="overflow-hidden rounded-lg border border-[#E2E8F3] bg-white shadow-sm">
+                <div className="aspect-[3/2] w-full bg-[#F4F6FF]">
+                  <img src={assetPath(spot.image)} alt={spot.title} className="h-full w-full object-cover object-center" />
                 </div>
-                <p className="mt-3 text-sm leading-6 text-[#4B587C]">{spot.description}</p>
+                <div className="p-5">
+                  <div className="flex items-start gap-2 text-[#1E2A6E]">
+                    <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
+                    <span className="font-heading text-sm font-bold leading-5">{spot.title}</span>
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-[#4B587C]">{spot.description}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -2660,12 +2685,17 @@ export function KumbakonamPage() {
           </p>
           <div className="mt-6 grid gap-4 md:grid-cols-3">
             {kumbakonamCholaTemples.map((temple) => (
-              <div key={temple.title} className="flex flex-col rounded-lg border border-[#E2E8F3] bg-white p-5 shadow-sm">
-                <h3 className="font-heading text-lg font-bold text-[#1E2A6E]">{temple.title}</h3>
-                <p className="mt-3 flex-1 text-sm leading-6 text-[#4B587C]">{temple.description}</p>
-                <Link to="/book-ride" className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-[#1E2A6E] hover:underline">
-                  {temple.button} <ArrowRight className="h-4 w-4" />
-                </Link>
+              <div key={temple.title} className="flex flex-col overflow-hidden rounded-lg border border-[#E2E8F3] bg-white shadow-sm">
+                <div className="aspect-[3/2] w-full bg-[#F4F6FF]">
+                  <img src={assetPath(temple.image)} alt={temple.title} className="h-full w-full object-contain" />
+                </div>
+                <div className="flex flex-1 flex-col p-5">
+                  <h3 className="font-heading text-lg font-bold text-[#1E2A6E]">{temple.title}</h3>
+                  <p className="mt-3 flex-1 text-sm leading-6 text-[#4B587C]">{temple.description}</p>
+                  <Link to="/book-ride" className="mt-5 inline-flex items-center gap-1 text-sm font-bold text-[#1E2A6E] hover:underline">
+                    {temple.button} <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
               </div>
             ))}
           </div>
@@ -3283,16 +3313,16 @@ export function CityPage({
                 <Link
                   key={route.to}
                   to={`/routes/salem-to-${route.to.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="group relative flex aspect-[1151/512] min-h-[170px] items-center overflow-hidden rounded-xl border border-border bg-white transition-all hover:border-primary/30 hover:shadow-md lg:aspect-auto lg:h-40 lg:min-h-0"
+                  className="group relative flex aspect-[1151/512] min-h-[190px] items-center overflow-hidden rounded-xl border border-border bg-white transition-all hover:border-primary/30 hover:shadow-md lg:aspect-auto lg:h-48 lg:min-h-0"
                 >
-                  <div className="pointer-events-none absolute inset-y-0 right-0 aspect-[559/663] overflow-hidden">
+                  <div className="pointer-events-none absolute inset-y-0 right-0 w-[46%] overflow-hidden">
                     <img
                       src={assetPath(route.image)}
                       alt=""
-                      className="absolute -right-[3%] -top-[5%] h-[105%] w-auto max-w-none"
+                      className="h-full w-full object-cover object-center"
                     />
                   </div>
-                  <div className="relative z-10 flex w-[64%] min-w-0 flex-col items-start justify-center px-4 py-3 sm:px-5 lg:w-[60%]">
+                  <div className="relative z-10 flex w-[54%] min-w-0 flex-col items-start justify-center px-4 py-3 sm:px-5 lg:w-[54%]">
                     <h3 className="font-heading text-lg font-bold leading-tight text-[#111827] sm:text-xl">Salem to {route.to}</h3>
                     <p className="mt-3 text-sm text-[#111827]">{route.meta}</p>
                     <span className="mt-4 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors group-hover:bg-[#E6C200]">
@@ -3369,12 +3399,17 @@ export function CityPage({
               </p>
               <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {tiruppurPickupSpots.map((spot) => (
-                  <div key={spot.title} className="rounded-xl border border-border bg-white p-4 shadow-sm">
-                    <div className="flex items-start gap-2 text-[#1E2A6E]">
-                      <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                      <h3 className="text-sm font-bold leading-5">{spot.title}</h3>
+                  <div key={spot.title} className="overflow-hidden rounded-xl border border-border bg-white shadow-sm">
+                    <div className="aspect-[3/2] w-full bg-[#F4F6FF]">
+                      <img src={assetPath(spot.image)} alt={spot.title} className="h-full w-full object-cover object-center" />
                     </div>
-                    <p className="mt-3 text-xs font-medium leading-6 text-[#33406F]">{spot.description}</p>
+                    <div className="p-4">
+                      <div className="flex items-start gap-2 text-[#1E2A6E]">
+                        <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                        <h3 className="text-sm font-bold leading-5">{spot.title}</h3>
+                      </div>
+                      <p className="mt-3 text-xs font-medium leading-6 text-[#33406F]">{spot.description}</p>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -3391,12 +3426,17 @@ export function CityPage({
               </h3>
               <div className="mt-4 grid grid-cols-1 gap-4 md:grid-cols-3">
                 {tiruppurAttractions.map((place) => (
-                  <div key={place.title} className="flex h-full flex-col rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] p-5 shadow-sm transition-colors hover:border-[#1E2A6E]">
-                    <h4 className="font-heading text-base font-bold text-[#1E2A6E]">{place.title}</h4>
-                    <p className="mt-3 text-sm leading-6 text-[#4B587C]">{place.description}</p>
-                    <Link to="/book-ride" className="mt-auto inline-flex items-center pt-4 text-sm font-bold text-[#1E2A6E] hover:text-primary">
-                      Book a Cab to {place.title} <ArrowRight className="ml-1 h-4 w-4" />
-                    </Link>
+                  <div key={place.title} className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] shadow-sm transition-colors hover:border-[#1E2A6E]">
+                    <div className="aspect-[3/2] w-full bg-[#F4F6FF]">
+                      <img src={assetPath(place.image)} alt={place.title} className="h-full w-full object-contain" />
+                    </div>
+                    <div className="flex flex-1 flex-col p-5">
+                      <h4 className="font-heading text-base font-bold text-[#1E2A6E]">{place.title}</h4>
+                      <p className="mt-3 text-sm leading-6 text-[#4B587C]">{place.description}</p>
+                      <Link to="/book-ride" className="mt-auto inline-flex items-center pt-4 text-sm font-bold text-[#1E2A6E] hover:text-primary">
+                        Book a Cab to {place.title} <ArrowRight className="ml-1 h-4 w-4" />
+                      </Link>
+                    </div>
                   </div>
                 ))}
               </div>
