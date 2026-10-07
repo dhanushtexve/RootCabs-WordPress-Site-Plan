@@ -205,18 +205,18 @@ const salemServiceAssetIconMap: Record<(typeof salemServices)[number]["slug"], R
 };
 
 const trichyOutstationRoutes = [
-  { to: "Chennai", distance: 326, price: 8662, tag: "Most Searched" },
-  { to: "Kumbakonam", distance: 96, price: 2452, tag: "TEMPLE CITY" },
-  { to: "Thanjavur", distance: 57, price: 1399, tag: "NEARBY CITY" },
-  { to: "Madurai", distance: 131, price: 3397, tag: "POPULAR ROUTE" },
-  { to: "Pondicherry", distance: 134, price: 3478, tag: "COASTAL ROUTE" },
-  { to: "Salem", distance: 144, price: 3748, tag: "CITY ROUTE" },
-  { to: "Coimbatore", distance: 216, price: 5692, tag: "MAJOR CITY" },
-  { to: "Vellore", distance: 271, price: 7177, tag: "LONG-DISTANCE ROUTE" },
-  { to: "Tiruvannamalai", distance: 185, price: 4855, tag: "TEMPLE CITY" },
-  { to: "Rameswaram", distance: 235, price: 6205, tag: "TEMPLE ROUTE" },
-  { to: "Bengaluru", distance: 325, price: 8635, tag: "INTERSTATE ROUTE" },
-  { to: "Palani", distance: 164, price: 4288, tag: "TEMPLE ROUTE" },
+  { to: "Chennai", distance: 326, price: 8662, tag: "Most Searched", image: "/assets/trichy-routes/Chennai (1).webp" },
+  { to: "Kumbakonam", distance: 96, price: 2452, tag: "TEMPLE CITY", image: "/assets/trichy-routes/Kumbakonam.webp" },
+  { to: "Thanjavur", distance: 57, price: 1399, tag: "NEARBY CITY", image: "/assets/trichy-routes/Tanjore.webp" },
+  { to: "Madurai", distance: 131, price: 3397, tag: "POPULAR ROUTE", image: "/assets/trichy-routes/Madurai.webp" },
+  { to: "Pondicherry", distance: 134, price: 3478, tag: "COASTAL ROUTE", image: "/assets/trichy-routes/Pondichery.webp" },
+  { to: "Salem", distance: 144, price: 3748, tag: "CITY ROUTE", image: "/assets/trichy-routes/Salem.webp" },
+  { to: "Coimbatore", distance: 216, price: 5692, tag: "MAJOR CITY", image: "/assets/trichy-routes/Coimbatore (1).webp" },
+  { to: "Vellore", distance: 271, price: 7177, tag: "LONG-DISTANCE ROUTE", image: "/assets/trichy-routes/Vellore.webp" },
+  { to: "Tiruvannamalai", distance: 185, price: 4855, tag: "TEMPLE CITY", image: "/assets/trichy-routes/Tiruvannamalai.webp" },
+  { to: "Rameswaram", distance: 235, price: 6205, tag: "TEMPLE ROUTE", image: "/assets/trichy-routes/Rameshwaram.webp" },
+  { to: "Bengaluru", distance: 325, price: 8635, tag: "INTERSTATE ROUTE", image: "/assets/trichy-routes/Bengaluru.webp" },
+  { to: "Palani", distance: 164, price: 4288, tag: "TEMPLE ROUTE", image: "/assets/trichy-routes/Palani.webp" },
 ];
 
 const kumbakonamServices = [
@@ -3276,24 +3276,26 @@ export function CityPage({
             <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
               Popular Routes from Trichy
             </h2>
-            <p className="mt-2 text-sm leading-6 text-muted-foreground md:text-base">
-              Fares below are provisional placeholders — to be confirmed against the live rate card before publishing.
+            <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+              Choose a one-way taxi or round trip for temple visits, nearby cities, and longer journeys from Trichy.
             </p>
-            <div className="mt-4 grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-6 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
               {trichyOutstationRoutes.map((route) => (
                 <Link
                   key={route.to}
                   to={`/routes/trichy-to-${route.to.toLowerCase().replace(/\s+/g, "-")}`}
-                  className={`group flex min-h-[64px] items-center justify-between gap-3 rounded-xl border px-4 py-3 transition-colors hover:border-primary/40 hover:shadow-sm ${route.to === "Chennai" ? "border-[#FFD34E] bg-[#FFFCEF]" : "border-[#E6E8ED] bg-white"}`}
+                  className="group relative flex aspect-[1151/512] min-h-[190px] items-center overflow-hidden rounded-xl border border-border bg-white transition-all hover:border-primary/30 hover:shadow-md lg:aspect-auto lg:h-48 lg:min-h-0"
                 >
-                  <div className="min-w-0">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <h3 className="font-heading text-sm font-bold text-[#111827]">Trichy to {route.to}</h3>
-                      {route.tag === "Most Searched" && <span className="rounded-full bg-[#FFF2C2] px-2 py-0.5 text-[9px] font-bold text-[#8A6900]">Most Searched</span>}
-                    </div>
-                    <p className="mt-1 text-xs text-[#758096]">{route.distance} km | Sedan from ₹{route.price.toLocaleString("en-IN")} <span className="ml-2 rounded-full bg-[#FFF0DD] px-2 py-0.5 text-[9px] font-semibold text-[#B75D00]">Provisional</span></p>
+                  <div className="pointer-events-none absolute inset-y-0 right-0 w-[46%] overflow-hidden">
+                    <img src={assetPath(route.image)} alt="" className="h-full w-full object-cover object-center" />
                   </div>
-                  <ArrowRight className="h-4 w-4 shrink-0 text-[#758096] transition-transform group-hover:translate-x-0.5" />
+                  <div className="relative z-10 flex w-[54%] min-w-0 flex-col items-start justify-center px-4 py-3 sm:px-5">
+                    <h3 className="font-heading text-lg font-bold leading-tight text-[#111827] sm:text-xl">Trichy to {route.to}</h3>
+                    <p className="mt-3 text-sm text-[#111827]">{route.distance} km | Sedan from ₹{route.price.toLocaleString("en-IN")}</p>
+                    <span className="mt-4 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors group-hover:bg-[#E6C200]">
+                      Book Now <ArrowRight className="h-3.5 w-3.5" />
+                    </span>
+                  </div>
                 </Link>
               ))}
             </div>
@@ -3454,27 +3456,36 @@ export function CityPage({
               {[
                 {
                   title: "Rock Fort Temple",
+                  image: "/assets/trichy-pickup-spots/Rock Fort.webp",
                   description: "After visiting Rock Fort Temple, book a cab for your next journey around Trichy. Travel comfortably to your home, hotel, railway station, shopping area, or any other place you plan to visit.",
                 },
                 {
                   title: "Srirangam Ranganathaswamy Temple",
+                  image: "/assets/trichy-pickup-spots/Srirangam Ranganathaswamy Temple.webp",
                   description: "Temple visits with family can be easier when your return ride is ready. Book a cab near Srirangam for travel to your hotel, home, railway station, or another location across Trichy.",
                 },
                 {
                   title: "Trichy Junction",
+                  image: "/assets/trichy-pickup-spots/Trichy railwaystation.webp",
                   description: <>Your ride can be ready when you arrive at Trichy Junction. Book a <strong>call taxi in Trichy</strong> for travel to your home, hotel, office, airport, or another location in the city.</>,
                 },
                 {
                   title: "Tiruchirappalli International Airport (TRZ)",
+                  image: "/assets/trichy-pickup-spots/Trichy Airport.webp",
                   description: <>Airport travel becomes simpler with a ride planned for your arrival or departure. Book a <strong>Trichy airport taxi</strong> for comfortable travel between the airport and your home, hotel, station, or other places in Trichy.</>,
                 },
               ].map((spot) => (
-                <div key={spot.title} className="rounded-xl border border-border bg-white p-4 shadow-sm">
-                  <div className="flex items-start gap-2 text-[#1E2A6E]">
-                    <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-                    <h3 className="text-sm font-bold leading-5">{spot.title}</h3>
+                <div key={spot.title} className="overflow-hidden rounded-xl border border-border bg-white shadow-sm">
+                  <div className="aspect-[3/2] w-full bg-[#F4F6FF]">
+                    <img src={assetPath(spot.image)} alt={spot.title} className="h-full w-full object-cover object-center" />
                   </div>
-                  <p className="mt-3 text-xs font-medium leading-6 text-[#33406F]">{spot.description}</p>
+                  <div className="p-4">
+                    <div className="flex items-start gap-2 text-[#1E2A6E]">
+                      <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                      <h3 className="text-sm font-bold leading-5">{spot.title}</h3>
+                    </div>
+                    <p className="mt-3 text-xs font-medium leading-6 text-[#33406F]">{spot.description}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -3571,26 +3582,34 @@ export function CityPage({
               {[
                 {
                   title: "Rock Fort (Uchi Pillayar Temple)",
+                  image: "/assets/trichy-landmark-temples/Rock Fort (1).webp",
                   description: <>Rock Fort is one of the city’s best-known places and a popular stop during a Trichy visit. With <strong>cab booking in Trichy</strong>, you can visit the temple and continue to other places around the city comfortably.</>,
                   cta: "Book a Cab to Rock Fort",
                 },
                 {
                   title: "Ranganathaswamy Temple, Srirangam",
+                  image: "/assets/trichy-landmark-temples/Ranganathaswamy Temple, Srirangam.webp",
                   description: <>Ranganatha Swamy Temple is a popular choice for families planning a temple visit in Trichy. A <strong>call taxi service in Trichy</strong> makes it easy to reach Srirangam and continue your day after the visit.</>,
                   cta: "Book a Cab to Ranganatha Swamy Temple",
                 },
                 {
                   title: "Jambukeswarar Temple, Thiruvanaikaval",
+                  image: "/assets/trichy-landmark-temples/Jambukeswarar Temple, Thiruvanaikaval.webp",
                   description: "Jambukeswarar Temple is another well-known place to include in your Trichy temple trip. Spend time at the temple with your family and continue to Srirangam or other nearby places at your own pace.",
                   cta: "Book a Cab to Jambukeswarar Temple",
                 },
               ].map((place) => (
-                <div key={place.title} className="flex h-full flex-col rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] p-5 shadow-sm transition-colors hover:border-[#1E2A6E]">
-                  <h3 className="font-heading text-base font-bold text-[#1E2A6E]">{place.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-[#4B587C]">{place.description}</p>
-                  <Link to="/book-ride" className="mt-auto inline-flex items-center pt-4 text-sm font-bold text-[#1E2A6E] hover:text-primary">
-                    {place.cta} <ArrowRight className="ml-1 h-4 w-4" />
-                  </Link>
+                <div key={place.title} className="flex h-full flex-col overflow-hidden rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] shadow-sm transition-colors hover:border-[#1E2A6E]">
+                  <div className="aspect-[3/2] w-full bg-[#F4F6FF]">
+                    <img src={assetPath(place.image)} alt={place.title} className="h-full w-full object-contain" />
+                  </div>
+                  <div className="flex flex-1 flex-col p-5">
+                    <h3 className="font-heading text-base font-bold text-[#1E2A6E]">{place.title}</h3>
+                    <p className="mt-3 text-sm leading-6 text-[#4B587C]">{place.description}</p>
+                    <Link to="/book-ride" className="mt-auto inline-flex items-center pt-4 text-sm font-bold text-[#1E2A6E] hover:text-primary">
+                      {place.cta} <ArrowRight className="ml-1 h-4 w-4" />
+                    </Link>
+                  </div>
                 </div>
               ))}
             </div>
