@@ -36,54 +36,66 @@ const serviceLabelMap: Record<string, string> = {
   "bike-taxi": "Bike Taxi",
 };
 
+const mainServiceHref = (slug: string) => {
+  const routes: Record<string, string> = {
+    "local-taxi": "/services/local-taxi",
+    outstation: "/services/outstation",
+    "acting-driver": "/services/acting-driver",
+    auto: "/services/auto",
+    "parcel-delivery": "/services/parcel-delivery",
+  };
+
+  return routes[slug] ?? "/book-ride";
+};
+
 const trichyServices = [
   {
     slug: "local-taxi",
     title: "Local Taxi",
     description: "Travel comfortably for office, shopping, hospital visits, station pickups, family outings, or other trips around Trichy. Our taxi in Trichy service gives you a simple way to reach places across the city.",
-    icon: <img src={assetPath("/assets/service-icons/local.webp")} alt="Local Taxi service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src={assetPath("/assets/chennai-service-local.webp")} alt="Local Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
     slug: "outstation",
     title: "Outstation Taxi",
     description: "Plan your journey outside the city for holidays, family visits, business travel, temple trips, or weekend plans. Our outstation service gives you a comfortable cab for travelling to destinations beyond Trichy.",
-    icon: <img src={assetPath("/assets/service-icons/outstation.webp")} alt="Outstation Taxi service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src={assetPath("/assets/chennai-service-outstation.webp")} alt="Outstation Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
     slug: "one-way-taxi",
     title: "One-Way Taxi",
     description: "Our one way taxi Trichy service lets you book only the trip you need, making it convenient for airport transfers, family visits, and long journeys.",
-    icon: <img src={assetPath("/assets/service-icons/one-way.webp")} alt="One-Way Taxi service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src={assetPath("/assets/chennai-service-one-way.webp")} alt="One-Way Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
     slug: "hourly-package",
     title: "Hourly Package",
     description: "Keep a cab available when your day includes several stops around Trichy. Choose an hourly package for meetings, shopping, family plans, appointments, or city visits without booking a separate ride each time.",
-    icon: <img src={assetPath("/assets/service-icons/hourly-package.webp")} alt="Hourly Package service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src={assetPath("/assets/chennai-service-hourly-package.webp")} alt="Hourly Package service icon" className="h-8 w-8 object-contain" />,
   },
   {
     slug: "acting-driver",
     title: "Acting Driver",
     description: "Enjoy travelling in your own car while a professional driver takes care of the driving. This service works well for functions, long drives, late-night travel, family occasions, or whenever you need a driver.",
-    icon: <img src={assetPath("/assets/service-icons/acting-driver.webp")} alt="Acting Driver service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src={assetPath("/assets/chennai-service-acting-driver.webp")} alt="Acting Driver service icon" className="h-8 w-8 object-contain" />,
   },
   {
     slug: "auto",
     title: "Auto Rickshaw",
     description: "Choose an auto for short rides around Trichy, including market visits, station trips, shopping, work, or nearby travel. It is an easy option when you need to get around the city for everyday plans.",
-    icon: <img src={assetPath("/assets/service-icons/auto.webp")} alt="Auto Rickshaw service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src={assetPath("/assets/chennai-service-auto.webp")} alt="Auto Rickshaw service icon" className="h-8 w-8 object-contain" />,
   },
   {
     slug: "bike-taxi",
     title: "Bike Taxi",
     description: "Book a bike taxi for short trips to work, college, shops, stations, or nearby places. It gives you a convenient option when you need a ride around Trichy.",
-    icon: <img src={assetPath("/assets/service-icons/bike-taxi.webp")} alt="Bike Taxi service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src={assetPath("/assets/chennai-service-bike-taxi.webp")} alt="Bike Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
     slug: "parcel-delivery",
     title: "Parcel Delivery",
     description: "Send documents, packages, gifts, or other small items to someone across Trichy without travelling there yourself. Our parcel delivery service helps you send what you need while you carry on with your day.",
-    icon: <img src={assetPath("/assets/service-icons/parcel.webp")} alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
+    icon: <img src={assetPath("/assets/chennai-service-parcel.webp")} alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
   },
 ];
 
@@ -118,12 +130,12 @@ const cityImageMap: Record<string, string> = {
 };
 
 const cityBannerMap: Record<string, string> = {
-  "taxi-in-chennai": "/assets/city-banners/chennai-home.webp",
+  "taxi-in-chennai": "/assets/city-banners/chennai-website-home.png",
   "taxi-in-vellore": "/assets/city-banners/vellore.webp",
   "taxi-in-coimbatore": "/assets/city-banners/coimbatore.webp",
-  "taxi-in-trichy": "/assets/city-banners/trichy-home.webp",
-  "taxi-in-salem": "/assets/city-banners/salem-home.webp",
-  "taxi-in-tiruppur": "/assets/city-banners/tiruppur-home.webp",
+  "taxi-in-trichy": "/assets/city-banners/trichy-website-home.png",
+  "taxi-in-salem": "/assets/city-banners/salem-website-home.png",
+  "taxi-in-tiruppur": "/assets/city-banners/tiruppur-website-home.png",
 };
 
 const salemServices = [
@@ -133,7 +145,7 @@ const salemServices = [
     description:
       "Book a local cab for office trips, shopping, hospital visits, railway station drops, or other rides within the city. Our taxi service in Salem helps you travel from one place to another without making things complicated.",
     fare: "Starting at ₹",
-    href: "/taxi-in-salem/local-taxi",
+    href: "/services/local-taxi",
   },
   {
     slug: "auto",
@@ -141,7 +153,7 @@ const salemServices = [
     description:
       "Book an Auto ride in Salem for short trips, including markets, bus stands, shops, and nearby areas. It is a good choice when you only need to travel a short distance.",
     fare: "Starting at ₹",
-    href: "/taxi-in-salem/auto",
+    href: "/services/auto",
   },
   {
     slug: "one-way-taxi",
@@ -157,7 +169,7 @@ const salemServices = [
     description:
       "Book an outstation cabs in Salem for trips to nearby towns and other cities. From family functions to weekend travel or a Salem to Yercaud cab, you can choose a ride based on your plan.",
     fare: "Starting at ₹",
-    href: "/taxi-in-salem/outstation",
+    href: "/services/outstation",
   },
   {
     slug: "hourly-package",
@@ -173,7 +185,7 @@ const salemServices = [
     description:
       "Travel in your own car while a professional acting driver drives for you. It is useful for family functions, late-night trips, long drives, or days when you prefer not to drive.",
     fare: "Starting at ₹",
-    href: "/taxi-in-salem/acting-driver",
+    href: "/services/acting-driver",
   },
   {
     slug: "bike-taxi",
@@ -189,19 +201,19 @@ const salemServices = [
     description:
       "Send documents, small packages, and other items within the available service area. It is useful when you need to send something without going to the location yourself.",
     fare: "Starting at ₹",
-    href: "/book-ride",
+    href: "/services/parcel-delivery",
   },
 ] as const;
 
 const salemServiceAssetIconMap: Record<(typeof salemServices)[number]["slug"], React.ReactNode> = {
-  "local-taxi": <img src={assetPath("/assets/service-icons/local.webp")} alt="Local Taxi service icon" className="h-8 w-8 object-contain" />,
-  auto: <img src={assetPath("/assets/service-icons/auto.webp")} alt="Auto Rickshaw service icon" className="h-8 w-8 object-contain" />,
-  "one-way-taxi": <img src={assetPath("/assets/service-icons/one-way.webp")} alt="One Way Taxi service icon" className="h-8 w-8 object-contain" />,
-  outstation: <img src={assetPath("/assets/service-icons/outstation.webp")} alt="Outstation Taxi service icon" className="h-8 w-8 object-contain" />,
-  "hourly-package": <img src={assetPath("/assets/service-icons/hourly-package.webp")} alt="Hourly Package service icon" className="h-8 w-8 object-contain" />,
-  "acting-driver": <img src={assetPath("/assets/service-icons/acting-driver.webp")} alt="Acting Driver service icon" className="h-8 w-8 object-contain" />,
-  "bike-taxi": <img src={assetPath("/assets/service-icons/bike-taxi.webp")} alt="Bike Taxi service icon" className="h-8 w-8 object-contain" />,
-  "parcel-delivery": <img src={assetPath("/assets/service-icons/parcel.webp")} alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
+  "local-taxi": <img src={assetPath("/assets/chennai-service-local.webp")} alt="Local Taxi service icon" className="h-8 w-8 object-contain" />,
+  auto: <img src={assetPath("/assets/chennai-service-auto.webp")} alt="Auto Rickshaw service icon" className="h-8 w-8 object-contain" />,
+  "one-way-taxi": <img src={assetPath("/assets/chennai-service-one-way.webp")} alt="One Way Taxi service icon" className="h-8 w-8 object-contain" />,
+  outstation: <img src={assetPath("/assets/chennai-service-outstation.webp")} alt="Outstation Taxi service icon" className="h-8 w-8 object-contain" />,
+  "hourly-package": <img src={assetPath("/assets/chennai-service-hourly-package.webp")} alt="Hourly Package service icon" className="h-8 w-8 object-contain" />,
+  "acting-driver": <img src={assetPath("/assets/chennai-service-acting-driver.webp")} alt="Acting Driver service icon" className="h-8 w-8 object-contain" />,
+  "bike-taxi": <img src={assetPath("/assets/chennai-service-bike-taxi.webp")} alt="Bike Taxi service icon" className="h-8 w-8 object-contain" />,
+  "parcel-delivery": <img src={assetPath("/assets/chennai-service-parcel.webp")} alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
 };
 
 const trichyOutstationRoutes = [
@@ -222,42 +234,50 @@ const trichyOutstationRoutes = [
 const kumbakonamServices = [
   {
     title: "Local Taxi",
-    icon: "local.webp",
+    href: "/services/local-taxi",
+    icon: "chennai-service-local.webp",
     description: "Move around Kumbakonam for work, shopping, appointments, railway station trips, or everyday errands. Our cab service in Kumbakonam makes it easier to arrange short city rides without depending on last-minute transport.",
   },
   {
     title: "Auto Rickshaw",
-    icon: "auto.webp",
+    icon: "chennai-service-auto.webp",
+    href: "/services/auto",
     description: "For quick trips across nearby streets and busy parts of Kumbakonam, choose an auto rickshaw. It works well for shopping runs, station travel, market visits, and other short-distance journeys around town.",
   },
   {
     title: "Drop Taxi",
-    icon: "one-way.webp",
+    icon: "chennai-service-one-way.webp",
+    href: "/book-ride",
     description: "Travelling to another city without planning a return ride? Choose a Kumbakonam one way drop taxi for direct point-to-point travel, with clear trip details and fare shown before you confirm the booking.",
   },
   {
     title: "Outstation Taxi",
-    icon: "outstation.webp",
+    icon: "chennai-service-outstation.webp",
+    href: "/services/outstation",
     description: "Plan trips from Kumbakonam to nearby towns or longer destinations with a cab suited to your journey. One-way and round-trip options make family visits, functions, and weekend travel easier to arrange.",
   },
   {
     title: "Hourly Packages",
-    icon: "hourly-package.webp",
+    icon: "chennai-service-hourly-package.webp",
+    href: "/book-ride",
     description: "Have several places to cover in the same day? Keep a cab for selected hours and move between temple visits, shopping, meetings, and other stops without booking a new ride each time.",
   },
   {
     title: "Acting Driver",
-    icon: "acting-driver.webp",
+    icon: "chennai-service-acting-driver.webp",
+    href: "/services/acting-driver",
     description: "When you prefer travelling in your own car without taking the wheel, book an acting driver. It is useful for family functions, longer drives, and late journeys, when you simply need a driver.",
   },
   {
     title: "Bike Taxi",
-    icon: "bike-taxi.webp",
+    icon: "chennai-service-bike-taxi.webp",
+    href: "/book-ride",
     description: "Travelling alone for a short distance? A bike taxi is a handy choice for everyday trips around Kumbakonam, especially when you want a simple ride for work, errands, or nearby appointments.",
   },
   {
     title: "Parcel Delivery",
-    icon: "parcel.webp",
+    icon: "chennai-service-parcel.webp",
+    href: "/services/parcel-delivery",
     description: "Send documents, small packages, and everyday items across the service area without making the trip yourself. Parcel delivery gives you a convenient way to move items from one location to another.",
   },
 ];
@@ -300,7 +320,7 @@ const kumbakonamPickupSpots = [
 const kumbakonamNavagrahaStops = [
   {
     title: "Thirunageswaram – Rahu Temple",
-    description: <>Thirunageswaram is one of the nearest Navagraha temples to Kumbakonam and is often included early in a temple circuit. A <strong>Kumbakonam call taxi service</strong> makes it easier to continue to other nearby temples without arranging transport at every stop.</>,
+    description: <>Thirunageswaram is one of the nearest Navagraha temples to Kumbakonam and is often included early in a temple circuit. A Kumbakonam call taxi service makes it easier to continue to other nearby temples without arranging transport at every stop.</>,
     button: "Book a Cab to Thirunageswaram",
   },
   {
@@ -357,22 +377,22 @@ const kumbakonamReviews = [
 const kumbakonamTrustItems = [
   {
     title: "Verified Drivers",
-    icon: <CheckCircle className="h-5 w-5" />,
+    iconSrc: "/assets/home-why-choose/verified-drivers.webp",
     description: "Every driver is verified before taking trips, giving passengers more confidence whether the ride is within Kumbakonam or to another city.",
   },
   {
     title: "Reliable Pickups",
-    icon: <MapPin className="h-5 w-5" />,
+    iconSrc: "/assets/service-benefits/shared/On-Time Rides .webp",
     description: "Root Cabs focuses on timely pickups, helping reduce unexpected delays when you are travelling for work, appointments, family plans, or longer journeys.",
   },
   {
     title: "Live Ride Sharing",
-    icon: <Navigation className="h-5 w-5" />,
+    iconSrc: "/assets/home-why-choose/live-ride-tracking.webp",
     description: "Share your trip details with family or friends so they can follow your ride and stay updated until you reach your destination.",
   },
   {
     title: "24/7 Customer Support",
-    icon: <Phone className="h-5 w-5" />,
+    iconSrc: "/assets/home-why-choose/customer-support.webp",
     description: "Support is available throughout the day to help with bookings, trip updates, payment questions, and other concerns that may come up.",
   },
 ];
@@ -450,7 +470,7 @@ const tiruppurPickupSpots = [
   {
     title: "Tiruppur Railway Station",
     image: "/assets/tiruppur-pickup-spots/Tiruppur Railway Station.webp",
-    description: <>Tiruppur Railway Station is a common pickup point for <strong>cab booking in Tirupur</strong>. You can book a ride from here to your home, hotel, office, bus stand, or another place in or outside the city.</>,
+    description: <>Tiruppur Railway Station is a common pickup point for cab booking in Tirupur. You can book a ride from here to your home, hotel, office, bus stand, or another place in or outside the city.</>,
   },
   {
     title: "Kumaran Kundu Temple",
@@ -460,7 +480,7 @@ const tiruppurPickupSpots = [
   {
     title: "Tiruppur Bus Stand",
     image: "/assets/tiruppur-pickup-spots/Tiruppur Bus stand.webp",
-    description: <>Your ride from the bus stand should be simple and comfortable. Book a cab for your home, hotel, office, or railway station. Our <strong>call taxi in Tiruppur</strong> helps you continue your journey without any difficulty.</>,
+    description: <>Your ride from the bus stand should be simple and comfortable. Book a cab for your home, hotel, office, or railway station. Our call taxi in Tiruppur helps you continue your journey without any difficulty.</>,
   },
   {
     title: "Avinashi Road Textile Belt",
@@ -652,7 +672,7 @@ const chennaiServices = [
     title: "Local Taxi",
     description: "Travel comfortably across Chennai for work, shopping, hospital visits, appointments, and everyday journeys. Choose convenient cab booking in Chennai for quick city travel without the hassle of searching for transport.",
     fare: "Starting at \u20B990/3km",
-    href: "/taxi-in-chennai/local-taxi",
+    href: "/services/local-taxi",
     iconWrapClass: "bg-white",
     icon: <img src={assetPath("/assets/chennai-service-local.webp")} alt="Local Taxi service icon" className="h-8 w-8 object-contain" />,
   },
@@ -660,7 +680,7 @@ const chennaiServices = [
     title: "Outstation Taxi",
     description: "Plan round trips from Chennai to nearby towns, tourist destinations, and major cities. Our flexible outstation cabs in Chennai are suitable for family holidays, business journeys, and weekend travel.",
     fare: "Starting at \u20B9300/20Km",
-    href: "/taxi-in-chennai/outstation",
+    href: "/services/outstation",
     iconWrapClass: "bg-white",
     icon: <img src={assetPath("/assets/chennai-service-outstation.webp")} alt="Outstation Taxi service icon" className="h-8 w-8 object-contain" />,
   },
@@ -668,7 +688,7 @@ const chennaiServices = [
     title: "Acting Driver",
     description: "Hire an experienced acting driver in Chennai to drive your own car safely. It is ideal for late-night returns, hospital visits, events, business travel, and long-distance journeys.",
     fare: "Starting at \u20B9500/100 Km",
-    href: "/taxi-in-chennai/acting-driver",
+    href: "/services/acting-driver",
     iconWrapClass: "bg-white",
     icon: <img src={assetPath("/assets/chennai-service-acting-driver.webp")} alt="Acting Driver service icon" className="h-8 w-8 object-contain" />,
   },
@@ -684,7 +704,7 @@ const chennaiServices = [
     title: "Auto",
     description: "Travel easily through Chennai's busy streets, shopping areas, railway stations, and nearby neighbourhoods. Book an auto for everyday errands, short trips, and quick local travel across the city.",
     fare: "Starting at \u20B940/1Km",
-    href: "/taxi-in-chennai/auto",
+    href: "/services/auto",
     iconWrapClass: "bg-white",
     icon: <img src={assetPath("/assets/chennai-service-auto.webp")} alt="Auto service icon" className="h-8 w-8 object-contain" />,
   },
@@ -708,7 +728,7 @@ const chennaiServices = [
     title: "Parcel Delivery",
     description: "Send documents, packages, and everyday essentials safely across Chennai. Convenient doorstep pickup and delivery make it easier to send important items without travelling across the city yourself.",
     fare: "Starting at \u20B950/1km",
-    href: "/taxi-in-chennai/parcel-delivery",
+    href: "/services/parcel-delivery",
     iconWrapClass: "bg-white",
     icon: <img src={assetPath("/assets/chennai-service-parcel.webp")} alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
   },
@@ -732,41 +752,49 @@ const tiruppurOutstationRoutes = [
 const tiruppurServices = [
   {
     title: "Local Taxi",
+    href: "/services/local-taxi",
     description: "Book a local cab for office trips, shopping, hospital visits, railway station drops, or other rides within the city. Our taxi service in Tiruppur helps you travel from one place to another without making things complicated.",
     icon: <img src={assetPath("/assets/chennai-service-local.webp")} alt="Local Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "One Way Taxi",
+    href: "/book-ride",
     description: "One-way travel is easier when the ride fits your plan. Our one way drop taxi Tirupur service is ideal for airport drops, business trips, family visits, and travel to another city without booking a return ride.",
     icon: <img src={assetPath("/assets/chennai-service-one-way.webp")} alt="One Way Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Outstation Taxi",
+    href: "/services/outstation",
     description: "Plan longer trips from Tiruppur with a cab that suits your travel plans. Choose a one-way or round trip for family visits, weekend trips, business travel, or journeys to nearby cities and towns.",
     icon: <img src={assetPath("/assets/chennai-service-outstation.webp")} alt="Outstation Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Auto Rickshaw",
+    href: "/services/auto",
     description: "Book an auto for short trips to markets, shops, offices, railway stations, or nearby areas. It is a convenient choice when you need a simple ride for getting around Tiruppur during the day.",
     icon: <img src={assetPath("/assets/chennai-service-auto.webp")} alt="Auto Rickshaw service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Bike Taxi",
+    href: "/book-ride",
     description: "Choose a bike taxi when you are travelling alone and want a quick ride across the city. It works well for office commutes, short errands, appointments, and other everyday trips around Tiruppur.",
     icon: <img src={assetPath("/assets/chennai-service-bike-taxi.webp")} alt="Bike Taxi service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Acting Driver",
+    href: "/services/acting-driver",
     description: "Travel in your own car while a professional driver takes care of the driving. This service is useful for family functions, long journeys, late-night trips, or days when you simply prefer not to drive.",
     icon: <img src={assetPath("/assets/chennai-service-acting-driver.webp")} alt="Acting Driver service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Hourly Packages",
+    href: "/book-ride",
     description: "Keep a cab with you for a few hours when you have several places to visit. Hourly packages are useful for shopping, meetings, appointments, family visits, and other plans with multiple stops.",
     icon: <img src={assetPath("/assets/chennai-service-hourly-package.webp")} alt="Hourly Package service icon" className="h-8 w-8 object-contain" />,
   },
   {
     title: "Parcel Delivery",
+    href: "/services/parcel-delivery",
     description: "Send documents, packages, or small items across Tiruppur without making the trip yourself. Parcel delivery is useful when you need something picked up and delivered to another location within the city.",
     icon: <img src={assetPath("/assets/chennai-service-parcel.webp")} alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
   },
@@ -831,7 +859,7 @@ const velloreServices = [
     description:
       "Comfortable local rides across Vellore for office commutes, hospital appointments, shopping, railway station pickups, and daily errands. With convenient cab booking in Vellore, you can plan short city journeys without searching for transport at the last minute.",
     fare: "Starting at \u20B9 90/2 Km",
-    href: "/taxi-in-vellore/local-taxi",
+    href: "/services/local-taxi",
     iconWrapClass: "bg-white",
     icon: <img src={assetPath("/assets/chennai-service-local.webp")} alt="Local Taxi service icon" className="h-8 w-8 object-contain" />,
   },
@@ -840,7 +868,7 @@ const velloreServices = [
     description:
       "Round-trip travel from Vellore for family visits, business journeys, temple trips, weekend breaks, and longer road travel. Select a vehicle that suits your group size, luggage, route, and overall travel plan.",
     fare: "Starting at \u20B9 300/20 Km",
-    href: "/taxi-in-vellore/outstation",
+    href: "/services/outstation",
     iconWrapClass: "bg-white",
     icon: <img src={assetPath("/assets/chennai-service-outstation.webp")} alt="Outstation Taxi service icon" className="h-8 w-8 object-contain" />,
   },
@@ -849,7 +877,7 @@ const velloreServices = [
     description:
       "Experienced drivers are available to drive your own car for hospital visits, family events, business travel, late-night returns, and long journeys. This service lets you travel in your vehicle without handling the drive yourself.",
     fare: "Starting at \u20B9 500/100 Km",
-    href: "/taxi-in-vellore/acting-driver",
+    href: "/services/acting-driver",
     iconWrapClass: "bg-white",
     icon: <img src={assetPath("/assets/chennai-service-acting-driver.webp")} alt="Acting Driver service icon" className="h-8 w-8 object-contain" />,
   },
@@ -867,7 +895,7 @@ const velloreServices = [
     description:
       "Quick auto rides for Vellore's markets, hospitals, railway stations, colleges, residential areas, and nearby destinations. It is a practical option for short trips, everyday errands, and local travel through busy streets.",
     fare: "Starting at \u20B9 100/2 Km",
-    href: "/taxi-in-vellore/auto",
+    href: "/services/auto",
     iconWrapClass: "bg-white",
     icon: <img src={assetPath("/assets/chennai-service-auto.webp")} alt="Auto service icon" className="h-8 w-8 object-contain" />,
   },
@@ -894,7 +922,7 @@ const velloreServices = [
     description:
       "Doorstep parcel delivery helps you send medicines, documents, small packages, and everyday essentials across Vellore. Items are collected from your location and delivered conveniently to the selected address.",
     fare: "Starting at \u20B9 50/1km",
-    href: "/taxi-in-vellore/parcel-delivery",
+    href: "/services/parcel-delivery",
     iconWrapClass: "bg-white",
     icon: <img src={assetPath("/assets/chennai-service-parcel.webp")} alt="Parcel Delivery service icon" className="h-8 w-8 object-contain" />,
   },
@@ -1831,19 +1859,18 @@ function ChennaiServicesSection() {
       </p>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {visibleServices.map((service) => (
-          <div
-            key={service.title}
-            className="group relative overflow-visible rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] p-5 pr-20 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md"
-          >
-            <div className={`pointer-events-none absolute right-4 top-4 flex h-14 w-16 items-center justify-center rounded-xl border border-white/70 shadow-sm transition-all duration-300 group-hover:-right-3 group-hover:-top-3 group-hover:scale-105 ${service.iconWrapClass}`}>
-              <div className="scale-150 opacity-90">
-                {service.icon}
+          <Link key={service.title} to={service.href} className="group block h-full">
+            <div className="relative h-full overflow-visible rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] p-5 pr-20 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md">
+              <div className={`pointer-events-none absolute right-4 top-4 flex h-14 w-16 items-center justify-center rounded-xl border border-white/70 shadow-sm transition-all duration-300 group-hover:-right-3 group-hover:-top-3 group-hover:scale-105 ${service.iconWrapClass}`}>
+                <div className="scale-150 opacity-90">
+                  {service.icon}
+                </div>
               </div>
+              <h3 className="font-heading text-xl font-bold text-[#111827]">{service.title}</h3>
+              <p className="mt-1 text-sm font-medium text-primary">{service.fare}</p>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">{service.description}</p>
             </div>
-            <h3 className="font-heading text-xl font-bold text-[#111827]">{service.title}</h3>
-            <p className="mt-1 text-sm font-medium text-primary">{service.fare}</p>
-            <p className="mt-3 text-sm leading-6 text-muted-foreground">{service.description}</p>
-          </div>
+          </Link>
         ))}
       </div>
       {chennaiServices.length > 6 && (
@@ -1875,16 +1902,15 @@ function TiruppurServicesSection() {
       </p>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {visibleServices.map((service) => (
-          <div
-            key={service.title}
-            className="group relative overflow-visible rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] p-5 pr-20 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md"
-          >
-            <div className="pointer-events-none absolute right-4 top-4 flex h-14 w-16 items-center justify-center rounded-xl border border-white/70 bg-white shadow-sm transition-all duration-300 group-hover:-right-3 group-hover:-top-3 group-hover:scale-105">
-              <div className="scale-150 opacity-90">{service.icon}</div>
+          <Link key={service.title} to={service.href} className="group block h-full">
+            <div className="relative h-full overflow-visible rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] p-5 pr-20 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md">
+              <div className="pointer-events-none absolute right-4 top-4 flex h-14 w-16 items-center justify-center rounded-xl border border-white/70 bg-white shadow-sm transition-all duration-300 group-hover:-right-3 group-hover:-top-3 group-hover:scale-105">
+                <div className="scale-150 opacity-90">{service.icon}</div>
+              </div>
+              <h3 className="font-heading text-xl font-bold text-[#111827]">{service.title}</h3>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">{service.description}</p>
             </div>
-            <h3 className="font-heading text-xl font-bold text-[#111827]">{service.title}</h3>
-            <p className="mt-3 text-sm leading-6 text-muted-foreground">{service.description}</p>
-          </div>
+          </Link>
         ))}
       </div>
       {tiruppurServices.length > 6 && (
@@ -2065,23 +2091,25 @@ function TiruppurReviewsSection() {
 
 function TiruppurTrustSection() {
   const trustItems = [
-    { icon: <CheckCircle className="h-6 w-6" />, title: "Verified Drivers", text: "Every driver is verified before taking rides, helping you feel more confident whether you travel alone, with family, or at night." },
-    { icon: <Navigation className="h-6 w-6" />, title: "Ride Tracking", text: "Let your family or friends follow your trip while you travel, giving them better visibility of your ride in real time." },
-    { icon: <Car className="h-6 w-6" />, title: "Clear Fare", text: "See the fare in the app before booking, so you know what to expect without worrying about hidden charges." },
-    { icon: <Phone className="h-6 w-6" />, title: "24/7 Support", text: "Our support team is available throughout the day to help with bookings, trip concerns, payments, or other ride-related questions." },
+    { iconSrc: "/assets/home-why-choose/verified-drivers.webp", title: "Verified Drivers", text: "Every driver is verified before taking rides, helping you feel more confident whether you travel alone, with family, or at night." },
+    { iconSrc: "/assets/home-why-choose/live-ride-tracking.webp", title: "Ride Tracking", text: "Let your family or friends follow your trip while you travel, giving them better visibility of your ride in real time." },
+    { iconSrc: "/assets/home-why-choose/transparent-fares.webp", title: "Clear Fare", text: "See the fare in the app before booking, so you know what to expect without worrying about hidden charges." },
+    { iconSrc: "/assets/home-why-choose/customer-support.webp", title: "24/7 Support", text: "Our support team is available throughout the day to help with bookings, trip concerns, payments, or other ride-related questions." },
   ];
 
   return (
     <section className="rounded-2xl bg-muted/50 p-6 md:p-8">
       <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Why Choose Root Cabs in Tiruppur?</h2>
       <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
-        With our <strong>taxi service in Tiruppur</strong>, you get verified drivers, clear fares, live ride tracking, and support whenever you need help during your trip.
+        With our taxi service in Tiruppur, you get verified drivers, clear fares, live ride tracking, and support whenever you need help during your trip.
       </p>
-      <h3 className="mt-5 font-heading text-lg font-bold text-[#1E2A6E]">Your Safety, Our Priority</h3>
+      <h3 className="mt-5 font-heading text-lg font-medium text-[#1E2A6E]">Your Safety, Our Priority</h3>
       <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {trustItems.map((item) => (
           <div key={item.title} className="rounded-xl border border-[#E2E8F3] bg-white p-5 shadow-sm">
-            <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-[#EEF3FF] text-[#1E2A6E]">{item.icon}</div>
+            <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-xl bg-[#EEF3FF]">
+              <img src={assetPath(item.iconSrc)} alt="" className="h-9 w-9 object-contain" />
+            </div>
             <h4 className="mt-4 font-heading text-base font-bold text-[#1E2A6E]">{item.title}</h4>
             <p className="mt-3 text-sm leading-7 text-muted-foreground">{item.text}</p>
           </div>
@@ -2145,7 +2173,7 @@ function TrichyTrustSection() {
         Why Customers Choose Root Cabs in Trichy?
       </h2>
       <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
-        Our <strong>taxi service in Trichy</strong> is focused on giving you a dependable ride, with drivers who value your time and make your journey comfortable.
+              Our taxi service in Trichy is focused on giving you a dependable ride, with drivers who value your time and make your journey comfortable.
       </p>
       <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {trustItems.map((item) => (
@@ -2182,7 +2210,7 @@ function SalemDriverSection() {
             <h3 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E]">Book an Acting Driver in Salem</h3>
             <p className="mt-3 text-sm leading-6 text-[#4B587C]">
               Going to a function, taking a long trip, or coming home late? Book a verified{" "}
-              <strong className="font-bold text-[#1E2A6E]">acting driver in Salem</strong> and travel in your own car while the driver takes care of the drive.
+              <Link to="/services/acting-driver" className="font-bold text-[#1E2A6E] hover:underline">acting driver in Salem</Link> and travel in your own car while the driver takes care of the drive.
             </p>
           </div>
         </div>
@@ -2527,7 +2555,7 @@ export function KumbakonamPage() {
       >
         <div
           className="absolute inset-0 hidden bg-[length:100%_100%] bg-center bg-no-repeat lg:block"
-          style={{ backgroundImage: `url('${assetPath("/assets/city-banners/kumbakonam-home.webp")}')` }}
+          style={{ backgroundImage: `url('${assetPath("/assets/city-banners/kumbakonam-website-home.png")}')` }}
         />
         <div className="absolute inset-0 hidden bg-black/40 lg:block" />
         <div className="relative z-10 mx-auto max-w-screen-xl px-4 pb-24 md:pb-28">
@@ -2561,7 +2589,7 @@ export function KumbakonamPage() {
           </div>
         </div>
         <img
-          src={assetPath("/assets/city-banners/kumbakonam-home.webp")}
+          src={assetPath("/assets/city-banners/kumbakonam-website-home.png")}
           alt=""
           className="relative z-10 h-52 w-full object-cover object-right lg:hidden"
         />
@@ -2577,10 +2605,10 @@ export function KumbakonamPage() {
           </p>
           <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {(showAllServices ? kumbakonamServices : kumbakonamServices.slice(0, 6)).map((service) => (
-              <Link key={service.title} to="/book-ride" className="group block h-full">
+              <Link key={service.title} to={service.href} className="group block h-full">
                 <div className="relative flex h-full flex-col overflow-visible rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] p-5 pr-20 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md">
                   <div className="pointer-events-none absolute right-4 top-4 flex h-14 w-16 items-center justify-center rounded-xl border border-white/70 bg-white shadow-sm transition-all duration-300 group-hover:-right-3 group-hover:-top-3 group-hover:scale-105">
-                    <img src={assetPath(`/assets/service-icons/${service.icon}`)} alt="" className="h-12 w-12 object-contain opacity-90" />
+                    <img src={assetPath(`/assets/${service.icon}`)} alt="" className="h-12 w-12 object-contain opacity-90" />
                   </div>
                   <span className="font-heading text-xl font-bold text-[#111827]">{service.title}</span>
                   <p className="mt-1 text-sm font-medium text-primary">Starting at ₹</p>
@@ -2622,9 +2650,9 @@ export function KumbakonamPage() {
                 </div>
                 <div className="relative z-10 flex w-[64%] min-w-0 flex-col items-start justify-center px-4 py-3 sm:px-5 lg:w-[60%]">
                   <h3 className="font-heading text-lg font-bold leading-tight text-[#111827] sm:text-xl">Kumbakonam to {route.to}</h3>
-                  <p className="mt-3 text-sm text-[#111827]">
-                      {route.distance} km | {route.price === "Not valid" ? "Not valid" : `₹${route.price}`}
-                  </p>
+                    <p className="mt-3 text-sm text-[#111827]">
+                      {route.distance} km | {route.price === "Not valid" ? "Fare on request" : `Sedan from ₹${route.price}`}
+                    </p>
                   <span className="mt-4 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors group-hover:bg-[#E6C200]">
                     Book Now <ArrowRight className="h-3.5 w-3.5" />
                   </span>
@@ -2642,11 +2670,11 @@ export function KumbakonamPage() {
           </p>
           <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {kumbakonamPickupSpots.map((spot) => (
-              <div key={spot.title} className="overflow-hidden rounded-lg border border-[#E2E8F3] bg-white shadow-sm">
-                <div className="aspect-[3/2] w-full bg-[#F4F6FF]">
+              <div key={spot.title} className="flex h-full flex-col">
+                <div className="aspect-[3/2] w-full shrink-0 overflow-hidden rounded-t-lg border border-b-0 border-[#E2E8F3] bg-[#F4F6FF] shadow-sm">
                   <img src={assetPath(spot.image)} alt={spot.title} className="h-full w-full object-cover object-center" />
                 </div>
-                <div className="p-5">
+                <div className="flex-1 rounded-b-lg border border-[#E2E8F3] bg-white p-5 shadow-sm">
                   <div className="flex items-start gap-2 text-[#1E2A6E]">
                     <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
                     <span className="font-heading text-sm font-bold leading-5">{spot.title}</span>
@@ -2737,8 +2765,8 @@ export function KumbakonamPage() {
           <div className="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {kumbakonamTrustItems.map((item) => (
               <div key={item.title} className="rounded-lg border border-[#E2E8F3] bg-white p-5 shadow-sm">
-                <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#EEF3FF] text-[#1E2A6E]">
-                  {item.icon}
+                <div className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-lg bg-[#EEF3FF]">
+                  <img src={assetPath(item.iconSrc)} alt="" className="h-9 w-9 object-contain" />
                 </div>
                 <h3 className="mt-4 font-heading text-base font-bold text-[#1E2A6E]">{item.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-[#4B587C]">{item.description}</p>
@@ -2759,13 +2787,13 @@ export function KumbakonamPage() {
                   Drive and Earn with Root Cabs. Earn up to ₹40,000 per month with one month of free subscription, low commission, daily payouts and additional incentives.
                 </p>
               </div>
-              <Link to="/services/acting-driver" className="min-w-0">
+              <div className="min-w-0">
                 <img src="/assets/vellore-city-page/Acting Driver.png" alt="Acting driver handing car keys to a customer" className="h-52 w-full rounded-lg object-cover object-[center_20%] sm:h-56 lg:h-64" />
                 <h3 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E]">Need an Acting Driver?</h3>
                 <p className="mt-3 text-sm leading-6 text-[#4B587C]">
-                  Heading to a function, planning a long trip, or returning late? Book a verified acting driver and travel in your own car while someone else handles the driving.
+                  Heading to a function, planning a long trip, or returning late? Book a verified <Link to="/services/acting-driver" className="font-bold text-[#1E2A6E] hover:underline">acting driver</Link> and travel in your own car while someone else handles the driving.
                 </p>
-              </Link>
+              </div>
             </div>
             <div className="mt-6 flex justify-center">
               <Link to="/drivers">
@@ -3175,16 +3203,16 @@ export function CityPage({
               Services We Offer in Trichy
             </h2>
             <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
-              Explore different ride options with Root Cabs and choose what suits your travel. Our <strong>Trichy cab service</strong> is here for everyday rides, longer trips and more.
+              Explore different ride options with Root Cabs and choose what suits your travel. Our Trichy cab service is here for everyday rides, longer trips and more.
             </p>
             <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {visibleTrichyServices.map((service, index) => (
-                <Link key={service.slug} to={`/${city.slug}/${service.slug}`} className="group cursor-pointer">
+              {visibleTrichyServices.map((service) => (
+                <Link key={service.slug} to={mainServiceHref(service.slug)} className="group cursor-pointer">
                   <div className="relative h-full overflow-visible rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] p-5 pr-20 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md">
                     <div className="pointer-events-none absolute right-4 top-4 flex h-14 w-16 items-center justify-center rounded-xl border border-white/70 bg-white shadow-sm transition-all duration-300 group-hover:-right-3 group-hover:-top-3 group-hover:scale-105">
                       <div className="scale-150 opacity-90">{service.icon}</div>
                     </div>
-                    <h3 className="font-heading text-xl font-bold text-[#111827]">{index + 1}. {service.title}</h3>
+                    <h3 className="font-heading text-xl font-bold text-[#111827]">{service.title}</h3>
                     <p className="mt-3 text-sm leading-6 text-muted-foreground">{service.description}</p>
                   </div>
                 </Link>
@@ -3213,7 +3241,7 @@ export function CityPage({
               Explore our services and choose the ride that suits your travel needs.
             </p>
             <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-              {visibleSalemServices.map((service, index) => (
+              {visibleSalemServices.map((service) => (
                 <Link key={service.slug} to={service.href} className="group cursor-pointer">
                   <div className="relative h-full overflow-visible rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] p-5 pr-20 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md">
                     <div className="pointer-events-none absolute right-4 top-4 flex h-14 w-16 items-center justify-center rounded-xl border border-white/70 bg-white shadow-sm transition-all duration-300 group-hover:-right-3 group-hover:-top-3 group-hover:scale-105">
@@ -3221,9 +3249,7 @@ export function CityPage({
                         {salemServiceAssetIconMap[service.slug]}
                       </div>
                     </div>
-                    <h3 className="font-heading text-xl font-bold text-[#111827]">
-                      {index + 1}. {service.title}
-                    </h3>
+                    <h3 className="font-heading text-xl font-bold text-[#111827]">{service.title}</h3>
                     <p className="mt-1 text-sm font-medium text-primary">{service.fare}</p>
                     <p className="mt-3 text-sm leading-6 text-muted-foreground">{service.description}</p>
                   </div>
@@ -3397,7 +3423,7 @@ export function CityPage({
                 Popular Pickup Spots in Tiruppur
               </h2>
               <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
-                Root Cabs makes it easy to book a <strong>taxi in Tiruppur</strong> from some of the city’s busiest travel, shopping, temple, and business areas.
+                Root Cabs makes it easy to book a taxi in Tiruppur from some of the city’s busiest travel, shopping, temple, and business areas.
               </p>
               <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                 {tiruppurPickupSpots.map((spot) => (
@@ -3421,7 +3447,7 @@ export function CityPage({
                 Places to Visit Near Tiruppur
               </h2>
               <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
-                Explore popular temples, scenic spots, and other places around Tiruppur at your own pace. By providing a reliable <strong>taxi service in Tiruppur</strong>, Root Cabs makes it easy to plan your visit based on your time and travel needs.
+                Explore popular temples, scenic spots, and other places around Tiruppur at your own pace. By providing a reliable taxi service in Tiruppur, Root Cabs makes it easy to plan your visit based on your time and travel needs.
               </p>
               <h3 className="mt-6 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">
                 Tiruppur - India’s Banian City &amp; Knitwear Capital
@@ -3450,7 +3476,7 @@ export function CityPage({
               Popular Pickup Spots in Trichy
             </h2>
             <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
-              Need a ride from a busy place in the city? <strong>Cab booking in Trichy</strong> is simple with Root Cabs for pickups from temples, stations, airports and other popular spots.
+              Need a ride from a busy place in the city? Cab booking in Trichy is simple with Root Cabs for pickups from temples, stations, airports and other popular spots.
             </p>
             <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {[
@@ -3467,12 +3493,12 @@ export function CityPage({
                 {
                   title: "Trichy Junction",
                   image: "/assets/trichy-pickup-spots/Trichy railwaystation.webp",
-                  description: <>Your ride can be ready when you arrive at Trichy Junction. Book a <strong>call taxi in Trichy</strong> for travel to your home, hotel, office, airport, or another location in the city.</>,
+                  description: <>Your ride can be ready when you arrive at Trichy Junction. Book a call taxi in Trichy for travel to your home, hotel, office, airport, or another location in the city.</>,
                 },
                 {
                   title: "Tiruchirappalli International Airport (TRZ)",
                   image: "/assets/trichy-pickup-spots/Trichy Airport.webp",
-                  description: <>Airport travel becomes simpler with a ride planned for your arrival or departure. Book a <strong>Trichy airport taxi</strong> for comfortable travel between the airport and your home, hotel, station, or other places in Trichy.</>,
+                  description: <>Airport travel becomes simpler with a ride planned for your arrival or departure. Book a Trichy airport taxi for comfortable travel between the airport and your home, hotel, station, or other places in Trichy.</>,
                 },
               ].map((spot) => (
                 <div key={spot.title} className="overflow-hidden rounded-xl border border-border bg-white shadow-sm">
@@ -3576,20 +3602,20 @@ export function CityPage({
               Rock Fort &amp; Srirangam — Trichy’s Landmark Temples
             </h2>
             <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
-              Plan your temple visits around Trichy comfortably <strong>with our taxi service in Trichy</strong>, giving you an easy way to travel with family and enjoy your day.
+              Plan your temple visits around Trichy comfortably with our taxi service in Trichy, giving you an easy way to travel with family and enjoy your day.
             </p>
             <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
               {[
                 {
                   title: "Rock Fort (Uchi Pillayar Temple)",
                   image: "/assets/trichy-landmark-temples/Rock Fort (1).webp",
-                  description: <>Rock Fort is one of the city’s best-known places and a popular stop during a Trichy visit. With <strong>cab booking in Trichy</strong>, you can visit the temple and continue to other places around the city comfortably.</>,
+                  description: <>Rock Fort is one of the city’s best-known places and a popular stop during a Trichy visit. With cab booking in Trichy, you can visit the temple and continue to other places around the city comfortably.</>,
                   cta: "Book a Cab to Rock Fort",
                 },
                 {
                   title: "Ranganathaswamy Temple, Srirangam",
                   image: "/assets/trichy-landmark-temples/Ranganathaswamy Temple, Srirangam.webp",
-                  description: <>Ranganatha Swamy Temple is a popular choice for families planning a temple visit in Trichy. A <strong>call taxi service in Trichy</strong> makes it easy to reach Srirangam and continue your day after the visit.</>,
+                  description: <>Ranganatha Swamy Temple is a popular choice for families planning a temple visit in Trichy. A call taxi service in Trichy makes it easy to reach Srirangam and continue your day after the visit.</>,
                   cta: "Book a Cab to Ranganatha Swamy Temple",
                 },
                 {
@@ -3676,7 +3702,7 @@ export function CityPage({
               Reviews from Our Trichy Customers
             </h2>
             <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
-              Real experiences from customers who choose <strong>Root Cabs</strong> for city rides, outstation trips and other travel needs in Trichy.
+              Real experiences from customers who choose Root Cabs for city rides, outstation trips and other travel needs in Trichy.
             </p>
             <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
               {[
@@ -3892,19 +3918,18 @@ function VelloreServicesSection() {
       </p>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {visibleServices.map((service) => (
-          <div
-            key={service.title}
-            className="group relative overflow-visible rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] p-5 pr-20 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md"
-          >
-            <div className={`pointer-events-none absolute right-4 top-4 flex h-14 w-16 items-center justify-center rounded-xl border border-white/70 shadow-sm transition-all duration-300 group-hover:-right-3 group-hover:-top-3 group-hover:scale-105 ${service.iconWrapClass}`}>
-              <div className="scale-150 opacity-90">
-                {service.icon}
+          <Link key={service.title} to={service.href} className="group block h-full">
+            <div className="relative h-full overflow-visible rounded-2xl border border-[#E2E8F3] bg-[#F8FAFF] p-5 pr-20 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md">
+              <div className={`pointer-events-none absolute right-4 top-4 flex h-14 w-16 items-center justify-center rounded-xl border border-white/70 shadow-sm transition-all duration-300 group-hover:-right-3 group-hover:-top-3 group-hover:scale-105 ${service.iconWrapClass}`}>
+                <div className="scale-150 opacity-90">
+                  {service.icon}
+                </div>
               </div>
+              <h3 className="font-heading text-xl font-bold text-[#111827]">{service.title}</h3>
+              <p className="mt-1 text-sm font-medium text-primary">{service.fare}</p>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">{service.description}</p>
             </div>
-            <h3 className="font-heading text-xl font-bold text-[#111827]">{service.title}</h3>
-            <p className="mt-1 text-sm font-medium text-primary">{service.fare}</p>
-            <p className="mt-3 text-sm leading-6 text-muted-foreground">{service.description}</p>
-          </div>
+          </Link>
         ))}
       </div>
       {availableServices.length > 6 && (
