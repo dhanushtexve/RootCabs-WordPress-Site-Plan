@@ -1971,7 +1971,7 @@ export default function BookRide() {
             </div>
             <div className="flex min-w-0 flex-col">
               <img src="/assets/home-acting-driver.png" alt="Acting driver service" className="h-52 w-full rounded-lg object-cover object-top sm:h-56 lg:h-64" />
-              <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Need Someone To Take The Wheel Of Your Car?</h2>
+              <h2 className="mt-5 font-heading text-xl font-bold text-[#1E2A6E] md:text-2xl">Acting Driver for Your Car</h2>
               <p className="mt-3 text-sm leading-6 text-muted-foreground">
                 Hire a professional driver through Root Cabs for hospital visits, family functions, late-night returns,
                 business travel, and long-distance journeys.

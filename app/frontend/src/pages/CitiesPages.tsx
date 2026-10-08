@@ -2636,10 +2636,9 @@ export function KumbakonamPage() {
           </p>
           <div className="mt-6 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
             {kumbakonamOutstationRoutes.map((route) => (
-              <Link
+              <div
                 key={route.to}
-                to="/book-ride"
-                className="group relative flex aspect-[1151/512] min-h-[190px] items-center overflow-hidden rounded-xl border border-border bg-white transition-all hover:border-primary/30 hover:shadow-md lg:aspect-auto lg:h-48 lg:min-h-0"
+                className="relative flex aspect-[1151/512] min-h-[190px] items-center overflow-hidden rounded-xl border border-border bg-white lg:aspect-auto lg:h-48 lg:min-h-0"
               >
                 <div className="pointer-events-none absolute inset-y-0 right-0 aspect-[559/663] overflow-hidden">
                   <img
@@ -2653,11 +2652,14 @@ export function KumbakonamPage() {
                     <p className="mt-3 text-sm text-[#111827]">
                       {route.distance} km | {route.price === "Not valid" ? "Fare on request" : `Sedan from ₹${route.price}`}
                     </p>
-                  <span className="mt-4 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors group-hover:bg-[#E6C200]">
-                    Book Now <ArrowRight className="h-3.5 w-3.5" />
-                  </span>
+                  <Link
+                    to="/book-ride"
+                    className="mt-4 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors hover:bg-[#E6C200]"
+                  >
+                    Book Ride <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </section>
@@ -3307,10 +3309,9 @@ export function CityPage({
             </p>
             <div className="mt-6 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
               {trichyOutstationRoutes.map((route) => (
-                <Link
+                <div
                   key={route.to}
-                  to={`/routes/trichy-to-${route.to.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="group relative flex aspect-[1151/512] min-h-[190px] items-center overflow-hidden rounded-xl border border-border bg-white transition-all hover:border-primary/30 hover:shadow-md lg:aspect-auto lg:h-48 lg:min-h-0"
+                  className="relative flex aspect-[1151/512] min-h-[190px] items-center overflow-hidden rounded-xl border border-border bg-white lg:aspect-auto lg:h-48 lg:min-h-0"
                 >
                   <div className="pointer-events-none absolute inset-y-0 right-0 w-[46%] overflow-hidden">
                     <img src={assetPath(route.image)} alt="" className="h-full w-full object-cover object-center" />
@@ -3318,11 +3319,14 @@ export function CityPage({
                   <div className="relative z-10 flex w-[54%] min-w-0 flex-col items-start justify-center px-4 py-3 sm:px-5">
                     <h3 className="font-heading text-lg font-bold leading-tight text-[#111827] sm:text-xl">Trichy to {route.to}</h3>
                     <p className="mt-3 text-sm text-[#111827]">{route.distance} km | Sedan from ₹{route.price.toLocaleString("en-IN")}</p>
-                    <span className="mt-4 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors group-hover:bg-[#E6C200]">
-                      Book Now <ArrowRight className="h-3.5 w-3.5" />
-                    </span>
+                    <Link
+                      to="/book-ride"
+                      className="mt-4 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors hover:bg-[#E6C200]"
+                    >
+                      Book Ride <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
           </section>
@@ -3338,10 +3342,9 @@ export function CityPage({
             </p>
             <div className="mt-6 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
               {salemOutstationRoutes.map((route) => (
-                <Link
+                <div
                   key={route.to}
-                  to={`/routes/salem-to-${route.to.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="group relative flex aspect-[1151/512] min-h-[190px] items-center overflow-hidden rounded-xl border border-border bg-white transition-all hover:border-primary/30 hover:shadow-md lg:aspect-auto lg:h-48 lg:min-h-0"
+                  className="relative flex aspect-[1151/512] min-h-[190px] items-center overflow-hidden rounded-xl border border-border bg-white lg:aspect-auto lg:h-48 lg:min-h-0"
                 >
                   <div className="pointer-events-none absolute inset-y-0 right-0 w-[46%] overflow-hidden">
                     <img
@@ -3353,11 +3356,14 @@ export function CityPage({
                   <div className="relative z-10 flex w-[54%] min-w-0 flex-col items-start justify-center px-4 py-3 sm:px-5 lg:w-[54%]">
                     <h3 className="font-heading text-lg font-bold leading-tight text-[#111827] sm:text-xl">Salem to {route.to}</h3>
                     <p className="mt-3 text-sm text-[#111827]">{route.meta}</p>
-                    <span className="mt-4 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors group-hover:bg-[#E6C200]">
-                      Book Now <ArrowRight className="h-3.5 w-3.5" />
-                    </span>
+                    <Link
+                      to="/book-ride"
+                      className="mt-4 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors hover:bg-[#E6C200]"
+                    >
+                      Book Ride <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
           </section>
@@ -3371,10 +3377,9 @@ export function CityPage({
             </p>
             <div className="mt-6 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
               {tiruppurOutstationRoutes.map((route) => (
-                <Link
+                <div
                   key={`${route.from}-${route.to}`}
-                  to={`/routes/${route.from.toLowerCase().replace(/\s+/g, "-")}-to-${route.to.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="group relative flex aspect-[1151/512] min-h-[170px] items-center overflow-hidden rounded-xl border border-border bg-white transition-all hover:border-primary/30 hover:shadow-md lg:aspect-auto lg:h-40 lg:min-h-0"
+                  className="relative flex aspect-[1151/512] min-h-[170px] items-center overflow-hidden rounded-xl border border-border bg-white lg:aspect-auto lg:h-40 lg:min-h-0"
                 >
                   <div className="pointer-events-none absolute inset-y-0 right-0 aspect-[559/663] overflow-hidden">
                     <img
@@ -3386,11 +3391,14 @@ export function CityPage({
                   <div className="relative z-10 flex w-[64%] min-w-0 flex-col items-start justify-center px-4 py-3 sm:px-5 lg:w-[60%]">
                     <h3 className="font-heading text-lg font-bold leading-tight text-[#111827] sm:text-xl">{route.from} to {route.to}</h3>
                     <p className="mt-3 text-sm text-[#111827]">{route.distance} km | Sedan from ₹{route.price.toLocaleString("en-IN")}</p>
-                    <span className="mt-3 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors group-hover:bg-[#E6C200]">
-                      Book Now <ArrowRight className="h-3.5 w-3.5" />
-                    </span>
+                    <Link
+                      to="/book-ride"
+                      className="mt-3 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors hover:bg-[#E6C200]"
+                    >
+                      Book Ride <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
           </section>

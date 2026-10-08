@@ -119,7 +119,7 @@ export const cities: City[] = [
     slug: "taxi-in-chennai",
     name: "Chennai",
     state: "Tamil Nadu",
-    tagline: "Reliable Cab Services In Chennai For Every Ride",
+    tagline: "Your Trusted Cab Service in Chennai",
     description: "Travel across Chennai with convenient local rides, airport transfers,and long-distance cab services. Root Cabs stays available 24/7, helping you reach your destination comfortably with clear fares and easy booking.",
     services: ["local-taxi", "airport-taxi", "outstation", "acting-driver", "parcel-delivery", "auto"],
     popularRoutes: [
@@ -165,7 +165,7 @@ export const cities: City[] = [
     slug: "taxi-in-vellore",
     name: "Vellore",
     state: "Tamil Nadu",
-    tagline: "Trusted Cab Service in Vellore - VIT, CMC & Beyond",
+    tagline: "No.1 Taxi Service in Vellore",
     description: "Root Cabs is Vellore's most trusted taxi service. Whether you're a VIT student, CMC patient, or local resident, we provide safe, affordable rides across Vellore and to all major cities in Tamil Nadu.",
     services: ["local-taxi", "airport-taxi", "outstation", "acting-driver", "parcel-delivery", "auto"],
     popularRoutes: [
