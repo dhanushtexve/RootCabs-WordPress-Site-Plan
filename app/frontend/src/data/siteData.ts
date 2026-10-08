@@ -248,7 +248,7 @@ export const cities: City[] = [
     slug: "taxi-in-salem",
     name: "Salem",
     state: "Tamil Nadu",
-    tagline: "Book a Taxi in Salem",
+    tagline: "From daily city rides to trips outside Salem, our taxi service in Salem makes it simple to book a ride and plan your travel comfortably.From daily city rides to trips outside Salem, our taxi service in Salem makes it simple to book a ride and plan your travel comfortably.From daily city rides to trips outside Salem, our taxi service in Salem makes it simple to book a ride and plan your travel comfortably.From daily city rides to trips outside Salem, our taxi service in Salem makes it simple to book a ride and plan your travel comfortably.From daily city rides to trips outside Salem, our taxi service in Salem makes it simple to book a ride and plan your travel comfortably.",
     description: "From daily city rides to trips outside Salem, our taxi service in Salem makes it simple to book a ride and plan your travel comfortably.",
     services: ["local-taxi", "outstation", "acting-driver", "auto"],
     popularRoutes: [
