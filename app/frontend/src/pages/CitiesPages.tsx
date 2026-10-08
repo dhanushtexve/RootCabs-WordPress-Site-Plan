@@ -1929,64 +1929,78 @@ function TiruppurServicesSection() {
 }
 
 function ChennaiRoutesSection() {
+  const [showAllRoutes, setShowAllRoutes] = useState(false);
+  const visibleRoutes = showAllRoutes ? chennaiRoutes : chennaiRoutes.slice(0, 3);
+
   return (
     <section>
-      <h2 className="mb-3 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Round Trip Tariff Details</h2>
-      <p className="mb-6 max-w-none text-sm text-muted-foreground md:whitespace-nowrap md:text-base">
-        Compare fares by vehicle type for popular round trips from Chennai.
+      <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Popular Routes from Chennai</h2>
+      <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+        Choose a round-trip Sedan for popular destinations from Chennai.
       </p>
 
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,0.82fr)_minmax(320px,0.38fr)] lg:items-start">
-        <div className="rounded-xl border border-[#E2E8F3] bg-[#F8FAFF] p-2 shadow-sm md:p-2.5">
-          <div className="max-h-[28rem] space-y-2 overflow-y-auto pr-1 sm:max-h-[30rem] lg:max-h-[36rem]">
-            {chennaiRoutes.map((route) => {
-              const routeCities = route.title.split(" - ")[0];
-              const [fromCity, toCity] = routeCities.split(" to ");
+      <div className="mt-6 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+        {visibleRoutes.map((route) => {
+          const routeCities = route.title.split(" - ")[0];
+          const [fromCity, toCity] = routeCities.split(" to ");
+          const sedanFare = route.fares.find((fare) => fare.label === "SEDAN");
+          const distance = route.meta.match(/Estimated Distance - ([^|]+)/)?.[1] ?? "";
 
-              return (
-                <div
-                  key={route.title}
-                  className="rounded-lg border border-[#E2E8F3] bg-white p-2.5 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md"
+          return (
+            <div
+              key={route.title}
+              className="relative flex aspect-[1151/512] min-h-[190px] items-center overflow-hidden rounded-xl border border-border bg-white lg:aspect-auto lg:h-48 lg:min-h-0"
+            >
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-[46%] overflow-hidden">
+                <img
+                  src={assetPath("/assets/chennai-route-car.webp")}
+                  alt=""
+                  className="h-full w-full object-cover object-center"
+                />
+              </div>
+              <div className="relative z-10 flex w-[54%] min-w-0 flex-col items-start justify-center px-4 py-3 sm:px-5">
+                <h3 className="font-heading text-lg font-bold leading-tight text-[#111827] sm:text-xl">{fromCity} to {toCity}</h3>
+                <p className="mt-3 text-sm text-[#111827]">
+                  {distance} | Sedan from {sedanFare?.value}
+                </p>
+                <Link
+                  to="/book-ride"
+                  className="mt-4 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors hover:bg-[#E6C200]"
                 >
-                  <div className="flex flex-wrap items-start justify-between gap-2">
-                    <h3 className="grid w-fit grid-cols-[72px_56px_auto] items-center gap-2 font-heading text-sm font-bold text-[#111827]">
-                      <span className="text-right">{fromCity}</span>
-                      <span className="flex flex-col items-center gap-0.5 text-[#0A56C2]" aria-hidden="true">
-                        <ArrowRight className="h-3 w-14" strokeWidth={2} />
-                        <ArrowRight className="h-3 w-14 rotate-180" strokeWidth={2} />
-                      </span>
-                      <span className="text-left">{toCity}</span>
-                    </h3>
-                    <p className="text-[10px] text-muted-foreground">{route.meta}</p>
-                  </div>
-                  <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
-                    {route.fares.map((fare) => (
-                      <div key={fare.label} className="rounded-md border border-[#E6ECF7] bg-[#F7F9FE] px-2.5 py-1.5 text-center">
-                        <p className="text-[10px] font-extrabold uppercase tracking-wide text-[#1E2A6E]">{fare.label}</p>
-                        <p className="mt-0.5 text-xs font-bold text-[#1E2A6E]">{fare.value}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+                  Book Ride <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+            </div>
+          );
+        })}
+      </div>
 
-        <div className="rounded-xl border border-[#E2E8F3] bg-white p-3 shadow-sm lg:sticky lg:top-6">
+      <div className="mt-6 flex justify-center">
+        <Button
+          type="button"
+          variant="outline"
+          className="border-[#1E2A6E] bg-[#1E2A6E] text-white hover:border-[#273588] hover:bg-[#273588] hover:text-white"
+          onClick={() => setShowAllRoutes((current) => !current)}
+        >
+          {showAllRoutes ? "See Less" : "See More"}
+        </Button>
+      </div>
+
+      <div className="mt-6 rounded-xl border border-[#E2E8F3] bg-white p-3 shadow-sm">
+        <div className="grid gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] sm:items-center">
           <div className="overflow-hidden rounded-lg bg-[#F7FAFF]">
             <img
               src="/assets/chennai-professional-drivers.webp"
               alt="Root Cabs verified drivers for Chennai outstation routes"
-              className="h-64 w-full object-contain object-center sm:h-72 lg:h-80"
+              className="h-56 w-full object-contain object-center sm:h-64"
             />
           </div>
-          <div className="mt-2">
+          <div>
             <p className="text-[10px] font-extrabold uppercase tracking-wide text-[#1E2A6E]">Professional Drivers</p>
-            <h3 className="mt-1 font-heading text-sm font-bold text-[#1E2A6E]">
+            <h3 className="mt-1 font-heading text-xl font-bold text-[#1E2A6E]">
               Every ride, a verified captain
             </h3>
-            <p className="mt-2 text-xs leading-5 text-muted-foreground">
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">
               Root Cabs drivers are verified and trained to handle city traffic, airport transfers, and longer journeys
               with care. Their focus on timely pickup, courteous service, and smooth driving helps make every trip more
               comfortable.
@@ -3846,63 +3860,77 @@ export function CityPage({
 }
 
 function VelloreRoutesSection() {
+  const [showAllRoutes, setShowAllRoutes] = useState(false);
+  const visibleRoutes = showAllRoutes ? velloreRoutes : velloreRoutes.slice(0, 3);
+
   return (
     <section>
-      <h2 className="mb-3 font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Popular Outstation Routes From Vellore</h2>
-      <p className="mb-6 max-w-none text-sm text-muted-foreground md:whitespace-nowrap md:text-base">
-        Plan comfortable outstation journeys from Vellore with flexible vehicle options for every route.
+      <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Popular Outstation Routes From Vellore</h2>
+      <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
+        Plan comfortable outstation journeys from Vellore with a Sedan for every route.
       </p>
 
-      <div className="grid gap-4 lg:grid-cols-[minmax(0,0.82fr)_minmax(320px,0.38fr)] lg:items-start">
-        <div className="rounded-xl border border-[#E2E8F3] bg-[#F8FAFF] p-2 shadow-sm md:p-2.5">
-          <div className="max-h-[28rem] space-y-2 overflow-y-auto pr-1 sm:max-h-[30rem] lg:max-h-[36rem]">
-            {velloreRoutes.map((route) => {
-              const [fromCity, toCity] = route.title.split(" to ");
+      <div className="mt-6 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+        {visibleRoutes.map((route) => {
+          const [fromCity, toCity] = route.title.split(" to ");
+          const sedanFare = route.fares.find((fare) => fare.label === "SEDAN");
+          const distance = route.meta.match(/Km-\s*(\d+)/)?.[1] ?? "";
 
-              return (
-                <div
-                  key={route.title}
-                  className="rounded-lg border border-[#E2E8F3] bg-white p-2.5 shadow-sm transition-all hover:border-[#1E2A6E] hover:shadow-md"
+          return (
+            <div
+              key={route.title}
+              className="relative flex aspect-[1151/512] min-h-[190px] items-center overflow-hidden rounded-xl border border-border bg-white lg:aspect-auto lg:h-48 lg:min-h-0"
+            >
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-[46%] overflow-hidden">
+                <img
+                  src={assetPath("/assets/vellore-city-page/Car image.png")}
+                  alt=""
+                  className="h-full w-full object-cover object-center"
+                />
+              </div>
+              <div className="relative z-10 flex w-[54%] min-w-0 flex-col items-start justify-center px-4 py-3 sm:px-5">
+                <h3 className="font-heading text-lg font-bold leading-tight text-[#111827] sm:text-xl">{fromCity} to {toCity}</h3>
+                <p className="mt-3 text-sm text-[#111827]">
+                  {distance} km | Sedan from {sedanFare?.value}
+                </p>
+                <Link
+                  to="/book-ride"
+                  className="mt-4 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors hover:bg-[#E6C200]"
                 >
-                  <div className="flex flex-wrap items-start justify-between gap-2">
-                    <h3 className="grid w-fit grid-cols-[72px_56px_auto] items-center gap-2 font-heading text-sm font-bold text-[#111827]">
-                      <span className="text-right">{fromCity}</span>
-                      <span className="flex flex-col items-center gap-0.5 text-[#0A56C2]" aria-hidden="true">
-                        <ArrowRight className="h-3 w-14" strokeWidth={2} />
-                        <ArrowRight className="h-3 w-14 rotate-180" strokeWidth={2} />
-                      </span>
-                      <span className="text-left">{toCity}</span>
-                    </h3>
-                    <p className="text-[10px] text-muted-foreground">{route.meta}</p>
-                  </div>
-                  <div className="mt-2 grid grid-cols-1 gap-2 sm:grid-cols-3">
-                    {route.fares.map((fare) => (
-                      <div key={fare.label} className="rounded-md border border-[#E6ECF7] bg-[#F7F9FE] px-2.5 py-1.5 text-center">
-                        <p className="text-[10px] font-extrabold uppercase tracking-wide text-[#1E2A6E]">{fare.label}</p>
-                        <p className="mt-0.5 text-xs font-bold text-[#1E2A6E]">{fare.value}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+                  Book Ride <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+            </div>
+          );
+        })}
+      </div>
 
-        <div className="rounded-xl border border-[#E2E8F3] bg-white p-3 shadow-sm lg:sticky lg:top-6">
+      <div className="mt-6 flex justify-center">
+        <Button
+          type="button"
+          variant="outline"
+          className="border-[#1E2A6E] bg-[#1E2A6E] text-white hover:border-[#273588] hover:bg-[#273588] hover:text-white"
+          onClick={() => setShowAllRoutes((current) => !current)}
+        >
+          {showAllRoutes ? "See Less" : "See More"}
+        </Button>
+      </div>
+
+      <div className="mt-6 rounded-xl border border-[#E2E8F3] bg-white p-3 shadow-sm">
+        <div className="grid gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] sm:items-center">
           <div className="overflow-hidden rounded-lg bg-[#F7FAFF]">
             <img
               src={assetPath("/assets/vellore-city-page/Car image.png")}
               alt="Root Cabs car for Vellore outstation routes"
-              className="h-64 w-full object-contain object-center sm:h-72 lg:h-80"
+              className="h-56 w-full object-contain object-center sm:h-64"
             />
           </div>
-          <div className="mt-2">
+          <div>
             <p className="text-[10px] font-extrabold uppercase tracking-wide text-[#1E2A6E]">Experienced Drivers</p>
-            <h3 className="mt-1 font-heading text-sm font-bold text-[#1E2A6E]">
+            <h3 className="mt-1 font-heading text-xl font-bold text-[#1E2A6E]">
               Experienced Drivers for Every Route
             </h3>
-            <p className="mt-2 text-xs leading-5 text-muted-foreground">
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">
               Root Cabs connects you with verified drivers who are familiar with major routes from Vellore. From smooth highway driving to dependable pickups, every trip is handled with care and professionalism.
             </p>
           </div>
