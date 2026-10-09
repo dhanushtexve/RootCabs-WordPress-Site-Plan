@@ -1986,28 +1986,6 @@ function ChennaiRoutesSection() {
         </Button>
       </div>
 
-      <div className="mt-6 rounded-xl border border-[#E2E8F3] bg-white p-3 shadow-sm">
-        <div className="grid gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] sm:items-center">
-          <div className="overflow-hidden rounded-lg bg-[#F7FAFF]">
-            <img
-              src="/assets/chennai-professional-drivers.webp"
-              alt="Root Cabs verified drivers for Chennai outstation routes"
-              className="h-56 w-full object-contain object-center sm:h-64"
-            />
-          </div>
-          <div>
-            <p className="text-[10px] font-extrabold uppercase tracking-wide text-[#1E2A6E]">Professional Drivers</p>
-            <h3 className="mt-1 font-heading text-xl font-bold text-[#1E2A6E]">
-              Every ride, a verified captain
-            </h3>
-            <p className="mt-2 text-sm leading-6 text-muted-foreground">
-              Root Cabs drivers are verified and trained to handle city traffic, airport transfers, and longer journeys
-              with care. Their focus on timely pickup, courteous service, and smooth driving helps make every trip more
-              comfortable.
-            </p>
-          </div>
-        </div>
-      </div>
     </section>
   );
 }
@@ -3916,26 +3894,6 @@ function VelloreRoutesSection() {
         </Button>
       </div>
 
-      <div className="mt-6 rounded-xl border border-[#E2E8F3] bg-white p-3 shadow-sm">
-        <div className="grid gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] sm:items-center">
-          <div className="overflow-hidden rounded-lg bg-[#F7FAFF]">
-            <img
-              src={assetPath("/assets/vellore-city-page/Car image.png")}
-              alt="Root Cabs car for Vellore outstation routes"
-              className="h-56 w-full object-contain object-center sm:h-64"
-            />
-          </div>
-          <div>
-            <p className="text-[10px] font-extrabold uppercase tracking-wide text-[#1E2A6E]">Experienced Drivers</p>
-            <h3 className="mt-1 font-heading text-xl font-bold text-[#1E2A6E]">
-              Experienced Drivers for Every Route
-            </h3>
-            <p className="mt-2 text-sm leading-6 text-muted-foreground">
-              Root Cabs connects you with verified drivers who are familiar with major routes from Vellore. From smooth highway driving to dependable pickups, every trip is handled with care and professionalism.
-            </p>
-          </div>
-        </div>
-      </div>
     </section>
   );
 }
