@@ -1,5 +1,5 @@
 ﻿import { useEffect, useState } from "react";
-import { MapPin, ArrowRight, Car, Phone, Shield, Clock, CheckCircle, Star } from "lucide-react";
+import { MapPin, ArrowRight, Car, Phone, Shield, Clock, CheckCircle, Star, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
@@ -16,9 +16,11 @@ import {
   addBooking,
   addSupportParcelBooking,
   addRentalBooking,
+  getRentalServiceCategories,
   getZonePackages,
   type AddressSuggestion,
   type RentalBookingRequest,
+  type ServiceCategoryCatalogItem,
   searchAddressDetailed,
   sendBookingOtp,
   verifyBookingOtp,
@@ -128,7 +130,30 @@ function getCurrentDeviceTime() {
 }
 
 function getBookingZonePayload(zone: string) {
-  return zone === "Chennai" ? "Chennai" : "Vellore";
+  return zone.trim().toLowerCase() === "chennai" ? "Chennai" : "Vellore";
+}
+
+function normalizeCatalogValue(value: unknown) {
+  return typeof value === "string" ? value.trim().toUpperCase() : "";
+}
+
+function filterRentalCategories(categories: ServiceCategoryCatalogItem[], zone: string, tripType: string) {
+  const expected = tripType === "one-way"
+    ? { packageType: "OUTSTATION", bookingType: "DROP ONLY" }
+    : tripType === "round-trip"
+      ? { packageType: "OUTSTATION", bookingType: "ROUND TRIP" }
+      : { packageType: "LOCAL", bookingType: "" };
+
+  return categories.filter((item) =>
+    Boolean(item.category && item.label) &&
+    normalizeCatalogValue(item.status) === "ACTIVE" &&
+    item.isVisible !== false &&
+    normalizeCatalogValue(item.zone) === normalizeCatalogValue(zone) &&
+    normalizeCatalogValue(item.catalogServiceType) === "RENTAL" &&
+    normalizeCatalogValue(item.targetServiceType) === "RENTAL" &&
+    normalizeCatalogValue(item.packageType) === expected.packageType &&
+    (!expected.bookingType || !item.bookingType || normalizeCatalogValue(item.bookingType) === expected.bookingType),
+  ).sort((a, b) => Number(a.displayOrder ?? Number.MAX_SAFE_INTEGER) - Number(b.displayOrder ?? Number.MAX_SAFE_INTEGER));
 }
 
 function getParcelVehicleTypePayload(vehicleType: "Bike" | "Auto") {
@@ -264,6 +289,11 @@ export default function BookRide() {
   const [isSearchingReceiverAddress, setIsSearchingReceiverAddress] = useState(false);
   const [tripType, setTripType] = useState("one-way");
   const [vehicle, setVehicle] = useState("sedan");
+  const [rentalCategories, setRentalCategories] = useState<ServiceCategoryCatalogItem[]>([]);
+  const [selectedRentalCategory, setSelectedRentalCategory] = useState("");
+  const [isLoadingRentalCategories, setIsLoadingRentalCategories] = useState(false);
+  const [rentalCategoriesError, setRentalCategoriesError] = useState("");
+  const [rentalCategoryRetry, setRentalCategoryRetry] = useState(0);
   const [acType, setAcType] = useState<"AC" | "NON AC">("AC");
   const [parcelVehicleType, setParcelVehicleType] = useState<"Bike" | "Auto">("Bike");
   const [receiverName, setReceiverName] = useState("");
@@ -308,6 +338,11 @@ export default function BookRide() {
   const [submitted, setSubmitted] = useState(false);
   const actingDriverPackageOptions =
     actingDriverPackageType === "Local" ? actingDriverLocalPackages : actingDriverOutstationPackages;
+  const isRentalTrip = tripType === "one-way" || tripType === "round-trip" || tripType === "local";
+  const mappedRentalZone = zone ? getBookingZonePayload(zone) : "";
+  const availableRentalCategories = isRentalTrip && mappedRentalZone
+    ? filterRentalCategories(rentalCategories, mappedRentalZone, tripType)
+    : [];
 
   const hasSelectedPickup = Boolean(
     selectedPickup?.address &&
@@ -335,6 +370,7 @@ export default function BookRide() {
       (tripType === "acting-driver" ? actingDriverPickupDateTime : date && time) &&
       (tripType !== "acting-driver" || actingDriverPackage !== "custom" || actingDriverReturnDateTime) &&
       (tripType !== "local" || localPeriod) &&
+      (!isRentalTrip || Boolean(selectedRentalCategory)) &&
       (tripType !== "parcel" ||
         (parcelVehicleType &&
           receiverName.trim() &&
@@ -353,7 +389,7 @@ export default function BookRide() {
       name.trim() &&
       phoneNumber.length === 10 &&
       phoneVerified &&
-      (tripType === "parcel" || carTypeMap[vehicle]) &&
+      (tripType === "parcel" || isRentalTrip || carTypeMap[vehicle]) &&
       !isSubmittingBooking,
   );
 
@@ -516,6 +552,12 @@ export default function BookRide() {
   useEffect(() => {
     const query = from.trim();
 
+    if (selectedPickup && query === (selectedPickup.address || selectedPickup.name).trim()) {
+      setFromSuggestions([]);
+      setIsSearchingFrom(false);
+      return;
+    }
+
     if (query.length < 3) {
       setFromSuggestions([]);
       setIsSearchingFrom(false);
@@ -540,10 +582,16 @@ export default function BookRide() {
       isCurrent = false;
       window.clearTimeout(timeoutId);
     };
-  }, [from]);
+  }, [from, selectedPickup]);
 
   useEffect(() => {
     const query = to.trim();
+
+    if (selectedDrop && query === (selectedDrop.address || selectedDrop.name).trim()) {
+      setToSuggestions([]);
+      setIsSearchingTo(false);
+      return;
+    }
 
     if (query.length < 3) {
       setToSuggestions([]);
@@ -569,7 +617,7 @@ export default function BookRide() {
       isCurrent = false;
       window.clearTimeout(timeoutId);
     };
-  }, [to]);
+  }, [to, selectedDrop]);
 
   useEffect(() => {
     if (tripType !== "parcel" || !sameSenderAsPickup) return;
@@ -658,6 +706,35 @@ export default function BookRide() {
   }, [tripType]);
 
   useEffect(() => {
+    if (!isRentalTrip || !mappedRentalZone || !phoneVerified) {
+      setRentalCategories([]);
+      setSelectedRentalCategory("");
+      setRentalCategoriesError("");
+      return;
+    }
+
+    let isCurrent = true;
+    setIsLoadingRentalCategories(true);
+    setRentalCategoriesError("");
+    setSelectedRentalCategory("");
+
+    getRentalServiceCategories(mappedRentalZone)
+      .then((categories) => {
+        if (isCurrent) setRentalCategories(categories);
+      })
+      .catch((error) => {
+        if (!isCurrent) return;
+        setRentalCategories([]);
+        setRentalCategoriesError(error instanceof Error ? error.message : "Unable to load rental categories.");
+      })
+      .finally(() => {
+        if (isCurrent) setIsLoadingRentalCategories(false);
+      });
+
+    return () => { isCurrent = false; };
+  }, [isRentalTrip, mappedRentalZone, phoneVerified, tripType, rentalCategoryRetry]);
+
+  useEffect(() => {
     if (sameCabStartAsPickup) {
       setCabStart(selectedPickup?.address || "");
       setSelectedCabStart(null);
@@ -679,6 +756,12 @@ export default function BookRide() {
     if (sameCabStartAsPickup) return;
 
     const query = cabStart.trim();
+
+    if (selectedCabStart && query === (selectedCabStart.address || selectedCabStart.name).trim()) {
+      setCabStartSuggestions([]);
+      setIsSearchingCabStart(false);
+      return;
+    }
 
     if (query.length < 3) {
       setCabStartSuggestions([]);
@@ -704,12 +787,18 @@ export default function BookRide() {
       isCurrent = false;
       window.clearTimeout(timeoutId);
     };
-  }, [cabStart, sameCabStartAsPickup]);
+  }, [cabStart, sameCabStartAsPickup, selectedCabStart]);
 
   useEffect(() => {
     if (sameCabEndAsDrop) return;
 
     const query = cabEnd.trim();
+
+    if (selectedCabEnd && query === (selectedCabEnd.address || selectedCabEnd.name).trim()) {
+      setCabEndSuggestions([]);
+      setIsSearchingCabEnd(false);
+      return;
+    }
 
     if (query.length < 3) {
       setCabEndSuggestions([]);
@@ -735,7 +824,7 @@ export default function BookRide() {
       isCurrent = false;
       window.clearTimeout(timeoutId);
     };
-  }, [cabEnd, sameCabEndAsDrop]);
+  }, [cabEnd, sameCabEndAsDrop, selectedCabEnd]);
 
   useEffect(() => {
     const currentOptions = actingDriverPackageType === "Local" ? actingDriverLocalPackages : actingDriverOutstationPackages;
@@ -802,8 +891,16 @@ export default function BookRide() {
       setBookingError("Please select a service zone before confirming.");
       return;
     }
+    if (isRentalTrip && !selectedRentalCategory) {
+      setBookingError("Please select an available rental category before confirming.");
+      return;
+    }
     if (tripType === "round-trip" && (!returnDate || !returnTime)) {
       setBookingError("Please select return date and time before confirming.");
+      return;
+    }
+    if (tripType === "round-trip" && new Date(`${returnDate}T${returnTime}:00`) <= new Date(`${date}T${time}:00`)) {
+      setBookingError("Return date and time must be after the pickup date and time.");
       return;
     }
     if (!phoneVerified) {
@@ -832,7 +929,7 @@ export default function BookRide() {
       pickupLat: selectedPickup!.latitude!,
       pickupLong: selectedPickup!.longitude!,
       zone: bookingZone,
-      ...(tripType === "parcel" ? {} : { carType: carTypeMap[vehicle] }),
+      ...(isRentalTrip ? { category: selectedRentalCategory } : tripType === "parcel" ? {} : { carType: carTypeMap[vehicle] }),
       source: "RootCabs Website",
     } satisfies Omit<RentalBookingRequest, "packageType" | "booking" | "tripType">;
 
@@ -931,8 +1028,6 @@ export default function BookRide() {
         source: "RootCabs Website",
       };
     }
-
-    console.info("Root Cabs booking payload", bookingPayload);
 
     setIsSubmittingBooking(true);
       try {
@@ -1122,6 +1217,40 @@ export default function BookRide() {
           {/* Booking Form */}
           <div className="lg:col-span-2">
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Step 1: customer verification always comes first. */}
+              <div className="rounded-xl border border-border bg-white p-4">
+                <Label className="mb-3 block text-sm font-semibold">1. Verify your phone number</Label>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div>
+                    <Label className="mb-1.5 block text-sm font-medium">Your Name</Label>
+                    <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter your name" />
+                  </div>
+                  <div>
+                    <Label className="mb-1.5 block text-sm font-medium">Phone Number</Label>
+                    <div className={otpSent && !phoneVerified ? "grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto]" : "flex gap-2"}>
+                      <div className={otpSent && !phoneVerified ? "col-span-full flex min-w-0 items-center rounded-md border border-input bg-background px-3" : "flex min-w-0 flex-1 items-center rounded-md border border-input bg-background px-3"}>
+                        <span className="shrink-0 text-sm font-medium text-muted-foreground">+91</span>
+                        <Input value={phoneNumber} onChange={(e) => handlePhoneNumberChange(e.target.value)} placeholder="Enter 10-digit number" type="tel" inputMode="numeric" maxLength={10} className="border-0 px-2 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0" />
+                      </div>
+                      {!otpSent ? <Button type="button" onClick={handleSendOtp} disabled={isSendingOtp || phoneNumber.length !== 10} className="shrink-0 bg-primary hover:bg-primary/90">{isSendingOtp ? "Sending..." : "Send OTP"}</Button> : !phoneVerified ? <><InputOTP maxLength={4} value={otp} onChange={setOtp} inputMode="numeric" containerClassName="min-w-0 justify-start"><InputOTPGroup><InputOTPSlot index={0} /><InputOTPSlot index={1} /><InputOTPSlot index={2} /><InputOTPSlot index={3} /></InputOTPGroup></InputOTP><Button type="button" onClick={handleVerifyOtp} disabled={isVerifyingOtp || !otp} className="shrink-0 bg-primary hover:bg-primary/90">{isVerifyingOtp ? "Verifying..." : "Verify OTP"}</Button></> : <span className="flex items-center px-3 text-sm font-semibold text-green-700">Verified</span>}
+                    </div>
+                    {otpStatus && <p className="mt-2 text-xs font-medium text-green-700">{otpStatus}</p>}
+                    {otpError && <p className="mt-2 text-xs font-medium text-red-700">{otpError}</p>}
+                  </div>
+                </div>
+              </div>
+
+              <div className="relative">
+                {!phoneVerified && (
+                  <div className="mb-4 flex items-center gap-2 rounded-lg border border-dashed border-muted-foreground/30 bg-muted/60 px-3 py-2 text-sm text-muted-foreground">
+                    <Lock className="h-4 w-4 shrink-0" aria-hidden="true" />
+                    Verify your mobile number to unlock booking details.
+                  </div>
+                )}
+                <fieldset
+                  disabled={!phoneVerified}
+                  className={phoneVerified ? "space-y-6" : "pointer-events-none space-y-6 rounded-xl bg-muted/40 p-3 opacity-65"}
+                >
               {/* Trip Type */}
               <div>
                 <Label className="text-sm font-medium mb-3 block">Trip Type</Label>
@@ -1213,6 +1342,7 @@ export default function BookRide() {
                                 setFrom(suggestion.address || suggestion.name);
                                 setSelectedPickup(suggestion);
                                 setFromSuggestions([]);
+                                setIsSearchingFrom(false);
                               }}
                               className="flex w-full gap-3 px-4 py-3 text-left text-sm transition-colors hover:bg-primary/5"
                             >
@@ -1259,6 +1389,7 @@ export default function BookRide() {
                                   setTo(suggestion.address || suggestion.name);
                                   setSelectedDrop(suggestion);
                                   setToSuggestions([]);
+                                  setIsSearchingTo(false);
                                 }}
                                 className="flex w-full gap-3 px-4 py-3 text-left text-sm transition-colors hover:bg-primary/5"
                               >
@@ -1473,6 +1604,7 @@ export default function BookRide() {
                                     setCabStart(suggestion.address || suggestion.name);
                                     setSelectedCabStart(suggestion);
                                     setCabStartSuggestions([]);
+                                    setIsSearchingCabStart(false);
                                   }}
                                   className="flex w-full gap-3 px-4 py-3 text-left text-sm transition-colors hover:bg-primary/5"
                                 >
@@ -1529,6 +1661,7 @@ export default function BookRide() {
                                     setCabEnd(suggestion.address || suggestion.name);
                                     setSelectedCabEnd(suggestion);
                                     setCabEndSuggestions([]);
+                                    setIsSearchingCabEnd(false);
                                   }}
                                   className="flex w-full gap-3 px-4 py-3 text-left text-sm transition-colors hover:bg-primary/5"
                                 >
@@ -1552,87 +1685,59 @@ export default function BookRide() {
                 </div>
               )}
 
-              {/* Vehicle Selection */}
-              {tripType !== "parcel" && (
+              {/* Rental category / Acting Driver vehicle selection */}
+              {isRentalTrip ? (
                 <div>
-                  <Label className="text-sm font-medium mb-3 block">Select Vehicle</Label>
+                  <Label className="text-sm font-medium mb-3 block">Select Rental Category</Label>
+                  {!zone && <p className="text-sm text-muted-foreground">Select a service zone to view available categories.</p>}
+                  {zone && !phoneVerified && <p className="text-sm text-muted-foreground">Verify your phone number to load available rental categories.</p>}
+                  {isLoadingRentalCategories && <p className="text-sm text-muted-foreground">Loading available categories...</p>}
+                  {rentalCategoriesError && (
+                    <div className="flex flex-wrap items-center gap-3 text-sm text-red-700">
+                      <span>{rentalCategoriesError}</span>
+                      <Button type="button" variant="outline" size="sm" onClick={() => setRentalCategoryRetry((value) => value + 1)}>Retry</Button>
+                    </div>
+                  )}
+                  {!isLoadingRentalCategories && !rentalCategoriesError && zone && availableRentalCategories.length === 0 && (
+                    <p className="text-sm text-muted-foreground">No rental categories are available for this trip type and zone.</p>
+                  )}
                   <div className="grid sm:grid-cols-2 gap-3">
-                    {vehicles.map((v) => (
+                    {availableRentalCategories.map((category) => (
                       <div
-                        key={v.id}
-                        onClick={() => setVehicle(v.id)}
+                        key={String(category.id ?? category.category)}
+                        onClick={() => setSelectedRentalCategory(category.category || "")}
                         className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${
-                          vehicle === v.id
+                          selectedRentalCategory === category.category
                             ? "border-primary bg-primary/5"
                             : "border-border hover:border-primary/30"
                         }`}
                       >
                         <div className="flex items-center gap-3">
-                          <Car className={`w-8 h-8 ${vehicle === v.id ? "text-primary" : "text-muted-foreground"}`} />
+                          <Car className={`w-8 h-8 ${selectedRentalCategory === category.category ? "text-primary" : "text-muted-foreground"}`} />
                           <div>
-                            <p className="font-semibold">{v.name}</p>
-                            <p className="text-xs text-muted-foreground">{v.desc}</p>
-                            <p className="text-xs text-muted-foreground">{v.capacity} • ₹{v.rate.perKm}/km</p>
+                            <p className="font-semibold">{category.label}</p>
+                            <p className="text-xs text-muted-foreground">Category managed by Root Cabs</p>
                           </div>
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
-              )}
-
-              {/* Contact */}
-              {tripType !== "parcel" && (
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div>
-                    <Label className="text-sm font-medium mb-1.5 block">Your Name</Label>
-                    <Input
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="Enter your name"
-                    />
-                  </div>
-                  <div className={otpSent && !phoneVerified ? "md:col-span-2" : undefined}>
-                    <div className="mb-1.5 flex items-center justify-between gap-3">
-                      <Label className="text-sm font-medium block">Phone Number</Label>
-                    </div>
-
-                    <div className={otpSent && !phoneVerified ? "grid gap-2 md:grid-cols-3" : "flex gap-2"}>
-                      <div className="flex min-w-0 flex-1 items-center rounded-md border border-input bg-background px-3">
-                        <span className="shrink-0 text-sm font-medium text-muted-foreground">+91</span>
-                        <Input
-                          value={phoneNumber}
-                          onChange={(e) => handlePhoneNumberChange(e.target.value)}
-                          placeholder="Enter 10-digit number"
-                          type="tel"
-                          inputMode="numeric"
-                          maxLength={10}
-                          className="border-0 px-2 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
-                        />
+              ) : tripType === "acting-driver" ? (
+                <div>
+                  <Label className="text-sm font-medium mb-3 block">Select Vehicle</Label>
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {vehicles.map((v) => (
+                      <div key={v.id} onClick={() => setVehicle(v.id)} className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${vehicle === v.id ? "border-primary bg-primary/5" : "border-border hover:border-primary/30"}`}>
+                        <div className="flex items-center gap-3">
+                          <Car className={`w-8 h-8 ${vehicle === v.id ? "text-primary" : "text-muted-foreground"}`} />
+                          <div><p className="font-semibold">{v.name}</p><p className="text-xs text-muted-foreground">{v.desc}</p><p className="text-xs text-muted-foreground">{v.capacity} • ₹{v.rate.perKm}/km</p></div>
+                        </div>
                       </div>
-                      {!otpSent ? (
-                        <Button type="button" onClick={handleSendOtp} disabled={isSendingOtp || phoneNumber.length !== 10} className="shrink-0 bg-primary hover:bg-primary/90">
-                          {isSendingOtp ? "Sending..." : "Send OTP"}
-                        </Button>
-                      ) : !phoneVerified ? (
-                        <>
-                          <InputOTP maxLength={4} value={otp} onChange={setOtp} inputMode="numeric" containerClassName="min-w-0 justify-center">
-                            <InputOTPGroup><InputOTPSlot index={0} /><InputOTPSlot index={1} /><InputOTPSlot index={2} /><InputOTPSlot index={3} /></InputOTPGroup>
-                          </InputOTP>
-                          <Button type="button" onClick={handleVerifyOtp} disabled={isVerifyingOtp || !otp} className="bg-primary hover:bg-primary/90">
-                            {isVerifyingOtp ? "Verifying..." : "Verify OTP"}
-                          </Button>
-                        </>
-                      ) : (
-                        <span className="flex items-center px-3 text-sm font-semibold text-green-700">Verified</span>
-                      )}
-                    </div>
-
-                    {otpStatus && <p className="mt-2 text-xs font-medium text-green-700">{otpStatus}</p>}
-                    {otpError && <p className="mt-2 text-xs font-medium text-red-700">{otpError}</p>}
+                    ))}
                   </div>
                 </div>
-              )}
+              ) : null}
 
               {tripType === "parcel" && (
                 <div className="space-y-4 rounded-xl border border-border bg-white p-4">
@@ -1652,8 +1757,8 @@ export default function BookRide() {
                           <Label className="text-sm font-medium block">Sender Phone Number</Label>
                         </div>
 
-                        <div className={otpSent && !phoneVerified ? "grid gap-2 md:grid-cols-3" : "flex gap-2"}>
-                          <div className="flex min-w-0 flex-1 items-center rounded-md border border-input bg-background px-3">
+                        <div className={otpSent && !phoneVerified ? "grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto]" : "flex gap-2"}>
+                          <div className={otpSent && !phoneVerified ? "col-span-full flex min-w-0 items-center rounded-md border border-input bg-background px-3" : "flex min-w-0 flex-1 items-center rounded-md border border-input bg-background px-3"}>
                             <span className="shrink-0 text-sm font-medium text-muted-foreground">+91</span>
                             <Input value={phoneNumber} onChange={(e) => handlePhoneNumberChange(e.target.value)} placeholder="Enter 10-digit number" type="tel" inputMode="numeric" maxLength={10} className="border-0 px-2 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0" />
                           </div>
@@ -1663,10 +1768,10 @@ export default function BookRide() {
                             </Button>
                           ) : !phoneVerified ? (
                             <>
-                              <InputOTP maxLength={4} value={otp} onChange={setOtp} inputMode="numeric" containerClassName="justify-center">
+                              <InputOTP maxLength={4} value={otp} onChange={setOtp} inputMode="numeric" containerClassName="min-w-0 justify-start">
                                 <InputOTPGroup><InputOTPSlot index={0} /><InputOTPSlot index={1} /><InputOTPSlot index={2} /><InputOTPSlot index={3} /></InputOTPGroup>
                               </InputOTP>
-                              <Button type="button" onClick={handleVerifyOtp} disabled={isVerifyingOtp || !otp} className="bg-primary hover:bg-primary/90">
+                              <Button type="button" onClick={handleVerifyOtp} disabled={isVerifyingOtp || !otp} className="shrink-0 bg-primary hover:bg-primary/90">
                                 {isVerifyingOtp ? "Verifying..." : "Verify OTP"}
                               </Button>
                             </>
@@ -1860,6 +1965,9 @@ export default function BookRide() {
                   </div>
                 </div>
               )}
+
+                </fieldset>
+              </div>
 
               <Button
                 type="submit"

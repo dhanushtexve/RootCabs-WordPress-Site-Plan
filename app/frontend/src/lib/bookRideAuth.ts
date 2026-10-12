@@ -67,6 +67,8 @@ export type RentalBookingRequest = {
   dropLat?: number;
   dropLong?: number;
   carType?: "Mini" | "Sedan" | "SUV" | "MUV";
+  /** Rental catalog code. This replaces carType for website rental bookings only. */
+  category?: string;
   source: "RootCabs Website";
 };
 
@@ -105,6 +107,28 @@ type ZonePackagesResponse = {
   success?: boolean;
   message?: string;
   data?: unknown;
+};
+
+export type ServiceCategoryCatalogItem = {
+  id?: number | string;
+  zone?: string;
+  catalogServiceType?: string;
+  targetServiceType?: string;
+  category?: string;
+  label?: string;
+  displayOrder?: number | string;
+  isVisible?: boolean;
+  status?: string;
+  packageType?: string;
+  bookingType?: string;
+  driverRules?: unknown[];
+};
+
+type ServiceCategoryCatalogResponse = {
+  success?: boolean;
+  message?: string;
+  data?: ServiceCategoryCatalogItem[] | { result?: ServiceCategoryCatalogItem[]; rows?: ServiceCategoryCatalogItem[] };
+  result?: ServiceCategoryCatalogItem[];
 };
 
 type RegisterAdminAccountRequest = {
@@ -274,7 +298,7 @@ export async function sendBookingOtp(phoneNumber: string) {
 }
 
 export async function verifyBookingOtp(otp: string, deviceToken: string) {
-  return requestJson<unknown>(
+  const response = await requestJson<SessionResponse>(
     "/otp-verify",
     {
       method: "POST",
@@ -285,6 +309,12 @@ export async function verifyBookingOtp(otp: string, deviceToken: string) {
     },
     { includeSessionToken: true },
   );
+
+  // Some deployments renew the customer session after OTP verification.
+  // Preserve that token when present; otherwise the session created before /verify remains active.
+  const sessionId = extractSessionId(response);
+  if (sessionId) storeBookingSessionId(sessionId);
+  return response;
 }
 
 export async function searchAddressDetailed(
@@ -342,6 +372,25 @@ export async function getZonePackages(serviceType: "RENTAL" | "DRIVER" | "PARCEL
   }
 
   return response;
+}
+
+/** Loads the server-managed Rental category catalog. The caller filters it for its trip type. */
+export async function getRentalServiceCategories(zone: string) {
+  const params = new URLSearchParams({ zone, catalogServiceType: "RENTAL" });
+  const response = await requestJson<ServiceCategoryCatalogResponse>(
+    `/service-category-catalog?${params.toString()}`,
+    { method: "GET" },
+    { includeSessionToken: true },
+  );
+
+  if (response.success === false) {
+    throw new Error(response.message || "Unable to load rental categories.");
+  }
+
+  if (Array.isArray(response.data)) return response.data;
+  if (Array.isArray(response.data?.result)) return response.data.result;
+  if (Array.isArray(response.data?.rows)) return response.data.rows;
+  return Array.isArray(response.result) ? response.result : [];
 }
 
 export async function addRentalBooking(payload: RentalBookingRequest) {
