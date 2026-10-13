@@ -67,17 +67,36 @@ export type RentalBookingRequest = {
   dropLat?: number;
   dropLong?: number;
   carType?: "Mini" | "Sedan" | "SUV" | "MUV";
+  transmissionType?: "MANUAL" | "AUTOMATIC";
+  quoteRef?: string;
+  customerId?: number;
   /** Rental catalog code. This replaces carType for website rental bookings only. */
   category?: string;
   source: "RootCabs Website";
 };
 
-type SessionResponse = {
+export type BookingCustomer = {
+  id?: string | number;
+  firstName?: string | null;
+  phoneNumber?: string | null;
+};
+
+export type SessionResponse = {
   sessionId?: string;
   token?: string;
+  id?: string | number;
+  customerId?: string | number;
+  success?: boolean;
+  code?: number;
+  isNewCustomer?: boolean;
+  isVerified?: boolean;
+  customer?: BookingCustomer;
   data?: {
     sessionId?: string;
     token?: string;
+    id?: string | number;
+    customerId?: string | number;
+    customer?: { id?: string | number; customerId?: string | number };
   };
 };
 
@@ -182,7 +201,9 @@ const BOOKING_API_BASE_URL = import.meta.env.DEV
   : `${import.meta.env.VITE_BOOKING_API_BASE_URL || "https://perihelial-ariella-unserious.ngrok-free.dev"}/api/customer/dev`;
 const BOOKING_API_CONFIGURED = Boolean(import.meta.env.DEV || import.meta.env.VITE_BOOKING_API_BASE_URL);
 const BOOKING_SESSION_STORAGE_KEY = "rootcabs_booking_session_id";
+const BOOKING_CUSTOMER_STORAGE_KEY = "rootcabs_booking_customer_id";
 let bookingSessionId = "";
+let bookingCustomerId = "";
 
 function formatIndianPhoneNumber(phoneNumber: string) {
   const digitsOnly = phoneNumber.replace(/\D/g, "").slice(-10);
@@ -192,7 +213,12 @@ function formatIndianPhoneNumber(phoneNumber: string) {
 async function readApiError(response: Response) {
   try {
     const payload = await response.json();
-    return payload?.message || payload?.error || "Request failed. Please try again.";
+    const errorMessages: Record<string, string> = {
+      OTP_MISMATCH: "The OTP you entered is incorrect. Please try again.",
+    };
+    const errorCode = typeof payload?.ERROR_CODE === "string" ? payload.ERROR_CODE : "";
+
+    return errorMessages[errorCode] || payload?.message || payload?.error || "Request failed. Please try again.";
   } catch {
     return "Request failed. Please try again.";
   }
@@ -223,6 +249,40 @@ function storeBookingSessionId(sessionId: string) {
   }
 }
 
+function getStoredBookingCustomerId() {
+  if (bookingCustomerId) return bookingCustomerId;
+
+  try {
+    bookingCustomerId = window.sessionStorage.getItem(BOOKING_CUSTOMER_STORAGE_KEY) || "";
+  } catch {
+    bookingCustomerId = "";
+  }
+
+  return bookingCustomerId;
+}
+
+function storeBookingCustomerId(customerId: string) {
+  bookingCustomerId = customerId;
+  try {
+    window.sessionStorage.setItem(BOOKING_CUSTOMER_STORAGE_KEY, customerId);
+  } catch {
+    // In-memory storage still works when sessionStorage is unavailable.
+  }
+}
+
+function extractCustomerId(payload: SessionResponse) {
+  const customerId =
+    payload.customerId ??
+    payload.customer?.id ??
+    payload.data?.customerId ??
+    payload.data?.customer?.customerId ??
+    payload.data?.customer?.id ??
+    payload.id ??
+    payload.data?.id;
+
+  return customerId === undefined || customerId === null ? "" : String(customerId);
+}
+
 function extractSessionId(payload: SessionResponse) {
   return payload.sessionId || payload.token || payload.data?.sessionId || payload.data?.token || "";
 }
@@ -244,9 +304,11 @@ async function requestJson<T>(
       : {};
 
   const sessionId = requestOptions.includeSessionToken ? getStoredBookingSessionId() : "";
+  const customerId = requestOptions.includeSessionToken ? getStoredBookingCustomerId() : "";
   const headers = {
     ...baseHeaders,
     ...(sessionId ? { token: sessionId } : {}),
+    ...(customerId ? { custID: customerId } : {}),
     ...(options.headers as Record<string, string> | undefined),
   };
 
@@ -314,7 +376,108 @@ export async function verifyBookingOtp(otp: string, deviceToken: string) {
   // Preserve that token when present; otherwise the session created before /verify remains active.
   const sessionId = extractSessionId(response);
   if (sessionId) storeBookingSessionId(sessionId);
+  const customerId = extractCustomerId(response);
+  if (customerId) storeBookingCustomerId(customerId);
   return response;
+}
+
+export async function registerBookingCustomer(firstName: string, phoneNumber: string) {
+  const response = await requestJson<SessionResponse>(
+    "/register",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        firstName: firstName.trim(),
+        phoneNumber: formatIndianPhoneNumber(phoneNumber),
+      }),
+    },
+    { includeSessionToken: true },
+  );
+
+  if (response.success === false) {
+    throw new Error("Unable to register customer. Please try again.");
+  }
+
+  const customerId = extractCustomerId(response);
+  if (customerId) storeBookingCustomerId(customerId);
+  return response;
+}
+
+export type ActingDriverZonePackagesRequest = {
+  serviceType: "DRIVER";
+  bookingType: "DROP ONLY" | "ROUND TRIP";
+  packageType: "LOCAL" | "OUTSTATION";
+  pickupLat: number;
+  pickupLong: number;
+  dropLat: number;
+  dropLong: number;
+  zone: string;
+  source: "ROOTCABS WEBSITE";
+};
+
+export type ActingDriverQuoteRequest = {
+  serviceType: "DRIVER";
+  serviceFor: "DRIVER";
+  packageType: "Local" | "Outstation";
+  packageId: number;
+  period?: number;
+  bookingType: "DROP ONLY" | "ROUND TRIP";
+  fromDate: string;
+  pickupLat: number;
+  pickupLong: number;
+  dropLat: number;
+  dropLong: number;
+  driverStartLat: number;
+  driverStartLong: number;
+  driverEndLat: number;
+  driverEndLong: number;
+  carType: "Mini" | "Sedan" | "SUV" | "MUV";
+  transmissionType: "MANUAL" | "AUTOMATIC";
+  acType: "AC" | "NON AC";
+  zone: string;
+  isPremiumService: false;
+  customerId?: number;
+};
+
+export async function getActingDriverZonePackages(payload: ActingDriverZonePackagesRequest) {
+  const response = await requestJson<ZonePackagesResponse>(
+    "/acting-driver/zone-packages",
+    { method: "POST", body: JSON.stringify(payload) },
+    { includeSessionToken: true },
+  );
+
+  if (response.success === false) {
+    throw new Error(response.message || "Unable to load acting-driver packages.");
+  }
+  return response;
+}
+
+export async function getActingDriverQuote(payload: ActingDriverQuoteRequest) {
+  const customerId = Number(getStoredBookingCustomerId());
+  const response = await requestJson<Record<string, unknown>>(
+    "/get-quote",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        ...payload,
+        ...(Number.isFinite(customerId) && customerId > 0 ? { customerId } : {}),
+      }),
+    },
+    { includeSessionToken: true },
+  );
+
+  if (response.success === false) {
+    throw new Error(typeof response.message === "string" ? response.message : "Unable to calculate acting-driver fare.");
+  }
+  return response;
+}
+
+export async function getBookingConfirmation(bookingId: string | number) {
+  return requestJson<Record<string, unknown>>(
+    `/bookingConfirmation/${encodeURIComponent(String(bookingId))}`,
+    { method: "GET" },
+    { includeSessionToken: true },
+  );
 }
 
 export async function searchAddressDetailed(

@@ -16,8 +16,12 @@ import {
   addBooking,
   addSupportParcelBooking,
   addRentalBooking,
+  getActingDriverQuote,
+  getActingDriverZonePackages,
+  getBookingConfirmation,
   getRentalServiceCategories,
   getZonePackages,
+  registerBookingCustomer,
   type AddressSuggestion,
   type RentalBookingRequest,
   type ServiceCategoryCatalogItem,
@@ -130,7 +134,8 @@ function getCurrentDeviceTime() {
 }
 
 function getBookingZonePayload(zone: string) {
-  return zone.trim().toLowerCase() === "chennai" ? "Chennai" : "Vellore";
+  const normalizedZone = zone.trim().toLowerCase();
+  return bookingZones.find((city) => city.toLowerCase() === normalizedZone) || zone.trim();
 }
 
 function normalizeCatalogValue(value: unknown) {
@@ -184,6 +189,53 @@ function getBookingIdFromResponse(response: unknown) {
     payload.data?.bookingId;
 
   return bookingId === undefined || bookingId === null ? "" : String(bookingId);
+}
+
+function getQuoteRefFromResponse(response: unknown) {
+  if (!response || typeof response !== "object") return "";
+  const payload = response as {
+    quoteRef?: string;
+    data?: { quoteRef?: string; result?: { quoteRef?: string } };
+    result?: { quoteRef?: string };
+  };
+  return payload.quoteRef || payload.data?.quoteRef || payload.data?.result?.quoteRef || payload.result?.quoteRef || "";
+}
+
+type BookingResultDetails = {
+  id?: string | number;
+  pickupFormatAddress?: string | { name?: string };
+  pickupAddress?: string | { name?: string };
+  dropFormatAddress?: string | { name?: string };
+  dropAddress?: string | { name?: string };
+  category?: string;
+  created_at?: string;
+};
+
+function getBookingResultDetails(response: unknown): BookingResultDetails | null {
+  if (!response || typeof response !== "object") return null;
+  const result = (response as { data?: { result?: unknown } }).data?.result;
+  return result && typeof result === "object" ? result as BookingResultDetails : null;
+}
+
+function getAddressLabel(value: BookingResultDetails["pickupAddress"]) {
+  if (typeof value === "string") return value;
+  return value?.name || "";
+}
+
+function formatBookingCreatedAt(value?: string) {
+  if (!value) return "";
+  const createdAt = new Date(value);
+  if (Number.isNaN(createdAt.getTime())) return value;
+
+  return new Intl.DateTimeFormat("en-IN", {
+    dateStyle: "medium",
+    timeStyle: "short",
+    timeZone: "Asia/Kolkata",
+  }).format(createdAt);
+}
+
+function formatCategoryLabel(value: string) {
+  return value.replace(/_/g, " ").toLowerCase().replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
 type ZonePackageItem = {
@@ -305,6 +357,10 @@ export default function BookRide() {
   const [actingDriverPackage, setActingDriverPackage] = useState<string>("10");
   const [actingDriverPickupDateTime, setActingDriverPickupDateTime] = useState("");
   const [actingDriverReturnDateTime, setActingDriverReturnDateTime] = useState("");
+  const [actingDriverTransmission, setActingDriverTransmission] = useState<"MANUAL" | "AUTOMATIC">("MANUAL");
+  const [actingDriverZonePackages, setActingDriverZonePackages] = useState<unknown>(null);
+  const [isLoadingActingDriverPackages, setIsLoadingActingDriverPackages] = useState(false);
+  const [actingDriverPackagesError, setActingDriverPackagesError] = useState("");
   const [localPeriod, setLocalPeriod] = useState("2");
   const [zone, setZone] = useState("");
   const [date, setDate] = useState("");
@@ -330,11 +386,13 @@ export default function BookRide() {
   const [phoneVerified, setPhoneVerified] = useState(false);
   const [otpStatus, setOtpStatus] = useState("");
   const [otpError, setOtpError] = useState("");
+  const [isExistingCustomer, setIsExistingCustomer] = useState(false);
   const [isSendingOtp, setIsSendingOtp] = useState(false);
   const [isVerifyingOtp, setIsVerifyingOtp] = useState(false);
   const [isSubmittingBooking, setIsSubmittingBooking] = useState(false);
   const [bookingError, setBookingError] = useState("");
   const [bookingId, setBookingId] = useState("");
+  const [bookingResult, setBookingResult] = useState<BookingResultDetails | null>(null);
   const [submitted, setSubmitted] = useState(false);
   const actingDriverPackageOptions =
     actingDriverPackageType === "Local" ? actingDriverLocalPackages : actingDriverOutstationPackages;
@@ -735,6 +793,51 @@ export default function BookRide() {
   }, [isRentalTrip, mappedRentalZone, phoneVerified, tripType, rentalCategoryRetry]);
 
   useEffect(() => {
+    if (
+      tripType !== "acting-driver" ||
+      !phoneVerified ||
+      !zone ||
+      !hasSelectedPickup ||
+      !hasSelectedDrop
+    ) {
+      setActingDriverZonePackages(null);
+      setActingDriverPackagesError("");
+      setIsLoadingActingDriverPackages(false);
+      return;
+    }
+
+    let isCurrent = true;
+    setActingDriverZonePackages(null);
+    setActingDriverPackagesError("");
+    setIsLoadingActingDriverPackages(true);
+
+    getActingDriverZonePackages({
+      serviceType: "DRIVER",
+      bookingType: actingDriverPackageType === "Local" ? "DROP ONLY" : "ROUND TRIP",
+      packageType: actingDriverPackageType === "Local" ? "LOCAL" : "OUTSTATION",
+      pickupLat: selectedPickup!.latitude!,
+      pickupLong: selectedPickup!.longitude!,
+      dropLat: selectedDrop!.latitude!,
+      dropLong: selectedDrop!.longitude!,
+      zone: getBookingZonePayload(zone),
+      source: "ROOTCABS WEBSITE",
+    })
+      .then((response) => {
+        if (isCurrent) setActingDriverZonePackages(response);
+      })
+      .catch((error) => {
+        if (isCurrent) {
+          setActingDriverPackagesError(error instanceof Error ? error.message : "Unable to load acting-driver packages.");
+        }
+      })
+      .finally(() => {
+        if (isCurrent) setIsLoadingActingDriverPackages(false);
+      });
+
+    return () => { isCurrent = false; };
+  }, [actingDriverPackageType, hasSelectedDrop, hasSelectedPickup, phoneVerified, selectedDrop, selectedPickup, tripType, zone]);
+
+  useEffect(() => {
     if (sameCabStartAsPickup) {
       setCabStart(selectedPickup?.address || "");
       setSelectedCabStart(null);
@@ -835,7 +938,7 @@ export default function BookRide() {
   }, [actingDriverPackage, actingDriverPackageType]);
 
   const handlePhoneNumberChange = (value: string) => {
-    const digitsOnly = value.replace(/\D/g, "").slice(0, 10);
+    const digitsOnly = value.replace(/\D/g, "");
     if (digitsOnly !== phoneNumber && (otpSent || phoneVerified)) {
       setOtpSent(false);
       setPhoneVerified(false);
@@ -843,11 +946,12 @@ export default function BookRide() {
       setOtpError("");
       setOtpStatus("Phone number changed. Send a new OTP to verify this number.");
     }
+    if (digitsOnly !== phoneNumber) setIsExistingCustomer(false);
     setPhoneNumber(digitsOnly);
   };
 
   const handleReceiverPhoneNumberChange = (value: string) => {
-    const digitsOnly = value.replace(/\D/g, "").slice(0, 10);
+    const digitsOnly = value.replace(/\D/g, "");
     setReceiverPhoneNumber(digitsOnly);
   };
 
@@ -982,6 +1086,15 @@ export default function BookRide() {
         serviceType: "DRIVER",
         packageType: actingDriverPackageType,
         bookingType: actingDriverPackageType === "Local" ? "DROP ONLY" : "ROUND TRIP",
+        carType: carTypeMap[vehicle],
+        transmissionType: actingDriverTransmission,
+        acType,
+        driverStartAddress: selectedPickup!.address,
+        driverStartLat: selectedPickup!.latitude!,
+        driverStartLong: selectedPickup!.longitude!,
+        driverEndAddress: selectedDrop!.address,
+        driverEndLat: selectedDrop!.latitude!,
+        driverEndLong: selectedDrop!.longitude!,
         ...(hasPackagePeriod(actingDriverSelectedPackage) ? { period: actingDriverSelectedPackage.period } : {}),
         ...(actingDriverPackage === "custom"
           ? { toDate: buildFromDateTimeInput(actingDriverReturnDateTime) }
@@ -1045,7 +1158,17 @@ export default function BookRide() {
         }
       }
         if (tripType === "acting-driver") {
-          const zonePackagesResponse = await getZonePackages("DRIVER", bookingZone);
+          const zonePackagesResponse = actingDriverZonePackages || await getActingDriverZonePackages({
+            serviceType: "DRIVER",
+            bookingType: actingDriverPackageType === "Local" ? "DROP ONLY" : "ROUND TRIP",
+            packageType: actingDriverPackageType === "Local" ? "LOCAL" : "OUTSTATION",
+            pickupLat: selectedPickup!.latitude!,
+            pickupLong: selectedPickup!.longitude!,
+            dropLat: selectedDrop!.latitude!,
+            dropLong: selectedDrop!.longitude!,
+            zone: bookingZone,
+            source: "ROOTCABS WEBSITE",
+          });
 
           if (actingDriverPackage === "custom") {
             actingDriverPackageId = findCustomZonePackageId(zonePackagesResponse);
@@ -1066,6 +1189,31 @@ export default function BookRide() {
           }
 
           bookingPayload.packageId = actingDriverPackageId ?? undefined;
+
+          const quoteResponse = await getActingDriverQuote({
+            serviceType: "DRIVER",
+            serviceFor: "DRIVER",
+            packageType: actingDriverPackageType,
+            packageId: actingDriverPackageId!,
+            ...(hasPackagePeriod(actingDriverSelectedPackage) ? { period: actingDriverSelectedPackage.period } : {}),
+            bookingType: actingDriverPackageType === "Local" ? "DROP ONLY" : "ROUND TRIP",
+            fromDate: bookingPayload.fromDate!,
+            pickupLat: selectedPickup!.latitude!,
+            pickupLong: selectedPickup!.longitude!,
+            dropLat: selectedDrop!.latitude!,
+            dropLong: selectedDrop!.longitude!,
+            driverStartLat: selectedPickup!.latitude!,
+            driverStartLong: selectedPickup!.longitude!,
+            driverEndLat: selectedDrop!.latitude!,
+            driverEndLong: selectedDrop!.longitude!,
+            carType: carTypeMap[vehicle],
+            transmissionType: actingDriverTransmission,
+            acType,
+            zone: bookingZone,
+            isPremiumService: false,
+          });
+          const quoteRef = getQuoteRefFromResponse(quoteResponse);
+          if (quoteRef) bookingPayload.quoteRef = quoteRef;
         }
         const response =
           tripType === "acting-driver"
@@ -1073,7 +1221,12 @@ export default function BookRide() {
           : tripType === "parcel"
             ? await addSupportParcelBooking(bookingPayload)
           : await addRentalBooking(bookingPayload);
-      setBookingId(getBookingIdFromResponse(response));
+      const createdBookingId = getBookingIdFromResponse(response);
+      setBookingId(createdBookingId);
+      setBookingResult(getBookingResultDetails(response));
+      if (tripType === "acting-driver" && createdBookingId) {
+        await getBookingConfirmation(createdBookingId).catch(() => undefined);
+      }
       setSubmitted(true);
     } catch (error) {
       setBookingError(error instanceof Error ? error.message : "Unable to confirm booking. Please try again.");
@@ -1118,10 +1271,28 @@ export default function BookRide() {
     setIsVerifyingOtp(true);
 
     try {
-      await verifyBookingOtp(otp.trim(), BOOKING_DEVICE_TOKEN);
+      const verification = await verifyBookingOtp(otp.trim(), BOOKING_DEVICE_TOKEN);
+
+      if (verification.isNewCustomer === true) {
+        if (!name.trim()) {
+          throw new Error("Enter your name to register as a new customer.");
+        }
+        await registerBookingCustomer(name.trim(), phoneNumber);
+        setIsExistingCustomer(false);
+        setOtpStatus("Registration complete. Your phone number has been verified.");
+      } else if (verification.isNewCustomer === false) {
+        const existingFirstName = verification.customer?.firstName?.trim();
+        if (existingFirstName) setName(existingFirstName);
+        setIsExistingCustomer(true);
+        setOtpStatus("Existing customer. Phone number verified.");
+      } else {
+        throw new Error("Customer status is missing from the OTP verification response.");
+      }
+
       setPhoneVerified(true);
-      setOtpStatus("Phone number and OTP verified successfully.");
     } catch (error) {
+      setPhoneVerified(false);
+      setIsExistingCustomer(false);
       setOtpError(error instanceof Error ? error.message : "Unable to verify OTP. Please try again.");
     } finally {
       setIsVerifyingOtp(false);
@@ -1129,6 +1300,19 @@ export default function BookRide() {
   };
 
   if (submitted) {
+    const confirmationPickup =
+      getAddressLabel(bookingResult?.pickupFormatAddress) ||
+      getAddressLabel(bookingResult?.pickupAddress) ||
+      selectedPickup?.address ||
+      from;
+    const confirmationDrop =
+      getAddressLabel(bookingResult?.dropFormatAddress) ||
+      getAddressLabel(bookingResult?.dropAddress) ||
+      selectedDrop?.address ||
+      to;
+    const confirmationCategory = bookingResult?.category || selectedRentalCategory;
+    const confirmationCreatedAt = formatBookingCreatedAt(bookingResult?.created_at);
+
     return (
       <div className="max-w-screen-md mx-auto px-4 py-20 text-center">
         <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
@@ -1144,19 +1328,23 @@ export default function BookRide() {
         <div className="bg-muted rounded-xl p-6 text-left max-w-sm mx-auto mb-8">
             <div className="space-y-3 text-sm">
             {bookingId && <div className="flex justify-between gap-4"><span className="text-muted-foreground">Booking ID:</span><span className="text-right font-semibold text-primary">{bookingId}</span></div>}
-            <div className="flex justify-between gap-4"><span className="text-muted-foreground">From:</span><span className="text-right font-medium">{selectedPickup?.address || from}</span></div>
+            <div className="flex justify-between gap-4"><span className="text-muted-foreground">From:</span><span className="text-right font-medium">{confirmationPickup}</span></div>
             {tripType !== "local" && (
               <div className="flex justify-between gap-4">
                 <span className="text-muted-foreground">To:</span>
-                <span className="text-right font-medium">{selectedDrop?.address || to}</span>
+                <span className="text-right font-medium">{confirmationDrop}</span>
               </div>
             )}
-            <div className="flex justify-between"><span className="text-muted-foreground">Vehicle:</span><span className="font-medium capitalize">{vehicle}</span></div>
+            {isRentalTrip ? (
+              <div className="flex justify-between gap-4"><span className="text-muted-foreground">Category:</span><span className="text-right font-medium">{formatCategoryLabel(confirmationCategory)}</span></div>
+            ) : (
+              <div className="flex justify-between"><span className="text-muted-foreground">Vehicle:</span><span className="font-medium capitalize">{vehicle}</span></div>
+            )}
             <div className="flex justify-between"><span className="text-muted-foreground">Trip:</span><span className="font-medium capitalize">{tripType}</span></div>
-            {(tripType === "acting-driver" ? actingDriverPickupDateTime : date) && (
+            {(confirmationCreatedAt || (tripType === "acting-driver" ? actingDriverPickupDateTime : date)) && (
               <div className="flex justify-between">
-                <span className="text-muted-foreground">Date:</span>
-                <span className="font-medium">{tripType === "acting-driver" ? actingDriverPickupDateTime : date}</span>
+                <span className="text-muted-foreground">Created:</span>
+                <span className="text-right font-medium">{confirmationCreatedAt || (tripType === "acting-driver" ? actingDriverPickupDateTime : date)}</span>
               </div>
             )}
           </div>
@@ -1223,17 +1411,25 @@ export default function BookRide() {
                 <div className="grid gap-4 md:grid-cols-2">
                   <div>
                     <Label className="mb-1.5 block text-sm font-medium">Your Name</Label>
-                    <Input value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter your name" />
+                    <Input
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="Enter your name"
+                      readOnly={isExistingCustomer}
+                      aria-readonly={isExistingCustomer}
+                      className={isExistingCustomer ? "cursor-not-allowed bg-muted/60" : undefined}
+                    />
                   </div>
                   <div>
                     <Label className="mb-1.5 block text-sm font-medium">Phone Number</Label>
                     <div className={otpSent && !phoneVerified ? "grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto]" : "flex gap-2"}>
                       <div className={otpSent && !phoneVerified ? "col-span-full flex min-w-0 items-center rounded-md border border-input bg-background px-3" : "flex min-w-0 flex-1 items-center rounded-md border border-input bg-background px-3"}>
                         <span className="shrink-0 text-sm font-medium text-muted-foreground">+91</span>
-                        <Input value={phoneNumber} onChange={(e) => handlePhoneNumberChange(e.target.value)} placeholder="Enter 10-digit number" type="tel" inputMode="numeric" maxLength={10} className="border-0 px-2 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0" />
+                        <Input value={phoneNumber} onChange={(e) => handlePhoneNumberChange(e.target.value)} placeholder="Enter 10-digit number" type="tel" inputMode="numeric" className="border-0 px-2 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0" />
                       </div>
                       {!otpSent ? <Button type="button" onClick={handleSendOtp} disabled={isSendingOtp || phoneNumber.length !== 10} className="shrink-0 bg-primary hover:bg-primary/90">{isSendingOtp ? "Sending..." : "Send OTP"}</Button> : !phoneVerified ? <><InputOTP maxLength={4} value={otp} onChange={setOtp} inputMode="numeric" containerClassName="min-w-0 justify-start"><InputOTPGroup><InputOTPSlot index={0} /><InputOTPSlot index={1} /><InputOTPSlot index={2} /><InputOTPSlot index={3} /></InputOTPGroup></InputOTP><Button type="button" onClick={handleVerifyOtp} disabled={isVerifyingOtp || !otp} className="shrink-0 bg-primary hover:bg-primary/90">{isVerifyingOtp ? "Verifying..." : "Verify OTP"}</Button></> : <span className="flex items-center px-3 text-sm font-semibold text-green-700">Verified</span>}
                     </div>
+                    {phoneNumber.length > 10 && <p className="mt-2 text-xs font-medium text-red-700">Phone number must not exceed 10 digits.</p>}
                     {otpStatus && <p className="mt-2 text-xs font-medium text-green-700">{otpStatus}</p>}
                     {otpError && <p className="mt-2 text-xs font-medium text-red-700">{otpError}</p>}
                   </div>
@@ -1446,6 +1642,22 @@ export default function BookRide() {
                               {item.label}
                             </SelectItem>
                           ))}
+                        </SelectContent>
+                      </Select>
+                      {isLoadingActingDriverPackages && <p className="mt-2 text-xs text-muted-foreground">Checking available packages...</p>}
+                      {actingDriverPackagesError && <p className="mt-2 text-xs font-medium text-red-700">{actingDriverPackagesError}</p>}
+                      {!phoneVerified && <p className="mt-2 text-xs text-muted-foreground">Verify your phone and select both locations to load packages.</p>}
+                    </div>
+
+                    <div>
+                      <Label className="text-sm font-medium mb-1.5 block">Transmission Type</Label>
+                      <Select value={actingDriverTransmission} onValueChange={(value) => setActingDriverTransmission(value as "MANUAL" | "AUTOMATIC")}>
+                        <SelectTrigger className="cursor-pointer">
+                          <SelectValue placeholder="Select transmission" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="MANUAL" className="cursor-pointer">Manual</SelectItem>
+                          <SelectItem value="AUTOMATIC" className="cursor-pointer">Automatic</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -1749,6 +1961,9 @@ export default function BookRide() {
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           placeholder="Enter sender name"
+                          readOnly={isExistingCustomer}
+                          aria-readonly={isExistingCustomer}
+                          className={isExistingCustomer ? "cursor-not-allowed bg-muted/60" : undefined}
                         />
                       </div>
 
@@ -1760,7 +1975,7 @@ export default function BookRide() {
                         <div className={otpSent && !phoneVerified ? "grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto]" : "flex gap-2"}>
                           <div className={otpSent && !phoneVerified ? "col-span-full flex min-w-0 items-center rounded-md border border-input bg-background px-3" : "flex min-w-0 flex-1 items-center rounded-md border border-input bg-background px-3"}>
                             <span className="shrink-0 text-sm font-medium text-muted-foreground">+91</span>
-                            <Input value={phoneNumber} onChange={(e) => handlePhoneNumberChange(e.target.value)} placeholder="Enter 10-digit number" type="tel" inputMode="numeric" maxLength={10} className="border-0 px-2 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0" />
+                            <Input value={phoneNumber} onChange={(e) => handlePhoneNumberChange(e.target.value)} placeholder="Enter 10-digit number" type="tel" inputMode="numeric" className="border-0 px-2 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0" />
                           </div>
                           {!otpSent ? (
                             <Button type="button" onClick={handleSendOtp} disabled={isSendingOtp || phoneNumber.length !== 10} className="shrink-0 bg-primary hover:bg-primary/90">
@@ -1780,6 +1995,7 @@ export default function BookRide() {
                           )}
                         </div>
 
+                        {phoneNumber.length > 10 && <p className="mt-2 text-xs font-medium text-red-700">Phone number must not exceed 10 digits.</p>}
                         {otpStatus && <p className="mt-2 text-xs font-medium text-green-700">{otpStatus}</p>}
                         {otpError && <p className="mt-2 text-xs font-medium text-red-700">{otpError}</p>}
                       </div>
@@ -1862,10 +2078,10 @@ export default function BookRide() {
                             placeholder="Enter 10-digit number"
                             type="tel"
                             inputMode="numeric"
-                            maxLength={10}
                             className="border-0 px-2 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
                           />
                         </div>
+                        {receiverPhoneNumber.length > 10 && <p className="mt-2 text-xs font-medium text-red-700">Receiver phone number must not exceed 10 digits.</p>}
                       </div>
 
                       <div>
