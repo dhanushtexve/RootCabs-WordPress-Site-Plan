@@ -593,6 +593,26 @@ export default defineConfig(({ command, mode }) => {
             proxy.on('proxyReq', removeBrowserOriginHeaders);
           },
         },
+        '/api/customer/dev/get-latlong': {
+          target: bookingApiProxyTarget,
+          changeOrigin: true,
+          headers: {
+            'ngrok-skip-browser-warning': 'true',
+          },
+          configure(proxy) {
+            proxy.on('proxyReq', removeBrowserOriginHeaders);
+          },
+        },
+        '/api/customer/dev/search-address': {
+          target: bookingApiProxyTarget,
+          changeOrigin: true,
+          headers: {
+            'ngrok-skip-browser-warning': 'true',
+          },
+          configure(proxy) {
+            proxy.on('proxyReq', removeBrowserOriginHeaders);
+          },
+        },
         '/api/customer/dev/bookingConfirmation': {
           target: bookingApiProxyTarget,
           changeOrigin: true,
@@ -624,6 +644,26 @@ export default defineConfig(({ command, mode }) => {
           },
         },
         '/api/customer/dev/add-booking': {
+          target: bookingApiProxyTarget,
+          changeOrigin: true,
+          headers: {
+            'ngrok-skip-browser-warning': 'true',
+          },
+          configure(proxy) {
+            proxy.on('proxyReq', removeBrowserOriginHeaders);
+          },
+        },
+        '/api/customer/dev/quotation-log': {
+          target: bookingApiProxyTarget,
+          changeOrigin: true,
+          headers: {
+            'ngrok-skip-browser-warning': 'true',
+          },
+          configure(proxy) {
+            proxy.on('proxyReq', removeBrowserOriginHeaders);
+          },
+        },
+        '/api/customer/dev/confirm-booking': {
           target: bookingApiProxyTarget,
           changeOrigin: true,
           headers: {

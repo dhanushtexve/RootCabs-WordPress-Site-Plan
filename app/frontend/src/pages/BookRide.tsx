@@ -10,6 +10,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { PageBreadcrumb } from "@/components/PageBreadcrumb";
 import { fareRates, companyInfo } from "@/data/siteData";
 import {
@@ -18,7 +19,8 @@ import {
   addRentalBooking,
   getActingDriverQuote,
   getActingDriverZonePackages,
-  getBookingConfirmation,
+  getAddressLatLong,
+  logQuotation,
   getRentalServiceCategories,
   getZonePackages,
   registerBookingCustomer,
@@ -71,6 +73,13 @@ const actingDriverOutstationPackages = [
   { value: "48", label: "2 day - 1200 km", period: 48 },
   { value: "custom", label: "Custom" },
 ] as const;
+
+const rentalCategorySupportingLines: Record<string, string> = {
+  "economy go": "Smart Rides at Affordable Prices",
+  comfort: "A Little More Comfort for Every Ride",
+  premium: "Travel in Style and Comfort",
+  "premium xl": "More Space for Everyone",
+};
 
 type ActingDriverPackageOption =
   | (typeof actingDriverLocalPackages)[number]
@@ -142,6 +151,11 @@ function normalizeCatalogValue(value: unknown) {
   return typeof value === "string" ? value.trim().toUpperCase() : "";
 }
 
+function getRentalCategorySupportingLine(category: ServiceCategoryCatalogItem) {
+  const categoryName = String(category.label || category.category || "").trim().toLowerCase();
+  return rentalCategorySupportingLines[categoryName] || "Category managed by Root Cabs";
+}
+
 function filterRentalCategories(categories: ServiceCategoryCatalogItem[], zone: string, tripType: string) {
   const expected = tripType === "one-way"
     ? { packageType: "OUTSTATION", bookingType: "DROP ONLY" }
@@ -195,14 +209,54 @@ function getQuoteRefFromResponse(response: unknown) {
   if (!response || typeof response !== "object") return "";
   const payload = response as {
     quoteRef?: string;
-    data?: { quoteRef?: string; result?: { quoteRef?: string } };
+    data?: {
+      quoteRef?: string;
+      result?: { quoteRef?: string };
+      data?: { quoteRef?: string; result?: { quoteRef?: string } };
+    };
     result?: { quoteRef?: string };
   };
-  return payload.quoteRef || payload.data?.quoteRef || payload.data?.result?.quoteRef || payload.result?.quoteRef || "";
+  return payload.quoteRef ||
+    payload.data?.quoteRef ||
+    payload.data?.result?.quoteRef ||
+    payload.data?.data?.quoteRef ||
+    payload.data?.data?.result?.quoteRef ||
+    payload.result?.quoteRef ||
+    "";
+}
+
+function getQuoteAmountFromResponse(response: unknown) {
+  if (!response || typeof response !== "object") return 0;
+  const root = response as Record<string, unknown>;
+  const data = root.data && typeof root.data === "object" ? root.data as Record<string, unknown> : {};
+  const amount = data.amount && typeof data.amount === "object" ? data.amount as Record<string, unknown> : {};
+  const candidates = [
+    amount.estimatedPrice,
+    amount.totalAmount,
+    amount.amount,
+    data.estimatedPrice,
+    data.totalAmount,
+    data.amount,
+    root.estimatedPrice,
+    root.totalAmount,
+    root.amount,
+  ];
+  const value = candidates.map(Number).find((item) => Number.isFinite(item) && item >= 0);
+  return value ?? 0;
+}
+
+function addHoursToIsoDate(fromDate: string, hours: number) {
+  const date = new Date(fromDate);
+  if (Number.isNaN(date.getTime()) || !Number.isFinite(hours)) return undefined;
+  date.setTime(date.getTime() + hours * 60 * 60 * 1000);
+  return date.toISOString();
 }
 
 type BookingResultDetails = {
   id?: string | number;
+  bookingNumber?: string;
+  status?: string;
+  packageType?: string;
   pickupFormatAddress?: string | { name?: string };
   pickupAddress?: string | { name?: string };
   dropFormatAddress?: string | { name?: string };
@@ -234,61 +288,73 @@ function formatBookingCreatedAt(value?: string) {
   }).format(createdAt);
 }
 
-function formatCategoryLabel(value: string) {
-  return value.replace(/_/g, " ").toLowerCase().replace(/\b\w/g, (letter) => letter.toUpperCase());
-}
-
 type ZonePackageItem = {
   id?: number | string;
+  packageId?: number | string;
   type?: string;
+  packageType?: string;
+  name?: string;
+  packageName?: string;
   period?: number | string;
+  duration?: number | string;
+  hours?: number | string;
   extraCabType?: number | string;
 };
 
 function extractZonePackageItems(payload: unknown): ZonePackageItem[] {
   if (!payload || typeof payload !== "object") return [];
 
-  const candidates: unknown[] = [];
-  const root = payload as Record<string, unknown>;
-
-  if (Array.isArray(root.data)) candidates.push(...root.data);
-  if (Array.isArray(root.result)) candidates.push(...root.result);
-  if (root.data && typeof root.data === "object") {
-    const data = root.data as Record<string, unknown>;
-    if (Array.isArray(data.result)) candidates.push(...data.result);
-    if (Array.isArray(data.rows)) candidates.push(...data.rows);
-    if (Array.isArray(data.packages)) candidates.push(...data.packages);
+  const queue: unknown[] = [payload];
+  const visited = new Set<object>();
+  while (queue.length > 0) {
+    const current = queue.shift();
+    if (Array.isArray(current)) {
+      const packages = current.filter(
+        (item): item is ZonePackageItem => Boolean(item && typeof item === "object"),
+      );
+      if (packages.length > 0) return packages;
+      continue;
+    }
+    if (!current || typeof current !== "object" || visited.has(current)) continue;
+    visited.add(current);
+    queue.push(...Object.values(current as Record<string, unknown>));
   }
 
-  return candidates.filter((item): item is ZonePackageItem => Boolean(item && typeof item === "object"));
+  return [];
+}
+
+function getZonePackageType(item: ZonePackageItem) {
+  return String(item.type || item.packageType || item.packageName || item.name || "")
+    .trim()
+    .toLowerCase();
+}
+
+function getZonePackagePeriod(item: ZonePackageItem) {
+  const value = item.period ?? item.duration ?? item.hours;
+  const period = typeof value === "number" ? value : Number(value);
+  return Number.isFinite(period) ? period : NaN;
+}
+
+function getZonePackageId(item?: ZonePackageItem) {
+  const value = item?.id ?? item?.packageId;
+  const packageId = typeof value === "number" ? value : Number(value);
+  return Number.isFinite(packageId) && packageId > 0 ? packageId : null;
 }
 
 function findZonePackageId(zonePackagesResponse: unknown, selectedType: string, selectedPeriod: number) {
   const matchedPackage = extractZonePackageItems(zonePackagesResponse).find((item) => {
-    const packageType = typeof item.type === "string" ? item.type.trim().toLowerCase() : "";
-    const packagePeriod =
-      typeof item.period === "number"
-        ? item.period
-        : typeof item.period === "string"
-          ? Number(item.period)
-          : NaN;
+    const packageType = getZonePackageType(item);
+    const packagePeriod = getZonePackagePeriod(item);
 
     return packageType === selectedType.trim().toLowerCase() && packagePeriod === selectedPeriod;
   });
 
-  const packageId =
-    typeof matchedPackage?.id === "number"
-      ? matchedPackage.id
-      : typeof matchedPackage?.id === "string"
-        ? Number(matchedPackage.id)
-        : NaN;
-
-  return Number.isFinite(packageId) ? packageId : null;
+  return getZonePackageId(matchedPackage);
 }
 
 function findCustomZonePackageId(zonePackagesResponse: unknown) {
   const matchedPackage = extractZonePackageItems(zonePackagesResponse).find((item) => {
-    const packageType = typeof item.type === "string" ? item.type.trim().toLowerCase() : "";
+    const packageType = getZonePackageType(item);
     const extraCabType =
       typeof item.extraCabType === "number"
         ? item.extraCabType
@@ -299,14 +365,24 @@ function findCustomZonePackageId(zonePackagesResponse: unknown) {
     return packageType === "outstation" && extraCabType === 0;
   });
 
-  const packageId =
-    typeof matchedPackage?.id === "number"
-      ? matchedPackage.id
-      : typeof matchedPackage?.id === "string"
-        ? Number(matchedPackage.id)
-        : NaN;
+  return getZonePackageId(matchedPackage);
+}
 
-  return Number.isFinite(packageId) ? packageId : null;
+function getAvailableActingDriverOptions(
+  zonePackagesResponse: unknown,
+  options: readonly ActingDriverPackageOption[],
+  selectedType: "Local" | "Outstation",
+) {
+  const packages = extractZonePackageItems(zonePackagesResponse);
+  return options.filter((option) => {
+    if (option.value === "custom") return Boolean(findCustomZonePackageId(zonePackagesResponse));
+    if (!hasPackagePeriod(option)) return false;
+    return packages.some((item) => {
+      const type = getZonePackageType(item);
+      return getZonePackagePeriod(item) === option.period &&
+        (!type || type === selectedType.toLowerCase());
+    });
+  });
 }
 
 function hasPackagePeriod(
@@ -394,8 +470,48 @@ export default function BookRide() {
   const [bookingId, setBookingId] = useState("");
   const [bookingResult, setBookingResult] = useState<BookingResultDetails | null>(null);
   const [submitted, setSubmitted] = useState(false);
+
+  const resolveSelectedLocation = async (
+    suggestion: AddressSuggestion,
+    type: "pickup" | "drop",
+  ) => {
+    const address = suggestion.address || suggestion.name;
+    if (tripType !== "acting-driver") {
+      if (type === "pickup") {
+        setSelectedPickup(suggestion);
+        setFrom(address);
+      } else {
+        setSelectedDrop(suggestion);
+        setTo(address);
+      }
+      return;
+    }
+
+    try {
+      const coordinates = await getAddressLatLong(address, suggestion.placeId);
+      const resolved = {
+        ...suggestion,
+        latitude: coordinates.lat,
+        longitude: coordinates.lng,
+      };
+      if (type === "pickup") {
+        setSelectedPickup(resolved);
+        setFrom(address);
+      } else {
+        setSelectedDrop(resolved);
+        setTo(address);
+      }
+    } catch {
+      if (type === "pickup") setSelectedPickup(null);
+      else setSelectedDrop(null);
+      setBookingError("Unable to locate that address. Please select it again.");
+    }
+  };
   const actingDriverPackageOptions =
     actingDriverPackageType === "Local" ? actingDriverLocalPackages : actingDriverOutstationPackages;
+  const availableActingDriverPackageOptions = actingDriverZonePackages
+    ? getAvailableActingDriverOptions(actingDriverZonePackages, actingDriverPackageOptions, actingDriverPackageType)
+    : actingDriverPackageOptions;
   const isRentalTrip = tripType === "one-way" || tripType === "round-trip" || tripType === "local";
   const mappedRentalZone = zone ? getBookingZonePayload(zone) : "";
   const availableRentalCategories = isRentalTrip && mappedRentalZone
@@ -427,6 +543,10 @@ export default function BookRide() {
       (tripType === "local" || hasSelectedDrop) &&
       (tripType === "acting-driver" ? actingDriverPickupDateTime : date && time) &&
       (tripType !== "acting-driver" || actingDriverPackage !== "custom" || actingDriverReturnDateTime) &&
+      (tripType !== "acting-driver" ||
+        (Boolean(actingDriverZonePackages) &&
+          availableActingDriverPackageOptions.length > 0 &&
+          !actingDriverPackagesError)) &&
       (tripType !== "local" || localPeriod) &&
       (!isRentalTrip || Boolean(selectedRentalCategory)) &&
       (tripType !== "parcel" ||
@@ -627,7 +747,9 @@ export default function BookRide() {
 
     const timeoutId = window.setTimeout(async () => {
       try {
-        const suggestions = await searchAddressDetailed(query);
+        const suggestions = await searchAddressDetailed(query, {
+          requirePlaceId: tripType === "acting-driver",
+        });
         if (isCurrent) setFromSuggestions(suggestions);
       } catch {
         if (isCurrent) setFromSuggestions([]);
@@ -640,7 +762,7 @@ export default function BookRide() {
       isCurrent = false;
       window.clearTimeout(timeoutId);
     };
-  }, [from, selectedPickup]);
+  }, [from, selectedPickup, tripType]);
 
   useEffect(() => {
     const query = to.trim();
@@ -662,7 +784,9 @@ export default function BookRide() {
 
     const timeoutId = window.setTimeout(async () => {
       try {
-        const suggestions = await searchAddressDetailed(query);
+        const suggestions = await searchAddressDetailed(query, {
+          requirePlaceId: tripType === "acting-driver",
+        });
         if (isCurrent) setToSuggestions(suggestions);
       } catch {
         if (isCurrent) setToSuggestions([]);
@@ -675,7 +799,7 @@ export default function BookRide() {
       isCurrent = false;
       window.clearTimeout(timeoutId);
     };
-  }, [to, selectedDrop]);
+  }, [to, selectedDrop, tripType]);
 
   useEffect(() => {
     if (tripType !== "parcel" || !sameSenderAsPickup) return;
@@ -823,7 +947,22 @@ export default function BookRide() {
       source: "ROOTCABS WEBSITE",
     })
       .then((response) => {
-        if (isCurrent) setActingDriverZonePackages(response);
+        if (!isCurrent) return;
+        const availableOptions = getAvailableActingDriverOptions(
+          response,
+          actingDriverPackageType === "Local" ? actingDriverLocalPackages : actingDriverOutstationPackages,
+          actingDriverPackageType,
+        );
+        setActingDriverZonePackages(response);
+        if (availableOptions.length === 0) {
+          setActingDriverPackagesError("No acting-driver packages are available for the selected zone and route.");
+          return;
+        }
+        setActingDriverPackage((current) =>
+          availableOptions.some((option) => option.value === current)
+            ? current
+            : availableOptions[0].value,
+        );
       })
       .catch((error) => {
         if (isCurrent) {
@@ -1049,6 +1188,7 @@ export default function BookRide() {
 
     let localPackageId: number | null = null;
     let actingDriverPackageId: number | null = null;
+    let actingDriverQuoteResponse: unknown = null;
     let bookingPayload: RentalBookingRequest;
 
     if (tripType === "one-way") {
@@ -1087,12 +1227,26 @@ export default function BookRide() {
         packageType: actingDriverPackageType,
         bookingType: actingDriverPackageType === "Local" ? "DROP ONLY" : "ROUND TRIP",
         carType: carTypeMap[vehicle],
-        transmissionType: actingDriverTransmission,
+        transmissionType: actingDriverTransmission === "MANUAL" ? "Manual" : "Automatic",
         acType,
-        driverStartAddress: selectedPickup!.address,
+        pickupAddress: {
+          name: selectedPickup!.name,
+          placeId: selectedPickup!.placeId,
+        },
+        driverStartAddress: {
+          name: selectedPickup!.name,
+          placeId: selectedPickup!.placeId,
+        },
         driverStartLat: selectedPickup!.latitude!,
         driverStartLong: selectedPickup!.longitude!,
-        driverEndAddress: selectedDrop!.address,
+        dropAddress: {
+          name: selectedDrop!.name,
+          placeId: selectedDrop!.placeId,
+        },
+        driverEndAddress: {
+          name: selectedDrop!.name,
+          placeId: selectedDrop!.placeId,
+        },
         driverEndLat: selectedDrop!.latitude!,
         driverEndLong: selectedDrop!.longitude!,
         ...(hasPackagePeriod(actingDriverSelectedPackage) ? { period: actingDriverSelectedPackage.period } : {}),
@@ -1100,8 +1254,15 @@ export default function BookRide() {
           ? { toDate: buildFromDateTimeInput(actingDriverReturnDateTime) }
           : {}),
         tripType,
+        sourceType: "Others",
+        otherSourceType: "RootCabs Website",
+        luggage: 0,
+        seaterCapacity: vehicle === "mini" ? 3 : vehicle === "suv" ? 6 : vehicle === "muv" ? 7 : 4,
+        landmark: "",
+        isPremiumService: false,
         ...baseBookingPayload,
         ...dropBookingPayload,
+        source: "Call",
       };
     } else {
       bookingPayload = {
@@ -1212,6 +1373,7 @@ export default function BookRide() {
             zone: bookingZone,
             isPremiumService: false,
           });
+          actingDriverQuoteResponse = quoteResponse;
           const quoteRef = getQuoteRefFromResponse(quoteResponse);
           if (quoteRef) bookingPayload.quoteRef = quoteRef;
         }
@@ -1225,11 +1387,48 @@ export default function BookRide() {
       setBookingId(createdBookingId);
       setBookingResult(getBookingResultDetails(response));
       if (tripType === "acting-driver" && createdBookingId) {
-        await getBookingConfirmation(createdBookingId).catch(() => undefined);
+        const quotedAmount = getQuoteAmountFromResponse(actingDriverQuoteResponse);
+        const calculatedEndDate = actingDriverPackage === "custom"
+          ? bookingPayload.toDate
+          : hasPackagePeriod(actingDriverSelectedPackage)
+            ? addHoursToIsoDate(bookingPayload.fromDate!, actingDriverSelectedPackage.period)
+            : undefined;
+        await logQuotation({
+          userId: 10,
+          bookingId: createdBookingId,
+          pickupAddress: {
+            name: selectedPickup!.address || selectedPickup!.name,
+            placeId: selectedPickup!.placeId,
+            lat: selectedPickup!.latitude!,
+            lng: selectedPickup!.longitude!,
+          },
+          dropAddress: {
+            name: selectedDrop!.address || selectedDrop!.name,
+            placeId: selectedDrop!.placeId,
+            lat: selectedDrop!.latitude!,
+            lng: selectedDrop!.longitude!,
+          },
+          amount: quotedAmount,
+          discount: 0,
+          discountAmount: 0,
+          adminDiscount: {
+            status: "",
+            discountType: "",
+            discountValue: 0,
+            discountAmount: 0,
+            remarks: "",
+            quoteRef: bookingPayload.quoteRef || "",
+          },
+          startDate: bookingPayload.fromDate!,
+          ...(calculatedEndDate ? { endDate: calculatedEndDate } : {}),
+          serviceType: "DRIVER",
+          cabType: carTypeMap[vehicle],
+          subZoneId: 0,
+        });
       }
       setSubmitted(true);
     } catch (error) {
-      setBookingError(error instanceof Error ? error.message : "Unable to confirm booking. Please try again.");
+      setBookingError(error instanceof Error ? error.message : "Unable to create booking request. Please try again.");
     } finally {
       setIsSubmittingBooking(false);
     }
@@ -1299,75 +1498,43 @@ export default function BookRide() {
     }
   };
 
-  if (submitted) {
-    const confirmationPickup =
-      getAddressLabel(bookingResult?.pickupFormatAddress) ||
-      getAddressLabel(bookingResult?.pickupAddress) ||
-      selectedPickup?.address ||
-      from;
-    const confirmationDrop =
-      getAddressLabel(bookingResult?.dropFormatAddress) ||
-      getAddressLabel(bookingResult?.dropAddress) ||
-      selectedDrop?.address ||
-      to;
-    const confirmationCategory = bookingResult?.category || selectedRentalCategory;
-    const confirmationCreatedAt = formatBookingCreatedAt(bookingResult?.created_at);
-
-    return (
-      <div className="max-w-screen-md mx-auto px-4 py-20 text-center">
-        <div className="w-20 h-20 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
-          <CheckCircle className="w-10 h-10 text-green-600" />
-        </div>
-        <h1 className="font-heading text-3xl md:text-4xl font-bold mb-4">Booking Request Received!</h1>
-        <div className="mb-6 mx-auto max-w-md space-y-2 text-muted-foreground">
-          <p>Our drivers are currently busy. Please contact our support team to confirm your ride.</p>
-          <a href={`tel:${companyInfo.phone}`} className="inline-flex items-center gap-2 font-semibold text-primary hover:underline">
-            <Phone className="h-4 w-4" /> Call Support: {companyInfo.phone}
-          </a>
-        </div>
-        <div className="bg-muted rounded-xl p-6 text-left max-w-sm mx-auto mb-8">
-            <div className="space-y-3 text-sm">
-            {bookingId && <div className="flex justify-between gap-4"><span className="text-muted-foreground">Booking ID:</span><span className="text-right font-semibold text-primary">{bookingId}</span></div>}
-            <div className="flex justify-between gap-4"><span className="text-muted-foreground">From:</span><span className="text-right font-medium">{confirmationPickup}</span></div>
-            {tripType !== "local" && (
-              <div className="flex justify-between gap-4">
-                <span className="text-muted-foreground">To:</span>
-                <span className="text-right font-medium">{confirmationDrop}</span>
-              </div>
-            )}
-            {isRentalTrip ? (
-              <div className="flex justify-between gap-4"><span className="text-muted-foreground">Category:</span><span className="text-right font-medium">{formatCategoryLabel(confirmationCategory)}</span></div>
-            ) : (
-              <div className="flex justify-between"><span className="text-muted-foreground">Vehicle:</span><span className="font-medium capitalize">{vehicle}</span></div>
-            )}
-            <div className="flex justify-between"><span className="text-muted-foreground">Trip:</span><span className="font-medium capitalize">{tripType}</span></div>
-            {(confirmationCreatedAt || (tripType === "acting-driver" ? actingDriverPickupDateTime : date)) && (
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Created:</span>
-                <span className="text-right font-medium">{confirmationCreatedAt || (tripType === "acting-driver" ? actingDriverPickupDateTime : date)}</span>
-              </div>
-            )}
-          </div>
-        </div>
-        <div className="flex flex-wrap justify-center gap-4">
-          <div className="flex flex-col items-center gap-2">
-            <a href={`tel:${companyInfo.phone}`}>
-              <Button className="bg-primary hover:bg-primary/90 cursor-pointer">
-                <Phone className="w-4 h-4 mr-2" /> Call Support
-              </Button>
-            </a>
-            <span className="text-sm font-semibold text-primary">{companyInfo.phone}</span>
-          </div>
-          <Button variant="outline" onClick={() => setSubmitted(false)} className="cursor-pointer">
-            Book Another Ride
-          </Button>
-        </div>
-      </div>
-    );
-  }
+  const confirmationPickup =
+    getAddressLabel(bookingResult?.pickupFormatAddress) ||
+    getAddressLabel(bookingResult?.pickupAddress) || selectedPickup?.address || from;
+  const confirmationDrop =
+    getAddressLabel(bookingResult?.dropFormatAddress) ||
+    getAddressLabel(bookingResult?.dropAddress) || selectedDrop?.address || to;
+  const confirmationCreatedAt = formatBookingCreatedAt(bookingResult?.created_at);
 
   return (
     <div>
+      <Dialog open={submitted} onOpenChange={setSubmitted}>
+        <DialogContent className="max-w-lg">
+          <DialogHeader className="items-center text-center">
+            <div className="mb-2 flex h-16 w-16 items-center justify-center rounded-full bg-amber-100">
+              <CheckCircle className="h-8 w-8 text-amber-600" />
+            </div>
+            <DialogTitle className="font-heading text-2xl text-[#1E2A6E]">Booking Request Received</DialogTitle>
+            <DialogDescription>
+              Your request has been saved as a quotation. Root Cabs support will confirm the booking.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="space-y-3 rounded-xl bg-muted p-5 text-sm">
+            {bookingResult?.bookingNumber && <div className="flex justify-between gap-4"><span className="text-muted-foreground">Booking Number</span><span className="font-semibold text-primary">{bookingResult.bookingNumber}</span></div>}
+            {bookingId && <div className="flex justify-between gap-4"><span className="text-muted-foreground">Booking ID</span><span className="font-semibold">{bookingId}</span></div>}
+            <div className="flex justify-between gap-4"><span className="text-muted-foreground">Status</span><span className="rounded-full bg-amber-100 px-2.5 py-1 font-bold text-amber-800">{bookingResult?.status || "QUOTED"}</span></div>
+            <div className="flex justify-between gap-4"><span className="text-muted-foreground">From</span><span className="max-w-[65%] text-right font-medium">{confirmationPickup}</span></div>
+            {tripType !== "local" && <div className="flex justify-between gap-4"><span className="text-muted-foreground">To</span><span className="max-w-[65%] text-right font-medium">{confirmationDrop}</span></div>}
+            <div className="flex justify-between gap-4"><span className="text-muted-foreground">Vehicle</span><span className="font-medium">{carTypeMap[vehicle]}</span></div>
+            <div className="flex justify-between gap-4"><span className="text-muted-foreground">Package</span><span className="font-medium">{bookingResult?.packageType || actingDriverPackageType}</span></div>
+            {confirmationCreatedAt && <div className="flex justify-between gap-4"><span className="text-muted-foreground">Created</span><span className="font-medium">{confirmationCreatedAt}</span></div>}
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <a href={`tel:${companyInfo.phone}`} className="flex-1"><Button className="w-full"><Phone className="mr-2 h-4 w-4" />Call Support</Button></a>
+            <Button variant="outline" className="flex-1" onClick={() => setSubmitted(false)}>Book Another Ride</Button>
+          </div>
+        </DialogContent>
+      </Dialog>
       {/* Header */}
       <section className="relative min-h-[330px] overflow-hidden py-7 text-white md:min-h-[400px] md:py-9" style={{
         backgroundImage: "url('/assets/rootcabs-banner-home.png')",
@@ -1535,10 +1702,9 @@ export default function BookRide() {
                               key={`${suggestion.latitude}-${suggestion.longitude}-${suggestion.address}`}
                               type="button"
                               onMouseDown={() => {
-                                setFrom(suggestion.address || suggestion.name);
-                                setSelectedPickup(suggestion);
                                 setFromSuggestions([]);
                                 setIsSearchingFrom(false);
+                                void resolveSelectedLocation(suggestion, "pickup");
                               }}
                               className="flex w-full gap-3 px-4 py-3 text-left text-sm transition-colors hover:bg-primary/5"
                             >
@@ -1582,10 +1748,9 @@ export default function BookRide() {
                                 key={`${suggestion.latitude}-${suggestion.longitude}-${suggestion.address}`}
                                 type="button"
                                 onMouseDown={() => {
-                                  setTo(suggestion.address || suggestion.name);
-                                  setSelectedDrop(suggestion);
                                   setToSuggestions([]);
                                   setIsSearchingTo(false);
+                                  void resolveSelectedLocation(suggestion, "drop");
                                 }}
                                 className="flex w-full gap-3 px-4 py-3 text-left text-sm transition-colors hover:bg-primary/5"
                               >
@@ -1632,12 +1797,16 @@ export default function BookRide() {
 
                     <div>
                       <Label className="text-sm font-medium mb-1.5 block">Choose Package</Label>
-                      <Select value={actingDriverPackage} onValueChange={setActingDriverPackage}>
+                      <Select
+                        value={actingDriverPackage}
+                        onValueChange={setActingDriverPackage}
+                        disabled={isLoadingActingDriverPackages || availableActingDriverPackageOptions.length === 0}
+                      >
                         <SelectTrigger className="cursor-pointer">
                           <SelectValue placeholder="Select package" />
                         </SelectTrigger>
                         <SelectContent>
-                          {actingDriverPackageOptions.map((item) => (
+                          {availableActingDriverPackageOptions.map((item) => (
                             <SelectItem key={item.value} value={item.value} className="cursor-pointer">
                               {item.label}
                             </SelectItem>
@@ -1928,7 +2097,7 @@ export default function BookRide() {
                           <Car className={`w-8 h-8 ${selectedRentalCategory === category.category ? "text-primary" : "text-muted-foreground"}`} />
                           <div>
                             <p className="font-semibold">{category.label}</p>
-                            <p className="text-xs text-muted-foreground">Category managed by Root Cabs</p>
+                            <p className="text-xs text-muted-foreground">{getRentalCategorySupportingLine(category)}</p>
                           </div>
                         </div>
                       </div>

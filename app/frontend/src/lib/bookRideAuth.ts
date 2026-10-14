@@ -36,10 +36,10 @@ export type RentalBookingRequest = {
   orderTypeOther?: string;
   deliveryDetails?: string;
   period?: number;
-  driverStartAddress?: string;
+  driverStartAddress?: string | { name?: string; placeId?: string };
   driverStartLat?: number;
   driverStartLong?: number;
-  driverEndAddress?: string;
+  driverEndAddress?: string | { name?: string; placeId?: string };
   driverEndLat?: number;
   driverEndLong?: number;
   pickupLocation?: string;
@@ -47,6 +47,7 @@ export type RentalBookingRequest = {
     | string
     | {
         name?: string;
+        placeId?: string;
         address?: string;
         city?: string;
         latitude?: number;
@@ -57,6 +58,7 @@ export type RentalBookingRequest = {
     | string
     | {
         name?: string;
+        placeId?: string;
         address?: string;
         city?: string;
         latitude?: number;
@@ -67,12 +69,18 @@ export type RentalBookingRequest = {
   dropLat?: number;
   dropLong?: number;
   carType?: "Mini" | "Sedan" | "SUV" | "MUV";
-  transmissionType?: "MANUAL" | "AUTOMATIC";
+  transmissionType?: "MANUAL" | "AUTOMATIC" | "Manual" | "Automatic";
   quoteRef?: string;
   customerId?: number;
   /** Rental catalog code. This replaces carType for website rental bookings only. */
   category?: string;
-  source: "RootCabs Website";
+  source: "RootCabs Website" | "Call";
+  sourceType?: "Website" | "Others";
+  otherSourceType?: string;
+  luggage?: number;
+  seaterCapacity?: number;
+  landmark?: string;
+  isPremiumService?: boolean;
 };
 
 export type BookingCustomer = {
@@ -100,11 +108,59 @@ export type SessionResponse = {
   };
 };
 
+type AddressSearchItem = AddressSuggestion & {
+  fullText?: string;
+  title?: string;
+  subtitle?: string;
+  description?: string;
+  formattedAddress?: string;
+  label?: string;
+  value?: string;
+  id?: string;
+  place_id?: string;
+  placeID?: string;
+  placeid?: string;
+  googlePlaceId?: string;
+  place?: { placeId?: string; place_id?: string; id?: string };
+  location?: { placeId?: string; place_id?: string; id?: string };
+};
+
 type AddressSearchResponse = {
   success?: boolean;
   code?: number;
   message?: string;
-  data?: AddressSuggestion[];
+  data?: unknown;
+  predictions?: AddressSearchItem[];
+  results?: AddressSearchItem[];
+  suggestions?: AddressSearchItem[];
+  addresses?: AddressSearchItem[];
+};
+
+function extractAddressSearchItems(payload: AddressSearchResponse): AddressSearchItem[] {
+  const queue: unknown[] = [payload.data, payload.predictions, payload.results, payload.suggestions, payload.addresses];
+  const visited = new Set<object>();
+
+  while (queue.length > 0) {
+    const current = queue.shift();
+    if (Array.isArray(current)) {
+      if (current.some((item) => item && typeof item === "object")) {
+        return current.filter((item): item is AddressSearchItem => Boolean(item && typeof item === "object"));
+      }
+      continue;
+    }
+
+    if (!current || typeof current !== "object" || visited.has(current)) continue;
+    visited.add(current);
+    queue.push(...Object.values(current as Record<string, unknown>));
+  }
+
+  return [];
+}
+
+type LatLongResponse = {
+  success?: boolean;
+  message?: string;
+  data?: { lat?: number; lng?: number; latitude?: number; longitude?: number };
 };
 
 type ApiStatusResponse = {
@@ -480,9 +536,73 @@ export async function getBookingConfirmation(bookingId: string | number) {
   );
 }
 
+export type QuotationLogRequest = {
+  userId: number;
+  bookingId: string | number;
+  pickupAddress: { name: string; placeId?: string; lat: number; lng: number };
+  dropAddress?: { name: string; placeId?: string; lat: number; lng: number };
+  amount: number;
+  discount: number;
+  discountAmount: number;
+  adminDiscount?: {
+    status: string;
+    discountType: string;
+    discountValue: number;
+    discountAmount: number;
+    remarks: string;
+    quoteRef: string;
+  };
+  startDate: string;
+  endDate?: string;
+  serviceType: "DRIVER" | "RIDES" | "OUTSTATION" | "RENTAL" | "PARCEL";
+  cabType?: "Mini" | "Sedan" | "SUV" | "MUV";
+  subZoneId: number;
+};
+
+export async function logQuotation(payload: QuotationLogRequest) {
+  const response = await requestJson<ApiStatusResponse>(
+    "/quotation-log",
+    {
+      method: "POST",
+      body: JSON.stringify([
+        {
+          ...payload,
+          bookingId: Number(payload.bookingId),
+        },
+      ]),
+    },
+    { includeSessionToken: true },
+  );
+
+  if (response.success === false) {
+    throw new Error(response.message || "Unable to save quotation details.");
+  }
+  return response;
+}
+
+export async function confirmCustomerBooking(bookingId: string | number, quoteRef?: string) {
+  const response = await requestJson<ApiStatusResponse>(
+    "/confirm-booking",
+    {
+      method: "PUT",
+      body: JSON.stringify({
+        status: "CONFIRMED",
+        bookingId: Number(bookingId),
+        ...(quoteRef ? { quoteRef } : {}),
+      }),
+    },
+    { includeSessionToken: true },
+  );
+
+  if (response.success === false) {
+    throw new Error(response.message || "Unable to confirm booking.");
+  }
+  return response;
+}
+
 export async function searchAddressDetailed(
   address: string,
-  options: { allowLocalFallback?: boolean } = {},
+  options: { allowLocalFallback?: boolean; requirePlaceId?: boolean } = {},
 ) {
   if (!BOOKING_API_CONFIGURED && !import.meta.env.DEV) {
     if (options.allowLocalFallback === false) {
@@ -493,17 +613,76 @@ export async function searchAddressDetailed(
   }
 
   const payload = await requestJson<AddressSearchResponse>(
-    `/website/search-address-detailed?address=${encodeURIComponent(address)}`,
+    `${options.requirePlaceId ? "/search-address" : "/website/search-address-detailed"}?address=${encodeURIComponent(address)}`,
     {
       method: "GET",
     },
+    { includeSessionToken: true },
   );
 
   if (payload.success === false) {
     throw new Error(payload.message || "Unable to search address.");
   }
 
-  return payload.data || [];
+  const items = extractAddressSearchItems(payload);
+
+  return items.map((raw) => {
+    const resolvedAddress =
+      raw.fullText ||
+      raw.address ||
+      raw.description ||
+      raw.formattedAddress ||
+      raw.subtitle ||
+      raw.label ||
+      raw.value ||
+      raw.title ||
+      raw.name ||
+      "";
+
+    return {
+      ...raw,
+      name: raw.title || raw.name || raw.label || raw.description || raw.value || resolvedAddress,
+      address: resolvedAddress,
+      placeId:
+        raw.placeId ||
+        raw.place_id ||
+        raw.placeID ||
+        raw.placeid ||
+        raw.googlePlaceId ||
+        raw.place?.placeId ||
+        raw.place?.place_id ||
+        raw.place?.id ||
+        raw.location?.placeId ||
+        raw.location?.place_id ||
+        raw.location?.id ||
+        raw.id,
+    };
+  }).filter((suggestion) => Boolean(
+    suggestion.address && (!options.requirePlaceId || suggestion.placeId),
+  ));
+}
+
+export async function getAddressLatLong(address: string, placeId?: string) {
+  if (!placeId) {
+    throw new Error("The selected address does not contain a placeId.");
+  }
+
+  const params = new URLSearchParams({ address });
+  params.set("placeId", placeId);
+
+  const response = await requestJson<LatLongResponse>(
+    `/get-latlong?${params.toString()}`,
+    { method: "GET" },
+    { includeSessionToken: true },
+  );
+
+  const lat = response.data?.lat ?? response.data?.latitude;
+  const lng = response.data?.lng ?? response.data?.longitude;
+  if (response.success === false || typeof lat !== "number" || typeof lng !== "number") {
+    throw new Error(response.message || "Unable to locate the selected address.");
+  }
+
+  return { lat, lng };
 }
 
 export function estimateFareFallback(request: {

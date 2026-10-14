@@ -3,6 +3,8 @@ import { cities, landmarks, routes, fareRates } from "@/data/siteData";
 export type AddressSuggestion = {
   name: string;
   address: string;
+  placeId?: string;
+  place_id?: string;
   city?: string;
   latitude?: number;
   longitude?: number;
