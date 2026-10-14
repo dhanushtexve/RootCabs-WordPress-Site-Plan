@@ -603,6 +603,36 @@ export default defineConfig(({ command, mode }) => {
             proxy.on('proxyReq', removeBrowserOriginHeaders);
           },
         },
+        '/api/customer/dev/get-distance': {
+          target: bookingApiProxyTarget,
+          changeOrigin: true,
+          headers: {
+            'ngrok-skip-browser-warning': 'true',
+          },
+          configure(proxy) {
+            proxy.on('proxyReq', removeBrowserOriginHeaders);
+          },
+        },
+        '/api/customer/dev/check-location': {
+          target: bookingApiProxyTarget,
+          changeOrigin: true,
+          headers: {
+            'ngrok-skip-browser-warning': 'true',
+          },
+          configure(proxy) {
+            proxy.on('proxyReq', removeBrowserOriginHeaders);
+          },
+        },
+        '/api/customer/dev/geo-markings/filter': {
+          target: bookingApiProxyTarget,
+          changeOrigin: true,
+          headers: {
+            'ngrok-skip-browser-warning': 'true',
+          },
+          configure(proxy) {
+            proxy.on('proxyReq', removeBrowserOriginHeaders);
+          },
+        },
         '/api/customer/dev/search-address': {
           target: bookingApiProxyTarget,
           changeOrigin: true,

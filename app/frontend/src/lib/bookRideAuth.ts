@@ -181,7 +181,16 @@ type ApiStatusResponse = {
 type ZonePackagesResponse = {
   success?: boolean;
   message?: string;
+  error?: string | { message?: string };
   data?: unknown;
+  validation?: {
+    canProceed?: boolean;
+    message?: string;
+    error?: string | { message?: string };
+    suggestedPackageType?: string;
+    requestedPackageType?: string;
+    resolvedPackageType?: string;
+  };
 };
 
 export type ServiceCategoryCatalogItem = {
@@ -266,6 +275,32 @@ function formatIndianPhoneNumber(phoneNumber: string) {
   return `+91${digitsOnly}`;
 }
 
+function extractApiResponseMessage(payload: unknown) {
+  if (!payload || typeof payload !== "object") return "";
+  const root = payload as Record<string, unknown>;
+  const rootError = root.error;
+  const data = root.data && typeof root.data === "object" ? root.data as Record<string, unknown> : {};
+  const dataError = data.error;
+  const validation = root.validation && typeof root.validation === "object"
+    ? root.validation as Record<string, unknown>
+    : {};
+  const validationError = validation.error;
+  const candidates = [
+    root.message,
+    typeof rootError === "string" ? rootError : undefined,
+    rootError && typeof rootError === "object" ? (rootError as Record<string, unknown>).message : undefined,
+    data.message,
+    typeof dataError === "string" ? dataError : undefined,
+    dataError && typeof dataError === "object" ? (dataError as Record<string, unknown>).message : undefined,
+    validation.message,
+    typeof validationError === "string" ? validationError : undefined,
+    validationError && typeof validationError === "object"
+      ? (validationError as Record<string, unknown>).message
+      : undefined,
+  ];
+  return candidates.find((value): value is string => typeof value === "string" && value.trim().length > 0)?.trim() || "";
+}
+
 async function readApiError(response: Response) {
   try {
     const payload = await response.json();
@@ -274,7 +309,7 @@ async function readApiError(response: Response) {
     };
     const errorCode = typeof payload?.ERROR_CODE === "string" ? payload.ERROR_CODE : "";
 
-    return errorMessages[errorCode] || payload?.message || payload?.error || "Request failed. Please try again.";
+    return errorMessages[errorCode] || extractApiResponseMessage(payload) || "Request failed. Please try again.";
   } catch {
     return "Request failed. Please try again.";
   }
@@ -495,15 +530,95 @@ export type ActingDriverQuoteRequest = {
   customerId?: number;
 };
 
+export type ActingDriverRouteRequest = {
+  pickupLat: number;
+  pickupLong: number;
+  dropLat: number;
+  dropLong: number;
+};
+
+export type ActingDriverDistanceResponse = {
+  success?: boolean;
+  message?: string;
+  data?: {
+    showAlert?: boolean;
+    suggestedService?: string;
+    reason?: string;
+  };
+};
+
+export type ActingDriverLocationResponse = {
+  success?: boolean;
+  message?: string;
+  cityLimit?: boolean;
+  data?: { cityLimit?: boolean };
+};
+
 export async function getActingDriverZonePackages(payload: ActingDriverZonePackagesRequest) {
   const response = await requestJson<ZonePackagesResponse>(
     "/acting-driver/zone-packages",
     { method: "POST", body: JSON.stringify(payload) },
     { includeSessionToken: true },
   );
+  console.info("ACTING DRIVER PACKAGE API RESPONSE:", JSON.stringify(response, null, 2));
+
+  if (response.success === false || response.validation?.canProceed === false) {
+    throw new Error(extractApiResponseMessage(response) || "Unable to load acting-driver packages.");
+  }
+  return response;
+}
+
+export async function getActingDriverDistance(payload: ActingDriverRouteRequest) {
+  const params = new URLSearchParams({
+    pickupLat: String(payload.pickupLat),
+    pickupLong: String(payload.pickupLong),
+    dropLat: String(payload.dropLat),
+    dropLong: String(payload.dropLong),
+    serviceType: "DRIVER",
+  });
+  const response = await requestJson<ActingDriverDistanceResponse>(
+    `/get-distance?${params.toString()}`,
+    { method: "GET" },
+    { includeSessionToken: true },
+  );
 
   if (response.success === false) {
-    throw new Error(response.message || "Unable to load acting-driver packages.");
+    throw new Error(response.message || "Unable to verify the acting-driver route.");
+  }
+  return response;
+}
+
+export async function checkActingDriverLocation(payload: ActingDriverRouteRequest) {
+  const params = new URLSearchParams({
+    pickupLat: String(payload.pickupLat),
+    pickupLong: String(payload.pickupLong),
+    dropLat: String(payload.dropLat),
+    dropLong: String(payload.dropLong),
+  });
+  const response = await requestJson<ActingDriverLocationResponse>(
+    `/check-location?${params.toString()}`,
+    { method: "GET" },
+    { includeSessionToken: true },
+  );
+
+  if (response.success === false) {
+    throw new Error(response.message || "Unable to check the city limit.");
+  }
+  return response;
+}
+
+export async function getActingDriverGeoMarkings(zone: string) {
+  const params = new URLSearchParams({ zone });
+  const response = await requestJson<Record<string, unknown>>(
+    `/geo-markings/filter?${params.toString()}`,
+    { method: "GET" },
+    { includeSessionToken: true },
+  );
+
+  if (response.success === false) {
+    throw new Error(
+      typeof response.message === "string" ? response.message : "Unable to validate the selected service zone.",
+    );
   }
   return response;
 }
@@ -753,11 +868,15 @@ export async function addRentalBooking(payload: RentalBookingRequest) {
 }
 
 export async function addBooking(payload: RentalBookingRequest) {
+  const customerId = Number(getStoredBookingCustomerId());
   const response = await requestJson<ApiStatusResponse>(
     "/add-booking",
     {
       method: "POST",
-      body: JSON.stringify(payload),
+      body: JSON.stringify({
+        ...payload,
+        ...(Number.isFinite(customerId) && customerId > 0 ? { customerId } : {}),
+      }),
     },
     { includeSessionToken: true },
   );

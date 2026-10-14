@@ -1,4 +1,5 @@
 ﻿import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import { MapPin, ArrowRight, Car, Phone, Shield, Clock, CheckCircle, Star, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,7 +18,10 @@ import {
   addBooking,
   addSupportParcelBooking,
   addRentalBooking,
+  checkActingDriverLocation,
   getActingDriverQuote,
+  getActingDriverDistance,
+  getActingDriverGeoMarkings,
   getActingDriverZonePackages,
   getAddressLatLong,
   logQuotation,
@@ -61,19 +65,6 @@ const bookingZones = [
 
 const localPackageHours = [2, 4, 6, 8];
 const parcelOrderTypes = ["Electronics", "Food", "Medicines", "Documents", "Groceries", "Clothes", "Others"];
-const actingDriverLocalPackages = [
-  { value: "3", label: "3 hrs - 40 km", period: 3 },
-  { value: "5", label: "5 hrs - 80 km", period: 5 },
-  { value: "8", label: "8 hrs - 120 km", period: 8 },
-] as const;
-
-const actingDriverOutstationPackages = [
-  { value: "10", label: "10 hrs - 30 km", period: 10 },
-  { value: "24", label: "1 day - 600 km", period: 24 },
-  { value: "48", label: "2 day - 1200 km", period: 48 },
-  { value: "custom", label: "Custom" },
-] as const;
-
 const rentalCategorySupportingLines: Record<string, string> = {
   "economy go": "Smart Rides at Affordable Prices",
   comfort: "A Little More Comfort for Every Ride",
@@ -81,9 +72,14 @@ const rentalCategorySupportingLines: Record<string, string> = {
   "premium xl": "More Space for Everyone",
 };
 
-type ActingDriverPackageOption =
-  | (typeof actingDriverLocalPackages)[number]
-  | (typeof actingDriverOutstationPackages)[number];
+type ActingDriverPackageOption = {
+  value: string;
+  label: string;
+  period?: number;
+  packageId?: number;
+  price?: number;
+  isActive?: boolean;
+};
 
 const bookRideFaqs = [
   {
@@ -205,6 +201,15 @@ function getBookingIdFromResponse(response: unknown) {
   return bookingId === undefined || bookingId === null ? "" : String(bookingId);
 }
 
+function getBookingStatusFromResponse(response: unknown) {
+  if (!response || typeof response !== "object") return "";
+  const payload = response as {
+    status?: string;
+    data?: { status?: string; result?: { status?: string } };
+  };
+  return String(payload.status || payload.data?.result?.status || payload.data?.status || "").trim().toUpperCase();
+}
+
 function getQuoteRefFromResponse(response: unknown) {
   if (!response || typeof response !== "object") return "";
   const payload = response as {
@@ -295,11 +300,60 @@ type ZonePackageItem = {
   packageType?: string;
   name?: string;
   packageName?: string;
+  label?: string;
+  displayName?: string;
   period?: number | string;
   duration?: number | string;
   hours?: number | string;
+  kilometer?: number | string;
+  kilometers?: number | string;
+  includedKilometers?: number | string;
+  km?: number | string;
   extraCabType?: number | string;
+  price?: number | string;
+  baseFare?: number | string;
+  amount?: number | string;
+  isActive?: boolean;
+  active?: boolean;
+  status?: string;
 };
+
+function hasValidCoordinates(latitude?: number, longitude?: number) {
+  return typeof latitude === "number" && Number.isFinite(latitude) && latitude !== 0 &&
+    typeof longitude === "number" && Number.isFinite(longitude) && longitude !== 0;
+}
+
+function areCoordinatesIdentical(
+  pickupLatitude: number,
+  pickupLongitude: number,
+  dropLatitude: number,
+  dropLongitude: number,
+) {
+  return pickupLatitude === dropLatitude && pickupLongitude === dropLongitude;
+}
+
+function responseContainsZone(payload: unknown, zone: string) {
+  const expected = zone.trim().toLowerCase();
+  if (!expected || !payload || typeof payload !== "object") return false;
+  const queue: unknown[] = [payload];
+  const visited = new Set<object>();
+
+  while (queue.length > 0) {
+    const current = queue.shift();
+    if (!current || typeof current !== "object" || visited.has(current)) continue;
+    visited.add(current);
+    if (Array.isArray(current)) {
+      queue.push(...current);
+      continue;
+    }
+    const record = current as Record<string, unknown>;
+    for (const key of ["zone", "zoneName", "name", "city", "title"]) {
+      if (typeof record[key] === "string" && record[key].trim().toLowerCase() === expected) return true;
+    }
+    queue.push(...Object.values(record));
+  }
+  return false;
+}
 
 function extractZonePackageItems(payload: unknown): ZonePackageItem[] {
   if (!payload || typeof payload !== "object") return [];
@@ -370,19 +424,45 @@ function findCustomZonePackageId(zonePackagesResponse: unknown) {
 
 function getAvailableActingDriverOptions(
   zonePackagesResponse: unknown,
-  options: readonly ActingDriverPackageOption[],
   selectedType: "Local" | "Outstation",
-) {
-  const packages = extractZonePackageItems(zonePackagesResponse);
-  return options.filter((option) => {
-    if (option.value === "custom") return Boolean(findCustomZonePackageId(zonePackagesResponse));
-    if (!hasPackagePeriod(option)) return false;
-    return packages.some((item) => {
+): ActingDriverPackageOption[] {
+  return extractZonePackageItems(zonePackagesResponse)
+    .filter((item) => {
       const type = getZonePackageType(item);
-      return getZonePackagePeriod(item) === option.period &&
-        (!type || type === selectedType.toLowerCase());
-    });
-  });
+      return !type || type === selectedType.toLowerCase();
+    })
+    .map((item) => {
+      const packageId = getZonePackageId(item);
+      const period = getZonePackagePeriod(item);
+      const distanceValue = item.kilometer ?? item.kilometers ?? item.includedKilometers ?? item.km;
+      const distance = Number(distanceValue);
+      const configuredLabel = item.displayName || item.label || item.packageName || item.name;
+      const price = Number(item.price ?? item.baseFare ?? item.amount);
+      const status = item.status?.trim().toUpperCase();
+      const isActive = item.isActive ?? item.active ?? (
+        status ? ["1", "ACTIVE", "ENABLED", "TRUE"].includes(status) : true
+      );
+      const label = configuredLabel || [
+        Number.isFinite(period) ? `${period} hrs` : "Custom package",
+        Number.isFinite(distance) && distance > 0 ? `${distance} km` : "",
+      ].filter(Boolean).join(" - ");
+
+      return {
+        value: packageId ? `package-${packageId}` : Number.isFinite(period) ? String(period) : "custom",
+        label,
+        ...(Number.isFinite(period) ? { period } : {}),
+        ...(packageId ? { packageId } : {}),
+        ...(Number.isFinite(price) ? { price } : {}),
+        isActive,
+      };
+    })
+    .filter((option) => Boolean(
+      option.packageId &&
+      option.period &&
+      typeof option.price === "number" &&
+      option.price >= 0 &&
+      option.isActive,
+    ));
 }
 
 function hasPackagePeriod(
@@ -430,13 +510,17 @@ export default function BookRide() {
   const [parcelOrderTypeOther, setParcelOrderTypeOther] = useState("");
   const [deliveryInstruction, setDeliveryInstruction] = useState("");
   const [actingDriverPackageType, setActingDriverPackageType] = useState<"Local" | "Outstation">("Outstation");
-  const [actingDriverPackage, setActingDriverPackage] = useState<string>("10");
+  const [actingDriverPackage, setActingDriverPackage] = useState<string>("");
   const [actingDriverPickupDateTime, setActingDriverPickupDateTime] = useState("");
   const [actingDriverReturnDateTime, setActingDriverReturnDateTime] = useState("");
   const [actingDriverTransmission, setActingDriverTransmission] = useState<"MANUAL" | "AUTOMATIC">("MANUAL");
   const [actingDriverZonePackages, setActingDriverZonePackages] = useState<unknown>(null);
   const [isLoadingActingDriverPackages, setIsLoadingActingDriverPackages] = useState(false);
   const [actingDriverPackagesError, setActingDriverPackagesError] = useState("");
+  const [isCheckingActingDriverRoute, setIsCheckingActingDriverRoute] = useState(false);
+  const [actingDriverRouteError, setActingDriverRouteError] = useState("");
+  const [isCheckingActingDriverZone, setIsCheckingActingDriverZone] = useState(false);
+  const [actingDriverZoneError, setActingDriverZoneError] = useState("");
   const [localPeriod, setLocalPeriod] = useState("2");
   const [zone, setZone] = useState("");
   const [date, setDate] = useState("");
@@ -507,11 +591,12 @@ export default function BookRide() {
       setBookingError("Unable to locate that address. Please select it again.");
     }
   };
-  const actingDriverPackageOptions =
-    actingDriverPackageType === "Local" ? actingDriverLocalPackages : actingDriverOutstationPackages;
-  const availableActingDriverPackageOptions = actingDriverZonePackages
-    ? getAvailableActingDriverOptions(actingDriverZonePackages, actingDriverPackageOptions, actingDriverPackageType)
-    : actingDriverPackageOptions;
+  const availableActingDriverPackageOptions = useMemo(
+    () => actingDriverZonePackages
+      ? getAvailableActingDriverOptions(actingDriverZonePackages, actingDriverPackageType)
+      : [],
+    [actingDriverPackageType, actingDriverZonePackages],
+  );
   const isRentalTrip = tripType === "one-way" || tripType === "round-trip" || tripType === "local";
   const mappedRentalZone = zone ? getBookingZonePayload(zone) : "";
   const availableRentalCategories = isRentalTrip && mappedRentalZone
@@ -520,13 +605,13 @@ export default function BookRide() {
 
   const hasSelectedPickup = Boolean(
     selectedPickup?.address &&
-      typeof selectedPickup.latitude === "number" &&
-      typeof selectedPickup.longitude === "number",
+      (tripType !== "acting-driver" || selectedPickup.placeId) &&
+      hasValidCoordinates(selectedPickup.latitude, selectedPickup.longitude),
   );
   const hasSelectedDrop = Boolean(
     selectedDrop?.address &&
-      typeof selectedDrop.latitude === "number" &&
-      typeof selectedDrop.longitude === "number",
+      (tripType !== "acting-driver" || selectedDrop.placeId) &&
+      hasValidCoordinates(selectedDrop.latitude, selectedDrop.longitude),
   );
   const hasSelectedSenderAddress = Boolean(
     selectedSenderAddress?.address &&
@@ -542,11 +627,26 @@ export default function BookRide() {
     hasSelectedPickup &&
       (tripType === "local" || hasSelectedDrop) &&
       (tripType === "acting-driver" ? actingDriverPickupDateTime : date && time) &&
-      (tripType !== "acting-driver" || actingDriverPackage !== "custom" || actingDriverReturnDateTime) &&
+      (tripType !== "acting-driver" || actingDriverPackageType !== "Outstation" || actingDriverReturnDateTime) &&
+      (tripType !== "acting-driver" ||
+        !hasSelectedPickup ||
+        !hasSelectedDrop ||
+        !areCoordinatesIdentical(
+          selectedPickup!.latitude!,
+          selectedPickup!.longitude!,
+          selectedDrop!.latitude!,
+          selectedDrop!.longitude!,
+        )) &&
       (tripType !== "acting-driver" ||
         (Boolean(actingDriverZonePackages) &&
           availableActingDriverPackageOptions.length > 0 &&
-          !actingDriverPackagesError)) &&
+          !actingDriverPackagesError &&
+          !isLoadingActingDriverPackages)) &&
+      (tripType !== "acting-driver" ||
+        (!isCheckingActingDriverZone && !actingDriverZoneError)) &&
+      (tripType !== "acting-driver" ||
+        actingDriverPackageType !== "Local" ||
+        (!isCheckingActingDriverRoute && !actingDriverRouteError)) &&
       (tripType !== "local" || localPeriod) &&
       (!isRentalTrip || Boolean(selectedRentalCategory)) &&
       (tripType !== "parcel" ||
@@ -917,6 +1017,85 @@ export default function BookRide() {
   }, [isRentalTrip, mappedRentalZone, phoneVerified, tripType, rentalCategoryRetry]);
 
   useEffect(() => {
+    if (tripType !== "acting-driver" || !phoneVerified || !zone) {
+      setActingDriverZoneError("");
+      setIsCheckingActingDriverZone(false);
+      return;
+    }
+
+    let isCurrent = true;
+    const bookingZone = getBookingZonePayload(zone);
+    setActingDriverZoneError("");
+    setIsCheckingActingDriverZone(true);
+
+    getActingDriverGeoMarkings(bookingZone)
+      .then((response) => {
+        if (isCurrent && !responseContainsZone(response, bookingZone)) {
+          setActingDriverZoneError("The selected service zone is not available.");
+        }
+      })
+      .catch((error) => {
+        if (isCurrent) {
+          setActingDriverZoneError(
+            error instanceof Error ? error.message : "Unable to validate the selected service zone.",
+          );
+        }
+      })
+      .finally(() => {
+        if (isCurrent) setIsCheckingActingDriverZone(false);
+      });
+
+    return () => { isCurrent = false; };
+  }, [phoneVerified, tripType, zone]);
+
+  useEffect(() => {
+    if (
+      tripType !== "acting-driver" ||
+      actingDriverPackageType !== "Local" ||
+      !hasSelectedPickup ||
+      !hasSelectedDrop
+    ) {
+      setActingDriverRouteError("");
+      setIsCheckingActingDriverRoute(false);
+      return;
+    }
+
+    let isCurrent = true;
+    setActingDriverRouteError("");
+    setIsCheckingActingDriverRoute(true);
+
+    const route = {
+      pickupLat: selectedPickup!.latitude!,
+      pickupLong: selectedPickup!.longitude!,
+      dropLat: selectedDrop!.latitude!,
+      dropLong: selectedDrop!.longitude!,
+    };
+
+    Promise.all([getActingDriverDistance(route), checkActingDriverLocation(route)])
+      .then(([distanceResponse, locationResponse]) => {
+        if (!isCurrent) return;
+        const distanceData = distanceResponse.data;
+        const cityLimit = locationResponse.cityLimit ?? locationResponse.data?.cityLimit;
+        const suggestedService = distanceData?.suggestedService?.trim().toUpperCase();
+        if (distanceData?.showAlert === true || suggestedService === "OUTSTATION" || cityLimit === false) {
+          setActingDriverRouteError("This route is outside the local city limit. Please select Outstation.");
+        }
+      })
+      .catch((error) => {
+        if (isCurrent) {
+          setActingDriverRouteError(
+            error instanceof Error ? error.message : "Unable to verify local service availability.",
+          );
+        }
+      })
+      .finally(() => {
+        if (isCurrent) setIsCheckingActingDriverRoute(false);
+      });
+
+    return () => { isCurrent = false; };
+  }, [actingDriverPackageType, hasSelectedDrop, hasSelectedPickup, selectedDrop, selectedPickup, tripType]);
+
+  useEffect(() => {
     if (
       tripType !== "acting-driver" ||
       !phoneVerified ||
@@ -931,7 +1110,6 @@ export default function BookRide() {
     }
 
     let isCurrent = true;
-    setActingDriverZonePackages(null);
     setActingDriverPackagesError("");
     setIsLoadingActingDriverPackages(true);
 
@@ -950,12 +1128,13 @@ export default function BookRide() {
         if (!isCurrent) return;
         const availableOptions = getAvailableActingDriverOptions(
           response,
-          actingDriverPackageType === "Local" ? actingDriverLocalPackages : actingDriverOutstationPackages,
           actingDriverPackageType,
         );
         setActingDriverZonePackages(response);
         if (availableOptions.length === 0) {
-          setActingDriverPackagesError("No acting-driver packages are available for the selected zone and route.");
+          const responseMessage = "No acting-driver packages are available for the selected zone and route.";
+          console.info("MESSAGE SHOWN IN UI:", responseMessage);
+          setActingDriverPackagesError(responseMessage);
           return;
         }
         setActingDriverPackage((current) =>
@@ -966,7 +1145,10 @@ export default function BookRide() {
       })
       .catch((error) => {
         if (isCurrent) {
-          setActingDriverPackagesError(error instanceof Error ? error.message : "Unable to load acting-driver packages.");
+          const responseMessage = error instanceof Error ? error.message : "Unable to load acting-driver packages.";
+          console.info("MESSAGE SHOWN IN UI:", responseMessage);
+          setActingDriverZonePackages(null);
+          setActingDriverPackagesError(responseMessage);
         }
       })
       .finally(() => {
@@ -974,7 +1156,18 @@ export default function BookRide() {
       });
 
     return () => { isCurrent = false; };
-  }, [actingDriverPackageType, hasSelectedDrop, hasSelectedPickup, phoneVerified, selectedDrop, selectedPickup, tripType, zone]);
+  }, [
+    actingDriverPackageType,
+    hasSelectedDrop,
+    hasSelectedPickup,
+    phoneVerified,
+    selectedDrop?.latitude,
+    selectedDrop?.longitude,
+    selectedPickup?.latitude,
+    selectedPickup?.longitude,
+    tripType,
+    zone,
+  ]);
 
   useEffect(() => {
     if (sameCabStartAsPickup) {
@@ -1068,14 +1261,6 @@ export default function BookRide() {
     };
   }, [cabEnd, sameCabEndAsDrop, selectedCabEnd]);
 
-  useEffect(() => {
-    const currentOptions = actingDriverPackageType === "Local" ? actingDriverLocalPackages : actingDriverOutstationPackages;
-
-    if (!currentOptions.some((item) => item.value === actingDriverPackage)) {
-      setActingDriverPackage(currentOptions[0]?.value || "");
-    }
-  }, [actingDriverPackage, actingDriverPackageType]);
-
   const handlePhoneNumberChange = (value: string) => {
     const digitsOnly = value.replace(/\D/g, "");
     if (digitsOnly !== phoneNumber && (otpSent || phoneVerified)) {
@@ -1107,6 +1292,18 @@ export default function BookRide() {
       );
       return;
     }
+    if (
+      tripType === "acting-driver" &&
+      areCoordinatesIdentical(
+        selectedPickup!.latitude!,
+        selectedPickup!.longitude!,
+        selectedDrop!.latitude!,
+        selectedDrop!.longitude!,
+      )
+    ) {
+      setBookingError("Pickup and drop locations cannot be the same.");
+      return;
+    }
     if (tripType === "parcel" && (!hasSelectedSenderAddress || !hasSelectedReceiverAddress)) {
       setOtpError("Please select sender and receiver addresses from the suggestions.");
       return;
@@ -1126,12 +1323,36 @@ export default function BookRide() {
       setBookingError("Please fill all parcel details before confirming.");
       return;
     }
-    if (tripType === "acting-driver" && actingDriverPackage === "custom" && !actingDriverReturnDateTime) {
+    if (tripType === "acting-driver" && actingDriverPackageType === "Outstation" && !actingDriverReturnDateTime) {
       setBookingError("Please select return date and time before confirming.");
       return;
     }
+    if (
+      tripType === "acting-driver" &&
+      actingDriverPackageType === "Outstation" &&
+      new Date(actingDriverReturnDateTime) <= new Date(actingDriverPickupDateTime)
+    ) {
+      setBookingError("Return date and time must be after the pickup date and time.");
+      return;
+    }
+    if (tripType === "acting-driver" && actingDriverPackageType === "Local") {
+      if (isCheckingActingDriverRoute) {
+        setBookingError("Please wait while we verify the local route.");
+        return;
+      }
+      if (actingDriverRouteError) {
+        setBookingError(actingDriverRouteError);
+        return;
+      }
+    }
     if (!zone) {
       setBookingError("Please select a service zone before confirming.");
+      return;
+    }
+    if (tripType === "acting-driver" && (isCheckingActingDriverZone || actingDriverZoneError)) {
+      setBookingError(
+        isCheckingActingDriverZone ? "Please wait while we validate the service zone." : actingDriverZoneError,
+      );
       return;
     }
     if (isRentalTrip && !selectedRentalCategory) {
@@ -1161,7 +1382,9 @@ export default function BookRide() {
 
     const bookingZone = getBookingZonePayload(zone);
 
-    const actingDriverSelectedPackage = actingDriverPackageOptions.find((item) => item.value === actingDriverPackage);
+    const actingDriverSelectedPackage = availableActingDriverPackageOptions.find(
+      (item) => item.value === actingDriverPackage,
+    );
     const baseBookingPayload = {
       time: getCurrentDeviceTime(),
       fromDate:
@@ -1250,7 +1473,7 @@ export default function BookRide() {
         driverEndLat: selectedDrop!.latitude!,
         driverEndLong: selectedDrop!.longitude!,
         ...(hasPackagePeriod(actingDriverSelectedPackage) ? { period: actingDriverSelectedPackage.period } : {}),
-        ...(actingDriverPackage === "custom"
+        ...(actingDriverPackageType === "Outstation"
           ? { toDate: buildFromDateTimeInput(actingDriverReturnDateTime) }
           : {}),
         tripType,
@@ -1331,7 +1554,9 @@ export default function BookRide() {
             source: "ROOTCABS WEBSITE",
           });
 
-          if (actingDriverPackage === "custom") {
+          if (actingDriverSelectedPackage?.packageId) {
+            actingDriverPackageId = actingDriverSelectedPackage.packageId;
+          } else if (actingDriverPackage === "custom") {
             actingDriverPackageId = findCustomZonePackageId(zonePackagesResponse);
 
             if (!actingDriverPackageId) {
@@ -1347,6 +1572,17 @@ export default function BookRide() {
             if (!actingDriverPackageId) {
               throw new Error("Selected acting driver package is not available for the chosen zone.");
             }
+          }
+
+          if (
+            !actingDriverSelectedPackage ||
+            !actingDriverPackageId ||
+            !hasPackagePeriod(actingDriverSelectedPackage) ||
+            typeof actingDriverSelectedPackage.price !== "number" ||
+            actingDriverSelectedPackage.price < 0 ||
+            actingDriverSelectedPackage.isActive === false
+          ) {
+            throw new Error("Please select an active acting-driver package with a valid period and price.");
           }
 
           bookingPayload.packageId = actingDriverPackageId ?? undefined;
@@ -1384,15 +1620,20 @@ export default function BookRide() {
             ? await addSupportParcelBooking(bookingPayload)
           : await addRentalBooking(bookingPayload);
       const createdBookingId = getBookingIdFromResponse(response);
+      const createdBookingStatus = getBookingStatusFromResponse(response);
+      if (tripType === "acting-driver" && !createdBookingId) {
+        throw new Error("The booking API did not return a valid booking ID.");
+      }
+      if (tripType === "acting-driver" && createdBookingStatus && createdBookingStatus !== "QUOTED") {
+        throw new Error(`Unexpected booking status: ${createdBookingStatus}. Expected QUOTED.`);
+      }
       setBookingId(createdBookingId);
       setBookingResult(getBookingResultDetails(response));
       if (tripType === "acting-driver" && createdBookingId) {
         const quotedAmount = getQuoteAmountFromResponse(actingDriverQuoteResponse);
-        const calculatedEndDate = actingDriverPackage === "custom"
-          ? bookingPayload.toDate
-          : hasPackagePeriod(actingDriverSelectedPackage)
-            ? addHoursToIsoDate(bookingPayload.fromDate!, actingDriverSelectedPackage.period)
-            : undefined;
+        const calculatedEndDate = bookingPayload.toDate || (hasPackagePeriod(actingDriverSelectedPackage)
+          ? addHoursToIsoDate(bookingPayload.fromDate!, actingDriverSelectedPackage.period)
+          : undefined);
         await logQuotation({
           userId: 10,
           bookingId: createdBookingId,
@@ -1520,13 +1761,11 @@ export default function BookRide() {
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-3 rounded-xl bg-muted p-5 text-sm">
-            {bookingResult?.bookingNumber && <div className="flex justify-between gap-4"><span className="text-muted-foreground">Booking Number</span><span className="font-semibold text-primary">{bookingResult.bookingNumber}</span></div>}
             {bookingId && <div className="flex justify-between gap-4"><span className="text-muted-foreground">Booking ID</span><span className="font-semibold">{bookingId}</span></div>}
-            <div className="flex justify-between gap-4"><span className="text-muted-foreground">Status</span><span className="rounded-full bg-amber-100 px-2.5 py-1 font-bold text-amber-800">{bookingResult?.status || "QUOTED"}</span></div>
             <div className="flex justify-between gap-4"><span className="text-muted-foreground">From</span><span className="max-w-[65%] text-right font-medium">{confirmationPickup}</span></div>
             {tripType !== "local" && <div className="flex justify-between gap-4"><span className="text-muted-foreground">To</span><span className="max-w-[65%] text-right font-medium">{confirmationDrop}</span></div>}
             <div className="flex justify-between gap-4"><span className="text-muted-foreground">Vehicle</span><span className="font-medium">{carTypeMap[vehicle]}</span></div>
-            <div className="flex justify-between gap-4"><span className="text-muted-foreground">Package</span><span className="font-medium">{bookingResult?.packageType || actingDriverPackageType}</span></div>
+            <div className="flex justify-between gap-4"><span className="text-muted-foreground">Trip</span><span className="font-medium capitalize">{tripType}</span></div>
             {confirmationCreatedAt && <div className="flex justify-between gap-4"><span className="text-muted-foreground">Created</span><span className="font-medium">{confirmationCreatedAt}</span></div>}
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
@@ -1612,11 +1851,11 @@ export default function BookRide() {
                 )}
                 <fieldset
                   disabled={!phoneVerified}
-                  className={phoneVerified ? "space-y-6" : "pointer-events-none space-y-6 rounded-xl bg-muted/40 p-3 opacity-65"}
+                  className={phoneVerified ? "flex flex-col gap-6" : "pointer-events-none flex flex-col gap-6 rounded-xl bg-muted/40 p-3 opacity-65"}
                 >
               {/* Trip Type */}
-              <div>
-                <Label className="text-sm font-medium mb-3 block">Trip Type</Label>
+              <div className={tripType === "acting-driver" ? "order-[-7]" : undefined}>
+                <Label className="text-sm font-medium mb-3 block">{tripType === "acting-driver" ? "Service Type" : "Trip Type"}</Label>
                 <RadioGroup value={tripType} onValueChange={setTripType} className="flex gap-4">
                   <div className="flex items-center gap-2">
                     <RadioGroupItem value="one-way" id="one-way" className="cursor-pointer" />
@@ -1678,7 +1917,7 @@ export default function BookRide() {
               )}
 
               {/* From / To */}
-              <div className={`grid gap-4 ${tripType === "local" ? "md:grid-cols-1" : "md:grid-cols-2"}`}>
+              <div className={`grid gap-4 ${tripType === "acting-driver" ? "order-[-2] md:grid-cols-2" : tripType === "local" ? "md:grid-cols-1" : "md:grid-cols-2"}`}>
                 <div>
                   <Label className="text-sm font-medium mb-1.5 block">Pickup Location</Label>
                   <div className="relative">
@@ -1774,11 +2013,11 @@ export default function BookRide() {
               </div>
 
               {tripType !== "local" && (
-              <div className="grid md:grid-cols-2 gap-4">
+              <div className={tripType === "acting-driver" ? "contents" : "grid md:grid-cols-2 gap-4"}>
                 {tripType === "acting-driver" ? (
                   <>
-                    <div>
-                      <Label className="text-sm font-medium mb-3 block">Acting Driver Type</Label>
+                    <div className="order-[-6]">
+                      <Label className="text-sm font-medium mb-3 block">Trip Type</Label>
                       <RadioGroup
                         value={actingDriverPackageType}
                         onValueChange={(value) => setActingDriverPackageType(value as "Local" | "Outstation")}
@@ -1793,14 +2032,29 @@ export default function BookRide() {
                           <Label htmlFor="acting-outstation" className="cursor-pointer">Outstation</Label>
                         </div>
                       </RadioGroup>
+                      {isCheckingActingDriverRoute && (
+                        <p className="mt-2 text-xs text-muted-foreground">Checking local city limit...</p>
+                      )}
+                      {actingDriverRouteError && actingDriverPackageType === "Local" && (
+                        <div className="mt-2 rounded-md border border-red-200 bg-red-50 p-3 text-xs text-red-700">
+                          <p className="font-medium">{actingDriverRouteError}</p>
+                          <button
+                            type="button"
+                            className="mt-2 font-semibold underline underline-offset-2"
+                            onClick={() => setActingDriverPackageType("Outstation")}
+                          >
+                            Use Outstation
+                          </button>
+                        </div>
+                      )}
                     </div>
 
-                    <div>
+                    <div className="order-[-1]">
                       <Label className="text-sm font-medium mb-1.5 block">Choose Package</Label>
                       <Select
                         value={actingDriverPackage}
                         onValueChange={setActingDriverPackage}
-                        disabled={isLoadingActingDriverPackages || availableActingDriverPackageOptions.length === 0}
+                        disabled={availableActingDriverPackageOptions.length === 0}
                       >
                         <SelectTrigger className="cursor-pointer">
                           <SelectValue placeholder="Select package" />
@@ -1818,7 +2072,7 @@ export default function BookRide() {
                       {!phoneVerified && <p className="mt-2 text-xs text-muted-foreground">Verify your phone and select both locations to load packages.</p>}
                     </div>
 
-                    <div>
+                    <div className="order-[-4]">
                       <Label className="text-sm font-medium mb-1.5 block">Transmission Type</Label>
                       <Select value={actingDriverTransmission} onValueChange={(value) => setActingDriverTransmission(value as "MANUAL" | "AUTOMATIC")}>
                         <SelectTrigger className="cursor-pointer">
@@ -1870,8 +2124,8 @@ export default function BookRide() {
                 )}
 
                 {/* Zone */}
-                <div>
-                  <Label className="text-sm font-medium mb-1.5 block">Zone</Label>
+                <div className={tripType === "acting-driver" ? "order-[-8]" : undefined}>
+                  <Label className="text-sm font-medium mb-1.5 block">{tripType === "acting-driver" ? "Service Pickup Area" : "Zone"}</Label>
                   <Select value={zone} onValueChange={setZone} disabled={tripType === "parcel"}>
                     <SelectTrigger className="cursor-pointer">
                       <SelectValue placeholder="Select service zone" />
@@ -1884,13 +2138,19 @@ export default function BookRide() {
                       ))}
                     </SelectContent>
                   </Select>
+                  {tripType === "acting-driver" && isCheckingActingDriverZone && (
+                    <p className="mt-2 text-xs text-muted-foreground">Validating service zone...</p>
+                  )}
+                  {tripType === "acting-driver" && actingDriverZoneError && (
+                    <p className="mt-2 text-xs font-medium text-red-700">{actingDriverZoneError}</p>
+                  )}
                 </div>
               </div>
               )}
 
               {/* Date & Time */}
               {tripType === "acting-driver" ? (
-                <div className={`grid gap-4 ${actingDriverPackage === "custom" ? "md:grid-cols-2" : "md:grid-cols-1"}`}>
+                <div className={`order-[-3] grid gap-4 ${actingDriverPackageType === "Outstation" ? "md:grid-cols-2" : "md:grid-cols-1"}`}>
                   <div>
                     <Label className="text-sm font-medium mb-1.5 block">Pickup Date & Time</Label>
                     <Input
@@ -1900,7 +2160,7 @@ export default function BookRide() {
                       className="cursor-pointer"
                     />
                   </div>
-                  {actingDriverPackage === "custom" && (
+                  {actingDriverPackageType === "Outstation" && (
                     <div>
                       <Label className="text-sm font-medium mb-1.5 block">Return Date & Time</Label>
                       <Input
@@ -2105,8 +2365,8 @@ export default function BookRide() {
                   </div>
                 </div>
               ) : tripType === "acting-driver" ? (
-                <div>
-                  <Label className="text-sm font-medium mb-3 block">Select Vehicle</Label>
+                <div className="order-[-5]">
+                  <Label className="text-sm font-medium mb-3 block">Car Type</Label>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {vehicles.map((v) => (
                       <div key={v.id} onClick={() => setVehicle(v.id)} className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${vehicle === v.id ? "border-primary bg-primary/5" : "border-border hover:border-primary/30"}`}>
