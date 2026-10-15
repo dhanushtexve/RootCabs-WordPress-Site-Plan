@@ -268,22 +268,42 @@ type BookingResultDetails = {
   status?: string;
   packageType?: string;
   pickupFormatAddress?: string | { name?: string };
-  pickupAddress?: string | { name?: string };
+  pickupAddress?: string | { name?: string; address?: string };
   dropFormatAddress?: string | { name?: string };
-  dropAddress?: string | { name?: string };
+  dropAddress?: string | { name?: string; address?: string };
   category?: string;
   created_at?: string;
+  serviceType?: string;
+  parcelVehicleType?: string;
+  deliveryType?: string;
+  parcelDirection?: string;
+  zone?: string;
+  orderType?: string;
+  orderTypeOther?: string | null;
+  deliveryDetails?: {
+    orderType?: string;
+    senderName?: string;
+    senderPhone?: string;
+    receiverName?: string;
+    receiverPhone?: string;
+    senderAddress?: string;
+    receiverAddress?: string;
+    deliveryInstructions?: string;
+  };
 };
 
 function getBookingResultDetails(response: unknown): BookingResultDetails | null {
   if (!response || typeof response !== "object") return null;
-  const result = (response as { data?: { result?: unknown } }).data?.result;
+  const data = (response as { data?: unknown }).data;
+  const result = data && typeof data === "object" && "result" in data
+    ? (data as { result?: unknown }).result
+    : data;
   return result && typeof result === "object" ? result as BookingResultDetails : null;
 }
 
 function getAddressLabel(value: BookingResultDetails["pickupAddress"]) {
   if (typeof value === "string") return value;
-  return value?.name || "";
+  return value?.address || value?.name || "";
 }
 
 function formatBookingCreatedAt(value?: string) {
@@ -1336,17 +1356,39 @@ export default function BookRide() {
       setBookingError("Please fill all booking details before confirming.");
       return;
     }
-    if (
-      tripType === "parcel" &&
-      (!receiverName.trim() ||
-        !isValidIndianPhone(phoneNumber) ||
-        !isValidIndianPhone(receiverPhoneNumber) ||
-        !parcelOrderType ||
-        (parcelOrderType === "Others" && !parcelOrderTypeOther.trim()) ||
-        !deliveryInstruction.trim())
-    ) {
-      setBookingError("Please provide valid sender and receiver details, parcel type, vehicle, and delivery instructions.");
-      return;
+    if (tripType === "parcel") {
+      if (!name.trim()) {
+        setBookingError("Sender Name is required.");
+        return;
+      }
+      if (!isValidIndianPhone(phoneNumber)) {
+        setBookingError("Enter a valid 10-digit sender phone number starting with 6, 7, 8, or 9.");
+        return;
+      }
+      if (!receiverName.trim()) {
+        setBookingError("Receiver Name is required.");
+        return;
+      }
+      if (!isValidIndianPhone(receiverPhoneNumber)) {
+        setBookingError("Enter a valid 10-digit receiver phone number starting with 6, 7, 8, or 9.");
+        return;
+      }
+      if (!parcelVehicleType) {
+        setBookingError("Parcel Vehicle Type is required.");
+        return;
+      }
+      if (!parcelOrderType) {
+        setBookingError("Order Type is required.");
+        return;
+      }
+      if (parcelOrderType === "Others" && !parcelOrderTypeOther.trim()) {
+        setBookingError("Please specify the order type.");
+        return;
+      }
+      if (!deliveryInstruction.trim()) {
+        setBookingError("Delivery Instruction is required.");
+        return;
+      }
     }
     if (tripType === "acting-driver" && actingDriverPackageType === "Outstation" && !actingDriverReturnDateTime) {
       setBookingError("Please select return date and time before confirming.");
@@ -1519,9 +1561,7 @@ export default function BookRide() {
         parcelVehicleType: getParcelVehicleTypePayload(parcelVehicleType),
         deliveryType: "DOOR_DELIVERY",
         parcelDirection: "RECEIVER",
-        sourceType: "Website",
         zone: bookingZone,
-        landmark: "",
         senderName: name.trim(),
         senderPhone: `+91${phoneNumber}`,
         senderAddress: selectedSenderAddress!.address,
@@ -1551,7 +1591,6 @@ export default function BookRide() {
         orderType: parcelOrderType,
         ...(parcelOrderType === "Others" ? { orderTypeOther: parcelOrderTypeOther.trim() } : {}),
         deliveryDetails: deliveryInstruction.trim(),
-        deliveryInstructions: deliveryInstruction.trim(),
         tripType,
         fromDate: buildFromDate(date, time),
         source: "RootCabs Website",
@@ -1674,8 +1713,7 @@ export default function BookRide() {
           });
           parcelQuoteResponse = quoteResponse;
           const quoteRef = getQuoteRefFromResponse(quoteResponse);
-          if (!quoteRef) throw new Error("Parcel quote reference was not returned. Please try again.");
-          bookingPayload.quoteRef = quoteRef;
+          if (quoteRef) bookingPayload.quoteRef = quoteRef;
         }
         if (tripType === "parcel") {
           const bookingZoneResponse = await getZonePackages("PARCEL", bookingPayload.zone || bookingZone, {
@@ -1744,7 +1782,6 @@ export default function BookRide() {
       }
       if (tripType === "parcel" && createdBookingId) {
         const quoteRef = getQuoteRefFromResponse(parcelQuoteResponse);
-        if (!quoteRef) throw new Error("Parcel booking is missing the required quoteRef.");
         await logQuotation({
           userId: 10,
           bookingId: createdBookingId,
@@ -1769,7 +1806,7 @@ export default function BookRide() {
             discountValue: 0,
             discountAmount: 0,
             remarks: "",
-            quoteRef,
+            quoteRef: quoteRef || "",
           },
           startDate: bookingPayload.fromDate!,
           serviceType: "PARCEL",
@@ -1859,7 +1896,7 @@ export default function BookRide() {
   return (
     <div>
       <Dialog open={submitted} onOpenChange={setSubmitted}>
-        <DialogContent className="max-w-lg">
+        <DialogContent className="max-h-[90vh] max-w-lg overflow-y-auto">
           <DialogHeader className="items-center text-center">
             <div className="mb-2 flex h-16 w-16 items-center justify-center rounded-full bg-amber-100">
               <CheckCircle className="h-8 w-8 text-amber-600" />
@@ -1871,10 +1908,26 @@ export default function BookRide() {
           </DialogHeader>
           <div className="space-y-3 rounded-xl bg-muted p-5 text-sm">
             {bookingId && <div className="flex justify-between gap-4"><span className="text-muted-foreground">Booking ID</span><span className="font-semibold">{bookingId}</span></div>}
-            <div className="flex justify-between gap-4"><span className="text-muted-foreground">From</span><span className="max-w-[65%] text-right font-medium">{confirmationPickup}</span></div>
-            {tripType !== "local" && <div className="flex justify-between gap-4"><span className="text-muted-foreground">To</span><span className="max-w-[65%] text-right font-medium">{confirmationDrop}</span></div>}
-            <div className="flex justify-between gap-4"><span className="text-muted-foreground">Vehicle</span><span className="font-medium">{carTypeMap[vehicle]}</span></div>
-            <div className="flex justify-between gap-4"><span className="text-muted-foreground">Trip</span><span className="font-medium capitalize">{tripType}</span></div>
+            {bookingResult?.bookingNumber && <div className="flex justify-between gap-4"><span className="text-muted-foreground">Booking Number</span><span className="font-semibold">{bookingResult.bookingNumber}</span></div>}
+            {tripType === "parcel" ? (
+              <>
+                <div className="flex justify-between gap-4"><span className="text-muted-foreground">Parcel Vehicle</span><span className="font-medium capitalize">{(bookingResult?.parcelVehicleType || parcelVehicleType).toLowerCase()}</span></div>
+                <div className="flex justify-between gap-4"><span className="text-muted-foreground">Zone</span><span className="font-medium">{bookingResult?.zone || zone}</span></div>
+                <div className="flex justify-between gap-4"><span className="text-muted-foreground">Order Type</span><span className="font-medium">{bookingResult?.orderTypeOther || bookingResult?.orderType || parcelOrderTypeOther || parcelOrderType}</span></div>
+                <div className="flex justify-between gap-4"><span className="text-muted-foreground">Sender</span><span className="max-w-[65%] text-right font-medium">{bookingResult?.deliveryDetails?.senderName || name}<br /><span className="font-normal text-muted-foreground">{bookingResult?.deliveryDetails?.senderPhone || `+91${phoneNumber}`}</span></span></div>
+                <div className="flex justify-between gap-4"><span className="text-muted-foreground">Sender Address</span><span className="max-w-[65%] text-right font-medium">{bookingResult?.deliveryDetails?.senderAddress || confirmationPickup}</span></div>
+                <div className="flex justify-between gap-4"><span className="text-muted-foreground">Receiver</span><span className="max-w-[65%] text-right font-medium">{bookingResult?.deliveryDetails?.receiverName || receiverName}<br /><span className="font-normal text-muted-foreground">{bookingResult?.deliveryDetails?.receiverPhone || `+91${receiverPhoneNumber}`}</span></span></div>
+                <div className="flex justify-between gap-4"><span className="text-muted-foreground">Receiver Address</span><span className="max-w-[65%] text-right font-medium">{bookingResult?.deliveryDetails?.receiverAddress || confirmationDrop}</span></div>
+                <div className="flex justify-between gap-4"><span className="text-muted-foreground">Instructions</span><span className="max-w-[65%] text-right font-medium">{bookingResult?.deliveryDetails?.deliveryInstructions || deliveryInstruction || "—"}</span></div>
+              </>
+            ) : (
+              <>
+                <div className="flex justify-between gap-4"><span className="text-muted-foreground">From</span><span className="max-w-[65%] text-right font-medium">{confirmationPickup}</span></div>
+                {tripType !== "local" && <div className="flex justify-between gap-4"><span className="text-muted-foreground">To</span><span className="max-w-[65%] text-right font-medium">{confirmationDrop}</span></div>}
+                <div className="flex justify-between gap-4"><span className="text-muted-foreground">Vehicle</span><span className="font-medium">{carTypeMap[vehicle]}</span></div>
+                <div className="flex justify-between gap-4"><span className="text-muted-foreground">Trip</span><span className="font-medium capitalize">{tripType}</span></div>
+              </>
+            )}
             {confirmationCreatedAt && <div className="flex justify-between gap-4"><span className="text-muted-foreground">Created</span><span className="font-medium">{confirmationCreatedAt}</span></div>}
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">

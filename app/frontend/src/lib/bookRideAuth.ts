@@ -953,11 +953,18 @@ export async function addBooking(payload: RentalBookingRequest) {
 }
 
 export async function addSupportParcelBooking(payload: RentalBookingRequest) {
+  const customerId = Number(getStoredBookingCustomerId());
+  if (!Number.isFinite(customerId) || customerId <= 0) {
+    throw new Error("Customer ID is missing. Please verify the phone number again before booking.");
+  }
   const response = await requestJson<ApiStatusResponse>(
     "/add-support-parcel-booking",
     {
       method: "POST",
-      body: JSON.stringify(payload),
+      body: JSON.stringify({
+        ...payload,
+        customerId,
+      }),
     },
     { includeSessionToken: true },
   );
