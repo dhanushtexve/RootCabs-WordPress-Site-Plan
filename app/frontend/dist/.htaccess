@@ -1,9 +1,47 @@
+```apache
 <IfModule mod_rewrite.c>
 
     RewriteEngine On
 
     RewriteBase /
- 
+
+    # --------------------------------------------------
+
+    # 0. Redirect ONLY the www homepage to non-www
+    #
+    # https://www.rootcabs.com/
+    #        ↓ 301
+    # https://rootcabs.com/
+    #
+    # IMPORTANT:
+    # Other www URLs are NOT redirected by this rule.
+    # --------------------------------------------------
+
+    RewriteCond %{HTTP_HOST} ^www\.rootcabs\.com$ [NC]
+    RewriteCond %{REQUEST_URI} ^/$
+    RewriteRule ^$ https://rootcabs.com/ [R=301,L]
+
+
+    # --------------------------------------------------
+    # 0A. Redirect the five specified www URLs to non-www
+    # --------------------------------------------------
+
+    RewriteCond %{HTTP_HOST} ^www\.rootcabs\.com$ [NC]
+    RewriteRule ^services/auto/?$ https://rootcabs.com/services/auto [R=301,L,NE]
+
+    RewriteCond %{HTTP_HOST} ^www\.rootcabs\.com$ [NC]
+    RewriteRule ^services/outstation/?$ https://rootcabs.com/services/outstation [R=301,L,NE]
+
+    RewriteCond %{HTTP_HOST} ^www\.rootcabs\.com$ [NC]
+    RewriteRule ^support/?$ https://rootcabs.com/support [R=301,L,NE]
+
+    RewriteCond %{HTTP_HOST} ^www\.rootcabs\.com$ [NC]
+    RewriteRule ^business/?$ https://rootcabs.com/business [R=301,L,NE]
+
+    RewriteCond %{HTTP_HOST} ^www\.rootcabs\.com$ [NC]
+    RewriteRule ^services/?$ https://rootcabs.com/services [R=301,L,NE]
+
+
     # --------------------------------------------------
 
     # 1. Disable Apache's automatic directory slash
@@ -11,31 +49,22 @@
     # --------------------------------------------------
 
     DirectorySlash Off
- 
+
     # --------------------------------------------------
 
     # 2. Redirect trailing-slash URLs to non-trailing-slash
-
     #
-
     # /about/   -> /about
-
     # /support/ -> /support
-
     # /cities/  -> /cities
-
     #
-
     # Only redirect URLs actually requested by the browser.
-
     # This prevents internal rewrites from causing redirects.
-
     # --------------------------------------------------
 
     RewriteCond %{THE_REQUEST} \s/+(.+?)/+(?:\?[^\s]*)?\s [NC]
-
     RewriteRule ^(.+)/$ /$1 [R=301,L,NE]
- 
+
     # --------------------------------------------------
 
     # 3. Don't rewrite existing files
@@ -43,31 +72,22 @@
     # --------------------------------------------------
 
     RewriteCond %{REQUEST_FILENAME} -f
-
     RewriteRule ^ - [L]
- 
+
     # --------------------------------------------------
 
     # 4. Serve prerendered routes without the slash
-
     #
-
     # /about       -> /about/index.html
-
     # /support     -> /support/index.html
-
     # /cities      -> /cities/index.html
-
     #
-
     # The browser stays on /about, /support, etc.
-
     # --------------------------------------------------
 
     RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
-
     RewriteRule ^(.+)$ $1/index.html [L]
- 
+
     # --------------------------------------------------
 
     # 5. React SPA fallback
@@ -75,28 +95,33 @@
     # --------------------------------------------------
 
     RewriteRule ^index\.html$ - [L]
- 
-    RewriteCond %{REQUEST_FILENAME} !-d
 
+    RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule . /index.html [L]
+
 </IfModule>
- 
- 
+
+
+# --------------------------------------------------
+# Browser caching
+# --------------------------------------------------
+
 <IfModule mod_expires.c>
 
     ExpiresActive On
- 
+
+    # CSS
     ExpiresByType text/css "access plus 1 year"
 
+    # JavaScript
     ExpiresByType application/javascript "access plus 1 year"
- 
+
+    # Images
     ExpiresByType image/png "access plus 1 year"
-
     ExpiresByType image/jpeg "access plus 1 year"
-
     ExpiresByType image/webp "access plus 1 year"
-
     ExpiresByType image/avif "access plus 1 year"
-
     ExpiresByType image/svg+xml "access plus 1 year"
+
 </IfModule>
+```
