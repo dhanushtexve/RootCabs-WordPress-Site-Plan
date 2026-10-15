@@ -679,7 +679,7 @@ export default function BookRide() {
     const seo = {
       title: "Book a Ride | Local, Airport & Outstation Taxi - Root Cabs",
       description:
-        "Book your ride online with Root Cabs in seconds local, airport & outstation taxi across Tamil Nadu. Fixed fares, verified drivers, instant confirmation.",
+        "Book your ride online with Root Cabs in seconds for local, airport and outstation taxi services across Tamil Nadu. Fixed fares, verified drivers and instant confirmation.",
       url: "https://rootcabs.com/book-ride",
       image: "https://rootcabs.com/assets/root-cabs-logo.webp",
     };
@@ -779,6 +779,8 @@ export default function BookRide() {
         sameAs: [
           "https://www.instagram.com/rootcabs/",
           "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+          "https://play.google.com/store/apps/details?id=com.nativecustomer",
+          "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062",
         ],
       },
       breadcrumb: {

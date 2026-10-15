@@ -595,6 +595,60 @@ const salemFaqs = [
   },
 ] as const;
 
+const tiruppurFaqs = [
+  {
+    q: "Is there a minimum distance for a one way drop taxi in Tiruppur?",
+    a: "Yes. The minimum distance for a one way drop taxi Tirupur is 300 km. You can check the available route and ride options in the Root Cabs app before booking.",
+  },
+  {
+    q: "What is the fare for Tiruppur to Ooty taxi?",
+    a: "The fare depends on the vehicle type, travel distance and applicable trip charges. Enter Tiruppur and Ooty in the app to check the current fare before confirming your ride.",
+  },
+  {
+    q: "Can I schedule a taxi in advance in Tiruppur?",
+    a: "Yes. You can select a future pickup date and time while making your cab booking in Tirupur. This is useful for planned trips, station drops, airport travel and outstation journeys.",
+  },
+  {
+    q: "Is Root Cabs available in Tiruppur 24 hours a day?",
+    a: "Yes. Root Cabs is available 24 hours a day in Tiruppur for local rides, outstation trips, airport travel and other booking needs. Our customer support team is also available 24/7 whenever you need help with your ride.",
+  },
+  {
+    q: "What vehicle types are available for outstation trips from Tiruppur?",
+    a: "Vehicle options such as sedans, Mini, SUVs and MUV cars may be available depending on your route and booking time. The available options will be shown in the app before you confirm the trip.",
+  },
+  {
+    q: "What is the cheapest taxi fare in Tirupur?",
+    a: "The cheapest fare usually applies to shorter local trips and depends on the distance and vehicle you choose. Enter your pickup and drop in the Root Cabs app to see the fare available for your exact trip before you book.",
+  },
+  {
+    q: "Which is the best taxi in Tirupur?",
+    a: "A good taxi service in Tiruppur should offer simple booking, verified drivers, reliable support and clear ride details. Root Cabs provides these features for both city and longer-distance travel.",
+  },
+] as const;
+
+const trichyFaqs = [
+  {
+    q: "Which is the best taxi service in Trichy?",
+    a: "Root Cabs is a convenient choice for customers looking for a taxi service in Trichy. You can book local and outstation rides with verified drivers, on-time pickups, no extra fare and 24/7 customer support.",
+  },
+  {
+    q: "Are cabs available 24/7 in Trichy?",
+    a: "Yes. Root Cabs is available 24 hours a day in Trichy. You can book a cab for early-morning travel, late-night rides, railway station drops, airport trips and everyday travel.",
+  },
+  {
+    q: "How do I book a cab in Trichy?",
+    a: "You can book through the Root Cabs app or directly from our website. Enter your pickup and destination, choose the service and vehicle you need, and confirm your cab booking in Trichy in a few simple steps.",
+  },
+  {
+    q: "What vehicle types are available for outstation trips from Trichy?",
+    a: "You can choose from Mini, Sedan, SUV and MUV for outstation trips. Pick a vehicle based on how many people are travelling, your luggage and the space you need for the journey.",
+  },
+  {
+    q: "Can I book a one-way cab from Trichy to another city?",
+    a: "Yes. You can book a one-way cab from Trichy to Chennai and other available destinations without booking a return journey. This works well when you only need travel in one direction.",
+  },
+] as const;
+
 const chennaiPickupImages: Record<string, string> = {
   "Chennai Airport": "/assets/chennai-airport.webp",
   "Chennai Central Railway Station": chennaiCardImage,
@@ -2536,8 +2590,115 @@ export function KumbakonamPage() {
 
   useEffect(() => {
     const previousTitle = document.title;
-    document.title = "Best Taxi Service in Kumbakonam | Root Cabs";
-    return () => { document.title = previousTitle; };
+    const previousLang = document.documentElement.lang;
+    const head = document.head;
+    const title = "Taxi Service in Kumbakonam for Outstation Trips | Root Cabs";
+    const description =
+      "Book taxi service in Kumbakonam with Root Cabs for Navagraha temple tours and outstation trips, with 24/7 support and ₹50 off first ride - call +91 8608606474.";
+    const url = "https://rootcabs.com/taxi-in-kumbakonam";
+    const image = "https://rootcabs.com/assets/root-cabs-logo-animate.gif";
+
+    const upsertMeta = (attribute: "name" | "property", key: string, content: string) => {
+      const selector = `meta[${attribute}="${key}"]`;
+      let tag = head.querySelector(selector) as HTMLMetaElement | null;
+      const existed = Boolean(tag);
+      const previousContent = tag?.getAttribute("content");
+      if (!tag) {
+        tag = document.createElement("meta");
+        tag.setAttribute(attribute, key);
+        head.appendChild(tag);
+      }
+      tag.setAttribute("content", content);
+      return () => {
+        if (existed && previousContent !== null) tag?.setAttribute("content", previousContent);
+        else if (!existed) tag?.remove();
+      };
+    };
+
+    let canonical = head.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+    const canonicalExisted = Boolean(canonical);
+    const previousCanonical = canonical?.getAttribute("href");
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.rel = "canonical";
+      head.appendChild(canonical);
+    }
+    canonical.href = url;
+
+    const cleanupMeta = [
+      upsertMeta("name", "description", description),
+      upsertMeta("property", "og:site_name", "Root Cabs"),
+      upsertMeta("property", "og:title", title),
+      upsertMeta("property", "og:description", description),
+      upsertMeta("property", "og:url", url),
+      upsertMeta("property", "og:image", image),
+      upsertMeta("property", "og:type", "website"),
+    ];
+
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.text = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      url,
+      name: title,
+      description,
+      inLanguage: "en-IN",
+      about: {
+        "@type": "Organization",
+        name: "Root Cabs",
+        url: "https://rootcabs.com/",
+        logo: { "@type": "ImageObject", url: image },
+        email: "support@rootcabs.com",
+        telephone: "+91-8608606474",
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: "+91-8608606474",
+          email: "support@rootcabs.com",
+          contactType: "customer support",
+          areaServed: { "@type": "City", name: "Kumbakonam" },
+          availableLanguage: ["English", "Tamil"],
+        },
+        areaServed: { "@type": "City", name: "Kumbakonam" },
+        sameAs: [
+          "https://www.instagram.com/rootcabs/",
+          "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+          "https://play.google.com/store/apps/details?id=com.nativecustomer",
+          "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062",
+        ],
+      },
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: "https://rootcabs.com/" },
+          { "@type": "ListItem", position: 2, name: "Taxi Service in Kumbakonam", item: url },
+        ],
+      },
+      mainEntity: {
+        "@type": "FAQPage",
+        mainEntity: [
+          ...kumbakonamFaqs.slice(0, 4),
+          { q: "What Kumbakonam Taxi Packages Are Available?", a: "Kumbakonam taxi packages can be chosen based on the type of journey, including hourly travel, temple visits, local trips, and outstation travel." },
+          { q: "How Does The Kumbakonam Cabs Tariff Work?", a: "The Kumbakonam cabs tariff depends on factors such as distance, vehicle type, and the journey selected. The applicable fare is shown during booking before you confirm the ride." },
+        ].map((faq) => ({
+          "@type": "Question",
+          name: faq.q,
+          acceptedAnswer: { "@type": "Answer", text: typeof faq.a === "string" ? faq.a : "See the Kumbakonam taxi service page for details." },
+        })),
+      },
+    });
+    head.appendChild(schema);
+    document.title = title;
+    document.documentElement.lang = "en-IN";
+
+    return () => {
+      document.title = previousTitle;
+      document.documentElement.lang = previousLang;
+      cleanupMeta.forEach((cleanup) => cleanup());
+      if (canonicalExisted && previousCanonical !== null) canonical?.setAttribute("href", previousCanonical);
+      else if (!canonicalExisted) canonical?.remove();
+      schema.remove();
+    };
   }, []);
 
   return (
@@ -2839,6 +3000,9 @@ export function CityPage({
   const [showAllTrichyServices, setShowAllTrichyServices] = useState(false);
   const isChennai = city?.name === "Chennai";
   const isTrichy = city?.name === "Trichy";
+  const isSalem = city?.name === "Salem";
+  const isTiruppur = city?.name === "Tiruppur";
+  const isTrichyPage = city?.name === "Trichy";
 
   useEffect(() => {
     if (!city) return;
@@ -2855,7 +3019,31 @@ export function CityPage({
           url: canonicalUrlOverride ?? "https://rootcabs.com/taxi-in-chennai",
           image: "https://rootcabs.com/assets/root-cabs-logo.webp",
         }
-      : {
+      : isSalem
+        ? {
+          title: "Taxi Service in Salem for Outstation Trips | Root Cabs",
+          description:
+            "Book a taxi service in Salem with Root Cabs for outstation trips, with verified drivers, 24/7 support and ₹50 off your first ride - call 8608606474.",
+          url: "https://rootcabs.com/taxi-in-salem",
+          image: "https://rootcabs.com/assets/root-cabs-logo-animate.gif",
+        }
+        : isTiruppur
+          ? {
+            title: "Call Taxi in Tirupur - Car Rental in Tirupur",
+            description:
+              "Book taxi service and cabs in Tirupur with Root Cabs for Coimbatore Airport and outstation trips, with 24/7 support and ₹50 off first ride - call 8608606474.",
+            url: "https://rootcabs.com/taxi-in-tiruppur",
+            image: "https://rootcabs.com/assets/root-cabs-logo-animate.gif",
+          }
+        : isTrichyPage
+          ? {
+            title: "Book an Outstation Taxi Service in Trichy | Root Cabs",
+            description:
+              "Root Cabs taxi service in Trichy for Rock Fort, Srirangam and outstation trips to Chennai and Madurai, with 24/7 support and ₹50 off your first ride.",
+            url: "https://rootcabs.com/taxi-in-trichy",
+            image: "https://rootcabs.com/assets/root-cabs-logo-animate.gif",
+          }
+        : {
           title:
             city.name === "Vellore"
               ? "Taxi Service in Vellore | Cab Booking 24/7 - Root Cabs"
@@ -2924,29 +3112,35 @@ export function CityPage({
     schema.type = "application/ld+json";
     schema.text = JSON.stringify({
       "@context": "https://schema.org",
-      "@type": "CollectionPage",
-      url: "https://rootcabs.com/cities",
-      name: "Cities We Serve | Root Cabs Taxi Service in Tamil Nadu",
-      description:
-        "Root Cabs operates in 10+ cities across Tamil Nadu covering Chennai, Coimbatore, Vellore, Madurai, Trichy, Salem & more. Find local, airport & outstation taxi near you.",
+      "@type": "WebPage",
+      url: seo.url,
+      name: seo.title,
+      description: seo.description,
       inLanguage: "en-IN",
-      publisher: {
+      about: {
         "@type": "Organization",
         name: "Root Cabs",
         url: "https://rootcabs.com/",
         logo: {
           "@type": "ImageObject",
-          url: "https://rootcabs.com/assets/root-cabs-logo.webp",
+          url: "https://rootcabs.com/assets/root-cabs-logo-animate.gif",
         },
         email: "support@rootcabs.com",
         telephone: "+91-8608606474",
-        areaServed: {
-          "@type": "State",
-          name: "Tamil Nadu",
+        contactPoint: {
+          "@type": "ContactPoint",
+          telephone: "+91-8608606474",
+          email: "support@rootcabs.com",
+          contactType: "customer support",
+          areaServed: { "@type": "City", name: city.name },
+          availableLanguage: ["English", "Tamil"],
         },
+        areaServed: { "@type": "City", name: city.name },
         sameAs: [
           "https://www.instagram.com/rootcabs/",
           "https://www.facebook.com/people/Root-Cabs/61575197818182/",
+          "https://play.google.com/store/apps/details?id=com.nativecustomer",
+          "https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062",
         ],
       },
       breadcrumb: {
@@ -2961,104 +3155,21 @@ export function CityPage({
           {
             "@type": "ListItem",
             position: 2,
-            name: "Cities We Serve",
-            item: "https://rootcabs.com/cities",
+            name: `Taxi Service in ${city.name}`,
+            item: seo.url,
           },
         ],
       },
-      mainEntity: {
-        "@type": "ItemList",
-        name: "Root Cabs Service Cities in Tamil Nadu",
-        numberOfItems: 10,
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            item: {
-              "@type": "City",
-              name: "Chennai",
-              url: "https://rootcabs.com/taxi-in-chennai",
-            },
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            item: {
-              "@type": "City",
-              name: "Vellore",
-              url: "https://rootcabs.com/taxi-in-vellore/",
-            },
-          },
-          {
-            "@type": "ListItem",
-            position: 3,
-            item: {
-              "@type": "City",
-              name: "Coimbatore",
-            },
-          },
-          {
-            "@type": "ListItem",
-            position: 4,
-            item: {
-              "@type": "City",
-              name: "Madurai",
-            },
-          },
-          {
-            "@type": "ListItem",
-            position: 5,
-            item: {
-              "@type": "City",
-              name: "Tiruchirappalli",
-              alternateName: "Trichy",
-            },
-          },
-          {
-            "@type": "ListItem",
-            position: 6,
-            item: {
-              "@type": "City",
-              name: "Salem",
-              url: "https://rootcabs.com/salem",
-            },
-          },
-          {
-            "@type": "ListItem",
-            position: 7,
-            item: {
-              "@type": "City",
-              name: "Tiruppur",
-            },
-          },
-          {
-            "@type": "ListItem",
-            position: 8,
-            item: {
-              "@type": "City",
-              name: "Kanchipuram",
-              url: "https://rootcabs.com/taxi-service-in-kanchipuram/",
-            },
-          },
-          {
-            "@type": "ListItem",
-            position: 9,
-            item: {
-              "@type": "City",
-              name: "Tiruvannamalai",
-              url: "https://rootcabs.com/taxi-in-tiruvannamalai/",
-            },
-          },
-          {
-            "@type": "ListItem",
-            position: 10,
-            item: {
-              "@type": "City",
-              name: "Ranipet",
-            },
-          },
-        ],
-      },
+      ...((isSalem || isTiruppur || isTrichyPage) ? {
+        mainEntity: {
+          "@type": "FAQPage",
+          mainEntity: (isSalem ? salemFaqs : isTiruppur ? tiruppurFaqs : trichyFaqs).map((faq) => ({
+            "@type": "Question",
+            name: faq.q,
+            acceptedAnswer: { "@type": "Answer", text: faq.a },
+          })),
+        },
+      } : {}),
     });
     head.appendChild(schema);
 
@@ -3075,7 +3186,7 @@ export function CityPage({
 
       schema.remove();
     };
-  }, [canonicalUrlOverride, city, isChennai]);
+  }, [canonicalUrlOverride, city, isChennai, isSalem, isTiruppur, isTrichyPage]);
 
   if (!city) {
     return (
