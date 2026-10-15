@@ -20,6 +20,7 @@ import {
   addRentalBooking,
   checkActingDriverLocation,
   getActingDriverQuote,
+  getParcelQuote,
   getActingDriverDistance,
   getActingDriverGeoMarkings,
   getActingDriverZonePackages,
@@ -173,6 +174,10 @@ function filterRentalCategories(categories: ServiceCategoryCatalogItem[], zone: 
 
 function getParcelVehicleTypePayload(vehicleType: "Bike" | "Auto") {
   return vehicleType === "Bike" ? "BIKE" : "AUTO";
+}
+
+function isValidIndianPhone(value: string) {
+  return /^[6-9]\d{9}$/.test(value);
 }
 
 function getBookingIdFromResponse(response: unknown) {
@@ -561,11 +566,21 @@ export default function BookRide() {
   ) => {
     const address = suggestion.address || suggestion.name;
     if (tripType !== "acting-driver") {
+      let resolved = suggestion;
+      if (!hasValidCoordinates(suggestion.latitude, suggestion.longitude) && suggestion.placeId) {
+        try {
+          const coordinates = await getAddressLatLong(address, suggestion.placeId);
+          resolved = { ...suggestion, latitude: coordinates.lat, longitude: coordinates.lng };
+        } catch {
+          setBookingError("Unable to locate that address. Please select it again.");
+          return;
+        }
+      }
       if (type === "pickup") {
-        setSelectedPickup(suggestion);
+        setSelectedPickup(resolved);
         setFrom(address);
       } else {
-        setSelectedDrop(suggestion);
+        setSelectedDrop(resolved);
         setTo(address);
       }
       return;
@@ -652,7 +667,8 @@ export default function BookRide() {
       (tripType !== "parcel" ||
         (parcelVehicleType &&
           receiverName.trim() &&
-          receiverPhoneNumber.length === 10 &&
+          isValidIndianPhone(receiverPhoneNumber) &&
+          isValidIndianPhone(phoneNumber) &&
           hasSelectedSenderAddress &&
           hasSelectedReceiverAddress &&
           parcelOrderType &&
@@ -850,7 +866,7 @@ export default function BookRide() {
     const timeoutId = window.setTimeout(async () => {
       try {
         const suggestions = await searchAddressDetailed(query, {
-          requirePlaceId: tripType === "acting-driver",
+          requirePlaceId: tripType === "acting-driver" || tripType === "parcel",
         });
         if (isCurrent) setFromSuggestions(suggestions);
       } catch {
@@ -887,7 +903,7 @@ export default function BookRide() {
     const timeoutId = window.setTimeout(async () => {
       try {
         const suggestions = await searchAddressDetailed(query, {
-          requirePlaceId: tripType === "acting-driver",
+          requirePlaceId: tripType === "acting-driver" || tripType === "parcel",
         });
         if (isCurrent) setToSuggestions(suggestions);
       } catch {
@@ -937,7 +953,7 @@ export default function BookRide() {
 
     const timeoutId = window.setTimeout(async () => {
       try {
-        const suggestions = await searchAddressDetailed(query);
+        const suggestions = await searchAddressDetailed(query, { requirePlaceId: true });
         if (isCurrent) setSenderAddressSuggestions(suggestions);
       } catch {
         if (isCurrent) setSenderAddressSuggestions([]);
@@ -968,7 +984,7 @@ export default function BookRide() {
 
     const timeoutId = window.setTimeout(async () => {
       try {
-        const suggestions = await searchAddressDetailed(query);
+        const suggestions = await searchAddressDetailed(query, { requirePlaceId: true });
         if (isCurrent) setReceiverAddressSuggestions(suggestions);
       } catch {
         if (isCurrent) setReceiverAddressSuggestions([]);
@@ -1317,12 +1333,13 @@ export default function BookRide() {
     if (
       tripType === "parcel" &&
       (!receiverName.trim() ||
-        receiverPhoneNumber.length !== 10 ||
+        !isValidIndianPhone(phoneNumber) ||
+        !isValidIndianPhone(receiverPhoneNumber) ||
         !parcelOrderType ||
         (parcelOrderType === "Others" && !parcelOrderTypeOther.trim()) ||
         !deliveryInstruction.trim())
     ) {
-      setBookingError("Please fill all parcel details before confirming.");
+      setBookingError("Please provide valid sender and receiver details, parcel type, vehicle, and delivery instructions.");
       return;
     }
     if (tripType === "acting-driver" && actingDriverPackageType === "Outstation" && !actingDriverReturnDateTime) {
@@ -1414,6 +1431,7 @@ export default function BookRide() {
     let localPackageId: number | null = null;
     let actingDriverPackageId: number | null = null;
     let actingDriverQuoteResponse: unknown = null;
+    let parcelQuoteResponse: unknown = null;
     let bookingPayload: RentalBookingRequest;
 
     if (tripType === "one-way") {
@@ -1495,6 +1513,9 @@ export default function BookRide() {
         parcelVehicleType: getParcelVehicleTypePayload(parcelVehicleType),
         deliveryType: "DOOR_DELIVERY",
         parcelDirection: "RECEIVER",
+        sourceType: "Website",
+        zone: bookingZone,
+        landmark: "",
         senderName: name.trim(),
         senderPhone: `+91${phoneNumber}`,
         senderAddress: selectedSenderAddress!.address,
@@ -1507,6 +1528,7 @@ export default function BookRide() {
           city: selectedSenderAddress!.city,
           latitude: selectedSenderAddress!.latitude,
           longitude: selectedSenderAddress!.longitude,
+          placeId: selectedSenderAddress!.placeId,
         },
         pickupLat: selectedSenderAddress!.latitude!,
         pickupLong: selectedSenderAddress!.longitude!,
@@ -1516,12 +1538,14 @@ export default function BookRide() {
           city: selectedReceiverAddress!.city,
           latitude: selectedReceiverAddress!.latitude,
           longitude: selectedReceiverAddress!.longitude,
+          placeId: selectedReceiverAddress!.placeId,
         },
         dropLat: selectedReceiverAddress!.latitude!,
         dropLong: selectedReceiverAddress!.longitude!,
         orderType: parcelOrderType,
         ...(parcelOrderType === "Others" ? { orderTypeOther: parcelOrderTypeOther.trim() } : {}),
         deliveryDetails: deliveryInstruction.trim(),
+        deliveryInstructions: deliveryInstruction.trim(),
         tripType,
         fromDate: buildFromDate(date, time),
         source: "RootCabs Website",
@@ -1615,6 +1639,36 @@ export default function BookRide() {
           const quoteRef = getQuoteRefFromResponse(quoteResponse);
           if (quoteRef) bookingPayload.quoteRef = quoteRef;
         }
+        if (tripType === "parcel") {
+          const parcelZonePackages = await getZonePackages("PARCEL", bookingZone, {
+            lat: selectedSenderAddress!.latitude!,
+            long: selectedSenderAddress!.longitude!,
+          });
+          if (!parcelZonePackages || (parcelZonePackages as { success?: boolean }).success === false) {
+            throw new Error("Selected locations are outside the service area. Please choose a nearby pickup or drop location to continue.");
+          }
+
+          const quoteResponse = await getParcelQuote({
+            serviceType: "PARCEL",
+            serviceFor: "PARCEL",
+            userId: 10,
+            role: "WEBSITE",
+            fromDate: bookingPayload.fromDate!,
+            pickupLat: selectedSenderAddress!.latitude!,
+            pickupLong: selectedSenderAddress!.longitude!,
+            dropLat: selectedReceiverAddress!.latitude!,
+            dropLong: selectedReceiverAddress!.longitude!,
+            zone: bookingZone,
+            parcelVehicleType: getParcelVehicleTypePayload(parcelVehicleType),
+            orderType: parcelOrderType,
+            orderTypeOther: parcelOrderType === "Others" ? parcelOrderTypeOther.trim() : null,
+            deliveryType: "DOOR_DELIVERY",
+          });
+          parcelQuoteResponse = quoteResponse;
+          const quoteRef = getQuoteRefFromResponse(quoteResponse);
+          if (!quoteRef) throw new Error("Parcel quote reference was not returned. Please try again.");
+          bookingPayload.quoteRef = quoteRef;
+        }
         const response =
           tripType === "acting-driver"
             ? await addBooking(bookingPayload)
@@ -1666,6 +1720,40 @@ export default function BookRide() {
           ...(calculatedEndDate ? { endDate: calculatedEndDate } : {}),
           serviceType: "DRIVER",
           cabType: carTypeMap[vehicle],
+          subZoneId: 0,
+        });
+      }
+      if (tripType === "parcel" && createdBookingId) {
+        const quoteRef = getQuoteRefFromResponse(parcelQuoteResponse);
+        if (!quoteRef) throw new Error("Parcel booking is missing the required quoteRef.");
+        await logQuotation({
+          userId: 10,
+          bookingId: createdBookingId,
+          pickupAddress: {
+            name: selectedSenderAddress!.address || selectedSenderAddress!.name,
+            placeId: selectedSenderAddress!.placeId,
+            lat: selectedSenderAddress!.latitude!,
+            lng: selectedSenderAddress!.longitude!,
+          },
+          dropAddress: {
+            name: selectedReceiverAddress!.address || selectedReceiverAddress!.name,
+            placeId: selectedReceiverAddress!.placeId,
+            lat: selectedReceiverAddress!.latitude!,
+            lng: selectedReceiverAddress!.longitude!,
+          },
+          amount: getQuoteAmountFromResponse(parcelQuoteResponse),
+          discount: 0,
+          discountAmount: 0,
+          adminDiscount: {
+            status: "",
+            discountType: "",
+            discountValue: 0,
+            discountAmount: 0,
+            remarks: "",
+            quoteRef,
+          },
+          startDate: bookingPayload.fromDate!,
+          serviceType: "PARCEL",
           subZoneId: 0,
         });
       }
@@ -2464,10 +2552,20 @@ export default function BookRide() {
                                   <button
                                     key={`${suggestion.latitude}-${suggestion.longitude}-${suggestion.address}`}
                                     type="button"
-                                    onMouseDown={() => {
+                                    onMouseDown={(event) => {
+                                      event.preventDefault();
                                       setSenderAddress(suggestion.address || suggestion.name);
                                       setSelectedSenderAddress(suggestion);
                                       setSenderAddressSuggestions([]);
+                                      if (!hasValidCoordinates(suggestion.latitude, suggestion.longitude) && suggestion.placeId) {
+                                        void getAddressLatLong(suggestion.address || suggestion.name, suggestion.placeId)
+                                          .then((coordinates) => {
+                                            setSelectedSenderAddress((current) => current === suggestion
+                                              ? { ...suggestion, latitude: coordinates.lat, longitude: coordinates.lng }
+                                              : current);
+                                          })
+                                          .catch(() => setBookingError("Unable to locate that sender address. Please select it again."));
+                                      }
                                     }}
                                     className="flex w-full gap-3 px-4 py-3 text-left text-sm transition-colors hover:bg-primary/5"
                                   >
@@ -2548,10 +2646,20 @@ export default function BookRide() {
                                   <button
                                     key={`${suggestion.latitude}-${suggestion.longitude}-${suggestion.address}`}
                                     type="button"
-                                    onMouseDown={() => {
+                                    onMouseDown={(event) => {
+                                      event.preventDefault();
                                       setReceiverAddress(suggestion.address || suggestion.name);
                                       setSelectedReceiverAddress(suggestion);
                                       setReceiverAddressSuggestions([]);
+                                      if (!hasValidCoordinates(suggestion.latitude, suggestion.longitude) && suggestion.placeId) {
+                                        void getAddressLatLong(suggestion.address || suggestion.name, suggestion.placeId)
+                                          .then((coordinates) => {
+                                            setSelectedReceiverAddress((current) => current === suggestion
+                                              ? { ...suggestion, latitude: coordinates.lat, longitude: coordinates.lng }
+                                              : current);
+                                          })
+                                          .catch(() => setBookingError("Unable to locate that receiver address. Please select it again."));
+                                      }
                                     }}
                                     className="flex w-full gap-3 px-4 py-3 text-left text-sm transition-colors hover:bg-primary/5"
                                   >
@@ -2620,7 +2728,7 @@ export default function BookRide() {
                 type="submit"
                 size="lg"
                 className="w-full bg-[#FFD700] hover:bg-[#E6C200] text-[#2E3A8C] font-bold text-base cursor-pointer shadow-sm"
-                disabled={!isConfirmBookingReady}
+                disabled={isSubmittingBooking || (tripType !== "parcel" && !isConfirmBookingReady)}
               >
                 {isSubmittingBooking ? "Confirming..." : "Confirm Booking"} <ArrowRight className="w-4 h-4 ml-2" />
               </Button>

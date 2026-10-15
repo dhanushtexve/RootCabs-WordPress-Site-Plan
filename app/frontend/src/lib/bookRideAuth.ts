@@ -35,6 +35,8 @@ export type RentalBookingRequest = {
   orderType?: string;
   orderTypeOther?: string;
   deliveryDetails?: string;
+  deliveryInstructions?: string;
+  landmark?: string;
   period?: number;
   driverStartAddress?: string | { name?: string; placeId?: string };
   driverStartLat?: number;
@@ -109,6 +111,8 @@ export type SessionResponse = {
 };
 
 type AddressSearchItem = AddressSuggestion & {
+  lat?: number;
+  lng?: number;
   fullText?: string;
   title?: string;
   subtitle?: string;
@@ -122,7 +126,7 @@ type AddressSearchItem = AddressSuggestion & {
   placeid?: string;
   googlePlaceId?: string;
   place?: { placeId?: string; place_id?: string; id?: string };
-  location?: { placeId?: string; place_id?: string; id?: string };
+  location?: { placeId?: string; place_id?: string; id?: string; lat?: number; lng?: number; latitude?: number; longitude?: number };
 };
 
 type AddressSearchResponse = {
@@ -530,6 +534,24 @@ export type ActingDriverQuoteRequest = {
   customerId?: number;
 };
 
+export type ParcelQuoteRequest = {
+  serviceType: "PARCEL";
+  serviceFor: "PARCEL";
+  customerId?: number;
+  userId: number;
+  role: "ADMIN" | "WEBSITE";
+  fromDate: string;
+  pickupLat: number;
+  pickupLong: number;
+  dropLat: number;
+  dropLong: number;
+  zone: string;
+  parcelVehicleType: "BIKE" | "AUTO";
+  orderType: string;
+  orderTypeOther?: string | null;
+  deliveryType: "DOOR_DELIVERY";
+};
+
 export type ActingDriverRouteRequest = {
   pickupLat: number;
   pickupLong: number;
@@ -643,6 +665,28 @@ export async function getActingDriverQuote(payload: ActingDriverQuoteRequest) {
   return response;
 }
 
+export async function getParcelQuote(payload: ParcelQuoteRequest) {
+  const customerId = Number(getStoredBookingCustomerId());
+  const response = await requestJson<Record<string, unknown>>(
+    "/get-quote",
+    {
+      method: "POST",
+      body: JSON.stringify({
+        ...payload,
+        ...(payload.customerId || !Number.isFinite(customerId) || customerId <= 0
+          ? {}
+          : { customerId }),
+      }),
+    },
+    { includeSessionToken: true },
+  );
+
+  if (response.success === false) {
+    throw new Error(typeof response.message === "string" ? response.message : "Unable to calculate parcel fare.");
+  }
+  return response;
+}
+
 export async function getBookingConfirmation(bookingId: string | number) {
   return requestJson<Record<string, unknown>>(
     `/bookingConfirmation/${encodeURIComponent(String(bookingId))}`,
@@ -742,6 +786,9 @@ export async function searchAddressDetailed(
   const items = extractAddressSearchItems(payload);
 
   return items.map((raw) => {
+    const rawLocation = raw.location;
+    const latitude = raw.latitude ?? raw.lat ?? rawLocation?.latitude ?? rawLocation?.lat;
+    const longitude = raw.longitude ?? raw.lng ?? rawLocation?.longitude ?? rawLocation?.lng;
     const resolvedAddress =
       raw.fullText ||
       raw.address ||
@@ -771,6 +818,8 @@ export async function searchAddressDetailed(
         raw.location?.place_id ||
         raw.location?.id ||
         raw.id,
+      ...(typeof latitude === "number" ? { latitude } : {}),
+      ...(typeof longitude === "number" ? { longitude } : {}),
     };
   }).filter((suggestion) => Boolean(
     suggestion.address && (!options.requirePlaceId || suggestion.placeId),
@@ -810,12 +859,19 @@ export function estimateFareFallback(request: {
   return estimateFareLocally(request);
 }
 
-export async function getZonePackages(serviceType: "RENTAL" | "DRIVER" | "PARCEL", zone: string) {
-  const params = new URLSearchParams({
-    serviceType,
-    zone,
-    source: "ROOTCABS WEBSITE",
-  });
+export async function getZonePackages(
+  serviceType: "RENTAL" | "DRIVER" | "PARCEL",
+  zone: string,
+  coordinates?: { lat: number; long: number },
+) {
+  const params = new URLSearchParams({ serviceType });
+  if (serviceType === "PARCEL" && coordinates) {
+    params.set("lat", String(coordinates.lat));
+    params.set("long", String(coordinates.long));
+  } else {
+    params.set("zone", zone);
+    params.set("source", "ROOTCABS WEBSITE");
+  }
   const response = await requestJson<ZonePackagesResponse>(
     `/zone-packages?${params.toString()}`,
     {
@@ -824,8 +880,10 @@ export async function getZonePackages(serviceType: "RENTAL" | "DRIVER" | "PARCEL
     { includeSessionToken: true },
   );
 
-  if (response.success === false) {
-    throw new Error(response.message || "Unable to load zone packages.");
+  if (response.success === false || response.error) {
+    throw new Error(
+      extractApiResponseMessage(response) || "Unable to load zone packages.",
+    );
   }
 
   return response;

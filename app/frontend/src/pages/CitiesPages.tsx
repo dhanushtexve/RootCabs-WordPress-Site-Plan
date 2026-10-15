@@ -3201,8 +3201,6 @@ export function CityPage({
   const cityTestimonials = testimonials.filter((t) => t.city === city.name);
   const isVellore = city?.name === "Vellore";
   const isCoimbatore = city?.name === "Coimbatore";
-  const isSalem = city?.name === "Salem";
-  const isTiruppur = city?.name === "Tiruppur";
   const usesExpandedCityHero = isChennai || isVellore || isCoimbatore || isSalem || isTiruppur || isTrichy;
   const cityBannerImage = cityBannerMap[city.slug];
   const heroBackgroundImage = cityBannerImage ?? "/assets/rootcabs-banner-home.png";
