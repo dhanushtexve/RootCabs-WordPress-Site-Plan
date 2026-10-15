@@ -360,6 +360,12 @@ function responseContainsZone(payload: unknown, zone: string) {
   return false;
 }
 
+function getParcelServiceAreaName(payload: unknown) {
+  if (!payload || typeof payload !== "object") return "";
+  const serviceArea = (payload as { serviceArea?: { name?: unknown } }).serviceArea;
+  return typeof serviceArea?.name === "string" ? serviceArea.name.trim() : "";
+}
+
 function extractZonePackageItems(payload: unknown): ZonePackageItem[] {
   if (!payload || typeof payload !== "object") return [];
 
@@ -1644,9 +1650,11 @@ export default function BookRide() {
             lat: selectedSenderAddress!.latitude!,
             long: selectedSenderAddress!.longitude!,
           });
-          if (!parcelZonePackages || (parcelZonePackages as { success?: boolean }).success === false) {
+          const parcelServiceArea = getParcelServiceAreaName(parcelZonePackages);
+          if (!parcelServiceArea) {
             throw new Error("Selected locations are outside the service area. Please choose a nearby pickup or drop location to continue.");
           }
+          bookingPayload.zone = parcelServiceArea;
 
           const quoteResponse = await getParcelQuote({
             serviceType: "PARCEL",
@@ -1658,7 +1666,7 @@ export default function BookRide() {
             pickupLong: selectedSenderAddress!.longitude!,
             dropLat: selectedReceiverAddress!.latitude!,
             dropLong: selectedReceiverAddress!.longitude!,
-            zone: bookingZone,
+            zone: parcelServiceArea,
             parcelVehicleType: getParcelVehicleTypePayload(parcelVehicleType),
             orderType: parcelOrderType,
             orderTypeOther: parcelOrderType === "Others" ? parcelOrderTypeOther.trim() : null,
@@ -1668,6 +1676,17 @@ export default function BookRide() {
           const quoteRef = getQuoteRefFromResponse(quoteResponse);
           if (!quoteRef) throw new Error("Parcel quote reference was not returned. Please try again.");
           bookingPayload.quoteRef = quoteRef;
+        }
+        if (tripType === "parcel") {
+          const bookingZoneResponse = await getZonePackages("PARCEL", bookingPayload.zone || bookingZone, {
+            lat: selectedSenderAddress!.latitude!,
+            long: selectedSenderAddress!.longitude!,
+          });
+          const confirmedServiceArea = getParcelServiceAreaName(bookingZoneResponse);
+          if (!confirmedServiceArea) {
+            throw new Error("Selected locations are outside the service area. Please choose a nearby pickup or drop location to continue.");
+          }
+          bookingPayload.zone = confirmedServiceArea;
         }
         const response =
           tripType === "acting-driver"

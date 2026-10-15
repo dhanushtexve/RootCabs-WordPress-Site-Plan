@@ -184,8 +184,14 @@ type ApiStatusResponse = {
 
 type ZonePackagesResponse = {
   success?: boolean;
+  title?: string;
   message?: string;
   error?: string | { message?: string };
+  serviceArea?: {
+    id?: number | string;
+    name?: string;
+    description?: string;
+  };
   data?: unknown;
   validation?: {
     canProceed?: boolean;
