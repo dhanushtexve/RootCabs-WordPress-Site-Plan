@@ -1,4 +1,5 @@
 import { estimateFareLocally, searchLocalAddresses } from "@/lib/bookingFallback";
+import type { AddressSuggestion } from "@/lib/bookingFallback";
 export type { AddressSuggestion } from "@/lib/bookingFallback";
 
 type VerifyRequest = {
@@ -81,7 +82,6 @@ export type RentalBookingRequest = {
   otherSourceType?: string;
   luggage?: number;
   seaterCapacity?: number;
-  landmark?: string;
   isPremiumService?: boolean;
 };
 

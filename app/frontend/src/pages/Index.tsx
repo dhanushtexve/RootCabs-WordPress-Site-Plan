@@ -413,6 +413,8 @@ export default function Index() {
           <video
             className="absolute inset-0 h-full w-full object-cover pointer-events-none"
             src="/assets/home-banner-animation-2.webm"
+            poster="/assets/rootcabs-banner-home.png"
+            preload="metadata"
             autoPlay
             muted
             loop

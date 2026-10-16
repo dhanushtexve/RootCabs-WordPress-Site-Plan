@@ -23,6 +23,10 @@ function ScrollToTop() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    // A captured fallback schema belongs only to its original document route.
+    document.querySelectorAll('script[data-build-schema]').forEach((schema) => {
+      if (schema.getAttribute('data-build-schema') !== pathname) schema.remove();
+    });
   }, [pathname]);
 
   return null;
