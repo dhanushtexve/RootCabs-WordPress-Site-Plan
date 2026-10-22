@@ -429,7 +429,9 @@ export default function Index() {
                 <Star className="h-3 w-3 fill-[#FFD700] text-[#FFD700]" />
                 <span>Top-Rated by Riders Across Tamil Nadu</span>
               </div>
-              <h1 className="font-heading text-3xl md:text-4xl font-bold leading-[1.1] tracking-normal text-white">
+              <h1
+                className="font-heading text-3xl font-bold leading-[1.1] tracking-normal text-white md:text-4xl"
+              >
                 Tamil Nadu’s Trusted Cab Service for Your Travel
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-7 text-white/82 md:text-lg">

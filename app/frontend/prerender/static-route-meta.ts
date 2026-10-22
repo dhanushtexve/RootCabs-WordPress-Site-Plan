@@ -119,7 +119,7 @@ export const staticSeoRoutes = [
   {
     "path": "/chennai",
     "title": "Taxi Service in Chennai | Cab Booking 24/7 - Root Cabs",
-    "description": "Root Cabs offers the best taxi service in Chennai  reliable cab service, fixed fares from â‚¹11/km, verified drivers, no surge pricing, 24/7 booking.",
+    "description": "Root Cabs offers the best taxi service in Chennai — reliable cab service, fixed fares from ₹11/km, verified drivers, no surge pricing, 24/7 booking.",
     "canonicalUrl": "https://rootcabs.com/chennai",
     "ogImage": "https://rootcabs.com/assets/root-cabs-logo-animate.gif",
     "ogType": "website",

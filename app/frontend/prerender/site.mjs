@@ -6,6 +6,7 @@ import { readFile, writeFile, access } from 'node:fs/promises';
 import { resolve, extname, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
+import prettier from 'prettier';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const dist = resolve(root, 'dist');
@@ -106,7 +107,14 @@ try {
         marker.name = 'prerender-content'; marker.content = 'true';
         document.head.appendChild(marker);
       });
-      await writeFile(fileFor(route), await page.content());
+      const renderedHtml = await page.content();
+      // Keep the published document readable in view-source while preserving
+      // the same prerendered DOM and SEO content.
+      await writeFile(fileFor(route), await prettier.format(renderedHtml, {
+        parser: 'html',
+        printWidth: 120,
+        tabWidth: 2,
+      }));
     }
     await raw.goto(origin + route);
     const after = await raw.evaluate(inspect);
