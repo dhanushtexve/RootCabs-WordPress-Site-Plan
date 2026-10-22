@@ -1128,7 +1128,11 @@ export function AboutPage() {
               { label: "About" },
             ]}
           />
-          <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">About Root Cabs</h1>
+          <h1
+            className="font-heading text-3xl font-bold leading-tight md:text-4xl"
+          >
+            About Root Cabs
+          </h1>
           <p className="mt-3 max-w-3xl text-base leading-7 text-white/80 md:text-lg">
             Root Cabs operates as a unit of Texve Innovations Pvt. Ltd.,offering a<br />unified range of mobility and transport services across Tamil Nadu.<br />Through a single platform, customers can access multiple options <br />for everyday travel, intercity journeys and other transport needs.
           </p>

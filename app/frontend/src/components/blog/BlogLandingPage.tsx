@@ -206,7 +206,9 @@ const BlogLandingPage = () => {
             ]}
           />
           <div className="max-w-4xl">
-            <h1 className="mt-4 font-heading text-3xl md:text-4xl font-bold leading-tight">
+            <h1
+              className="mt-4 font-heading text-3xl font-bold leading-tight md:text-4xl"
+            >
               Blog & Travel Guides
             </h1>
             <p className="mt-4 max-w-3xl text-sm leading-7 text-white/80 md:text-base">

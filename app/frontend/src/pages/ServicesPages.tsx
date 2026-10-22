@@ -949,7 +949,11 @@ export function ServicesHub() {
               { label: "Services" },
             ]}
           />
-          <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Our Services</h1>
+          <h1
+            className="mb-3 font-heading text-3xl font-bold md:text-4xl"
+          >
+            Our Services
+          </h1>
           <p className="max-w-3xl text-sm leading-6 text-gray-300 md:text-base">
             Explore our reliable Taxi Services in Tamil Nadu for local travel,<br />outstation trips and everyday commuting.
           </p>
@@ -1295,7 +1299,9 @@ export function ServicePage() {
               ]}
             />
             <div className="mb-5 max-w-3xl">
-              <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
+              <h1
+                className="font-heading text-3xl font-bold leading-tight md:text-4xl"
+              >
                 Local Taxi Service for Your Daily Needs
               </h1>
               <p className="mt-3 text-sm font-semibold text-white/78">
@@ -1340,7 +1346,9 @@ export function ServicePage() {
               ]}
             />
             <div className="mb-5 max-w-3xl">
-              <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
+              <h1
+                className="font-heading text-3xl font-bold leading-tight md:text-4xl"
+              >
                 Airport Taxi Service for Easy Pickup and Drop
               </h1>
               <p className="mt-3 text-sm font-semibold text-white/78">
@@ -1384,7 +1392,9 @@ export function ServicePage() {
               ]}
             />
             <div className="mb-5 max-w-3xl">
-              <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
+              <h1
+                className="font-heading text-3xl font-bold leading-tight md:text-4xl"
+              >
                 Outstation Taxi for Your Travel Plans
               </h1>
               <p className="mt-3 text-sm font-semibold text-white/78">
@@ -1429,7 +1439,9 @@ export function ServicePage() {
               ]}
             />
             <div className="mb-5 max-w-3xl">
-              <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
+              <h1
+                className="font-heading text-3xl font-bold leading-tight md:text-4xl"
+              >
                 Acting Driver to Drive Your Car
               </h1>
               <p className="mt-3 text-sm font-semibold text-white/78">
@@ -1474,7 +1486,9 @@ export function ServicePage() {
               ]}
             />
             <div className="mb-5 max-w-3xl">
-              <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
+              <h1
+                className="font-heading text-3xl font-bold leading-tight md:text-4xl"
+              >
                 Parcel Service for Your Door-to-Door Deliveries
               </h1>
               <p className="mt-3 text-sm font-semibold text-white/78">
@@ -1519,7 +1533,9 @@ export function ServicePage() {
               ]}
             />
             <div className="mb-5 max-w-3xl">
-              <h1 className="font-heading text-3xl md:text-4xl font-bold leading-tight">
+              <h1
+                className="font-heading text-3xl font-bold leading-tight md:text-4xl"
+              >
                 Auto Rides for Your Daily Plans
               </h1>
               <p className="mt-3 text-sm font-semibold text-white/78">

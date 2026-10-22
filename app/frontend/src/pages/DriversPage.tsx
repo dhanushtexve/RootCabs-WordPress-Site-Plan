@@ -493,7 +493,9 @@ export function DriversPage() {
                   { label: "Drivers" },
                 ]}
               />
-              <h1 className="font-heading text-3xl md:text-4xl font-bold leading-[1.1] tracking-tight lg:whitespace-nowrap">
+              <h1
+                className="font-heading text-3xl font-bold leading-[1.1] tracking-tight md:text-4xl lg:whitespace-nowrap"
+              >
                 Drive And Earn With Root Cabs
               </h1>
               <p className="mt-4 max-w-2xl text-base leading-7 text-white/82 md:text-lg">

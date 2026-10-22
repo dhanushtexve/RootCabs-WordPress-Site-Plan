@@ -1319,7 +1319,11 @@ export function CitiesHub() {
               { label: "Cities" },
             ]}
           />
-          <h1 className="font-heading text-3xl md:text-4xl font-bold mb-3">Cities We Serve</h1>
+          <h1
+            className="mb-3 font-heading text-3xl font-bold md:text-4xl"
+          >
+            Cities We Serve
+          </h1>
           <p className="max-w-3xl text-gray-300">
             Root Cabs brings dependable taxi services to 10+ cities across Tamil Nadu,<br />making local, one-way and outstation travel easier to book.
           </p>
@@ -2721,7 +2725,9 @@ export function KumbakonamPage() {
             ]}
           />
           <div className="mt-6 lg:w-[46%] md:mt-8">
-            <h1 className="font-heading text-3xl font-bold md:text-4xl">
+            <h1
+              className="font-heading text-3xl font-bold md:text-4xl"
+            >
               <strong>Best Taxi Service in Kumbakonam</strong> for Local and Outstation Travel
             </h1>
             <p className="mt-5 text-base leading-7 text-white/90 md:text-lg">
@@ -3232,7 +3238,9 @@ export function CityPage({
             ]}
           />
           <div className={isTiruppur ? "my-auto max-w-[660px] text-left" : usesExpandedCityHero ? `text-left ${isSalem ? "mt-6 max-w-4xl md:mt-8" : isChennai ? "mt-6 md:mt-8 lg:w-[48%]" : isVellore ? "mt-6 md:mt-8 lg:w-[40%]" : isTrichy ? "mt-6 md:mt-8 lg:w-full" : "lg:w-[40%]"}` : undefined}>
-          <h1 className={`font-heading text-3xl font-bold leading-tight md:text-4xl ${isTiruppur ? "mb-5" : "mb-4"} ${isVellore || isCoimbatore || isSalem ? "lg:w-[760px]" : isTrichy ? "md:whitespace-nowrap" : ""}`}>
+          <h1
+            className={`font-heading text-3xl font-bold leading-tight md:text-4xl ${isTiruppur ? "mb-5" : "mb-4"} ${isVellore || isCoimbatore || isSalem ? "lg:w-[760px]" : isTrichy ? "md:whitespace-nowrap" : ""}`}
+          >
             {isSalem ? (
               <>
                 Book a <strong>Taxi in Salem</strong>

@@ -1952,7 +1952,11 @@ export default function BookRide() {
               { label: "Book Ride" },
             ]}
           />
-          <h1 className="font-heading text-3xl md:text-4xl font-bold leading-[1.1] tracking-normal mb-3">Book Your Ride</h1>
+          <h1
+            className="mb-3 font-heading text-3xl font-bold leading-[1.1] tracking-normal md:text-4xl"
+          >
+            Book Your Ride
+          </h1>
           <p className="mb-3 font-heading text-xl font-semibold text-white md:text-2xl">Your Ride, Our Responsibility</p>
           <p className="max-w-3xl text-gray-300">
             Plan your journey with ease and book your ride online for a safe,<br />comfortable and reliable travel experience.

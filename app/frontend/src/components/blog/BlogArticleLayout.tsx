@@ -25,7 +25,9 @@ const BlogArticleLayout = ({
         <p className="text-xs font-semibold uppercase tracking-[0.28em] text-sky-700">
           Blog Article
         </p>
-        <h1 className="mt-4 font-serif text-4xl leading-tight text-slate-950 sm:text-5xl">
+        <h1
+          className="mt-4 font-serif text-4xl leading-tight text-slate-950 sm:text-5xl"
+        >
           {title}
         </h1>
         {description ? (
