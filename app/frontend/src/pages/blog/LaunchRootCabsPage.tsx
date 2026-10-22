@@ -144,10 +144,8 @@ const LaunchRootCabsPage = () => {
 
   return (
     <main className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(30,42,110,0.08),_transparent_36%),linear-gradient(180deg,_#f8fafc_0%,_#eef2ff_100%)] text-slate-900">
-      <section className="relative min-h-[360px] overflow-hidden text-white md:min-h-[440px]" style={{
+      <section className="relative min-h-[360px] overflow-hidden bg-[#07143F] bg-cover bg-center bg-no-repeat text-white md:min-h-[440px]" style={{
         backgroundImage: "url('/assets/banner-root-cabs.png')",
-        backgroundSize: "100% auto",
-        backgroundPosition: "center top",
         backgroundRepeat: "no-repeat",
       }}>
         <div className="absolute inset-0 bg-black/40" />

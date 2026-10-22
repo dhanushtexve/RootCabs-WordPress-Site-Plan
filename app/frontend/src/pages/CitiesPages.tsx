@@ -1304,11 +1304,8 @@ export function CitiesHub() {
 
   return (
     <div>
-      <section className="relative min-h-[330px] overflow-hidden py-7 text-white md:min-h-[400px] md:py-9" style={{
+      <section className="relative min-h-[330px] overflow-hidden bg-[#07143F] bg-cover bg-bottom bg-no-repeat py-7 text-white md:min-h-[400px] md:bg-center md:py-9" style={{
         backgroundImage: "url('/assets/rootcabs-banner-home.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center bottom",
-        backgroundRepeat: "no-repeat",
       }}>
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 max-w-screen-xl mx-auto px-4">
@@ -1878,7 +1875,7 @@ function VelloreContentSection() {
 
 function VelloreAttractionsSection() {
   return (
-    <section>
+    <section className="w-full min-w-0 max-w-full overflow-x-hidden">
       <h2 className="font-heading text-2xl font-bold mb-3 text-[#1E2A6E] md:text-3xl">Places To Visit In And Around Vellore</h2>
       <p className="mb-6 max-w-4xl text-sm leading-6 text-muted-foreground md:text-base">
         Explore temples, hill stations, heritage landmarks, and family attractions with a comfortable taxi in Vellore for your day trip or weekend plan.
@@ -1991,13 +1988,13 @@ function ChennaiRoutesSection() {
   const visibleRoutes = showAllRoutes ? chennaiRoutes : chennaiRoutes.slice(0, 3);
 
   return (
-    <section>
+    <section className="w-full min-w-0 max-w-full overflow-x-hidden">
       <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Popular Routes from Chennai</h2>
       <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
         Choose a round-trip Sedan for popular destinations from Chennai.
       </p>
 
-      <div className="mt-6 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-6 grid w-full min-w-0 max-w-full grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
         {visibleRoutes.map((route) => {
           const routeCities = route.title.split(" - ")[0];
           const [fromCity, toCity] = routeCities.split(" to ");
@@ -2007,17 +2004,17 @@ function ChennaiRoutesSection() {
           return (
             <div
               key={route.title}
-              className="relative flex aspect-[1151/512] min-h-[190px] items-center overflow-hidden rounded-xl border border-border bg-white lg:aspect-auto lg:h-48 lg:min-h-0"
+              className="relative flex w-full min-w-0 max-w-full aspect-[1151/512] min-h-[210px] items-center overflow-hidden rounded-xl border border-border bg-white sm:min-h-[190px] lg:aspect-auto lg:h-48 lg:min-h-0"
             >
-              <div className="pointer-events-none absolute inset-y-0 right-0 w-[46%] overflow-hidden">
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-[38%] overflow-hidden sm:w-[46%]">
                 <img
                   src={assetPath("/assets/chennai-route-car.webp")}
                   alt=""
                   className="h-full w-full object-cover object-center"
                 />
               </div>
-              <div className="relative z-10 flex w-[54%] min-w-0 flex-col items-start justify-center px-4 py-3 sm:px-5">
-                <h3 className="font-heading text-lg font-bold leading-tight text-[#111827] sm:text-xl">{fromCity} to {toCity}</h3>
+              <div className="relative z-10 flex w-[62%] min-w-0 flex-col items-start justify-center px-4 py-4 sm:w-[54%] sm:px-5 sm:py-3">
+                <h3 className="font-heading text-base font-bold leading-tight text-[#111827] sm:text-xl">{fromCity} to {toCity}</h3>
                 <p className="mt-3 text-sm text-[#111827]">
                   {distance} | Sedan from {sedanFare?.value}
                 </p>
@@ -2711,10 +2708,10 @@ export function KumbakonamPage() {
         className="relative min-h-[420px] overflow-hidden bg-[#22236F] text-white md:min-h-[500px]"
       >
         <div
-          className="absolute inset-0 hidden bg-[length:100%_100%] bg-center bg-no-repeat lg:block"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url('${assetPath("/assets/city-banners/kumbakonam-website-home.png")}')` }}
         />
-        <div className="absolute inset-0 hidden bg-black/40 lg:block" />
+        <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 mx-auto max-w-screen-xl px-4 pb-24 md:pb-28">
           <PageBreadcrumb
             className="pt-8 md:pt-10"
@@ -2747,11 +2744,6 @@ export function KumbakonamPage() {
             </div>
           </div>
         </div>
-        <img
-          src={assetPath("/assets/city-banners/kumbakonam-website-home.png")}
-          alt=""
-          className="relative z-10 h-52 w-full object-cover object-right lg:hidden"
-        />
       </section>
       <div className="relative z-20 mx-auto max-w-screen-xl px-4 pb-10">
         <section className="mt-0 lg:-mt-24">
@@ -2833,7 +2825,7 @@ export function KumbakonamPage() {
             {kumbakonamPickupSpots.map((spot) => (
               <div key={spot.title} className="flex h-full flex-col">
                 <div className="aspect-[3/2] w-full shrink-0 overflow-hidden rounded-t-lg border border-b-0 border-[#E2E8F3] bg-[#F4F6FF] shadow-sm">
-                  <img src={assetPath(spot.image)} alt={spot.title} className="h-full w-full object-cover object-center" />
+                  <img src={assetPath(spot.image)} alt={spot.title} className="h-full w-full object-cover object-top" />
                 </div>
                 <div className="flex-1 rounded-b-lg border border-[#E2E8F3] bg-white p-5 shadow-sm">
                   <div className="flex items-start gap-2 text-[#1E2A6E]">
@@ -3217,14 +3209,9 @@ export function CityPage({
     <div>
       {/* Hero */}
       <section
-        className={`relative overflow-hidden text-white ${isSalem ? "min-h-[360px] bg-[#22236F] md:min-h-[430px]" : "min-h-[420px] md:min-h-[500px]"}`}
+        className={`relative overflow-hidden bg-[#07143F] bg-cover bg-left bg-no-repeat text-white md:bg-center ${isSalem ? "min-h-[360px] bg-[#22236F] md:min-h-[430px]" : "min-h-[420px] md:min-h-[500px]"}`}
         style={{
         backgroundImage: `url('${assetPath(heroBackgroundImage)}')`,
-        // City banners fill a shorter hero. This preserves the entire banner
-        // with no gutters; their proportions are scaled slightly to fit.
-        backgroundSize: cityBannerImage ? "100% 100%" : "cover",
-        backgroundPosition: isSalem ? "center bottom" : "center center",
-        backgroundRepeat: "no-repeat",
         backgroundColor: isSalem ? "#22236F" : cityBannerImage ? "#172aab" : undefined,
       }}>
         <div className="absolute inset-0 bg-black/40" />
@@ -3546,7 +3533,7 @@ export function CityPage({
                 {tiruppurPickupSpots.map((spot) => (
                   <div key={spot.title} className="overflow-hidden rounded-xl border border-border bg-white shadow-sm">
                     <div className="aspect-[3/2] w-full bg-[#F4F6FF]">
-                      <img src={assetPath(spot.image)} alt={spot.title} className="h-full w-full object-cover object-center" />
+                      <img src={assetPath(spot.image)} alt={spot.title} className="h-full w-full object-cover object-top" />
                     </div>
                     <div className="p-4">
                       <div className="flex items-start gap-2 text-[#1E2A6E]">
@@ -3959,13 +3946,13 @@ function VelloreRoutesSection() {
   const visibleRoutes = showAllRoutes ? velloreRoutes : velloreRoutes.slice(0, 3);
 
   return (
-    <section>
+    <section className="w-full min-w-0 max-w-full overflow-x-hidden">
       <h2 className="font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">Popular Outstation Routes From Vellore</h2>
       <p className="mt-3 text-sm leading-6 text-muted-foreground md:text-base">
         Plan comfortable outstation journeys from Vellore with a Sedan for every route.
       </p>
 
-      <div className="mt-6 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-6 grid w-full min-w-0 max-w-full grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
         {visibleRoutes.map((route) => {
           const [fromCity, toCity] = route.title.split(" to ");
           const sedanFare = route.fares.find((fare) => fare.label === "SEDAN");
@@ -3974,17 +3961,17 @@ function VelloreRoutesSection() {
           return (
             <div
               key={route.title}
-              className="relative flex aspect-[1151/512] min-h-[190px] items-center overflow-hidden rounded-xl border border-border bg-white lg:aspect-auto lg:h-48 lg:min-h-0"
+              className="relative flex w-full min-w-0 max-w-full aspect-[1151/512] min-h-[210px] items-center overflow-hidden rounded-xl border border-border bg-white sm:min-h-[190px] lg:aspect-auto lg:h-48 lg:min-h-0"
             >
-              <div className="pointer-events-none absolute inset-y-0 right-0 w-[46%] overflow-hidden">
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-[38%] overflow-hidden sm:w-[46%]">
                 <img
                   src={assetPath("/assets/vellore-city-page/Car image.png")}
                   alt=""
                   className="h-full w-full object-cover object-center"
                 />
               </div>
-              <div className="relative z-10 flex w-[54%] min-w-0 flex-col items-start justify-center px-4 py-3 sm:px-5">
-                <h3 className="font-heading text-lg font-bold leading-tight text-[#111827] sm:text-xl">{fromCity} to {toCity}</h3>
+              <div className="relative z-10 flex w-[62%] min-w-0 flex-col items-start justify-center px-4 py-4 sm:w-[54%] sm:px-5 sm:py-3">
+                <h3 className="font-heading text-base font-bold leading-tight text-[#111827] sm:text-xl">{fromCity} to {toCity}</h3>
                 <p className="mt-3 text-sm text-[#111827]">
                   {distance} km | Sedan from {sedanFare?.value}
                 </p>

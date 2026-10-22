@@ -411,7 +411,7 @@ export default function Index() {
       {/* Hero Section */}
       <section className="relative min-h-[420px] overflow-hidden bg-black text-white md:min-h-[500px]">
           <video
-            className="absolute inset-0 h-full w-full object-cover pointer-events-none"
+            className="pointer-events-none absolute inset-0 h-full w-full bg-[#07143F] object-cover object-center"
             src="/assets/home-banner-animation-2.webm"
             poster="/assets/rootcabs-banner-home.png"
             preload="metadata"

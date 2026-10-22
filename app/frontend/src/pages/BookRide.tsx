@@ -1937,11 +1937,8 @@ export default function BookRide() {
         </DialogContent>
       </Dialog>
       {/* Header */}
-      <section className="relative min-h-[330px] overflow-hidden py-7 text-white md:min-h-[400px] md:py-9" style={{
+      <section className="relative min-h-[330px] overflow-hidden bg-[#07143F] bg-cover bg-bottom bg-no-repeat py-7 text-white md:min-h-[400px] md:bg-center md:py-9" style={{
         backgroundImage: "url('/assets/rootcabs-banner-home.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center bottom",
-        backgroundRepeat: "no-repeat",
       }}>
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 max-w-screen-xl mx-auto px-4">

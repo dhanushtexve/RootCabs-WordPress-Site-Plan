@@ -934,11 +934,8 @@ export function ServicesHub() {
 
   return (
     <div>
-      <section className="relative min-h-[330px] overflow-hidden py-7 text-white md:min-h-[400px] md:py-9" style={{
+      <section className="relative min-h-[330px] overflow-hidden bg-[#07143F] bg-cover bg-bottom bg-no-repeat py-7 text-white md:min-h-[400px] md:bg-center md:py-9" style={{
         backgroundImage: "url('/assets/rootcabs-banner-home.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center bottom",
-        backgroundRepeat: "no-repeat",
       }}>
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 max-w-screen-xl mx-auto px-4">
@@ -1282,11 +1279,8 @@ export function ServicePage() {
     <div>
       {/* Hero */}
       {isLocalTaxiService ? (
-        <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
+        <section className="relative min-h-[420px] overflow-hidden bg-[#07143F] bg-cover bg-center bg-no-repeat text-white md:min-h-[500px]" style={{
           backgroundImage: `url('${currentServiceBanner}')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center center",
-          backgroundRepeat: "no-repeat",
         }}>
           <div className="absolute inset-0 bg-black/40" />
           <div className="relative z-10 mx-auto max-w-screen-xl px-4">
@@ -1329,11 +1323,8 @@ export function ServicePage() {
           </div>
         </section>
       ) : isAirportTaxiService ? (
-        <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
+        <section className="relative min-h-[420px] overflow-hidden bg-[#07143F] bg-cover bg-center bg-no-repeat text-white md:min-h-[500px]" style={{
           backgroundImage: `url('${currentServiceBanner}')`,
-          backgroundSize: "100% 100%",
-          backgroundPosition: "right top",
-          backgroundRepeat: "no-repeat",
         }}>
           <div className="absolute inset-0 bg-black/40" />
           <div className="relative z-10 mx-auto max-w-screen-xl px-4">
@@ -1375,11 +1366,8 @@ export function ServicePage() {
           </div>
         </section>
       ) : isOutstationTaxiService ? (
-        <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
+        <section className="relative min-h-[420px] overflow-hidden bg-[#07143F] bg-cover bg-center bg-no-repeat text-white md:min-h-[500px]" style={{
           backgroundImage: `url('${currentServiceBanner}')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center center",
-          backgroundRepeat: "no-repeat",
         }}>
           <div className="absolute inset-0 bg-black/40" />
           <div className="relative z-10 mx-auto max-w-screen-xl px-4">
@@ -1422,11 +1410,8 @@ export function ServicePage() {
           </div>
         </section>
       ) : isActingDriverService ? (
-        <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
+        <section className="relative min-h-[420px] overflow-hidden bg-[#07143F] bg-cover bg-center bg-no-repeat text-white md:min-h-[500px]" style={{
           backgroundImage: `url('${currentServiceBanner}')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center top",
-          backgroundRepeat: "no-repeat",
         }}>
           <div className="absolute inset-0 bg-black/40" />
           <div className="relative z-10 mx-auto max-w-screen-xl px-4">
@@ -1469,11 +1454,8 @@ export function ServicePage() {
           </div>
         </section>
       ) : isParcelDeliveryService ? (
-        <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
+        <section className="relative min-h-[420px] overflow-hidden bg-[#07143F] bg-cover bg-center bg-no-repeat text-white md:min-h-[500px]" style={{
           backgroundImage: `url('${currentServiceBanner}')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center center",
-          backgroundRepeat: "no-repeat",
         }}>
           <div className="absolute inset-0 bg-black/40" />
           <div className="relative z-10 mx-auto max-w-screen-xl px-4">
@@ -1516,11 +1498,8 @@ export function ServicePage() {
           </div>
         </section>
       ) : isAutoService ? (
-        <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
+        <section className="relative min-h-[420px] overflow-hidden bg-[#07143F] bg-cover bg-center bg-no-repeat text-white md:min-h-[500px]" style={{
           backgroundImage: `url('${currentServiceBanner}')`,
-          backgroundSize: "cover",
-          backgroundPosition: "center center",
-          backgroundRepeat: "no-repeat",
         }}>
           <div className="absolute inset-0 bg-black/40" />
           <div className="relative z-10 mx-auto max-w-screen-xl px-4">
@@ -1562,11 +1541,8 @@ export function ServicePage() {
           </div>
         </section>
       ) : (
-        <section className="relative min-h-[420px] overflow-hidden text-white md:min-h-[500px]" style={{
+        <section className="relative min-h-[420px] overflow-hidden bg-[#07143F] bg-cover bg-center bg-no-repeat text-white md:min-h-[500px]" style={{
           backgroundImage: "url('/assets/rootcabs-banner-home.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center center",
-          backgroundRepeat: "no-repeat",
         }}>
           <div className="absolute inset-0 bg-black/40" />
           <div className="relative z-10 max-w-screen-xl mx-auto px-4">
