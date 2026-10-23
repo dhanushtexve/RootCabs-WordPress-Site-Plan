@@ -2004,23 +2004,23 @@ function ChennaiRoutesSection() {
           return (
             <div
               key={route.title}
-              className="relative flex w-full min-w-0 max-w-full aspect-[1151/512] min-h-[210px] items-center overflow-hidden rounded-xl border border-border bg-white sm:min-h-[190px] lg:aspect-auto lg:h-48 lg:min-h-0"
+              className="relative flex h-[170px] w-full min-w-0 max-w-full items-center overflow-hidden rounded-xl border border-border bg-white sm:h-[190px] lg:h-48"
             >
-              <div className="pointer-events-none absolute inset-y-0 right-0 w-[38%] overflow-hidden sm:w-[46%]">
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex w-[42%] items-center justify-end overflow-hidden bg-[#F8FBFF] sm:w-[46%]">
                 <img
                   src={assetPath("/assets/chennai-route-car.webp")}
-                  alt=""
-                  className="h-full w-full object-cover object-center"
+                  alt={`${toCity} route`}
+                  className="h-full w-full object-contain object-right"
                 />
               </div>
-              <div className="relative z-10 flex w-[62%] min-w-0 flex-col items-start justify-center px-4 py-4 sm:w-[54%] sm:px-5 sm:py-3">
+              <div className="relative z-10 flex w-[58%] min-w-0 flex-col items-start justify-center px-3 py-3 sm:w-[54%] sm:px-5">
                 <h3 className="font-heading text-base font-bold leading-tight text-[#111827] sm:text-xl">{fromCity} to {toCity}</h3>
-                <p className="mt-3 text-sm text-[#111827]">
+                <p className="mt-2 max-w-full break-words text-xs leading-5 text-[#111827] sm:mt-3 sm:text-sm">
                   {distance} | Sedan from {sedanFare?.value}
                 </p>
                 <Link
                   to="/book-ride"
-                  className="mt-4 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors hover:bg-[#E6C200]"
+                  className="mt-3 inline-flex min-h-9 items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors hover:bg-[#E6C200] sm:mt-4"
                 >
                   Book Ride <ArrowRight className="h-3.5 w-3.5" />
                 </Link>
@@ -2789,23 +2789,23 @@ export function KumbakonamPage() {
             {kumbakonamOutstationRoutes.map((route) => (
               <div
                 key={route.to}
-                className="relative flex aspect-[1151/512] min-h-[190px] items-center overflow-hidden rounded-xl border border-border bg-white lg:aspect-auto lg:h-48 lg:min-h-0"
+                className="relative flex h-[170px] min-w-0 items-center overflow-hidden rounded-xl border border-border bg-white sm:h-[190px] lg:h-48"
               >
-                <div className="pointer-events-none absolute inset-y-0 right-0 aspect-[559/663] overflow-hidden">
+                <div className="pointer-events-none absolute inset-y-0 right-0 flex w-[42%] items-center justify-end overflow-hidden bg-[#F8FBFF] sm:w-[46%]">
                   <img
                     src={assetPath(route.image)}
-                    alt=""
-                    className="absolute -right-[3%] -top-[5%] h-[105%] w-auto max-w-none"
+                    alt={`${route.to} landmark`}
+                    className="h-full w-full object-contain object-right"
                   />
                 </div>
-                <div className="relative z-10 flex w-[64%] min-w-0 flex-col items-start justify-center px-4 py-3 sm:px-5 lg:w-[60%]">
-                  <h3 className="font-heading text-lg font-bold leading-tight text-[#111827] sm:text-xl">Kumbakonam to {route.to}</h3>
-                    <p className="mt-3 text-sm text-[#111827]">
+                <div className="relative z-10 flex w-[58%] min-w-0 flex-col items-start justify-center px-3 py-3 sm:w-[54%] sm:px-5">
+                  <h3 className="font-heading text-base font-bold leading-tight text-[#111827] sm:text-xl">Kumbakonam to {route.to}</h3>
+                    <p className="mt-2 max-w-full break-words text-xs leading-5 text-[#111827] sm:mt-3 sm:text-sm">
                       {route.distance} km | {route.price === "Not valid" ? "Fare on request" : `Sedan from ₹${route.price}`}
                     </p>
                   <Link
                     to="/book-ride"
-                    className="mt-4 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors hover:bg-[#E6C200]"
+                    className="mt-3 inline-flex min-h-9 items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors hover:bg-[#E6C200] sm:mt-4"
                   >
                     Book Ride <ArrowRight className="h-3.5 w-3.5" />
                   </Link>
@@ -3407,17 +3407,23 @@ export function CityPage({
               {trichyOutstationRoutes.map((route) => (
                 <div
                   key={route.to}
-                  className="relative flex aspect-[1151/512] min-h-[190px] items-center overflow-hidden rounded-xl border border-border bg-white lg:aspect-auto lg:h-48 lg:min-h-0"
+                  className="relative flex h-[170px] min-w-0 items-center overflow-hidden rounded-xl border border-border bg-white sm:h-[190px] lg:h-48"
                 >
-                  <div className="pointer-events-none absolute inset-y-0 right-0 w-[46%] overflow-hidden">
-                    <img src={assetPath(route.image)} alt="" className="h-full w-full object-cover object-center" />
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex w-[42%] items-center justify-end overflow-hidden bg-[#F8FBFF] sm:w-[46%]">
+                    <img
+                      src={assetPath(route.image)}
+                      alt={`${route.to} landmark`}
+                      className="h-full w-full object-contain object-right"
+                    />
                   </div>
-                  <div className="relative z-10 flex w-[54%] min-w-0 flex-col items-start justify-center px-4 py-3 sm:px-5">
-                    <h3 className="font-heading text-lg font-bold leading-tight text-[#111827] sm:text-xl">Trichy to {route.to}</h3>
-                    <p className="mt-3 text-sm text-[#111827]">{route.distance} km | Sedan from ₹{route.price.toLocaleString("en-IN")}</p>
+                  <div className="relative z-10 flex w-[58%] min-w-0 flex-col items-start justify-center px-3 py-3 sm:w-[54%] sm:px-5">
+                    <h3 className="font-heading text-base font-bold leading-tight text-[#111827] sm:text-xl">Trichy to {route.to}</h3>
+                    <p className="mt-2 max-w-full break-words text-xs leading-5 text-[#111827] sm:mt-3 sm:text-sm">
+                      {route.distance} km | Sedan from ₹{route.price.toLocaleString("en-IN")}
+                    </p>
                     <Link
                       to="/book-ride"
-                      className="mt-4 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors hover:bg-[#E6C200]"
+                      className="mt-3 inline-flex min-h-9 items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors hover:bg-[#E6C200] sm:mt-4"
                     >
                       Book Ride <ArrowRight className="h-3.5 w-3.5" />
                     </Link>
@@ -3440,21 +3446,21 @@ export function CityPage({
               {salemOutstationRoutes.map((route) => (
                 <div
                   key={route.to}
-                  className="relative flex aspect-[1151/512] min-h-[190px] items-center overflow-hidden rounded-xl border border-border bg-white lg:aspect-auto lg:h-48 lg:min-h-0"
+                  className="relative flex h-[170px] min-w-0 items-center overflow-hidden rounded-xl border border-border bg-white sm:h-[190px] lg:h-48"
                 >
-                  <div className="pointer-events-none absolute inset-y-0 right-0 w-[46%] overflow-hidden">
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex w-[42%] items-center justify-end overflow-hidden bg-[#F8FBFF] sm:w-[46%]">
                     <img
                       src={assetPath(route.image)}
-                      alt=""
-                      className="h-full w-full object-cover object-center"
+                      alt={`${route.to} landmark`}
+                      className="h-full w-full object-contain object-right"
                     />
                   </div>
-                  <div className="relative z-10 flex w-[54%] min-w-0 flex-col items-start justify-center px-4 py-3 sm:px-5 lg:w-[54%]">
-                    <h3 className="font-heading text-lg font-bold leading-tight text-[#111827] sm:text-xl">Salem to {route.to}</h3>
-                    <p className="mt-3 text-sm text-[#111827]">{route.meta}</p>
+                  <div className="relative z-10 flex w-[58%] min-w-0 flex-col items-start justify-center px-3 py-3 sm:w-[54%] sm:px-5">
+                    <h3 className="font-heading text-base font-bold leading-tight text-[#111827] sm:text-xl">Salem to {route.to}</h3>
+                    <p className="mt-2 max-w-full break-words text-xs leading-5 text-[#111827] sm:mt-3 sm:text-sm">{route.meta}</p>
                     <Link
                       to="/book-ride"
-                      className="mt-4 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors hover:bg-[#E6C200]"
+                      className="mt-3 inline-flex min-h-9 items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors hover:bg-[#E6C200] sm:mt-4"
                     >
                       Book Ride <ArrowRight className="h-3.5 w-3.5" />
                     </Link>
@@ -3475,21 +3481,21 @@ export function CityPage({
               {tiruppurOutstationRoutes.map((route) => (
                 <div
                   key={`${route.from}-${route.to}`}
-                  className="relative flex aspect-[1151/512] min-h-[170px] items-center overflow-hidden rounded-xl border border-border bg-white lg:aspect-auto lg:h-40 lg:min-h-0"
+                  className="relative flex h-[170px] min-w-0 items-center overflow-hidden rounded-xl border border-border bg-white sm:h-[190px] lg:h-40"
                 >
-                  <div className="pointer-events-none absolute inset-y-0 right-0 aspect-[559/663] overflow-hidden">
+                  <div className="pointer-events-none absolute inset-y-0 right-0 flex w-[42%] items-center justify-end overflow-hidden bg-[#F8FBFF] sm:w-[46%]">
                     <img
                       src={assetPath(route.image)}
-                      alt=""
-                      className="absolute -right-[3%] -top-[5%] h-[105%] w-auto max-w-none"
+                      alt={`${route.to} landmark`}
+                      className="h-full w-full object-contain object-right"
                     />
                   </div>
-                  <div className="relative z-10 flex w-[64%] min-w-0 flex-col items-start justify-center px-4 py-3 sm:px-5 lg:w-[60%]">
-                    <h3 className="font-heading text-lg font-bold leading-tight text-[#111827] sm:text-xl">{route.from} to {route.to}</h3>
-                    <p className="mt-3 text-sm text-[#111827]">{route.distance} km | Sedan from ₹{route.price.toLocaleString("en-IN")}</p>
+                  <div className="relative z-10 flex w-[58%] min-w-0 flex-col items-start justify-center px-3 py-3 sm:w-[54%] sm:px-5">
+                    <h3 className="font-heading text-base font-bold leading-tight text-[#111827] sm:text-xl">{route.from} to {route.to}</h3>
+                    <p className="mt-2 max-w-full break-words text-xs leading-5 text-[#111827] sm:mt-3 sm:text-sm">{route.distance} km | Sedan from ₹{route.price.toLocaleString("en-IN")}</p>
                     <Link
                       to="/book-ride"
-                      className="mt-3 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors hover:bg-[#E6C200]"
+                      className="mt-3 inline-flex min-h-9 items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors hover:bg-[#E6C200]"
                     >
                       Book Ride <ArrowRight className="h-3.5 w-3.5" />
                     </Link>
@@ -3961,23 +3967,23 @@ function VelloreRoutesSection() {
           return (
             <div
               key={route.title}
-              className="relative flex w-full min-w-0 max-w-full aspect-[1151/512] min-h-[210px] items-center overflow-hidden rounded-xl border border-border bg-white sm:min-h-[190px] lg:aspect-auto lg:h-48 lg:min-h-0"
+              className="relative flex h-[170px] w-full min-w-0 max-w-full items-center overflow-hidden rounded-xl border border-border bg-white sm:h-[190px] lg:h-48"
             >
-              <div className="pointer-events-none absolute inset-y-0 right-0 w-[38%] overflow-hidden sm:w-[46%]">
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex w-[42%] items-center justify-end overflow-hidden bg-[#F8FBFF] sm:w-[46%]">
                 <img
                   src={assetPath("/assets/vellore-city-page/Car image.png")}
-                  alt=""
-                  className="h-full w-full object-cover object-center"
+                  alt={`${toCity} route`}
+                  className="h-full w-full object-contain object-right"
                 />
               </div>
-              <div className="relative z-10 flex w-[62%] min-w-0 flex-col items-start justify-center px-4 py-4 sm:w-[54%] sm:px-5 sm:py-3">
+              <div className="relative z-10 flex w-[58%] min-w-0 flex-col items-start justify-center px-3 py-3 sm:w-[54%] sm:px-5">
                 <h3 className="font-heading text-base font-bold leading-tight text-[#111827] sm:text-xl">{fromCity} to {toCity}</h3>
-                <p className="mt-3 text-sm text-[#111827]">
+                <p className="mt-2 max-w-full break-words text-xs leading-5 text-[#111827] sm:mt-3 sm:text-sm">
                   {distance} km | Sedan from {sedanFare?.value}
                 </p>
                 <Link
                   to="/book-ride"
-                  className="mt-4 inline-flex items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors hover:bg-[#E6C200]"
+                  className="mt-3 inline-flex min-h-9 items-center gap-1 whitespace-nowrap rounded-full bg-[#FFD700] px-3 py-1 text-[11px] font-extrabold text-[#2E3A8C] transition-colors hover:bg-[#E6C200] sm:mt-4"
                 >
                   Book Ride <ArrowRight className="h-3.5 w-3.5" />
                 </Link>

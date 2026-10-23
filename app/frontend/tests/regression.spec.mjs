@@ -194,3 +194,77 @@ test('drivers page banner, form and actions remain usable across mobile viewport
   await selects.nth(1).selectOption('Chennai');
   await expect(page.getByRole('button', { name: 'Apply Now', exact: true })).toBeEnabled();
 });
+
+test('Trichy popular-route cards keep complete images inside mobile cards', async ({ page }) => {
+  for (const viewport of [
+    { width: 320, height: 568 },
+    { width: 375, height: 667 },
+    { width: 390, height: 844 },
+    { width: 440, height: 956 },
+  ]) {
+    await page.setViewportSize(viewport);
+    await page.goto('/taxi-in-trichy');
+
+    const heading = page.getByRole('heading', { name: 'Popular Routes from Trichy' });
+    await heading.scrollIntoViewIfNeeded();
+    const section = heading.locator('xpath=..');
+    const firstCard = section.locator('.rounded-xl').first();
+    const routeImage = firstCard.getByRole('img', { name: 'Chennai landmark' });
+
+    await expect(firstCard).toBeVisible();
+    await expect(routeImage).toBeVisible();
+    expect(await routeImage.evaluate(element => getComputedStyle(element).objectFit)).toBe('contain');
+
+    const cardBox = await firstCard.boundingBox();
+    const imageBox = await routeImage.boundingBox();
+    expect(cardBox).not.toBeNull();
+    expect(imageBox).not.toBeNull();
+    expect(cardBox.x).toBeGreaterThanOrEqual(0);
+    expect(cardBox.x + cardBox.width).toBeLessThanOrEqual(viewport.width);
+    expect(imageBox.x).toBeGreaterThanOrEqual(cardBox.x);
+    expect(imageBox.x + imageBox.width).toBeLessThanOrEqual(cardBox.x + cardBox.width + 1);
+  }
+});
+
+test('other city route cards keep complete images inside mobile cards', async ({ page }) => {
+  const cityPages = [
+    { path: '/taxi-in-chennai', heading: 'Popular Routes from Chennai' },
+    { path: '/taxi-in-vellore', heading: 'Popular Outstation Routes From Vellore' },
+    { path: '/taxi-in-salem', heading: 'Popular Outstation Routes from Salem' },
+    { path: '/taxi-in-kumbakonam', heading: 'Popular Routes from Kumbakonam' },
+    { path: '/taxi-in-tiruppur', heading: 'Popular Outstation Routes from Tiruppur' },
+  ];
+
+  for (const viewport of [
+    { width: 320, height: 568 },
+    { width: 390, height: 844 },
+    { width: 440, height: 956 },
+  ]) {
+    await page.setViewportSize(viewport);
+
+    for (const cityPage of cityPages) {
+      await page.goto(cityPage.path);
+      const heading = page.getByRole('heading', { name: cityPage.heading });
+      await heading.scrollIntoViewIfNeeded();
+      const section = heading.locator('xpath=..');
+      const firstCard = section.locator('.rounded-xl').first();
+      const routeImage = firstCard.locator('img').first();
+
+      await expect(firstCard).toBeVisible();
+      await expect(routeImage).toBeVisible();
+      expect(await routeImage.evaluate(element => getComputedStyle(element).objectFit)).toBe('contain');
+
+      const pageWidth = await page.evaluate(() => document.documentElement.scrollWidth);
+      expect(pageWidth).toBeLessThanOrEqual(viewport.width);
+
+      const cardBox = await firstCard.boundingBox();
+      const imageBox = await routeImage.boundingBox();
+      expect(cardBox).not.toBeNull();
+      expect(imageBox).not.toBeNull();
+      expect(cardBox.x).toBeGreaterThanOrEqual(0);
+      expect(cardBox.x + cardBox.width).toBeLessThanOrEqual(viewport.width);
+      expect(imageBox.x).toBeGreaterThanOrEqual(cardBox.x);
+      expect(imageBox.x + imageBox.width).toBeLessThanOrEqual(cardBox.x + cardBox.width + 1);
+    }
+  }
+});
