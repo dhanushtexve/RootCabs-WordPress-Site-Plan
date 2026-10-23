@@ -6,7 +6,19 @@
 
     # --------------------------------------------------
 
-    # 0. Permanently redirect every www URL to non-www
+    # 0. Permanently redirect legacy city URLs
+
+    # --------------------------------------------------
+
+    RewriteRule ^city/?$ https://rootcabs.com/cities [R=301,L,NE]
+
+    RewriteRule ^(?:city|cities)/(chennai|vellore|coimbatore|madurai|trichy|salem|kumbakonam|tiruppur|kanchipuram|tiruvannamalai|ranipet)/?$ https://rootcabs.com/taxi-in-$1 [R=301,L,NE]
+
+    RewriteRule ^(chennai|vellore|coimbatore|madurai|trichy|salem|kumbakonam|tiruppur|kanchipuram|tiruvannamalai|ranipet)/?$ https://rootcabs.com/taxi-in-$1 [R=301,L,NE]
+
+    # --------------------------------------------------
+
+    # 0A. Permanently redirect every www URL to non-www
 
     # --------------------------------------------------
 
