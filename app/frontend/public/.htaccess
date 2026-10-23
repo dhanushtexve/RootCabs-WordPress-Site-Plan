@@ -3,6 +3,20 @@
     RewriteEngine On
 
     RewriteBase /
+
+    # --------------------------------------------------
+
+    # 0. Permanently redirect every www URL to non-www
+
+    # --------------------------------------------------
+
+    # The path and query string are preserved.
+
+    RewriteCond %{HTTP_HOST} ^www\.rootcabs\.com$ [NC]
+    RewriteRule ^(.+)/$ https://rootcabs.com/$1 [R=301,L,NE]
+
+    RewriteCond %{HTTP_HOST} ^www\.rootcabs\.com$ [NC]
+    RewriteRule ^ https://rootcabs.com%{REQUEST_URI} [R=301,L,NE]
  
     # --------------------------------------------------
 
