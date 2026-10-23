@@ -1,0 +1,3767 @@
+[
+  {
+    "url": "https://rootcabs.com/wallet-policy",
+    "artifactSha256": "283916da83831ebf358e45c98444942ed91da271ed7e89119a044ac1bae9475c",
+    "verifiedAt": "2026-10-23T07:09:22.704Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "WalletPolicyPage",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Wallet Policy | Root Cabs"
+      ],
+      "description": [
+        "Understand how the Root Cabs wallet works  adding funds, cashback credits, refunds, and terms for using wallet balance on rides."
+      ],
+      "canonical": [
+        "https://rootcabs.com/wallet-policy"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 1,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage"
+      ]
+    },
+    "after": {
+      "title": [
+        "Wallet Policy | Root Cabs"
+      ],
+      "description": [
+        "Understand how the Root Cabs wallet works  adding funds, cashback credits, refunds, and terms for using wallet balance on rides."
+      ],
+      "canonical": [
+        "https://rootcabs.com/wallet-policy"
+      ],
+      "h1": [
+        "Wallet & Customer Money Policy"
+      ],
+      "contentCharacters": 13702,
+      "internalLinks": 44,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Wallet Policy | Root Cabs"
+      ],
+      "description": [
+        "Understand how the Root Cabs wallet works  adding funds, cashback credits, refunds, and terms for using wallet balance on rides."
+      ],
+      "canonical": [
+        "https://rootcabs.com/wallet-policy"
+      ],
+      "h1": [
+        "Wallet & Customer Money Policy"
+      ],
+      "contentCharacters": 13597,
+      "internalLinks": 44,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/terms-of-use",
+    "artifactSha256": "0085300ae75af9c4f3c2572e3308f5e3450499ca22175f3a2b2056ed71b20440",
+    "verifiedAt": "2026-10-23T07:09:24.287Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "TermsOfUsePage",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Terms of Use | Root Cabs"
+      ],
+      "description": [
+        "Read the terms and conditions for booking and using Root Cabs' taxi, driver, and business services across Tamil Nadu."
+      ],
+      "canonical": [
+        "https://rootcabs.com/terms-of-use"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 1,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage"
+      ]
+    },
+    "after": {
+      "title": [
+        "Terms of Use | Root Cabs"
+      ],
+      "description": [
+        "Read the terms and conditions for booking and using Root Cabs' taxi, driver, and business services across Tamil Nadu."
+      ],
+      "canonical": [
+        "https://rootcabs.com/terms-of-use"
+      ],
+      "h1": [
+        "Terms of Service"
+      ],
+      "contentCharacters": 15481,
+      "internalLinks": 44,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Terms of Use | Root Cabs"
+      ],
+      "description": [
+        "Read the terms and conditions for booking and using Root Cabs' taxi, driver, and business services across Tamil Nadu."
+      ],
+      "canonical": [
+        "https://rootcabs.com/terms-of-use"
+      ],
+      "h1": [
+        "Terms of Service"
+      ],
+      "contentCharacters": 15351,
+      "internalLinks": 44,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/taxi-in-vellore",
+    "artifactSha256": "8bc4c71fd1a74912597bcfb12c43f6e07a30a474267163a022ed13574c75138b",
+    "verifiedAt": "2026-10-23T07:09:25.937Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "CityPage",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Taxi Service in Vellore | Cab Booking 24/7 - Root Cabs"
+      ],
+      "description": [
+        "Book reliable taxi service in Vellore with Root Cabs for local rides, airport transfers and outstation travel. Verified drivers, transparent fares and 24/7 booking."
+      ],
+      "canonical": [
+        "https://rootcabs.com/taxi-in-vellore"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 1,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage"
+      ]
+    },
+    "after": {
+      "title": [
+        "Taxi Service in Vellore | Cab Booking 24/7 - Root Cabs"
+      ],
+      "description": [
+        "Book reliable taxi service in Vellore with Root Cabs for local rides, airport transfers and outstation travel. Verified drivers, transparent fares and 24/7 booking."
+      ],
+      "canonical": [
+        "https://rootcabs.com/taxi-in-vellore"
+      ],
+      "h1": [
+        "Trusted Taxi Service in Vellore"
+      ],
+      "contentCharacters": 8773,
+      "internalLinks": 63,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Taxi Service in Vellore | Cab Booking 24/7 - Root Cabs"
+      ],
+      "description": [
+        "Book reliable taxi service in Vellore with Root Cabs for local rides, airport transfers and outstation travel. Verified drivers, transparent fares and 24/7 booking."
+      ],
+      "canonical": [
+        "https://rootcabs.com/taxi-in-vellore"
+      ],
+      "h1": [
+        "Trusted Taxi Service in Vellore"
+      ],
+      "contentCharacters": 8661,
+      "internalLinks": 63,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/taxi-in-trichy",
+    "artifactSha256": "f5fccda2dbcf464b7b218c5a07ea00434a1040b6db17666d680bd587d305697b",
+    "verifiedAt": "2026-10-23T07:09:27.619Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "CityPage",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "incorrect",
+      "description": "incorrect",
+      "canonical": "present",
+      "jsonLd": "missing",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Trichy Taxi Service | Root Cabs"
+      ],
+      "description": [
+        "Root Cabs provides dependable taxi services in Tiruchirappalli. Airport transfers, temple visits to Srirangam, and intercity travel - all at transparent, affordable rates."
+      ],
+      "canonical": [
+        "https://rootcabs.com/taxi-in-trichy"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 0,
+      "validSchemas": true,
+      "schemaTypes": []
+    },
+    "after": {
+      "title": [
+        "Book an Outstation Taxi Service in Trichy | Root Cabs"
+      ],
+      "description": [
+        "Root Cabs taxi service in Trichy for Rock Fort, Srirangam and outstation trips to Chennai and Madurai, with 24/7 support and ₹50 off your first ride."
+      ],
+      "canonical": [
+        "https://rootcabs.com/taxi-in-trichy"
+      ],
+      "h1": [
+        "Best Taxi Service in Trichy"
+      ],
+      "contentCharacters": 7168,
+      "internalLinks": 66,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Book an Outstation Taxi Service in Trichy | Root Cabs"
+      ],
+      "description": [
+        "Root Cabs taxi service in Trichy for Rock Fort, Srirangam and outstation trips to Chennai and Madurai, with 24/7 support and ₹50 off your first ride."
+      ],
+      "canonical": [
+        "https://rootcabs.com/taxi-in-trichy"
+      ],
+      "h1": [
+        "Best Taxi Service in Trichy"
+      ],
+      "contentCharacters": 7056,
+      "internalLinks": 66,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/taxi-in-tiruppur",
+    "artifactSha256": "7c3aa5af40325aaa594fb4100c0034ca72b2c29083b4d150776b265111b08c50",
+    "verifiedAt": "2026-10-23T07:09:29.340Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "CityPage",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "incorrect",
+      "description": "incorrect",
+      "canonical": "present",
+      "jsonLd": "missing",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Tiruppur Taxi Service | Root Cabs"
+      ],
+      "description": [
+        "Root Cabs provides efficient taxi services in Tiruppur. Perfect for business travelers in the textile hub, with connections to Coimbatore airport and all major cities."
+      ],
+      "canonical": [
+        "https://rootcabs.com/taxi-in-tiruppur"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 0,
+      "validSchemas": true,
+      "schemaTypes": []
+    },
+    "after": {
+      "title": [
+        "Call Taxi in Tirupur - Car Rental in Tirupur"
+      ],
+      "description": [
+        "Book taxi service and cabs in Tirupur with Root Cabs for Coimbatore Airport and outstation trips, with 24/7 support and ₹50 off first ride - call 8608606474."
+      ],
+      "canonical": [
+        "https://rootcabs.com/taxi-in-tiruppur"
+      ],
+      "h1": [
+        "Taxi Service in Tiruppur"
+      ],
+      "contentCharacters": 7333,
+      "internalLinks": 65,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Call Taxi in Tirupur - Car Rental in Tirupur"
+      ],
+      "description": [
+        "Book taxi service and cabs in Tirupur with Root Cabs for Coimbatore Airport and outstation trips, with 24/7 support and ₹50 off first ride - call 8608606474."
+      ],
+      "canonical": [
+        "https://rootcabs.com/taxi-in-tiruppur"
+      ],
+      "h1": [
+        "Taxi Service in Tiruppur"
+      ],
+      "contentCharacters": 7217,
+      "internalLinks": 65,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/taxi-in-salem",
+    "artifactSha256": "aea82cede64f24670b336640bcd27cc39302a42d02fad05eabe12ea01b3de8b6",
+    "verifiedAt": "2026-10-23T07:09:30.981Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "CityPage",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "incorrect",
+      "description": "incorrect",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Taxi Service in Salem - Steel City & Yercaud Hill Station Gateway"
+      ],
+      "description": [
+        "From daily city rides to trips outside Salem, Root Cabs taxi service in Salem makes it simple to book a ride and plan your travel comfortably."
+      ],
+      "canonical": [
+        "https://rootcabs.com/taxi-in-salem"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 1,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage"
+      ]
+    },
+    "after": {
+      "title": [
+        "Taxi Service in Salem for Outstation Trips | Root Cabs"
+      ],
+      "description": [
+        "Book a taxi service in Salem with Root Cabs for outstation trips, with verified drivers, 24/7 support and ₹50 off your first ride - call 8608606474."
+      ],
+      "canonical": [
+        "https://rootcabs.com/taxi-in-salem"
+      ],
+      "h1": [
+        "Book a Taxi in Salem"
+      ],
+      "contentCharacters": 6655,
+      "internalLinks": 66,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Taxi Service in Salem for Outstation Trips | Root Cabs"
+      ],
+      "description": [
+        "Book a taxi service in Salem with Root Cabs for outstation trips, with verified drivers, 24/7 support and ₹50 off your first ride - call 8608606474."
+      ],
+      "canonical": [
+        "https://rootcabs.com/taxi-in-salem"
+      ],
+      "h1": [
+        "Book a Taxi in Salem"
+      ],
+      "contentCharacters": 6538,
+      "internalLinks": 66,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/taxi-in-kumbakonam",
+    "artifactSha256": "06aca05ddaf7ff4eba1802c2de0553a11324aaf6a0c6f821a5cfaaaa3c7ef97b",
+    "verifiedAt": "2026-10-23T07:09:32.659Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "KumbakonamPage",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "incorrect",
+      "description": "incorrect",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Best Taxi Service in Kumbakonam | Root Cabs"
+      ],
+      "description": [
+        "From temple visits and railway station pickups to local errands and outstation journeys, Root Cabs makes getting around Kumbakonam simpler with clear fares and easy booking."
+      ],
+      "canonical": [
+        "https://rootcabs.com/taxi-in-kumbakonam"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 1,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage"
+      ]
+    },
+    "after": {
+      "title": [
+        "Taxi Service in Kumbakonam for Outstation Trips | Root Cabs"
+      ],
+      "description": [
+        "Book taxi service in Kumbakonam with Root Cabs for Navagraha temple tours and outstation trips, with 24/7 support and ₹50 off first ride - call +91 8608606474."
+      ],
+      "canonical": [
+        "https://rootcabs.com/taxi-in-kumbakonam"
+      ],
+      "h1": [
+        "Best Taxi Service in Kumbakonam for Local and Outstation Travel"
+      ],
+      "contentCharacters": 8037,
+      "internalLinks": 66,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Taxi Service in Kumbakonam for Outstation Trips | Root Cabs"
+      ],
+      "description": [
+        "Book taxi service in Kumbakonam with Root Cabs for Navagraha temple tours and outstation trips, with 24/7 support and ₹50 off first ride - call +91 8608606474."
+      ],
+      "canonical": [
+        "https://rootcabs.com/taxi-in-kumbakonam"
+      ],
+      "h1": [
+        "Best Taxi Service in Kumbakonam for Local and Outstation Travel"
+      ],
+      "contentCharacters": 7916,
+      "internalLinks": 66,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/taxi-in-chennai",
+    "artifactSha256": "954dcacac25a429caf873bb423648c3cfe909ba957e4bc87ca8054880308027f",
+    "verifiedAt": "2026-10-23T07:09:34.317Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "CityPage",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Taxi Service in Chennai | Cab Booking 24/7 - Root Cabs"
+      ],
+      "description": [
+        "Root Cabs offers the best taxi service in Chennai  reliable cab service, fixed fares from ₹11/km, verified drivers, no surge pricing, 24/7 booking."
+      ],
+      "canonical": [
+        "https://rootcabs.com/taxi-in-chennai"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 1,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage"
+      ]
+    },
+    "after": {
+      "title": [
+        "Taxi Service in Chennai | Cab Booking 24/7 - Root Cabs"
+      ],
+      "description": [
+        "Root Cabs offers the best taxi service in Chennai  reliable cab service, fixed fares from ₹11/km, verified drivers, no surge pricing, 24/7 booking."
+      ],
+      "canonical": [
+        "https://rootcabs.com/taxi-in-chennai"
+      ],
+      "h1": [
+        "Your Trusted Cab Service in Chennai"
+      ],
+      "contentCharacters": 7412,
+      "internalLinks": 58,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Taxi Service in Chennai | Cab Booking 24/7 - Root Cabs"
+      ],
+      "description": [
+        "Root Cabs offers the best taxi service in Chennai  reliable cab service, fixed fares from ₹11/km, verified drivers, no surge pricing, 24/7 booking."
+      ],
+      "canonical": [
+        "https://rootcabs.com/taxi-in-chennai"
+      ],
+      "h1": [
+        "Your Trusted Cab Service in Chennai"
+      ],
+      "contentCharacters": 7311,
+      "internalLinks": 58,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/support",
+    "artifactSha256": "0867671d099d625020e059e6a4c7f2852762cea7aa7498e4d896d072ca4dbd88",
+    "verifiedAt": "2026-10-23T07:09:35.856Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "SupportPage",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Support & Help Center | Root Cabs"
+      ],
+      "description": [
+        "Get answers to common Root Cabs questions on bookings, payments, and safety, or reach our 24/7 support team by phone or email. Call +91 8608606474."
+      ],
+      "canonical": [
+        "https://rootcabs.com/support"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 1,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage"
+      ]
+    },
+    "after": {
+      "title": [
+        "Support & Help Center | Root Cabs"
+      ],
+      "description": [
+        "Get answers to common Root Cabs questions on bookings, payments, and safety, or reach our 24/7 support team by phone or email. Call +91 8608606474."
+      ],
+      "canonical": [
+        "https://rootcabs.com/support"
+      ],
+      "h1": [
+        "Support & Help Centre"
+      ],
+      "contentCharacters": 2136,
+      "internalLinks": 42,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        [
+          "WebPage",
+          "ContactPage",
+          "FAQPage"
+        ],
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Support & Help Center | Root Cabs"
+      ],
+      "description": [
+        "Get answers to common Root Cabs questions on bookings, payments, and safety, or reach our 24/7 support team by phone or email. Call +91 8608606474."
+      ],
+      "canonical": [
+        "https://rootcabs.com/support"
+      ],
+      "h1": [
+        "Support & Help Centre"
+      ],
+      "contentCharacters": 2093,
+      "internalLinks": 42,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        [
+          "WebPage",
+          "ContactPage",
+          "FAQPage"
+        ],
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/services/parcel-delivery",
+    "artifactSha256": "00ded67920f82cf9b1cc52929abc313ef4f75cbe3c144e54d3efadca9d85fefd",
+    "verifiedAt": "2026-10-23T07:09:37.500Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "ServicePage",
+    "cause": "Existing prerendered content; compare metadata with runtime component",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Parcel Delivery Service - Same City | Root Cabs"
+      ],
+      "description": [
+        "Send documents, medicines and small packages same-day within your city with Root Cabs parcel delivery. Quick pickup and drop, booked online in minutes."
+      ],
+      "canonical": [
+        "https://rootcabs.com/services/parcel-delivery"
+      ],
+      "h1": [
+        "Parcel Service for Your Door-to-Door Deliveries"
+      ],
+      "contentCharacters": 3900,
+      "internalLinks": 50,
+      "videos": [],
+      "schemaCount": 3,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "Service",
+        "TaxiService"
+      ]
+    },
+    "after": {
+      "title": [
+        "Parcel Delivery Service - Same City | Root Cabs"
+      ],
+      "description": [
+        "Send documents, medicines and small packages same-day within your city with Root Cabs parcel delivery. Quick pickup and drop, booked online in minutes."
+      ],
+      "canonical": [
+        "https://rootcabs.com/services/parcel-delivery"
+      ],
+      "h1": [
+        "Parcel Service for Your Door-to-Door Deliveries"
+      ],
+      "contentCharacters": 4008,
+      "internalLinks": 50,
+      "videos": [],
+      "schemaCount": 3,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "Service",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Parcel Delivery Service - Same City | Root Cabs"
+      ],
+      "description": [
+        "Send documents, medicines and small packages same-day within your city with Root Cabs parcel delivery. Quick pickup and drop, booked online in minutes."
+      ],
+      "canonical": [
+        "https://rootcabs.com/services/parcel-delivery"
+      ],
+      "h1": [
+        "Parcel Service for Your Door-to-Door Deliveries"
+      ],
+      "contentCharacters": 3900,
+      "internalLinks": 50,
+      "videos": [],
+      "schemaCount": 3,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "Service",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/services/local-taxi",
+    "artifactSha256": "14bcdf0aafdf899c95abb9a757e0c00afef7ec347b111411d9f6ef822725fd03",
+    "verifiedAt": "2026-10-23T07:09:39.143Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "ServicePage",
+    "cause": "Existing prerendered content; compare metadata with runtime component",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Local Taxi Service in Tamil Nadu | Root Cabs"
+      ],
+      "description": [
+        "Book local taxi service with Root Cabs across 10+ Tamil Nadu cities for office commutes, shopping, appointments and everyday city travel. Book online now."
+      ],
+      "canonical": [
+        "https://rootcabs.com/services/local-taxi"
+      ],
+      "h1": [
+        "Local Taxi Service for Your Daily Needs"
+      ],
+      "contentCharacters": 4828,
+      "internalLinks": 54,
+      "videos": [],
+      "schemaCount": 3,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "Service",
+        "TaxiService"
+      ]
+    },
+    "after": {
+      "title": [
+        "Local Taxi Service in Tamil Nadu | Root Cabs"
+      ],
+      "description": [
+        "Book local taxi service with Root Cabs across 10+ Tamil Nadu cities for office commutes, shopping, appointments and everyday city travel. Book online now."
+      ],
+      "canonical": [
+        "https://rootcabs.com/services/local-taxi"
+      ],
+      "h1": [
+        "Local Taxi Service for Your Daily Needs"
+      ],
+      "contentCharacters": 4999,
+      "internalLinks": 54,
+      "videos": [],
+      "schemaCount": 3,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "Service",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Local Taxi Service in Tamil Nadu | Root Cabs"
+      ],
+      "description": [
+        "Book local taxi service with Root Cabs across 10+ Tamil Nadu cities for office commutes, shopping, appointments and everyday city travel. Book online now."
+      ],
+      "canonical": [
+        "https://rootcabs.com/services/local-taxi"
+      ],
+      "h1": [
+        "Local Taxi Service for Your Daily Needs"
+      ],
+      "contentCharacters": 4847,
+      "internalLinks": 54,
+      "videos": [],
+      "schemaCount": 3,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "Service",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/services/outstation",
+    "artifactSha256": "e40075d915c25518f93d236625812702d1e2bda24044c9d59372b64ab3dadd4f",
+    "verifiedAt": "2026-10-23T07:09:41.087Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "ServicePage",
+    "cause": "Existing prerendered content; compare metadata with runtime component",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Outstation Taxi Services in Tamil Nadu | Root Cabs"
+      ],
+      "description": [
+        "Outstation taxi service by Root Cabs for intercity trips, weekend getaways and family journeys across Tamil Nadu. Reserve your cab online today."
+      ],
+      "canonical": [
+        "https://rootcabs.com/services/outstation"
+      ],
+      "h1": [
+        "Outstation Taxi for Your Travel Plans"
+      ],
+      "contentCharacters": 5173,
+      "internalLinks": 60,
+      "videos": [],
+      "schemaCount": 3,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "Service",
+        "TaxiService"
+      ]
+    },
+    "after": {
+      "title": [
+        "Outstation Taxi Services in Tamil Nadu | Root Cabs"
+      ],
+      "description": [
+        "Outstation taxi service by Root Cabs for intercity trips, weekend getaways and family journeys across Tamil Nadu. Reserve your cab online today."
+      ],
+      "canonical": [
+        "https://rootcabs.com/services/outstation"
+      ],
+      "h1": [
+        "Outstation Taxi for Your Travel Plans"
+      ],
+      "contentCharacters": 5355,
+      "internalLinks": 60,
+      "videos": [],
+      "schemaCount": 3,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "Service",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Outstation Taxi Services in Tamil Nadu | Root Cabs"
+      ],
+      "description": [
+        "Outstation taxi service by Root Cabs for intercity trips, weekend getaways and family journeys across Tamil Nadu. Reserve your cab online today."
+      ],
+      "canonical": [
+        "https://rootcabs.com/services/outstation"
+      ],
+      "h1": [
+        "Outstation Taxi for Your Travel Plans"
+      ],
+      "contentCharacters": 5192,
+      "internalLinks": 60,
+      "videos": [],
+      "schemaCount": 3,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "Service",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/services/auto",
+    "artifactSha256": "10715ea6e8c33425e10a755dfed1817cc25a65bb9e35f0aef82266af25cc4b2f",
+    "verifiedAt": "2026-10-23T07:09:43.000Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "ServicePage",
+    "cause": "Existing prerendered content; compare metadata with runtime component",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Book Affordable Auto Online for Rides | Root Cabs"
+      ],
+      "description": [
+        "No more haggling or destination refusals. Book affordable auto rides with Root Cabs at a fixed, upfront fare for short trips and errands."
+      ],
+      "canonical": [
+        "https://rootcabs.com/services/auto"
+      ],
+      "h1": [
+        "Auto Rides for Your Daily Plans"
+      ],
+      "contentCharacters": 4149,
+      "internalLinks": 51,
+      "videos": [],
+      "schemaCount": 3,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "Service",
+        "TaxiService"
+      ]
+    },
+    "after": {
+      "title": [
+        "Book Affordable Auto Online for Rides | Root Cabs"
+      ],
+      "description": [
+        "No more haggling or destination refusals. Book affordable auto rides with Root Cabs at a fixed, upfront fare for short trips and errands."
+      ],
+      "canonical": [
+        "https://rootcabs.com/services/auto"
+      ],
+      "h1": [
+        "Auto Rides for Your Daily Plans"
+      ],
+      "contentCharacters": 4296,
+      "internalLinks": 51,
+      "videos": [],
+      "schemaCount": 3,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "Service",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Book Affordable Auto Online for Rides | Root Cabs"
+      ],
+      "description": [
+        "No more haggling or destination refusals. Book affordable auto rides with Root Cabs at a fixed, upfront fare for short trips and errands."
+      ],
+      "canonical": [
+        "https://rootcabs.com/services/auto"
+      ],
+      "h1": [
+        "Auto Rides for Your Daily Plans"
+      ],
+      "contentCharacters": 4149,
+      "internalLinks": 51,
+      "videos": [],
+      "schemaCount": 3,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "Service",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/services/airport-taxi",
+    "artifactSha256": "5b6093d390ed1680c64d21aab31492d51a72109305c69661436374ece707f5be",
+    "verifiedAt": "2026-10-23T07:09:44.839Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "ServicePage",
+    "cause": "Existing prerendered content; compare metadata with runtime component",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Chennai Airport Taxi - Pickup & Drop | Root Cabs"
+      ],
+      "description": [
+        "Root Cabs offers Chennai Airport taxi service pickup and drop with on-time, hassle-free transfers - book your ride online in minutes."
+      ],
+      "canonical": [
+        "https://rootcabs.com/services/airport-taxi"
+      ],
+      "h1": [
+        "Airport Taxi Service for Easy Pickup and Drop"
+      ],
+      "contentCharacters": 4390,
+      "internalLinks": 59,
+      "videos": [],
+      "schemaCount": 3,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "Service",
+        "TaxiService"
+      ]
+    },
+    "after": {
+      "title": [
+        "Chennai Airport Taxi - Pickup & Drop | Root Cabs"
+      ],
+      "description": [
+        "Root Cabs offers Chennai Airport taxi service pickup and drop with on-time, hassle-free transfers - book your ride online in minutes."
+      ],
+      "canonical": [
+        "https://rootcabs.com/services/airport-taxi"
+      ],
+      "h1": [
+        "Airport Taxi Service for Easy Pickup and Drop"
+      ],
+      "contentCharacters": 4528,
+      "internalLinks": 59,
+      "videos": [],
+      "schemaCount": 3,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "Service",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Chennai Airport Taxi - Pickup & Drop | Root Cabs"
+      ],
+      "description": [
+        "Root Cabs offers Chennai Airport taxi service pickup and drop with on-time, hassle-free transfers - book your ride online in minutes."
+      ],
+      "canonical": [
+        "https://rootcabs.com/services/airport-taxi"
+      ],
+      "h1": [
+        "Airport Taxi Service for Easy Pickup and Drop"
+      ],
+      "contentCharacters": 4409,
+      "internalLinks": 59,
+      "videos": [],
+      "schemaCount": 3,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "Service",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/services/acting-driver",
+    "artifactSha256": "46fc87d4a50e397be313e70786f824cc479c89988a48ef1560581c65b4cae498",
+    "verifiedAt": "2026-10-23T07:09:46.625Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "ServicePage",
+    "cause": "Existing prerendered content; compare metadata with runtime component",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Acting Driver Service in Tamil Nadu | Root Cabs"
+      ],
+      "description": [
+        "Hire a verified acting driver with Root Cabs, Tamil Nadu's only combined cab and acting driver app. Safe, trained drivers for local and outstation trips."
+      ],
+      "canonical": [
+        "https://rootcabs.com/services/acting-driver"
+      ],
+      "h1": [
+        "Acting Driver to Drive Your Car"
+      ],
+      "contentCharacters": 5052,
+      "internalLinks": 54,
+      "videos": [],
+      "schemaCount": 3,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "Service",
+        "TaxiService"
+      ]
+    },
+    "after": {
+      "title": [
+        "Acting Driver Service in Tamil Nadu | Root Cabs"
+      ],
+      "description": [
+        "Hire a verified acting driver with Root Cabs, Tamil Nadu's only combined cab and acting driver app. Safe, trained drivers for local and outstation trips."
+      ],
+      "canonical": [
+        "https://rootcabs.com/services/acting-driver"
+      ],
+      "h1": [
+        "Acting Driver to Drive Your Car"
+      ],
+      "contentCharacters": 5185,
+      "internalLinks": 54,
+      "videos": [],
+      "schemaCount": 3,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "Service",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Acting Driver Service in Tamil Nadu | Root Cabs"
+      ],
+      "description": [
+        "Hire a verified acting driver with Root Cabs, Tamil Nadu's only combined cab and acting driver app. Safe, trained drivers for local and outstation trips."
+      ],
+      "canonical": [
+        "https://rootcabs.com/services/acting-driver"
+      ],
+      "h1": [
+        "Acting Driver to Drive Your Car"
+      ],
+      "contentCharacters": 5052,
+      "internalLinks": 54,
+      "videos": [],
+      "schemaCount": 3,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "Service",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/services",
+    "artifactSha256": "a2376341570ab8943ad8e297af4e42d695524162492b6507017589a15dcb78e4",
+    "verifiedAt": "2026-10-23T07:09:48.320Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "ServicesHub",
+    "cause": "Existing prerendered content; compare metadata with runtime component",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Our Services | Local, Airport & Outstation Taxi - Root Cabs"
+      ],
+      "description": [
+        "Root Cabs offers Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto rides across Tamil Nadu. Fixed fares, verified drivers, 10+ cities."
+      ],
+      "canonical": [
+        "https://rootcabs.com/services"
+      ],
+      "h1": [
+        "Our Services"
+      ],
+      "contentCharacters": 2225,
+      "internalLinks": 59,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "after": {
+      "title": [
+        "Our Services | Local, Airport & Outstation Taxi - Root Cabs"
+      ],
+      "description": [
+        "Root Cabs offers Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto rides across Tamil Nadu. Fixed fares, verified drivers, 10+ cities."
+      ],
+      "canonical": [
+        "https://rootcabs.com/services"
+      ],
+      "h1": [
+        "Our Services"
+      ],
+      "contentCharacters": 2297,
+      "internalLinks": 59,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Our Services | Local, Airport & Outstation Taxi - Root Cabs"
+      ],
+      "description": [
+        "Root Cabs offers Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto rides across Tamil Nadu. Fixed fares, verified drivers, 10+ cities."
+      ],
+      "canonical": [
+        "https://rootcabs.com/services"
+      ],
+      "h1": [
+        "Our Services"
+      ],
+      "contentCharacters": 2225,
+      "internalLinks": 59,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/routes/vellore-to-chennai",
+    "artifactSha256": "80385df1ea5925bd09890457b7bdcaafbfb99f5d5f2b9d6f8c2584119fbda7a3",
+    "verifiedAt": "2026-10-23T07:09:49.943Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "RoutePage",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "present",
+      "description": "incorrect",
+      "canonical": "present",
+      "jsonLd": "missing",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Vellore to Chennai Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book a Vellore to Chennai taxi with Root Cabs for comfortable intercity travel, airport drops and dependable outstation rides."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/vellore-to-chennai"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 0,
+      "validSchemas": true,
+      "schemaTypes": []
+    },
+    "after": {
+      "title": [
+        "Vellore to Chennai Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book taxi from Vellore to Chennai. Distance: 140 km, duration: 2h 30m."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/vellore-to-chennai"
+      ],
+      "h1": [
+        "Vellore to Chennai Taxi"
+      ],
+      "contentCharacters": 2224,
+      "internalLinks": 49,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "TaxiService",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Vellore to Chennai Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book taxi from Vellore to Chennai. Distance: 140 km, duration: 2h 30m."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/vellore-to-chennai"
+      ],
+      "h1": [
+        "Vellore to Chennai Taxi"
+      ],
+      "contentCharacters": 2127,
+      "internalLinks": 49,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "TaxiService",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/routes/vellore-to-bangalore",
+    "artifactSha256": "4736510ee480baf19403972bc22a0d57d700f57d90f01bb4e5f45c07ca05d242",
+    "verifiedAt": "2026-10-23T07:09:51.691Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "RoutePage",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "present",
+      "description": "incorrect",
+      "canonical": "present",
+      "jsonLd": "missing",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Vellore to Bangalore Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book a Vellore to Bangalore taxi with Root Cabs for reliable intercity travel, verified drivers and transparent pricing."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/vellore-to-bangalore"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 0,
+      "validSchemas": true,
+      "schemaTypes": []
+    },
+    "after": {
+      "title": [
+        "Vellore to Bangalore Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book taxi from Vellore to Bangalore. Distance: 210 km, duration: 3h 30m."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/vellore-to-bangalore"
+      ],
+      "h1": [
+        "Vellore to Bangalore Taxi"
+      ],
+      "contentCharacters": 2235,
+      "internalLinks": 49,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "TaxiService",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Vellore to Bangalore Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book taxi from Vellore to Bangalore. Distance: 210 km, duration: 3h 30m."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/vellore-to-bangalore"
+      ],
+      "h1": [
+        "Vellore to Bangalore Taxi"
+      ],
+      "contentCharacters": 2138,
+      "internalLinks": 49,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "TaxiService",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/routes/salem-to-yercaud",
+    "artifactSha256": "b1a55bc8ca61bc1387f03688ba6f939720ce1b051d0f3a4721c270962c9f95fa",
+    "verifiedAt": "2026-10-23T07:09:53.412Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "RoutePage",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "present",
+      "description": "incorrect",
+      "canonical": "present",
+      "jsonLd": "missing",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Salem to Yercaud Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book a Salem to Yercaud taxi with Root Cabs for a comfortable hill station trip with reliable drivers and clear fares."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/salem-to-yercaud"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 0,
+      "validSchemas": true,
+      "schemaTypes": []
+    },
+    "after": {
+      "title": [
+        "Salem to Yercaud Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book taxi from Salem to Yercaud. Distance: 35 km, duration: 1h."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/salem-to-yercaud"
+      ],
+      "h1": [
+        "Salem to Yercaud Taxi"
+      ],
+      "contentCharacters": 2148,
+      "internalLinks": 49,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "TaxiService",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Salem to Yercaud Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book taxi from Salem to Yercaud. Distance: 35 km, duration: 1h."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/salem-to-yercaud"
+      ],
+      "h1": [
+        "Salem to Yercaud Taxi"
+      ],
+      "contentCharacters": 2051,
+      "internalLinks": 49,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "TaxiService",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/routes/madurai-to-rameswaram",
+    "artifactSha256": "0726ec003117fe26aca28668c6048bae1c621b341f9c73371fdb3e172cd8277e",
+    "verifiedAt": "2026-10-23T07:09:55.025Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "RoutePage",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "present",
+      "description": "incorrect",
+      "canonical": "present",
+      "jsonLd": "missing",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Madurai to Rameswaram Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book a Madurai to Rameswaram taxi with Root Cabs for comfortable temple travel, family trips and outstation rides."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/madurai-to-rameswaram"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 0,
+      "validSchemas": true,
+      "schemaTypes": []
+    },
+    "after": {
+      "title": [
+        "Madurai to Rameswaram Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book taxi from Madurai to Rameswaram. Distance: 175 km, duration: 3h 30m."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/madurai-to-rameswaram"
+      ],
+      "h1": [
+        "Madurai to Rameswaram Taxi"
+      ],
+      "contentCharacters": 2274,
+      "internalLinks": 49,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "TaxiService",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Madurai to Rameswaram Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book taxi from Madurai to Rameswaram. Distance: 175 km, duration: 3h 30m."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/madurai-to-rameswaram"
+      ],
+      "h1": [
+        "Madurai to Rameswaram Taxi"
+      ],
+      "contentCharacters": 2177,
+      "internalLinks": 49,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "TaxiService",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/routes/coimbatore-to-ooty",
+    "artifactSha256": "f20084c50fe1b4c216a5c2506d6821422c2b87069ee6e8c65e99a3da7a6e7d0b",
+    "verifiedAt": "2026-10-23T07:09:56.638Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "RoutePage",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "present",
+      "description": "incorrect",
+      "canonical": "present",
+      "jsonLd": "missing",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Coimbatore to Ooty Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book a Coimbatore to Ooty taxi with Root Cabs for comfortable hill station travel and dependable outstation service."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/coimbatore-to-ooty"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 0,
+      "validSchemas": true,
+      "schemaTypes": []
+    },
+    "after": {
+      "title": [
+        "Coimbatore to Ooty Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book taxi from Coimbatore to Ooty. Distance: 90 km, duration: 2h 30m."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/coimbatore-to-ooty"
+      ],
+      "h1": [
+        "Coimbatore to Ooty Taxi"
+      ],
+      "contentCharacters": 2216,
+      "internalLinks": 49,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "TaxiService",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Coimbatore to Ooty Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book taxi from Coimbatore to Ooty. Distance: 90 km, duration: 2h 30m."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/coimbatore-to-ooty"
+      ],
+      "h1": [
+        "Coimbatore to Ooty Taxi"
+      ],
+      "contentCharacters": 2119,
+      "internalLinks": 49,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "TaxiService",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/routes/chennai-to-tirupati",
+    "artifactSha256": "1ff162888f30b7a8bbefb1b6532180e0e31968302d22de77c98b70f191e81559",
+    "verifiedAt": "2026-10-23T07:09:58.339Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "RoutePage",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "present",
+      "description": "incorrect",
+      "canonical": "present",
+      "jsonLd": "missing",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Chennai to Tirupati Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book a Chennai to Tirupati taxi with Root Cabs for temple travel, family trips and reliable round-trip or one-way rides."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/chennai-to-tirupati"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 0,
+      "validSchemas": true,
+      "schemaTypes": []
+    },
+    "after": {
+      "title": [
+        "Chennai to Tirupati Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book taxi from Chennai to Tirupati. Distance: 135 km, duration: 2h 30m."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/chennai-to-tirupati"
+      ],
+      "h1": [
+        "Chennai to Tirupati Taxi"
+      ],
+      "contentCharacters": 2223,
+      "internalLinks": 49,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "TaxiService",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Chennai to Tirupati Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book taxi from Chennai to Tirupati. Distance: 135 km, duration: 2h 30m."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/chennai-to-tirupati"
+      ],
+      "h1": [
+        "Chennai to Tirupati Taxi"
+      ],
+      "contentCharacters": 2126,
+      "internalLinks": 49,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "TaxiService",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/routes/chennai-to-pondicherry",
+    "artifactSha256": "2bb7f322c3d464137c18dbab9fc0297e07f2177dccf9539699293a74fa52d443",
+    "verifiedAt": "2026-10-23T07:10:00.010Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "RoutePage",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "present",
+      "description": "incorrect",
+      "canonical": "present",
+      "jsonLd": "missing",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Chennai to Pondicherry Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book a Chennai to Pondicherry taxi with Root Cabs for a comfortable outstation ride with transparent fares and reliable drivers."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/chennai-to-pondicherry"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 0,
+      "validSchemas": true,
+      "schemaTypes": []
+    },
+    "after": {
+      "title": [
+        "Chennai to Pondicherry Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book taxi from Chennai to Pondicherry. Distance: 150 km, duration: 3h."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/chennai-to-pondicherry"
+      ],
+      "h1": [
+        "Chennai to Pondicherry Taxi"
+      ],
+      "contentCharacters": 2251,
+      "internalLinks": 49,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "TaxiService",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Chennai to Pondicherry Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book taxi from Chennai to Pondicherry. Distance: 150 km, duration: 3h."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/chennai-to-pondicherry"
+      ],
+      "h1": [
+        "Chennai to Pondicherry Taxi"
+      ],
+      "contentCharacters": 2154,
+      "internalLinks": 49,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "TaxiService",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/routes/chennai-to-bangalore",
+    "artifactSha256": "6ab9dfa5840e17c55af331fde48cb3d0d58fda8623e1a7112e43cb0406fc860a",
+    "verifiedAt": "2026-10-23T07:10:01.701Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "RoutePage",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "present",
+      "description": "incorrect",
+      "canonical": "present",
+      "jsonLd": "missing",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Chennai to Bangalore Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book a comfortable taxi from Chennai to Bangalore with Root Cabs. Travel with verified drivers, clear fares and convenient booking."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/chennai-to-bangalore"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 0,
+      "validSchemas": true,
+      "schemaTypes": []
+    },
+    "after": {
+      "title": [
+        "Chennai to Bangalore Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book taxi from Chennai to Bangalore. Distance: 350 km, duration: 5h 30m."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/chennai-to-bangalore"
+      ],
+      "h1": [
+        "Chennai to Bangalore Taxi"
+      ],
+      "contentCharacters": 2237,
+      "internalLinks": 49,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "TaxiService",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Chennai to Bangalore Taxi | Root Cabs"
+      ],
+      "description": [
+        "Book taxi from Chennai to Bangalore. Distance: 350 km, duration: 5h 30m."
+      ],
+      "canonical": [
+        "https://rootcabs.com/routes/chennai-to-bangalore"
+      ],
+      "h1": [
+        "Chennai to Bangalore Taxi"
+      ],
+      "contentCharacters": 2140,
+      "internalLinks": 49,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "TaxiService",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/privacy-policy",
+    "artifactSha256": "e115849839f374209ec6fdc3d5e9488614259a7525a42aa45e1a57922474a93f",
+    "verifiedAt": "2026-10-23T07:10:03.357Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "PrivacyPolicyPage",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Privacy Policy | Root Cabs"
+      ],
+      "description": [
+        "Read how Root Cabs collects, uses, and protects your personal data when you book rides, use the app, or contact our support team."
+      ],
+      "canonical": [
+        "https://rootcabs.com/privacy-policy"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 1,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage"
+      ]
+    },
+    "after": {
+      "title": [
+        "Privacy Policy | Root Cabs"
+      ],
+      "description": [
+        "Read how Root Cabs collects, uses, and protects your personal data when you book rides, use the app, or contact our support team."
+      ],
+      "canonical": [
+        "https://rootcabs.com/privacy-policy"
+      ],
+      "h1": [
+        "Privacy Policy"
+      ],
+      "contentCharacters": 15784,
+      "internalLinks": 44,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Privacy Policy | Root Cabs"
+      ],
+      "description": [
+        "Read how Root Cabs collects, uses, and protects your personal data when you book rides, use the app, or contact our support team."
+      ],
+      "canonical": [
+        "https://rootcabs.com/privacy-policy"
+      ],
+      "h1": [
+        "Privacy Policy"
+      ],
+      "contentCharacters": 15612,
+      "internalLinks": 44,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/drivers",
+    "artifactSha256": "373e1012d6e31dc95e46e974237ac372682f3fa1494b285b5ea9362d565182e7",
+    "verifiedAt": "2026-10-23T07:10:04.973Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "DriversPage",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Drive with Root Cabs | Become a Driver Partner"
+      ],
+      "description": [
+        "Earn up to ₹40,000+ monthly as a Root Cabs driver partner. Low commission, flexible hours, daily payouts, and free training. Apply now."
+      ],
+      "canonical": [
+        "https://rootcabs.com/drivers"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 1,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage"
+      ]
+    },
+    "after": {
+      "title": [
+        "Drive with Root Cabs | Become a Driver Partner"
+      ],
+      "description": [
+        "Earn up to ₹40,000+ monthly as a Root Cabs driver partner. Low commission, flexible hours, daily payouts, and free training. Apply now."
+      ],
+      "canonical": [
+        "https://rootcabs.com/drivers"
+      ],
+      "h1": [
+        "Drive And Earn With Root Cabs"
+      ],
+      "contentCharacters": 2677,
+      "internalLinks": 41,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Drive with Root Cabs | Become a Driver Partner"
+      ],
+      "description": [
+        "Earn up to ₹40,000+ monthly as a Root Cabs driver partner. Low commission, flexible hours, daily payouts, and free training. Apply now."
+      ],
+      "canonical": [
+        "https://rootcabs.com/drivers"
+      ],
+      "h1": [
+        "Drive And Earn With Root Cabs"
+      ],
+      "contentCharacters": 2600,
+      "internalLinks": 41,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/cities",
+    "artifactSha256": "eb17c423eb67133de7bb4e883aaaaaa4d522ef5af7d0bc5f79bf94846b44a183",
+    "verifiedAt": "2026-10-23T07:10:07.557Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "CitiesHub",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Cities We Serve | Root Cabs Taxi Service in Tamil Nadu"
+      ],
+      "description": [
+        "Root Cabs operates in 10+ cities across Tamil Nadu covering Chennai, Coimbatore, Vellore, Madurai, Trichy, Salem & more. Find local, airport & outstation taxi near you."
+      ],
+      "canonical": [
+        "https://rootcabs.com/cities"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 1,
+      "validSchemas": true,
+      "schemaTypes": [
+        "CollectionPage"
+      ]
+    },
+    "after": {
+      "title": [
+        "Cities We Serve | Root Cabs Taxi Service in Tamil Nadu"
+      ],
+      "description": [
+        "Root Cabs operates in 10+ cities across Tamil Nadu covering Chennai, Coimbatore, Vellore, Madurai, Trichy, Salem & more. Find local, airport & outstation taxi near you."
+      ],
+      "canonical": [
+        "https://rootcabs.com/cities"
+      ],
+      "h1": [
+        "Cities We Serve"
+      ],
+      "contentCharacters": 2457,
+      "internalLinks": 51,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "CollectionPage",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Cities We Serve | Root Cabs Taxi Service in Tamil Nadu"
+      ],
+      "description": [
+        "Root Cabs operates in 10+ cities across Tamil Nadu covering Chennai, Coimbatore, Vellore, Madurai, Trichy, Salem & more. Find local, airport & outstation taxi near you."
+      ],
+      "canonical": [
+        "https://rootcabs.com/cities"
+      ],
+      "h1": [
+        "Cities We Serve"
+      ],
+      "contentCharacters": 2396,
+      "internalLinks": 51,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "CollectionPage",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/business",
+    "artifactSha256": "4789b3cbc228d232b35e1a9c2b921b3e2708689a7fcfad81dc832e7a2633c254",
+    "verifiedAt": "2026-10-23T07:10:09.505Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "BusinessPage",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Business Solutions | Root Cabs"
+      ],
+      "description": [
+        "Explore business and corporate travel options with Root Cabs across Tamil Nadu. Get in touch to learn more about partnering with us."
+      ],
+      "canonical": [
+        "https://rootcabs.com/business"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 1,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage"
+      ]
+    },
+    "after": {
+      "title": [
+        "Business Solutions | Root Cabs"
+      ],
+      "description": [
+        "Explore business and corporate travel options with Root Cabs across Tamil Nadu. Get in touch to learn more about partnering with us."
+      ],
+      "canonical": [
+        "https://rootcabs.com/business"
+      ],
+      "h1": [
+        "Business Solutions"
+      ],
+      "contentCharacters": 2371,
+      "internalLinks": 42,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Business Solutions | Root Cabs"
+      ],
+      "description": [
+        "Explore business and corporate travel options with Root Cabs across Tamil Nadu. Get in touch to learn more about partnering with us."
+      ],
+      "canonical": [
+        "https://rootcabs.com/business"
+      ],
+      "h1": [
+        "Business Solutions"
+      ],
+      "contentCharacters": 2327,
+      "internalLinks": 42,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/book-ride",
+    "artifactSha256": "15708b8d8b54db0d163dedaccfee0451231dc76b0e87d54270cadfac542220e1",
+    "verifiedAt": "2026-10-23T07:10:11.322Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "BookRide",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "present",
+      "description": "incorrect",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Book a Ride | Local, Airport & Outstation Taxi - Root Cabs"
+      ],
+      "description": [
+        "Book your ride online with Root Cabs in seconds local, airport & outstation taxi across Tamil Nadu. Fixed fares, verified drivers, instant confirmation."
+      ],
+      "canonical": [
+        "https://rootcabs.com/book-ride"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 1,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage"
+      ]
+    },
+    "after": {
+      "title": [
+        "Book a Ride | Local, Airport & Outstation Taxi - Root Cabs"
+      ],
+      "description": [
+        "Book your ride online with Root Cabs in seconds for local, airport and outstation taxi services across Tamil Nadu. Fixed fares, verified drivers and instant confirmation."
+      ],
+      "canonical": [
+        "https://rootcabs.com/book-ride"
+      ],
+      "h1": [
+        "Book Your Ride"
+      ],
+      "contentCharacters": 2853,
+      "internalLinks": 42,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Book a Ride | Local, Airport & Outstation Taxi - Root Cabs"
+      ],
+      "description": [
+        "Book your ride online with Root Cabs in seconds for local, airport and outstation taxi services across Tamil Nadu. Fixed fares, verified drivers and instant confirmation."
+      ],
+      "canonical": [
+        "https://rootcabs.com/book-ride"
+      ],
+      "h1": [
+        "Book Your Ride"
+      ],
+      "contentCharacters": 2780,
+      "internalLinks": 42,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/blog/what-our-driver-partners-say-about-root-cabs",
+    "artifactSha256": "0f800530120a8287b0162db4c394c6a67e111ffd83475e73ca88cdb9b627da83",
+    "verifiedAt": "2026-10-23T07:10:12.897Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "PASS",
+    "component": "BlogRoutes",
+    "cause": "Existing prerendered content; compare metadata with runtime component",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Driver Jobs Flexible Hours, Real Reviews - Root Cabs"
+      ],
+      "description": [
+        "Real Root Cabs driver partners from Chennai, Coimbatore, Vellore and Trichy share their experience with earnings, flexible hours and driver support."
+      ],
+      "canonical": [
+        "https://rootcabs.com/blog/what-our-driver-partners-say-about-root-cabs"
+      ],
+      "h1": [
+        "What Our Driver Partners Say About Root Cabs"
+      ],
+      "contentCharacters": 4740,
+      "internalLinks": 7,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    "after": {
+      "title": [
+        "Driver Jobs Flexible Hours, Real Reviews - Root Cabs"
+      ],
+      "description": [
+        "Real Root Cabs driver partners from Chennai, Coimbatore, Vellore and Trichy share their experience with earnings, flexible hours and driver support."
+      ],
+      "canonical": [
+        "https://rootcabs.com/blog/what-our-driver-partners-say-about-root-cabs"
+      ],
+      "h1": [
+        "What Our Driver Partners Say About Root Cabs"
+      ],
+      "contentCharacters": 4811,
+      "internalLinks": 7,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Driver Jobs Flexible Hours, Real Reviews - Root Cabs"
+      ],
+      "description": [
+        "Real Root Cabs driver partners from Chennai, Coimbatore, Vellore and Trichy share their experience with earnings, flexible hours and driver support."
+      ],
+      "canonical": [
+        "https://rootcabs.com/blog/what-our-driver-partners-say-about-root-cabs"
+      ],
+      "h1": [
+        "What Our Driver Partners Say About Root Cabs"
+      ],
+      "contentCharacters": 4811,
+      "internalLinks": 7,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    "failures": []
+  },
+  {
+    "url": "https://rootcabs.com/blog/root-cabs-success-stories",
+    "artifactSha256": "03be5dcd1302b2efd193aa8c429b2abd135a2cbddbb55e0d1156867b65b09960",
+    "verifiedAt": "2026-10-23T07:10:14.465Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "PASS",
+    "component": "BlogRoutes",
+    "cause": "Existing prerendered content; compare metadata with runtime component",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "3 Real Root Cabs Driver Success Stories"
+      ],
+      "description": [
+        "Real Root Cabs driver stories from Tamil Nadu starting over after job loss, growing a side income into full-time work, and finding more time for family."
+      ],
+      "canonical": [
+        "https://rootcabs.com/blog/root-cabs-success-stories"
+      ],
+      "h1": [
+        "Root Cabs Success Stories: Inspiring Journeys of Our Driver Partners"
+      ],
+      "contentCharacters": 6759,
+      "internalLinks": 12,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    "after": {
+      "title": [
+        "3 Real Root Cabs Driver Success Stories"
+      ],
+      "description": [
+        "Real Root Cabs driver stories from Tamil Nadu starting over after job loss, growing a side income into full-time work, and finding more time for family."
+      ],
+      "canonical": [
+        "https://rootcabs.com/blog/root-cabs-success-stories"
+      ],
+      "h1": [
+        "Root Cabs Success Stories: Inspiring Journeys of Our Driver Partners"
+      ],
+      "contentCharacters": 6815,
+      "internalLinks": 12,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "3 Real Root Cabs Driver Success Stories"
+      ],
+      "description": [
+        "Real Root Cabs driver stories from Tamil Nadu starting over after job loss, growing a side income into full-time work, and finding more time for family."
+      ],
+      "canonical": [
+        "https://rootcabs.com/blog/root-cabs-success-stories"
+      ],
+      "h1": [
+        "Root Cabs Success Stories: Inspiring Journeys of Our Driver Partners"
+      ],
+      "contentCharacters": 6815,
+      "internalLinks": 12,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    "failures": []
+  },
+  {
+    "url": "https://rootcabs.com/blog/how-root-cabs-helps-drivers-earn-up",
+    "artifactSha256": "07a5a99051afcdbd3a5ec8866805e948827c0d4354c288cb5fef38d4682fd3e6",
+    "verifiedAt": "2026-10-23T07:10:16.100Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "PASS",
+    "component": "BlogRoutes",
+    "cause": "Existing prerendered content; compare metadata with runtime component",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Root Cabs Driver Earnings - Up to Rs. 40,000/Month"
+      ],
+      "description": [
+        "Cab, auto, bike and acting driver partners earn up to Rs. 40,000 monthly with Root Cabs - flexible hours and daily fares paid directly, no weekly wait."
+      ],
+      "canonical": [
+        "https://rootcabs.com/blog/how-root-cabs-helps-drivers-earn-up"
+      ],
+      "h1": [
+        "How Root Cabs Helps Drivers Earn Up to Rs. 40,000 Extra Every Month"
+      ],
+      "contentCharacters": 7972,
+      "internalLinks": 11,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    "after": {
+      "title": [
+        "Root Cabs Driver Earnings - Up to Rs. 40,000/Month"
+      ],
+      "description": [
+        "Cab, auto, bike and acting driver partners earn up to Rs. 40,000 monthly with Root Cabs - flexible hours and daily fares paid directly, no weekly wait."
+      ],
+      "canonical": [
+        "https://rootcabs.com/blog/how-root-cabs-helps-drivers-earn-up"
+      ],
+      "h1": [
+        "How Root Cabs Helps Drivers Earn Up to Rs. 40,000 Extra Every Month"
+      ],
+      "contentCharacters": 8041,
+      "internalLinks": 11,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Root Cabs Driver Earnings - Up to Rs. 40,000/Month"
+      ],
+      "description": [
+        "Cab, auto, bike and acting driver partners earn up to Rs. 40,000 monthly with Root Cabs - flexible hours and daily fares paid directly, no weekly wait."
+      ],
+      "canonical": [
+        "https://rootcabs.com/blog/how-root-cabs-helps-drivers-earn-up"
+      ],
+      "h1": [
+        "How Root Cabs Helps Drivers Earn Up to Rs. 40,000 Extra Every Month"
+      ],
+      "contentCharacters": 8041,
+      "internalLinks": 11,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    "failures": []
+  },
+  {
+    "url": "https://rootcabs.com/blog/launch-of-root-cabs",
+    "artifactSha256": "e6002c8a91873d14ee3cc9b5bf7449cf7ad43dc8744b348569bba79513654c5d",
+    "verifiedAt": "2026-10-23T07:10:18.154Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "PASS",
+    "component": "BlogRoutes",
+    "cause": "Existing prerendered content; compare metadata with runtime component",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Root Cabs Launch Story - From Vellore, June 2025"
+      ],
+      "description": [
+        "Root Cabs launched in Vellore on June 5, 2025, and has since grown to 10+ Tamil Nadu cities. Read the story behind its launch and early services."
+      ],
+      "canonical": [
+        "https://rootcabs.com/blog/launch-of-root-cabs"
+      ],
+      "h1": [
+        "The Launch Of Root Cabs: A New Chapter In Tamil Nadu's Taxi Industry"
+      ],
+      "contentCharacters": 7258,
+      "internalLinks": 15,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    "after": {
+      "title": [
+        "Root Cabs Launch Story - From Vellore, June 2025"
+      ],
+      "description": [
+        "Root Cabs launched in Vellore on June 5, 2025, and has since grown to 10+ Tamil Nadu cities. Read the story behind its launch and early services."
+      ],
+      "canonical": [
+        "https://rootcabs.com/blog/launch-of-root-cabs"
+      ],
+      "h1": [
+        "The Launch Of Root Cabs: A New Chapter In Tamil Nadu's Taxi Industry"
+      ],
+      "contentCharacters": 7310,
+      "internalLinks": 15,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Root Cabs Launch Story - From Vellore, June 2025"
+      ],
+      "description": [
+        "Root Cabs launched in Vellore on June 5, 2025, and has since grown to 10+ Tamil Nadu cities. Read the story behind its launch and early services."
+      ],
+      "canonical": [
+        "https://rootcabs.com/blog/launch-of-root-cabs"
+      ],
+      "h1": [
+        "The Launch Of Root Cabs: A New Chapter In Tamil Nadu's Taxi Industry"
+      ],
+      "contentCharacters": 7310,
+      "internalLinks": 15,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    "failures": []
+  },
+  {
+    "url": "https://rootcabs.com/blog/growth-of-root-cabs-in-chennai",
+    "artifactSha256": "c3b5ba3963f7eef3517d9c9f86c26f9697ff6f3e38f2416a8342a11f5e0cfe88",
+    "verifiedAt": "2026-10-23T07:10:20.297Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "PASS",
+    "component": "BlogRoutes",
+    "cause": "Existing prerendered content; compare metadata with runtime component",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Getting Around Chennai - A Neighbourhood Travel Guide"
+      ],
+      "description": [
+        "A practical guide to getting around Chennai - from Tambaram and OMR to Mylapore and Anna Nagar - with local, airport and outstation travel options."
+      ],
+      "canonical": [
+        "https://rootcabs.com/blog/growth-of-root-cabs-in-chennai"
+      ],
+      "h1": [
+        "The Growth of Root Cabs in Chennai: Building Better Travel Every Day"
+      ],
+      "contentCharacters": 7426,
+      "internalLinks": 14,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    "after": {
+      "title": [
+        "Getting Around Chennai - A Neighbourhood Travel Guide"
+      ],
+      "description": [
+        "A practical guide to getting around Chennai - from Tambaram and OMR to Mylapore and Anna Nagar - with local, airport and outstation travel options."
+      ],
+      "canonical": [
+        "https://rootcabs.com/blog/growth-of-root-cabs-in-chennai"
+      ],
+      "h1": [
+        "The Growth of Root Cabs in Chennai: Building Better Travel Every Day"
+      ],
+      "contentCharacters": 7490,
+      "internalLinks": 14,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Getting Around Chennai - A Neighbourhood Travel Guide"
+      ],
+      "description": [
+        "A practical guide to getting around Chennai - from Tambaram and OMR to Mylapore and Anna Nagar - with local, airport and outstation travel options."
+      ],
+      "canonical": [
+        "https://rootcabs.com/blog/growth-of-root-cabs-in-chennai"
+      ],
+      "h1": [
+        "The Growth of Root Cabs in Chennai: Building Better Travel Every Day"
+      ],
+      "contentCharacters": 7490,
+      "internalLinks": 14,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    "failures": []
+  },
+  {
+    "url": "https://rootcabs.com/blog/future-of-root-cabs",
+    "artifactSha256": "15248583b3b4740b3e801ae53d22d66aac0f65d62c7d9d0580e3263fe605b2b9",
+    "verifiedAt": "2026-10-23T07:10:21.996Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "PASS",
+    "component": "BlogRoutes",
+    "cause": "Existing prerendered content; compare metadata with runtime component",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "The Future of Root Cabs - Our Vision | Root Cabs"
+      ],
+      "description": [
+        "Root Cabs has grown to 2,000+ driver partners and 50,000+ rides across Tamil Nadu. See our plans for smarter matching, safer trips and local expansion."
+      ],
+      "canonical": [
+        "https://rootcabs.com/blog/future-of-root-cabs"
+      ],
+      "h1": [
+        "The Future of Root Cabs: Our Vision for Smarter and Safer Travel"
+      ],
+      "contentCharacters": 6782,
+      "internalLinks": 15,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    "after": {
+      "title": [
+        "The Future of Root Cabs - Our Vision | Root Cabs"
+      ],
+      "description": [
+        "Root Cabs has grown to 2,000+ driver partners and 50,000+ rides across Tamil Nadu. See our plans for smarter matching, safer trips and local expansion."
+      ],
+      "canonical": [
+        "https://rootcabs.com/blog/future-of-root-cabs"
+      ],
+      "h1": [
+        "The Future of Root Cabs: Our Vision for Smarter and Safer Travel"
+      ],
+      "contentCharacters": 6839,
+      "internalLinks": 15,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "The Future of Root Cabs - Our Vision | Root Cabs"
+      ],
+      "description": [
+        "Root Cabs has grown to 2,000+ driver partners and 50,000+ rides across Tamil Nadu. See our plans for smarter matching, safer trips and local expansion."
+      ],
+      "canonical": [
+        "https://rootcabs.com/blog/future-of-root-cabs"
+      ],
+      "h1": [
+        "The Future of Root Cabs: Our Vision for Smarter and Safer Travel"
+      ],
+      "contentCharacters": 6839,
+      "internalLinks": 15,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "Article",
+        "BreadcrumbList"
+      ]
+    },
+    "failures": []
+  },
+  {
+    "url": "https://rootcabs.com/blog",
+    "artifactSha256": "f4659cdc60438c1878364523a3b36e3800bcd43b55c6ed1c178e7a2b6e3f4778",
+    "verifiedAt": "2026-10-23T07:10:23.569Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "PASS",
+    "component": "BlogLandingPage",
+    "cause": "Existing prerendered content; compare metadata with runtime component",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "Blog & Travel Guides | Root Cabs"
+      ],
+      "description": [
+        "Travel guides, taxi tips and route guides for exploring Tamil Nadu with Root Cabs - city travel, outstation trips and destination tips in one place."
+      ],
+      "canonical": [
+        "https://rootcabs.com/blog"
+      ],
+      "h1": [
+        "Blog & Travel Guides"
+      ],
+      "contentCharacters": 2194,
+      "internalLinks": 14,
+      "videos": [],
+      "schemaCount": 1,
+      "validSchemas": true,
+      "schemaTypes": [
+        "CollectionPage"
+      ]
+    },
+    "after": {
+      "title": [
+        "Blog & Travel Guides | Root Cabs"
+      ],
+      "description": [
+        "Travel guides, taxi tips and route guides for exploring Tamil Nadu with Root Cabs - city travel, outstation trips and destination tips in one place."
+      ],
+      "canonical": [
+        "https://rootcabs.com/blog"
+      ],
+      "h1": [
+        "Blog & Travel Guides"
+      ],
+      "contentCharacters": 2252,
+      "internalLinks": 14,
+      "videos": [],
+      "schemaCount": 1,
+      "validSchemas": true,
+      "schemaTypes": [
+        "CollectionPage"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Blog & Travel Guides | Root Cabs"
+      ],
+      "description": [
+        "Travel guides, taxi tips and route guides for exploring Tamil Nadu with Root Cabs - city travel, outstation trips and destination tips in one place."
+      ],
+      "canonical": [
+        "https://rootcabs.com/blog"
+      ],
+      "h1": [
+        "Blog & Travel Guides"
+      ],
+      "contentCharacters": 2252,
+      "internalLinks": 14,
+      "videos": [],
+      "schemaCount": 1,
+      "validSchemas": true,
+      "schemaTypes": [
+        "CollectionPage"
+      ]
+    },
+    "failures": []
+  },
+  {
+    "url": "https://rootcabs.com/about",
+    "artifactSha256": "df57935b8927409f79b78be1c9cf1f3dc6df60cf0e61eb8dd8ec52b32bb4abbd",
+    "verifiedAt": "2026-10-23T07:10:25.239Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "AboutPage",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "not applicable"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "not applicable"
+    },
+    "before": {
+      "title": [
+        "About Root Cabs - Our Story and Values"
+      ],
+      "description": [
+        "Root Cabs, Tamil Nadu's fastest-growing taxi aggregator. Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto across 10+ cities."
+      ],
+      "canonical": [
+        "https://rootcabs.com/about"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 1,
+      "validSchemas": true,
+      "schemaTypes": [
+        "AboutPage"
+      ]
+    },
+    "after": {
+      "title": [
+        "About Root Cabs - Our Story and Values"
+      ],
+      "description": [
+        "Root Cabs, Tamil Nadu's fastest-growing taxi aggregator. Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto across 10+ cities."
+      ],
+      "canonical": [
+        "https://rootcabs.com/about"
+      ],
+      "h1": [
+        "About Root Cabs"
+      ],
+      "contentCharacters": 3987,
+      "internalLinks": 42,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "AboutPage",
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "About Root Cabs - Our Story and Values"
+      ],
+      "description": [
+        "Root Cabs, Tamil Nadu's fastest-growing taxi aggregator. Local, Airport & Outstation Taxi, Acting Driver, Parcel Delivery & Auto across 10+ cities."
+      ],
+      "canonical": [
+        "https://rootcabs.com/about"
+      ],
+      "h1": [
+        "About Root Cabs"
+      ],
+      "contentCharacters": 3913,
+      "internalLinks": 42,
+      "videos": [],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        "AboutPage",
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  },
+  {
+    "url": "https://rootcabs.com/",
+    "artifactSha256": "7a294816161157563d5f9e6fe36fa36ef81676ffbe145924ad1b65b631898981",
+    "verifiedAt": "2026-10-23T07:10:27.505Z",
+    "evidence": "local HTTP with JavaScript disabled and automated browser reload",
+    "result": "FAIL",
+    "component": "Index",
+    "cause": "Metadata-only HTML shell; body previously required React execution",
+    "beforeStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "missing",
+      "content": "missing",
+      "internalLinks": "missing",
+      "heroVideo": "missing"
+    },
+    "afterStatus": {
+      "title": "present",
+      "description": "present",
+      "canonical": "present",
+      "jsonLd": "present",
+      "h1": "present",
+      "content": "present",
+      "internalLinks": "present",
+      "heroVideo": "present"
+    },
+    "before": {
+      "title": [
+        "Taxi, Drop Taxi & Outstation Cab Service in Tamil Nadu - Root Cabs"
+      ],
+      "description": [
+        "Book Root Cabs for local, airport and outstation taxi services across Tamil Nadu. Enjoy fixed fares, verified drivers and 24/7 booking. Call 8608606474."
+      ],
+      "canonical": [
+        "https://rootcabs.com/"
+      ],
+      "h1": [],
+      "contentCharacters": 0,
+      "internalLinks": 0,
+      "videos": [],
+      "schemaCount": 1,
+      "validSchemas": true,
+      "schemaTypes": [
+        "WebPage"
+      ]
+    },
+    "after": {
+      "title": [
+        "Taxi, Drop Taxi & Outstation Cab Service in Tamil Nadu - Root Cabs"
+      ],
+      "description": [
+        "Book Root Cabs for local, airport and outstation taxi services across Tamil Nadu. Enjoy fixed fares, verified drivers and 24/7 booking. Call 8608606474."
+      ],
+      "canonical": [
+        "https://rootcabs.com/"
+      ],
+      "h1": [
+        "Tamil Nadu’s Trusted Cab Service for Your Travel"
+      ],
+      "contentCharacters": 5290,
+      "internalLinks": 60,
+      "videos": [
+        "/assets/home-banner-animation-2.webm"
+      ],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        [
+          "WebPage",
+          "FAQPage"
+        ],
+        "TaxiService"
+      ]
+    },
+    "reloaded": {
+      "title": [
+        "Taxi, Drop Taxi & Outstation Cab Service in Tamil Nadu - Root Cabs"
+      ],
+      "description": [
+        "Book Root Cabs for local, airport and outstation taxi services across Tamil Nadu. Enjoy fixed fares, verified drivers and 24/7 booking. Call 8608606474."
+      ],
+      "canonical": [
+        "https://rootcabs.com/"
+      ],
+      "h1": [
+        "Tamil Nadu’s Trusted Cab Service for Your Travel"
+      ],
+      "contentCharacters": 5143,
+      "internalLinks": 60,
+      "videos": [
+        "/assets/home-banner-animation-2.webm"
+      ],
+      "schemaCount": 2,
+      "validSchemas": true,
+      "schemaTypes": [
+        [
+          "WebPage",
+          "FAQPage"
+        ],
+        "TaxiService"
+      ]
+    },
+    "failures": [
+      "contentCharacters changed after React mount"
+    ]
+  }
+]
