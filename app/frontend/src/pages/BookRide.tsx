@@ -1894,9 +1894,9 @@ export default function BookRide() {
   const confirmationCreatedAt = formatBookingCreatedAt(bookingResult?.created_at);
 
   return (
-    <div>
+    <div className="w-full min-w-0 max-w-full overflow-x-hidden">
       <Dialog open={submitted} onOpenChange={setSubmitted}>
-        <DialogContent className="max-h-[90vh] max-w-lg overflow-y-auto">
+        <DialogContent className="max-h-[90vh] w-[calc(100vw-1.5rem)] max-w-lg overflow-x-hidden overflow-y-auto p-4 sm:p-6">
           <DialogHeader className="items-center text-center">
             <div className="mb-2 flex h-16 w-16 items-center justify-center rounded-full bg-amber-100">
               <CheckCircle className="h-8 w-8 text-amber-600" />
@@ -1956,7 +1956,7 @@ export default function BookRide() {
           </h1>
           <p className="mb-3 font-heading text-xl font-semibold text-white md:text-2xl">Your Ride, Our Responsibility</p>
           <p className="max-w-3xl text-gray-300">
-            Plan your journey with ease and book your ride online for a safe,<br />comfortable and reliable travel experience.
+            Plan your journey with ease and book your ride online for a safe,<br className="hidden sm:block" /> comfortable and reliable travel experience.
           </p>
           <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-300">
             {bookingStats.map((stat) => (
@@ -1969,10 +1969,10 @@ export default function BookRide() {
         </div>
       </section>
 
-      <div className="max-w-screen-xl mx-auto px-4 py-10">
-        <div className="grid lg:grid-cols-3 gap-8">
+      <div className="mx-auto w-full min-w-0 max-w-screen-xl px-3 py-8 sm:px-4 sm:py-10">
+        <div className="grid min-w-0 gap-8 lg:grid-cols-3">
           {/* Booking Form */}
-          <div className="lg:col-span-2">
+          <div className="min-w-0 lg:col-span-2">
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Step 1: customer verification always comes first. */}
               <div className="rounded-xl border border-border bg-white p-4">
@@ -1991,12 +1991,12 @@ export default function BookRide() {
                   </div>
                   <div>
                     <Label className="mb-1.5 block text-sm font-medium">Phone Number</Label>
-                    <div className={otpSent && !phoneVerified ? "grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto]" : "flex gap-2"}>
+                    <div className={otpSent && !phoneVerified ? "grid min-w-0 gap-2 sm:grid-cols-[minmax(0,1fr)_auto]" : "flex min-w-0 flex-col gap-2 sm:flex-row"}>
                       <div className={otpSent && !phoneVerified ? "col-span-full flex min-w-0 items-center rounded-md border border-input bg-background px-3" : "flex min-w-0 flex-1 items-center rounded-md border border-input bg-background px-3"}>
                         <span className="shrink-0 text-sm font-medium text-muted-foreground">+91</span>
                         <Input value={phoneNumber} onChange={(e) => handlePhoneNumberChange(e.target.value)} placeholder="Enter 10-digit number" type="tel" inputMode="numeric" className="border-0 px-2 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0" />
                       </div>
-                      {!otpSent ? <Button type="button" onClick={handleSendOtp} disabled={isSendingOtp || phoneNumber.length !== 10} className="shrink-0 bg-primary hover:bg-primary/90">{isSendingOtp ? "Sending..." : "Send OTP"}</Button> : !phoneVerified ? <><InputOTP maxLength={4} value={otp} onChange={setOtp} inputMode="numeric" containerClassName="min-w-0 justify-start"><InputOTPGroup><InputOTPSlot index={0} /><InputOTPSlot index={1} /><InputOTPSlot index={2} /><InputOTPSlot index={3} /></InputOTPGroup></InputOTP><Button type="button" onClick={handleVerifyOtp} disabled={isVerifyingOtp || !otp} className="shrink-0 bg-primary hover:bg-primary/90">{isVerifyingOtp ? "Verifying..." : "Verify OTP"}</Button></> : <span className="flex items-center px-3 text-sm font-semibold text-green-700">Verified</span>}
+                      {!otpSent ? <Button type="button" onClick={handleSendOtp} disabled={isSendingOtp || phoneNumber.length !== 10} className="h-11 w-full shrink-0 bg-primary hover:bg-primary/90 sm:w-auto">{isSendingOtp ? "Sending..." : "Send OTP"}</Button> : !phoneVerified ? <><InputOTP maxLength={4} value={otp} onChange={setOtp} inputMode="numeric" containerClassName="min-w-0 justify-start"><InputOTPGroup><InputOTPSlot index={0} /><InputOTPSlot index={1} /><InputOTPSlot index={2} /><InputOTPSlot index={3} /></InputOTPGroup></InputOTP><Button type="button" onClick={handleVerifyOtp} disabled={isVerifyingOtp || !otp} className="h-11 w-full shrink-0 bg-primary hover:bg-primary/90 sm:w-auto">{isVerifyingOtp ? "Verifying..." : "Verify OTP"}</Button></> : <span className="flex min-h-11 items-center px-3 text-sm font-semibold text-green-700">Verified</span>}
                     </div>
                     {phoneNumber.length > 10 && <p className="mt-2 text-xs font-medium text-red-700">Phone number must not exceed 10 digits.</p>}
                     {otpStatus && <p className="mt-2 text-xs font-medium text-green-700">{otpStatus}</p>}
@@ -2019,7 +2019,7 @@ export default function BookRide() {
               {/* Trip Type */}
               <div className={tripType === "acting-driver" ? "order-[-7]" : undefined}>
                 <Label className="text-sm font-medium mb-3 block">{tripType === "acting-driver" ? "Service Type" : "Trip Type"}</Label>
-                <RadioGroup value={tripType} onValueChange={setTripType} className="flex gap-4">
+                <RadioGroup value={tripType} onValueChange={setTripType} className="grid grid-cols-2 gap-x-3 gap-y-4 sm:flex sm:flex-wrap sm:gap-4">
                   <div className="flex items-center gap-2">
                     <RadioGroupItem value="one-way" id="one-way" className="cursor-pointer" />
                     <Label htmlFor="one-way" className="cursor-pointer">One Way</Label>
@@ -2564,13 +2564,13 @@ export default function BookRide() {
                           <Label className="text-sm font-medium block">Sender Phone Number</Label>
                         </div>
 
-                        <div className={otpSent && !phoneVerified ? "grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto]" : "flex gap-2"}>
+                        <div className={otpSent && !phoneVerified ? "grid min-w-0 gap-2 sm:grid-cols-[minmax(0,1fr)_auto]" : "flex min-w-0 flex-col gap-2 sm:flex-row"}>
                           <div className={otpSent && !phoneVerified ? "col-span-full flex min-w-0 items-center rounded-md border border-input bg-background px-3" : "flex min-w-0 flex-1 items-center rounded-md border border-input bg-background px-3"}>
                             <span className="shrink-0 text-sm font-medium text-muted-foreground">+91</span>
                             <Input value={phoneNumber} onChange={(e) => handlePhoneNumberChange(e.target.value)} placeholder="Enter 10-digit number" type="tel" inputMode="numeric" className="border-0 px-2 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0" />
                           </div>
                           {!otpSent ? (
-                            <Button type="button" onClick={handleSendOtp} disabled={isSendingOtp || phoneNumber.length !== 10} className="shrink-0 bg-primary hover:bg-primary/90">
+                            <Button type="button" onClick={handleSendOtp} disabled={isSendingOtp || phoneNumber.length !== 10} className="h-11 w-full shrink-0 bg-primary hover:bg-primary/90 sm:w-auto">
                               {isSendingOtp ? "Sending..." : "Send OTP"}
                             </Button>
                           ) : !phoneVerified ? (
@@ -2578,7 +2578,7 @@ export default function BookRide() {
                               <InputOTP maxLength={4} value={otp} onChange={setOtp} inputMode="numeric" containerClassName="min-w-0 justify-start">
                                 <InputOTPGroup><InputOTPSlot index={0} /><InputOTPSlot index={1} /><InputOTPSlot index={2} /><InputOTPSlot index={3} /></InputOTPGroup>
                               </InputOTP>
-                              <Button type="button" onClick={handleVerifyOtp} disabled={isVerifyingOtp || !otp} className="shrink-0 bg-primary hover:bg-primary/90">
+                              <Button type="button" onClick={handleVerifyOtp} disabled={isVerifyingOtp || !otp} className="h-11 w-full shrink-0 bg-primary hover:bg-primary/90 sm:w-auto">
                                 {isVerifyingOtp ? "Verifying..." : "Verify OTP"}
                               </Button>
                             </>
@@ -2800,7 +2800,7 @@ export default function BookRide() {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full bg-[#FFD700] hover:bg-[#E6C200] text-[#2E3A8C] font-bold text-base cursor-pointer shadow-sm"
+                className="min-h-12 w-full bg-[#FFD700] text-base font-bold text-[#2E3A8C] shadow-sm hover:bg-[#E6C200] disabled:cursor-not-allowed"
                 disabled={isSubmittingBooking || (tripType !== "parcel" && !isConfirmBookingReady)}
               >
                 {isSubmittingBooking ? "Confirming..." : "Confirm Booking"} <ArrowRight className="w-4 h-4 ml-2" />
@@ -2808,7 +2808,7 @@ export default function BookRide() {
               {bookingError && <p className="-mt-3 text-sm font-medium text-red-700">{bookingError}</p>}
 
               <Card className="border-border">
-                <CardContent className="p-6">
+                <CardContent className="p-4 sm:p-6">
                   <h3 className="font-heading font-semibold mb-2">Book Your Ride With Root Cabs</h3>
                   <p className="text-sm leading-6 text-muted-foreground mb-4">
                     From quick city rides to airport travel, Root Cabs makes it easy to book your ride with clear fares and dependable service.
@@ -2841,7 +2841,7 @@ export default function BookRide() {
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-6">
+          <div className="min-w-0 space-y-6">
               <div className="relative h-52 overflow-hidden rounded-xl border border-[#d6e2ff] bg-[#f3f7ff] shadow-sm md:h-56">
                 <img
                   src="/assets/bookride.avif"

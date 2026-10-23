@@ -1303,7 +1303,7 @@ export function CitiesHub() {
   }, []);
 
   return (
-    <div>
+    <div className="w-full min-w-0 max-w-full overflow-x-hidden">
       <section className="relative min-h-[330px] overflow-hidden bg-[#07143F] bg-cover bg-bottom bg-no-repeat py-7 text-white md:min-h-[400px] md:bg-center md:py-9" style={{
         backgroundImage: "url('/assets/rootcabs-banner-home.png')",
       }}>
@@ -2703,7 +2703,7 @@ export function KumbakonamPage() {
   }, []);
 
   return (
-    <div>
+    <div className="w-full min-w-0 max-w-full overflow-x-hidden">
       <section
         className="relative min-h-[420px] overflow-hidden bg-[#22236F] text-white md:min-h-[500px]"
       >
@@ -3206,7 +3206,7 @@ export function CityPage({
   const visibleTrichyServices = showAllTrichyServices ? trichyServices : trichyServices.slice(0, 6);
 
   return (
-    <div>
+    <div className="w-full min-w-0 max-w-full overflow-x-hidden">
       {/* Hero */}
       <section
         className={`relative overflow-hidden bg-[#07143F] bg-cover bg-left bg-no-repeat text-white md:bg-center ${isSalem ? "min-h-[360px] bg-[#22236F] md:min-h-[430px]" : "min-h-[420px] md:min-h-[500px]"}`}
@@ -3226,7 +3226,7 @@ export function CityPage({
           />
           <div className={isTiruppur ? "my-auto max-w-[660px] text-left" : usesExpandedCityHero ? `text-left ${isSalem ? "mt-6 max-w-4xl md:mt-8" : isChennai ? "mt-6 md:mt-8 lg:w-[48%]" : isVellore ? "mt-6 md:mt-8 lg:w-[40%]" : isTrichy ? "mt-6 md:mt-8 lg:w-full" : "lg:w-[40%]"}` : undefined}>
           <h1
-            className={`font-heading text-3xl font-bold leading-tight md:text-4xl ${isTiruppur ? "mb-5" : "mb-4"} ${isVellore || isCoimbatore || isSalem ? "lg:w-[760px]" : isTrichy ? "md:whitespace-nowrap" : ""}`}
+            className={`font-heading text-3xl font-bold leading-tight md:text-4xl ${isTiruppur ? "mb-5" : "mb-4"} ${isVellore || isCoimbatore || isSalem ? "lg:w-[760px]" : ""}`}
           >
             {isSalem ? (
               <>

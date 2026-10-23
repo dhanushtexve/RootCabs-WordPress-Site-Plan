@@ -155,7 +155,7 @@ function Navbar() {
                 )}
                 {item.children && (
                   <div className="pl-6 mt-1 space-y-1">
-                    {item.children.slice(0, 6).map((child) => (
+                    {item.children.map((child) => (
                       <Link
                         key={child.path}
                         to={child.path}

@@ -113,3 +113,84 @@ test('hero fallback remains visible with video blocked; navigation restores page
   expect(new Set(normalized).size).toBe(normalized.length);
   await expect(page.locator('script[data-build-schema]')).toHaveCount(0);
 });
+
+test('book ride remains contained and usable across mobile viewports', async ({ page }) => {
+  await mockBooking(page);
+
+  for (const viewport of [
+    { width: 320, height: 568 },
+    { width: 360, height: 740 },
+    { width: 375, height: 667 },
+    { width: 390, height: 844 },
+    { width: 412, height: 915 },
+  ]) {
+    await page.setViewportSize(viewport);
+    await page.goto('/book-ride');
+
+    const pageWidths = await page.evaluate(() => ({
+      viewport: document.documentElement.clientWidth,
+      document: document.documentElement.scrollWidth,
+      body: document.body.scrollWidth,
+    }));
+    expect(pageWidths.document).toBeLessThanOrEqual(pageWidths.viewport);
+    expect(pageWidths.body).toBeLessThanOrEqual(pageWidths.viewport);
+
+    const sendOtp = page.getByRole('button', { name: 'Send OTP', exact: true });
+    await expect(sendOtp).toBeVisible();
+    const buttonBox = await sendOtp.boundingBox();
+    expect(buttonBox).not.toBeNull();
+    expect(buttonBox.width).toBeGreaterThanOrEqual(44);
+    expect(buttonBox.height).toBeGreaterThanOrEqual(44);
+    expect(buttonBox.x).toBeGreaterThanOrEqual(0);
+    expect(buttonBox.x + buttonBox.width).toBeLessThanOrEqual(viewport.width);
+  }
+});
+
+test('drivers page banner, form and actions remain usable across mobile viewports', async ({ page }) => {
+  await mockBooking(page);
+
+  for (const viewport of [
+    { width: 320, height: 568 },
+    { width: 360, height: 740 },
+    { width: 375, height: 667 },
+    { width: 390, height: 844 },
+    { width: 412, height: 915 },
+    { width: 440, height: 956 },
+  ]) {
+    await page.setViewportSize(viewport);
+    await page.goto('/drivers');
+
+    const pageWidths = await page.evaluate(() => ({
+      viewport: document.documentElement.clientWidth,
+      document: document.documentElement.scrollWidth,
+      body: document.body.scrollWidth,
+    }));
+    expect(pageWidths.document).toBeLessThanOrEqual(pageWidths.viewport);
+    expect(pageWidths.body).toBeLessThanOrEqual(pageWidths.viewport);
+
+    await expect(page.getByRole('heading', { name: 'Drive And Earn With Root Cabs' })).toBeVisible();
+    await expect(page.getByRole('img', { name: 'Drive and Earn with Root Cabs' })).toBeVisible();
+
+    const applyButton = page.getByRole('button', { name: 'Apply Now', exact: true });
+    await expect(applyButton).toBeVisible();
+    const buttonBox = await applyButton.boundingBox();
+    expect(buttonBox).not.toBeNull();
+    expect(buttonBox.width).toBeGreaterThanOrEqual(44);
+    expect(buttonBox.height).toBeGreaterThanOrEqual(44);
+    expect(buttonBox.x).toBeGreaterThanOrEqual(0);
+    expect(buttonBox.x + buttonBox.width).toBeLessThanOrEqual(viewport.width);
+  }
+
+  await page.getByPlaceholder('Your full name').fill('Test Driver');
+  await page.getByPlaceholder('Enter 10-digit number').fill('9000000000');
+  await page.getByRole('button', { name: 'Send OTP', exact: true }).click();
+  await expect(page.getByText('OTP sent successfully. Enter the OTP to verify your phone number.')).toBeVisible();
+  await page.getByPlaceholder('Enter OTP').fill('1234');
+  await page.getByRole('button', { name: 'Verify', exact: true }).click();
+  await expect(page.getByText('Phone number verified successfully.')).toBeVisible();
+
+  const selects = page.locator('select');
+  await selects.nth(0).selectOption('Cab');
+  await selects.nth(1).selectOption('Chennai');
+  await expect(page.getByRole('button', { name: 'Apply Now', exact: true })).toBeEnabled();
+});

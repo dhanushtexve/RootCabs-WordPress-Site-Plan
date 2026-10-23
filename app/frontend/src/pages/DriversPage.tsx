@@ -475,17 +475,14 @@ export function DriversPage() {
   }
 
   return (
-    <div>
-      <section className="relative overflow-hidden text-white" style={{
+    <div className="w-full min-w-0 max-w-full overflow-x-hidden">
+      <section className="relative overflow-hidden bg-[#07143F] bg-cover bg-center bg-no-repeat text-white" style={{
         backgroundImage: "url('/assets/banner-root-cabs.png')",
-        backgroundSize: "100% auto",
-        backgroundPosition: "center top",
-        backgroundRepeat: "no-repeat",
       }}>
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 max-w-screen-xl mx-auto px-4 py-8 md:py-10">
-          <div className="grid gap-8 lg:grid-cols-[1.2fr_.8fr] lg:items-stretch lg:gap-4">
-            <div className="max-w-2xl">
+          <div className="grid min-w-0 gap-8 lg:grid-cols-[1.2fr_.8fr] lg:items-stretch lg:gap-4">
+            <div className="min-w-0 max-w-2xl">
               <PageBreadcrumb
                 className="mb-4 text-white/70"
                 items={[
@@ -512,7 +509,7 @@ export function DriversPage() {
             </div>
 
             <div
-              className={`flex h-full w-full flex-col rounded-3xl bg-white p-5 text-slate-900 shadow-2xl md:p-6 lg:max-w-[460px] lg:justify-self-end ${
+              className={`flex h-full min-w-0 w-full flex-col rounded-3xl bg-white p-4 text-slate-900 shadow-2xl sm:p-5 md:p-6 lg:max-w-[460px] lg:justify-self-end ${
                 vehicleType === "Acting Driver" ? "lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto" : ""
               }`}
             >
@@ -554,7 +551,7 @@ export function DriversPage() {
                             type="button"
                             onClick={handleSendOtp}
                             disabled={isSendingOtp || mobileNumber.length !== 10 || phoneVerified}
-                            className="h-auto shrink-0 rounded-none rounded-r-xl bg-[#1E2A6E] px-4 whitespace-nowrap hover:bg-[#2A3A8A]"
+                            className="min-h-11 shrink-0 rounded-none rounded-r-xl bg-[#1E2A6E] px-3 whitespace-nowrap hover:bg-[#2A3A8A] sm:px-4"
                           >
                             {isSendingOtp ? "Sending..." : "Send OTP"}
                           </Button>
@@ -580,7 +577,7 @@ export function DriversPage() {
                             type="button"
                             onClick={handleVerifyOtp}
                             disabled={isVerifyingOtp || phoneVerified}
-                            className="h-auto shrink-0 rounded-none rounded-r-xl bg-[#1E2A6E] px-4 whitespace-nowrap hover:bg-[#2A3A8A]"
+                            className="min-h-11 shrink-0 rounded-none rounded-r-xl bg-[#1E2A6E] px-3 whitespace-nowrap hover:bg-[#2A3A8A] sm:px-4"
                           >
                             {phoneVerified ? "Verified" : isVerifyingOtp ? "Verifying..." : "Verify"}
                           </Button>
@@ -627,7 +624,7 @@ export function DriversPage() {
                             type="button"
                             onClick={handleSendOtp}
                             disabled={isSendingOtp || mobileNumber.length !== 10 || phoneVerified}
-                            className="h-auto shrink-0 rounded-none rounded-r-xl bg-[#1E2A6E] px-4 whitespace-nowrap hover:bg-[#2A3A8A]"
+                            className="min-h-11 shrink-0 rounded-none rounded-r-xl bg-[#1E2A6E] px-3 whitespace-nowrap hover:bg-[#2A3A8A] sm:px-4"
                           >
                             {isSendingOtp ? "Sending..." : "Send OTP"}
                           </Button>
@@ -653,7 +650,7 @@ export function DriversPage() {
                             type="button"
                             onClick={handleVerifyOtp}
                             disabled={isVerifyingOtp || phoneVerified}
-                            className="h-auto shrink-0 rounded-none rounded-r-xl bg-[#1E2A6E] px-4 whitespace-nowrap hover:bg-[#2A3A8A]"
+                            className="min-h-11 shrink-0 rounded-none rounded-r-xl bg-[#1E2A6E] px-3 whitespace-nowrap hover:bg-[#2A3A8A] sm:px-4"
                           >
                             {phoneVerified ? "Verified" : isVerifyingOtp ? "Verifying..." : "Verify"}
                           </Button>
@@ -964,7 +961,7 @@ export function DriversPage() {
                   <Button
                     type="submit"
                     disabled={isApplying}
-                    className="w-full rounded-xl bg-[#FFD43B] py-3 text-base font-bold text-[#1E2A6E] hover:bg-[#f0c61f] disabled:cursor-not-allowed disabled:opacity-80"
+                    className="min-h-12 w-full rounded-xl bg-[#FFD43B] py-3 text-base font-bold text-[#1E2A6E] hover:bg-[#f0c61f] disabled:cursor-not-allowed disabled:opacity-80"
                   >
                     {isApplying ? "Applying..." : "Apply Now"}
                   </Button>
@@ -1046,7 +1043,7 @@ export function DriversPage() {
               ].map((tier) => (
                 <div key={tier.type} className="flex min-h-[160px] flex-col items-center justify-center rounded-2xl bg-[#F4F5FA] px-5 py-5 text-center">
                   <p className="text-sm text-slate-500">{tier.type}</p>
-                  <p className="mt-2.5 whitespace-nowrap font-heading text-xl font-bold leading-tight tracking-tight text-[#1E2A6E] md:text-2xl lg:text-[26px]">
+                  <p className="mt-2.5 break-words font-heading text-xl font-bold leading-tight tracking-tight text-[#1E2A6E] md:text-2xl lg:text-[26px]">
                     {tier.earnings}
                   </p>
                   <p className="mt-1.5 text-sm text-slate-500">{tier.hours}</p>
