@@ -47,12 +47,12 @@
       name="twitter:image"
       content="https://rootcabs.com/assets/root-cabs-logo.webp"
     />
-    <script type="module" crossorigin="" src="/assets/index-Dx7wGh57.js"></script>
+    <script type="module" crossorigin="" src="/assets/index-DFGReeKW.js"></script>
     <link rel="modulepreload" crossorigin="" href="/assets/router-vendor-CCIvqCl9.js" />
     <link rel="modulepreload" crossorigin="" href="/assets/ui-vendor-DljX2q5h.js" />
     <link rel="modulepreload" crossorigin="" href="/assets/utils-vendor-DtalQKDE.js" />
-    <link rel="modulepreload" crossorigin="" href="/assets/ServicesPages-DtaP8KtN.js" />
-    <link rel="stylesheet" crossorigin="" href="/assets/index-CaNQIB3-.css" />
+    <link rel="modulepreload" crossorigin="" href="/assets/ServicesPages-CE1IkAqF.js" />
+    <link rel="stylesheet" crossorigin="" href="/assets/index-C2-g5pGa.css" />
     <link rel="canonical" href="https://rootcabs.com/book-ride" />
 
     <script type="application/ld+json" data-build-schema="/book-ride">
@@ -381,7 +381,7 @@
                         <div>
                           <label
                             class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 mb-1.5 block text-sm font-medium"
-                            >Your Name</label
+                            >Your Name <span class="text-red-600">*</span></label
                           ><input
                             class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
                             placeholder="Enter your name"
@@ -392,7 +392,7 @@
                         <div>
                           <label
                             class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 mb-1.5 block text-sm font-medium"
-                            >Phone Number</label
+                            >Phone Number <span class="text-red-600">*</span></label
                           >
                           <div class="flex min-w-0 flex-col gap-2 sm:flex-row">
                             <div
@@ -638,7 +638,7 @@
                           <div>
                             <label
                               class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium mb-1.5 block"
-                              >Pickup Location</label
+                              >Pickup Location <span class="text-red-600">*</span></label
                             >
                             <div class="relative">
                               <input
@@ -651,7 +651,7 @@
                           <div>
                             <label
                               class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium mb-1.5 block"
-                              >Drop Location</label
+                              >Drop Location <span class="text-red-600">*</span></label
                             >
                             <div class="relative">
                               <input
@@ -666,7 +666,7 @@
                           <div>
                             <label
                               class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium mb-3 block"
-                              >AC Type</label
+                              >AC Type <span class="text-red-600">*</span></label
                             >
                             <div
                               role="radiogroup"
@@ -761,68 +761,20 @@
                           <div>
                             <label
                               class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium mb-1.5 block"
-                              >Zone</label
-                            ><button
-                              type="button"
-                              role="combobox"
-                              aria-expanded="false"
-                              aria-autocomplete="none"
-                              dir="ltr"
-                              data-state="closed"
-                              data-placeholder=""
-                              class="flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&amp;&gt;span]:line-clamp-1 cursor-pointer"
+                              >Zone <span class="text-red-600">*</span></label
                             >
-                              <span style="pointer-events: none">Select service zone</span
-                              ><svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="lucide lucide-chevron-down h-4 w-4 opacity-50"
-                                aria-hidden="true"
-                              >
-                                <path d="m6 9 6 6 6-6"></path>
-                              </svg></button
-                            ><select
-                              aria-hidden="true"
-                              tabindex="-1"
-                              style="
-                                position: absolute;
-                                border: 0px;
-                                width: 1px;
-                                height: 1px;
-                                padding: 0px;
-                                margin: -1px;
-                                overflow: hidden;
-                                clip: rect(0px, 0px, 0px, 0px);
-                                white-space: nowrap;
-                                overflow-wrap: normal;
-                              "
+                            <div
+                              class="flex min-h-10 items-center rounded-md border border-input bg-muted/40 px-3 text-sm"
                             >
-                              <option value="" selected=""></option>
-                              <option value="Chennai">Chennai</option>
-                              <option value="Vellore">Vellore</option>
-                              <option value="Coimbatore">Coimbatore</option>
-                              <option value="Madurai">Madurai</option>
-                              <option value="Trichy">Trichy</option>
-                              <option value="Salem">Salem</option>
-                              <option value="Tiruppur">Tiruppur</option>
-                              <option value="Kanchipuram">Kanchipuram</option>
-                              <option value="Tiruvannamalai">Tiruvannamalai</option>
-                              <option value="Ranipet">Ranipet</option>
-                            </select>
+                              Zone will be detected from pickup location
+                            </div>
                           </div>
                         </div>
                         <div class="grid md:grid-cols-2 gap-4">
                           <div>
                             <label
                               class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium mb-1.5 block"
-                              >Pickup Date</label
+                              >Pickup Date <span class="text-red-600">*</span></label
                             ><input
                               type="date"
                               class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm cursor-pointer"
@@ -832,7 +784,7 @@
                           <div>
                             <label
                               class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium mb-1.5 block"
-                              >Pickup Time</label
+                              >Pickup Time <span class="text-red-600">*</span></label
                             ><input
                               type="time"
                               class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm cursor-pointer"
@@ -843,7 +795,7 @@
                         <div>
                           <label
                             class="peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-sm font-medium mb-3 block"
-                            >Select Rental Category</label
+                            >Select Rental Category <span class="text-red-600">*</span></label
                           >
                           <p class="text-sm text-muted-foreground">
                             Select a service zone to view available categories.
@@ -1323,7 +1275,7 @@
                         aria-expanded="false"
                         data-state="closed"
                         data-orientation="vertical"
-                        id="radix-:rb:"
+                        id="radix-:ra:"
                         class="flex flex-1 items-center justify-between !text-[15px] transition-all md:!text-base data-[state=open]:bg-[#EEF3FF] [&amp;[data-state=open]&gt;svg]:rotate-180 rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline"
                         data-radix-collection-item=""
                       >
@@ -1345,10 +1297,10 @@
                     </h3>
                     <div
                       data-state="closed"
-                      id="radix-:rc:"
+                      id="radix-:rb:"
                       hidden=""
                       role="region"
-                      aria-labelledby="radix-:rb:"
+                      aria-labelledby="radix-:ra:"
                       data-orientation="vertical"
                       class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
                       style="
@@ -1364,7 +1316,7 @@
                         aria-expanded="false"
                         data-state="closed"
                         data-orientation="vertical"
-                        id="radix-:rd:"
+                        id="radix-:rc:"
                         class="flex flex-1 items-center justify-between !text-[15px] transition-all md:!text-base data-[state=open]:bg-[#EEF3FF] [&amp;[data-state=open]&gt;svg]:rotate-180 rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline"
                         data-radix-collection-item=""
                       >
@@ -1386,10 +1338,10 @@
                     </h3>
                     <div
                       data-state="closed"
-                      id="radix-:re:"
+                      id="radix-:rd:"
                       hidden=""
                       role="region"
-                      aria-labelledby="radix-:rd:"
+                      aria-labelledby="radix-:rc:"
                       data-orientation="vertical"
                       class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
                       style="
@@ -1405,7 +1357,7 @@
                         aria-expanded="false"
                         data-state="closed"
                         data-orientation="vertical"
-                        id="radix-:rf:"
+                        id="radix-:re:"
                         class="flex flex-1 items-center justify-between !text-[15px] transition-all md:!text-base data-[state=open]:bg-[#EEF3FF] [&amp;[data-state=open]&gt;svg]:rotate-180 rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline"
                         data-radix-collection-item=""
                       >
@@ -1427,10 +1379,10 @@
                     </h3>
                     <div
                       data-state="closed"
-                      id="radix-:rg:"
+                      id="radix-:rf:"
                       hidden=""
                       role="region"
-                      aria-labelledby="radix-:rf:"
+                      aria-labelledby="radix-:re:"
                       data-orientation="vertical"
                       class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
                       style="
@@ -1446,7 +1398,7 @@
                         aria-expanded="false"
                         data-state="closed"
                         data-orientation="vertical"
-                        id="radix-:rh:"
+                        id="radix-:rg:"
                         class="flex flex-1 items-center justify-between !text-[15px] transition-all md:!text-base data-[state=open]:bg-[#EEF3FF] [&amp;[data-state=open]&gt;svg]:rotate-180 rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline"
                         data-radix-collection-item=""
                       >
@@ -1468,10 +1420,10 @@
                     </h3>
                     <div
                       data-state="closed"
-                      id="radix-:ri:"
+                      id="radix-:rh:"
                       hidden=""
                       role="region"
-                      aria-labelledby="radix-:rh:"
+                      aria-labelledby="radix-:rg:"
                       data-orientation="vertical"
                       class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
                       style="
@@ -1487,7 +1439,7 @@
                         aria-expanded="false"
                         data-state="closed"
                         data-orientation="vertical"
-                        id="radix-:rj:"
+                        id="radix-:ri:"
                         class="flex flex-1 items-center justify-between !text-[15px] transition-all md:!text-base data-[state=open]:bg-[#EEF3FF] [&amp;[data-state=open]&gt;svg]:rotate-180 rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline"
                         data-radix-collection-item=""
                       >
@@ -1509,10 +1461,10 @@
                     </h3>
                     <div
                       data-state="closed"
-                      id="radix-:rk:"
+                      id="radix-:rj:"
                       hidden=""
                       role="region"
-                      aria-labelledby="radix-:rj:"
+                      aria-labelledby="radix-:ri:"
                       data-orientation="vertical"
                       class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
                       style="
@@ -1528,7 +1480,7 @@
                         aria-expanded="false"
                         data-state="closed"
                         data-orientation="vertical"
-                        id="radix-:rl:"
+                        id="radix-:rk:"
                         class="flex flex-1 items-center justify-between !text-[15px] transition-all md:!text-base data-[state=open]:bg-[#EEF3FF] [&amp;[data-state=open]&gt;svg]:rotate-180 rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline"
                         data-radix-collection-item=""
                       >
@@ -1550,10 +1502,10 @@
                     </h3>
                     <div
                       data-state="closed"
-                      id="radix-:rm:"
+                      id="radix-:rl:"
                       hidden=""
                       role="region"
-                      aria-labelledby="radix-:rl:"
+                      aria-labelledby="radix-:rk:"
                       data-orientation="vertical"
                       class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
                       style="
@@ -1569,7 +1521,7 @@
                         aria-expanded="false"
                         data-state="closed"
                         data-orientation="vertical"
-                        id="radix-:rn:"
+                        id="radix-:rm:"
                         class="flex flex-1 items-center justify-between !text-[15px] transition-all md:!text-base data-[state=open]:bg-[#EEF3FF] [&amp;[data-state=open]&gt;svg]:rotate-180 rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline"
                         data-radix-collection-item=""
                       >
@@ -1591,10 +1543,10 @@
                     </h3>
                     <div
                       data-state="closed"
-                      id="radix-:ro:"
+                      id="radix-:rn:"
                       hidden=""
                       role="region"
-                      aria-labelledby="radix-:rn:"
+                      aria-labelledby="radix-:rm:"
                       data-orientation="vertical"
                       class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
                       style="
@@ -1610,7 +1562,7 @@
                         aria-expanded="false"
                         data-state="closed"
                         data-orientation="vertical"
-                        id="radix-:rp:"
+                        id="radix-:ro:"
                         class="flex flex-1 items-center justify-between !text-[15px] transition-all md:!text-base data-[state=open]:bg-[#EEF3FF] [&amp;[data-state=open]&gt;svg]:rotate-180 rounded-lg bg-white px-5 py-5 text-left text-sm font-bold text-[#1E2A6E] shadow-sm hover:no-underline"
                         data-radix-collection-item=""
                       >
@@ -1632,10 +1584,10 @@
                     </h3>
                     <div
                       data-state="closed"
-                      id="radix-:rq:"
+                      id="radix-:rp:"
                       hidden=""
                       role="region"
-                      aria-labelledby="radix-:rp:"
+                      aria-labelledby="radix-:ro:"
                       data-orientation="vertical"
                       class="overflow-hidden text-sm transition-all data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
                       style="
