@@ -357,6 +357,24 @@ function areCoordinatesIdentical(
   return pickupLatitude === dropLatitude && pickupLongitude === dropLongitude;
 }
 
+function selectedLocationsAreIdentical(
+  pickup?: AddressSuggestion | null,
+  drop?: AddressSuggestion | null,
+) {
+  return Boolean(
+    pickup &&
+      drop &&
+      hasValidCoordinates(pickup.latitude, pickup.longitude) &&
+      hasValidCoordinates(drop.latitude, drop.longitude) &&
+      areCoordinatesIdentical(
+        pickup.latitude!,
+        pickup.longitude!,
+        drop.latitude!,
+        drop.longitude!,
+      ),
+  );
+}
+
 function responseContainsZone(payload: unknown, zone: string) {
   const expected = zone.trim().toLowerCase();
   if (!expected || !payload || typeof payload !== "object") return false;
@@ -532,6 +550,14 @@ export default function BookRide() {
   const [selectedRentalCategory, setSelectedRentalCategory] = useState("");
   const [isLoadingRentalCategories, setIsLoadingRentalCategories] = useState(false);
   const [rentalCategoriesError, setRentalCategoriesError] = useState("");
+  const [rentalZoneErrorTitle, setRentalZoneErrorTitle] = useState("");
+  const [rentalZoneError, setRentalZoneError] = useState("");
+  const [isValidatingRentalZone, setIsValidatingRentalZone] = useState(false);
+  const [rentalZoneValidated, setRentalZoneValidated] = useState(false);
+  const [isValidatingParcelZone, setIsValidatingParcelZone] = useState(false);
+  const [parcelZoneValidated, setParcelZoneValidated] = useState(false);
+  const [parcelZoneErrorTitle, setParcelZoneErrorTitle] = useState("");
+  const [parcelZoneError, setParcelZoneError] = useState("");
   const [rentalCategoryRetry, setRentalCategoryRetry] = useState(0);
   const [acType, setAcType] = useState<"AC" | "NON AC">("AC");
   const [parcelVehicleType, setParcelVehicleType] = useState<"Bike" | "Auto">("Bike");
@@ -669,15 +695,13 @@ export default function BookRide() {
       (tripType === "local" || hasSelectedDrop) &&
       (tripType === "acting-driver" ? actingDriverPickupDateTime : date && time) &&
       (tripType !== "acting-driver" || actingDriverPackageType !== "Outstation" || actingDriverReturnDateTime) &&
+      (tripType === "local" ||
+        (tripType !== "parcel" && !selectedLocationsAreIdentical(selectedPickup, selectedDrop)) ||
+        (tripType === "parcel" && !selectedLocationsAreIdentical(selectedSenderAddress, selectedReceiverAddress))) &&
       (tripType !== "acting-driver" ||
         !hasSelectedPickup ||
         !hasSelectedDrop ||
-        !areCoordinatesIdentical(
-          selectedPickup!.latitude!,
-          selectedPickup!.longitude!,
-          selectedDrop!.latitude!,
-          selectedDrop!.longitude!,
-        )) &&
+        !selectedLocationsAreIdentical(selectedPickup, selectedDrop)) &&
       (tripType !== "acting-driver" ||
         (Boolean(actingDriverZonePackages) &&
           availableActingDriverPackageOptions.length > 0 &&
@@ -689,9 +713,12 @@ export default function BookRide() {
         actingDriverPackageType !== "Local" ||
         (!isCheckingActingDriverRoute && !actingDriverRouteError)) &&
       (tripType !== "local" || localPeriod) &&
+      (!isRentalTrip || (rentalZoneValidated && !isValidatingRentalZone)) &&
       (!isRentalTrip || Boolean(selectedRentalCategory)) &&
       (tripType !== "parcel" ||
-        (parcelVehicleType &&
+        (parcelZoneValidated &&
+          !isValidatingParcelZone &&
+          parcelVehicleType &&
           receiverName.trim() &&
           isValidIndianPhone(receiverPhoneNumber) &&
           isValidIndianPhone(phoneNumber) &&
@@ -1027,12 +1054,138 @@ export default function BookRide() {
 
   useEffect(() => {
     if (tripType === "parcel") {
-      setZone("Chennai");
+      setZone("");
     }
   }, [tripType]);
 
   useEffect(() => {
-    if (!isRentalTrip || !mappedRentalZone || !phoneVerified) {
+    if (!isRentalTrip) {
+      setIsValidatingRentalZone(false);
+      setRentalZoneValidated(false);
+      setRentalZoneErrorTitle("");
+      setRentalZoneError("");
+      return;
+    }
+
+    if (!hasValidCoordinates(selectedPickup?.latitude, selectedPickup?.longitude)) {
+      setZone("");
+      setRentalZoneValidated(false);
+      setRentalCategories([]);
+      setSelectedRentalCategory("");
+      setRentalCategoriesError("");
+      setRentalZoneErrorTitle("");
+      setRentalZoneError("");
+      return;
+    }
+
+    let isCurrent = true;
+    setIsValidatingRentalZone(true);
+    setRentalZoneValidated(false);
+    setZone("");
+    setRentalCategories([]);
+    setSelectedRentalCategory("");
+    setRentalCategoriesError("");
+    setRentalZoneErrorTitle("");
+    setRentalZoneError("");
+
+    getZonePackages("RENTAL", "", {
+      lat: selectedPickup!.latitude!,
+      long: selectedPickup!.longitude!,
+    })
+      .then((response) => {
+        if (!isCurrent) return;
+        const validatedZone = getParcelServiceAreaName(response);
+        if (!validatedZone) {
+          setZone("");
+          setRentalZoneValidated(false);
+          setRentalZoneErrorTitle("Service Not Available");
+          setRentalZoneError("Location is outside service area.");
+          return;
+        }
+        setZone(validatedZone);
+        setRentalZoneValidated(true);
+        setRentalZoneErrorTitle("");
+        setRentalZoneError("");
+      })
+      .catch((error) => {
+        if (!isCurrent) return;
+        setZone("");
+        setRentalZoneValidated(false);
+        setRentalCategories([]);
+        setSelectedRentalCategory("");
+        setRentalZoneErrorTitle(
+          error && typeof error === "object" && "title" in error && typeof error.title === "string"
+            ? error.title
+            : "Service Not Available",
+        );
+        setRentalZoneError(error instanceof Error ? error.message : "Location is outside service area.");
+      })
+      .finally(() => {
+        if (isCurrent) setIsValidatingRentalZone(false);
+      });
+
+    return () => { isCurrent = false; };
+  }, [isRentalTrip, selectedPickup?.latitude, selectedPickup?.longitude]);
+
+  useEffect(() => {
+    if (tripType !== "parcel") {
+      setIsValidatingParcelZone(false);
+      setParcelZoneValidated(false);
+      setParcelZoneErrorTitle("");
+      setParcelZoneError("");
+      return;
+    }
+
+    if (!hasValidCoordinates(selectedSenderAddress?.latitude, selectedSenderAddress?.longitude)) {
+      setZone("");
+      setParcelZoneValidated(false);
+      setParcelZoneErrorTitle("");
+      setParcelZoneError("");
+      return;
+    }
+
+    let isCurrent = true;
+    setIsValidatingParcelZone(true);
+    setParcelZoneValidated(false);
+    setZone("");
+    setParcelZoneErrorTitle("");
+    setParcelZoneError("");
+
+    getZonePackages("PARCEL", "", {
+      lat: selectedSenderAddress!.latitude!,
+      long: selectedSenderAddress!.longitude!,
+    })
+      .then((response) => {
+        if (!isCurrent) return;
+        const validatedZone = getParcelServiceAreaName(response);
+        if (!validatedZone) {
+          setParcelZoneErrorTitle("Service Not Available");
+          setParcelZoneError("Location is outside configured parcel sub-zone.");
+          return;
+        }
+        setZone(validatedZone);
+        setParcelZoneValidated(true);
+      })
+      .catch((error) => {
+        if (!isCurrent) return;
+        setZone("");
+        setParcelZoneValidated(false);
+        setParcelZoneErrorTitle(
+          error && typeof error === "object" && "title" in error && typeof error.title === "string"
+            ? error.title
+            : "Service Not Available",
+        );
+        setParcelZoneError(error instanceof Error ? error.message : "Location is outside configured parcel sub-zone.");
+      })
+      .finally(() => {
+        if (isCurrent) setIsValidatingParcelZone(false);
+      });
+
+    return () => { isCurrent = false; };
+  }, [selectedSenderAddress?.latitude, selectedSenderAddress?.longitude, tripType]);
+
+  useEffect(() => {
+    if (!isRentalTrip || !mappedRentalZone || !rentalZoneValidated || !phoneVerified) {
       setRentalCategories([]);
       setSelectedRentalCategory("");
       setRentalCategoriesError("");
@@ -1058,7 +1211,7 @@ export default function BookRide() {
       });
 
     return () => { isCurrent = false; };
-  }, [isRentalTrip, mappedRentalZone, phoneVerified, tripType, rentalCategoryRetry]);
+  }, [isRentalTrip, mappedRentalZone, phoneVerified, rentalCategoryRetry, rentalZoneValidated, tripType]);
 
   useEffect(() => {
     if (tripType !== "acting-driver" || !phoneVerified || !zone) {
@@ -1336,16 +1489,12 @@ export default function BookRide() {
       );
       return;
     }
-    if (
-      tripType === "acting-driver" &&
-      areCoordinatesIdentical(
-        selectedPickup!.latitude!,
-        selectedPickup!.longitude!,
-        selectedDrop!.latitude!,
-        selectedDrop!.longitude!,
-      )
-    ) {
+    if (tripType !== "local" && tripType !== "parcel" && selectedLocationsAreIdentical(selectedPickup, selectedDrop)) {
       setBookingError("Pickup and drop locations cannot be the same.");
+      return;
+    }
+    if (tripType === "parcel" && selectedLocationsAreIdentical(selectedSenderAddress, selectedReceiverAddress)) {
+      setBookingError("Sender and receiver locations cannot be the same.");
       return;
     }
     if (tripType === "parcel" && (!hasSelectedSenderAddress || !hasSelectedReceiverAddress)) {
@@ -1413,7 +1562,11 @@ export default function BookRide() {
       }
     }
     if (!zone) {
-      setBookingError("Please select a service zone before confirming.");
+      setBookingError(isRentalTrip ? "Pickup location is outside the service area." : "Please select a service zone before confirming.");
+      return;
+    }
+    if (isRentalTrip && (!rentalZoneValidated || isValidatingRentalZone)) {
+      setBookingError("Please wait while we validate the pickup location.");
       return;
     }
     if (tripType === "acting-driver" && (isCheckingActingDriverZone || actingDriverZoneError)) {
@@ -1447,7 +1600,33 @@ export default function BookRide() {
       return;
     }
 
-    const bookingZone = getBookingZonePayload(zone);
+    let bookingZone = getBookingZonePayload(zone);
+    if (isRentalTrip) {
+      try {
+        const rentalZoneResponse = await getZonePackages("RENTAL", "", {
+          lat: selectedPickup!.latitude!,
+          long: selectedPickup!.longitude!,
+        });
+        const validatedZone = getParcelServiceAreaName(rentalZoneResponse);
+        if (!validatedZone) {
+          setZone("");
+          setRentalZoneValidated(false);
+          setRentalCategories([]);
+          setSelectedRentalCategory("");
+          setBookingError("Location is outside service area.");
+          return;
+        }
+        bookingZone = getBookingZonePayload(validatedZone);
+        setZone(validatedZone);
+      } catch (error) {
+        setZone("");
+        setRentalZoneValidated(false);
+        setRentalCategories([]);
+        setSelectedRentalCategory("");
+        setBookingError(error instanceof Error ? error.message : "Location is outside service area.");
+        return;
+      }
+    }
 
     const actingDriverSelectedPackage = availableActingDriverPackageOptions.find(
       (item) => item.value === actingDriverPackage,
@@ -1600,7 +1779,10 @@ export default function BookRide() {
     setIsSubmittingBooking(true);
       try {
         if (tripType === "one-way" || tripType === "round-trip" || tripType === "local") {
-          const zonePackagesResponse = await getZonePackages("RENTAL", bookingZone);
+          const zonePackagesResponse = await getZonePackages("RENTAL", bookingZone, {
+            lat: selectedPickup!.latitude!,
+            long: selectedPickup!.longitude!,
+          });
 
         if (tripType === "local") {
           localPackageId = findZonePackageId(zonePackagesResponse, "local", Number(localPeriod));
@@ -2292,18 +2474,38 @@ export default function BookRide() {
                 {/* Zone */}
                 <div className={tripType === "acting-driver" ? "order-[-8]" : undefined}>
                   <Label className="text-sm font-medium mb-1.5 block">{tripType === "acting-driver" ? "Service Pickup Area" : "Zone"} <span className="text-red-600">*</span></Label>
-                  <Select value={zone} onValueChange={setZone} disabled={tripType === "parcel"}>
-                    <SelectTrigger className="cursor-pointer">
-                      <SelectValue placeholder="Select service zone" />
-                    </SelectTrigger>
-                    <SelectContent className="max-h-60 overflow-y-auto">
-                      {(tripType === "parcel" ? ["Chennai"] : bookingZones).map((city) => (
-                        <SelectItem key={city} value={city} className="cursor-pointer">
-                          {city}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
+                  {isRentalTrip || tripType === "parcel" ? (
+                    <div className="flex min-h-10 items-center rounded-md border border-input bg-muted/40 px-3 text-sm">
+                      {isValidatingRentalZone || isValidatingParcelZone
+                        ? "Validating pickup location..."
+                        : zone || "Zone will be detected from pickup location"}
+                    </div>
+                  ) : (
+                    <Select value={zone} onValueChange={setZone} disabled={tripType === "parcel"}>
+                      <SelectTrigger className="cursor-pointer">
+                        <SelectValue placeholder="Select service zone" />
+                      </SelectTrigger>
+                      <SelectContent className="max-h-60 overflow-y-auto">
+                        {(tripType === "parcel" ? ["Chennai"] : bookingZones).map((city) => (
+                          <SelectItem key={city} value={city} className="cursor-pointer">
+                            {city}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  )}
+                  {isRentalTrip && rentalZoneError && (
+                    <div className="mt-2 rounded-md border border-red-200 bg-red-50 p-3 text-red-700">
+                      {rentalZoneErrorTitle && <p className="text-sm font-semibold">{rentalZoneErrorTitle}</p>}
+                      <p className="text-xs font-medium">{rentalZoneError}</p>
+                    </div>
+                  )}
+                  {tripType === "parcel" && parcelZoneError && (
+                    <div className="mt-2 rounded-md border border-red-200 bg-red-50 p-3 text-red-700">
+                      {parcelZoneErrorTitle && <p className="text-sm font-semibold">{parcelZoneErrorTitle}</p>}
+                      <p className="text-xs font-medium">{parcelZoneError}</p>
+                    </div>
+                  )}
                   {tripType === "acting-driver" && isCheckingActingDriverZone && (
                     <p className="mt-2 text-xs text-muted-foreground">Validating service zone...</p>
                   )}
@@ -2804,7 +3006,7 @@ export default function BookRide() {
                 type="submit"
                 size="lg"
                 className="min-h-12 w-full bg-[#FFD700] text-base font-bold text-[#2E3A8C] shadow-sm hover:bg-[#E6C200] disabled:cursor-not-allowed"
-                disabled={isSubmittingBooking || (tripType !== "parcel" && !isConfirmBookingReady)}
+                disabled={isSubmittingBooking || !isConfirmBookingReady}
               >
                 {isSubmittingBooking ? "Confirming..." : "Confirm Booking"} <ArrowRight className="w-4 h-4 ml-2" />
               </Button>

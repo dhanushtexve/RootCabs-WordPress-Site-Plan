@@ -778,7 +778,7 @@ export async function searchAddressDetailed(
   }
 
   const payload = await requestJson<AddressSearchResponse>(
-    `${options.requirePlaceId ? "/search-address" : "/website/search-address-detailed"}?address=${encodeURIComponent(address)}`,
+    `/search-address?address=${encodeURIComponent(address)}`,
     {
       method: "GET",
     },
@@ -867,11 +867,11 @@ export function estimateFareFallback(request: {
 
 export async function getZonePackages(
   serviceType: "RENTAL" | "DRIVER" | "PARCEL",
-  zone: string,
+  zone = "",
   coordinates?: { lat: number; long: number },
 ) {
   const params = new URLSearchParams({ serviceType });
-  if (serviceType === "PARCEL" && coordinates) {
+  if ((serviceType === "RENTAL" || serviceType === "PARCEL") && coordinates) {
     params.set("lat", String(coordinates.lat));
     params.set("long", String(coordinates.long));
   } else {
@@ -887,8 +887,9 @@ export async function getZonePackages(
   );
 
   if (response.success === false || response.error) {
-    throw new Error(
-      extractApiResponseMessage(response) || "Unable to load zone packages.",
+    throw Object.assign(
+      new Error(extractApiResponseMessage(response) || "Unable to load zone packages."),
+      { title: typeof response.title === "string" ? response.title.trim() : "" },
     );
   }
 
