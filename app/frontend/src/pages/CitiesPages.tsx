@@ -131,7 +131,7 @@ const cityImageMap: Record<string, string> = {
 
 const cityBannerMap: Record<string, string> = {
   "taxi-in-chennai": "/assets/city-banners/chennai-website-home.png",
-  "taxi-in-vellore": "/assets/city-banners/vellore.webp",
+  "taxi-in-vellore": "/assets/vellore-routes/vellore page banner.webp",
   "taxi-in-coimbatore": "/assets/city-banners/coimbatore.webp",
   "taxi-in-trichy": "/assets/city-banners/trichy-website-home.png",
   "taxi-in-salem": "/assets/city-banners/salem-website-home.png",
@@ -858,6 +858,7 @@ const chennaiRoutes = [
   {
     title: "Chennai to Bangalore - Round Trip (Non-AC)",
     meta: "Estimated Distance - 697 km | Base Hours - 23 Hours",
+    image: "/assets/chennai-routes/chennai to bangalore.webp",
     fares: [
       { label: "MINI", value: "\u20B98,430" },
       { label: "SEDAN", value: "\u20B98,530" },
@@ -868,6 +869,7 @@ const chennaiRoutes = [
   {
     title: "Chennai to Pondicherry - Round Trip",
     meta: "Estimated Distance - 331 km | Base Hours - 10 Hours",
+    image: "/assets/chennai-routes/chennai to pondicherry.webp",
     fares: [
       { label: "MINI", value: "\u20B94,040" },
       { label: "SEDAN", value: "\u20B94,140" },
@@ -878,6 +880,7 @@ const chennaiRoutes = [
   {
     title: "Chennai to Vellore - Round Trip",
     meta: "Estimated Distance - 274 km | Base Hours - 9 Hours",
+    image: "/assets/chennai-routes/chennai to vellore.webp",
     fares: [
       { label: "MINI", value: "\u20B93,350" },
       { label: "SEDAN", value: "\u20B93,450" },
@@ -888,6 +891,7 @@ const chennaiRoutes = [
   {
     title: "Chennai to Tirupati - Round Trip",
     meta: "Estimated Distance - 269 km | Base Hours - 9 Hours",
+    image: "/assets/chennai-routes/chennai to tirupati.webp",
     fares: [
       { label: "MINI", value: "\u20B93,285" },
       { label: "SEDAN", value: "\u20B93,385" },
@@ -898,6 +902,7 @@ const chennaiRoutes = [
   {
     title: "Chennai to Mahabalipuram - Round Trip",
     meta: "Estimated Distance - 115 km | Base Hours - 5 Hours",
+    image: "/assets/chennai-routes/chennai to mahabalipuram.webp",
     fares: [
       { label: "MINI", value: "\u20B91,441" },
       { label: "SEDAN", value: "\u20B91,541" },
@@ -986,6 +991,7 @@ const velloreRoutes = [
   {
     title: "Vellore to Chennai",
     meta: "Km- 274 · Approx. hrs - 9",
+    image: "/assets/vellore-routes/vellore to chennai.webp",
     fares: [
       { label: "MINI", value: "\u20B93,350" },
       { label: "SEDAN", value: "\u20B93,450" },
@@ -995,6 +1001,7 @@ const velloreRoutes = [
   {
     title: "Vellore to Bangalore",
     meta: "Km- 424 · Approx. hrs - 14",
+    image: "/assets/vellore-routes/vellore to bangalore.webp",
     fares: [
       { label: "MINI", value: "\u20B95,144" },
       { label: "SEDAN", value: "\u20B95,244" },
@@ -1004,6 +1011,7 @@ const velloreRoutes = [
   {
     title: "Vellore to Tiruvannamalai",
     meta: "Km- 176 · Approx. hrs - 6",
+    image: "/assets/vellore-routes/vellore to tiruvanamalai .webp",
     fares: [
       { label: "MINI", value: "\u20B92,170" },
       { label: "SEDAN", value: "\u20B92,270" },
@@ -1013,6 +1021,7 @@ const velloreRoutes = [
   {
     title: "Vellore to Tirupati",
     meta: "Km- 215 · Approx. hrs - 7",
+    image: "/assets/vellore-routes/vellore to tirupati .webp",
     fares: [
       { label: "MINI", value: "\u20B92,634" },
       { label: "SEDAN", value: "\u20B92,734" },
@@ -1022,6 +1031,7 @@ const velloreRoutes = [
   {
     title: "Vellore to Pondicherry",
     meta: "Km- 320 · Approx. hrs - 10",
+    image: "/assets/vellore-routes/vellore to pondicherry.webp",
     fares: [
       { label: "MINI", value: "\u20B93,903" },
       { label: "SEDAN", value: "\u20B94,003" },
@@ -2008,7 +2018,7 @@ function ChennaiRoutesSection() {
             >
               <div className="pointer-events-none absolute inset-y-0 right-0 flex w-[42%] items-center justify-end overflow-hidden bg-[#F8FBFF] sm:w-[46%]">
                 <img
-                  src={assetPath("/assets/chennai-route-car.webp")}
+                  src={assetPath(route.image)}
                   alt={`${toCity} route`}
                   className="h-full w-full object-contain object-right"
                 />
@@ -2030,16 +2040,18 @@ function ChennaiRoutesSection() {
         })}
       </div>
 
-      <div className="mt-6 flex justify-center">
-        <Button
-          type="button"
-          variant="outline"
-          className="border-[#1E2A6E] bg-[#1E2A6E] text-white hover:border-[#273588] hover:bg-[#273588] hover:text-white"
-          onClick={() => setShowAllRoutes((current) => !current)}
-        >
-          {showAllRoutes ? "See Less" : "See More"}
-        </Button>
-      </div>
+      {chennaiRoutes.length > 3 && (
+        <div className="mt-6 flex justify-center">
+          <Button
+            type="button"
+            variant="outline"
+            className="border-[#1E2A6E] bg-[#1E2A6E] text-white hover:border-[#273588] hover:bg-[#273588] hover:text-white"
+            onClick={() => setShowAllRoutes((current) => !current)}
+          >
+            {showAllRoutes ? "See Less" : "See More"}
+          </Button>
+        </div>
+      )}
 
     </section>
   );
@@ -3971,7 +3983,7 @@ function VelloreRoutesSection() {
             >
               <div className="pointer-events-none absolute inset-y-0 right-0 flex w-[42%] items-center justify-end overflow-hidden bg-[#F8FBFF] sm:w-[46%]">
                 <img
-                  src={assetPath("/assets/vellore-city-page/Car image.png")}
+                  src={assetPath(route.image)}
                   alt={`${toCity} route`}
                   className="h-full w-full object-contain object-right"
                 />
