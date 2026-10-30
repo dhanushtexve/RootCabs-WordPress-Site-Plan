@@ -925,7 +925,7 @@ export async function addRentalBooking(payload: RentalBookingRequest) {
   );
 
   if (response.success === false) {
-    throw new Error(response.message || "Unable to confirm booking. Please try again.");
+    throw new Error(extractApiResponseMessage(response) || "Unable to confirm booking. Please try again.");
   }
 
   return response;
@@ -946,7 +946,7 @@ export async function addBooking(payload: RentalBookingRequest) {
   );
 
   if (response.success === false) {
-    throw new Error(response.message || "Unable to confirm booking. Please try again.");
+    throw new Error(extractApiResponseMessage(response) || "Unable to confirm booking. Please try again.");
   }
 
   return response;
@@ -970,7 +970,7 @@ export async function addSupportParcelBooking(payload: RentalBookingRequest) {
   );
 
   if (response.success === false) {
-    throw new Error(response.message || "Unable to confirm booking. Please try again.");
+    throw new Error(extractApiResponseMessage(response) || "Unable to confirm booking. Please try again.");
   }
 
   return response;

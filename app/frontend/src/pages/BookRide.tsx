@@ -1903,7 +1903,11 @@ export default function BookRide() {
             </div>
             <DialogTitle className="font-heading text-2xl text-[#1E2A6E]">Booking Request Received</DialogTitle>
             <DialogDescription>
-              Your request has been saved as a quotation. Root Cabs support will confirm the booking.
+              Your request has been saved. Please contact our support team at{" "}
+              <a href={`tel:${companyInfo.phone}`} className="font-semibold text-primary underline">
+                {companyInfo.phone}
+              </a>{" "}
+              to confirm your booking.
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-3 rounded-xl bg-muted p-5 text-sm">
@@ -1924,7 +1928,6 @@ export default function BookRide() {
               <>
                 <div className="flex justify-between gap-4"><span className="text-muted-foreground">From</span><span className="max-w-[65%] text-right font-medium">{confirmationPickup}</span></div>
                 {tripType !== "local" && <div className="flex justify-between gap-4"><span className="text-muted-foreground">To</span><span className="max-w-[65%] text-right font-medium">{confirmationDrop}</span></div>}
-                <div className="flex justify-between gap-4"><span className="text-muted-foreground">Vehicle</span><span className="font-medium">{carTypeMap[vehicle]}</span></div>
                 <div className="flex justify-between gap-4"><span className="text-muted-foreground">Trip</span><span className="font-medium capitalize">{tripType}</span></div>
               </>
             )}
@@ -1979,7 +1982,7 @@ export default function BookRide() {
                 <Label className="mb-3 block text-sm font-semibold">1. Verify your phone number</Label>
                 <div className="grid gap-4 md:grid-cols-2">
                   <div>
-                    <Label className="mb-1.5 block text-sm font-medium">Your Name</Label>
+                    <Label className="mb-1.5 block text-sm font-medium">Your Name <span className="text-red-600">*</span></Label>
                     <Input
                       value={name}
                       onChange={(e) => setName(e.target.value)}
@@ -1990,7 +1993,7 @@ export default function BookRide() {
                     />
                   </div>
                   <div>
-                    <Label className="mb-1.5 block text-sm font-medium">Phone Number</Label>
+                    <Label className="mb-1.5 block text-sm font-medium">Phone Number <span className="text-red-600">*</span></Label>
                     <div className={otpSent && !phoneVerified ? "grid min-w-0 gap-2 sm:grid-cols-[minmax(0,1fr)_auto]" : "flex min-w-0 flex-col gap-2 sm:flex-row"}>
                       <div className={otpSent && !phoneVerified ? "col-span-full flex min-w-0 items-center rounded-md border border-input bg-background px-3" : "flex min-w-0 flex-1 items-center rounded-md border border-input bg-background px-3"}>
                         <span className="shrink-0 text-sm font-medium text-muted-foreground">+91</span>
@@ -2046,7 +2049,7 @@ export default function BookRide() {
               {tripType === "local" && (
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <Label className="text-sm font-medium mb-1.5 block">Package</Label>
+                    <Label className="text-sm font-medium mb-1.5 block">Package <span className="text-red-600">*</span></Label>
                     <Select value={localPeriod} onValueChange={setLocalPeriod}>
                       <SelectTrigger className="cursor-pointer">
                         <SelectValue placeholder="Select package" />
@@ -2062,7 +2065,7 @@ export default function BookRide() {
                   </div>
 
                   <div>
-                    <Label className="text-sm font-medium mb-1.5 block">Zone</Label>
+                  <Label className="text-sm font-medium mb-1.5 block">Zone <span className="text-red-600">*</span></Label>
                       <Select value={zone} onValueChange={setZone}>
                         <SelectTrigger className="cursor-pointer">
                           <SelectValue placeholder="Select service zone" />
@@ -2082,7 +2085,7 @@ export default function BookRide() {
               {/* From / To */}
               <div className={`grid gap-4 ${tripType === "acting-driver" ? "order-[-2] md:grid-cols-2" : tripType === "local" ? "md:grid-cols-1" : "md:grid-cols-2"}`}>
                 <div>
-                  <Label className="text-sm font-medium mb-1.5 block">Pickup Location</Label>
+                    <Label className="text-sm font-medium mb-1.5 block">Pickup Location <span className="text-red-600">*</span></Label>
                   <div className="relative">
                     <Input
                       value={from}
@@ -2128,7 +2131,7 @@ export default function BookRide() {
                 </div>
                 {tripType !== "local" && (
                   <div>
-                    <Label className="text-sm font-medium mb-1.5 block">Drop Location</Label>
+                    <Label className="text-sm font-medium mb-1.5 block">Drop Location <span className="text-red-600">*</span></Label>
                     <div className="relative">
                       <Input
                         value={to}
@@ -2180,7 +2183,7 @@ export default function BookRide() {
                 {tripType === "acting-driver" ? (
                   <>
                     <div className="order-[-6]">
-                      <Label className="text-sm font-medium mb-3 block">Trip Type</Label>
+                      <Label className="text-sm font-medium mb-3 block">Trip Type <span className="text-red-600">*</span></Label>
                       <RadioGroup
                         value={actingDriverPackageType}
                         onValueChange={(value) => setActingDriverPackageType(value as "Local" | "Outstation")}
@@ -2213,7 +2216,7 @@ export default function BookRide() {
                     </div>
 
                     <div className="order-[-1]">
-                      <Label className="text-sm font-medium mb-1.5 block">Choose Package</Label>
+                      <Label className="text-sm font-medium mb-1.5 block">Choose Package <span className="text-red-600">*</span></Label>
                       <Select
                         value={actingDriverPackage}
                         onValueChange={setActingDriverPackage}
@@ -2236,7 +2239,7 @@ export default function BookRide() {
                     </div>
 
                     <div className="order-[-4]">
-                      <Label className="text-sm font-medium mb-1.5 block">Transmission Type</Label>
+                      <Label className="text-sm font-medium mb-1.5 block">Transmission Type <span className="text-red-600">*</span></Label>
                       <Select value={actingDriverTransmission} onValueChange={(value) => setActingDriverTransmission(value as "MANUAL" | "AUTOMATIC")}>
                         <SelectTrigger className="cursor-pointer">
                           <SelectValue placeholder="Select transmission" />
@@ -2250,7 +2253,7 @@ export default function BookRide() {
                   </>
                 ) : tripType === "parcel" ? (
                   <div>
-                    <Label className="text-sm font-medium mb-3 block">Parcel Vehicle</Label>
+                    <Label className="text-sm font-medium mb-3 block">Parcel Vehicle <span className="text-red-600">*</span></Label>
                     <RadioGroup
                       value={parcelVehicleType}
                       onValueChange={(value) => setParcelVehicleType(value as "Bike" | "Auto")}
@@ -2268,7 +2271,7 @@ export default function BookRide() {
                   </div>
                 ) : (
                   <div>
-                    <Label className="text-sm font-medium mb-3 block">AC Type</Label>
+                    <Label className="text-sm font-medium mb-3 block">AC Type <span className="text-red-600">*</span></Label>
                     <RadioGroup
                       value={acType}
                       onValueChange={(value) => setAcType(value as "AC" | "NON AC")}
@@ -2288,7 +2291,7 @@ export default function BookRide() {
 
                 {/* Zone */}
                 <div className={tripType === "acting-driver" ? "order-[-8]" : undefined}>
-                  <Label className="text-sm font-medium mb-1.5 block">{tripType === "acting-driver" ? "Service Pickup Area" : "Zone"}</Label>
+                  <Label className="text-sm font-medium mb-1.5 block">{tripType === "acting-driver" ? "Service Pickup Area" : "Zone"} <span className="text-red-600">*</span></Label>
                   <Select value={zone} onValueChange={setZone} disabled={tripType === "parcel"}>
                     <SelectTrigger className="cursor-pointer">
                       <SelectValue placeholder="Select service zone" />
@@ -2315,7 +2318,7 @@ export default function BookRide() {
               {tripType === "acting-driver" ? (
                 <div className={`order-[-3] grid gap-4 ${actingDriverPackageType === "Outstation" ? "md:grid-cols-2" : "md:grid-cols-1"}`}>
                   <div>
-                    <Label className="text-sm font-medium mb-1.5 block">Pickup Date & Time</Label>
+                    <Label className="text-sm font-medium mb-1.5 block">Pickup Date & Time <span className="text-red-600">*</span></Label>
                     <Input
                       type="datetime-local"
                       value={actingDriverPickupDateTime}
@@ -2325,7 +2328,7 @@ export default function BookRide() {
                   </div>
                   {actingDriverPackageType === "Outstation" && (
                     <div>
-                      <Label className="text-sm font-medium mb-1.5 block">Return Date & Time</Label>
+                      <Label className="text-sm font-medium mb-1.5 block">Return Date & Time <span className="text-red-600">*</span></Label>
                       <Input
                         type="datetime-local"
                         value={actingDriverReturnDateTime}
@@ -2338,11 +2341,11 @@ export default function BookRide() {
               ) : (
                 <div className="grid md:grid-cols-2 gap-4">
                   <div>
-                    <Label className="text-sm font-medium mb-1.5 block">Pickup Date</Label>
+                  <Label className="text-sm font-medium mb-1.5 block">Pickup Date <span className="text-red-600">*</span></Label>
                     <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="cursor-pointer" />
                   </div>
                   <div>
-                    <Label className="text-sm font-medium mb-1.5 block">Pickup Time</Label>
+                    <Label className="text-sm font-medium mb-1.5 block">Pickup Time <span className="text-red-600">*</span></Label>
                     <Input type="time" value={time} onChange={(e) => setTime(e.target.value)} className="cursor-pointer" />
                   </div>
                 </div>
@@ -2352,7 +2355,7 @@ export default function BookRide() {
                 <div className="space-y-4 rounded-xl border border-border bg-white p-4">
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <Label className="text-sm font-medium mb-1.5 block">Return Date</Label>
+                      <Label className="text-sm font-medium mb-1.5 block">Return Date <span className="text-red-600">*</span></Label>
                       <Input
                         type="date"
                         value={returnDate}
@@ -2361,7 +2364,7 @@ export default function BookRide() {
                       />
                     </div>
                     <div>
-                      <Label className="text-sm font-medium mb-1.5 block">Return Time</Label>
+                      <Label className="text-sm font-medium mb-1.5 block">Return Time <span className="text-red-600">*</span></Label>
                       <Input
                         type="time"
                         value={returnTime}
@@ -2374,7 +2377,7 @@ export default function BookRide() {
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
                       <div className="mb-1.5 flex flex-wrap items-center gap-3">
-                        <Label className="text-sm font-medium block">Cab Starting Point</Label>
+                        <Label className="text-sm font-medium block">Cab Starting Point <span className="text-red-600">*</span></Label>
                         <label className="flex cursor-pointer items-center gap-2 text-sm text-muted-foreground">
                           <Checkbox
                             checked={sameCabStartAsPickup}
@@ -2431,7 +2434,7 @@ export default function BookRide() {
 
                     <div>
                       <div className="mb-1.5 flex flex-wrap items-center gap-3">
-                        <Label className="text-sm font-medium block">Cab Ending Point</Label>
+                        <Label className="text-sm font-medium block">Cab Ending Point <span className="text-red-600">*</span></Label>
                         <label className="flex cursor-pointer items-center gap-2 text-sm text-muted-foreground">
                           <Checkbox
                             checked={sameCabEndAsDrop}
@@ -2492,7 +2495,7 @@ export default function BookRide() {
               {/* Rental category / Acting Driver vehicle selection */}
               {isRentalTrip ? (
                 <div>
-                  <Label className="text-sm font-medium mb-3 block">Select Rental Category</Label>
+                  <Label className="text-sm font-medium mb-3 block">Select Rental Category <span className="text-red-600">*</span></Label>
                   {!zone && <p className="text-sm text-muted-foreground">Select a service zone to view available categories.</p>}
                   {zone && !phoneVerified && <p className="text-sm text-muted-foreground">Verify your phone number to load available rental categories.</p>}
                   {isLoadingRentalCategories && <p className="text-sm text-muted-foreground">Loading available categories...</p>}
@@ -2529,7 +2532,7 @@ export default function BookRide() {
                 </div>
               ) : tripType === "acting-driver" ? (
                 <div className="order-[-5]">
-                  <Label className="text-sm font-medium mb-3 block">Car Type</Label>
+                  <Label className="text-sm font-medium mb-3 block">Car Type <span className="text-red-600">*</span></Label>
                   <div className="grid sm:grid-cols-2 gap-3">
                     {vehicles.map((v) => (
                       <div key={v.id} onClick={() => setVehicle(v.id)} className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${vehicle === v.id ? "border-primary bg-primary/5" : "border-border hover:border-primary/30"}`}>
@@ -2548,7 +2551,7 @@ export default function BookRide() {
                   <div className="grid gap-6 md:grid-cols-2">
                     <div className="space-y-4">
                       <div>
-                        <Label className="text-sm font-medium mb-1.5 block">Sender Name</Label>
+                        <Label className="text-sm font-medium mb-1.5 block">Sender Name <span className="text-red-600">*</span></Label>
                         <Input
                           value={name}
                           onChange={(e) => setName(e.target.value)}
@@ -2561,7 +2564,7 @@ export default function BookRide() {
 
                       <div>
                         <div className="mb-1.5 flex items-center justify-between gap-3">
-                          <Label className="text-sm font-medium block">Sender Phone Number</Label>
+                          <Label className="text-sm font-medium block">Sender Phone Number <span className="text-red-600">*</span></Label>
                         </div>
 
                         <div className={otpSent && !phoneVerified ? "grid min-w-0 gap-2 sm:grid-cols-[minmax(0,1fr)_auto]" : "flex min-w-0 flex-col gap-2 sm:flex-row"}>
@@ -2594,7 +2597,7 @@ export default function BookRide() {
 
                       <div>
                         <div className="mb-1.5 flex flex-wrap items-center justify-between gap-3">
-                          <Label className="text-sm font-medium block">Sender Address</Label>
+                          <Label className="text-sm font-medium block">Sender Address <span className="text-red-600">*</span></Label>
                           <label className="flex cursor-pointer items-center gap-2 text-xs font-medium text-muted-foreground">
                             <Checkbox
                               checked={sameSenderAsPickup}
@@ -2662,7 +2665,7 @@ export default function BookRide() {
 
                     <div className="space-y-4">
                       <div>
-                        <Label className="text-sm font-medium mb-1.5 block">Receiver Name</Label>
+                        <Label className="text-sm font-medium mb-1.5 block">Receiver Name <span className="text-red-600">*</span></Label>
                         <Input
                           value={receiverName}
                           onChange={(e) => setReceiverName(e.target.value)}
@@ -2671,7 +2674,7 @@ export default function BookRide() {
                       </div>
 
                       <div>
-                        <Label className="text-sm font-medium mb-1.5 block">Receiver Phone Number</Label>
+                        <Label className="text-sm font-medium mb-1.5 block">Receiver Phone Number <span className="text-red-600">*</span></Label>
                         <div className="flex items-center rounded-md border border-input bg-background px-3">
                           <span className="shrink-0 text-sm font-medium text-muted-foreground">+91</span>
                           <Input
@@ -2688,7 +2691,7 @@ export default function BookRide() {
 
                       <div>
                         <div className="mb-1.5 flex flex-wrap items-center justify-between gap-3">
-                          <Label className="text-sm font-medium block">Receiver Address</Label>
+                          <Label className="text-sm font-medium block">Receiver Address <span className="text-red-600">*</span></Label>
                           <label className="flex cursor-pointer items-center gap-2 text-xs font-medium text-muted-foreground">
                             <Checkbox
                               checked={sameReceiverAsDrop}
@@ -2754,7 +2757,7 @@ export default function BookRide() {
                       </div>
 
                       <div>
-                        <Label className="text-sm font-medium mb-1.5 block">Order Type</Label>
+                        <Label className="text-sm font-medium mb-1.5 block">Order Type <span className="text-red-600">*</span></Label>
                         <Select value={parcelOrderType} onValueChange={setParcelOrderType}>
                           <SelectTrigger className="cursor-pointer">
                             <SelectValue placeholder="Select order type" />
@@ -2771,7 +2774,7 @@ export default function BookRide() {
 
                       {parcelOrderType === "Others" && (
                         <div>
-                          <Label className="text-sm font-medium mb-1.5 block">Other Order Type</Label>
+                          <Label className="text-sm font-medium mb-1.5 block">Other Order Type <span className="text-red-600">*</span></Label>
                           <Input
                             value={parcelOrderTypeOther}
                             onChange={(e) => setParcelOrderTypeOther(e.target.value)}
@@ -2783,7 +2786,7 @@ export default function BookRide() {
                   </div>
 
                   <div>
-                    <Label className="text-sm font-medium mb-1.5 block">Delivery Instruction</Label>
+                    <Label className="text-sm font-medium mb-1.5 block">Delivery Instruction <span className="text-red-600">*</span></Label>
                     <Textarea
                       value={deliveryInstruction}
                       onChange={(e) => setDeliveryInstruction(e.target.value)}
