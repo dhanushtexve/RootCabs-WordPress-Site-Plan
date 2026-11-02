@@ -414,3 +414,19 @@
     transform: translate(0, -50%) scale(1);
   }
 }
+/* Keep app-download phone artwork anchored to the banner edge below desktop. */
+@media (max-width: 1023px) {
+  div:has(> img[src="/assets/app-download-mobile-screen.png"]) {
+    margin-left: auto !important;
+    margin-right: -1.25rem !important;
+    justify-content: flex-end !important;
+    transform: translateY(1.75rem);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  div:has(> img[src="/assets/app-download-mobile-screen.png"]) {
+    margin-right: -2rem !important;
+    transform: translateY(2rem);
+  }
+}
