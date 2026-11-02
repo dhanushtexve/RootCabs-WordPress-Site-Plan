@@ -13,6 +13,14 @@ const serviceIcons: Record<string, React.ReactNode> = {
   "auto": <Bike className="w-4 h-4" />,
 };
 
+const hiddenCityDropdownNames = new Set([
+  "Coimbatore",
+  "Madurai",
+  "Kanchipuram",
+  "Ranipet",
+  "Tiruvannamalai",
+]);
+
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -34,7 +42,9 @@ function Navbar() {
     {
       label: "Cities",
       path: "/cities",
-      children: cities.map((c) => ({ label: c.name, path: `/${c.slug}` })),
+      children: cities
+        .filter((city) => !hiddenCityDropdownNames.has(city.name))
+        .map((city) => ({ label: city.name, path: `/${city.slug}` })),
     },
     { label: "Drivers", path: "/drivers" },
     // { label: "Business", path: "/business" },
@@ -198,7 +208,7 @@ function Footer() {
             />
           </div>
           <p className="mb-4 text-sm font-semibold text-white">
-            Rootcabs - (Unit Of Texve Innovations)
+            Unit of TEXVE innovations private Limited
           </p>
           <div className="mt-4 space-y-2 text-sm">
             <a href={`tel:${companyInfo.phone}`} className="flex items-center gap-2 hover:text-yellow-300 cursor-pointer">

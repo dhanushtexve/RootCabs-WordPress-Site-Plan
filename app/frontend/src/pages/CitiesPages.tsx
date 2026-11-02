@@ -910,6 +910,12 @@ const chennaiRoutes = [
       { label: "MUV", value: "\u20B92,411" },
     ],
   },
+  {
+    title: "Chennai to Tiruvannamalai - Round Trip",
+    meta: "Estimated Distance - 192 km",
+    image: "/assets/chennai-routes/chennai to tiruvanamalai.webp",
+    fares: [{ label: "SEDAN", value: "\u20B94,084" }],
+  },
 ] as const;
 
 const velloreServices = [
@@ -1037,6 +1043,12 @@ const velloreRoutes = [
       { label: "SEDAN", value: "\u20B94,003" },
       { label: "SUV", value: "\u20B95,404" },
     ],
+  },
+  {
+    title: "Vellore to Yelagiri",
+    meta: "Km- 94",
+    image: "/assets/vellore-routes/vellore to yelagiri.webp",
+    fares: [{ label: "SEDAN", value: "\u20B92,002" }],
   },
 ] as const;
 
@@ -1443,17 +1455,17 @@ export function CitiesHub() {
 
 function AppDownloadCard() {
   return (
-    <section className="max-w-[1024px] mx-auto">
-      <div className="relative overflow-hidden rounded-2xl bg-[#273588] px-6 py-8 text-white shadow-xl md:px-10 lg:px-12">
+    <section className="mx-auto w-full max-w-[1280px]">
+      <div className="relative isolate overflow-hidden rounded-[24px] bg-gradient-to-r from-[#102A72] via-[#0D2463] to-[#071A4D] px-5 py-7 text-white shadow-xl md:px-8 md:py-8 lg:min-h-[300px] lg:px-10 lg:py-8">
         <img
           src="/assets/home-download-car-bg.webp"
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.14] saturate-75"
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-25 saturate-75"
         />
-        <div className="absolute inset-0 bg-[#273588]/62" />
-        <div className="relative z-10 grid items-center gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.78fr)]">
-          <div className="text-center md:text-left md:pl-2 lg:pl-4">
+        <div className="absolute inset-0 bg-[#081B50]/55" />
+        <div className="relative z-10 grid items-center gap-7 lg:grid-cols-[minmax(0,1.7fr)_minmax(240px,0.55fr)_minmax(190px,0.42fr)] lg:gap-0">
+          <div className="text-center md:text-left">
             <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
               GET THE APP
             </span>
@@ -1467,65 +1479,26 @@ function AppDownloadCard() {
               <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Easy ride scheduling</span>
               <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> No last-minute cancellations</span>
             </div>
-            <div className="mt-5 grid max-w-[470px] grid-cols-1 justify-items-center gap-3 sm:grid-cols-2 md:justify-items-start">
-              <div className="flex w-[170px] flex-col items-center">
-                <a
-                  href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
-                  aria-label="App Store"
-                >
-                  <img
-                    src="/assets/app-store-badge.png"
-                    alt="App Store"
-                    className="h-10 w-auto object-contain"
-                  />
-                </a>
-                <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
-                  <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">Scan to Download</p>
-                  <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
-                    <img
-                      src="/assets/app-download-qr-app-store-cropped.png"
-                      alt="App Store QR code"
-                      className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
-                    />
-                  </span>
-                </div>
-              </div>
-
-              <div className="flex w-[170px] flex-col items-center">
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
-                  aria-label="Google play"
-                >
-                  <img
-                    src="/assets/play-store.png"
-                    alt="Google play"
-                    className="h-10 w-auto object-contain"
-                  />
-                </a>
-                <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
-                  <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">Scan to Download</p>
-                  <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
-                    <img
-                      src="/assets/app-download-qr-google-play-cropped.png"
-                      alt="Google Play QR code"
-                      className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
-                    />
-                  </span>
-                </div>
-              </div>
+          </div>
+          <div className="flex flex-col items-center justify-center lg:px-5">
+            <span className="flex h-[148px] w-[148px] items-center justify-center bg-white p-1">
+              <img src="/assets/root-cabs-qr-code.jpg" alt="Root Cabs app QR code" className="h-full w-full object-contain" />
+            </span>
+            <p className="mt-3 text-center text-base font-bold">Scan to Download</p>
+            <div className="mt-3 flex items-center gap-2">
+              <a href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN" target="_blank" rel="noopener noreferrer" aria-label="Download Root Cabs from Google Play" className="rounded focus:outline-none focus:ring-2 focus:ring-[#FFD700]">
+                <img src="/assets/play-store.png" alt="Get it on Google Play" className="h-9 w-auto object-contain" />
+              </a>
+              <a href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062" target="_blank" rel="noopener noreferrer" aria-label="Download Root Cabs from the App Store" className="rounded focus:outline-none focus:ring-2 focus:ring-[#FFD700]">
+                <img src="/assets/app-store-badge.png" alt="Download on the App Store" className="h-9 w-auto object-contain" />
+              </a>
             </div>
           </div>
-          <div className="relative mx-auto flex w-full max-w-[380px] justify-center lg:absolute lg:bottom-0 lg:right-0 lg:mx-0 lg:translate-x-12 lg:translate-y-8 lg:justify-end">
+          <div className="relative mx-auto flex h-full w-full max-w-[205px] items-end justify-center self-end lg:absolute lg:-bottom-14 lg:-right-10 lg:h-[315px] lg:w-[236px] lg:max-w-none lg:justify-end">
             <img
               src="/assets/app-download-mobile-screen.png"
               alt="Root Cabs app shown on a mobile phone"
-              className="h-[440px] w-auto max-w-full object-contain md:h-[430px] lg:h-[420px]"
+              className="h-[280px] w-auto max-w-full object-contain md:h-[320px] lg:h-full lg:max-w-none"
             />
           </div>
         </div>
@@ -1994,8 +1967,7 @@ function TiruppurServicesSection() {
 }
 
 function ChennaiRoutesSection() {
-  const [showAllRoutes, setShowAllRoutes] = useState(false);
-  const visibleRoutes = showAllRoutes ? chennaiRoutes : chennaiRoutes.slice(0, 3);
+  const visibleRoutes = chennaiRoutes;
 
   return (
     <section className="w-full min-w-0 max-w-full overflow-x-hidden">
@@ -2039,19 +2011,6 @@ function ChennaiRoutesSection() {
           );
         })}
       </div>
-
-      {chennaiRoutes.length > 3 && (
-        <div className="mt-6 flex justify-center">
-          <Button
-            type="button"
-            variant="outline"
-            className="border-[#1E2A6E] bg-[#1E2A6E] text-white hover:border-[#273588] hover:bg-[#273588] hover:text-white"
-            onClick={() => setShowAllRoutes((current) => !current)}
-          >
-            {showAllRoutes ? "See Less" : "See More"}
-          </Button>
-        </div>
-      )}
 
     </section>
   );
@@ -2361,18 +2320,18 @@ function CityAppDownloadCard({ city }: { city: "Salem" | "Kumbakonam" | "Tiruppu
   const isTrichy = city === "Trichy";
 
   return (
-    <section className="mx-auto max-w-[1056px]">
-      <div className="relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
+    <section className="mx-auto w-full max-w-[1280px]">
+      <div className="relative isolate overflow-hidden rounded-[24px] bg-gradient-to-r from-[#102A72] via-[#0D2463] to-[#071A4D] px-5 py-7 text-white shadow-xl md:px-8 md:py-8 lg:min-h-[300px] lg:px-10 lg:py-8">
         <img
           src="/assets/home-download-car-bg.webp"
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.14] saturate-75"
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-25 saturate-75"
         />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.16),transparent_32%),radial-gradient(circle_at_82%_28%,rgba(255,255,255,0.1),transparent_28%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.08),transparent_32%)]" />
-        <div className="absolute inset-0 bg-[#273588]/62" />
-        <div className="relative z-10 grid items-center gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.78fr)]">
-          <div className="text-center md:text-left md:pl-2 lg:pl-4">
+        <div className="absolute inset-0 bg-[#081B50]/55" />
+        <div className="relative z-10 grid items-center gap-7 lg:grid-cols-[minmax(0,1.7fr)_minmax(240px,0.55fr)_minmax(190px,0.42fr)] lg:gap-0">
+          <div className="text-center md:text-left">
             <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
               GET THE APP
             </span>
@@ -2381,7 +2340,7 @@ function CityAppDownloadCard({ city }: { city: "Salem" | "Kumbakonam" | "Tiruppu
             </h2>
             <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
               {isTrichy ? (
-                <>Plan city rides, one-way trips and outstation journeys with Root Cabs. Use the app for <strong>cab booking in Trichy</strong> and choose the ride that works for your day.</>
+                <>Plan city rides, one-way trips and outstation journeys with Root Cabs. Use the app for cab booking in Trichy and choose the ride that works for your day.</>
               ) : isTiruppur ? (
                 <>Plan your trips through the Root Cabs app with options for local travel, one-way rides, outstation trips and more. For anyone looking for a <strong>taxi in Tiruppur</strong>, the app makes it simple to choose a service, enter the trip details and book your ride.</>
               ) : isKumbakonam ? (
@@ -2404,56 +2363,26 @@ function CityAppDownloadCard({ city }: { city: "Salem" | "Kumbakonam" | "Tiruppu
                 </span>
               ))}
             </div>
-            <div className="mt-5 grid max-w-[470px] grid-cols-1 justify-items-center gap-3 sm:grid-cols-2">
-              <div className="flex w-[170px] flex-col items-center">
-                <a
-                  href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
-                  aria-label="App Store"
-                >
-                  <img src="/assets/app-store-badge.png" alt="Download on the App Store" className="h-10 w-auto object-contain" />
-                </a>
-                <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
-                  <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">Scan to Download</p>
-                  <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
-                    <img
-                      src="/assets/app-download-qr-app-store-cropped.png"
-                      alt="App Store QR code"
-                      className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
-                    />
-                  </span>
-                </div>
-              </div>
-              <div className="flex w-[170px] flex-col items-center">
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
-                  aria-label="Google play"
-                >
-                  <img src="/assets/play-store.png" alt="Get it on Google Play" className="h-10 w-auto object-contain" />
-                </a>
-                <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
-                  <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">Scan to Download</p>
-                  <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
-                    <img
-                      src="/assets/app-download-qr-google-play-cropped.png"
-                      alt="Google Play QR code"
-                      className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
-                    />
-                  </span>
-                </div>
-              </div>
+          </div>
+          <div className="flex flex-col items-center justify-center lg:px-5">
+            <span className="flex h-[148px] w-[148px] items-center justify-center bg-white p-1">
+              <img src="/assets/root-cabs-qr-code.jpg" alt="Root Cabs app QR code" className="h-full w-full object-contain" />
+            </span>
+            <p className="mt-3 text-center text-base font-bold">Scan to Download</p>
+            <div className="mt-3 flex items-center gap-2">
+              <a href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN" target="_blank" rel="noopener noreferrer" aria-label="Download Root Cabs from Google Play" className="rounded focus:outline-none focus:ring-2 focus:ring-[#FFD700]">
+                <img src="/assets/play-store.png" alt="Get it on Google Play" className="h-9 w-auto object-contain" />
+              </a>
+              <a href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062" target="_blank" rel="noopener noreferrer" aria-label="Download Root Cabs from the App Store" className="rounded focus:outline-none focus:ring-2 focus:ring-[#FFD700]">
+                <img src="/assets/app-store-badge.png" alt="Download on the App Store" className="h-9 w-auto object-contain" />
+              </a>
             </div>
           </div>
-          <div className="relative mx-auto flex w-full max-w-[380px] justify-center lg:absolute lg:bottom-0 lg:right-0 lg:mx-0 lg:translate-x-12 lg:translate-y-8 lg:justify-end">
+          <div className="relative mx-auto flex h-full w-full max-w-[205px] items-end justify-center self-end lg:absolute lg:-bottom-14 lg:-right-10 lg:h-[315px] lg:w-[236px] lg:max-w-none lg:justify-end">
             <img
               src="/assets/app-download-mobile-screen.png"
               alt="Root Cabs app shown on a mobile phone"
-              className="h-[440px] w-auto max-w-full object-contain md:h-[430px] lg:h-[420px]"
+              className="h-[280px] w-auto max-w-full object-contain md:h-[320px] lg:h-full lg:max-w-none"
             />
           </div>
         </div>
@@ -2801,7 +2730,7 @@ export function KumbakonamPage() {
             {kumbakonamOutstationRoutes.map((route) => (
               <div
                 key={route.to}
-                className="relative flex h-[170px] min-w-0 items-center overflow-hidden rounded-xl border border-border bg-white sm:h-[190px] lg:h-48"
+                className="relative flex min-h-[210px] min-w-0 items-center overflow-hidden rounded-xl border border-border bg-white sm:min-h-[220px]"
               >
                 <div className="pointer-events-none absolute inset-y-0 right-0 flex w-[42%] items-center justify-end overflow-hidden bg-[#F8FBFF] sm:w-[46%]">
                   <img
@@ -2811,7 +2740,7 @@ export function KumbakonamPage() {
                   />
                 </div>
                 <div className="relative z-10 flex w-[58%] min-w-0 flex-col items-start justify-center px-3 py-3 sm:w-[54%] sm:px-5">
-                  <h3 className="font-heading text-base font-bold leading-tight text-[#111827] sm:text-xl">Kumbakonam to {route.to}</h3>
+                  <h3 className="max-w-full break-words font-heading text-base font-bold leading-tight text-[#111827] sm:text-lg">Kumbakonam to {route.to}</h3>
                     <p className="mt-2 max-w-full break-words text-xs leading-5 text-[#111827] sm:mt-3 sm:text-sm">
                       {route.distance} km | {route.price === "Not valid" ? "Fare on request" : `Sedan from ₹${route.price}`}
                     </p>
@@ -2972,7 +2901,7 @@ export function KumbakonamPage() {
         <div className="mt-12">
           <CityAppDownloadCard city="Kumbakonam" />
         </div>
-        <section className="mt-12 rounded-2xl bg-[#F3F5FA] px-4 pb-14 pt-8 md:px-6 md:pb-16 md:pt-10">
+        <section className="mt-4 rounded-2xl bg-[#F3F5FA] px-4 pb-14 pt-8 md:mt-5 md:px-6 md:pb-16 md:pt-10">
           <div className="mx-auto max-w-4xl">
             <h2 className="text-center font-heading text-2xl font-bold text-[#1E2A6E] md:text-3xl">
               Frequently Asked Questions
@@ -3925,32 +3854,42 @@ export function CityPage({
         )}
 
         {isVellore && (
-          <>
-            <VelloreAppDownloadCard />
-          </>
+          <div className="space-y-4 md:space-y-5">
+            <AppDownloadCard />
+            <VelloreFaqSection />
+          </div>
         )}
 
-        {isSalem && <CityAppDownloadCard city="Salem" />}
-        {isTiruppur && <CityAppDownloadCard city="Tiruppur" />}
-        {isTrichy && <CityAppDownloadCard city="Trichy" />}
+        {isSalem && (
+          <div className="space-y-4 md:space-y-5">
+            <CityAppDownloadCard city="Salem" />
+            <SalemFaqSection />
+          </div>
+        )}
 
-        {isVellore ? (
-          <VelloreFaqSection />
-        ) : isTiruppur ? (
-          <TiruppurFaqSection />
-        ) : isSalem ? (
-          <SalemFaqSection />
-        ) : isTrichy ? (
-          <TrichyFaqSection />
-        ) : city.name !== "Chennai" && (
+        {isTiruppur && (
+          <div className="space-y-4 md:space-y-5">
+            <CityAppDownloadCard city="Tiruppur" />
+            <TiruppurFaqSection />
+          </div>
+        )}
+
+        {isTrichy && (
+          <div className="space-y-4 md:space-y-5">
+            <CityAppDownloadCard city="Trichy" />
+            <TrichyFaqSection />
+          </div>
+        )}
+
+        {!isVellore && !isTiruppur && !isSalem && !isTrichy && city.name !== "Chennai" && (
           <CityFaqSection city={city} />
         )}
 
         {city.name === "Chennai" && (
-          <>
+          <div className="space-y-4 md:space-y-5">
             <AppDownloadCard />
             <CityFaqSection city={city} />
-          </>
+          </div>
         )}
 
       </div>
@@ -3960,8 +3899,7 @@ export function CityPage({
 }
 
 function VelloreRoutesSection() {
-  const [showAllRoutes, setShowAllRoutes] = useState(false);
-  const visibleRoutes = showAllRoutes ? velloreRoutes : velloreRoutes.slice(0, 3);
+  const visibleRoutes = velloreRoutes;
 
   return (
     <section className="w-full min-w-0 max-w-full overflow-x-hidden">
@@ -4003,17 +3941,6 @@ function VelloreRoutesSection() {
             </div>
           );
         })}
-      </div>
-
-      <div className="mt-6 flex justify-center">
-        <Button
-          type="button"
-          variant="outline"
-          className="border-[#1E2A6E] bg-[#1E2A6E] text-white hover:border-[#273588] hover:bg-[#273588] hover:text-white"
-          onClick={() => setShowAllRoutes((current) => !current)}
-        >
-          {showAllRoutes ? "See Less" : "See More"}
-        </Button>
       </div>
 
     </section>

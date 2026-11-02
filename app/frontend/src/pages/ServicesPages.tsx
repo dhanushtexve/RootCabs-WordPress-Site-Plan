@@ -1070,17 +1070,17 @@ export function ServicesHub() {
         </section>
 
         {/* App Download CTA */}
-        <section className="mx-auto mt-14 max-w-[1024px]">
-          <div className="relative overflow-hidden rounded-2xl bg-[#273588] px-6 py-8 text-white shadow-xl md:px-10 lg:px-12">
+        <section className="mx-auto mt-4 max-w-[1280px] md:mt-5">
+          <div className="relative isolate overflow-hidden rounded-[24px] bg-gradient-to-r from-[#102A72] via-[#0D2463] to-[#071A4D] px-5 py-7 text-white shadow-xl md:px-8 md:py-8 lg:min-h-[300px] lg:px-10 lg:py-8">
             <img
               src="/assets/home-download-car-bg.webp"
               alt=""
               aria-hidden="true"
-              className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.14] saturate-75"
+              className="absolute inset-0 h-full w-full object-cover object-center opacity-25 saturate-75"
             />
-            <div className="absolute inset-0 bg-[#273588]/62" />
-            <div className="relative z-10 grid items-center gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.78fr)]">
-              <div className="text-center md:text-left md:pl-2 lg:pl-4">
+            <div className="absolute inset-0 bg-[#081B50]/55" />
+            <div className="relative z-10 grid items-center gap-7 lg:grid-cols-[minmax(0,1.7fr)_minmax(240px,0.55fr)_minmax(190px,0.42fr)] lg:gap-0">
+              <div className="text-center md:text-left">
                 <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                   GET THE APP
                 </span>
@@ -1096,57 +1096,26 @@ export function ServicesHub() {
                   <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> Reliable late-night travel</span>
                   <span className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> On-time rides</span>
                 </div>
-                <div className="mt-5 grid max-w-[470px] grid-cols-1 justify-items-center gap-3 sm:grid-cols-2 md:justify-items-start">
-                  <div className="flex w-[170px] flex-col items-center">
-                    <a
-                      href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
-                      aria-label="App Store"
-                    >
-                      <img src="/assets/app-store-badge.png" alt="App Store" className="h-10 w-auto object-contain" />
-                    </a>
-                    <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
-                      <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">Scan to Download</p>
-                      <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
-                        <img
-                          src="/assets/app-download-qr-app-store-cropped.png"
-                          alt="App Store QR code"
-                          className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
-                        />
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="flex w-[170px] flex-col items-center">
-                    <a
-                      href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
-                      aria-label="Google Play"
-                    >
-                      <img src="/assets/play-store.png" alt="Google Play" className="h-10 w-auto object-contain" />
-                    </a>
-                    <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
-                      <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">Scan to Download</p>
-                      <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
-                        <img
-                          src="/assets/app-download-qr-google-play-cropped.png"
-                          alt="Google Play QR code"
-                          className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
-                        />
-                      </span>
-                    </div>
-                  </div>
+              </div>
+              <div className="flex flex-col items-center justify-center lg:px-5">
+                <span className="flex h-[148px] w-[148px] items-center justify-center bg-white p-1">
+                  <img src="/assets/root-cabs-qr-code.jpg" alt="Root Cabs app QR code" className="h-full w-full object-contain" />
+                </span>
+                <p className="mt-3 text-center text-base font-bold">Scan to Download</p>
+                <div className="mt-3 flex items-center gap-2">
+                  <a href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN" target="_blank" rel="noopener noreferrer" aria-label="Download Root Cabs from Google Play" className="rounded focus:outline-none focus:ring-2 focus:ring-[#FFD700]">
+                    <img src="/assets/play-store.png" alt="Get it on Google Play" className="h-9 w-auto object-contain" />
+                  </a>
+                  <a href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062" target="_blank" rel="noopener noreferrer" aria-label="Download Root Cabs from the App Store" className="rounded focus:outline-none focus:ring-2 focus:ring-[#FFD700]">
+                    <img src="/assets/app-store-badge.png" alt="Download on the App Store" className="h-9 w-auto object-contain" />
+                  </a>
                 </div>
               </div>
-              <div className="relative mx-auto flex w-full max-w-[380px] justify-center lg:absolute lg:bottom-0 lg:right-0 lg:mx-0 lg:translate-x-12 lg:translate-y-8 lg:justify-end">
+              <div className="relative mx-auto flex h-full w-full max-w-[205px] items-end justify-center self-end lg:absolute lg:-bottom-14 lg:-right-10 lg:h-[315px] lg:w-[236px] lg:max-w-none lg:justify-end">
                 <img
                   src="/assets/app-download-mobile-screen.png"
                   alt="Root Cabs app shown on a mobile phone"
-                  className="h-[440px] w-auto max-w-full object-contain md:h-[430px] lg:h-[420px]"
+                  className="h-[280px] w-auto max-w-full object-contain md:h-[320px] lg:h-full lg:max-w-none"
                 />
               </div>
             </div>
@@ -1154,7 +1123,7 @@ export function ServicesHub() {
         </section>
 
         {/* FAQ */}
-        <section className="mt-14 rounded-2xl bg-[#F4F6FA] px-4 py-10 md:px-8 md:py-12">
+        <section className="mt-4 rounded-2xl bg-[#F4F6FA] px-4 py-10 md:mt-5 md:px-8 md:py-12">
           <h2 className="font-heading text-center text-2xl font-bold text-[#1E2A6E] md:text-3xl">
             Frequently Asked Questions
           </h2>
@@ -2655,6 +2624,81 @@ export function ServicePage() {
               </section>
             )}
 
+            {false && (isParcelDeliveryService || isAutoService || isActingDriverService) && (
+              <div className="relative isolate mx-auto w-full max-w-[1280px] overflow-hidden rounded-[24px] bg-gradient-to-r from-[#102A72] via-[#0D2463] to-[#071A4D] px-5 py-7 text-white shadow-xl md:px-8 md:py-8 lg:min-h-[300px] lg:px-10 lg:py-8">
+                <img
+                  src="/assets/home-download-car-bg.webp"
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 h-full w-full object-cover object-center opacity-25 saturate-75"
+                />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.16),transparent_32%),radial-gradient(circle_at_82%_28%,rgba(255,255,255,0.1),transparent_28%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.08),transparent_32%)]" />
+                <div className="absolute inset-0 bg-[#081B50]/55" />
+                <div className="relative z-10 grid items-center gap-7 lg:grid-cols-[minmax(0,1.7fr)_minmax(240px,0.55fr)_minmax(190px,0.42fr)] lg:gap-0">
+                  <div className="text-center md:text-left">
+                    <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
+                      GET THE APP
+                    </span>
+                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl lg:whitespace-nowrap">
+                      {isOutstationTaxiService
+                        ? "Make Every Ride Easier with Root Cabs"
+                        : isParcelDeliveryService
+                          ? "Send Your Parcel Easily with Root Cabs"
+                          : isAutoService
+                            ? "Book Your Auto Ride with Root Cabs"
+                            : "Book Your Acting Driver with Root Cabs"}
+                    </h2>
+                    <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
+                      {isOutstationTaxiService ? (
+                        <>Use Root Cabs to check fares, choose your ride, and confirm your booking in just a few steps. Everything is kept simple so you can plan your travel without an unnecessary hassle.</>
+                      ) : isParcelDeliveryService ? (
+                        <>From documents and medicines to groceries, gifts, and everyday essentials, Root Cabs makes <strong>parcel shipping</strong> within the city simple. Add the pickup and delivery details, choose the parcel type, and place your request in a few steps.</>
+                      ) : isAutoService ? (
+                        <>Use Root Cabs for simple <strong>online auto booking</strong> whenever you need a quick local ride. Enter your pickup and drop, check the fare, confirm the ride, and track your driver from pickup to destination.</>
+                      ) : (
+                        <>Need someone to drive your own car? Root Cabs helps you find a <strong>acting driver</strong> for local trips, late-night travel, functions, or longer journeys. Share your trip details, choose the suitable option, and confirm your driver in a few simple steps.</>
+                      )}
+                    </p>
+                    <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-semibold text-white/85 md:justify-start">
+                      {(isOutstationTaxiService
+                        ? outstationTaxiAppBenefits
+                        : isParcelDeliveryService
+                          ? parcelDeliveryAppBenefits
+                          : isAutoService
+                            ? autoAppBenefits
+                            : actingDriverAppBenefits
+                      ).map((item) => (
+                        <span key={item} className="flex items-center gap-1.5">
+                          <CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center justify-center lg:px-5">
+                    <span className="flex h-[148px] w-[148px] items-center justify-center bg-white p-1">
+                      <img src="/assets/root-cabs-qr-code.jpg" alt="Root Cabs app QR code" className="h-full w-full object-contain" />
+                    </span>
+                    <p className="mt-3 text-center text-base font-bold">Scan to Download</p>
+                    <div className="mt-3 flex items-center gap-2">
+                      <a href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN" target="_blank" rel="noopener noreferrer" aria-label="Download Root Cabs from Google Play" className="rounded focus:outline-none focus:ring-2 focus:ring-[#FFD700]">
+                        <img src="/assets/play-store.png" alt="Get it on Google Play" className="h-9 w-auto object-contain" />
+                      </a>
+                      <a href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062" target="_blank" rel="noopener noreferrer" aria-label="Download Root Cabs from the App Store" className="rounded focus:outline-none focus:ring-2 focus:ring-[#FFD700]">
+                        <img src="/assets/app-store-badge.png" alt="Download on the App Store" className="h-9 w-auto object-contain" />
+                      </a>
+                    </div>
+                  </div>
+                  <div className="relative mx-auto flex h-full w-full max-w-[205px] items-end justify-center self-end lg:absolute lg:-bottom-14 lg:-right-10 lg:h-[315px] lg:w-[236px] lg:max-w-none lg:justify-end">
+                    <img
+                      src="/assets/app-download-mobile-screen.png"
+                      alt="Root Cabs app shown on a mobile phone"
+                      className="h-[280px] w-auto max-w-full object-contain md:h-[320px] lg:h-full lg:max-w-none"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+
             {isOutstationTaxiService && (
               <section className="rounded-2xl bg-[#F3F5FA] p-5 md:p-8">
                 <div className="grid gap-6 rounded-lg border border-[#D7DDED] bg-white p-5 md:p-6 lg:grid-cols-2">
@@ -2785,18 +2829,87 @@ export function ServicePage() {
               </section>
             )}
 
-            {isAirportTaxiService && (
-              <div className="mx-auto w-full max-w-[1024px] relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
+            {false && (isParcelDeliveryService || isAutoService || isActingDriverService) && (
+              <div className="relative isolate mx-auto w-full max-w-[1280px] overflow-hidden rounded-[24px] bg-gradient-to-r from-[#102A72] via-[#0D2463] to-[#071A4D] px-5 py-7 text-white shadow-xl md:px-8 md:py-8 lg:min-h-[300px] lg:px-10 lg:py-8">
                 <img
                   src="/assets/home-download-car-bg.webp"
                   alt=""
                   aria-hidden="true"
-                  className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.14] saturate-75"
+                  className="absolute inset-0 h-full w-full object-cover object-center opacity-25 saturate-75"
                 />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.16),transparent_32%),radial-gradient(circle_at_82%_28%,rgba(255,255,255,0.1),transparent_28%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.08),transparent_32%)]" />
-                <div className="absolute inset-0 bg-[#273588]/62" />
-                <div className="relative z-10 grid items-center gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.78fr)]">
-                  <div className="text-center md:text-left md:pl-2 lg:pl-4">
+                <div className="absolute inset-0 bg-[#081B50]/55" />
+                <div className="relative z-10 grid items-center gap-7 lg:grid-cols-[minmax(0,1.7fr)_minmax(240px,0.55fr)_minmax(190px,0.42fr)] lg:gap-0">
+                  <div className="text-center md:text-left">
+                    <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
+                      GET THE APP
+                    </span>
+                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl lg:whitespace-nowrap">
+                      {isParcelDeliveryService
+                        ? "Send Your Parcel Easily with Root Cabs"
+                        : isAutoService
+                          ? "Book Your Auto Ride with Root Cabs"
+                          : "Book Your Acting Driver with Root Cabs"}
+                    </h2>
+                    <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
+                      {isParcelDeliveryService ? (
+                        <>From documents and medicines to groceries, gifts, and everyday essentials, Root Cabs makes <strong>parcel shipping</strong> within the city simple. Add the pickup and delivery details, choose the parcel type, and place your request in a few steps.</>
+                      ) : isAutoService ? (
+                        <>Use Root Cabs for simple <strong>online auto booking</strong> whenever you need a quick local ride. Enter your pickup and drop, check the fare, confirm the ride, and track your driver from pickup to destination.</>
+                      ) : (
+                        <>Need someone to drive your own car? Root Cabs helps you find a <strong>acting driver</strong> for local trips, late-night travel, functions, or longer journeys. Share your trip details, choose the suitable option, and confirm your driver in a few simple steps.</>
+                      )}
+                    </p>
+                    <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-semibold text-white/85 md:justify-start">
+                      {(isParcelDeliveryService
+                        ? parcelDeliveryAppBenefits
+                        : isAutoService
+                          ? autoAppBenefits
+                          : actingDriverAppBenefits
+                      ).map((item) => (
+                        <span key={item} className="flex items-center gap-1.5">
+                          <CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center justify-center lg:px-5">
+                    <span className="flex h-[148px] w-[148px] items-center justify-center bg-white p-1">
+                      <img src="/assets/root-cabs-qr-code.jpg" alt="Root Cabs app QR code" className="h-full w-full object-contain" />
+                    </span>
+                    <p className="mt-3 text-center text-base font-bold">Scan to Download</p>
+                    <div className="mt-3 flex items-center gap-2">
+                      <a href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN" target="_blank" rel="noopener noreferrer" aria-label="Download Root Cabs from Google Play" className="rounded focus:outline-none focus:ring-2 focus:ring-[#FFD700]">
+                        <img src="/assets/play-store.png" alt="Get it on Google Play" className="h-9 w-auto object-contain" />
+                      </a>
+                      <a href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062" target="_blank" rel="noopener noreferrer" aria-label="Download Root Cabs from the App Store" className="rounded focus:outline-none focus:ring-2 focus:ring-[#FFD700]">
+                        <img src="/assets/app-store-badge.png" alt="Download on the App Store" className="h-9 w-auto object-contain" />
+                      </a>
+                    </div>
+                  </div>
+                  <div className="relative mx-auto flex h-full w-full max-w-[205px] items-end justify-center self-end lg:absolute lg:-bottom-14 lg:-right-10 lg:h-[315px] lg:w-[236px] lg:max-w-none lg:justify-end">
+                    <img
+                      src="/assets/app-download-mobile-screen.png"
+                      alt="Root Cabs app shown on a mobile phone"
+                      className="h-[280px] w-auto max-w-full object-contain md:h-[320px] lg:h-full lg:max-w-none"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {isAirportTaxiService && (
+              <div className="relative isolate mx-auto w-full max-w-[1280px] overflow-hidden rounded-[24px] bg-gradient-to-r from-[#102A72] via-[#0D2463] to-[#071A4D] px-5 py-7 text-white shadow-xl md:px-8 md:py-8 lg:min-h-[300px] lg:px-10 lg:py-8">
+                <img
+                  src="/assets/home-download-car-bg.webp"
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 h-full w-full object-cover object-center opacity-25 saturate-75"
+                />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.16),transparent_32%),radial-gradient(circle_at_82%_28%,rgba(255,255,255,0.1),transparent_28%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.08),transparent_32%)]" />
+                <div className="absolute inset-0 bg-[#081B50]/55" />
+                <div className="relative z-10 grid items-center gap-7 lg:grid-cols-[minmax(0,1.7fr)_minmax(240px,0.55fr)_minmax(190px,0.42fr)] lg:gap-0">
+                  <div className="text-center md:text-left">
                     <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                       GET THE APP
                     </span>
@@ -2816,62 +2929,26 @@ export function ServicePage() {
                       ))}
                     </div>
 
-                    <div className="mt-5 grid max-w-[470px] grid-cols-1 justify-items-center gap-3 sm:grid-cols-2">
-                      <div className="flex w-[170px] flex-col items-center">
-                        <a
-                          href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
-                          aria-label="Google Play"
-                        >
-                          <img src="/assets/play-store.png" alt="Google Play" className="h-10 w-auto object-contain" />
-                        </a>
-                        <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
-                          <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">
-                            Scan to Download
-                          </p>
-                          <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
-                            <img
-                              src="/assets/app-download-qr-google-play-cropped.png"
-                              alt="Google Play QR code"
-                              className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
-                            />
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className="flex w-[170px] flex-col items-center">
-                        <a
-                          href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
-                          aria-label="App Store"
-                        >
-                          <img src="/assets/app-store-badge.png" alt="App Store" className="h-10 w-auto object-contain" />
-                        </a>
-                        <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
-                          <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">
-                            Scan to Download
-                          </p>
-                          <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
-                            <img
-                              src="/assets/app-download-qr-app-store-cropped.png"
-                              alt="App Store QR code"
-                              className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
-                            />
-                          </span>
-                        </div>
-                      </div>
+                  </div>
+                  <div className="flex flex-col items-center justify-center lg:px-5">
+                    <span className="flex h-[148px] w-[148px] items-center justify-center bg-white p-1">
+                      <img src="/assets/root-cabs-qr-code.jpg" alt="Root Cabs app QR code" className="h-full w-full object-contain" />
+                    </span>
+                    <p className="mt-3 text-center text-base font-bold">Scan to Download</p>
+                    <div className="mt-3 flex items-center gap-2">
+                      <a href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN" target="_blank" rel="noopener noreferrer" aria-label="Download Root Cabs from Google Play" className="rounded focus:outline-none focus:ring-2 focus:ring-[#FFD700]">
+                        <img src="/assets/play-store.png" alt="Get it on Google Play" className="h-9 w-auto object-contain" />
+                      </a>
+                      <a href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062" target="_blank" rel="noopener noreferrer" aria-label="Download Root Cabs from the App Store" className="rounded focus:outline-none focus:ring-2 focus:ring-[#FFD700]">
+                        <img src="/assets/app-store-badge.png" alt="Download on the App Store" className="h-9 w-auto object-contain" />
+                      </a>
                     </div>
                   </div>
-
-                  <div className="relative mx-auto flex w-full max-w-[380px] justify-center lg:absolute lg:bottom-0 lg:right-0 lg:mx-0 lg:translate-x-12 lg:translate-y-8 lg:justify-end">
+                  <div className="relative mx-auto flex h-full w-full max-w-[205px] items-end justify-center self-end lg:absolute lg:-bottom-14 lg:-right-10 lg:h-[315px] lg:w-[236px] lg:max-w-none lg:justify-end">
                     <img
                       src="/assets/app-download-mobile-screen.png"
                       alt="Root Cabs app shown on a mobile phone"
-                      className="h-[440px] w-auto max-w-full object-contain md:h-[430px] lg:h-[420px]"
+                      className="h-[280px] w-auto max-w-full object-contain md:h-[320px] lg:h-full lg:max-w-none"
                     />
                   </div>
                 </div>
@@ -2912,22 +2989,22 @@ export function ServicePage() {
             )}
 
             {isLocalTaxiService && (
-              <div className="mx-auto w-full max-w-[1024px] relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
+              <div className="relative isolate mx-auto w-full max-w-[1280px] overflow-hidden rounded-[24px] bg-gradient-to-r from-[#102A72] via-[#0D2463] to-[#071A4D] px-5 py-7 text-white shadow-xl md:px-8 md:py-8 lg:min-h-[300px] lg:px-10 lg:py-8">
                 <img
                   src="/assets/home-download-car-bg.webp"
                   alt=""
                   aria-hidden="true"
-                  className="absolute inset-0 h-full w-full object-cover object-center opacity-[0.14] saturate-75"
+                  className="absolute inset-0 h-full w-full object-cover object-center opacity-25 saturate-75"
                 />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.16),transparent_32%),radial-gradient(circle_at_82%_28%,rgba(255,255,255,0.1),transparent_28%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.08),transparent_32%)]" />
-                <div className="absolute inset-0 bg-[#273588]/62" />
-                <div className="relative z-10 grid items-center gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(260px,0.78fr)]">
-                  <div className="text-center md:text-left md:pl-2 lg:pl-4">
+                <div className="absolute inset-0 bg-[#081B50]/55" />
+                <div className="relative z-10 grid items-center gap-7 lg:grid-cols-[minmax(0,1.7fr)_minmax(240px,0.55fr)_minmax(190px,0.42fr)] lg:gap-0">
+                  <div className="text-center md:text-left">
                     <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
                       GET THE APP
                     </span>
                     <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl lg:whitespace-nowrap">
-                      Book Local Rides Faster With The Root Cabs App
+                      Book Local Rides Faster<br />With The Root Cabs App
                     </h2>
                     <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
                       Use the Root Cabs app whenever you need a <strong>local taxi cab</strong> for work, shopping,
@@ -2942,62 +3019,26 @@ export function ServicePage() {
                       ))}
                     </div>
 
-                    <div className="mt-5 grid max-w-[470px] grid-cols-1 justify-items-center gap-3 sm:grid-cols-2">
-                      <div className="flex w-[170px] flex-col items-center">
-                        <a
-                          href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
-                          aria-label="Google Play"
-                        >
-                          <img src="/assets/play-store.png" alt="Google Play" className="h-10 w-auto object-contain" />
-                        </a>
-                        <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
-                          <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">
-                            Scan to Download
-                          </p>
-                          <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
-                            <img
-                              src="/assets/app-download-qr-google-play-cropped.png"
-                              alt="Google Play QR code"
-                              className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
-                            />
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className="flex w-[170px] flex-col items-center">
-                        <a
-                          href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex h-10 w-[150px] items-center justify-center rounded-lg bg-black shadow-lg transition-transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 focus:ring-offset-[#273588]"
-                          aria-label="App Store"
-                        >
-                          <img src="/assets/app-store-badge.png" alt="App Store" className="h-10 w-auto object-contain" />
-                        </a>
-                        <div className="mt-2.5 flex h-[176px] w-full flex-col items-center">
-                          <p className="mb-1.5 flex h-4 items-center justify-center text-center text-[10px] font-extrabold uppercase tracking-wider text-white/85">
-                            Scan to Download
-                          </p>
-                          <span className="flex h-[154px] w-[154px] items-center justify-center bg-white md:h-[158px] md:w-[158px]">
-                            <img
-                              src="/assets/app-download-qr-app-store-cropped.png"
-                              alt="App Store QR code"
-                              className="mx-auto h-[150px] w-[150px] max-w-full object-contain md:h-[154px] md:w-[154px]"
-                            />
-                          </span>
-                        </div>
-                      </div>
+                  </div>
+                  <div className="flex flex-col items-center justify-center lg:px-5">
+                    <span className="flex h-[148px] w-[148px] items-center justify-center bg-white p-1">
+                      <img src="/assets/root-cabs-qr-code.jpg" alt="Root Cabs app QR code" className="h-full w-full object-contain" />
+                    </span>
+                    <p className="mt-3 text-center text-base font-bold">Scan to Download</p>
+                    <div className="mt-3 flex items-center gap-2">
+                      <a href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN" target="_blank" rel="noopener noreferrer" aria-label="Download Root Cabs from Google Play" className="rounded focus:outline-none focus:ring-2 focus:ring-[#FFD700]">
+                        <img src="/assets/play-store.png" alt="Get it on Google Play" className="h-9 w-auto object-contain" />
+                      </a>
+                      <a href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062" target="_blank" rel="noopener noreferrer" aria-label="Download Root Cabs from the App Store" className="rounded focus:outline-none focus:ring-2 focus:ring-[#FFD700]">
+                        <img src="/assets/app-store-badge.png" alt="Download on the App Store" className="h-9 w-auto object-contain" />
+                      </a>
                     </div>
                   </div>
-
-                  <div className="relative mx-auto flex w-full max-w-[380px] justify-center lg:absolute lg:bottom-0 lg:right-0 lg:mx-0 lg:translate-x-12 lg:translate-y-8 lg:justify-end">
+                  <div className="relative mx-auto flex h-full w-full max-w-[205px] items-end justify-center self-end lg:absolute lg:-bottom-14 lg:-right-10 lg:h-[315px] lg:w-[236px] lg:max-w-none lg:justify-end">
                     <img
                       src="/assets/app-download-mobile-screen.png"
                       alt="Root Cabs app shown on a mobile phone"
-                      className="h-[440px] w-auto max-w-full object-contain md:h-[430px] lg:h-[420px]"
+                      className="h-[280px] w-auto max-w-full object-contain md:h-[320px] lg:h-full lg:max-w-none"
                     />
                   </div>
                 </div>
@@ -3005,6 +3046,61 @@ export function ServicePage() {
             )}
 
             {isOutstationTaxiService && (
+              <div className="relative isolate mx-auto w-full max-w-[1280px] overflow-hidden rounded-[24px] bg-gradient-to-r from-[#102A72] via-[#0D2463] to-[#071A4D] px-5 py-7 text-white shadow-xl md:px-8 md:py-8 lg:min-h-[300px] lg:px-10 lg:py-8">
+                <img
+                  src="/assets/home-download-car-bg.webp"
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 h-full w-full object-cover object-center opacity-25 saturate-75"
+                />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.16),transparent_32%),radial-gradient(circle_at_82%_28%,rgba(255,255,255,0.1),transparent_28%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.08),transparent_32%)]" />
+                <div className="absolute inset-0 bg-[#081B50]/55" />
+                <div className="relative z-10 grid items-center gap-7 lg:grid-cols-[minmax(0,1.7fr)_minmax(240px,0.55fr)_minmax(190px,0.42fr)] lg:gap-0">
+                  <div className="text-center md:text-left">
+                    <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">
+                      GET THE APP
+                    </span>
+                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl lg:whitespace-nowrap">
+                      Make Every Ride Easier with Root Cabs
+                    </h2>
+                    <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
+                      Use Root Cabs to check fares, choose your ride, and confirm your booking in just a few steps.
+                      Everything is kept simple so you can plan your travel without an unnecessary hassle.
+                    </p>
+                    <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-semibold text-white/85 md:justify-start">
+                      {outstationTaxiAppBenefits.map((item) => (
+                        <span key={item} className="flex items-center gap-1.5">
+                          <CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> {item}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center justify-center lg:px-5">
+                    <span className="flex h-[148px] w-[148px] items-center justify-center bg-white p-1">
+                      <img src="/assets/root-cabs-qr-code.jpg" alt="Root Cabs app QR code" className="h-full w-full object-contain" />
+                    </span>
+                    <p className="mt-3 text-center text-base font-bold">Scan to Download</p>
+                    <div className="mt-3 flex items-center gap-2">
+                      <a href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN" target="_blank" rel="noopener noreferrer" aria-label="Download Root Cabs from Google Play" className="rounded focus:outline-none focus:ring-2 focus:ring-[#FFD700]">
+                        <img src="/assets/play-store.png" alt="Get it on Google Play" className="h-9 w-auto object-contain" />
+                      </a>
+                      <a href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062" target="_blank" rel="noopener noreferrer" aria-label="Download Root Cabs from the App Store" className="rounded focus:outline-none focus:ring-2 focus:ring-[#FFD700]">
+                        <img src="/assets/app-store-badge.png" alt="Download on the App Store" className="h-9 w-auto object-contain" />
+                      </a>
+                    </div>
+                  </div>
+                  <div className="relative mx-auto flex h-full w-full max-w-[205px] items-end justify-center self-end lg:absolute lg:-bottom-14 lg:-right-10 lg:h-[315px] lg:w-[236px] lg:max-w-none lg:justify-end">
+                    <img
+                      src="/assets/app-download-mobile-screen.png"
+                      alt="Root Cabs app shown on a mobile phone"
+                      className="h-[280px] w-auto max-w-full object-contain md:h-[320px] lg:h-full lg:max-w-none"
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {false && isOutstationTaxiService && (
               <div className="mx-auto w-full max-w-[1024px] relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
                 <img
                   src="/assets/home-download-car-bg.webp"
@@ -3096,7 +3192,7 @@ export function ServicePage() {
               </div>
             )}
 
-            {isParcelDeliveryService && (
+            {false && isParcelDeliveryService && (
               <div className="mx-auto w-full max-w-[1024px] relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
                 <img
                   src="/assets/home-download-car-bg.webp"
@@ -3189,7 +3285,7 @@ export function ServicePage() {
               </div>
             )}
 
-            {isAutoService && (
+            {false && isAutoService && (
               <div className="mx-auto w-full max-w-[1024px] relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
                 <img
                   src="/assets/home-download-car-bg.webp"
@@ -3282,7 +3378,7 @@ export function ServicePage() {
               </div>
             )}
 
-            {isActingDriverService && (
+            {false && isActingDriverService && (
               <div className="mx-auto w-full max-w-[1024px] relative isolate overflow-hidden rounded-2xl bg-gradient-to-br from-[#3045a8] via-[#273588] to-[#1f2b73] px-5 py-5 text-white shadow-xl md:px-8 md:py-6 lg:px-10">
                 <img
                   src="/assets/home-download-car-bg.webp"
@@ -3370,6 +3466,47 @@ export function ServicePage() {
                       alt="Root Cabs app shown on a mobile phone"
                       className="h-[440px] w-auto max-w-full object-contain md:h-[430px] lg:h-[420px]"
                     />
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {(isParcelDeliveryService || isAutoService || isActingDriverService) && (
+              <div className="relative isolate mx-auto w-full max-w-[1280px] overflow-hidden rounded-[24px] bg-gradient-to-r from-[#102A72] via-[#0D2463] to-[#071A4D] px-5 py-7 text-white shadow-xl md:px-8 md:py-8 lg:min-h-[300px] lg:px-10 lg:py-8">
+                <img src="/assets/home-download-car-bg.webp" alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover object-center opacity-25 saturate-75" />
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(255,255,255,0.16),transparent_32%),radial-gradient(circle_at_82%_28%,rgba(255,255,255,0.1),transparent_28%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.08),transparent_32%)]" />
+                <div className="absolute inset-0 bg-[#081B50]/55" />
+                <div className="relative z-10 grid items-center gap-7 lg:grid-cols-[minmax(0,1.7fr)_minmax(240px,0.55fr)_minmax(190px,0.42fr)] lg:gap-0">
+                  <div className="text-center md:text-left">
+                    <span className="inline-flex rounded-full bg-white/90 px-4 py-1 text-[10px] font-extrabold uppercase tracking-wide text-[#273588]">GET THE APP</span>
+                    <h2 className="mt-3 font-heading text-2xl font-bold leading-tight md:text-3xl lg:whitespace-nowrap">
+                      {isParcelDeliveryService ? "Send Your Parcel Easily with Root Cabs" : isAutoService ? "Book Your Auto Ride with Root Cabs" : "Book Your Acting Driver with Root Cabs"}
+                    </h2>
+                    <p className="mx-auto mt-2.5 max-w-2xl text-sm leading-6 text-white/80 md:mx-0 md:text-base">
+                      {isParcelDeliveryService ? (
+                        <>From documents and medicines to groceries, gifts, and everyday essentials, Root Cabs makes <strong>parcel shipping</strong> within the city simple. Add the pickup and delivery details, choose the parcel type, and place your request in a few steps.</>
+                      ) : isAutoService ? (
+                        <>Use Root Cabs for simple <strong>online auto booking</strong> whenever you need a quick local ride. Enter your pickup and drop, check the fare, confirm the ride, and track your driver from pickup to destination.</>
+                      ) : (
+                        <>Need someone to drive your own car? Root Cabs helps you find a <strong>acting driver</strong> for local trips, late-night travel, functions, or longer journeys. Share your trip details, choose the suitable option, and confirm your driver in a few simple steps.</>
+                      )}
+                    </p>
+                    <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 text-xs font-semibold text-white/85 md:justify-start">
+                      {(isParcelDeliveryService ? parcelDeliveryAppBenefits : isAutoService ? autoAppBenefits : actingDriverAppBenefits).map((item) => (
+                        <span key={item} className="flex items-center gap-1.5"><CheckCircle className="h-3.5 w-3.5 text-[#FFD700]" /> {item}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex flex-col items-center justify-center lg:px-5">
+                    <span className="flex h-[148px] w-[148px] items-center justify-center bg-white p-1"><img src="/assets/root-cabs-qr-code.jpg" alt="Root Cabs app QR code" className="h-full w-full object-contain" /></span>
+                    <p className="mt-3 text-center text-base font-bold">Scan to Download</p>
+                    <div className="mt-3 flex items-center gap-2">
+                      <a href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN" target="_blank" rel="noopener noreferrer" aria-label="Download Root Cabs from Google Play" className="rounded focus:outline-none focus:ring-2 focus:ring-[#FFD700]"><img src="/assets/play-store.png" alt="Get it on Google Play" className="h-9 w-auto object-contain" /></a>
+                      <a href="https://apps.apple.com/in/app/root-cabs-auto-taxi/id6766775062" target="_blank" rel="noopener noreferrer" aria-label="Download Root Cabs from the App Store" className="rounded focus:outline-none focus:ring-2 focus:ring-[#FFD700]"><img src="/assets/app-store-badge.png" alt="Download on the App Store" className="h-9 w-auto object-contain" /></a>
+                    </div>
+                  </div>
+                  <div className="relative mx-auto flex h-full w-full max-w-[205px] items-end justify-center self-end lg:absolute lg:-bottom-14 lg:-right-10 lg:h-[315px] lg:w-[236px] lg:max-w-none lg:justify-end">
+                    <img src="/assets/app-download-mobile-screen.png" alt="Root Cabs app shown on a mobile phone" className="h-[280px] w-auto max-w-full object-contain md:h-[320px] lg:h-full lg:max-w-none" />
                   </div>
                 </div>
               </div>
