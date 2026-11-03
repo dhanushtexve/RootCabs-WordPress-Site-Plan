@@ -409,9 +409,9 @@ export default function Index() {
   return (
     <div>
       {/* Hero Section */}
-      <section className="relative min-h-[420px] overflow-hidden bg-black text-white md:min-h-[500px]">
+      <section className="relative overflow-hidden bg-[#07143F] text-white md:min-h-[500px] md:bg-black">
           <video
-            className="pointer-events-none absolute inset-0 h-full w-full bg-[#07143F] object-cover object-center"
+            className="pointer-events-none hidden md:absolute md:inset-0 md:block md:h-full md:w-full md:bg-[#07143F] md:object-cover md:object-center"
             src="/assets/home-banner-animation-2.webm"
             poster="/assets/rootcabs-banner-home.png"
             preload="metadata"
@@ -422,7 +422,7 @@ export default function Index() {
             aria-hidden="true"
           />
         <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 mx-auto max-w-screen-xl px-4 pb-14 pt-10 md:pb-20 md:pt-12">
+        <div className="relative z-10 mx-auto max-w-screen-xl px-4 pb-14 pt-8 md:pb-20 md:pt-12">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.8fr)] lg:items-center">
             <div className="max-w-3xl">
               <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1.5 text-[11px] font-semibold text-white shadow-sm ring-1 ring-white/10 backdrop-blur-sm">

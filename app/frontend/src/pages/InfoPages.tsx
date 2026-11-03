@@ -214,12 +214,18 @@ export function BusinessPage() {
 
   return (
     <div>
-      <section className="relative min-h-[330px] overflow-hidden py-7 text-white md:min-h-[400px] md:py-9" style={{
-        backgroundImage: "url('/assets/rootcabs-banner-home.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center bottom",
-        backgroundRepeat: "no-repeat",
-      }}>
+      <section className="relative min-h-[330px] overflow-hidden bg-[#07143F] py-7 text-white md:min-h-[400px] md:py-9">
+        <div
+          className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden"
+          style={{ backgroundImage: "url('/assets/rootcabs-banner-home.png')" }}
+          aria-hidden="true"
+        />
+        <img
+          src="/assets/rootcabs-banner-home.png"
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none hidden md:absolute md:inset-0 md:block md:h-full md:w-full md:object-cover md:object-center"
+        />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 max-w-screen-xl mx-auto px-4 text-left">
           <PageBreadcrumb

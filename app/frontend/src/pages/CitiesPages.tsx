@@ -1326,9 +1326,18 @@ export function CitiesHub() {
 
   return (
     <div className="w-full min-w-0 max-w-full overflow-x-hidden">
-      <section className="relative min-h-[330px] overflow-hidden bg-[#07143F] bg-cover bg-bottom bg-no-repeat py-7 text-white md:min-h-[400px] md:bg-center md:py-9" style={{
-        backgroundImage: "url('/assets/rootcabs-banner-home.png')",
-      }}>
+      <section className="relative min-h-[330px] overflow-hidden bg-[#07143F] py-7 text-white md:min-h-[400px] md:py-9">
+        <div
+          className="pointer-events-none absolute inset-0 bg-cover bg-center bg-no-repeat md:hidden"
+          style={{ backgroundImage: "url('/assets/rootcabs-banner-home.png')" }}
+          aria-hidden="true"
+        />
+        <img
+          src="/assets/rootcabs-banner-home.png"
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none hidden md:absolute md:inset-0 md:block md:h-full md:w-full md:object-cover md:object-center"
+        />
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 max-w-screen-xl mx-auto px-4">
           <PageBreadcrumb
@@ -2649,7 +2658,7 @@ export function KumbakonamPage() {
         className="relative min-h-[420px] overflow-hidden bg-[#22236F] text-white md:min-h-[500px]"
       >
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className="absolute inset-0 bg-cover bg-left bg-no-repeat md:bg-center"
           style={{ backgroundImage: `url('${assetPath("/assets/city-banners/kumbakonam-website-home.png")}')` }}
         />
         <div className="absolute inset-0 bg-black/40" />

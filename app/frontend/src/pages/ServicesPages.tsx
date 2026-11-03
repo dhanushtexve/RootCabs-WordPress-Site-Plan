@@ -15,6 +15,37 @@ const serviceBenefitPath = (group: string, file: string) =>
 const serviceBannerPath = (slug: string) => assetPath(`/assets/service-banners/${slug}.webp`);
 const serviceBannerUrl = (slug: string) => `https://rootcabs.com/assets/service-banners/${slug}.webp`;
 
+const serviceMobileBanners: Record<string, string> = {
+  "local-taxi": serviceBannerPath("local-taxi"),
+  "airport-taxi": serviceBannerPath("airport-taxi"),
+  outstation: serviceBannerPath("outstation"),
+  "acting-driver": serviceBannerPath("acting-driver"),
+  "parcel-delivery": serviceBannerPath("parcel-delivery"),
+  auto: serviceBannerPath("auto"),
+};
+
+function ResponsiveHeroMedia({ src, mobileSrc = src, alt }: { src: string; mobileSrc?: string; alt: string }) {
+  return (
+    <>
+      <div
+        className="pointer-events-none absolute inset-0 bg-cover bg-no-repeat md:hidden"
+        style={{
+          backgroundImage: `url('${mobileSrc}')`,
+          backgroundPosition: "left center",
+        }}
+        role="img"
+        aria-label={alt}
+      />
+      <img
+        src={src}
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none hidden md:absolute md:inset-0 md:block md:h-full md:w-full md:object-cover md:object-center"
+      />
+    </>
+  );
+}
+
 const iconMap: Record<string, React.ReactNode> = {
   Car: <Car className="w-8 h-8" />,
   Plane: <Plane className="w-8 h-8" />,
@@ -934,11 +965,10 @@ export function ServicesHub() {
 
   return (
     <div>
-      <section className="relative min-h-[330px] overflow-hidden bg-[#07143F] bg-cover bg-bottom bg-no-repeat py-7 text-white md:min-h-[400px] md:bg-center md:py-9" style={{
-        backgroundImage: "url('/assets/rootcabs-banner-home.png')",
-      }}>
+      <section className="relative overflow-hidden bg-[#07143F] text-white md:min-h-[400px]">
+        <ResponsiveHeroMedia src="/assets/rootcabs-banner-home.png" alt="Root Cabs services across Tamil Nadu" />
         <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 max-w-screen-xl mx-auto px-4">
+        <div className="relative z-10 mx-auto max-w-screen-xl px-4 py-7 md:py-9">
           <PageBreadcrumb
             className="mb-4 text-white/70"
             items={[
@@ -1243,16 +1273,16 @@ export function ServicePage() {
   const isParcelDeliveryService = service.slug === "parcel-delivery";
   const isAutoService = service.slug === "auto";
   const currentServiceBanner = serviceBannerPath(service.slug);
+  const currentServiceMobileBanner = serviceMobileBanners[service.slug] ?? currentServiceBanner;
 
   return (
     <div>
       {/* Hero */}
       {isLocalTaxiService ? (
-        <section className="relative min-h-[420px] overflow-hidden bg-[#07143F] bg-cover bg-center bg-no-repeat text-white md:min-h-[500px]" style={{
-          backgroundImage: `url('${currentServiceBanner}')`,
-        }}>
+        <section className="relative overflow-hidden bg-[#07143F] text-white md:min-h-[500px]">
+          <ResponsiveHeroMedia src={currentServiceBanner} mobileSrc={currentServiceMobileBanner} alt="Local taxi service from Root Cabs" />
           <div className="absolute inset-0 bg-black/40" />
-          <div className="relative z-10 mx-auto max-w-screen-xl px-4">
+          <div className="relative z-10 mx-auto max-w-screen-xl px-4 pb-10 md:pb-0">
             <PageBreadcrumb
               className="mb-5 pt-8 text-white/70 md:pt-10"
               items={[
@@ -1292,11 +1322,10 @@ export function ServicePage() {
           </div>
         </section>
       ) : isAirportTaxiService ? (
-        <section className="relative min-h-[420px] overflow-hidden bg-[#07143F] bg-cover bg-center bg-no-repeat text-white md:min-h-[500px]" style={{
-          backgroundImage: `url('${currentServiceBanner}')`,
-        }}>
+        <section className="relative overflow-hidden bg-[#07143F] text-white md:min-h-[500px]">
+          <ResponsiveHeroMedia src={currentServiceBanner} mobileSrc={currentServiceMobileBanner} alt="Airport taxi service from Root Cabs" />
           <div className="absolute inset-0 bg-black/40" />
-          <div className="relative z-10 mx-auto max-w-screen-xl px-4">
+          <div className="relative z-10 mx-auto max-w-screen-xl px-4 pb-10 md:pb-0">
             <PageBreadcrumb
               className="mb-5 pt-8 text-white/70 md:pt-10"
               items={[
@@ -1335,11 +1364,10 @@ export function ServicePage() {
           </div>
         </section>
       ) : isOutstationTaxiService ? (
-        <section className="relative min-h-[420px] overflow-hidden bg-[#07143F] bg-cover bg-center bg-no-repeat text-white md:min-h-[500px]" style={{
-          backgroundImage: `url('${currentServiceBanner}')`,
-        }}>
+        <section className="relative overflow-hidden bg-[#07143F] text-white md:min-h-[500px]">
+          <ResponsiveHeroMedia src={currentServiceBanner} mobileSrc={currentServiceMobileBanner} alt="Outstation taxi service from Root Cabs" />
           <div className="absolute inset-0 bg-black/40" />
-          <div className="relative z-10 mx-auto max-w-screen-xl px-4">
+          <div className="relative z-10 mx-auto max-w-screen-xl px-4 pb-10 md:pb-0">
             <PageBreadcrumb
               className="mb-5 pt-8 text-white/70 md:pt-10"
               items={[
@@ -1379,11 +1407,10 @@ export function ServicePage() {
           </div>
         </section>
       ) : isActingDriverService ? (
-        <section className="relative min-h-[420px] overflow-hidden bg-[#07143F] bg-cover bg-center bg-no-repeat text-white md:min-h-[500px]" style={{
-          backgroundImage: `url('${currentServiceBanner}')`,
-        }}>
+        <section className="relative overflow-hidden bg-[#07143F] text-white md:min-h-[500px]">
+          <ResponsiveHeroMedia src={currentServiceBanner} mobileSrc={currentServiceMobileBanner} alt="Acting driver service from Root Cabs" />
           <div className="absolute inset-0 bg-black/40" />
-          <div className="relative z-10 mx-auto max-w-screen-xl px-4">
+          <div className="relative z-10 mx-auto max-w-screen-xl px-4 pb-10 md:pb-0">
             <PageBreadcrumb
               className="mb-5 pt-8 text-white/70 md:pt-10"
               items={[
@@ -1423,11 +1450,10 @@ export function ServicePage() {
           </div>
         </section>
       ) : isParcelDeliveryService ? (
-        <section className="relative min-h-[420px] overflow-hidden bg-[#07143F] bg-cover bg-center bg-no-repeat text-white md:min-h-[500px]" style={{
-          backgroundImage: `url('${currentServiceBanner}')`,
-        }}>
+        <section className="relative overflow-hidden bg-[#07143F] text-white md:min-h-[500px]">
+          <ResponsiveHeroMedia src={currentServiceBanner} mobileSrc={currentServiceMobileBanner} alt="Parcel delivery service from Root Cabs" />
           <div className="absolute inset-0 bg-black/40" />
-          <div className="relative z-10 mx-auto max-w-screen-xl px-4">
+          <div className="relative z-10 mx-auto max-w-screen-xl px-4 pb-10 md:pb-0">
             <PageBreadcrumb
               className="mb-5 pt-8 text-white/70 md:pt-10"
               items={[
@@ -1467,11 +1493,10 @@ export function ServicePage() {
           </div>
         </section>
       ) : isAutoService ? (
-        <section className="relative min-h-[420px] overflow-hidden bg-[#07143F] bg-cover bg-center bg-no-repeat text-white md:min-h-[500px]" style={{
-          backgroundImage: `url('${currentServiceBanner}')`,
-        }}>
+        <section className="relative overflow-hidden bg-[#07143F] text-white md:min-h-[500px]">
+          <ResponsiveHeroMedia src={currentServiceBanner} mobileSrc={currentServiceMobileBanner} alt="Auto service from Root Cabs" />
           <div className="absolute inset-0 bg-black/40" />
-          <div className="relative z-10 mx-auto max-w-screen-xl px-4">
+          <div className="relative z-10 mx-auto max-w-screen-xl px-4 pb-10 md:pb-0">
             <PageBreadcrumb
               className="mb-5 pt-8 text-white/70 md:pt-10"
               items={[
@@ -1510,11 +1535,10 @@ export function ServicePage() {
           </div>
         </section>
       ) : (
-        <section className="relative min-h-[420px] overflow-hidden bg-[#07143F] bg-cover bg-center bg-no-repeat text-white md:min-h-[500px]" style={{
-          backgroundImage: "url('/assets/rootcabs-banner-home.png')",
-        }}>
+        <section className="relative overflow-hidden bg-[#07143F] text-white md:min-h-[500px]">
+          <ResponsiveHeroMedia src="/assets/rootcabs-banner-home.png" alt={`${service.name} from Root Cabs`} />
           <div className="absolute inset-0 bg-black/40" />
-          <div className="relative z-10 max-w-screen-xl mx-auto px-4">
+          <div className="relative z-10 mx-auto max-w-screen-xl px-4 py-8 md:py-10">
             <PageBreadcrumb
               className="mb-4 text-white/70"
               items={[

@@ -2122,34 +2122,45 @@ export default function BookRide() {
         </DialogContent>
       </Dialog>
       {/* Header */}
-      <section className="relative min-h-[330px] overflow-hidden bg-[#07143F] bg-cover bg-bottom bg-no-repeat py-7 text-white md:min-h-[400px] md:bg-center md:py-9" style={{
-        backgroundImage: "url('/assets/rootcabs-banner-home.png')",
-      }}>
+      <section className="relative overflow-hidden bg-[#07143F] text-white md:min-h-[400px]">
+        <img
+          src="/assets/rootcabs-banner-home.png"
+          alt="Root Cabs service across Tamil Nadu"
+          className="pointer-events-none hidden md:absolute md:inset-0 md:block md:h-full md:w-full md:object-cover md:object-center"
+        />
         <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 max-w-screen-xl mx-auto px-4">
-          <PageBreadcrumb
+        <div className="relative z-10">
+          <div
+            className="absolute inset-0 bg-cover bg-center md:hidden"
+            style={{ backgroundImage: "url('/assets/rootcabs-banner-home.png')" }}
+            aria-hidden="true"
+          />
+          <div className="absolute inset-0 bg-[#07143F]/85 md:hidden" aria-hidden="true" />
+          <div className="relative mx-auto max-w-screen-xl px-4 py-7 md:py-9">
+            <PageBreadcrumb
             className="mb-4 text-white/70"
             items={[
               { label: "Home", href: "/" },
               { label: "Book Ride" },
             ]}
-          />
-          <h1
-            className="mb-3 font-heading text-3xl font-bold leading-[1.1] tracking-normal md:text-4xl"
-          >
-            Book Your Ride
-          </h1>
-          <p className="mb-3 font-heading text-xl font-semibold text-white md:text-2xl">Your Ride, Our Responsibility</p>
-          <p className="max-w-3xl text-gray-300">
-            Plan your journey with ease and book your ride online for a safe,<br className="hidden sm:block" /> comfortable and reliable travel experience.
-          </p>
-          <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-300">
-            {bookingStats.map((stat) => (
-              <div key={stat.label} className="flex items-center gap-1.5">
-                <span className="font-heading font-extrabold text-[#FFD700]">{stat.value}</span>
-                <span>{stat.label}</span>
-              </div>
-            ))}
+            />
+            <h1
+              className="mb-3 font-heading text-3xl font-bold leading-[1.1] tracking-normal md:text-4xl"
+            >
+              Book Your Ride
+            </h1>
+            <p className="mb-3 font-heading text-xl font-semibold text-white md:text-2xl">Your Ride, Our Responsibility</p>
+            <p className="max-w-3xl text-gray-300">
+              Plan your journey with ease and book your ride online for a safe,<br className="hidden sm:block" /> comfortable and reliable travel experience.
+            </p>
+            <div className="mt-4 flex flex-wrap gap-x-5 gap-y-2 text-sm text-gray-300">
+              {bookingStats.map((stat) => (
+                <div key={stat.label} className="flex items-center gap-1.5">
+                  <span className="font-heading font-extrabold text-[#FFD700]">{stat.value}</span>
+                  <span>{stat.label}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
