@@ -208,7 +208,7 @@ function Footer() {
             />
           </div>
           <p className="mb-4 text-sm font-semibold text-white">
-            Unit of TEXVE innovations private Limited
+            Unit of TEXVE Innovations Private Limited
           </p>
           <div className="mt-4 space-y-2 text-sm">
             <a href={`tel:${companyInfo.phone}`} className="flex items-center gap-2 hover:text-yellow-300 cursor-pointer">
@@ -274,9 +274,9 @@ function Footer() {
         </div>
 
         {/* Cities */}
-        <div>
+        <div className="lg:-ml-8">
           <h4 className="font-heading font-semibold text-white mb-4">Cities We Serve</h4>
-          <ul className="space-y-2 text-sm grid grid-cols-2 gap-x-4">
+          <ul className="inline-grid grid-cols-[max-content_max-content] gap-x-8 gap-y-2 text-sm">
             {cities.map((c) => (
               <li key={c.slug}>
                 <Link to={`/${c.slug}`} className="hover:text-yellow-300 transition-colors cursor-pointer">{c.name}</Link>
@@ -286,9 +286,9 @@ function Footer() {
         </div>
 
         {/* Quick Links */}
-        <div>
+        <div className="lg:-ml-8">
           <h4 className="font-heading font-semibold text-white mb-4">Quick Links</h4>
-          <ul className="space-y-2 text-sm">
+          <ul className="grid grid-cols-2 gap-x-6 gap-y-2 text-sm">
             <li><Link to="/book-ride" className="hover:text-yellow-300 transition-colors cursor-pointer">Book a Ride</Link></li>
             <li><Link to="/drivers" className="hover:text-yellow-300 transition-colors cursor-pointer">Drive with Us</Link></li>
             <li><Link to="/business" className="hover:text-yellow-300 transition-colors cursor-pointer">Corporate Travel</Link></li>

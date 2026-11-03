@@ -2740,7 +2740,7 @@ export default function BookRide() {
                       <div key={v.id} onClick={() => setVehicle(v.id)} className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${vehicle === v.id ? "border-primary bg-primary/5" : "border-border hover:border-primary/30"}`}>
                         <div className="flex items-center gap-3">
                           <Car className={`w-8 h-8 ${vehicle === v.id ? "text-primary" : "text-muted-foreground"}`} />
-                          <div><p className="font-semibold">{v.name}</p><p className="text-xs text-muted-foreground">{v.desc}</p><p className="text-xs text-muted-foreground">{v.capacity} • ₹{v.rate.perKm}/km</p></div>
+                          <div><p className="font-semibold">{v.name}</p></div>
                         </div>
                       </div>
                     ))}
@@ -3165,9 +3165,9 @@ export default function BookRide() {
             </div>
             <div className="flex flex-col items-center justify-center lg:px-5">
               <span className="flex h-[148px] w-[148px] items-center justify-center bg-white p-1">
-                <img src="/assets/root-cabs-qr-code.jpg" alt="Root Cabs app QR code" className="h-full w-full object-contain" />
+                <img src="/assets/root-cabs-qr-code.png" alt="Root Cabs app QR code" className="h-full w-full object-contain" />
               </span>
-              <p className="mt-3 text-center text-base font-bold">Scan to Download</p>
+              <p className="mt-3 text-center text-lg font-bold">Scan to Download</p>
               <div className="mt-3 flex items-center gap-2">
                   <a
                     href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"

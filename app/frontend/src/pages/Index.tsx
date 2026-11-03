@@ -754,9 +754,9 @@ export default function Index() {
             </div>
             <div className="flex flex-col items-center justify-center lg:px-5">
               <span className="flex h-[148px] w-[148px] items-center justify-center bg-white p-1">
-                <img src="/assets/root-cabs-qr-code.jpg" alt="Root Cabs app QR code" className="h-full w-full object-contain" />
+                <img src="/assets/root-cabs-qr-code.png" alt="Root Cabs app QR code" className="h-full w-full object-contain" />
               </span>
-              <p className="mt-3 text-center text-base font-bold">Scan to Download</p>
+              <p className="mt-3 text-center text-lg font-bold">Scan to Download</p>
               <div className="mt-3 flex items-center gap-2">
                 <a
                   href="https://play.google.com/store/apps/details?id=com.nativecustomer&hl=en_IN"
